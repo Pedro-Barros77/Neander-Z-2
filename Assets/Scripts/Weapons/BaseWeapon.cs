@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
 public abstract class BaseWeapon : MonoBehaviour
@@ -19,14 +23,23 @@ public abstract class BaseWeapon : MonoBehaviour
     protected PlayerAiming AimingScript;
     [SerializeField]
     protected GameObject BulletPrefab;
+    [SerializeField]
+    protected List<AudioClip> ShootSounds;
 
     protected Transform BulletSpawnPoint;
     protected Transform BulletsContainer;
+    protected AudioSource AudioSource;
+    protected float ShootVolume;
+
+    protected float? lastShotTime;
+    protected float? lastReloadTime;
+    protected const float FIRE_RATE_RATIO = 1000;
 
     protected virtual void Start()
     {
         BulletSpawnPoint = transform.GetChild(0).Find("BulletSpawnPoint");
         BulletsContainer = GameObject.Find("ProjectilesContainer").transform;
+        AudioSource = GetComponent<AudioSource>();
     }
 
     protected virtual void Update()
@@ -34,8 +47,13 @@ public abstract class BaseWeapon : MonoBehaviour
         Animation();
     }
 
-    public virtual GameObject Shoot()
+    public virtual IEnumerable<GameObject> Shoot()
     {
+        if (!CanShoot())
+        {
+            return Enumerable.Empty<GameObject>();
+        }
+
         var angle = AimingScript.AimAngle;
 
         var bulletInstance = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.Euler(0f, 0f, angle), BulletsContainer);
@@ -49,10 +67,36 @@ public abstract class BaseWeapon : MonoBehaviour
         bullet.MaxDistance = BulletMaxRange;
         bullet.Init();
 
-        return bulletInstance;
+        lastShotTime = Time.time;
+        AudioSource.clip = ShootSounds[UnityEngine.Random.Range(0, ShootSounds.Count)];
+        AudioSource.volume = ShootVolume;
+        AudioSource.Play();
+
+        return new List<GameObject>() { bulletInstance };
     }
 
-    private void Animation()
+    public virtual bool CanShoot()
+    {
+        if (MagazineBullets <= 0)
+        {
+            return false;
+        }
+
+        var now = Time.time;
+
+        if (lastReloadTime != null && now - ReloadTimeMs <= lastReloadTime)
+            return false;
+
+        var delayMs = FIRE_RATE_RATIO / FireRate;
+        var diff = now - (delayMs/1000);
+
+        if (lastShotTime != null && diff <= lastShotTime)
+            return false;
+
+        return true;
+    }
+
+    protected virtual void Animation()
     {
         bool aimingLeft = math.abs(AimingScript.AimAngle) > 90;
         if (aimingLeft)

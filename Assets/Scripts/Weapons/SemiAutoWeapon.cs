@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SemiAutoWeapon : BaseWeapon
@@ -9,13 +11,15 @@ public class SemiAutoWeapon : BaseWeapon
             Shoot();
     }
 
-    public override GameObject Shoot()
+    public override IEnumerable<GameObject> Shoot()
     {
-        var bulletInstance = base.Shoot();
+        var bulletInstances = base.Shoot();
+        if(!bulletInstances.Any())
+            return bulletInstances;
 
-        var bullet = bulletInstance.GetComponent<Projectile>();
+        var bullet = bulletInstances.First().GetComponent<Projectile>();
         bullet.HasGravity = false;
 
-        return bulletInstance;
+        return bulletInstances;
     }
 }
