@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    public float movementSpeed = 5f, jumpForce = 10f;
+    public float MovementSpeed { get; set; } = 5f;
+    public float JumpForce { get; set; } = 800f;
 
     bool isGrounded = false;
 
     Rigidbody2D rb;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -20,21 +18,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(isGrounded);
         var dir = rb.velocity.x;
-        if (dir > 0)
-        {
+        if (dir >= 0)
             gameObject.transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (dir < 0)
-        {
+        else
             gameObject.transform.localScale = new Vector3(-1, 1, 1);
-        }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
             Jump();
-        }
     }
 
     // FixedUpdate is called once per physics frame
@@ -46,27 +37,23 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Environment"))
-        {
             isGrounded = true;
-        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Environment"))
-        {
             isGrounded = false;
-        }
     }
 
     private void Movement()
     {
         float x = Input.GetAxis("Horizontal");
-        rb.velocity = new(x * movementSpeed, rb.velocity.y);
+        rb.velocity = new(x * MovementSpeed, rb.velocity.y);
     }
 
     private void Jump()
     {
-        rb.AddForce(new Vector2(0f, jumpForce));
+        rb.AddForce(new Vector2(0f, JumpForce));
     }
 }
