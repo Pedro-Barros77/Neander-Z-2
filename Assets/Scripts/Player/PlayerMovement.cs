@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,15 +9,15 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb;
     Animator animator;
+    SpriteRenderer spriteRenderer;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -27,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
         Animation();
     }
 
-    // FixedUpdate is called once per physics frame
     void FixedUpdate()
     {
         Movement();
@@ -49,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         rb.velocity = new(x * MovementSpeed, rb.velocity.y);
-
     }
 
     private void Animation()
@@ -60,9 +57,9 @@ public class PlayerMovement : MonoBehaviour
 
         var dir = rb.velocity.x;
         if (dir <= 0)
-            gameObject.transform.localScale = new Vector3(1, 1, 1);
+            spriteRenderer.flipX = false;
         else
-            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            spriteRenderer.flipX = true;
 
         if (isPressingRight || isPressingLeft)
         {
@@ -74,7 +71,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isTurning", false);
             animator.SetBool("isIdle", true);
         }
-
     }
 
     private void Jump()
