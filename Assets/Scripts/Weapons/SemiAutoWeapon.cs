@@ -6,6 +6,9 @@ public class SemiAutoWeapon : BaseWeapon
 {
     protected override void Update()
     {
+        if (MenuController.Instance.IsGamePaused)
+            return;
+
         base.Update();
         if (Input.GetKeyDown(KeyCode.Mouse0))
             Shoot();
@@ -14,7 +17,7 @@ public class SemiAutoWeapon : BaseWeapon
     public override IEnumerable<GameObject> Shoot()
     {
         var bulletInstances = base.Shoot();
-        if(!bulletInstances.Any())
+        if (!bulletInstances.Any())
             return bulletInstances;
 
         var bullet = bulletInstances.First().GetComponent<Projectile>();
