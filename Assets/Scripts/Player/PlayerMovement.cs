@@ -1,11 +1,22 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float AccelerationSpeed { get; set; } = 1f;
     public float MovementSpeed { get; set; } = 5f;
     public float JumpForce { get; set; } = 1800f;
+    public float RollForce { get; set; } = 1800f;
+    public float RollDistance { get; set; } = 5f;
+    public float RollCooldownMs { get; set; } = 2000f;
 
+    float LastRollTime;
+    float dirInput;
     bool isGrounded = false;
+    bool isRolling = false;
+    bool isJumping = false;
+    bool isTurning = false;
+    bool isRunning = false;
 
     Rigidbody2D rb;
     Animator animator;
@@ -20,9 +31,20 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        dirInput = Input.GetAxisRaw("Horizontal");
+        var rollCooledDown = LastRollTime + (RollCooldownMs / 1000) <= Time.time;
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling)
             Jump();
 
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        {
+            if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && rollCooledDown)
+                Roll(false);
+
+            if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) && rollCooledDown)
+                Roll(true);
+        }
         Animation();
     }
 
@@ -45,8 +67,33 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-        float x = Input.GetAxis("Horizontal");
-        rb.velocity = new(x * MovementSpeed, rb.velocity.y);
+        if (math.abs(rb.velocity.x) < MovementSpeed)
+            rb.velocity += new Vector2(dirInput * AccelerationSpeed, 0);
+    }
+
+    private void Jump()
+    {
+        rb.AddForce(new Vector2(0f, JumpForce));
+    }
+
+    private void Roll(bool isLeft)
+    {
+        LastRollTime = Time.time;
+        isRolling = true;
+        animator.SetTrigger("Roll");
+        float rollDirection = isLeft ? -1 : 1;
+        rb.AddForce(new Vector2(RollForce * rollDirection, 10f));
+    }
+
+    public void OnRollEnd()
+    {
+        isRolling = false;
+        isRunning = true;
+    }
+    public void OnTurnEnd()
+    {
+        isTurning = false;
+        isRunning = true;
     }
 
     private void Animation()
@@ -61,20 +108,21 @@ public class PlayerMovement : MonoBehaviour
         else
             spriteRenderer.flipX = true;
 
-        if (isPressingRight || isPressingLeft)
+        if ((isPressingRight || isPressingLeft) && !isTurning && !isRunning && !isRolling)
         {
-            animator.SetBool("isTurning", true);
-            animator.SetBool("isIdle", false);
+            isTurning = true;
+            animator.SetTrigger("Turn");
         }
-        else
-        {
-            animator.SetBool("isTurning", false);
-            animator.SetBool("isIdle", true);
-        }
-    }
 
-    private void Jump()
-    {
-        rb.AddForce(new Vector2(0f, JumpForce));
+        if (isRunning && !isTurning)
+            animator.SetBool("isRunning", true);
+
+        if (math.abs(dir) <= 0.1)
+        {
+            isRunning = false;
+            animator.SetBool("isRunning", false);
+        }
+
+        animator.SetBool("isIdle", !isRolling && !isJumping && !isTurning && !isRunning);
     }
 }
