@@ -23,7 +23,6 @@ public class PlayerWeaponController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(AimAngle);
         if (MenuController.Instance.IsGamePaused)
             return;
 

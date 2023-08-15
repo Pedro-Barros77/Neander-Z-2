@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     /// A velocidade de movimento atual do jogador.
     /// </summary>
     public float MovementSpeed { get; private set; } = 5f;
+    public float AccelerationSpeed { get; private set; } = 1f;
     /// <summary>
     /// A força do pulo do jogador.
     /// </summary>
@@ -29,7 +30,11 @@ public class Player : MonoBehaviour
     /// <summary>
     /// A força de rolagem da habilidade Rolada Tática.
     /// </summary>
-    public float RollDistance { get; private set; }
+    public float RollForce { get; private set; } = 1800f;
+    /// <summary>
+    /// O tempo de recarga da habilidade Rolada Tática.
+    /// </summary>
+    public float RollCooldownMs { get; set; } = 2000f;
     #region Stamina Stats
     /// <summary>
     /// A stamina máxima do jogador.
