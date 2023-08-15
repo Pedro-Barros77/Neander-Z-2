@@ -55,10 +55,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
-            if ((Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) && rollCooledDown)
+            if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && rollCooledDown)
                 Roll(false);
 
-            if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) && rollCooledDown)
+            if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && rollCooledDown)
                 Roll(true);
         }
         Animation();
@@ -95,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Jump()
     {
+        isJumping = true;
         rb.AddForce(new Vector2(0f, JumpForce));
     }
 
@@ -149,13 +150,33 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Turn");
         }
 
-        if (isRunning && !isTurning)
+        if (isRunning && !isTurning && !isJumping)
             animator.SetBool("isRunning", true);
 
         if (math.abs(dir) <= 0.1)
         {
             isRunning = false;
             animator.SetBool("isRunning", false);
+        }
+
+        if (!isGrounded)
+        {
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isJumping", true);
+        }
+
+        if (isGrounded)
+        {
+            isJumping = false;
+            animator.SetBool("isJumping", false);
+
+            if (dir != 0 && !isTurning && !isRolling)
+            {
+                animator.SetBool("isRunning", true);
+
+            }
+            else
+                animator.SetBool("isRunning", false);
         }
 
         animator.SetBool("isIdle", !isRolling && !isJumping && !isTurning && !isRunning);
