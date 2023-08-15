@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Colt_1911 : SemiAutoWeapon
 {
-    public Colt_1911()
+    protected override void Awake()
     {
-        IsPrimary = false;
+        Type = WeaponTypes.Colt_1911;
+        base.Awake();
+
         BulletType = BulletTypes.Pistol;
         Damage = 6f;
         FireRate = 4f;
@@ -18,18 +20,5 @@ public class Colt_1911 : SemiAutoWeapon
         MaxDamageRange = 5f;
         MinDamageRange = 10f;
         ShootVolume = 0.3f;
-    }
-
-    public override IEnumerable<GameObject> Shoot()
-    {
-        var bulletInstances = base.Shoot();
-        if (!bulletInstances.Any())
-            return bulletInstances;
-
-        var bullet = bulletInstances.First().GetComponent<Projectile>();
-        bullet.MaxDamageRange = MaxDamageRange;
-        bullet.MinDamageRange = MinDamageRange;
-
-        return bulletInstances;
     }
 }

@@ -2,17 +2,25 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float MovementSpeed { get; set; } = 5f;
-    public float JumpForce { get; set; } = 1800f;
+    /// <summary>
+    /// A velocidade de movimento máxima do jogador.
+    /// </summary>
+    public float MovementSpeed => Player.MovementSpeed;
+    /// <summary>
+    /// A força do pulo do jogador.
+    /// </summary>
+    public float JumpForce => Player.JumpForce;
 
     bool isGrounded = false;
 
+    Player Player;
     Rigidbody2D rb;
     Animator animator;
     SpriteRenderer spriteRenderer;
 
     void Start()
     {
+        Player = GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -43,12 +51,18 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
     }
 
+    /// <summary>
+    /// Processa o input e move o jogador.
+    /// </summary>
     private void Movement()
     {
         float x = Input.GetAxis("Horizontal");
         rb.velocity = new(x * MovementSpeed, rb.velocity.y);
     }
 
+    /// <summary>
+    /// Processa a lógica de animação do jogador.
+    /// </summary>
     private void Animation()
     {
         bool isPressingRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
@@ -73,6 +87,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Faz o jogador pular.
+    /// </summary>
     private void Jump()
     {
         rb.AddForce(new Vector2(0f, JumpForce));

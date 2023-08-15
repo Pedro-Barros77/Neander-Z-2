@@ -1,0 +1,62 @@
+using UnityEngine;
+using UnityEngine.XR;
+
+public class PlayerWeaponController : MonoBehaviour
+{
+    /// <summary>
+    /// O ângulo de mira do jogador, em Radians (Começando da direita, sentido anti-horário: direita 0, cima 90, esquerda 180, esquerda -180, baixo -90, direita 0).
+    /// </summary>
+    public float AimAngle { get; set; }
+
+    Transform handTransform;
+
+    private void Awake()
+    {
+        handTransform = transform.Find("Hand");
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Debug.Log(AimAngle);
+        if (MenuController.Instance.IsGamePaused)
+            return;
+
+        RotateToMouse();
+    }
+
+    /// <summary>
+    /// Carrega o Prefab da arma do tipo especificado e o instancia na mão do jogador.
+    /// </summary>
+    /// <param name="weaponType">O tipo de arma para instanciar.</param>
+    /// <returns>O GameObject instanciado.</returns>
+    public GameObject InstantiateWeaponPrefab(WeaponTypes weaponType)
+    {
+        var weaponPrefab = Resources.Load<GameObject>($"Prefabs/Weapons/{weaponType}");
+        GameObject weaponObj = Instantiate(weaponPrefab, handTransform);
+        weaponObj.GetComponent<BaseWeapon>().PlayerWeaponController = this;
+        return weaponObj;
+    }
+
+    /// <summary>
+    /// Rotaciona o container da arma (círculo) para apontar a mão do jogador em direção ao mouse.
+    /// </summary>
+    private void RotateToMouse()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, transform.position.z));
+        Vector3 direction = worldMousePos - transform.position;
+
+        AimAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, AimAngle));
+
+        float orbitRadius = transform.localScale.x / 2;
+        Vector3 offset = new Vector3(Mathf.Cos(AimAngle * Mathf.Deg2Rad), Mathf.Sin(AimAngle * Mathf.Deg2Rad), 0) * orbitRadius;
+        handTransform.position = transform.position + offset;
+    }
+}

@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
     static MenuController _instance;
 
+    /// <summary>
+    /// A instância deste Singleton.
+    /// </summary>
     public static MenuController Instance
     {
         get
@@ -20,7 +22,13 @@ public class MenuController : MonoBehaviour
     public bool IsGamePaused { get; set; }
 
     [SerializeField]
+    Player Player;
+    [SerializeField]
     private GameObject PausePanel;
+    [SerializeField]
+    private Image ActiveWeaponImage, ActiveAmmoImage;
+    [SerializeField]
+    private TextMeshProUGUI MagazineBulletsText, TotalBulletsText;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +46,13 @@ public class MenuController : MonoBehaviour
             else
                 PauseGame();
         }
+
+        UpdateInGameUI();
     }
 
+    /// <summary>
+    /// Pausa o jogo, congelando o tempo e exibindo o menu de pausa.
+    /// </summary>
     public void PauseGame()
     {
         Time.timeScale = 0;
@@ -47,6 +60,9 @@ public class MenuController : MonoBehaviour
         PausePanel.SetActive(true);
     }
 
+    /// <summary>
+    /// Continua o jogo, descongelando o tempo e escondendo o menu de pausa.
+    /// </summary>
     public void ContinueGame()
     {
         Time.timeScale = 1;
@@ -54,17 +70,27 @@ public class MenuController : MonoBehaviour
         PausePanel.SetActive(false);
     }
 
+    /// <summary>
+    /// Reinicia o jogo, recarregando a cena atual.
+    /// </summary>
     public void RestartGame()
     {
         ContinueGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    /// <summary>
+    /// Sai do jogo, voltando para o menu principal.
+    /// </summary>
     public void QuitGame()
     {
         ContinueGame();
     }
 
+    /// <summary>
+    /// Reinicia o estado e animação do botão.
+    /// </summary>
+    /// <param name="btnAnimator">Botão a ser reiniciado.</param>
     public void ResetButton(Animator btnAnimator)
     {
         btnAnimator.ResetTrigger("Highlighted");
@@ -72,5 +98,14 @@ public class MenuController : MonoBehaviour
         btnAnimator.ResetTrigger("Selected");
         btnAnimator.SetTrigger("Normal");
         btnAnimator.transform.localScale = new Vector3(1, 1, 1);
+    }
+
+    /// <summary>
+    /// Atualiza as informações na tela do jogo atual.
+    /// </summary>
+    private void UpdateInGameUI()
+    {
+        MagazineBulletsText.text = Player.CurrentWeapon.MagazineBullets.ToString();
+        TotalBulletsText.text = Player.Backpack.GetAmmo(Player.CurrentWeapon.BulletType).ToString();
     }
 }

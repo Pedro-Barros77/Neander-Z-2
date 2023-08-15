@@ -23,6 +23,8 @@ public class SemiAutoWeapon : BaseWeapon
         var bullet = bulletInstances.First().GetComponent<Projectile>();
         bullet.HasGravity = false;
 
+        MagazineBullets--;
+
         return bulletInstances;
     }
 }
