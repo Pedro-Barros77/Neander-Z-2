@@ -10,8 +10,6 @@ public class SemiAutoWeapon : BaseWeapon
             return;
 
         base.Update();
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            Shoot();
     }
 
     public override IEnumerable<GameObject> Shoot()

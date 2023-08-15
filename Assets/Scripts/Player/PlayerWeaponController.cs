@@ -8,6 +8,11 @@ public class PlayerWeaponController : MonoBehaviour
     /// </summary>
     public float AimAngle { get; set; }
 
+    /// <summary>
+    /// O jogador pai deste controlador.
+    /// </summary>
+    public Player Player { get; set; }
+
     Transform handTransform;
 
     private void Awake()
@@ -18,6 +23,7 @@ public class PlayerWeaponController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Player = transform.parent.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -25,6 +31,12 @@ public class PlayerWeaponController : MonoBehaviour
     {
         if (MenuController.Instance.IsGamePaused)
             return;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            Player.CurrentWeapon.Shoot();
+
+        if (Input.GetKeyDown(KeyCode.R))
+            Player.CurrentWeapon.Reload();
 
         RotateToMouse();
     }

@@ -54,11 +54,19 @@ public abstract class BaseWeapon : MonoBehaviour
     /// O tipo de arma.
     /// </summary>
     public WeaponTypes Type { get; set; }
+    /// <summary>
+    /// Se a arma está sendo recarregada atualmente.
+    /// </summary>
+    public bool IsReloading { get; set; }
 
     /// <summary>
     /// Script responsável por controlar a arma do jogador, como mira, troca e recarregamento.
     /// </summary>
     public PlayerWeaponController PlayerWeaponController { get; set; }
+    /// <summary>
+    /// Jogador portador desta arma.
+    /// </summary>
+    public Player Player { get; set; }
 
     [SerializeField]
     protected GameObject BulletPrefab;
@@ -86,9 +94,9 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     protected float? lastShotTime;
     /// <summary>
-    /// Última vez em que a arma foi recarregada.
+    /// Tempo em que a arma começou a ser recarregada.
     /// </summary>
-    protected float? lastReloadTime;
+    protected float? reloadStartTime;
     /// <summary>
     /// A proporção entre a taxa de disparo e o tempo em milissegundos.
     /// </summary>
@@ -104,6 +112,7 @@ public abstract class BaseWeapon : MonoBehaviour
         BulletSpawnPoint = transform.GetChild(0).Find("BulletSpawnPoint");
         BulletsContainer = GameObject.Find("ProjectilesContainer").transform;
         AudioSource = GetComponent<AudioSource>();
+        Player = PlayerWeaponController.transform.parent.GetComponent<Player>();
     }
 
     protected virtual void Update()
@@ -146,6 +155,41 @@ public abstract class BaseWeapon : MonoBehaviour
     }
 
     /// <summary>
+    /// Se possível, recarrega a arma e Inicia a animação de recarregamento.
+    /// </summary>
+    public virtual void Reload()
+    {
+        if (MagazineBullets == MagazineSize)
+            return;
+
+        if (Player.Backpack.GetAmmo(BulletType) <= 0)
+            return;
+
+        if (reloadStartTime != null && Time.time - ReloadTimeMs <= reloadStartTime)
+            return;
+
+        IsReloading = true;
+        reloadStartTime = Time.time;
+
+        int toLoad = MagazineSize - MagazineBullets;
+        int diff = Player.Backpack.GetAmmo(BulletType) - toLoad;
+
+        if (diff >= 0)
+        {
+            MagazineBullets += toLoad;
+            Player.Backpack.SetAmmo(BulletType, diff);
+        }
+        else
+        {
+            MagazineBullets += Player.Backpack.GetAmmo(BulletType);
+            Player.Backpack.SetAmmo(BulletType, 0);
+        }
+
+        // DEBUG, setar essa linha no final da animação de reload
+        reloadStartTime = null;
+    }
+
+    /// <summary>
     /// Verifica se a arma pode ser disparada, levando em conta a munição, firerate e recarga.
     /// </summary>
     /// <returns>True se a arma pode disparar, caso contrário, false.</returns>
@@ -158,11 +202,11 @@ public abstract class BaseWeapon : MonoBehaviour
 
         var now = Time.time;
 
-        if (lastReloadTime != null && now - ReloadTimeMs <= lastReloadTime)
+        if (reloadStartTime != null && now - ReloadTimeMs <= reloadStartTime)
             return false;
 
         var delayMs = FIRE_RATE_RATIO / FireRate;
-        var diff = now - (delayMs/1000);
+        var diff = now - (delayMs / 1000);
 
         if (lastShotTime != null && diff <= lastShotTime)
             return false;
