@@ -147,6 +147,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
+    /// Função chamada pelo evento de animação, no último frame ao cair no chão do personagem.
+    /// </summary>
+    public void OnFallGroundEnd()
+    {
+        isFalling = false;
+    }
+
+    /// <summary>
     /// Processa a l�gica de anima��o do jogador.
     /// </summary>
     private void Animation()
@@ -169,9 +177,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Turn");
         }
 
-        if (isRunning && !isJumping)
-            animator.SetBool("isRunning", true);
-
         if (math.abs(dir) <= 0.1 && !isPressingRight && !isPressingLeft)
         {
             isRunning = false;
@@ -188,14 +193,13 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
 
-            if ((dir != 0 || isPressingLeft || isPressingRight) && !isTurning && !isRolling)
+            if ((dir != 0 || isPressingLeft || isPressingRight) && isRunning && !isJumping && !isTurning && !isRolling)
             {
                 animator.SetBool("isRunning", true);
-
             }
             else
                 animator.SetBool("isRunning", false);
         }
-        animator.SetBool("isIdle", !isRolling && !isJumping && !isTurning && !isRunning);
+        animator.SetBool("isIdle", !isRolling && !isJumping && !isTurning && !isRunning && !isFalling);
     }
 }
