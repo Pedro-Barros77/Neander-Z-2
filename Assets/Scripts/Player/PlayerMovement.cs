@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     bool isJumping = false;
     bool isTurning = false;
     bool isRunning = false;
+    bool isFalling = false;
 
     Player Player;
     Rigidbody2D rb;
@@ -53,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling)
             Jump();
 
-        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded && !isJumping)
         {
             if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && rollCooledDown)
                 Roll(false);
@@ -72,13 +73,28 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Environment"))
+        {
             isGrounded = true;
+            isJumping = false;
+
+            if (!isTurning && !isRunning && !isRolling && !isJumping)
+            {
+                isFalling = true;
+                animator.SetTrigger("fall");
+            }
+
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Environment"))
+        {
             isGrounded = false;
+            isJumping = false;
+            isFalling = false;
+        }
+
     }
 
     /// <summary>
@@ -139,10 +155,13 @@ public class PlayerMovement : MonoBehaviour
         bool isPressingLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
 
         var dir = rb.velocity.x;
-        if (dir <= 0)
-            spriteRenderer.flipX = false;
-        else
-            spriteRenderer.flipX = true;
+        if (math.abs(dir) > 0.1)
+        {
+            if (dir <= 0)
+                spriteRenderer.flipX = false;
+            else
+                spriteRenderer.flipX = true;
+        }
 
         if ((isPressingRight || isPressingLeft) && !isTurning && !isRunning && !isRolling)
         {
@@ -150,10 +169,10 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Turn");
         }
 
-        if (isRunning && !isTurning && !isJumping)
+        if (isRunning && !isJumping)
             animator.SetBool("isRunning", true);
 
-        if (math.abs(dir) <= 0.1)
+        if (math.abs(dir) <= 0.1 && !isPressingRight && !isPressingLeft)
         {
             isRunning = false;
             animator.SetBool("isRunning", false);
@@ -167,10 +186,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            isJumping = false;
             animator.SetBool("isJumping", false);
 
-            if (dir != 0 && !isTurning && !isRolling)
+            if ((dir != 0 || isPressingLeft || isPressingRight) && !isTurning && !isRolling)
             {
                 animator.SetBool("isRunning", true);
 
@@ -178,7 +196,6 @@ public class PlayerMovement : MonoBehaviour
             else
                 animator.SetBool("isRunning", false);
         }
-
         animator.SetBool("isIdle", !isRolling && !isJumping && !isTurning && !isRunning);
     }
 }
