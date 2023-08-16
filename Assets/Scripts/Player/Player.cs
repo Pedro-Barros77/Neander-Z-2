@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -101,24 +102,48 @@ public class Player : MonoBehaviour
     /// </summary>
     [SerializeField]
     public PlayerWeaponController WeaponController;
+    [SerializeField]
+    ProgressBar HealthBar;
 
-    void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
         Backpack = new Backpack(this);
         MaxMovementSpeed = MovementSpeed;
         MaxHealth = Health;
         Backpack.AddWeapon(WeaponTypes.Colt_1911);
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        HealthBar.SetMaxValue(MaxHealth, true);
+        HealthBar.UseAnimation = true;
+        HealthBar.AnimationSpeed = 20f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            GetHealth(20);
+        }
+        if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            TakeDamage(20);
+        }
+    }
+
+    public void GetHealth(float value)
+    {
+        if (value < 0) return;
+
+        Health = math.clamp(Health + value, 0, MaxHealth);
+        HealthBar.AddValue(value);
+    }
+
+    public void TakeDamage(float value)
+    {
+        if (value < 0) return;
+
+        Health = math.clamp(Health - value, 0, MaxHealth);
+        HealthBar.RemoveValue(value);
     }
 }
