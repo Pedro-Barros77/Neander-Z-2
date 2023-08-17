@@ -30,9 +30,12 @@ public class SemiAutoWeapon : BaseWeapon
         return bulletInstances;
     }
 
-    public override void Reload()
+    public override bool Reload()
     {
-        base.Reload();
-        Animator.SetTrigger("Reload");
+        bool canReload = base.Reload();
+        if (canReload)
+            Animator.SetTrigger("Reload");
+
+        return canReload;
     }
 }

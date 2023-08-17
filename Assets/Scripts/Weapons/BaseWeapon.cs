@@ -179,22 +179,24 @@ public abstract class BaseWeapon : MonoBehaviour
     /// <summary>
     /// Se poss�vel, recarrega a arma e Inicia a anima��o de recarregamento.
     /// </summary>
-    public virtual void Reload()
+    public virtual bool Reload()
     {
         if (MagazineBullets == MagazineSize)
-            return;
+            return false;
 
         if (Player.Backpack.GetAmmo(BulletType) <= 0)
-            return;
+            return false;
 
         if (reloadStartTime != null && Time.time - ReloadTimeMs <= reloadStartTime)
-            return;
+            return false;
 
         IsReloading = true;
         reloadStartTime = Time.time;
 
         int toLoad = MagazineSize - MagazineBullets;
         reloadBackpackMagDiff = Player.Backpack.GetAmmo(BulletType) - toLoad;
+
+        return true;
     }
 
     /// <summary>
