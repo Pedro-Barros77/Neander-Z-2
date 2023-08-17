@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class BaseWeapon : MonoBehaviour
 {
     /// <summary>
-    /// O dano causado pela arma ou seus projéteis.
+    /// O dano causado pela arma ou seus projï¿½teis.
     /// </summary>
     public float Damage { get; set; }
     /// <summary>
@@ -15,31 +15,31 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     public float FireRate { get; set; }
     /// <summary>
-    /// Capacidade máxima do carregador.
+    /// Capacidade mï¿½xima do carregador.
     /// </summary>
     public int MagazineSize { get; set; }
     /// <summary>
-    /// Quantidade de munições restantes no carregador.
+    /// Quantidade de muniï¿½ï¿½es restantes no carregador.
     /// </summary>
     public int MagazineBullets { get; set; }
     /// <summary>
-    /// Velocidade de movimento dos projéteis.
+    /// Velocidade de movimento dos projï¿½teis.
     /// </summary>
     public float BulletSpeed { get; set; }
     /// <summary>
-    /// A distância máxima que o projétil pode percorrer antes de ser destruído.
+    /// A distï¿½ncia mï¿½xima que o projï¿½til pode percorrer antes de ser destruï¿½do.
     /// </summary>
     public float BulletMaxRange { get; set; }
     /// <summary>
-    /// O alcance em que o projétil causa dano máximo.
+    /// O alcance em que o projï¿½til causa dano mï¿½ximo.
     /// </summary>
     public float MaxDamageRange { get; set; }
     /// <summary>
-    /// A distância em que o projétil começa a causar dano mínimo.
+    /// A distï¿½ncia em que o projï¿½til comeï¿½a a causar dano mï¿½nimo.
     /// </summary>
     public float MinDamageRange { get; set; }
     /// <summary>
-    /// Se a arma é primária ou secundária.
+    /// Se a arma ï¿½ primï¿½ria ou secundï¿½ria.
     /// </summary>
     public bool IsPrimary { get; set; }
     /// <summary>
@@ -47,7 +47,7 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     public float ReloadTimeMs { get; set; }
     /// <summary>
-    /// O tipo de projétil que a arma dispara.
+    /// O tipo de projï¿½til que a arma dispara.
     /// </summary>
     public BulletTypes BulletType { get; set; }
     /// <summary>
@@ -55,12 +55,12 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     public WeaponTypes Type { get; set; }
     /// <summary>
-    /// Se a arma está sendo recarregada atualmente.
+    /// Se a arma estï¿½ sendo recarregada atualmente.
     /// </summary>
     public bool IsReloading { get; set; }
 
     /// <summary>
-    /// Script responsável por controlar a arma do jogador, como mira, troca e recarregamento.
+    /// Script responsï¿½vel por controlar a arma do jogador, como mira, troca e recarregamento.
     /// </summary>
     public PlayerWeaponController PlayerWeaponController { get; set; }
     /// <summary>
@@ -74,11 +74,15 @@ public abstract class BaseWeapon : MonoBehaviour
     protected List<AudioClip> ShootSounds;
 
     /// <summary>
-    /// A posição em que os projéteis devem ser instanciados, à frente do cano da arma.
+    /// O componente Animator da arma.
+    /// </summary>
+    protected Animator Animator;
+    /// <summary>
+    /// A posiï¿½ï¿½o em que os projï¿½teis devem ser instanciados, ï¿½ frente do cano da arma.
     /// </summary>
     protected Transform BulletSpawnPoint;
     /// <summary>
-    /// Objeto vazio na cena que contém todos os projéteis instanciados.
+    /// Objeto vazio na cena que contï¿½m todos os projï¿½teis instanciados.
     /// </summary>
     protected Transform BulletsContainer;
     /// <summary>
@@ -90,15 +94,19 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     protected float ShootVolume;
     /// <summary>
-    /// Última vez em que a arma foi disparada.
+    /// ï¿½ltima vez em que a arma foi disparada.
     /// </summary>
     protected float? lastShotTime;
     /// <summary>
-    /// Tempo em que a arma começou a ser recarregada.
+    /// Tempo em que a arma comeï¿½ou a ser recarregada.
     /// </summary>
     protected float? reloadStartTime;
     /// <summary>
-    /// A proporção entre a taxa de disparo e o tempo em milissegundos.
+    /// Diferenï¿½a entre a quantidade de muniï¿½ï¿½es necessï¿½rias para completar o carregador e a quantidade de muniï¿½ï¿½es disponï¿½veis na mochila.
+    /// </summary>
+    protected int reloadBackpackMagDiff;
+    /// <summary>
+    /// A proporï¿½ï¿½o entre a taxa de disparo e o tempo em milissegundos.
     /// </summary>
     protected const float FIRE_RATE_RATIO = 1000;
 
@@ -113,6 +121,7 @@ public abstract class BaseWeapon : MonoBehaviour
         BulletsContainer = GameObject.Find("ProjectilesContainer").transform;
         AudioSource = GetComponent<AudioSource>();
         Player = PlayerWeaponController.transform.parent.GetComponent<Player>();
+        Animator = transform.Find("Sprite").GetComponent<Animator>();
     }
 
     protected virtual void Update()
@@ -121,9 +130,9 @@ public abstract class BaseWeapon : MonoBehaviour
     }
 
     /// <summary>
-    /// Executa o comportamento padrão de tiro de todas as armas, como verificação de munição e firerate, audio, e instanciação dos projéteis.
+    /// Executa o comportamento padrï¿½o de tiro de todas as armas, como verificaï¿½ï¿½o de muniï¿½ï¿½o e firerate, audio, e instanciaï¿½ï¿½o dos projï¿½teis.
     /// </summary>
-    /// <returns>Uma lista de projéteis disparados (no caso de escopetas) ou uma lista com apenas um projétil para as demais armas.</returns>
+    /// <returns>Uma lista de projï¿½teis disparados (no caso de escopetas) ou uma lista com apenas um projï¿½til para as demais armas.</returns>
     public virtual IEnumerable<GameObject> Shoot()
     {
         if (!CanShoot())
@@ -147,15 +156,15 @@ public abstract class BaseWeapon : MonoBehaviour
         bullet.Init();
 
         lastShotTime = Time.time;
-        AudioSource.clip = ShootSounds[UnityEngine.Random.Range(0, ShootSounds.Count)];
         AudioSource.volume = ShootVolume;
-        AudioSource.Play();
+        var randomShootSound = ShootSounds[UnityEngine.Random.Range(0, ShootSounds.Count)];
+        AudioSource.PlayClipAtPoint(randomShootSound, transform.position);
 
         return new List<GameObject>() { bulletInstance };
     }
 
     /// <summary>
-    /// Se possível, recarrega a arma e Inicia a animação de recarregamento.
+    /// Se possï¿½vel, recarrega a arma e Inicia a animaï¿½ï¿½o de recarregamento.
     /// </summary>
     public virtual void Reload()
     {
@@ -172,37 +181,48 @@ public abstract class BaseWeapon : MonoBehaviour
         reloadStartTime = Time.time;
 
         int toLoad = MagazineSize - MagazineBullets;
-        int diff = Player.Backpack.GetAmmo(BulletType) - toLoad;
+        reloadBackpackMagDiff = Player.Backpack.GetAmmo(BulletType) - toLoad;
+    }
 
-        if (diff >= 0)
+    /// <summary>
+    /// FunÃ§Ã£o chamada pelo evento de animaÃ§Ã£o, no Ãºltimo frame de recarregamento da arma.
+    /// </summary>
+    public virtual void OnReloadEnd()
+    {
+        IsReloading = false;
+        reloadStartTime = null;
+    }
+
+    /// <summary>
+    /// FunÃ§Ã£o chamada pelo evento de animaÃ§Ã£o, no frame de recarregamento da arma em que o carregador Ã© posicionado.
+    /// </summary>
+    public virtual void OnReloadedChamber()
+    {
+        int toLoad = MagazineSize - MagazineBullets;
+        if (reloadBackpackMagDiff >= 0)
         {
             MagazineBullets += toLoad;
-            Player.Backpack.SetAmmo(BulletType, diff);
+            Player.Backpack.SetAmmo(BulletType, reloadBackpackMagDiff);
         }
         else
         {
             MagazineBullets += Player.Backpack.GetAmmo(BulletType);
             Player.Backpack.SetAmmo(BulletType, 0);
         }
-
-        // DEBUG, setar essa linha no final da animação de reload
-        reloadStartTime = null;
     }
 
     /// <summary>
-    /// Verifica se a arma pode ser disparada, levando em conta a munição, firerate e recarga.
+    /// Verifica se a arma pode ser disparada, levando em conta a muniï¿½ï¿½o, firerate e recarga.
     /// </summary>
-    /// <returns>True se a arma pode disparar, caso contrário, false.</returns>
+    /// <returns>True se a arma pode disparar, caso contrï¿½rio, false.</returns>
     public virtual bool CanShoot()
     {
         if (MagazineBullets <= 0)
-        {
             return false;
-        }
 
         var now = Time.time;
 
-        if (reloadStartTime != null && now - ReloadTimeMs <= reloadStartTime)
+        if (IsReloading)
             return false;
 
         var delayMs = FIRE_RATE_RATIO / FireRate;
@@ -215,7 +235,7 @@ public abstract class BaseWeapon : MonoBehaviour
     }
 
     /// <summary>
-    /// Processa a animação da arma/flip.
+    /// Processa a animaï¿½ï¿½o da arma/flip.
     /// </summary>
     protected virtual void Animation()
     {

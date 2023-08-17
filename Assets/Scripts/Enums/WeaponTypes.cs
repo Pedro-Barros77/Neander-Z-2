@@ -3,14 +3,14 @@
 /// </summary>
 public enum WeaponTypes
 {
-    Colt_1911 = 1,
-    Deagle = 2,
-    Beretta_93R = 3,
-    ShortBarrel = 4,
-    UZI = 5,
-    Machete= 6,
-    RPG = 7,
-    SV98 = 8,
-    M16 = 9,
-    Scar = 10,
+    Colt_1911,
+    Deagle,
+    Beretta_93R,
+    ShortBarrel,
+    UZI,
+    Machete,
+    RPG,
+    SV98,
+    M16,
+    Scar,
 }

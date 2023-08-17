@@ -6,6 +6,8 @@ public class SemiAutoWeapon : BaseWeapon
 {
     protected override void Update()
     {
+        Animator.SetFloat("shootSpeed", FireRate / 20);
+
         if (MenuController.Instance.IsGamePaused)
             return;
 
@@ -18,11 +20,19 @@ public class SemiAutoWeapon : BaseWeapon
         if (!bulletInstances.Any())
             return bulletInstances;
 
+        Animator.SetTrigger("Shoot");
+
         var bullet = bulletInstances.First().GetComponent<Projectile>();
         bullet.HasGravity = false;
 
         MagazineBullets--;
 
         return bulletInstances;
+    }
+
+    public override void Reload()
+    {
+        base.Reload();
+        Animator.SetTrigger("Reload");
     }
 }
