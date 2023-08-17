@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling)
             Jump();
 
-        if (Input.GetKey(KeyCode.LeftShift) && isGrounded && !isJumping)
+        if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isJumping)
         {
             if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && rollCooledDown)
                 Roll(false);
@@ -82,7 +82,6 @@ public class PlayerMovement : MonoBehaviour
                 isFalling = true;
                 animator.SetTrigger("fall");
             }
-
         }
     }
 
@@ -94,7 +93,6 @@ public class PlayerMovement : MonoBehaviour
             isJumping = false;
             isFalling = false;
         }
-
     }
 
     /// <summary>
@@ -159,6 +157,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Animation()
     {
+        // Debug.Log($"turn:{isTurning}, run:{isRunning}, fall:{isFalling}, jump:{isJumping}, roll:{isRolling}");
         bool isPressingRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
         bool isPressingLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
 
@@ -174,6 +173,7 @@ public class PlayerMovement : MonoBehaviour
         if ((isPressingRight || isPressingLeft) && !isTurning && !isRunning && !isRolling)
         {
             isTurning = true;
+            isFalling = false;
             animator.SetTrigger("Turn");
         }
 
