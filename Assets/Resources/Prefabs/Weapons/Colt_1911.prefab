@@ -104,6 +104,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1ac8d2157522c2f428bead667a0b455f, type: 3}
   - {fileID: 8300000, guid: e39ec6af56e31f74ea410c96e5a8610f, type: 3}
   - {fileID: 8300000, guid: 6f030bc5bc4812649902a7c9e038f61d, type: 3}
+  ExtraSoundEffects:
+  - {fileID: 8300000, guid: 2b085a6b5d21400428e7228a9beb1435, type: 3}
+  - {fileID: 8300000, guid: 77a6eab7cb5cebd44b163730617a99c5, type: 3}
+  EmptyChamberSound: {fileID: 8300000, guid: ceb34ac9ccb847645936479e214bdfc8, type: 3}
 --- !u!82 &3569299838931627021
 AudioSource:
   m_ObjectHideFlags: 0
@@ -312,9 +316,9 @@ Transform:
   m_GameObject: {fileID: 7587753286265051686}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.355, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.595, y: -0.41, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7799246519732564178}
   m_Father: {fileID: 1268232506469609172}

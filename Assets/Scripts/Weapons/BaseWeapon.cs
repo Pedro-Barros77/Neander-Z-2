@@ -60,7 +60,7 @@ public abstract class BaseWeapon : MonoBehaviour
     public bool IsReloading { get; set; }
 
     /// <summary>
-    /// Script respons�vel por controlar a arma do jogador, como mira, troca e recarregamento.
+    /// Script responsável por controlar a arma do jogador, como mira, troca e recarregamento.
     /// </summary>
     public PlayerWeaponController PlayerWeaponController { get; set; }
     /// <summary>
@@ -71,7 +71,9 @@ public abstract class BaseWeapon : MonoBehaviour
     [SerializeField]
     protected GameObject BulletPrefab;
     [SerializeField]
-    protected List<AudioClip> ShootSounds;
+    protected List<AudioClip> ShootSounds, ExtraSoundEffects;
+    [SerializeField]
+    protected AudioClip EmptyChamberSound;
 
     /// <summary>
     /// O componente Animator da arma.
@@ -90,9 +92,17 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     protected AudioSource AudioSource;
     /// <summary>
+    /// Define o offset da posição do container da arma em relação ao jogador.
+    /// </summary>
+    protected Vector3 WeaponContainerOffset { get; set; }
+    /// <summary>
     /// Volume do som de disparo da arma, entre 0 e 1.
     /// </summary>
     protected float ShootVolume;
+    /// <summary>
+    /// Volume do som de disparo da arma, entre 0 e 1.
+    /// </summary>
+    protected float EmptyChamberVolume;
     /// <summary>
     /// �ltima vez em que a arma foi disparada.
     /// </summary>
@@ -127,6 +137,10 @@ public abstract class BaseWeapon : MonoBehaviour
     protected virtual void Update()
     {
         Animation();
+        SetWeaponOffsets();
+
+        //debug laser
+        //Debug.DrawLine(BulletSpawnPoint.position, BulletSpawnPoint.position + BulletSpawnPoint.right * 100f, Color.red);
     }
 
     /// <summary>
@@ -156,9 +170,8 @@ public abstract class BaseWeapon : MonoBehaviour
         bullet.Init();
 
         lastShotTime = Time.time;
-        AudioSource.volume = ShootVolume;
         var randomShootSound = ShootSounds[UnityEngine.Random.Range(0, ShootSounds.Count)];
-        AudioSource.PlayClipAtPoint(randomShootSound, transform.position);
+        AudioSource.PlayClipAtPoint(randomShootSound, transform.position, ShootVolume);
 
         return new List<GameObject>() { bulletInstance };
     }
@@ -212,13 +225,27 @@ public abstract class BaseWeapon : MonoBehaviour
     }
 
     /// <summary>
+    /// Executa um efeito sonoro extra da arma, para animações de recarregamento, tiro, etc.
+    /// </summary>
+    /// <param name="index">O índice do som a ser tocado da lista.</param>
+    /// <param name="volume">O volume para tocar este som, de 0 a 1.</param>
+    public virtual void PlayExtraSoundEffect(int index, float volume = 1f)
+    {
+        var randomExtraSoundEffect = ExtraSoundEffects[index];
+        AudioSource.PlayClipAtPoint(randomExtraSoundEffect, transform.position, volume);
+    }
+
+    /// <summary>
     /// Verifica se a arma pode ser disparada, levando em conta a muni��o, firerate e recarga.
     /// </summary>
     /// <returns>True se a arma pode disparar, caso contr�rio, false.</returns>
     public virtual bool CanShoot()
     {
         if (MagazineBullets <= 0)
+        {
+            AudioSource.PlayClipAtPoint(EmptyChamberSound, transform.position, EmptyChamberVolume);
             return false;
+        }
 
         var now = Time.time;
 
@@ -235,14 +262,29 @@ public abstract class BaseWeapon : MonoBehaviour
     }
 
     /// <summary>
+    /// Atualiza a posição da arma, de acordo com o offset definido.
+    /// </summary>
+    public virtual void SetWeaponOffsets()
+    {
+        PlayerWeaponController.SetWeaponOffset(WeaponContainerOffset);
+    }
+
+    /// <summary>
     /// Processa a anima��o da arma/flip.
     /// </summary>
     protected virtual void Animation()
     {
         bool aimingLeft = math.abs(PlayerWeaponController.AimAngle) > 90;
+        float absoluteYPosition = Mathf.Abs(transform.localPosition.y);
         if (aimingLeft)
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, absoluteYPosition, transform.localPosition.z);
             transform.localScale = new Vector3(1, -1, 1);
+        }
         else
+        {
+            transform.localPosition = new Vector3(transform.localPosition.x, -absoluteYPosition, transform.localPosition.z);
             transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 }

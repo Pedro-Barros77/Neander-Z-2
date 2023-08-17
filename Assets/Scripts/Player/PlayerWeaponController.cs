@@ -4,7 +4,7 @@ using UnityEngine.XR;
 public class PlayerWeaponController : MonoBehaviour
 {
     /// <summary>
-    /// O ângulo de mira do jogador, em Radians (Começando da direita, sentido anti-horário: direita 0, cima 90, esquerda 180, esquerda -180, baixo -90, direita 0).
+    /// O ï¿½ngulo de mira do jogador, em Radians (Comeï¿½ando da direita, sentido anti-horï¿½rio: direita 0, cima 90, esquerda 180, esquerda -180, baixo -90, direita 0).
     /// </summary>
     public float AimAngle { get; set; }
 
@@ -12,6 +12,8 @@ public class PlayerWeaponController : MonoBehaviour
     /// O jogador pai deste controlador.
     /// </summary>
     public Player Player { get; set; }
+    public Vector3 StartLocalScale { get; private set; }
+    public Vector3 StartLocalPosition{ get; private set; }
 
     Transform handTransform;
 
@@ -24,6 +26,8 @@ public class PlayerWeaponController : MonoBehaviour
     void Start()
     {
         Player = transform.parent.GetComponent<Player>();
+        StartLocalScale = transform.localScale;
+        StartLocalPosition = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -41,8 +45,13 @@ public class PlayerWeaponController : MonoBehaviour
         RotateToMouse();
     }
 
+    public void SetWeaponOffset(Vector3 localPositionOffset)
+    {
+        transform.localPosition = StartLocalPosition + localPositionOffset;
+    }
+
     /// <summary>
-    /// Carrega o Prefab da arma do tipo especificado e o instancia na mão do jogador.
+    /// Carrega o Prefab da arma do tipo especificado e o instancia na mï¿½o do jogador.
     /// </summary>
     /// <param name="weaponType">O tipo de arma para instanciar.</param>
     /// <returns>O GameObject instanciado.</returns>
@@ -55,7 +64,7 @@ public class PlayerWeaponController : MonoBehaviour
     }
 
     /// <summary>
-    /// Rotaciona o container da arma (círculo) para apontar a mão do jogador em direção ao mouse.
+    /// Rotaciona o container da arma (cï¿½rculo) para apontar a mï¿½o do jogador em direï¿½ï¿½o ao mouse.
     /// </summary>
     private void RotateToMouse()
     {

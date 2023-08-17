@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponAnimEventHandler : MonoBehaviour
@@ -6,6 +8,7 @@ public class WeaponAnimEventHandler : MonoBehaviour
     /// A arma que este gerenciador de eventos de animação está associado.
     /// </summary>
     private BaseWeapon weapon;
+
     void Start()
     {
         weapon = transform.parent.GetComponent<BaseWeapon>();
@@ -25,5 +28,14 @@ public class WeaponAnimEventHandler : MonoBehaviour
     void OnReloadedChamber()
     {
         weapon.OnReloadedChamber();
+    }
+
+    /// <summary>
+    /// Executa um efeito sonoro extra da arma, para animações de recarregamento, tiro, etc.
+    /// </summary>
+    /// <param name="index">O índice do som a ser tocado da lista.</param>
+    void PlayExtraSoundEffect(int index)
+    {
+        weapon.PlayExtraSoundEffect(index);
     }
 }
