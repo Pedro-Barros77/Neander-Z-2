@@ -62,10 +62,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isJumpingSideways)
         {
-            if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && rollCooledDown)
+            if (isPressingRight && !isPressingLeft && rollCooledDown)
                 Roll(false);
 
-            if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && rollCooledDown)
+            if (isPressingLeft && !isPressingRight && rollCooledDown)
                 Roll(true);
         }
 
@@ -108,6 +108,9 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Movement()
     {
+        if (isPressingLeft && isPressingRight)
+            return;
+
         if (math.abs(rb.velocity.x) < MovementSpeed)
             rb.velocity += new Vector2(dirInput * AccelerationSpeed, 0);
     }
@@ -191,14 +194,14 @@ public class PlayerMovement : MonoBehaviour
                 spriteRenderer.flipX = true;
         }
 
-        if ((isPressingRight || isPressingLeft) && !isTurning && !isRunning && !isRolling && !isJumpingSideways)
+        if ((isPressingRight ^ isPressingLeft) && !isTurning && !isRunning && !isRolling && !isJumpingSideways)
         {
             isTurning = true;
             isTurningBack = false;
             isFalling = false;
         }
 
-        if ((wasPressingRight || wasPressingLeft) && !isTurningBack && (isTurning || isRunning) && isGrounded && !isJumpingSideways)
+        if (((wasPressingRight || wasPressingLeft) || (isPressingLeft && isPressingRight)) && !isTurningBack && (isTurning || isRunning) && isGrounded && !isJumpingSideways)
         {
             isTurningBack = true;
             isTurning = false;
@@ -210,6 +213,12 @@ public class PlayerMovement : MonoBehaviour
             isJumpingSideways = false;
             if (!isMoving && !isPressingRight && !isPressingLeft)
                 isRunning = false;
+
+            if (isRunning && isPressingLeft && isPressingRight)
+            {
+                isRunning = false;
+                isTurningBack = true;
+            }
         }
         else
         {
