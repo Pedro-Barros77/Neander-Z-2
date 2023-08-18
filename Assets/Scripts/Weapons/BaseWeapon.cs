@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public abstract class BaseWeapon : MonoBehaviour
 {
@@ -92,6 +94,18 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     protected AudioSource AudioSource;
     /// <summary>
+    /// Flash de luz do disparo da arma.
+    /// </summary>
+    protected Light2D FlashLight, InnerFlashLight;
+    /// <summary>
+    /// A intensidade inicial do flash de luz.
+    /// </summary>
+    protected float FlashLightStartIntensity;
+    /// <summary>
+    /// Se o flash de luz está diminuindo a intensidade atualmente.
+    /// </summary>
+    protected bool isDecreasingFlashIntensity;
+    /// <summary>
     /// Define o offset da posição do container da arma em relação ao jogador.
     /// </summary>
     protected Vector3 WeaponContainerOffset { get; set; }
@@ -131,7 +145,16 @@ public abstract class BaseWeapon : MonoBehaviour
         BulletsContainer = GameObject.Find("ProjectilesContainer").transform;
         AudioSource = GetComponent<AudioSource>();
         Player = PlayerWeaponController.transform.parent.GetComponent<Player>();
-        Animator = transform.Find("Sprite").GetComponent<Animator>();
+        var sprite = transform.Find("Sprite");
+        Animator = sprite.GetComponent<Animator>();
+
+        FlashLight = sprite.Find("FlashLight").GetComponent<Light2D>();
+        InnerFlashLight = sprite.Find("InnerFlashLight").GetComponent<Light2D>();
+        FlashLightStartIntensity = FlashLight.intensity;
+        FlashLight.intensity = 0f;
+        InnerFlashLight.intensity = 0f;
+        FlashLight.gameObject.SetActive(false);
+        InnerFlashLight.gameObject.SetActive(false);
     }
 
     protected virtual void Update()
@@ -154,6 +177,9 @@ public abstract class BaseWeapon : MonoBehaviour
             return Enumerable.Empty<GameObject>();
         }
 
+        if (!isDecreasingFlashIntensity)
+            StartCoroutine(DecreaseFlashIntensity());
+
         var angle = PlayerWeaponController.AimAngle;
 
         var bulletInstance = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.Euler(0f, 0f, angle), BulletsContainer);
@@ -174,6 +200,30 @@ public abstract class BaseWeapon : MonoBehaviour
         AudioSource.PlayClipAtPoint(randomShootSound, transform.position, ShootVolume);
 
         return new List<GameObject>() { bulletInstance };
+    }
+
+    /// <summary>
+    /// Diminui a intensidade do brilho/flash do disparo da arma com o tempo.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator DecreaseFlashIntensity()
+    {
+        FlashLight.gameObject.SetActive(true);
+        InnerFlashLight.gameObject.SetActive(true);
+        FlashLight.intensity = FlashLightStartIntensity;
+        InnerFlashLight.intensity = FlashLightStartIntensity * 2;
+
+        while (FlashLight.intensity > 0)
+        {
+            isDecreasingFlashIntensity = true;
+            FlashLight.intensity -= FlashLightStartIntensity * 30 * Time.deltaTime;
+            InnerFlashLight.intensity = FlashLight.intensity * 2;
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        isDecreasingFlashIntensity = false;
+        FlashLight.gameObject.SetActive(false);
+        InnerFlashLight.gameObject.SetActive(false);
     }
 
     /// <summary>

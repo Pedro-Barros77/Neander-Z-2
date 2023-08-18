@@ -6,7 +6,7 @@ public class SemiAutoWeapon : BaseWeapon
 {
     protected override void Update()
     {
-        Animator.SetFloat("shootSpeed", FireRate / 20);
+        Animator.SetFloat("shootSpeed", FireRate / 10);
 
         if (MenuController.Instance.IsGamePaused)
             return;
