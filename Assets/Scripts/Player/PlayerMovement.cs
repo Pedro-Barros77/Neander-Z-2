@@ -26,12 +26,21 @@ public class PlayerMovement : MonoBehaviour
 
     float LastRollTime;
     float dirInput;
-    bool isGrounded = false;
-    bool isRolling = false;
-    bool isJumping = false;
-    bool isTurning = false;
-    bool isRunning = false;
-    bool isFalling = false;
+    bool isGrounded;
+    bool isRolling;
+    bool isJumpingSideways;
+    bool isTurning;
+    bool isTurningBack;
+    bool isRunning;
+    bool isFalling;
+    bool isIdle => !isRolling && !isJumpingSideways && !isTurning && !isTurningBack && !isRunning && !isFalling;
+
+    bool isPressingRight;
+    bool isPressingLeft;
+    bool wasPressingRight;
+    bool wasPressingLeft;
+    float movementDir;
+    bool isMoving;
 
     Player Player;
     Rigidbody2D rb;
@@ -51,10 +60,7 @@ public class PlayerMovement : MonoBehaviour
         dirInput = Input.GetAxisRaw("Horizontal");
         var rollCooledDown = LastRollTime + (RollCooldownMs / 1000) <= Time.time;
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling)
-            Jump();
-
-        if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isJumping)
+        if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isJumpingSideways)
         {
             if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && rollCooledDown)
                 Roll(false);
@@ -62,6 +68,10 @@ public class PlayerMovement : MonoBehaviour
             if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && rollCooledDown)
                 Roll(true);
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling)
+            Jump();
+
         Animation();
     }
 
@@ -75,13 +85,12 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Environment"))
         {
             isGrounded = true;
-            isJumping = false;
 
-            if (!isTurning && !isRunning && !isRolling && !isJumping)
-            {
+            if (!isTurning && !isRunning && !isRolling && !isTurningBack && !isJumpingSideways)
                 isFalling = true;
-                animator.SetTrigger("fall");
-            }
+
+            if (isMoving || isPressingRight || isPressingLeft)
+                isRunning = true;
         }
     }
 
@@ -90,7 +99,6 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Environment"))
         {
             isGrounded = false;
-            isJumping = false;
             isFalling = false;
         }
     }
@@ -109,7 +117,6 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Jump()
     {
-        isJumping = true;
         rb.AddForce(new Vector2(0f, JumpForce));
     }
 
@@ -121,7 +128,8 @@ public class PlayerMovement : MonoBehaviour
     {
         LastRollTime = Time.time;
         isRolling = true;
-        animator.SetTrigger("Roll");
+        isTurning = false;
+        isTurningBack = false;
         float rollDirection = isLeft ? -1 : 1;
         rb.AddForce(new Vector2(RollForce * rollDirection, 10f));
     }
@@ -142,6 +150,15 @@ public class PlayerMovement : MonoBehaviour
     {
         isTurning = false;
         isRunning = true;
+        isTurningBack = false;
+    }
+
+    /// <summary>
+    /// Função chamada pelo evento de animação, no último frame do giro do personagem.
+    /// </summary>
+    public void OnTurnBackEnd()
+    {
+        isTurningBack = false;
     }
 
     /// <summary>
@@ -157,49 +174,72 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Animation()
     {
-        // Debug.Log($"turn:{isTurning}, run:{isRunning}, fall:{isFalling}, jump:{isJumping}, roll:{isRolling}");
-        bool isPressingRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
-        bool isPressingLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
+        //Debug.Log($"turn:{isTurning}, turnBack:{isTurningBack}, run:{isRunning}, fall:{isFalling}, jump:{isJumpingSideways}, roll:{isRolling}");
+        isPressingRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+        isPressingLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
+        wasPressingRight = Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D);
+        wasPressingLeft = Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A);
 
-        var dir = rb.velocity.x;
-        if (math.abs(dir) > 0.1)
+        movementDir = rb.velocity.x;
+        isMoving = math.abs(movementDir) > 0.1;
+
+        if (isMoving)
         {
-            if (dir <= 0)
+            if (movementDir <= 0)
                 spriteRenderer.flipX = false;
             else
                 spriteRenderer.flipX = true;
         }
 
-        if ((isPressingRight || isPressingLeft) && !isTurning && !isRunning && !isRolling)
+        if ((isPressingRight || isPressingLeft) && !isTurning && !isRunning && !isRolling && !isJumpingSideways)
         {
             isTurning = true;
+            isTurningBack = false;
             isFalling = false;
-            animator.SetTrigger("Turn");
         }
 
-        if (math.abs(dir) <= 0.1 && !isPressingRight && !isPressingLeft)
+        if ((wasPressingRight || wasPressingLeft) && !isTurningBack && (isTurning || isRunning) && isGrounded && !isJumpingSideways)
         {
-            isRunning = false;
-            animator.SetBool("isRunning", false);
-        }
-
-        if (!isGrounded)
-        {
-            animator.SetBool("isRunning", false);
-            animator.SetBool("isJumping", true);
+            isTurningBack = true;
+            isTurning = false;
+            isFalling = false;
         }
 
         if (isGrounded)
         {
-            animator.SetBool("isJumping", false);
-
-            if ((dir != 0 || isPressingLeft || isPressingRight) && isRunning && !isJumping && !isTurning && !isRolling)
-            {
-                animator.SetBool("isRunning", true);
-            }
-            else
-                animator.SetBool("isRunning", false);
+            isJumpingSideways = false;
+            if (!isMoving && !isPressingRight && !isPressingLeft)
+                isRunning = false;
         }
-        animator.SetBool("isIdle", !isRolling && !isJumping && !isTurning && !isRunning && !isFalling);
+        else
+        {
+            isRunning = false;
+            if (isMoving)
+            {
+                isJumpingSideways = true;
+                isTurning = false;
+            }
+        }
+
+        SyncAnimationStates();
+    }
+
+    private void SyncAnimationStates()
+    {
+        animator.SetBool("isIdle", isIdle);
+        animator.SetBool("isRunning", isRunning);
+        animator.SetBool("isJumpingSideways", isJumpingSideways);
+
+        if (isFalling) animator.SetTrigger("Fall");
+        else animator.ResetTrigger("Fall");
+
+        if (isTurning) animator.SetTrigger("Turn");
+        else animator.ResetTrigger("Turn");
+
+        if (isTurningBack) animator.SetTrigger("TurnBack");
+        else animator.ResetTrigger("TurnBack");
+
+        if (isRolling) animator.SetTrigger("Roll");
+        else animator.ResetTrigger("Roll");
     }
 }
