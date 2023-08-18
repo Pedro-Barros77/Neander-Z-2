@@ -76,6 +76,8 @@ public abstract class BaseWeapon : MonoBehaviour
     protected List<AudioClip> ShootSounds, ExtraSoundEffects;
     [SerializeField]
     protected AudioClip EmptyChamberSound;
+    [SerializeField]
+    protected GameObject SmokeParticlesPrefab;
 
     /// <summary>
     /// O componente Animator da arma.
@@ -149,7 +151,8 @@ public abstract class BaseWeapon : MonoBehaviour
         Animator = sprite.GetComponent<Animator>();
 
         FlashLight = sprite.Find("FlashLight").GetComponent<Light2D>();
-        InnerFlashLight = sprite.Find("InnerFlashLight").GetComponent<Light2D>();
+        InnerFlashLight = FlashLight.transform.Find("InnerFlashLight").GetComponent<Light2D>();
+
         FlashLightStartIntensity = FlashLight.intensity;
         FlashLight.intensity = 0f;
         InnerFlashLight.intensity = 0f;
@@ -173,14 +176,14 @@ public abstract class BaseWeapon : MonoBehaviour
     public virtual IEnumerable<GameObject> Shoot()
     {
         if (!CanShoot())
-        {
             return Enumerable.Empty<GameObject>();
-        }
 
         if (!isDecreasingFlashIntensity)
             StartCoroutine(DecreaseFlashIntensity());
 
         var angle = PlayerWeaponController.AimAngle;
+        var particlesRotation = Quaternion.Euler(angle + 180, -90f, 0f);
+        Instantiate(SmokeParticlesPrefab, BulletSpawnPoint.position, particlesRotation, BulletsContainer);
 
         var bulletInstance = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.Euler(0f, 0f, angle), BulletsContainer);
         var bullet = bulletInstance.GetComponent<Projectile>();
