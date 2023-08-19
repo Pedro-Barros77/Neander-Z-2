@@ -1,11 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IEnemyTarget
 {
     /// <summary>
     /// A vida máxima do jogador.
@@ -15,14 +10,18 @@ public class Player : MonoBehaviour
     /// A vida atual do jogador.
     /// </summary>
     public float Health { get; private set; } = 100f;
-    /// <summary>
-    /// A velocidade de movimento máxima do jogador.
-    /// </summary>
-    public float MaxMovementSpeed { get; private set; } = 5f;
+    
     /// <summary>
     /// A velocidade de movimento atual do jogador.
     /// </summary>
     public float MovementSpeed { get; private set; } = 5f;
+    /// <summary>
+    /// A velocidade de movimento máxima do jogador.
+    /// </summary>
+    public float MaxMovementSpeed { get; private set; }
+    /// <summary>
+    /// A velocidade de aceleração do jogador.
+    /// </summary>
     public float AccelerationSpeed { get; private set; } = 1f;
     /// <summary>
     /// A força do pulo do jogador.
@@ -116,6 +115,7 @@ public class Player : MonoBehaviour
         HealthBar.SetMaxValue(MaxHealth, true);
         HealthBar.UseAnimation = true;
         HealthBar.AnimationSpeed = 20f;
+        WavesManager.Instance.EnemiesTargets.Add(this);
     }
 
     // Update is called once per frame
@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
     {
         if (value < 0) return;
 
-        Health = math.clamp(Health + value, 0, MaxHealth);
+        Health = Mathf.Clamp(Health + value, 0, MaxHealth);
         HealthBar.AddValue(value);
     }
 
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
     {
         if (value < 0) return;
 
-        Health = math.clamp(Health - value, 0, MaxHealth);
+        Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         HealthBar.RemoveValue(value);
     }
 }

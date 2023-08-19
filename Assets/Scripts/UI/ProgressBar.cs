@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -74,12 +73,12 @@ public class ProgressBar : MonoBehaviour
         if (UseAnimation)
         {
             startAnimationValue = Value;
-            targetValue = math.clamp(targetValue + value, 0, MaxValue);
+            targetValue = Mathf.Clamp(targetValue + value, 0, MaxValue);
             animationSlider.value = targetValue;
         }
         else
         {
-            Value = math.clamp(Value + value, 0, MaxValue);
+            Value = Mathf.Clamp(Value + value, 0, MaxValue);
             slider.value = Value;
         }
     }
@@ -94,12 +93,12 @@ public class ProgressBar : MonoBehaviour
         if (UseAnimation)
         {
             startAnimationValue = Value;
-            targetValue = math.clamp(targetValue - value, 0, MaxValue);
+            targetValue = Mathf.Clamp(targetValue - value, 0, MaxValue);
             animationSlider.value = targetValue;
         }
         else
         {
-            Value = math.clamp(Value - value, 0, MaxValue);
+            Value = Mathf.Clamp(Value - value, 0, MaxValue);
             slider.value = Value;
         }
     }
@@ -126,7 +125,7 @@ public class ProgressBar : MonoBehaviour
 
         if (diff > 0)
         {
-            Value = math.clamp(Value + AnimationSpeed * speedProportion * Time.deltaTime, 0, targetValue);
+            Value = Mathf.Clamp(Value + AnimationSpeed * speedProportion * Time.deltaTime, 0, targetValue);
             slider.value = Value;
 
             animationSlider.transform.SetSiblingIndex(1);
@@ -135,7 +134,7 @@ public class ProgressBar : MonoBehaviour
         }
         else if (diff < 0)
         {
-            Value = math.clamp(Value - AnimationSpeed * speedProportion * Time.deltaTime, targetValue, MaxValue);
+            Value = Mathf.Clamp(Value - AnimationSpeed * speedProportion * Time.deltaTime, targetValue, MaxValue);
             slider.value = Value;
 
             animationSlider.transform.SetSiblingIndex(2);

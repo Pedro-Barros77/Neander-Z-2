@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -11,55 +10,55 @@ public abstract class BaseWeapon : MonoBehaviour
     /// <summary>
     /// O dano causado pela arma ou seus proj�teis.
     /// </summary>
-    public float Damage { get; set; }
+    public float Damage { get; protected set; }
     /// <summary>
     /// A taxa de disparo da arma (disparos por segundo).
     /// </summary>
-    public float FireRate { get; set; }
+    public float FireRate { get; protected set; }
     /// <summary>
     /// Capacidade m�xima do carregador.
     /// </summary>
-    public int MagazineSize { get; set; }
+    public int MagazineSize { get; protected set; }
     /// <summary>
     /// Quantidade de muni��es restantes no carregador.
     /// </summary>
-    public int MagazineBullets { get; set; }
+    public int MagazineBullets { get; protected set; }
     /// <summary>
     /// Velocidade de movimento dos proj�teis.
     /// </summary>
-    public float BulletSpeed { get; set; }
+    public float BulletSpeed { get; protected set; }
     /// <summary>
     /// A dist�ncia m�xima que o proj�til pode percorrer antes de ser destru�do.
     /// </summary>
-    public float BulletMaxRange { get; set; }
+    public float BulletMaxRange { get; protected set; }
     /// <summary>
     /// O alcance em que o proj�til causa dano m�ximo.
     /// </summary>
-    public float MaxDamageRange { get; set; }
+    public float MaxDamageRange { get; protected set; }
     /// <summary>
     /// A dist�ncia em que o proj�til come�a a causar dano m�nimo.
     /// </summary>
-    public float MinDamageRange { get; set; }
+    public float MinDamageRange { get; protected set; }
     /// <summary>
     /// Se a arma � prim�ria ou secund�ria.
     /// </summary>
-    public bool IsPrimary { get; set; }
+    public bool IsPrimary { get; protected set; }
     /// <summary>
     /// O tempo de recarga da arma, em milissegundos.
     /// </summary>
-    public float ReloadTimeMs { get; set; }
+    public float ReloadTimeMs { get; protected set; }
     /// <summary>
     /// O tipo de proj�til que a arma dispara.
     /// </summary>
-    public BulletTypes BulletType { get; set; }
+    public BulletTypes BulletType { get; protected set; }
     /// <summary>
     /// O tipo de arma.
     /// </summary>
-    public WeaponTypes Type { get; set; }
+    public WeaponTypes Type { get; protected set; }
     /// <summary>
     /// Se a arma est� sendo recarregada atualmente.
     /// </summary>
-    public bool IsReloading { get; set; }
+    public bool IsReloading { get; protected set; }
 
     /// <summary>
     /// Script responsável por controlar a arma do jogador, como mira, troca e recarregamento.
@@ -138,11 +137,11 @@ public abstract class BaseWeapon : MonoBehaviour
 
     protected virtual void Awake()
     {
-        IsPrimary = Constants.IsPrimaryWeapon[Type];
     }
 
     protected virtual void Start()
     {
+        IsPrimary = Constants.IsPrimaryWeapon[Type];
         BulletSpawnPoint = transform.GetChild(0).Find("BulletSpawnPoint");
         BulletsContainer = GameObject.Find("ProjectilesContainer").transform;
         AudioSource = GetComponent<AudioSource>();
@@ -329,7 +328,7 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     protected virtual void Animation()
     {
-        bool aimingLeft = math.abs(PlayerWeaponController.AimAngle) > 90;
+        bool aimingLeft = Mathf.Abs(PlayerWeaponController.AimAngle) > 90;
         float absoluteYPosition = Mathf.Abs(transform.localPosition.y);
         if (aimingLeft)
         {

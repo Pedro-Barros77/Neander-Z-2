@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -43,14 +42,14 @@ public class PlayerMovement : MonoBehaviour
     bool isMoving;
 
     Player Player;
-    Rigidbody2D rb;
+    Rigidbody2D rigidBody;
     Animator animator;
     SpriteRenderer spriteRenderer;
 
     void Start()
     {
         Player = GetComponent<Player>();
-        rb = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -111,8 +110,8 @@ public class PlayerMovement : MonoBehaviour
         if (isPressingLeft && isPressingRight)
             return;
 
-        if (math.abs(rb.velocity.x) < MovementSpeed)
-            rb.velocity += new Vector2(dirInput * AccelerationSpeed, 0);
+        if (Mathf.Abs(rigidBody.velocity.x) < MovementSpeed)
+            rigidBody.velocity += new Vector2(dirInput * AccelerationSpeed, 0);
     }
 
     /// <summary>
@@ -120,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Jump()
     {
-        rb.AddForce(new Vector2(0f, JumpForce));
+        rigidBody.AddForce(new Vector2(0f, JumpForce));
     }
 
     /// <summary>
@@ -134,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
         isTurning = false;
         isTurningBack = false;
         float rollDirection = isLeft ? -1 : 1;
-        rb.AddForce(new Vector2(RollForce * rollDirection, 10f));
+        rigidBody.AddForce(new Vector2(RollForce * rollDirection, 10f));
     }
 
     /// <summary>
@@ -183,8 +182,8 @@ public class PlayerMovement : MonoBehaviour
         wasPressingRight = Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D);
         wasPressingLeft = Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A);
 
-        movementDir = rb.velocity.x;
-        isMoving = math.abs(movementDir) > 0.1;
+        movementDir = rigidBody.velocity.x;
+        isMoving = Mathf.Abs(movementDir) > 0.1;
 
         if (isMoving)
         {
