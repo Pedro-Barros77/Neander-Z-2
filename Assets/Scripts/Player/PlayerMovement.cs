@@ -33,12 +33,15 @@ public class PlayerMovement : MonoBehaviour
     bool isTurningBack;
     bool isRunning;
     bool isFalling;
-    bool isIdle => !isRolling && !isJumpingSideways && !isTurning && !isTurningBack && !isRunning && !isFalling;
+    bool isCrouching;
+
+    bool isIdle => !isRolling && !isJumpingSideways && !isTurning && !isTurningBack && !isRunning && !isFalling && !isCrouching;
 
     bool isPressingRight;
     bool isPressingLeft;
     bool wasPressingRight;
     bool wasPressingLeft;
+    bool isPressingCrouch;
     float movementDir;
     bool isMoving;
 
@@ -69,8 +72,14 @@ public class PlayerMovement : MonoBehaviour
                 Roll(true);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling && !isCrouching)
             Jump();
+
+        isPressingCrouch = Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.S);
+        if (isPressingCrouch && isGrounded && !isJumpingSideways && !isRolling)
+            Crouch();
+        else
+            isCrouching = false;
 
         Animation();
     }
@@ -108,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Movement()
     {
-        if (isPressingLeft && isPressingRight)
+        if ((isPressingLeft && isPressingRight) || isCrouching)
             return;
 
         if (math.abs(rb.velocity.x) < MovementSpeed)
@@ -135,6 +144,16 @@ public class PlayerMovement : MonoBehaviour
         isTurningBack = false;
         float rollDirection = isLeft ? -1 : 1;
         rb.AddForce(new Vector2(RollForce * rollDirection, 10f));
+    }
+
+    private void Crouch()
+    {
+        isRunning = false;
+        isTurning = false;
+        isTurningBack = false;
+        isFalling = false;
+        rb.velocity = new Vector2(0, rb.velocity.y);
+        isCrouching = true;
     }
 
     /// <summary>
@@ -177,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Animation()
     {
-        //Debug.Log($"turn:{isTurning}, turnBack:{isTurningBack}, run:{isRunning}, fall:{isFalling}, jump:{isJumpingSideways}, roll:{isRolling}");
+        //Debug.Log($"turn:{isTurning}, turnBack:{isTurningBack}, run:{isRunning}, fall:{isFalling}, jump:{isJumpingSideways}, roll:{isRolling}, crouch:{isCrouching}");
         isPressingRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
         isPressingLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
         wasPressingRight = Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D);
@@ -194,14 +213,14 @@ public class PlayerMovement : MonoBehaviour
                 spriteRenderer.flipX = true;
         }
 
-        if ((isPressingRight ^ isPressingLeft) && !isTurning && !isRunning && !isRolling && !isJumpingSideways)
+        if ((isPressingRight ^ isPressingLeft) && !isTurning && !isRunning && !isRolling && !isJumpingSideways && !isCrouching)
         {
             isTurning = true;
             isTurningBack = false;
             isFalling = false;
         }
 
-        if (((wasPressingRight || wasPressingLeft) || (isPressingLeft && isPressingRight)) && !isTurningBack && (isTurning || isRunning) && isGrounded && !isJumpingSideways)
+        if (((wasPressingRight || wasPressingLeft) || (isPressingLeft && isPressingRight)) && !isTurningBack && (isTurning || isRunning) && isGrounded && !isJumpingSideways && !isCrouching)
         {
             isTurningBack = true;
             isTurning = false;
@@ -238,6 +257,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isIdle", isIdle);
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isJumpingSideways", isJumpingSideways);
+        animator.SetBool("isCrouching", isCrouching);
 
         if (isFalling) animator.SetTrigger("Fall");
         else animator.ResetTrigger("Fall");
