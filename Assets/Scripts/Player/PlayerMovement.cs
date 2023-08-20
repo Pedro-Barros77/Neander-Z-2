@@ -1,3 +1,5 @@
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -145,13 +147,16 @@ public class PlayerMovement : MonoBehaviour
         rigidBody.AddForce(new Vector2(RollForce * rollDirection, 10f));
     }
 
+    /// <summary>
+    /// Faz com que o player se agache.
+    /// </summary>
     private void Crouch()
     {
         isRunning = false;
         isTurning = false;
         isTurningBack = false;
         isFalling = false;
-        rb.velocity = new Vector2(0, rb.velocity.y);
+        rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         isCrouching = true;
     }
 
@@ -250,7 +255,11 @@ public class PlayerMovement : MonoBehaviour
 
         SyncAnimationStates();
     }
+    
 
+    /// <summary>
+    /// Sinconiza os estados da animação do Animator com as variáveis de controle.
+    /// </summary>
     private void SyncAnimationStates()
     {
         animator.SetBool("isIdle", isIdle);

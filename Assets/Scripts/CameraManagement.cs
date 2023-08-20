@@ -7,13 +7,11 @@ public class CameraManagement : MonoBehaviour
 
     Camera cam;
 
-    // Start is called before the first frame update
     void Start()
     {
         cam = gameObject.GetComponent<Camera>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float boundaryLeft = cameraBoundary.position.x - cameraBoundary.transform.localScale.x / 2;

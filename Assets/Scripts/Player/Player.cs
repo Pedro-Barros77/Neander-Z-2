@@ -104,7 +104,6 @@ public class Player : MonoBehaviour, IEnemyTarget
     [SerializeField]
     ProgressBar HealthBar;
 
-    // Start is called before the first frame update
     void Start()
     {
         Backpack = new Backpack(this);
@@ -113,12 +112,10 @@ public class Player : MonoBehaviour, IEnemyTarget
         Backpack.AddWeapon(WeaponTypes.Colt_1911);
 
         HealthBar.SetMaxValue(MaxHealth, true);
-        HealthBar.UseAnimation = true;
         HealthBar.AnimationSpeed = 20f;
         WavesManager.Instance.EnemiesTargets.Add(this);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.UpArrow))
@@ -131,6 +128,10 @@ public class Player : MonoBehaviour, IEnemyTarget
         }
     }
 
+    /// <summary>
+    /// Aumenta a vida e modifica a barra de vida.
+    /// </summary>
+    /// <param name="value">O valor a ser adicionado à vida.</param>
     public void GetHealth(float value)
     {
         if (value < 0) return;
@@ -139,6 +140,10 @@ public class Player : MonoBehaviour, IEnemyTarget
         HealthBar.AddValue(value);
     }
 
+    /// <summary>
+    /// Diminui a vida e modifica a barra de vida.
+    /// </summary>
+    /// <param name="value">O valor a ser subtraído da vida.</param>
     public void TakeDamage(float value)
     {
         if (value < 0) return;

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class ProgressBar : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
-    private bool _useAnimation;
+    private bool _useAnimation = true;
     public bool UseAnimation
     {
         get { return _useAnimation; }
@@ -26,10 +27,31 @@ public class ProgressBar : MonoBehaviour
             animationFill.SetActive(value);
         }
     }
-    public float AnimationSpeed { get; set; }
+    public float AnimationSpeed { get; set; } = 10f;
     public Color AnimationIncreaseColor { get; set; } = Color.green;
     public Color AnimationDecreaseColor { get; set; } = Color.yellow;
     public bool HideOnFull { get; set; }
+    private bool _useShadows = true;
+    public bool UseShadows
+    {
+        get { return _useShadows; }
+        set
+        {
+            _useShadows = value;
+            shadows.SetActive(value);
+        }
+    }
+    private bool _useOutline = true;
+    public bool UseOutline
+    {
+        get { return _useOutline; }
+        set
+        {
+            _useOutline = value;
+            outline.SetActive(value);
+        }
+    }
+
 
     Slider slider;
     Slider animationSlider;
@@ -38,26 +60,34 @@ public class ProgressBar : MonoBehaviour
     float targetValue;
     float startAnimationValue;
 
-    void Start()
+    private void Awake()
     {
         var animationBar = transform.Find("AnimationBar");
         animationSlider = animationBar.GetComponent<Slider>();
         slider = GetComponent<Slider>();
-
         animationFill = animationBar.Find("AnimationFill").gameObject;
-        background = transform.Find("Background").gameObject;
-        fill = transform.Find("Fill").gameObject;
         outline = transform.Find("Outline").gameObject;
         shadows = transform.Find("Shadows").gameObject;
+    }
 
+    void Start()
+    {
+        background = transform.Find("Background").gameObject;
+        fill = transform.Find("Fill").gameObject;
         fillImage = fill.GetComponent<Image>();
         animationFillImage = animationFill.GetComponent<Image>();
+
+        animationFill.SetActive(UseAnimation);
+        outline.SetActive(UseOutline);
+        shadows.SetActive(UseShadows);
     }
 
     void Update()
     {
         if (Value == MaxValue && HideOnFull && fill.activeSelf)
             SetVisible(false);
+        else if(Value < MaxValue && !fill.activeSelf)
+            SetVisible(true);
     }
 
     private void FixedUpdate()
@@ -66,6 +96,10 @@ public class ProgressBar : MonoBehaviour
             UpdateAnimation();
     }
 
+    /// <summary>
+    /// Adiciona valor à barra.
+    /// </summary>
+    /// <param name="value">O valor a ser adicionado.</param>
     public void AddValue(float value)
     {
         if (value <= 0 || Value == MaxValue) return;
@@ -83,12 +117,13 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Remove valor da barra.
+    /// </summary>
+    /// <param name="value">O valor a ser removido.</param>
     public void RemoveValue(float value)
     {
         if (value <= 0 || Value == 0) return;
-
-        if (HideOnFull && Value == MaxValue)
-            SetVisible(true);
 
         if (UseAnimation)
         {
@@ -103,6 +138,11 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Define o valor da barra quando completa.
+    /// </summary>
+    /// <param name="value">O valor a ser difinido como total (100%).</param>
+    /// <param name="setValue">Se o valor atual da barra também deve ser preenchido com o total.</param>
     public void SetMaxValue(float value, bool setValue = false)
     {
         MaxValue = value;
@@ -117,6 +157,9 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Atualiza a animação da barra.
+    /// </summary>
     private void UpdateAnimation()
     {
         float diff = targetValue - Value;
@@ -148,13 +191,21 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Define se a barra deve ser visível ou não.
+    /// </summary>
+    /// <param name="visible"></param>
     private void SetVisible(bool visible)
     {
         if (UseAnimation || !visible)
             animationFill.SetActive(visible);
+
         background.SetActive(visible);
         fill.SetActive(visible);
-        outline.SetActive(visible);
-        shadows.SetActive(visible);
+
+        if (UseOutline || !visible)
+            outline.SetActive(visible);
+        if (UseShadows || !visible)
+            shadows.SetActive(visible);
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +17,9 @@ public class WavesManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Objetos alvos dos inimigos (player, torretas etc).
+    /// </summary>
     public List<IEnemyTarget> EnemiesTargets { get; set; } = new();
 
     void Start()
