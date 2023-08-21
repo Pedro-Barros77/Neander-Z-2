@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Roger : BaseEnemy
 {
-    // Start is called before the first frame update
     protected override void Start()
     {
         MovementSpeed = 0.5f;
@@ -14,13 +9,10 @@ public class Roger : BaseEnemy
         HeadshotDamageMultiplier = 2f;
         KillScore = 53;
         HeadshotScoreMultiplier = 1.5f;
+        DeathFadeOutDelayMs = 5000f;
 
         base.Start();
-    }
 
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
+        HealthBar.AnimationSpeed = 5f;
     }
 }

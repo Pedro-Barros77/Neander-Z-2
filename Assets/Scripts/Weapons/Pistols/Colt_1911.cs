@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Colt_1911 : SemiAutoWeapon
 {
     protected override void Awake()

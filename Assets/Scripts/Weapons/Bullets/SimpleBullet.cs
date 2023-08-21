@@ -5,6 +5,17 @@ using UnityEngine.EventSystems;
 
 public class SimpleBullet : Projectile
 {
+
+    protected override void OnEnemyHit(Collider2D collision)
+    {
+        var target = collision.GetComponentInParent<IPlayerTarget>();
+        if (target != null)
+        {
+            target.TakeDamage(Damage, collision.name);
+        }
+
+        base.OnEnemyHit(collision);
+    }
     protected override void FixedUpdate()
     {
         base.FixedUpdate();

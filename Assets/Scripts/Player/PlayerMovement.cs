@@ -1,3 +1,5 @@
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -268,7 +270,11 @@ public class PlayerMovement : MonoBehaviour
 
         SyncAnimationStates();
     }
+    
 
+    /// <summary>
+    /// Sinconiza os estados da animação do Animator com as variáveis de controle.
+    /// </summary>
     private void SyncAnimationStates()
     {
         animator.SetBool("isIdle", isIdle);

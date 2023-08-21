@@ -23,13 +23,20 @@ public abstract class Projectile : MonoBehaviour
     protected Vector3 StartDirection { get; set; }
 
 
-    protected virtual void OnObjectHit()
+    protected virtual void OnObjectHit(Collider2D collision)
     {
         Destroy(gameObject);
     }
 
-    protected virtual void OnEnemyHit()
+    protected virtual void OnEnemyHit(Collider2D collision)
     {
+        var target = collision.GetComponentInParent<IPlayerTarget>();
+        if (target != null)
+        {
+            if (!target.IsAlive)
+                return;
+        }
+
         Destroy(gameObject);
     }
 
@@ -71,17 +78,17 @@ public abstract class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
-            OnEnemyHit();
+            OnEnemyHit(collision.collider);
         else if (collision.gameObject.CompareTag("Environment"))
-            OnObjectHit();
+            OnObjectHit(collision.collider);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
-            OnEnemyHit();
+            OnEnemyHit(collision);
         else if (collision.gameObject.CompareTag("Environment"))
-            OnObjectHit();
+            OnObjectHit(collision);
     }
 
     protected void MoveForward()
