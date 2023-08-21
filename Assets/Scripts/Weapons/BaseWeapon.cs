@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -203,7 +202,8 @@ public abstract class BaseWeapon : MonoBehaviour
 
         lastShotTime = Time.time;
         var randomShootSound = ShootSounds[UnityEngine.Random.Range(0, ShootSounds.Count)];
-        AudioSource.PlayClipAtPoint(randomShootSound, transform.position, ShootVolume);
+        AudioSource.clip = randomShootSound;
+        AudioSource.PlayOneShot(randomShootSound, ShootVolume);
 
         return new List<GameObject>() { bulletInstance };
     }
@@ -290,7 +290,7 @@ public abstract class BaseWeapon : MonoBehaviour
     public virtual void PlayExtraSoundEffect(int index, float volume = 1f)
     {
         var randomExtraSoundEffect = ExtraSoundEffects[index];
-        AudioSource.PlayClipAtPoint(randomExtraSoundEffect, transform.position, volume);
+        AudioSource.PlayOneShot(randomExtraSoundEffect, volume);
     }
 
     /// <summary>
@@ -301,7 +301,8 @@ public abstract class BaseWeapon : MonoBehaviour
     {
         if (MagazineBullets <= 0)
         {
-            AudioSource.PlayClipAtPoint(EmptyChamberSound, transform.position, EmptyChamberVolume);
+            if (!IsReloading)
+                AudioSource.PlayOneShot(EmptyChamberSound, EmptyChamberVolume);
             return false;
         }
 
