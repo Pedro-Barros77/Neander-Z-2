@@ -5,6 +5,11 @@ using UnityEngine.EventSystems;
 
 public class SimpleBullet : Projectile
 {
+    protected override void Start()
+    {
+        base.Start();
+        MoveForward();
+    }
 
     protected override void OnEnemyHit(Collider2D collision)
     {
@@ -19,6 +24,5 @@ public class SimpleBullet : Projectile
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        MoveForward();
     }
 }

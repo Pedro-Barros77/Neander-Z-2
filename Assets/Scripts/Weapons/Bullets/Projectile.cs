@@ -21,11 +21,12 @@ public abstract class Projectile : MonoBehaviour
     public float BlastMinDamageRadius { get; set; }
 
     protected Vector3 StartDirection { get; set; }
+    protected Rigidbody2D Rigidbody { get; set; }
 
 
     protected virtual void OnObjectHit(Collider2D collision)
     {
-        Destroy(gameObject);
+        KillSelf();
     }
 
     protected virtual void OnEnemyHit(Collider2D collision)
@@ -34,15 +35,18 @@ public abstract class Projectile : MonoBehaviour
         if (target != null)
         {
             if (!target.IsAlive)
+            {
+                KillSelf();
                 return;
+            }
         }
 
-        Destroy(gameObject);
+        KillSelf();
     }
 
     protected virtual void OnMaxDistanceReach()
     {
-        Destroy(gameObject);
+        KillSelf();
     }
 
     protected virtual void OnEnemyHitByExplosion()
@@ -58,6 +62,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void Start()
     {
+        Rigidbody = GetComponent<Rigidbody2D>();
         TotalDamage = Damage;
     }
 
@@ -77,6 +82,9 @@ public abstract class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!gameObject.activeSelf)
+            return;
+
         if (collision.gameObject.CompareTag("Enemy"))
             OnEnemyHit(collision.collider);
         else if (collision.gameObject.CompareTag("Environment"))
@@ -85,6 +93,9 @@ public abstract class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!gameObject.activeSelf)
+            return;
+
         if (collision.gameObject.CompareTag("Enemy"))
             OnEnemyHit(collision);
         else if (collision.gameObject.CompareTag("Environment"))
@@ -93,6 +104,12 @@ public abstract class Projectile : MonoBehaviour
 
     protected void MoveForward()
     {
-        transform.Translate(Speed * Time.fixedDeltaTime * StartDirection);
+        Rigidbody.velocity = transform.right * Speed;
+        //transform.Translate(Speed * Time.fixedDeltaTime * StartDirection);
+    }
+     protected virtual void KillSelf()
+    {
+        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }
