@@ -67,6 +67,22 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// </summary>
     protected float CurrentSpriteAlpha { get; set; } = 1;
     /// <summary>
+    /// O volume do som de dano desse inimigo.
+    /// </summary>
+    protected float DamageSoundVolume { get; set; } = 0.5f;
+    /// <summary>
+    /// O volume do som de início do ataque desse inimigo.
+    /// </summary>
+    protected float AttackStartSoundVolume { get; set; } = 1;
+    /// <summary>
+    /// O volume do som de acerto do ataque desse inimigo.
+    /// </summary>
+    protected float AttackHitSoundVolume { get; set; } = 1;
+    /// <summary>
+    /// O volume do som de morte desse inimigo.
+    /// </summary>
+    protected float DeathSoundVolume { get; set; } = 1;
+    /// <summary>
     /// Lista de alvos disponíveis para esse inimigo perseguir e atacar.
     /// </summary>
     protected List<IEnemyTarget> Targets => WavesManager.Instance.EnemiesTargets;
@@ -90,11 +106,17 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// Barra de vida desse inimigo.
     /// </summary>
     protected ProgressBar HealthBar;
+    /// <summary>
+    /// Emissor de audio do inimigo.
+    /// </summary>
+    protected AudioSource AudioSource;
 
     [SerializeField]
     protected Canvas WorldPosCanvas;
     [SerializeField]
     protected GameObject HealthBarPrefab;
+    [SerializeField]
+    protected List<AudioClip> DamageSounds, AttackStartSounds, AttackHitSounds, DeathSounds;
 
 
     protected bool isRunning;
@@ -113,6 +135,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         Animator = GetComponent<Animator>();
         RigidBody = GetComponent<Rigidbody2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
+        AudioSource = GetComponent<AudioSource>();
         AttackTrigger = transform.Find("AttackArea").GetComponent<AttackTrigger>();
         AttackTrigger.OnTagTriggered += OnTargetHit;
 
@@ -197,6 +220,12 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
                 break;
         }
 
+        if (DamageSounds.Any())
+        {
+            var randomDamageSound = DamageSounds[Random.Range(0, DamageSounds.Count)];
+            AudioSource.PlayOneShot(randomDamageSound, DamageSoundVolume);
+        }
+
         Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         HealthBar.RemoveValue(value);
 
@@ -222,9 +251,19 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="lastDamagedBodyPartName"></param>
     protected virtual void Die(string lastDamagedBodyPartName)
     {
+        
         IsAlive = false;
         isDying = true;
         DeathTime = Time.time;
+        isRunning = false;
+        isAttacking = false;
+
+        if (DeathSounds.Any())
+        {
+            var randomDeathSound = DeathSounds[Random.Range(0, DeathSounds.Count)];
+            AudioSource.PlayOneShot(randomDeathSound, DeathSoundVolume);
+        }
+
         if (DeathFadeOutDelayMs > 0)
         {
             StartCoroutine(StartDeathFadeOutCountDown());
@@ -261,6 +300,12 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         if (target == null)
             return;
 
+        if (AttackHitSounds.Any())
+        {
+            var randomHitSound = AttackHitSounds[Random.Range(0, AttackHitSounds.Count)];
+            AudioSource.PlayOneShot(randomHitSound, AttackHitSoundVolume);
+        }
+
         target.TakeDamage(Damage);
     }
 
@@ -271,6 +316,12 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     protected virtual void StartAttack(IEnemyTarget target)
     {
         isAttacking = true;
+
+        if (AttackStartSounds.Any())
+        {
+            var randomAttackStartSound = AttackStartSounds[Random.Range(0, AttackStartSounds.Count)];
+            AudioSource.PlayOneShot(randomAttackStartSound, AttackStartSoundVolume);
+        }
 
         var targetDir = target.transform.position.x < transform.position.x ? -1 : 1;
         FlipEnemy(Mathf.Sign(targetDir));
@@ -293,7 +344,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     protected virtual IEnumerator StartDeathFadeOutCountDown()
     {
         Destroy(HealthBar.gameObject);
-        
+
         if (DeathFadeOutDelayMs > 0)
             yield return new WaitForSeconds(DeathFadeOutDelayMs / 1000f);
 

@@ -201,9 +201,12 @@ public abstract class BaseWeapon : MonoBehaviour
         bullet.Init();
 
         lastShotTime = Time.time;
-        var randomShootSound = ShootSounds[UnityEngine.Random.Range(0, ShootSounds.Count)];
-        AudioSource.clip = randomShootSound;
-        AudioSource.PlayOneShot(randomShootSound, ShootVolume);
+
+        if (ShootSounds.Any())
+        {
+            var randomShootSound = ShootSounds[Random.Range(0, ShootSounds.Count)];
+            AudioSource.PlayOneShot(randomShootSound, ShootVolume);
+        }
 
         return new List<GameObject>() { bulletInstance };
     }

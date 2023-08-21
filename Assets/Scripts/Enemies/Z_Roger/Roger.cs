@@ -11,6 +11,10 @@ public class Roger : BaseEnemy
         HeadshotScoreMultiplier = 1.5f;
         DeathFadeOutDelayMs = 5000f;
 
+        DamageSoundVolume = 0.3f;
+        AttackHitSoundVolume = 0.6f;
+        DeathSoundVolume = 0.7f;
+
         base.Start();
 
         HealthBar.AnimationSpeed = 5f;
