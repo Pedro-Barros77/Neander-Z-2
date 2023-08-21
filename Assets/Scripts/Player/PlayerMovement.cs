@@ -11,6 +11,10 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public float MovementSpeed => Player.MovementSpeed;
     /// <summary>
+    /// Boost de velocidade do jogador ao correr pressionando o botão de sprint (correr).
+    /// </summary>
+    public float SprintSpeedMultiplier => Player.SprintSpeedMultiplier;
+    /// <summary>
     /// A força do pulo do jogador.
     /// </summary>
     public float JumpForce => Player.JumpForce;
@@ -33,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     bool isRunning;
     bool isFalling;
     bool isCrouching;
+    bool isSprinting;
 
     bool isIdle => !isRolling && !isJumpingSideways && !isTurning && !isTurningBack && !isRunning && !isFalling && !isCrouching;
 
@@ -80,6 +85,13 @@ public class PlayerMovement : MonoBehaviour
         else
             isCrouching = false;
 
+        if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && !isJumpingSideways && !isRolling)
+        {
+            isSprinting = true;
+        }
+        else
+            isSprinting = false;
+
         Animation();
     }
 
@@ -119,8 +131,11 @@ public class PlayerMovement : MonoBehaviour
         if ((isPressingLeft && isPressingRight) || isCrouching)
             return;
 
-        if (Mathf.Abs(rigidBody.velocity.x) < MovementSpeed)
+        if (Mathf.Abs(rigidBody.velocity.x) < MovementSpeed && !isSprinting)
             rigidBody.velocity += new Vector2(dirInput * AccelerationSpeed, 0);
+        
+        else if (Mathf.Abs(rigidBody.velocity.x) < MovementSpeed * SprintSpeedMultiplier && isSprinting)
+            rigidBody.velocity += new Vector2(dirInput * (AccelerationSpeed * SprintSpeedMultiplier), 0);
     }
 
     /// <summary>
@@ -145,13 +160,16 @@ public class PlayerMovement : MonoBehaviour
         rigidBody.AddForce(new Vector2(RollForce * rollDirection, 10f));
     }
 
+    /// <summary>
+    /// Faz o jogador parar e agachar.
+    /// </summary>
     private void Crouch()
     {
         isRunning = false;
         isTurning = false;
         isTurningBack = false;
         isFalling = false;
-        rb.velocity = new Vector2(0, rb.velocity.y);
+        rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         isCrouching = true;
     }
 
@@ -257,6 +275,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isJumpingSideways", isJumpingSideways);
         animator.SetBool("isCrouching", isCrouching);
+
+        if (isSprinting)
+            animator.SetFloat("SprintSpeedMultiplier", SprintSpeedMultiplier);
+        else
+            animator.SetFloat("SprintSpeedMultiplier", 1f);
 
         if (isFalling) animator.SetTrigger("Fall");
         else animator.ResetTrigger("Fall");

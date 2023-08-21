@@ -1,3 +1,5 @@
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IEnemyTarget
@@ -10,11 +12,10 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// A vida atual do jogador.
     /// </summary>
     public float Health { get; private set; } = 100f;
-    
     /// <summary>
     /// A velocidade de movimento atual do jogador.
     /// </summary>
-    public float MovementSpeed { get; private set; } = 5f;
+    public float MovementSpeed { get; private set; } = 4f;
     /// <summary>
     /// A velocidade de movimento máxima do jogador.
     /// </summary>
@@ -23,6 +24,10 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// A velocidade de aceleração do jogador.
     /// </summary>
     public float AccelerationSpeed { get; private set; } = 1f;
+    /// <summary>
+    /// Boost de velocidade do jogador ao correr pressionando o botão de sprint (correr).
+    /// </summary>
+    public float SprintSpeedMultiplier { get; private set; } = 1.5f;
     /// <summary>
     /// A força do pulo do jogador.
     /// </summary>
@@ -55,19 +60,19 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// <summary>
     /// A taxa de drenagem de stamina do jogador ao correr.
     /// </summary>
-    public float SprintStaminaDrain { get; set; } 
+    public float SprintStaminaDrain { get; set; }
     /// <summary>
     /// A taxa de drenagem de stamina do jogador ao pular.
     /// </summary>
-    public float JumpStaminaDrain { get; set; } 
+    public float JumpStaminaDrain { get; set; }
     /// <summary>
     /// A taxa de drenagem de stamina do jogador ao atacar com uma arma corpo-a-corpo.
     /// </summary>
-    public float AttackStaminaDrain { get; set; } 
+    public float AttackStaminaDrain { get; set; }
     /// <summary>
     /// A taxa de drenagem de stamina do jogador ao utilizar a Rolada Tática.
     /// </summary>
-    public float RollStaminaDrain { get; set; } 
+    public float RollStaminaDrain { get; set; }
     /// <summary>
     /// A última vez que o jogador gastou stamina.
     /// </summary>
@@ -103,14 +108,21 @@ public class Player : MonoBehaviour, IEnemyTarget
     public PlayerWeaponController WeaponController;
     [SerializeField]
     ProgressBar HealthBar;
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         Backpack = new Backpack(this);
         MaxMovementSpeed = MovementSpeed;
         MaxHealth = Health;
         Backpack.AddWeapon(WeaponTypes.Colt_1911);
+   
+        //float weaponContainerHeight = CurrentWeapon.WeaponContainerOffset.y;
+        //var clipCrouch = animator.runtimeAnimatorController.animationClips.FirstOrDefault(x => x.name == "Carlos_Crouch");
+        //var key = new Keyframe(0, weaponContainerHeight);
+        //clipCrouch.SetCurve("", typeof(Transform), "WeaponContainer.localPosition.y", new AnimationCurve(key));
 
         HealthBar.SetMaxValue(MaxHealth, true);
         HealthBar.UseAnimation = true;
@@ -121,11 +133,11 @@ public class Player : MonoBehaviour, IEnemyTarget
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             GetHealth(20);
         }
-        if(Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             TakeDamage(20);
         }
