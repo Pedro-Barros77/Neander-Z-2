@@ -17,6 +17,7 @@ public class SimpleBullet : Projectile
         if (target != null)
         {
             target.TakeDamage(Damage, collision.name);
+            target.OnPointHit(collision.ClosestPoint(transform.position), -transform.right);
         }
 
         base.OnEnemyHit(collision);

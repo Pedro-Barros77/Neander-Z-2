@@ -114,11 +114,11 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     [SerializeField]
     protected Canvas WorldPosCanvas;
     [SerializeField]
-    protected GameObject HealthBarPrefab;
+    protected GameObject HealthBarPrefab, BloodSplatterPrefab;
     [SerializeField]
     protected List<AudioClip> DamageSounds, AttackStartSounds, AttackHitSounds, DeathSounds;
 
-
+    protected Transform EffectsContainer;
     protected bool isRunning;
     protected bool isAttacking;
     protected bool isDying;
@@ -138,6 +138,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         AudioSource = GetComponent<AudioSource>();
         AttackTrigger = transform.Find("AttackArea").GetComponent<AttackTrigger>();
         AttackTrigger.OnTagTriggered += OnTargetHit;
+        EffectsContainer = GameObject.Find("EffectsContainer").transform;
 
         HealthBar = Instantiate(HealthBarPrefab, WorldPosCanvas.transform).GetComponent<ProgressBar>();
         HealthBar.SetMaxValue(MaxHealth, true);
@@ -307,6 +308,15 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         }
 
         target.TakeDamage(Damage);
+    }
+
+    public virtual void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection)
+    {
+        if (BloodSplatterPrefab == null)
+            return;
+
+        var bloodSplatter = Instantiate(BloodSplatterPrefab, hitPoint, Quaternion.identity, EffectsContainer);
+        bloodSplatter.transform.up = pointToDirection;
     }
 
     /// <summary>
