@@ -59,6 +59,10 @@ public abstract class BaseWeapon : MonoBehaviour
     /// Se a arma est� sendo recarregada atualmente.
     /// </summary>
     public bool IsReloading { get; protected set; }
+    /// <summary>
+    /// A direção em que o jogador está virado, 1 para direita, -1 para esquerda.
+    /// </summary>
+    public float PlayerFlipDir { get; set; } = 1;
 
     /// <summary>
     /// Script responsável por controlar a arma do jogador, como mira, troca e recarregamento.
@@ -333,12 +337,12 @@ public abstract class BaseWeapon : MonoBehaviour
         if (aimingLeft)
         {
             transform.localPosition = new Vector3(transform.localPosition.x, absoluteYPosition, transform.localPosition.z);
-            transform.localScale = new Vector3(1, -1, 1);
+            transform.localScale = new Vector3(PlayerFlipDir, -1, 1);
         }
         else
         {
             transform.localPosition = new Vector3(transform.localPosition.x, -absoluteYPosition, transform.localPosition.z);
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(PlayerFlipDir, 1, 1);
         }
     }
 }

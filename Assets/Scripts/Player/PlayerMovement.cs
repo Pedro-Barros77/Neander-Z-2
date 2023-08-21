@@ -227,9 +227,15 @@ public class PlayerMovement : MonoBehaviour
         if (isMoving)
         {
             if (movementDir <= 0)
-                spriteRenderer.flipX = false;
+            {
+                Player.CurrentWeapon.PlayerFlipDir = 1;
+                transform.localScale = new Vector3(1, 1, 1);
+            }
             else
-                spriteRenderer.flipX = true;
+            {
+                Player.CurrentWeapon.PlayerFlipDir = -1;
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
         }
 
         if ((isPressingRight ^ isPressingLeft) && !isTurning && !isRunning && !isRolling && !isJumpingSideways && !isCrouching)

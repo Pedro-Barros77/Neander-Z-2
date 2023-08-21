@@ -8,7 +8,7 @@ public class SimpleBullet : Projectile
     protected override void Start()
     {
         base.Start();
-        MoveForward();
+        StartForwardMovement();
     }
 
     protected override void OnEnemyHit(Collider2D collision)
@@ -20,9 +20,5 @@ public class SimpleBullet : Projectile
         }
 
         base.OnEnemyHit(collision);
-    }
-    protected override void FixedUpdate()
-    {
-        base.FixedUpdate();
     }
 }
