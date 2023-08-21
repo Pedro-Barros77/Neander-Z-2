@@ -1,11 +1,11 @@
-using System.Linq;
+Ôªøusing System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IEnemyTarget
 {
     /// <summary>
-    /// A vida m·xima do jogador.
+    /// A vida m–±xima do jogador.
     /// </summary>
     public float MaxHealth { get; private set; }
     /// <summary>
@@ -17,66 +17,66 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// </summary>
     public float MovementSpeed { get; private set; } = 4f;
     /// <summary>
-    /// A velocidade de movimento m·xima do jogador.
+    /// A velocidade de movimento m–±xima do jogador.
     /// </summary>
     public float MaxMovementSpeed { get; private set; }
     /// <summary>
-    /// A velocidade de aceleraÁ„o do jogador.
+    /// A velocidade de acelera–∑–≥o do jogador.
     /// </summary>
     public float AccelerationSpeed { get; private set; } = 1f;
     /// <summary>
-    /// Boost de velocidade do jogador ao correr pressionando o bot„o de sprint (correr).
+    /// Boost de velocidade do jogador ao correr pressionando o bot–≥o de sprint (correr).
     /// </summary>
     public float SprintSpeedMultiplier { get; private set; } = 1.5f;
     /// <summary>
-    /// A forÁa do pulo do jogador.
+    /// A for–∑a do pulo do jogador.
     /// </summary>
     public float JumpForce { get; private set; } = 1800f;
     /// <summary>
-    /// A forÁa de rolagem da habilidade Rolada T·tica.
+    /// A for–∑a de rolagem da habilidade Rolada T–±tica.
     /// </summary>
     public float RollForce { get; private set; } = 1800f;
     /// <summary>
-    /// O tempo de recarga da habilidade Rolada T·tica.
+    /// O tempo de recarga da habilidade Rolada T–±tica.
     /// </summary>
     public float RollCooldownMs { get; set; } = 2000f;
     #region Stamina Stats
     /// <summary>
-    /// A stamina m·xima do jogador.
+    /// A stamina m–±xima do jogador.
     /// </summary>
     public float MaxStamina { get; private set; }
     /// <summary>
     /// A stamina atual do jogador.
     /// </summary>
-    public float Stamina { get; set; }
+    public float Stamina { get; private set; } = 100f;
     /// <summary>
-    /// Quanto tempo o jogador deve esperar para comeÁar a regenerar stamina.
+    /// Quanto tempo o jogador deve esperar para come–∑ar a regenerar stamina.
     /// </summary>
-    public float StaminaRegenDelayMs { get; set; }
+    public float StaminaRegenDelayMs { get; private set; } = 2000f;
     /// <summary>
-    /// A taxa de regeneraÁ„o de stamina do jogador.
+    /// A taxa de regenera–∑–≥o de stamina do jogador.
     /// </summary>
-    public float StaminaRegenRate { get; set; }
+    public float StaminaRegenRate { get; private set; } = 15f;
     /// <summary>
     /// A taxa de drenagem de stamina do jogador ao correr.
     /// </summary>
-    public float SprintStaminaDrain { get; set; }
+    public float SprintStaminaDrain { get; private set; } = 2f;
     /// <summary>
     /// A taxa de drenagem de stamina do jogador ao pular.
     /// </summary>
-    public float JumpStaminaDrain { get; set; }
+    public float JumpStaminaDrain { get; private set; } = 10f;
     /// <summary>
     /// A taxa de drenagem de stamina do jogador ao atacar com uma arma corpo-a-corpo.
     /// </summary>
-    public float AttackStaminaDrain { get; set; }
+    public float AttackStaminaDrain { get; private set; }
     /// <summary>
-    /// A taxa de drenagem de stamina do jogador ao utilizar a Rolada T·tica.
+    /// A taxa de drenagem de stamina do jogador ao utilizar a Rolada T–±tica.
     /// </summary>
-    public float RollStaminaDrain { get; set; }
+    public float RollStaminaDrain { get; private set; } = 20f;
     /// <summary>
-    /// A ˙ltima vez que o jogador gastou stamina.
+    /// A —ältima vez que o jogador gastou stamina.
     /// </summary>
-    public Time LastStaminaUse { get; set; }
+    public float LastStaminaUse { get; private set; }
     #endregion
 
     /// <summary>
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// </summary>
     public CharacterTypes Character { get; private set; }
     /// <summary>
-    /// A pontuaÁ„o total do jogador.
+    /// A pontua–∑–≥o total do jogador.
     /// </summary>
     public float Score { get; private set; }
     /// <summary>
@@ -93,21 +93,22 @@ public class Player : MonoBehaviour, IEnemyTarget
     public decimal Money { get; private set; }
 
     /// <summary>
-    /// A mochila do jogador, carrega suas armas e acessÛrios.
+    /// A mochila do jogador, carrega suas armas e acess—Érios.
     /// </summary>
     public Backpack Backpack { get; private set; }
     /// <summary>
-    /// A arma atualmente equipada nas m„os do jogador.
+    /// A arma atualmente equipada nas m–≥os do jogador.
     /// </summary>
     public BaseWeapon CurrentWeapon => Backpack.EquippedWeapon;
+    protected SpriteRenderer SpriteRenderer;
 
     /// <summary>
-    /// Script respons·vel por controlar a arma do jogador, como mira, troca e recarregamento.
+    /// Script respons–±vel por controlar a arma do jogador, como mira, troca e recarregamento.
     /// </summary>
     [SerializeField]
     public PlayerWeaponController WeaponController;
     [SerializeField]
-    ProgressBar HealthBar;
+    ProgressBar HealthBar, StaminaBar;
     Animator animator;
 
     void Start()
@@ -116,8 +117,10 @@ public class Player : MonoBehaviour, IEnemyTarget
         Backpack = new Backpack(this);
         MaxMovementSpeed = MovementSpeed;
         MaxHealth = Health;
+        MaxStamina = Stamina;
         Backpack.AddWeapon(WeaponTypes.Colt_1911);
-   
+        SpriteRenderer = GetComponent<SpriteRenderer>();
+
         //float weaponContainerHeight = CurrentWeapon.WeaponContainerOffset.y;
         //var clipCrouch = animator.runtimeAnimatorController.animationClips.FirstOrDefault(x => x.name == "Carlos_Crouch");
         //var key = new Keyframe(0, weaponContainerHeight);
@@ -125,11 +128,21 @@ public class Player : MonoBehaviour, IEnemyTarget
 
         HealthBar.SetMaxValue(MaxHealth, true);
         HealthBar.AnimationSpeed = 20f;
+        StaminaBar.gameObject.SetActive(true);
+        StaminaBar.AnimationSpeed = 20f;
+        StaminaBar.ValueFillColor = new Color32(245, 238, 20, 255);
+        StaminaBar.UseShadows = false;
+        StaminaBar.UseOutline = false;
+        StaminaBar.UseAnimation = false;
+        StaminaBar.HideOnFull = true;
+        StaminaBar.SetMaxValue(MaxStamina, true);
+        (StaminaBar.transform as RectTransform).pivot = new Vector2(0.5f, 0.5f);
         WavesManager.Instance.EnemiesTargets.Add(this);
     }
 
     void Update()
     {
+        StaminaBar.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             GetHealth(20);
@@ -140,10 +153,18 @@ public class Player : MonoBehaviour, IEnemyTarget
         }
     }
 
+    private void FixedUpdate()
+    {
+        var staminaCooledDown = LastStaminaUse + (StaminaRegenDelayMs / 1000) <= Time.time;
+
+        if (staminaCooledDown)
+            GetStamina(StaminaRegenRate * Time.deltaTime);
+    }
+
     /// <summary>
     /// Aumenta a vida e modifica a barra de vida.
     /// </summary>
-    /// <param name="value">O valor a ser adicionado ‡ vida.</param>
+    /// <param name="value">O valor a ser adicionado –∞ vida.</param>
     public void GetHealth(float value)
     {
         if (value < 0) return;
@@ -155,12 +176,37 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// <summary>
     /// Diminui a vida e modifica a barra de vida.
     /// </summary>
-    /// <param name="value">O valor a ser subtraÌdo da vida.</param>
+    /// <param name="value">O valor a ser subtra–Ωdo da vida.</param>
     public void TakeDamage(float value)
     {
         if (value < 0) return;
 
         Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         HealthBar.RemoveValue(value);
+    }
+
+    /// <summary>
+    /// Aumenta a stamina e modifica a barra de stamina.
+    /// </summary>
+    /// <param name="value">O valor a ser adicionado –∞ stamina.</param>
+    public void GetStamina(float value)
+    {
+        if (value < 0) return;
+
+        Stamina = Mathf.Clamp(Stamina + value, 0, MaxStamina);
+        StaminaBar.AddValue(value);
+    }
+
+    /// <summary>
+    /// Diminui a stamina e modifica a barra de stamina.
+    /// </summary>
+    /// <param name="value">O valor a ser diminuido –∞ stamina.</param>
+    public void LoseStamina(float value)
+    {
+        if (value < 0) return;
+
+        LastStaminaUse = Time.time;
+        Stamina = Mathf.Clamp(Stamina - value, 0, MaxStamina);
+        StaminaBar.RemoveValue(value);
     }
 }

@@ -68,13 +68,13 @@ public class ProgressBar : MonoBehaviour
         animationFill = animationBar.Find("AnimationFill").gameObject;
         outline = transform.Find("Outline").gameObject;
         shadows = transform.Find("Shadows").gameObject;
+        fill = transform.Find("Fill").gameObject;
+        fillImage = fill.GetComponent<Image>();
     }
 
     void Start()
     {
         background = transform.Find("Background").gameObject;
-        fill = transform.Find("Fill").gameObject;
-        fillImage = fill.GetComponent<Image>();
         animationFillImage = animationFill.GetComponent<Image>();
 
         animationFill.SetActive(UseAnimation);

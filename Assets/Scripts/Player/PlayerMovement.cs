@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         else
             isCrouching = false;
 
-        if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && !isJumpingSideways && !isRolling)
+        if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && !isJumpingSideways && !isRolling && Player.Stamina >= Player.SprintStaminaDrain)
         {
             isSprinting = true;
         }
@@ -135,9 +135,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (Mathf.Abs(rigidBody.velocity.x) < MovementSpeed && !isSprinting)
             rigidBody.velocity += new Vector2(dirInput * AccelerationSpeed, 0);
-        
+
         else if (Mathf.Abs(rigidBody.velocity.x) < MovementSpeed * SprintSpeedMultiplier && isSprinting)
+        {
             rigidBody.velocity += new Vector2(dirInput * (AccelerationSpeed * SprintSpeedMultiplier), 0);
+            if (dirInput != 0)
+                Player.LoseStamina(Player.SprintStaminaDrain);
+        }
     }
 
     /// <summary>
@@ -145,6 +149,9 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Jump()
     {
+        if (Player.Stamina < Player.JumpStaminaDrain)
+            return;
+        Player.LoseStamina(Player.JumpStaminaDrain);
         rigidBody.AddForce(new Vector2(0f, JumpForce));
     }
 
@@ -154,12 +161,16 @@ public class PlayerMovement : MonoBehaviour
     /// <param name="isLeft">Se a direção deve ser para a esquerda, caso contrário, será para a direita.</param>
     private void Roll(bool isLeft)
     {
+        if (Player.Stamina < Player.RollStaminaDrain)
+            return;
+
         LastRollTime = Time.time;
         isRolling = true;
         isTurning = false;
         isTurningBack = false;
         float rollDirection = isLeft ? -1 : 1;
         rigidBody.AddForce(new Vector2(RollForce * rollDirection, 10f));
+        Player.LoseStamina(Player.RollStaminaDrain);
     }
 
     /// <summary>
@@ -276,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
 
         SyncAnimationStates();
     }
-    
+
 
     /// <summary>
     /// Sinconiza os estados da animação do Animator com as variáveis de controle.
