@@ -111,7 +111,6 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// </summary>
     protected AudioSource AudioSource;
 
-    [SerializeField]
     protected Canvas WorldPosCanvas;
     [SerializeField]
     protected GameObject HealthBarPrefab, BloodSplatterPrefab;
@@ -136,6 +135,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         RigidBody = GetComponent<Rigidbody2D>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         AudioSource = GetComponent<AudioSource>();
+        WorldPosCanvas = GameObject.Find("WorldPositionCanvas").GetComponent<Canvas>();
         AttackTrigger = transform.Find("AttackArea").GetComponent<AttackTrigger>();
         AttackTrigger.OnTagTriggered += OnTargetHit;
         EffectsContainer = GameObject.Find("EffectsContainer").transform;
@@ -253,7 +253,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="lastDamagedBodyPartName"></param>
     protected virtual void Die(string lastDamagedBodyPartName)
     {
-        
+
         IsAlive = false;
         isDying = true;
         DeathTime = Time.time;

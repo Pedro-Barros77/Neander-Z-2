@@ -6,29 +6,29 @@ public enum EnemyTypes
     /// <summary>
     /// Primeiro zumbi. Fraco, lento e mole.
     /// </summary>
-    Roger,
+    Z_Roger,
     /// <summary>
     /// Cachorro Rottweiler zumbi. Uma verdadeira besta: Rápido, forte e mortal.
     /// </summary>
-    Robert,
+    Z_Robert,
     /// <summary>
     /// Versão arrastante do Ronald. Lento, mas sagaz. É a segunda vida após a morte pronta para te atacar.
     /// </summary>
-    Ronaldo,
+    Z_Ronaldo,
     /// <summary>
     /// Primeiro Boss zumbi. Muito forte, muito lento e muito resistente!
     /// </summary>
-    Rui,
+    Z_Rui,
     /// <summary>
     /// Um corvo mutante. Rápido, fraco, pequeno e irritante.
     /// </summary>
-    Raven,
+    Z_Raven,
     /// <summary>
     /// Soldado de chumbo infectado. Lento, forte e muito resistente! Possui um capacete antimotim.
     /// </summary>
-    Raimundo,
+    Z_Raimundo,
     /// <summary>
     /// Foi mordido enquanto jogava futebol. É um zumbi comum, exceto pelo fato de que ele se recusa a morrer às vezes.
     /// </summary>
-    Ronald
+    Z_Ronald
 }

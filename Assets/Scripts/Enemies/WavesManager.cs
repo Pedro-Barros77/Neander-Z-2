@@ -17,6 +17,8 @@ public class WavesManager : MonoBehaviour
         }
     }
 
+    LevelData LevelData;
+
     /// <summary>
     /// Objetos alvos dos inimigos (player, torretas etc).
     /// </summary>
@@ -24,11 +26,20 @@ public class WavesManager : MonoBehaviour
 
     void Start()
     {
-        
+        LevelData = GameObject.Find("Environment").GetComponent<LevelData>();
     }
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Z))
+            SpawnRogerTest();
+    }
+
+    void SpawnRogerTest()
+    {
+        float randonX = Random.Range(LevelData.TopLeftSpawnLimit.x, LevelData.BottomRightSpawnLimit.x);
+        Vector3 spawnPosition = new Vector3(randonX, LevelData.BottomRightSpawnLimit.y, 0);
+
+        GameObject roger = Instantiate(Resources.Load<GameObject>($"Prefabs/Enemies/{EnemyTypes.Z_Roger}"), spawnPosition, Quaternion.identity);
     }
 }

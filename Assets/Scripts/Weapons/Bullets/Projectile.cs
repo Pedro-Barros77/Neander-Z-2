@@ -29,7 +29,7 @@ public abstract class Projectile : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody2D>();
         TotalDamage = Damage;
-        TargetLayerMask = LayerMask.GetMask("Enemy", "Environment");
+        TargetLayerMask = LayerMask.GetMask("Enemy", "Environment", "PlayerEnvironment");
     }
 
     protected virtual void Update()
@@ -163,7 +163,7 @@ public abstract class Projectile : MonoBehaviour
     /// </summary>
     protected virtual void CheckTunneling()
     {
-        if(LastPosition == Vector2.zero)
+        if (LastPosition == Vector2.zero)
         {
             LastPosition = Rigidbody.position;
             return;
