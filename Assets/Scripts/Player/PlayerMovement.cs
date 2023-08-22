@@ -235,18 +235,15 @@ public class PlayerMovement : MonoBehaviour
         movementDir = rigidBody.velocity.x;
         isMoving = Mathf.Abs(movementDir) > 0.1;
 
-        if (isMoving)
+        if (movementDir <= 0)
         {
-            if (movementDir <= 0)
-            {
-                Player.CurrentWeapon.PlayerFlipDir = 1;
-                transform.localScale = new Vector3(1, 1, 1);
-            }
-            else
-            {
-                Player.CurrentWeapon.PlayerFlipDir = -1;
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
+            Player.CurrentWeapon.PlayerFlipDir = 1;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            Player.CurrentWeapon.PlayerFlipDir = -1;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
         if ((isPressingRight ^ isPressingLeft) && !isTurning && !isRunning && !isRolling && !isJumpingSideways && !isCrouching)

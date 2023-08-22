@@ -5394,6 +5394,14 @@ MonoBehaviour:
   ActiveAmmoImage: {fileID: 33704217}
   MagazineBulletsText: {fileID: 1165802376}
   TotalBulletsText: {fileID: 1092173751}
+  PistolBulletIcon: {fileID: 21300000, guid: 0f20aae54da7fb844a775442db60bc34, type: 3}
+  ShotgunBulletIcon: {fileID: 21300000, guid: c6f7d53aff1fd6942911556a09bb381b, type: 3}
+  RifleAmmoIcon: {fileID: 21300000, guid: 104a74fe41b70594486a4b4a837749fd, type: 3}
+  SniperAmmoIcon: {fileID: 21300000, guid: dd47c92fc5758314aae87d0d2dae649a, type: 3}
+  RocketAmmoIcon: {fileID: 21300000, guid: fcca0ddc25acfbb49b7044b3651de04e, type: 3}
+  MeleeAmmoIcon: {fileID: 21300000, guid: cea6c50c2cd35af4bba8189565a85eeb, type: 3}
+  Colt_1911Sprite: {fileID: 21300000, guid: c6ad90c39fd0f294b96ffd8c5c5f5334, type: 3}
+  ShortBarrelSprite: {fileID: 21300000, guid: 75093aeb59590b9438d045267f1ff2cf, type: 3}
 --- !u!1 &1979917264
 GameObject:
   m_ObjectHideFlags: 0

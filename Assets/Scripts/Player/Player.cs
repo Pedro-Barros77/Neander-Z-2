@@ -111,14 +111,20 @@ public class Player : MonoBehaviour, IEnemyTarget
     ProgressBar HealthBar, StaminaBar;
     Animator animator;
 
+    private void Awake()
+    {
+        Backpack = new Backpack(this);
+        Backpack.AddWeapon(WeaponTypes.Colt_1911);
+        Backpack.AddWeapon(WeaponTypes.ShortBarrel);
+    }
+
     void Start()
     {
-        animator = GetComponent<Animator>();
-        Backpack = new Backpack(this);
+        WeaponController.SwitchWeapon(0);
         MaxMovementSpeed = MovementSpeed;
         MaxHealth = Health;
         MaxStamina = Stamina;
-        Backpack.AddWeapon(WeaponTypes.Colt_1911);
+        animator = GetComponent<Animator>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
 
         //float weaponContainerHeight = CurrentWeapon.WeaponContainerOffset.y;
@@ -143,6 +149,7 @@ public class Player : MonoBehaviour, IEnemyTarget
     void Update()
     {
         StaminaBar.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             GetHealth(20);

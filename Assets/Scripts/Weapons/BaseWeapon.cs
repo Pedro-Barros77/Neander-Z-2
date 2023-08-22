@@ -138,13 +138,14 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     protected const float FIRE_RATE_RATIO = 1000;
 
+    protected bool isShooting;
+
     protected virtual void Awake()
     {
     }
 
     protected virtual void Start()
     {
-        IsPrimary = Constants.IsPrimaryWeapon[Type];
         BulletSpawnPoint = transform.GetChild(0).Find("BulletSpawnPoint");
         BulletsContainer = GameObject.Find("ProjectilesContainer").transform;
         AudioSource = GetComponent<AudioSource>();
@@ -172,13 +173,18 @@ public abstract class BaseWeapon : MonoBehaviour
     }
 
     /// <summary>
-    /// Executa o comportamento padr�o de tiro de todas as armas, como verifica��o de muni��o e firerate, audio, e instancia��o dos proj�teis.
+    /// Executa o comportamento padr�o de tiro de todas as armas, como verificação de munição e firerate, audio, etc.
     /// </summary>
     /// <returns>Uma lista de proj�teis disparados (no caso de escopetas) ou uma lista com apenas um proj�til para as demais armas.</returns>
     public virtual IEnumerable<GameObject> Shoot()
     {
         if (!CanShoot())
+        {
+            isShooting = false;
             return Enumerable.Empty<GameObject>();
+        }
+
+        isShooting = true;
 
         if (!isDecreasingFlashIntensity)
             StartCoroutine(DecreaseFlashIntensity());
@@ -187,19 +193,6 @@ public abstract class BaseWeapon : MonoBehaviour
         var particlesRotation = Quaternion.Euler(angle + 180, -90f, 0f);
         Instantiate(SmokeParticlesPrefab, BulletSpawnPoint.position, particlesRotation, BulletsContainer);
 
-        var bulletInstance = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.Euler(0f, 0f, angle), BulletsContainer);
-        var bullet = bulletInstance.GetComponent<Projectile>();
-
-        bullet.Type = BulletTypes.Pistol;
-        bullet.StartPos = BulletSpawnPoint.position;
-        bullet.Angle = PlayerWeaponController.AimAngle;
-        bullet.Speed = BulletSpeed;
-        bullet.Damage = Damage;
-        bullet.MaxDistance = BulletMaxRange;
-        bullet.MaxDamageRange = MaxDamageRange;
-        bullet.MinDamageRange = MinDamageRange;
-        bullet.Init();
-
         lastShotTime = Time.time;
 
         if (ShootSounds.Any())
@@ -207,6 +200,26 @@ public abstract class BaseWeapon : MonoBehaviour
             var randomShootSound = ShootSounds[Random.Range(0, ShootSounds.Count)];
             AudioSource.PlayOneShot(randomShootSound, ShootVolume);
         }
+
+        var bullets = CreateBullets(angle);
+
+        return bullets;
+    }
+
+    protected virtual List<GameObject> CreateBullets(float radiansAngle)
+    {
+        var bulletInstance = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.Euler(0f, 0f, radiansAngle), BulletsContainer);
+        var bullet = bulletInstance.GetComponent<Projectile>();
+
+        bullet.Type = BulletTypes.Pistol;
+        bullet.StartPos = BulletSpawnPoint.position;
+        bullet.AngleInRadians = PlayerWeaponController.AimAngle;
+        bullet.Speed = BulletSpeed;
+        bullet.Damage = Damage;
+        bullet.MaxDistance = BulletMaxRange;
+        bullet.MaxDamageRange = MaxDamageRange;
+        bullet.MinDamageRange = MinDamageRange;
+        bullet.Init();
 
         return new List<GameObject>() { bulletInstance };
     }
@@ -246,6 +259,9 @@ public abstract class BaseWeapon : MonoBehaviour
         if (Player.Backpack.GetAmmo(BulletType) <= 0)
             return false;
 
+        if (IsReloading)
+            return false;
+
         if (reloadStartTime != null && Time.time - ReloadTimeMs <= reloadStartTime)
             return false;
 
@@ -265,6 +281,21 @@ public abstract class BaseWeapon : MonoBehaviour
     {
         IsReloading = false;
         reloadStartTime = null;
+    }
+
+    /// <summary>
+    /// Função chamada pelo evento de animação, no último frame de pump da arma.
+    /// </summary>
+    public virtual void OnPumpEnd()
+    {
+    }
+
+    /// <summary>
+    /// Função chamada pelo evento de animação, no frame de tiro da arma.
+    /// </summary>
+    public virtual void OnShootEnd()
+    {
+        isShooting = false;
     }
 
     /// <summary>
@@ -314,6 +345,9 @@ public abstract class BaseWeapon : MonoBehaviour
         if (IsReloading)
             return false;
 
+        if (reloadStartTime != null && Time.time - ReloadTimeMs <= reloadStartTime)
+            return false;
+
         var delayMs = FIRE_RATE_RATIO / FireRate;
         var diff = now - (delayMs / 1000);
 
@@ -348,5 +382,12 @@ public abstract class BaseWeapon : MonoBehaviour
             transform.localPosition = new Vector3(transform.localPosition.x, -absoluteYPosition, transform.localPosition.z);
             transform.localScale = new Vector3(PlayerFlipDir, 1, 1);
         }
+
+        SyncAnimationStates();
+    }
+
+    protected virtual void SyncAnimationStates()
+    {
+
     }
 }

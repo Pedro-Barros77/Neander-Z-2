@@ -3,6 +3,7 @@
 /// </summary>
 public enum WeaponTypes
 {
+    None,
     Colt_1911,
     Deagle,
     Beretta_93R,

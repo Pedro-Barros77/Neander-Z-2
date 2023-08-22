@@ -5,6 +5,7 @@ public class Colt_1911 : SemiAutoWeapon
     protected override void Awake()
     {
         Type = WeaponTypes.Colt_1911;
+        IsPrimary = false;
         base.Awake();
 
         BulletType = BulletTypes.Pistol;

@@ -3,7 +3,8 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour
 {
     public BulletTypes Type { get; set; }
-    public float Angle { get; set; }
+    public float AngleInRadians { get; set; }
+    public float AngleInDegrees => Mathf.Repeat(AngleInRadians * Mathf.Rad2Deg, 360f);
     public float Speed { get; set; }
     public float Damage { get; set; }
     public float TotalDamage { get; set; }
@@ -93,8 +94,7 @@ public abstract class Projectile : MonoBehaviour
     /// </summary>
     public virtual void Init()
     {
-        float angleInDegrees = Mathf.Repeat(Angle * Mathf.Rad2Deg, 360f);
-        StartDirection = (angleInDegrees * Vector3.right).normalized;
+        StartDirection = (AngleInDegrees * Vector3.right).normalized;
     }
 
     /// <summary>

@@ -15,6 +15,14 @@ public class WeaponAnimEventHandler : MonoBehaviour
     }
 
     /// <summary>
+    /// Função chamada pelo evento de animação, no último frame de tiro da arma.
+    /// </summary>
+    void OnShootEnd()
+    {
+        weapon.OnShootEnd();
+    }
+
+    /// <summary>
     /// Função chamada pelo evento de animação, no último frame de recarregamento da arma.
     /// </summary>
     void OnReloadEnd()
@@ -37,5 +45,13 @@ public class WeaponAnimEventHandler : MonoBehaviour
     void PlayExtraSoundEffect(int index)
     {
         weapon.PlayExtraSoundEffect(index);
+    }
+
+    /// <summary>
+    /// Função chamada pelo evento de animação, no último frame de pump da arma.
+    /// </summary>
+    void OnPumpEnd()
+    {
+        weapon.OnPumpEnd();
     }
 }

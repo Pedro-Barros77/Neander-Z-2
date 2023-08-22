@@ -98,7 +98,7 @@ public class Backpack
     public Backpack(Player player)
     {
         PistolAmmo = 30;
-        ShotgunAmmo = 0;
+        ShotgunAmmo = 20;
         RifleAmmo = 0;
         SniperAmmo = 0;
         RocketAmmo = 0;
@@ -122,7 +122,7 @@ public class Backpack
     /// <returns>A instância da arma adicionada.</returns>
     public BaseWeapon AddWeapon(WeaponTypes weaponType, bool equip = true)
     {
-        if(PrimaryWeaponsArsenal.Any(x => x.Type == weaponType) || SecondaryWeaponsArsenal.Any(x => x.Type == weaponType))
+        if (PrimaryWeaponsArsenal.Any(x => x.Type == weaponType) || SecondaryWeaponsArsenal.Any(x => x.Type == weaponType))
         {
             Debug.LogWarning($"Tentativa de adicionar arma {weaponType} ao arsenal do jogador, mas ela já existe.");
             return null;
@@ -150,6 +150,15 @@ public class Backpack
         }
 
         return weapon;
+    }
+
+    /// <summary>
+    /// Alternar entre as armas primária e secundária equipadas.
+    /// </summary>
+    /// <param name="index">O índice da arma a ser equipada. 0 = primária, 1 = secundária. Null = inverter.</param>
+    public void SwitchWeapon(int? index = null)
+    {
+        CurrentWeaponIndex = index ?? (CurrentWeaponIndex == 0 ? 1 : 0);
     }
 
     /// <summary>

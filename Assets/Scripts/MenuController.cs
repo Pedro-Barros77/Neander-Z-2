@@ -29,6 +29,10 @@ public class MenuController : MonoBehaviour
     private Image ActiveWeaponImage, ActiveAmmoImage;
     [SerializeField]
     private TextMeshProUGUI MagazineBulletsText, TotalBulletsText;
+    [SerializeField]
+    Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon;
+    [SerializeField]
+    Sprite Colt_1911Sprite, ShortBarrelSprite;
 
     void Start()
     {
@@ -105,5 +109,23 @@ public class MenuController : MonoBehaviour
     {
         MagazineBulletsText.text = Player.CurrentWeapon.MagazineBullets.ToString();
         TotalBulletsText.text = Player.Backpack.GetAmmo(Player.CurrentWeapon.BulletType).ToString();
+
+        ActiveAmmoImage.sprite = Player.CurrentWeapon.BulletType switch
+        {
+            BulletTypes.Pistol => PistolBulletIcon,
+            BulletTypes.Shotgun => ShotgunBulletIcon,
+            BulletTypes.AssaultRifle => RifleAmmoIcon,
+            BulletTypes.Sniper => SniperAmmoIcon,
+            BulletTypes.Rocket => RocketAmmoIcon,
+            BulletTypes.Melee => MeleeAmmoIcon,
+            _ => null,
+        };
+
+        ActiveWeaponImage.sprite = Player.CurrentWeapon.Type switch
+        {
+            WeaponTypes.Colt_1911 => Colt_1911Sprite,
+            WeaponTypes.ShortBarrel => ShortBarrelSprite,
+            _ => null,
+        };
     }
 }
