@@ -21,8 +21,14 @@ public class ShotgunWeapon : BaseWeapon
     /// Se a arma utiliza cartucho/pente para o carregamento.
     /// </summary>
     public bool UseMagazine { get; protected set; }
-
+    /// <summary>
+    /// Se está pendente o bombeamento da arma (não pode atirar antes até bombear).
+    /// </summary>
     private bool IsPumpPending;
+    /// <summary>
+    /// Se o carregamento em cadeia foi cancelado.
+    /// </summary>
+    private bool ReloadCanceled;
 
     protected override void Start()
     {
@@ -50,10 +56,11 @@ public class ShotgunWeapon : BaseWeapon
 
     public override IEnumerable<GameObject> Shoot()
     {
-        //if(!UseMagazine && IsReloading)
-        //{
-        //    IsReloading = false;
-        //}
+        if (!UseMagazine && IsReloading)
+        {
+            ReloadCanceled = true;
+            return Enumerable.Empty<GameObject>();
+        }
 
         var bulletInstances = base.Shoot();
         if (!bulletInstances.Any())
@@ -101,6 +108,8 @@ public class ShotgunWeapon : BaseWeapon
         if (MagazineBullets == 0)
             IsPumpPending = true;
 
+        ReloadCanceled = false;
+
         bool canReload = base.Reload();
 
         return canReload;
@@ -114,9 +123,18 @@ public class ShotgunWeapon : BaseWeapon
             return;
         }
 
-
         MagazineBullets += 1;
         Player.Backpack.SetAmmo(BulletType, Player.Backpack.GetAmmo(BulletType) - 1);
+    }
+    public override void OnReloadEnd()
+    {
+        base.OnReloadEnd();
+
+        if (IsPumpPending)
+            IsPumping = true;
+
+        if (MagazineBullets < MagazineSize && !isShooting && !ReloadCanceled)
+            Reload();
     }
 
     public override void OnShootEnd()
@@ -133,17 +151,6 @@ public class ShotgunWeapon : BaseWeapon
 
         IsPumpPending = false;
         IsPumping = false;
-    }
-
-    public override void OnReloadEnd()
-    {
-        base.OnReloadEnd();
-
-        if (IsPumpPending)
-            IsPumping = true;
-
-        if (MagazineBullets < MagazineSize && !isShooting)
-            Reload();
     }
 
     protected override void SyncAnimationStates()

@@ -386,6 +386,9 @@ public abstract class BaseWeapon : MonoBehaviour
         SyncAnimationStates();
     }
 
+    /// <summary>
+    /// Sinconiza os estados da animação do Animator com as variáveis de controle.
+    /// </summary>
     protected virtual void SyncAnimationStates()
     {
 
