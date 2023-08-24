@@ -1,14 +1,21 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.XR;
 
 public class PlayerWeaponController : MonoBehaviour
 {
     /// <summary>
-    /// O �ngulo de mira do jogador, em Radians (Come�ando da direita, sentido anti-hor�rio: direita 0, cima 90, esquerda 180, esquerda -180, baixo -90, direita 0).
+    /// O ângulo de mira do jogador, em Radians (Come�ando da direita, sentido anti-hor�rio: direita 0, cima 90, esquerda 180, esquerda -180, baixo -90, direita 0).
     /// </summary>
     public float AimAngle { get; set; }
+    /// <summary>
+    /// O ângulo de mira do jogador, em Degrees (de 0 a 360).
+    /// </summary>
     public float AimAngleInDegrees => AimAngle * Mathf.Rad2Deg;
-
+    /// <summary>
+    /// Se a arma está sendo trocada atualmente.
+    /// </summary>
+    public bool IsSwitchingWeapon { get; set; }
     /// <summary>
     /// O jogador pai deste controlador.
     /// </summary>
@@ -17,6 +24,7 @@ public class PlayerWeaponController : MonoBehaviour
     public Vector3 StartLocalPosition { get; private set; }
 
     Transform handTransform;
+    float? startSwitchTime;
 
     private void Awake()
     {
@@ -52,7 +60,10 @@ public class PlayerWeaponController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
             SwitchWeapon(1);
 
-        RotateToMouse();
+        if (IsSwitchingWeapon)
+            WeaponSwitchAnimation();
+        else
+            RotateToMouse();
     }
 
     /// <summary>
@@ -61,16 +72,49 @@ public class PlayerWeaponController : MonoBehaviour
     /// <param name="index">O índice da arma a ser equipada. 0 = primária, 1 = secundária. Null = inverter.</param>
     public void SwitchWeapon(int? index = null)
     {
+        if (IsSwitchingWeapon)
+            return;
+
         if (index == null || index != Player.Backpack.CurrentWeaponIndex)
         {
+            IsSwitchingWeapon = true;
             Player.CurrentWeapon.BeforeSwitchWeapon();
+
             Player.Backpack.SwitchWeapon(index);
+
+            Player.CurrentWeapon.AfterSwitchWeaponBack();
         }
 
         bool equippedPrimary = Player.Backpack.CurrentWeaponIndex == 0;
 
         Player.Backpack.EquippedPrimaryWeapon.IsActive = equippedPrimary;
         Player.Backpack.EquippedSecondaryWeapon.IsActive = !equippedPrimary;
+    }
+
+    /// <summary>
+    /// Executa a rotação da mira ao trocar de arma.
+    /// </summary>
+    private void WeaponSwitchAnimation()
+    {
+        if (startSwitchTime == null)
+            startSwitchTime = Time.time;
+
+        var currentWeaponSwitchTimeMs = Player.CurrentWeapon.SwitchTimeMs;
+
+        if (Time.time - startSwitchTime < currentWeaponSwitchTimeMs / 1000)
+        {
+            float t = (Time.time - startSwitchTime.Value) / (currentWeaponSwitchTimeMs / 1000);
+            float animAngle = Mathf.Lerp(90, 0, t);
+
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, animAngle));
+        }
+        else
+        {
+            startSwitchTime = null;
+            IsSwitchingWeapon = false;
+            Player.Backpack.EquippedPrimaryWeapon.IsSwitchingWeapon = false;
+            Player.Backpack.EquippedSecondaryWeapon.IsSwitchingWeapon = false;
+        }
     }
 
 
@@ -105,6 +149,14 @@ public class PlayerWeaponController : MonoBehaviour
         AimAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, AimAngle));
 
+        SetHandAimOffset();
+    }
+
+    /// <summary>
+    /// Ajusta a posição da mão do jogador para que ela fique na ponta do container de mira.
+    /// </summary>
+    private void SetHandAimOffset()
+    {
         float orbitRadius = transform.localScale.x / 2;
         Vector3 offset = new Vector3(Mathf.Cos(AimAngle * Mathf.Deg2Rad), Mathf.Sin(AimAngle * Mathf.Deg2Rad), 0) * orbitRadius;
         handTransform.position = transform.position + offset;

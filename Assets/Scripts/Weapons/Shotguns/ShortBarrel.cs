@@ -18,6 +18,7 @@ public class ShortBarrel : ShotgunWeapon
         UseMagazine = false;
         BulletSpeed = 20f;
         ReloadTimeMs = 1000f;
+        SwitchTimeMs = 350f;
         BulletMaxRange = 8f;
         MaxDamageRange = 3f;
         MinDamageRange = 6f;

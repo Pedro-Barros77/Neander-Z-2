@@ -253,7 +253,6 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="lastDamagedBodyPartName"></param>
     protected virtual void Die(string lastDamagedBodyPartName)
     {
-
         IsAlive = false;
         isDying = true;
         DeathTime = Time.time;

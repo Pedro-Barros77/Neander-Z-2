@@ -15,6 +15,7 @@ public class Colt_1911 : SemiAutoWeapon
         MagazineBullets = MagazineSize;
         BulletSpeed = 25f;
         ReloadTimeMs = 1000f;
+        SwitchTimeMs = 200f;
         BulletMaxRange = 15f;
         MaxDamageRange = 5f;
         MinDamageRange = 10f;

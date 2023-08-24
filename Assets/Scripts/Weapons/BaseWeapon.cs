@@ -47,6 +47,10 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     public float ReloadTimeMs { get; protected set; }
     /// <summary>
+    /// O tempo de troca da arma, em milissegundos.
+    /// </summary>
+    public float SwitchTimeMs { get; protected set; }
+    /// <summary>
     /// O tipo de proj�til que a arma dispara.
     /// </summary>
     public BulletTypes BulletType { get; protected set; }
@@ -62,6 +66,10 @@ public abstract class BaseWeapon : MonoBehaviour
     /// Se a arma est� sendo recarregada atualmente.
     /// </summary>
     public bool IsReloading { get; protected set; }
+    /// <summary>
+    /// Se a arma está sendo trocada atualmente.
+    /// </summary>
+    public bool IsSwitchingWeapon { get; set; }
     /// <summary>
     /// A direção em que o jogador está virado, 1 para direita, -1 para esquerda.
     /// </summary>
@@ -280,6 +288,9 @@ public abstract class BaseWeapon : MonoBehaviour
         if (Player.Backpack.GetAmmo(BulletType) <= 0)
             return false;
 
+        if (IsSwitchingWeapon)
+            return false;
+
         if (IsReloading)
             return false;
 
@@ -307,14 +318,18 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     public virtual void BeforeSwitchWeapon()
     {
-        if (IsReloading)
-        {
-            IsReloading = false;
-            reloadStartTime = null;
-        }
         isShooting = false;
+        IsSwitchingWeapon = true;
 
         Animator.SetFloat("reloadSpeed", 0);
+    }
+
+    /// <summary>
+    /// Função chamada após trocar de arma de volta, ativando o sprite desta arma.
+    /// </summary>
+    public virtual void AfterSwitchWeaponBack()
+    {
+        IsSwitchingWeapon = true;
     }
 
     /// <summary>
@@ -386,6 +401,9 @@ public abstract class BaseWeapon : MonoBehaviour
         var now = Time.time;
 
         if (IsReloading)
+            return false;
+
+        if (IsSwitchingWeapon)
             return false;
 
         if (reloadStartTime != null && Time.time - ReloadTimeMs <= reloadStartTime)
