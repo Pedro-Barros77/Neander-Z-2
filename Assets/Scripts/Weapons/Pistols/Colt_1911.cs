@@ -4,9 +4,9 @@ public class Colt_1911 : SemiAutoWeapon
 {
     protected override void Awake()
     {
+        base.Awake();
         Type = WeaponTypes.Colt_1911;
         IsPrimary = false;
-        base.Awake();
 
         BulletType = BulletTypes.Pistol;
         Damage = 6f;
@@ -20,6 +20,6 @@ public class Colt_1911 : SemiAutoWeapon
         MinDamageRange = 10f;
         ShootVolume = 0.5f;
         EmptyChamberVolume = 0.3f;
-        WeaponContainerOffset = new UnityEngine.Vector3(0f, 0.4f, 0f);
+        WeaponContainerOffset = new Vector3(0f, 0.4f, 0f);
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -40,9 +39,6 @@ public class ShotgunWeapon : BaseWeapon
 
     protected override void Update()
     {
-        Debug.DrawLine(BulletSpawnPoint.position, BulletSpawnPoint.position + BulletSpawnPoint.right * 100f, IsReloading ? Color.red : Color.green);
-
-
         if (MenuController.Instance.IsGamePaused)
             return;
 
@@ -115,6 +111,12 @@ public class ShotgunWeapon : BaseWeapon
         return canReload;
     }
 
+    public override void BeforeSwitchWeapon()
+    {
+        ReloadCanceled = true;
+        base.BeforeSwitchWeapon();
+    }
+
     public override void OnReloadedChamber()
     {
         if (UseMagazine)
@@ -157,16 +159,7 @@ public class ShotgunWeapon : BaseWeapon
     {
         base.SyncAnimationStates();
 
-        Animator.SetFloat("shootSpeed", FireRate / 10);
-        Animator.SetFloat("reloadSpeed", ReloadTimeMs / 1000);
-
-        if (IsReloading) Animator.SetTrigger("Reload");
-        else Animator.ResetTrigger("Reload");
-
         if (IsPumping) Animator.SetTrigger("Pump");
         else Animator.ResetTrigger("Pump");
-
-        if (isShooting) Animator.SetTrigger("Shoot");
-        else Animator.ResetTrigger("Shoot");
     }
 }

@@ -17,7 +17,6 @@ public class PlayerWeaponController : MonoBehaviour
     public Vector3 StartLocalPosition { get; private set; }
 
     Transform handTransform;
-    Transform PrimaryWeaponObject, SecondaryWeaponObject;
 
     private void Awake()
     {
@@ -30,8 +29,6 @@ public class PlayerWeaponController : MonoBehaviour
         Player = transform.parent.GetComponent<Player>();
         StartLocalScale = transform.localScale;
         StartLocalPosition = transform.localPosition;
-        PrimaryWeaponObject = handTransform.Find(Player.Backpack.EquippedPrimaryType.ToString());
-        SecondaryWeaponObject = handTransform.Find(Player.Backpack.EquippedSecondaryType.ToString());
     }
 
     // Update is called once per frame
@@ -65,15 +62,15 @@ public class PlayerWeaponController : MonoBehaviour
     public void SwitchWeapon(int? index = null)
     {
         if (index == null || index != Player.Backpack.CurrentWeaponIndex)
+        {
+            Player.CurrentWeapon.BeforeSwitchWeapon();
             Player.Backpack.SwitchWeapon(index);
+        }
 
         bool equippedPrimary = Player.Backpack.CurrentWeaponIndex == 0;
 
-        PrimaryWeaponObject = handTransform.Find(Player.Backpack.EquippedPrimaryType.ToString());
-        SecondaryWeaponObject = handTransform.Find(Player.Backpack.EquippedSecondaryType.ToString());
-
-        TogglePrimary(equippedPrimary);
-        ToggleSecondary(!equippedPrimary);
+        Player.Backpack.EquippedPrimaryWeapon.IsActive = equippedPrimary;
+        Player.Backpack.EquippedSecondaryWeapon.IsActive = !equippedPrimary;
     }
 
 
@@ -93,7 +90,6 @@ public class PlayerWeaponController : MonoBehaviour
         GameObject weaponObj = Instantiate(weaponPrefab, handTransform);
         weaponObj.GetComponent<BaseWeapon>().PlayerWeaponController = this;
         weaponObj.name = weaponType.ToString();
-        weaponObj.SetActive(false);
         return weaponObj;
     }
 
@@ -112,25 +108,5 @@ public class PlayerWeaponController : MonoBehaviour
         float orbitRadius = transform.localScale.x / 2;
         Vector3 offset = new Vector3(Mathf.Cos(AimAngle * Mathf.Deg2Rad), Mathf.Sin(AimAngle * Mathf.Deg2Rad), 0) * orbitRadius;
         handTransform.position = transform.position + offset;
-    }
-
-    /// <summary>
-    /// Ativa/desativa a arma primária, se existir alguma equipada.
-    /// </summary>
-    /// <param name="active">Se a arma deve ser ativada ou desativada.</param>
-    private void TogglePrimary(bool active)
-    {
-        if (PrimaryWeaponObject != null)
-            PrimaryWeaponObject.gameObject.SetActive(active);
-    }
-
-    /// <summary>
-    /// Ativa/desativa a arma secundária, se existir alguma equipada.
-    /// </summary>
-    /// <param name="active">Se a arma deve ser ativada ou desativada.</param>
-    private void ToggleSecondary(bool active)
-    {
-        if (SecondaryWeaponObject != null)
-            SecondaryWeaponObject.gameObject.SetActive(active);
     }
 }

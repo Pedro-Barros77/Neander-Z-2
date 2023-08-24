@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShortBarrel : ShotgunWeapon
 {
     protected override void Awake()
     {
+        base.Awake();
         Type = WeaponTypes.ShortBarrel;
         IsPrimary = true;
-        base.Awake();
 
         BulletType = BulletTypes.Shotgun;
         Damage = 3f;
@@ -25,6 +23,6 @@ public class ShortBarrel : ShotgunWeapon
         MinDamageRange = 6f;
         ShootVolume = 1f;
         EmptyChamberVolume = 0.3f;
-        WeaponContainerOffset = new UnityEngine.Vector3(0f, 0.4f, 0f);
+        WeaponContainerOffset = new Vector3(0f, 0.1f, 0f);
     }
 }

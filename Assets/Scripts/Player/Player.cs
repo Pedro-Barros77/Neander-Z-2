@@ -109,22 +109,16 @@ public class Player : MonoBehaviour, IEnemyTarget
     public PlayerWeaponController WeaponController;
     [SerializeField]
     ProgressBar HealthBar, StaminaBar;
-    Animator animator;
 
-    private void Awake()
+    void Start()
     {
         Backpack = new Backpack(this);
         Backpack.AddWeapon(WeaponTypes.Colt_1911);
         Backpack.AddWeapon(WeaponTypes.ShortBarrel);
-    }
-
-    void Start()
-    {
         WeaponController.SwitchWeapon(0);
         MaxMovementSpeed = MovementSpeed;
         MaxHealth = Health;
         MaxStamina = Stamina;
-        animator = GetComponent<Animator>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
 
         //float weaponContainerHeight = CurrentWeapon.WeaponContainerOffset.y;

@@ -55,6 +55,10 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     public WeaponTypes Type { get; protected set; }
     /// <summary>
+    /// Se esta arma é a arma ativa, usada pelo jogador atualmente.
+    /// </summary>
+    public bool IsActive { get; set; }
+    /// <summary>
     /// Se a arma est� sendo recarregada atualmente.
     /// </summary>
     public bool IsReloading { get; protected set; }
@@ -97,6 +101,14 @@ public abstract class BaseWeapon : MonoBehaviour
     /// Emissor de audio da arma
     /// </summary>
     protected AudioSource AudioSource;
+    /// <summary>
+    /// Referência ao componente SpriteRenderer da arma.
+    /// </summary>
+    protected SpriteRenderer SpriteRenderer;
+    /// <summary>
+    /// Referência ao componente ShadowCaster2D da arma.
+    /// </summary>
+    protected ShadowCaster2D ShadowCaster;
     /// <summary>
     /// Flash de luz do disparo da arma.
     /// </summary>
@@ -150,12 +162,14 @@ public abstract class BaseWeapon : MonoBehaviour
         BulletsContainer = GameObject.Find("ProjectilesContainer").transform;
         AudioSource = GetComponent<AudioSource>();
         Player = PlayerWeaponController.transform.parent.GetComponent<Player>();
+
         var sprite = transform.Find("Sprite");
         Animator = sprite.GetComponent<Animator>();
+        SpriteRenderer = sprite.GetComponent<SpriteRenderer>();
+        ShadowCaster = sprite.GetComponent<ShadowCaster2D>();
 
         FlashLight = sprite.Find("FlashLight").GetComponent<Light2D>();
         InnerFlashLight = FlashLight.transform.Find("InnerFlashLight").GetComponent<Light2D>();
-
         FlashLightStartIntensity = FlashLight.intensity;
         FlashLight.intensity = 0f;
         InnerFlashLight.intensity = 0f;
@@ -165,8 +179,15 @@ public abstract class BaseWeapon : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (MenuController.Instance.IsGamePaused)
+            return;
+
         Animation();
-        SetWeaponOffsets();
+
+        if (IsActive)
+            SetWeaponOffsets();
+
+        ToggleVisible(IsActive);
 
         //debug laser
         //Debug.DrawLine(BulletSpawnPoint.position, BulletSpawnPoint.position + BulletSpawnPoint.right * 100f, Color.red);
@@ -272,6 +293,28 @@ public abstract class BaseWeapon : MonoBehaviour
         reloadBackpackMagDiff = Player.Backpack.GetAmmo(BulletType) - toLoad;
 
         return true;
+    }
+
+    protected virtual void ToggleVisible(bool visible)
+    {
+        SpriteRenderer.enabled = visible;
+        ShadowCaster.enabled = visible;
+        IsActive = visible;
+    }
+
+    /// <summary>
+    /// Função chamada antes de trocar de arma, desativando o sprite desta arma.
+    /// </summary>
+    public virtual void BeforeSwitchWeapon()
+    {
+        if (IsReloading)
+        {
+            IsReloading = false;
+            reloadStartTime = null;
+        }
+        isShooting = false;
+
+        Animator.SetFloat("reloadSpeed", 0);
     }
 
     /// <summary>
@@ -383,7 +426,9 @@ public abstract class BaseWeapon : MonoBehaviour
             transform.localScale = new Vector3(PlayerFlipDir, 1, 1);
         }
 
-        SyncAnimationStates();
+        Animator.SetBool("isActive", IsActive);
+        if (IsActive)
+            SyncAnimationStates();
     }
 
     /// <summary>
@@ -391,6 +436,13 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     protected virtual void SyncAnimationStates()
     {
+        Animator.SetFloat("shootSpeed", FireRate / 10);
+        Animator.SetFloat("reloadSpeed", ReloadTimeMs / 1000);
 
+        if (IsReloading) Animator.SetTrigger("Reload");
+        else Animator.ResetTrigger("Reload");
+
+        if (isShooting) Animator.SetTrigger("Shoot");
+        else Animator.ResetTrigger("Shoot");
     }
 }
