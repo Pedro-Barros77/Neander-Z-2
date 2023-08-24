@@ -20,19 +20,12 @@ public class MenuController : MonoBehaviour
     }
 
     public bool IsGamePaused { get; set; }
+    public bool IsInGame { get; set; }
 
-    [SerializeField]
-    Player Player;
-    [SerializeField]
-    private GameObject PausePanel;
-    [SerializeField]
-    private Image ActiveWeaponImage, ActiveAmmoImage;
-    [SerializeField]
-    private TextMeshProUGUI MagazineBulletsText, TotalBulletsText;
-    [SerializeField]
-    Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon;
-    [SerializeField]
-    Sprite Colt_1911Sprite, ShortBarrelSprite;
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
@@ -41,52 +34,25 @@ public class MenuController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (IsGamePaused)
-                ContinueGame();
-            else
-                PauseGame();
-        }
 
-        UpdateInGameUI();
     }
 
     /// <summary>
-    /// Pausa o jogo, congelando o tempo e exibindo o menu de pausa.
+    /// Troca a cena atual para a cena especificada.
     /// </summary>
-    public void PauseGame()
+    /// <param name="scene">O nome da nova cena.</param>
+    /// <param name="mode">O modo de carregamento.</param>
+    public void ChangeScene(SceneNames scene, LoadSceneMode mode)
     {
-        Time.timeScale = 0;
-        IsGamePaused = true;
-        PausePanel.SetActive(true);
+        SceneManager.LoadScene(scene.ToString(), mode);
     }
 
     /// <summary>
-    /// Continua o jogo, descongelando o tempo e escondendo o menu de pausa.
+    /// Reinicia a cena ativa.
     /// </summary>
-    public void ContinueGame()
+    public void RestartScene()
     {
-        Time.timeScale = 1;
-        IsGamePaused = false;
-        PausePanel.SetActive(false);
-    }
-
-    /// <summary>
-    /// Reinicia o jogo, recarregando a cena atual.
-    /// </summary>
-    public void RestartGame()
-    {
-        ContinueGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    /// <summary>
-    /// Sai do jogo, voltando para o menu principal.
-    /// </summary>
-    public void QuitGame()
-    {
-        ContinueGame();
     }
 
     /// <summary>
@@ -103,29 +69,20 @@ public class MenuController : MonoBehaviour
     }
 
     /// <summary>
-    /// Atualiza as informações na tela do jogo atual.
+    /// Pausa o jogo, congelando o tempo.
     /// </summary>
-    private void UpdateInGameUI()
+    public void PauseGame()
     {
-        MagazineBulletsText.text = Player.CurrentWeapon.MagazineBullets.ToString();
-        TotalBulletsText.text = Player.Backpack.GetAmmo(Player.CurrentWeapon.BulletType).ToString();
+        Time.timeScale = 0;
+        IsGamePaused = true;
+    }
 
-        ActiveAmmoImage.sprite = Player.CurrentWeapon.BulletType switch
-        {
-            BulletTypes.Pistol => PistolBulletIcon,
-            BulletTypes.Shotgun => ShotgunBulletIcon,
-            BulletTypes.AssaultRifle => RifleAmmoIcon,
-            BulletTypes.Sniper => SniperAmmoIcon,
-            BulletTypes.Rocket => RocketAmmoIcon,
-            BulletTypes.Melee => MeleeAmmoIcon,
-            _ => null,
-        };
-
-        ActiveWeaponImage.sprite = Player.CurrentWeapon.Type switch
-        {
-            WeaponTypes.Colt_1911 => Colt_1911Sprite,
-            WeaponTypes.ShortBarrel => ShortBarrelSprite,
-            _ => null,
-        };
+    /// <summary>
+    /// Continua o jogo, descongelando o tempo.
+    /// </summary>
+    public void ContinueGame()
+    {
+        Time.timeScale = 1;
+        IsGamePaused = false;
     }
 }

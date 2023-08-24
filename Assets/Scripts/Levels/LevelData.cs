@@ -6,4 +6,9 @@ public class LevelData : MonoBehaviour
 {
     [SerializeField]
     public Vector2 TopLeftSpawnLimit, BottomRightSpawnLimit;
+
+    private void Start()
+    {
+        MenuController.Instance.IsInGame = true;
+    }
 }
