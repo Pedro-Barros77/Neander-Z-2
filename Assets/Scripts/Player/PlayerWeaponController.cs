@@ -5,13 +5,9 @@ using UnityEngine.XR;
 public class PlayerWeaponController : MonoBehaviour
 {
     /// <summary>
-    /// O ângulo de mira do jogador, em Radians (Come�ando da direita, sentido anti-hor�rio: direita 0, cima 90, esquerda 180, esquerda -180, baixo -90, direita 0).
+    /// O ângulo de mira do jogador, em Graus (Direita: 0, Cima: 90, Esquerda: 180, Baixo: 270).
     /// </summary>
-    public float AimAngle { get; set; }
-    /// <summary>
-    /// O ângulo de mira do jogador, em Degrees (de 0 a 360).
-    /// </summary>
-    public float AimAngleInDegrees => AimAngle * Mathf.Rad2Deg;
+    public float AimAngleDegrees { get; set; }
     /// <summary>
     /// Se a arma está sendo trocada atualmente.
     /// </summary>
@@ -20,8 +16,14 @@ public class PlayerWeaponController : MonoBehaviour
     /// O jogador pai deste controlador.
     /// </summary>
     public Player Player { get; set; }
-    public Vector3 StartLocalScale { get; private set; }
+    /// <summary>
+    /// A posição relativa local inicial do container de mira.
+    /// </summary>
     public Vector3 StartLocalPosition { get; private set; }
+    /// <summary>
+    /// Se o jogador está mirando para a esquerda.
+    /// </summary>
+    public bool IsAimingLeft => AimAngleDegrees > 90 && AimAngleDegrees < 270;
 
     Transform handTransform;
     float? startSwitchTime;
@@ -35,7 +37,6 @@ public class PlayerWeaponController : MonoBehaviour
     void Start()
     {
         Player = transform.parent.GetComponent<Player>();
-        StartLocalScale = transform.localScale;
         StartLocalPosition = transform.localPosition;
     }
 
@@ -104,7 +105,7 @@ public class PlayerWeaponController : MonoBehaviour
         if (Time.time - startSwitchTime < currentWeaponSwitchTimeMs / 1000)
         {
             float t = (Time.time - startSwitchTime.Value) / (currentWeaponSwitchTimeMs / 1000);
-            float animAngle = Mathf.Lerp(90, 0, t);
+            float animAngle = Mathf.Lerp(90, IsAimingLeft ? 180 : 0, t);
 
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, animAngle));
         }
@@ -146,8 +147,8 @@ public class PlayerWeaponController : MonoBehaviour
         Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, transform.position.z));
         Vector3 direction = worldMousePos - transform.position;
 
-        AimAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, AimAngle));
+        AimAngleDegrees = Mathf.Atan2(direction.y, direction.x).RadToDeg();
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, AimAngleDegrees));
 
         SetHandAimOffset();
     }
@@ -158,7 +159,7 @@ public class PlayerWeaponController : MonoBehaviour
     private void SetHandAimOffset()
     {
         float orbitRadius = transform.localScale.x / 2;
-        Vector3 offset = new Vector3(Mathf.Cos(AimAngle * Mathf.Deg2Rad), Mathf.Sin(AimAngle * Mathf.Deg2Rad), 0) * orbitRadius;
+        Vector3 offset = new Vector3(Mathf.Cos(AimAngleDegrees * Mathf.Deg2Rad), Mathf.Sin(AimAngleDegrees * Mathf.Deg2Rad), 0) * orbitRadius;
         handTransform.position = transform.position + offset;
     }
 }

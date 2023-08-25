@@ -218,7 +218,7 @@ public abstract class BaseWeapon : MonoBehaviour
         if (!isDecreasingFlashIntensity)
             StartCoroutine(DecreaseFlashIntensity());
 
-        var angle = PlayerWeaponController.AimAngle;
+        var angle = PlayerWeaponController.AimAngleDegrees;
         var particlesRotation = Quaternion.Euler(angle + 180, -90f, 0f);
         Instantiate(SmokeParticlesPrefab, BulletSpawnPoint.position, particlesRotation, BulletsContainer);
 
@@ -235,14 +235,14 @@ public abstract class BaseWeapon : MonoBehaviour
         return bullets;
     }
 
-    protected virtual List<GameObject> CreateBullets(float radiansAngle)
+    protected virtual List<GameObject> CreateBullets(float angleDegrees)
     {
-        var bulletInstance = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.Euler(0f, 0f, radiansAngle), BulletsContainer);
+        var bulletInstance = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.Euler(0f, 0f, angleDegrees), BulletsContainer);
         var bullet = bulletInstance.GetComponent<Projectile>();
 
         bullet.Type = BulletTypes.Pistol;
         bullet.StartPos = BulletSpawnPoint.position;
-        bullet.AngleInRadians = PlayerWeaponController.AimAngle;
+        bullet.AngleDegrees = PlayerWeaponController.AimAngleDegrees;
         bullet.Speed = BulletSpeed;
         bullet.Damage = Damage;
         bullet.MaxDistance = BulletMaxRange;
@@ -431,7 +431,7 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     protected virtual void Animation()
     {
-        bool aimingLeft = Mathf.Abs(PlayerWeaponController.AimAngle) > 90;
+        bool aimingLeft = PlayerWeaponController.IsAimingLeft;
         float absoluteYPosition = Mathf.Abs(transform.localPosition.y);
         if (aimingLeft)
         {
