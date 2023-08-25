@@ -88,10 +88,10 @@ public class ShotgunWeapon : BaseWeapon
 
         for (int i = 0; i < ShellPelletsCount; i++)
         {
-            var randomAngle = PlayerWeaponController.AimAngle + Random.Range(-PelletsDispersion, PelletsDispersion);
+            var randomAngle = PlayerWeaponController.AimAngleDegrees + Random.Range(-PelletsDispersion, PelletsDispersion);
             var bulletInstance = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.Euler(0f, 0f, randomAngle), BulletsContainer);
             var bullet = bulletInstance.GetComponent<Projectile>();
-            bullet.AngleInRadians = randomAngle;
+            bullet.AngleDegrees = randomAngle;
             InitBullet(bullet);
             bulletsInstances.Add(bulletInstance);
         }

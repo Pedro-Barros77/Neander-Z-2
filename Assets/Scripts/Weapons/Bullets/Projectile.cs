@@ -3,8 +3,7 @@ using UnityEngine;
 public abstract class Projectile : MonoBehaviour
 {
     public BulletTypes Type { get; set; }
-    public float AngleInRadians { get; set; }
-    public float AngleInDegrees => Mathf.Repeat(AngleInRadians * Mathf.Rad2Deg, 360f);
+    public float AngleDegrees { get; set; }
     public float Speed { get; set; }
     public float Damage { get; set; }
     public float TotalDamage { get; set; }
@@ -21,7 +20,6 @@ public abstract class Projectile : MonoBehaviour
     public float BlastMaxDamageRadius { get; set; }
     public float BlastMinDamageRadius { get; set; }
 
-    protected Vector3 StartDirection { get; set; }
     protected Rigidbody2D Rigidbody { get; set; }
     protected Vector2 LastPosition;
     protected LayerMask TargetLayerMask;
@@ -35,6 +33,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void Update()
     {
+
         var distanceFromStart = Vector3.Distance(transform.position, StartPos);
         if (distanceFromStart >= MaxDistance || distanceFromStart >= 100f)
         {
@@ -94,7 +93,6 @@ public abstract class Projectile : MonoBehaviour
     /// </summary>
     public virtual void Init()
     {
-        StartDirection = (AngleInDegrees * Vector3.right).normalized;
     }
 
     /// <summary>

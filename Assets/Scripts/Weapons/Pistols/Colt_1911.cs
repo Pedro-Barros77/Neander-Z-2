@@ -19,7 +19,7 @@ public class Colt_1911 : SemiAutoWeapon
         BulletMaxRange = 15f;
         MaxDamageRange = 5f;
         MinDamageRange = 10f;
-        ShootVolume = 0.5f;
+        ShootVolume = 0.4f;
         EmptyChamberVolume = 0.3f;
         WeaponContainerOffset = new Vector3(0f, 0.4f, 0f);
     }
