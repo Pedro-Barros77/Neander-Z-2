@@ -8,7 +8,7 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     Player Player;
     [SerializeField]
-    private GameObject PausePanel;
+    private GameObject PausePanel, GameOverPanel;
     [SerializeField]
     private Image ActiveWeaponImage, ActiveAmmoImage;
     [SerializeField]
@@ -25,7 +25,7 @@ public class InGameScreen : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && Player.IsAlive)
         {
             if (MenuController.Instance.IsGamePaused)
                 ContinueGame();
@@ -87,6 +87,7 @@ public class InGameScreen : MonoBehaviour
     public void RestartGame()
     {
         ContinueGame();
+        GameOverPanel.SetActive(false);
         MenuController.Instance.RestartScene();
     }
 
@@ -97,6 +98,16 @@ public class InGameScreen : MonoBehaviour
     {
         ContinueGame();
         MenuController.Instance.IsInGame = false;
+        GameOverPanel.SetActive(false);
         MenuController.Instance.ChangeScene(SceneNames.MainMenu, LoadSceneMode.Single);
+    }
+
+    /// <summary>
+    /// Mostra o painel de fim de jogo.
+    /// </summary>
+    public void ShowGameOverPanel()
+    {
+        MenuController.Instance.ShowGameOverPanel();
+        GameOverPanel.SetActive(true);
     }
 }

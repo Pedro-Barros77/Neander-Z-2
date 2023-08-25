@@ -1,6 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Device;
 
 public class Player : MonoBehaviour, IEnemyTarget
 {
@@ -77,6 +80,10 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// A ъltima vez que o jogador gastou stamina.
     /// </summary>
     public float LastStaminaUse { get; private set; }
+    public bool IsAlive { get; private set; }
+    public bool isDying { get; private set; }
+    public float DeathTime { get; private set; }
+    public float DeathTimeDelayMs { get; private set; } = 5000f;
     #endregion
 
     /// <summary>
@@ -101,6 +108,8 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// </summary>
     public BaseWeapon CurrentWeapon => Backpack.EquippedWeapon;
     protected SpriteRenderer SpriteRenderer;
+    private InGameScreen Screen;
+
 
     /// <summary>
     /// Script responsбvel por controlar a arma do jogador, como mira, troca e recarregamento.
@@ -112,6 +121,8 @@ public class Player : MonoBehaviour, IEnemyTarget
 
     void Start()
     {
+        IsAlive = true;
+        Screen = GameObject.Find("Screen").GetComponent<InGameScreen>();
         Backpack = new Backpack(this);
         Backpack.AddWeapon(WeaponTypes.Colt_1911);
         Backpack.AddWeapon(WeaponTypes.ShortBarrel);
@@ -156,10 +167,21 @@ public class Player : MonoBehaviour, IEnemyTarget
 
     private void FixedUpdate()
     {
+        if (!IsAlive)
+            return;
+
         var staminaCooledDown = LastStaminaUse + (StaminaRegenDelayMs / 1000) <= Time.time;
 
         if (staminaCooledDown)
             GetStamina(StaminaRegenRate * Time.deltaTime);
+    }
+
+    /// <summary>
+    /// Função para mostrar o painel de game over, quando o player morre.
+    /// </summary>
+    public void ShowGameOverPanel()
+    {
+        Screen.ShowGameOverPanel();
     }
 
     /// <summary>
@@ -184,6 +206,21 @@ public class Player : MonoBehaviour, IEnemyTarget
 
         Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         HealthBar.RemoveValue(value);
+
+        if (Health <= 0 && IsAlive)
+            Die();
+    }
+
+    /// <summary>
+    /// Função que é chamada quando o jogador morre.
+    /// </summary>
+    protected virtual void Die()
+    {
+        IsAlive = false;
+        isDying = true;
+        StaminaBar.gameObject.SetActive(false);
+        Destroy(Backpack.EquippedPrimaryWeapon.gameObject);
+        Destroy(Backpack.EquippedSecondaryWeapon.gameObject);
     }
 
     /// <summary>

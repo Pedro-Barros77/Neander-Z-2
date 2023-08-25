@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     bool isCrouching;
     bool isSprinting;
 
-    bool isIdle => !isRolling && !isJumpingSideways && !isTurning && !isTurningBack && !isRunning && !isFalling && !isCrouching;
+    bool isIdle => !isRolling && !isJumpingSideways && !isTurning && !isTurningBack && !isRunning && !isFalling && !isCrouching && !Player.isDying;
 
     bool isPressingRight;
     bool isPressingLeft;
@@ -66,6 +66,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!Player.IsAlive || Player.isDying)
+        {
+            Animation();
+            return;
+        }
+
         dirInput = Input.GetAxisRaw("Horizontal");
         var rollCooledDown = LastRollTime + (RollCooldownMs / 1000) <= Time.time;
 
@@ -99,11 +105,17 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!Player.IsAlive)
+            return;
+
         Movement();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!Player.IsAlive)
+            return;
+
         if (collision.gameObject.CompareTag("Environment"))
         {
             isGrounded = true;
@@ -118,6 +130,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if (!Player.IsAlive)
+            return;
+
         if (collision.gameObject.CompareTag("Environment"))
         {
             isGrounded = false;
@@ -295,6 +310,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isJumpingSideways", isJumpingSideways);
         animator.SetBool("isCrouching", isCrouching);
+
+        if (Player.isDying)
+            animator.SetTrigger("Die");
+        else
+            animator.ResetTrigger("Die");
 
         if (isSprinting)
             animator.SetFloat("SprintSpeedMultiplier", SprintSpeedMultiplier);

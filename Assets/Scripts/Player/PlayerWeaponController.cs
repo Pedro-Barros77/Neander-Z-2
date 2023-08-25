@@ -42,6 +42,9 @@ public class PlayerWeaponController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Player.IsAlive)
+            return;
+
         if (MenuController.Instance.IsGamePaused)
             return;
 

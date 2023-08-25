@@ -72,4 +72,12 @@ public class MenuController : MonoBehaviour
         Time.timeScale = 1;
         IsGamePaused = false;
     }
+    /// <summary>
+    /// Tela de game over, congela o tempo.
+    /// </summary>
+    public void ShowGameOverPanel()
+    {
+        Time.timeScale = 0;
+        IsGamePaused = true;
+    }
 }
