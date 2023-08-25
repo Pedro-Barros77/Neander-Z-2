@@ -56,19 +56,6 @@ public class MenuController : MonoBehaviour
     }
 
     /// <summary>
-    /// Reinicia o estado e animação do botão.
-    /// </summary>
-    /// <param name="btnAnimator">Botão a ser reiniciado.</param>
-    public void ResetButton(Animator btnAnimator)
-    {
-        btnAnimator.ResetTrigger("Highlighted");
-        btnAnimator.ResetTrigger("Pressed");
-        btnAnimator.ResetTrigger("Selected");
-        btnAnimator.SetTrigger("Normal");
-        btnAnimator.transform.localScale = new Vector3(1, 1, 1);
-    }
-
-    /// <summary>
     /// Pausa o jogo, congelando o tempo.
     /// </summary>
     public void PauseGame()

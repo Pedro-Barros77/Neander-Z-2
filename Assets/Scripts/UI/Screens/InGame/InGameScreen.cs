@@ -64,15 +64,6 @@ public class InGameScreen : MonoBehaviour
     }
 
     /// <summary>
-    /// Reinicia o estado e animação do botão.
-    /// </summary>
-    /// <param name="btnAnimator">Botão a ser reiniciado.</param>
-    public void ResetButton(Animator btnAnimator)
-    {
-        MenuController.Instance.ResetButton(btnAnimator);
-    }
-
-    /// <summary>
     /// Pausa o jogo, congelando o tempo e exibindo o menu de pausa.
     /// </summary>
     public void PauseGame()
