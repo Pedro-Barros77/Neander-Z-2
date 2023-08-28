@@ -355,9 +355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c837f5884a0964e851ae007a86d20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldPosCanvas: {fileID: 0}
   HealthBarPrefab: {fileID: 5826301193245720848, guid: b772a17772a316c458ab20c5a7ac87fe, type: 3}
   BloodSplatterPrefab: {fileID: 7444960458494065295, guid: 1f360cc0117f0d14db021d5b0edac523, type: 3}
+  Popup: {fileID: 3485387679412284040, guid: bb2b0f169ee9b094ab857f1d11928365, type: 3}
   DamageSounds:
   - {fileID: 8300000, guid: dbb62e4dc25c24147b1fd1b07bbff3fb, type: 3}
   - {fileID: 8300000, guid: bcc940868c4d4ab4d82da916962e17ff, type: 3}
@@ -374,6 +374,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4d080dbaef6954b41be4a716f9cd41b9, type: 3}
   - {fileID: 8300000, guid: d1380579c834c894495c2e7a7044ff03, type: 3}
   - {fileID: 8300000, guid: e9e2587f98bea7f4381e93fc24abb47c, type: 3}
+  PopupOffset: {x: 0, y: 0, z: 0}
 --- !u!50 &7224592029183127622
 Rigidbody2D:
   serializedVersion: 4
