@@ -7,5 +7,5 @@ public interface IEnemyTarget
 {
     public GameObject gameObject { get; }
     public Transform transform { get; }
-    public void TakeDamage(float damage);
+    public void TakeDamage(float damage, string bodyPartName, Vector3? hitPosition = null);
 }

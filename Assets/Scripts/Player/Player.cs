@@ -107,9 +107,10 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// A arma atualmente equipada nas mгos do jogador.
     /// </summary>
     public BaseWeapon CurrentWeapon => Backpack.EquippedWeapon;
-    protected SpriteRenderer SpriteRenderer;
+    private SpriteRenderer SpriteRenderer;
     private InGameScreen Screen;
-
+    private Canvas WorldPosCanvas;
+    private GameObject PopupPrefab;
 
     /// <summary>
     /// Script responsбvel por controlar a arma do jogador, como mira, troca e recarregamento.
@@ -130,6 +131,8 @@ public class Player : MonoBehaviour, IEnemyTarget
         MaxMovementSpeed = MovementSpeed;
         MaxHealth = Health;
         MaxStamina = Stamina;
+        WorldPosCanvas = GameObject.Find("WorldPositionCanvas").GetComponent<Canvas>();
+        PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
         SpriteRenderer = GetComponent<SpriteRenderer>();
 
         //float weaponContainerHeight = CurrentWeapon.WeaponContainerOffset.y;
@@ -161,7 +164,7 @@ public class Player : MonoBehaviour, IEnemyTarget
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            TakeDamage(20);
+            TakeDamage(20, "");
         }
     }
 
@@ -194,18 +197,35 @@ public class Player : MonoBehaviour, IEnemyTarget
 
         Health = Mathf.Clamp(Health + value, 0, MaxHealth);
         HealthBar.AddValue(value);
+        ShowPopup(value.ToString("0"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+    }
+    /// <summary>
+    /// Função para exibir o popup com devidos parâmetros.
+    /// </summary>
+    /// <param name="text">Texto a ser exibido</param>
+    /// <param name="textColor">A cor que o popup vai ser exibido</param>
+    /// <param name="hitPosition">A posição que o popup vai aparecer</param>
+    private void ShowPopup(string text, Color32 textColor, Vector3 hitPosition)
+    {
+        var popup = Instantiate(PopupPrefab, hitPosition, Quaternion.identity, WorldPosCanvas.transform);
+        var popupSystem = popup.GetComponent<PopupSystem>();
+        if (popupSystem != null)
+        {
+            popupSystem.Init(text, hitPosition, 2000f, textColor);
+        }
     }
 
     /// <summary>
     /// Diminui a vida e modifica a barra de vida.
     /// </summary>
     /// <param name="value">O valor a ser subtraнdo da vida.</param>
-    public void TakeDamage(float value)
+    public void TakeDamage(float value, string bodyPartName, Vector3? hitPosition = null)
     {
         if (value < 0) return;
 
         Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         HealthBar.RemoveValue(value);
+        ShowPopup(value.ToString("0"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (Health <= 0 && IsAlive)
             Die();

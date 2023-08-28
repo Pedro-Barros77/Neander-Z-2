@@ -116,6 +116,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     protected GameObject HealthBarPrefab, BloodSplatterPrefab;
     [SerializeField]
     protected List<AudioClip> DamageSounds, AttackStartSounds, AttackHitSounds, DeathSounds;
+    protected GameObject PopupPrefab;
 
     protected Transform EffectsContainer;
     protected bool isRunning;
@@ -139,6 +140,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         AttackTrigger = transform.Find("AttackArea").GetComponent<AttackTrigger>();
         AttackTrigger.OnTagTriggered += OnTargetHit;
         EffectsContainer = GameObject.Find("EffectsContainer").transform;
+        PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
 
         HealthBar = Instantiate(HealthBarPrefab, WorldPosCanvas.transform).GetComponent<ProgressBar>();
         HealthBar.gameObject.name = $"{Type}-HealthBar";
@@ -204,23 +206,45 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     }
 
     /// <summary>
+    /// Função para exibir o popup com devidos parâmetros.
+    /// </summary>
+    /// <param name="text">Texto a ser exibido</param>
+    /// <param name="textColor">A cor que o popup vai ser exibido</param>
+    /// <param name="hitPosition">A posição que o popup vai aparecer</param>
+    private void ShowPopup(string text, Color32 textColor, Vector3 hitPosition)
+    {
+        var popup = Instantiate(PopupPrefab, hitPosition, Quaternion.identity, WorldPosCanvas.transform);
+        var popupSystem = popup.GetComponent<PopupSystem>();
+        if (popupSystem != null)
+        {
+            popupSystem.Init(text, hitPosition, 2000f, textColor);
+        }
+    }
+
+    /// <summary>
     /// Diminui a vida e modifica a barra de vida.
     /// </summary>
     /// <param name="value">O valor a ser subtraído da vida.</param>
     /// <param name="bodyPartName">O nome da parte do corpo (GameObject) do inimigo que foi atingida.</param>
-    public virtual void TakeDamage(float value, string bodyPartName)
+    public virtual void TakeDamage(float value, string bodyPartName, Vector3? hitPosition = null)
     {
         if (value < 0 || Health <= 0) return;
+
+        Color32 color;
 
         switch (bodyPartName)
         {
             case "Head":
                 value *= HeadshotDamageMultiplier;
+                color = Color.red;
                 break;
 
             default:
+                color = Color.yellow;
                 break;
         }
+
+        ShowPopup(value.ToString("0"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (DamageSounds.Any())
         {
@@ -245,6 +269,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         Health = Mathf.Clamp(Health + value, 0, MaxHealth);
         HealthBar.AddValue(value);
+        ShowPopup(value.ToString("0"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
     }
 
     /// <summary>
@@ -307,7 +332,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
             AudioSource.PlayOneShot(randomHitSound, AttackHitSoundVolume);
         }
 
-        target.TakeDamage(Damage);
+        target.TakeDamage(Damage, "");
     }
 
     public virtual void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection)
