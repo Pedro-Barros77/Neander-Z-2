@@ -22,6 +22,12 @@ public class MenuController : MonoBehaviour
     public bool IsGamePaused { get; set; }
     public bool IsInGame { get; set; }
 
+    [SerializeField]
+    Sprite ArrowCursor, PointerCursor;
+
+    public Image GameCursor;
+    Vector3 CursorPointOffset = Vector3.zero;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -29,12 +35,33 @@ public class MenuController : MonoBehaviour
 
     void Start()
     {
-
     }
 
     void Update()
     {
+        if (GameCursor != null)
+        {
+            Cursor.visible = false;
+            GameCursor.transform.position = Input.mousePosition + CursorPointOffset;
+        }
+        else
+            Cursor.visible = true;
+    }
 
+    public void SetCursor(Cursors cursor)
+    {
+        float cursorLocalScale = GameCursor.rectTransform.localScale.x;
+        switch (cursor)
+        {
+            case Cursors.Arrow:
+                GameCursor.sprite = ArrowCursor;
+                CursorPointOffset = Vector3.zero;
+                break;
+            case Cursors.Pointer:
+                GameCursor.sprite = PointerCursor;
+                CursorPointOffset = new Vector3(-(8 * cursorLocalScale), 0, 0);
+                break;
+        }
     }
 
     /// <summary>

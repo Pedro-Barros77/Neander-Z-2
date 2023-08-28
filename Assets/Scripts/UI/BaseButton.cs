@@ -41,13 +41,28 @@ public class BaseButton : MonoBehaviour
     /// <summary>
     /// Função chamada quando o mouse passa por cima do botão.
     /// </summary>
-    public void OnHover()
+    public void OnHoverIn()
     {
+        Debug.Log("HoverIn");
         if (!button.interactable)
             return;
 
         if (HoverSound != null)
             audioSource.PlayOneShot(HoverSound, HoverVolume);
+
+        MenuController.Instance.SetCursor(Cursors.Pointer);
+    }
+
+    /// <summary>
+    /// Função chamada quando o mouse sai de cima do botão.
+    /// </summary>
+    public void OnHoverOut()
+    {
+        Debug.Log("HoverOut");
+        if (!button.interactable)
+            return;
+
+        MenuController.Instance.SetCursor(Cursors.Arrow);
     }
 
     /// <summary>
