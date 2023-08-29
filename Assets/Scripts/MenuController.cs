@@ -33,16 +33,23 @@ public class MenuController : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         PersistentCanvas = GameObject.Find("PersistentCanvas");
+
         if (_instance == null || _instance == this)
         {
             _instance = this;
-            PersistentCanvas.tag = "Original";
             gameObject.tag = "Original";
+            if (PersistentCanvas != null)
+                PersistentCanvas.tag = "Original";
         }
-        FpsCount = GameObject.Find("GameFPS").GetComponent<FPSCount>();
-        DontDestroyOnLoad(gameObject);
-        DontDestroyOnLoad(PersistentCanvas);
+
+        var fpsObj = GameObject.Find("GameFPS");
+        if (fpsObj != null)
+            FpsCount = fpsObj.GetComponent<FPSCount>();
+
+        if (PersistentCanvas != null)
+            DontDestroyOnLoad(PersistentCanvas);
     }
 
     void Start()
@@ -63,8 +70,16 @@ public class MenuController : MonoBehaviour
             FpsCount.gameObject.SetActive(!FpsCount.gameObject.activeSelf);
         }
     }
+
+    /// <summary>
+    /// Troca o cursor do jogo.
+    /// </summary>
+    /// <param name="cursor">O tipo de cursor a ser definido.</param>
     public void SetCursor(Cursors cursor)
     {
+        if (GameCursor == null)
+            return;
+
         float cursorLocalScale = GameCursor.rectTransform.localScale.x;
         switch (cursor)
         {

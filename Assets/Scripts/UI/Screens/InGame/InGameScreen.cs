@@ -20,7 +20,6 @@ public class InGameScreen : MonoBehaviour
 
     void Start()
     {
-        MenuController.Instance.GameCursor = GameObject.Find("GameCursor").GetComponent<Image>();
     }
 
     void Update()

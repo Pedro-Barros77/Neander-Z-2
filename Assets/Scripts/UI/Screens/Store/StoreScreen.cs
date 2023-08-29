@@ -11,7 +11,6 @@ public class StoreScreen : MonoBehaviour
     void Start()
     {
         StoreItems = GameObject.FindGameObjectsWithTag("StoreItem").ToList();
-        MenuController.Instance.GameCursor = GameObject.Find("GameCursor").GetComponent<Image>();
     }
 
     void Update()
