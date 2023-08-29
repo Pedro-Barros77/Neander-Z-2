@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuScreen : MonoBehaviour
 {
     void Start()
     {
-        
+        MenuController.Instance.GameCursor = GameObject.Find("GameCursor").GetComponent<Image>();
+        MenuController.Instance.SetCursor(Cursors.Arrow);
     }
 
     void Update()
