@@ -32,14 +32,16 @@ public class WavesManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
-            SpawnRogerTest();
+            SpawnRogerTest(EnemyTypes.Z_Roger);
+        if (Input.GetKeyDown(KeyCode.X))
+            SpawnRogerTest(EnemyTypes.Z_Robert);
     }
 
-    void SpawnRogerTest()
+    void SpawnRogerTest(EnemyTypes type)
     {
         float randonX = Random.Range(LevelData.TopLeftSpawnLimit.x, LevelData.BottomRightSpawnLimit.x);
         Vector3 spawnPosition = new Vector3(randonX, LevelData.BottomRightSpawnLimit.y, 0);
 
-        GameObject roger = Instantiate(Resources.Load<GameObject>($"Prefabs/Enemies/{EnemyTypes.Z_Roger}"), spawnPosition, Quaternion.identity);
+        GameObject roger = Instantiate(Resources.Load<GameObject>($"Prefabs/Enemies/{type}"), spawnPosition, Quaternion.identity);
     }
 }

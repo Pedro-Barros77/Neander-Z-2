@@ -43,7 +43,6 @@ public class BaseButton : MonoBehaviour
     /// </summary>
     public void OnHoverIn()
     {
-        Debug.Log("HoverIn");
         if (!button.interactable)
             return;
 
@@ -58,7 +57,6 @@ public class BaseButton : MonoBehaviour
     /// </summary>
     public void OnHoverOut()
     {
-        Debug.Log("HoverOut");
         if (!button.interactable)
             return;
 

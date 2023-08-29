@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1b0e8fdd11518a84c811273caa1d84d4
+guid: cd0ac889f7f8d074b9fc789ceb19f9e9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Roger_Death_0
+      name: Robert_Run_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 44
-        height: 44
+        width: 156
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac8541d47d50b1541992f267ede9439b
-      internalID: -129098146
+      spriteID: e18b0e9623a8a7d4bb2fc3f475f2fd2c
+      internalID: -909054780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roger_Death_1
+      name: Robert_Run_1
       rect:
         serializedVersion: 2
-        x: 44
+        x: 156
         y: 0
-        width: 44
-        height: 44
+        width: 156
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0aa3797a880173143a8b7ed07ac2f56a
-      internalID: 280351752
+      spriteID: 1b4e7f947da6adf42bd0fbbe29fd113b
+      internalID: 1130656066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roger_Death_2
+      name: Robert_Run_2
       rect:
         serializedVersion: 2
-        x: 88
+        x: 312
         y: 0
-        width: 44
-        height: 44
+        width: 156
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e8ab561c3c1fd54bad8514f64c98618
-      internalID: 1895354881
+      spriteID: af15071e137a2124eab7b1ea669dbedb
+      internalID: -844442605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roger_Death_3
+      name: Robert_Run_3
       rect:
         serializedVersion: 2
-        x: 132
+        x: 468
         y: 0
-        width: 44
-        height: 44
+        width: 156
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0d7f8bf01f4197489914706d55f407e
-      internalID: 2099956434
+      spriteID: 96c1e1e3c5816b94082ef823df163a98
+      internalID: -1338234356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roger_Death_4
+      name: Robert_Run_4
       rect:
         serializedVersion: 2
-        x: 176
+        x: 624
         y: 0
-        width: 44
-        height: 44
+        width: 156
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d0e4551d232d3947a58d0c7b9377ffd
-      internalID: -725967120
+      spriteID: a42f4d9e484796b47b5e84463bd4c045
+      internalID: -1967400746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roger_Death_5
+      name: Robert_Run_5
       rect:
         serializedVersion: 2
-        x: 220
+        x: 780
         y: 0
-        width: 44
-        height: 44
+        width: 156
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ec3564183d0ea64588de53e1aa66270
-      internalID: -1387687455
+      spriteID: 0adc5d4133f0e0c43913c3dc50b2a7cd
+      internalID: -1557901167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roger_Death_6
+      name: Robert_Run_6
       rect:
         serializedVersion: 2
-        x: 264
+        x: 936
         y: 0
-        width: 44
-        height: 44
+        width: 156
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 092d0d43479be5e46b2b153c1c52a674
-      internalID: 264375611
+      spriteID: f34dfe3a9a609274e9ba5f6979236071
+      internalID: 1150091979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Roger_Death_7
+      name: Robert_Run_7
       rect:
         serializedVersion: 2
-        x: 308
+        x: 1092
         y: 0
-        width: 44
-        height: 44
+        width: 156
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f42c7f432a70a94f941f08bc32bb9eb
-      internalID: 395553244
+      spriteID: e8c64d61545cd3c46bf84bc32390c5fb
+      internalID: 675068383
       vertices: []
       indices: 
       edges: []
@@ -288,14 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Roger_Death_0: -129098146
-      Roger_Death_1: 280351752
-      Roger_Death_2: 1895354881
-      Roger_Death_3: 2099956434
-      Roger_Death_4: -725967120
-      Roger_Death_5: -1387687455
-      Roger_Death_6: 264375611
-      Roger_Death_7: 395553244
+      Robert_Run_0: -909054780
+      Robert_Run_1: 1130656066
+      Robert_Run_2: -844442605
+      Robert_Run_3: -1338234356
+      Robert_Run_4: -1967400746
+      Robert_Run_5: -1557901167
+      Robert_Run_6: 1150091979
+      Robert_Run_7: 675068383
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

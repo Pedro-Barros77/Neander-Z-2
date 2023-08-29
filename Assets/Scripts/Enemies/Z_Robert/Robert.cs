@@ -1,8 +1,8 @@
-public class Roger : BaseEnemy
+public class Robert : BaseEnemy
 {
     protected override void Start()
     {
-        Type = EnemyTypes.Z_Roger;
+        Type = EnemyTypes.Z_Robert;
         MovementSpeed = 0.5f;
         AccelerationSpeed = 1f;
         Health = 28f;
