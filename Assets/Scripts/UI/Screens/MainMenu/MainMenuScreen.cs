@@ -17,7 +17,7 @@ public class MainMenuScreen : MonoBehaviour
     /// </summary>
     public void StartSurvivalMode()
     {
-        MenuController.Instance.ChangeScene(SceneNames.SampleScene, LoadSceneMode.Single);
+        MenuController.Instance.ChangeScene(SceneNames.Graveyard, LoadSceneMode.Single);
     }
 
     /// <summary>

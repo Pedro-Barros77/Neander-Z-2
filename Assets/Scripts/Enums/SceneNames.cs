@@ -4,5 +4,5 @@
 public enum SceneNames
 {
     MainMenu,
-    SampleScene
+    Graveyard
 }

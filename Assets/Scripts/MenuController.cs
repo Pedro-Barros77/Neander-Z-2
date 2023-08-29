@@ -21,10 +21,22 @@ public class MenuController : MonoBehaviour
 
     public bool IsGamePaused { get; set; }
     public bool IsInGame { get; set; }
+    public FPSCount FpsCount;
+
+    private GameObject PersistentCanvas;
 
     private void Awake()
     {
+        PersistentCanvas = GameObject.Find("PersistentCanvas");
+        if (_instance == null || _instance == this)
+        {
+            _instance = this;
+            PersistentCanvas.tag = "Original";
+            gameObject.tag = "Original";
+        }
+        FpsCount = GameObject.Find("GameFPS").GetComponent<FPSCount>();
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(PersistentCanvas);
     }
 
     void Start()
@@ -34,7 +46,10 @@ public class MenuController : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            FpsCount.gameObject.SetActive(!FpsCount.gameObject.activeSelf);
+        }
     }
 
     /// <summary>

@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PopupSystem : MonoBehaviour
 {
-    //public static PopupSystem Instance { get; private set; }
-    //[SerializeField] private GameObject popupTextPrefab;
     private TextMeshProUGUI PopupText;
     private Color TextColor;
     private float LifeSpanMs;
