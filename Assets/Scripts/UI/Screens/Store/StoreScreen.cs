@@ -7,7 +7,7 @@ public class StoreScreen : MonoBehaviour
 {
     public List<GameObject> StoreItems { get; private set; }
     public StoreItem SelectedItem { get; private set; }
-
+    
     void Start()
     {
         StoreItems = GameObject.FindGameObjectsWithTag("StoreItem").ToList();
