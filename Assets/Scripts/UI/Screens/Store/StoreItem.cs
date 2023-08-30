@@ -62,10 +62,9 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (Data == null)
         {
-            //if (PrefabUtility.HasPrefabInstanceAnyOverrides(gameObject, false))
-            //{
-            //    PrefabUtility.RevertPrefabInstance(gameObject, InteractionMode.AutomatedAction);
-            //}
+            if (PrefabUtility.HasPrefabInstanceAnyOverrides(gameObject, false))
+                PrefabUtility.RevertPrefabInstance(gameObject, InteractionMode.AutomatedAction);
+
             gameObject.name = "StoreItem";
             return;
         }
