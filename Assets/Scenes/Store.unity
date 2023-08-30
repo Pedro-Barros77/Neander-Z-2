@@ -2279,6 +2279,7 @@ GameObject:
   - component: {fileID: 629065987}
   - component: {fileID: 629065989}
   - component: {fileID: 629065988}
+  - component: {fileID: 629065990}
   m_Layer: 5
   m_Name: StorePanel
   m_TagString: Untagged
@@ -2346,6 +2347,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629065986}
   m_CullTransparentMesh: 1
+--- !u!95 &629065990
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629065986}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3af80911a49896441bedaf401c245d62, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &631842792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2983,6 +3005,7 @@ MonoBehaviour:
   InactiveTabImage: {fileID: 21300000, guid: 559e97848730b8a4483de403e667c2b2, type: 3}
   BuyButton: {fileID: 1758491424}
   TestItemButton: {fileID: 3903200130096629237}
+  StorePanel: {fileID: 629065986}
   PreviewPanelContent: {fileID: 260411950}
   EmptyPreviewPanel: {fileID: 1395616719}
   WeaponsContent: {fileID: 1904504028}
@@ -4372,6 +4395,22 @@ PrefabInstance:
     - target: {fileID: 1298075434311370557, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
       propertyPath: m_Name
       value: btnReturn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5717224317639493136, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 713473264}
+    - target: {fileID: 5717224317639493136, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ExitStore
+      objectReference: {fileID: 0}
+    - target: {fileID: 5717224317639493136, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: StoreScreen, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5717224317639493136, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
       propertyPath: m_Pivot.x

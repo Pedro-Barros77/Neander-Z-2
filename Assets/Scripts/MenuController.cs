@@ -42,6 +42,10 @@ public class MenuController : MonoBehaviour
             gameObject.tag = "Original";
             if (PersistentCanvas != null)
                 PersistentCanvas.tag = "Original";
+
+            static void OnSceneLoaded(Scene scene, LoadSceneMode loadMode) => SceneManager.SetActiveScene(scene);
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         var fpsObj = GameObject.Find("GameFPS");

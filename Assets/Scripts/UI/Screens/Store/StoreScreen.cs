@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StoreScreen : MonoBehaviour
@@ -22,14 +24,16 @@ public class StoreScreen : MonoBehaviour
     [SerializeField]
     Button BuyButton, TestItemButton;
     [SerializeField]
-    GameObject PreviewPanelContent, EmptyPreviewPanel, WeaponsContent, ItemsContent, PerksContent, BackpackContent, WeaponsTab, ItemsTab, PerksTab, BackpackTab;
+    GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, WeaponsContent, ItemsContent, PerksContent, BackpackContent, WeaponsTab, ItemsTab, PerksTab, BackpackTab;
 
+    Animator storePanelAnimator;
     bool hasItem => SelectedItem != null && SelectedItem.Data != null;
 
     void Start()
     {
         StoreItems = GameObject.FindGameObjectsWithTag("StoreItem").ToList();
         Player = GameObject.FindAnyObjectByType<Player>(FindObjectsInactive.Include);
+        storePanelAnimator = StorePanel.GetComponent<Animator>();
     }
 
     void Update()
@@ -167,5 +171,24 @@ public class StoreScreen : MonoBehaviour
         rect.offsetMax = new Vector2(rect.offsetMax.x, active ? 0 : -5);
         image.sprite = active ? ActiveTabImage : InactiveTabImage;
         labelText.fontSize = active ? 18 : 15;
+    }
+
+    /// <summary>
+    /// Começa a sair da loja.
+    /// </summary>
+    public void ExitStore()
+    {
+        storePanelAnimator.SetTrigger("Exit");
+        StartCoroutine(ExitStoreAfterAnimation());
+    }
+
+    /// <summary>
+    /// Sai da loja após a animação de saída.
+    /// </summary>
+    public IEnumerator ExitStoreAfterAnimation()
+    {
+        yield return new WaitForSeconds(1f);
+
+        MenuController.Instance.ChangeScene(SceneNames.Graveyard, LoadSceneMode.Single);
     }
 }

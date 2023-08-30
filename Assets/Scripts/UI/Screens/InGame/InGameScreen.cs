@@ -24,7 +24,7 @@ public class InGameScreen : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && Player.IsAlive)
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && Player.IsAlive)
         {
             if (MenuController.Instance.IsGamePaused)
                 ContinueGame();
@@ -67,6 +67,7 @@ public class InGameScreen : MonoBehaviour
     /// </summary>
     public void OpenStore()
     {
+        ContinueGame();
         MenuController.Instance.ChangeScene(SceneNames.Store, LoadSceneMode.Additive, true);
     }
 
