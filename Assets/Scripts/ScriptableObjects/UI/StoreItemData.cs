@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item Data", menuName = "Neander Z/Store/Item Data", order = 1)]
@@ -8,4 +10,13 @@ public class StoreItemData : ScriptableObject
     public string Description;
     public float Price;
     public float IconScale = 1f;
+    public List<StoreItemTags> Tags;
+    public bool CanAfford;
+
+    public readonly bool IsWeapon;
+
+    public StoreItemData(bool isWeapon = false)
+    {
+        IsWeapon = isWeapon;
+    }
 }

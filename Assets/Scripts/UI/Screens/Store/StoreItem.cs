@@ -41,6 +41,15 @@ public class StoreItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
         {
             OnUiUpdate();
         }
+
+        if (Data == null)
+            return;
+
+        if (storeScreen.Player != null)
+        {
+            Data.CanAfford = storeScreen.Player.Money >= Data.Price;
+            PriceText.color = Data.CanAfford ? storeScreen.GreenMoney : storeScreen.RedMoney;
+        }
     }
 
     /// <summary>

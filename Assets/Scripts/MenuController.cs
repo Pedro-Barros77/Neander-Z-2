@@ -19,15 +19,15 @@ public class MenuController : MonoBehaviour
         }
     }
 
-    public bool IsGamePaused { get; set; }
+    public bool IsGamePaused { get; private set; }
     public bool IsInGame { get; set; }
+    public FPSCount FpsCount { get; private set; }
+    public Image GameCursor { get; private set; }
 
     [SerializeField]
     Sprite ArrowCursor, PointerCursor;
 
-    public Image GameCursor;
     Vector3 CursorPointOffset = Vector3.zero;
-    public FPSCount FpsCount;
 
     private GameObject PersistentCanvas;
 
@@ -49,7 +49,10 @@ public class MenuController : MonoBehaviour
             FpsCount = fpsObj.GetComponent<FPSCount>();
 
         if (PersistentCanvas != null)
+        {
+            GameCursor = PersistentCanvas.transform.Find("GameCursor").GetComponent<Image>();
             DontDestroyOnLoad(PersistentCanvas);
+        }
     }
 
     void Start()
@@ -99,8 +102,16 @@ public class MenuController : MonoBehaviour
     /// </summary>
     /// <param name="scene">O nome da nova cena.</param>
     /// <param name="mode">O modo de carregamento.</param>
-    public void ChangeScene(SceneNames scene, LoadSceneMode mode)
+    public void ChangeScene(SceneNames scene, LoadSceneMode mode, bool deactivatePreviousObjects = false)
     {
+        if (deactivatePreviousObjects)
+        {
+            var objects = SceneManager.GetActiveScene().GetRootGameObjects();
+            foreach (var obj in objects)
+            {
+                obj.SetActive(false);
+            }
+        }
         SceneManager.LoadScene(scene.ToString(), mode);
     }
 

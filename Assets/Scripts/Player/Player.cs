@@ -97,7 +97,7 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// <summary>
     /// O dinheiro total do jogador.
     /// </summary>
-    public decimal Money { get; private set; }
+    public float Money { get; private set; }
 
     /// <summary>
     /// A mochila do jogador, carrega suas armas e acessуrios.
@@ -199,6 +199,23 @@ public class Player : MonoBehaviour, IEnemyTarget
         HealthBar.AddValue(value);
         ShowPopup(value.ToString("0"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
     }
+
+    /// <summary>
+    /// Diminui a vida e modifica a barra de vida.
+    /// </summary>
+    /// <param name="value">O valor a ser subtraнdo da vida.</param>
+    public void TakeDamage(float value, string bodyPartName, Vector3? hitPosition = null)
+    {
+        if (value < 0) return;
+
+        Health = Mathf.Clamp(Health - value, 0, MaxHealth);
+        HealthBar.RemoveValue(value);
+        ShowPopup(value.ToString("0"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+
+        if (Health <= 0 && IsAlive)
+            Die();
+    }
+
     /// <summary>
     /// Função para exibir o popup com devidos parâmetros.
     /// </summary>
@@ -216,19 +233,25 @@ public class Player : MonoBehaviour, IEnemyTarget
     }
 
     /// <summary>
-    /// Diminui a vida e modifica a barra de vida.
+    /// Adiciona dinheiro ao jogador.
     /// </summary>
-    /// <param name="value">O valor a ser subtraнdo da vida.</param>
-    public void TakeDamage(float value, string bodyPartName, Vector3? hitPosition = null)
+    /// <param name="value">O valor a ser adicionado.</param>
+    public void GetMoney(float value)
     {
         if (value < 0) return;
 
-        Health = Mathf.Clamp(Health - value, 0, MaxHealth);
-        HealthBar.RemoveValue(value);
-        ShowPopup(value.ToString("0"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        Money += value;
+    }
 
-        if (Health <= 0 && IsAlive)
-            Die();
+    /// <summary>
+    /// Retira dinheiro do jogador.
+    /// </summary>
+    /// <param name="value">O valor a ser retirado.</param>
+    public void TakeMoney(float value)
+    {
+        if (value < 0) return;
+
+        Money -= value;
     }
 
     /// <summary>

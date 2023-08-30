@@ -1642,8 +1642,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1712316718}
   m_HandleRect: {fileID: 1712316717}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.6922462
+  m_Value: 1.0000001
+  m_Size: 0.69179225
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2331,6 +2331,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7aede7554eb466488f8377d85a59fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerMoneyText: {fileID: 1154509543}
+  PreviewTitleText: {fileID: 327838401}
+  PreviewPriceText: {fileID: 1758846946}
+  PreviewDescriptionText: {fileID: 1017951001}
+  PreviewIsPrimaryText: {fileID: 1307235761}
+  PreviewTagsText: {fileID: 1548374076}
+  PreviewHeadshotMultiplierText: {fileID: 406153012}
+  PreviewMgazineBulletsText: {fileID: 800003702}
+  PreviewPelletsCountText: {fileID: 1227746449}
+  PreviewDispersionText: {fileID: 1405047619}
+  PreviewIcon: {fileID: 708484953}
+  PreviewBulletIcon: {fileID: 1841437532}
+  PistolBulletIcon: {fileID: 21300000, guid: 0f20aae54da7fb844a775442db60bc34, type: 3}
+  ShotgunBulletIcon: {fileID: 21300000, guid: c6f7d53aff1fd6942911556a09bb381b, type: 3}
+  RifleAmmoIcon: {fileID: 21300000, guid: 104a74fe41b70594486a4b4a837749fd, type: 3}
+  SniperAmmoIcon: {fileID: 21300000, guid: dd47c92fc5758314aae87d0d2dae649a, type: 3}
+  RocketAmmoIcon: {fileID: 21300000, guid: fcca0ddc25acfbb49b7044b3651de04e, type: 3}
+  MeleeAmmoIcon: {fileID: 21300000, guid: cea6c50c2cd35af4bba8189565a85eeb, type: 3}
+  BuyButton: {fileID: 1758491424}
+  TestItemButton: {fileID: 3903200130096629237}
 --- !u!1 &783644796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2610,8 +2630,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ArrowCursor: {fileID: 21300000, guid: 553d75524bdefdc4cb9815bdc1b59f62, type: 3}
   PointerCursor: {fileID: 21300000, guid: 5cae5fb0304c77e4d9a2bd574d28435c, type: 3}
-  GameCursor: {fileID: 2241673391253184548, guid: fa40d1e6cea178d4c90689997fd76b03, type: 3}
-  FpsCount: {fileID: 0}
 --- !u!4 &955906169
 Transform:
   m_ObjectHideFlags: 0
@@ -2968,7 +2986,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -3212,7 +3230,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4283475016
-  m_fontColor: {r: 0.28141683, g: 0.6415094, b: 0.31566584, a: 1}
+  m_fontColor: {r: 0.28235295, g: 0.6431373, b: 0.3137255, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3427,7 +3445,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 018d4f0a68f8aa54cb36dc99bb9bf132, type: 3}
     - target: {fileID: 1298075434311370557, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
       propertyPath: m_Name
-      value: btnPrefab
+      value: btnReturn
       objectReference: {fileID: 0}
     - target: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
       propertyPath: m_Pivot.x
@@ -3455,23 +3473,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 56
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.79
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.79
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.79
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5057,6 +5075,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
   m_PrefabInstance: {fileID: 1758491418}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1758491424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5717224317639493136, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
+  m_PrefabInstance: {fileID: 1758491418}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1758846944
 GameObject:
   m_ObjectHideFlags: 0
@@ -5781,6 +5810,10 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5717224317639493136, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5871,6 +5904,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
   m_PrefabInstance: {fileID: 3903200130096629231}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3903200130096629237 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5717224317639493136, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
+  m_PrefabInstance: {fileID: 3903200130096629231}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

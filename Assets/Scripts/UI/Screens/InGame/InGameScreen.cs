@@ -63,6 +63,14 @@ public class InGameScreen : MonoBehaviour
     }
 
     /// <summary>
+    /// Change the scene to the game store.
+    /// </summary>
+    public void OpenStore()
+    {
+        MenuController.Instance.ChangeScene(SceneNames.Store, LoadSceneMode.Additive, true);
+    }
+
+    /// <summary>
     /// Pausa o jogo, congelando o tempo e exibindo o menu de pausa.
     /// </summary>
     public void PauseGame()

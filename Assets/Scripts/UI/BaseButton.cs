@@ -75,4 +75,9 @@ public class BaseButton : MonoBehaviour
         animator.SetTrigger("Normal");
         animator.transform.localScale = new Vector3(1, 1, 1);
     }
+
+    private void OnDestroy()
+    {
+        MenuController.Instance.SetCursor(Cursors.Arrow);
+    }
 }
