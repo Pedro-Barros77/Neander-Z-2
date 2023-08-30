@@ -9,6 +9,7 @@ public class StoreItemData : ScriptableObject
     public string Title;
     public string Description;
     public float Price;
+    public float Ammount;
     public float IconScale = 1f;
     public List<StoreItemTags> Tags;
     public bool CanAfford;

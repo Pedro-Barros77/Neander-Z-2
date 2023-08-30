@@ -85,7 +85,7 @@ public class StoreScreen : MonoBehaviour
         {
             var data = item.Data as StoreWeaponData;
             PreviewIsPrimaryText.text = data.IsPrimary ? "-Primary" : "-Secondary";
-            PreviewHeadshotMultiplierText.text = data.HeadshotMultiplier.ToString();
+            PreviewHeadshotMultiplierText.text = data.HeadshotMultiplier.ToString("N1");
             PreviewMgazineBulletsText.text = data.MagazineBullets.ToString();
             PreviewPelletsCountText.text = data.PelletsCount.ToString();
             PreviewDispersionText.text = data.Dispersion.ToString();

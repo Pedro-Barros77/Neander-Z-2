@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: baf494669ee90f8499ee8ac327d6783e, type: 3}
-  m_Name: UZI
+  m_Name: Deagle
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 0603538e34af587478fa7276c0801149, type: 3}
-  Title: UZI
-  Description: UZI with caution! You'll run out of bullets before you can say OH
-    CRAP.
-  Price: 650
+  Icon: {fileID: 21300000, guid: a93e06625020b7c4f8c58577dc46ab6a, type: 3}
+  Title: Desert Eagle
+  Description: The Deagle, a handgun for those trying to compensate something. This
+    lil' baby can delete anything bothering you! Just don't forget your earplugs!
+  Price: 850
   Ammount: 1
-  IconScale: 0.7
-  Tags: 060000000b000000
+  IconScale: 0.6
+  Tags: 040000000d000000
   CanAfford: 0
-  WeaponType: 5
-  IsPrimary: 1
-  BulletType: 1
-  HeadshotMultiplier: 1.2
-  MagazineBullets: 25
+  WeaponType: 2
+  IsPrimary: 0
+  BulletType: 2
+  HeadshotMultiplier: 2
+  MagazineBullets: 7
   PelletsCount: 0
   Dispersion: 0

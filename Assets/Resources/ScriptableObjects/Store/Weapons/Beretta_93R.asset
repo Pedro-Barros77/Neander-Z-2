@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: baf494669ee90f8499ee8ac327d6783e, type: 3}
-  m_Name: UZI
+  m_Name: Beretta_93R
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 0603538e34af587478fa7276c0801149, type: 3}
-  Title: UZI
-  Description: UZI with caution! You'll run out of bullets before you can say OH
-    CRAP.
-  Price: 650
+  Icon: {fileID: 21300000, guid: c20fdedbb9ded6f4d9d2993deb088a82, type: 3}
+  Title: Beretta 93R
+  Description: The Beretta 93R is like a party in your hand, except the party guests
+    are zombies and the music is the sound of their brains splattering everywhere.
+  Price: 730
   Ammount: 1
-  IconScale: 0.7
-  Tags: 060000000b000000
+  IconScale: 0.55
+  Tags: 050000000b000000
   CanAfford: 0
-  WeaponType: 5
-  IsPrimary: 1
+  WeaponType: 1
+  IsPrimary: 0
   BulletType: 1
-  HeadshotMultiplier: 1.2
-  MagazineBullets: 25
+  HeadshotMultiplier: 1.4
+  MagazineBullets: 15
   PelletsCount: 0
   Dispersion: 0
