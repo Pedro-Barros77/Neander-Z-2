@@ -5,22 +5,19 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [ExecuteInEditMode()]
-public class StoreItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public bool IsSelected { get; private set; }
 
     [SerializeField]
     public StoreItemData Data;
-
-
     [SerializeField]
     TextMeshProUGUI TitleText, PriceText;
     [SerializeField]
     Image IconImage;
 
     StoreScreen storeScreen;
-    Image itemContainerImage;
-    float itemContainerStartScale;
+    Animator animator;
     bool IsInEditor => Application.isEditor && !Application.isPlaying;
 
     private void Awake()
@@ -31,8 +28,7 @@ public class StoreItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
     void Start()
     {
         storeScreen = GameObject.Find("Screen").GetComponent<StoreScreen>();
-        itemContainerImage = GetComponent<Image>();
-        itemContainerStartScale = transform.localScale.x;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -40,6 +36,13 @@ public class StoreItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
         if (IsInEditor)
         {
             OnUiUpdate();
+            return;
+        }
+
+        if (IsSelected)
+        {
+            animator.SetTrigger("Selected");
+            animator.ResetTrigger("Normal");
         }
 
         if (Data == null)
@@ -75,7 +78,7 @@ public class StoreItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
     /// <summary>
     /// Function called when the item is clicked.
     /// </summary>
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnClick()
     {
         if (IsInEditor)
             return;
@@ -92,12 +95,6 @@ public class StoreItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
         if (IsInEditor)
             return;
 
-        if (!IsSelected)
-        {
-            float newScale = itemContainerStartScale * 1.05f;
-            transform.localScale = new Vector3(newScale, newScale, newScale);
-        }
-
         MenuController.Instance.SetCursor(Cursors.Pointer);
     }
 
@@ -109,11 +106,6 @@ public class StoreItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
         if (IsInEditor)
             return;
 
-        if (!IsSelected)
-        {
-            transform.localScale = new Vector3(itemContainerStartScale, itemContainerStartScale, itemContainerStartScale);
-        }
-
         MenuController.Instance.SetCursor(Cursors.Arrow);
     }
 
@@ -123,9 +115,6 @@ public class StoreItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
     public void Select()
     {
         IsSelected = true;
-        float newScale = itemContainerStartScale * 1.1f;
-        transform.localScale = new Vector3(newScale, newScale, newScale);
-        itemContainerImage.color = new Color32(100, 200, 255, 255);
     }
 
     /// <summary>
@@ -134,7 +123,7 @@ public class StoreItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandle
     public void Deselect()
     {
         IsSelected = false;
-        transform.localScale = new Vector3(itemContainerStartScale, itemContainerStartScale, itemContainerStartScale);
-        itemContainerImage.color = new Color32(255, 255, 255, 255);
+        animator.ResetTrigger("Selected");
+        animator.SetTrigger("Normal");
     }
 }

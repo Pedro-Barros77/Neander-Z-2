@@ -20,6 +20,10 @@ public class StoreScreen : MonoBehaviour
     Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon;
     [SerializeField]
     Button BuyButton, TestItemButton;
+    [SerializeField]
+    GameObject PreviewPanelContent, EmptyPreviewPanel;
+
+    bool hasItem => SelectedItem != null && SelectedItem.Data != null;
 
     void Start()
     {
@@ -29,12 +33,15 @@ public class StoreScreen : MonoBehaviour
 
     void Update()
     {
+        PreviewPanelContent.SetActive(hasItem);
+        EmptyPreviewPanel.SetActive(!hasItem);
+
         if (Player != null)
         {
             PlayerMoneyText.text = $"$ {Player.Money:N2}";
             PlayerMoneyText.color = Player.Money > 0 ? GreenMoney : RedMoney;
 
-            if (SelectedItem != null && SelectedItem.Data != null)
+            if (hasItem)
             {
                 PreviewPriceText.color = SelectedItem.Data.CanAfford ? GreenMoney : RedMoney;
                 BuyButton.interactable = SelectedItem.Data.CanAfford;
@@ -51,6 +58,10 @@ public class StoreScreen : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Função chamada pelo StoreItem quando o mesmo é selecionado.
+    /// </summary>
+    /// <param name="item">O Item a ser selecionado.</param>
     public void SelectItem(StoreItem item)
     {
         if (SelectedItem != null)
@@ -87,6 +98,18 @@ public class StoreScreen : MonoBehaviour
                 BulletTypes.Melee => MeleeAmmoIcon,
                 _ => null,
             };
+        }
+    }
+
+    /// <summary>
+    /// Função chamada quando o player clica fora de qualquer elemento UI (Clique no background)..
+    /// </summary>
+    public void OnClickOutside()
+    {
+        if (SelectedItem != null)
+        {
+            SelectedItem.Deselect();
+            SelectedItem = null;
         }
     }
 }
