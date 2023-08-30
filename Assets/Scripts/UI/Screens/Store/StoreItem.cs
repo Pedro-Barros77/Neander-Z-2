@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public bool IsSelected { get; private set; }
+    public Animator Animator { get; private set; }
 
     [SerializeField]
     public StoreItemData Data;
@@ -17,7 +18,6 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     Image IconImage;
 
     StoreScreen storeScreen;
-    Animator animator;
     bool IsInEditor => Application.isEditor && !Application.isPlaying;
 
     private void Awake()
@@ -28,7 +28,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     void Start()
     {
         storeScreen = GameObject.Find("Screen").GetComponent<StoreScreen>();
-        animator = GetComponent<Animator>();
+        Animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -41,8 +41,8 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (IsSelected)
         {
-            animator.SetTrigger("Selected");
-            animator.ResetTrigger("Normal");
+            Animator.SetTrigger("Selected");
+            Animator.ResetTrigger("Normal");
         }
 
         if (Data == null)
@@ -123,7 +123,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void Deselect()
     {
         IsSelected = false;
-        animator.ResetTrigger("Selected");
-        animator.SetTrigger("Normal");
+        Animator.ResetTrigger("Selected");
+        Animator.SetTrigger("Normal");
     }
 }

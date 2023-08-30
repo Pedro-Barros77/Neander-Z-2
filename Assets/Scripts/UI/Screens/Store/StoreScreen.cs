@@ -127,6 +127,12 @@ public class StoreScreen : MonoBehaviour
     public void ChangeTab(StoreTabs tab)
     {
         ActiveTab = tab;
+        if (SelectedItem != null)
+        {
+            SelectedItem.Deselect();
+            SelectedItem.Animator.Play("Normal");
+            SelectedItem = null;
+        }
 
         WeaponsContent.SetActive(tab == StoreTabs.Weapons);
         ItemsContent.SetActive(tab == StoreTabs.Items);
@@ -155,7 +161,7 @@ public class StoreScreen : MonoBehaviour
         var image = tab.GetComponent<Image>();
         var labelText = tab.GetComponentInChildren<TextMeshProUGUI>();
 
-        if(active)
+        if (active)
             tab.transform.SetAsLastSibling();
 
         rect.offsetMax = new Vector2(rect.offsetMax.x, active ? 0 : -5);
