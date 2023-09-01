@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Colt_1911
   m_EditorClassIdentifier: 
   IsPrimary: 0
-  Type: 0
-  BulletType: 0
-  Damage: 0
-  FireRate: 0
-  BulletSpeed: 0
-  BulletMaxRange: 0
-  MaxDamageRange: 0
-  MinDamageRange: 0
-  MagazineSize: 0
-  MagazineBullets: 0
-  ReloadTimeMs: 0
-  SwitchTimeMs: 0
+  Type: 1
+  BulletType: 1
+  Damage: 6
+  FireRate: 4
+  BulletSpeed: 25
+  BulletMaxRange: 15
+  MaxDamageRange: 5
+  MinDamageRange: 10
+  MagazineSize: 7
+  MagazineBullets: 6
+  ReloadTimeMs: 1000
+  SwitchTimeMs: 200

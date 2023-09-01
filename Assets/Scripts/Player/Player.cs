@@ -125,7 +125,6 @@ public class Player : MonoBehaviour, IEnemyTarget
         IsAlive = true;
         Screen = GameObject.Find("Screen").GetComponent<InGameScreen>();
         Backpack = new Backpack(this);
-        Backpack.AddWeapon(WeaponTypes.Colt_1911);
         Backpack.AddWeapon(WeaponTypes.ShortBarrel);
         WeaponController.SwitchWeapon(0);
         MaxMovementSpeed = MovementSpeed;

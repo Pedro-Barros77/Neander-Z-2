@@ -79,7 +79,7 @@ public class PlayerWeaponController : MonoBehaviour
         if (IsSwitchingWeapon)
             return;
 
-        if (index == null || index != Player.Backpack.CurrentWeaponIndex)
+        if ((index == null || index != Player.Backpack.CurrentWeaponIndex) && Player.Backpack.HasPrimaryEquipped && Player.Backpack.HasSecondaryEquipped)
         {
             IsSwitchingWeapon = true;
             Player.CurrentWeapon.BeforeSwitchWeapon();
@@ -91,8 +91,10 @@ public class PlayerWeaponController : MonoBehaviour
 
         bool equippedPrimary = Player.Backpack.CurrentWeaponIndex == 0;
 
-        Player.Backpack.EquippedPrimaryWeapon.IsActive = equippedPrimary;
-        Player.Backpack.EquippedSecondaryWeapon.IsActive = !equippedPrimary;
+        if (Player.Backpack.HasPrimaryEquipped)
+            Player.Backpack.EquippedPrimaryWeapon.IsActive = equippedPrimary;
+        if (Player.Backpack.HasSecondaryEquipped)
+            Player.Backpack.EquippedSecondaryWeapon.IsActive = !equippedPrimary;
     }
 
     /// <summary>

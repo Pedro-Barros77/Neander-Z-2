@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: ShortBarrel
   m_EditorClassIdentifier: 
   IsPrimary: 0
-  Type: 0
-  BulletType: 0
-  Damage: 0
-  FireRate: 0
-  BulletSpeed: 0
-  BulletMaxRange: 0
-  MaxDamageRange: 0
-  MinDamageRange: 0
-  MagazineSize: 0
-  MagazineBullets: 0
-  ReloadTimeMs: 0
-  SwitchTimeMs: 0
-  ShellPelletsCount: 0
-  PelletsDispersion: 0
+  Type: 4
+  BulletType: 3
+  Damage: 3
+  FireRate: 1.5
+  BulletSpeed: 20
+  BulletMaxRange: 8
+  MaxDamageRange: 3
+  MinDamageRange: 6
+  MagazineSize: 5
+  MagazineBullets: 5
+  ReloadTimeMs: 1000
+  SwitchTimeMs: 350
+  ShellPelletsCount: 12
+  PelletsDispersion: 50
   UseMagazine: 0

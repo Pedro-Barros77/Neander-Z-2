@@ -10,7 +10,7 @@ public class SemiAutoWeapon : BaseWeapon
         if (!bulletInstances.Any())
             return bulletInstances;
 
-        MagazineBullets--;
+        Data.MagazineBullets--;
 
         return bulletInstances;
     }

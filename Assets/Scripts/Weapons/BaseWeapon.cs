@@ -6,58 +6,68 @@ using UnityEngine.Rendering.Universal;
 
 public abstract class BaseWeapon : MonoBehaviour
 {
+    [SerializeField]
+    public BaseWeaponData Data;
+
+    #region Data Properties Forwarding
+
     /// <summary>
     /// O dano causado pela arma ou seus proj�teis.
     /// </summary>
-    public float Damage { get; protected set; }
+    public float Damage => Data.Damage;
     /// <summary>
     /// A taxa de disparo da arma (disparos por segundo).
     /// </summary>
-    public float FireRate { get; protected set; }
+    public float FireRate => Data.FireRate;
     /// <summary>
     /// Capacidade m�xima do carregador.
     /// </summary>
-    public int MagazineSize { get; protected set; }
+    public int MagazineSize => Data.MagazineSize;
     /// <summary>
     /// Quantidade de muni��es restantes no carregador.
     /// </summary>
-    public int MagazineBullets { get; protected set; }
+    public int MagazineBullets => Data.MagazineBullets;
     /// <summary>
     /// Velocidade de movimento dos proj�teis.
     /// </summary>
-    public float BulletSpeed { get; protected set; }
+    public float BulletSpeed => Data.BulletSpeed;
     /// <summary>
     /// A dist�ncia m�xima que o proj�til pode percorrer antes de ser destru�do.
     /// </summary>
-    public float BulletMaxRange { get; protected set; }
+    public float BulletMaxRange => Data.BulletMaxRange;
     /// <summary>
     /// O alcance em que o proj�til causa dano m�ximo.
     /// </summary>
-    public float MaxDamageRange { get; protected set; }
+    public float MaxDamageRange => Data.MaxDamageRange;
     /// <summary>
     /// A dist�ncia em que o proj�til come�a a causar dano m�nimo.
     /// </summary>
-    public float MinDamageRange { get; protected set; }
+    public float MinDamageRange => Data.MinDamageRange;
     /// <summary>
     /// Se a arma � prim�ria ou secund�ria.
     /// </summary>
-    public bool IsPrimary { get; protected set; }
+    public bool IsPrimary => Data.IsPrimary;
     /// <summary>
     /// O tempo de recarga da arma, em milissegundos.
     /// </summary>
-    public float ReloadTimeMs { get; protected set; }
+    public float ReloadTimeMs => Data.ReloadTimeMs;
     /// <summary>
     /// O tempo de troca da arma, em milissegundos.
     /// </summary>
-    public float SwitchTimeMs { get; protected set; }
+    public float SwitchTimeMs => Data.SwitchTimeMs;
     /// <summary>
     /// O tipo de proj�til que a arma dispara.
     /// </summary>
-    public BulletTypes BulletType { get; protected set; }
+    public BulletTypes BulletType => Data.BulletType;
     /// <summary>
     /// O tipo de arma.
     /// </summary>
-    public WeaponTypes Type { get; protected set; }
+    public WeaponTypes Type => Data.Type;
+
+    #endregion
+
+    #region Properties
+
     /// <summary>
     /// Se esta arma é a arma ativa, usada pelo jogador atualmente.
     /// </summary>
@@ -74,7 +84,6 @@ public abstract class BaseWeapon : MonoBehaviour
     /// A direção em que o jogador está virado, 1 para direita, -1 para esquerda.
     /// </summary>
     public float PlayerFlipDir { get; set; } = 1;
-
     /// <summary>
     /// Script responsável por controlar a arma do jogador, como mira, troca e recarregamento.
     /// </summary>
@@ -83,6 +92,20 @@ public abstract class BaseWeapon : MonoBehaviour
     /// Jogador portador desta arma.
     /// </summary>
     public Player Player { get; set; }
+    /// <summary>
+    /// Define o offset da posição do container da arma em relação ao jogador.
+    /// </summary>
+    protected Vector3 WeaponContainerOffset { get; set; }
+    /// <summary>
+    /// Volume do som de disparo da arma, entre 0 e 1.
+    /// </summary>
+    protected float ShootVolume;
+    /// <summary>
+    /// Volume do som de disparo da arma, entre 0 e 1.
+    /// </summary>
+    protected float EmptyChamberVolume;
+
+    #endregion
 
     [SerializeField]
     protected GameObject BulletPrefab;
@@ -92,6 +115,8 @@ public abstract class BaseWeapon : MonoBehaviour
     protected AudioClip EmptyChamberSound;
     [SerializeField]
     protected GameObject SmokeParticlesPrefab;
+
+    #region Gameobject Components
 
     /// <summary>
     /// O componente Animator da arma.
@@ -121,6 +146,11 @@ public abstract class BaseWeapon : MonoBehaviour
     /// Flash de luz do disparo da arma.
     /// </summary>
     protected Light2D FlashLight, InnerFlashLight;
+
+    #endregion
+
+    #region Control Variables
+
     /// <summary>
     /// A intensidade inicial do flash de luz.
     /// </summary>
@@ -129,18 +159,6 @@ public abstract class BaseWeapon : MonoBehaviour
     /// Se o flash de luz está diminuindo a intensidade atualmente.
     /// </summary>
     protected bool isDecreasingFlashIntensity;
-    /// <summary>
-    /// Define o offset da posição do container da arma em relação ao jogador.
-    /// </summary>
-    protected Vector3 WeaponContainerOffset { get; set; }
-    /// <summary>
-    /// Volume do som de disparo da arma, entre 0 e 1.
-    /// </summary>
-    protected float ShootVolume;
-    /// <summary>
-    /// Volume do som de disparo da arma, entre 0 e 1.
-    /// </summary>
-    protected float EmptyChamberVolume;
     /// <summary>
     /// �ltima vez em que a arma foi disparada.
     /// </summary>
@@ -159,6 +177,8 @@ public abstract class BaseWeapon : MonoBehaviour
     protected const float FIRE_RATE_RATIO = 1000;
 
     protected bool isShooting;
+
+    #endregion
 
     protected virtual void Awake()
     {
@@ -364,12 +384,12 @@ public abstract class BaseWeapon : MonoBehaviour
         int toLoad = MagazineSize - MagazineBullets;
         if (reloadBackpackMagDiff >= 0)
         {
-            MagazineBullets += toLoad;
+            Data.MagazineBullets += toLoad;
             Player.Backpack.SetAmmo(BulletType, reloadBackpackMagDiff);
         }
         else
         {
-            MagazineBullets += Player.Backpack.GetAmmo(BulletType);
+            Data.MagazineBullets += Player.Backpack.GetAmmo(BulletType);
             Player.Backpack.SetAmmo(BulletType, 0);
         }
     }

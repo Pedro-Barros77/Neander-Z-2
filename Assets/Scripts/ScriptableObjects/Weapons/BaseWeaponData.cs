@@ -6,9 +6,6 @@ public abstract class BaseWeaponData : ScriptableObject
     public WeaponTypes Type;
     public BulletTypes BulletType;
 
-    /// <summary>
-    /// O dano causado pela arma ou seus projéteis.
-    /// </summary>
     public float Damage;
     public float FireRate;
     public float BulletSpeed;

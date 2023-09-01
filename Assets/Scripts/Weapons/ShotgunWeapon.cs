@@ -62,7 +62,7 @@ public class ShotgunWeapon : BaseWeapon
         if (!bulletInstances.Any())
             return bulletInstances;
 
-        MagazineBullets--;
+        Data.MagazineBullets--;
 
         if (MagazineBullets > 0)
             IsPumpPending = true;
@@ -125,7 +125,7 @@ public class ShotgunWeapon : BaseWeapon
             return;
         }
 
-        MagazineBullets += 1;
+        Data.MagazineBullets += 1;
         Player.Backpack.SetAmmo(BulletType, Player.Backpack.GetAmmo(BulletType) - 1);
     }
     public override void OnReloadEnd()

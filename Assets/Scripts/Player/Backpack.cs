@@ -82,6 +82,9 @@ public class Backpack
     /// </summary>
     public WeaponTypes EquippedSecondaryType { get; private set; }
 
+    public bool HasPrimaryEquipped => EquippedPrimaryType != WeaponTypes.None;
+    public bool HasSecondaryEquipped => EquippedSecondaryType != WeaponTypes.None;
+
     /// <summary>
     /// Retorna a arma primária escolhida, caso exista no arsenal de primárias.
     /// </summary>
