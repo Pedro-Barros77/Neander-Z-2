@@ -242,9 +242,9 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (movementDir <= 0)
+            if (movementDir < 0)
                 FlipPlayer(true);
-            else
+            else if (movementDir > 0)
                 FlipPlayer(false);
         }
 
