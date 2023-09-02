@@ -78,6 +78,8 @@ public class BaseButton : MonoBehaviour
 
     private void OnDestroy()
     {
-        MenuController.Instance.SetCursor(Cursors.Arrow);
+        var menuController = MenuController.Instance;
+        if (menuController != null)
+            menuController.SetCursor(Cursors.Arrow);
     }
 }
