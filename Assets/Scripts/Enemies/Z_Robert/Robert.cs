@@ -3,10 +3,10 @@ public class Robert : BaseEnemy
     protected override void Start()
     {
         Type = EnemyTypes.Z_Robert;
-        MovementSpeed = 0.5f;
-        AccelerationSpeed = 1f;
-        Health = 28f;
-        Damage = 15f;
+        MovementSpeed = 5f;
+        AccelerationSpeed = 1.5f;
+        Health = 18f;
+        Damage = 24f;
         HeadshotDamageMultiplier = 2f;
         KillScore = 53;
         HeadshotScoreMultiplier = 1.5f;

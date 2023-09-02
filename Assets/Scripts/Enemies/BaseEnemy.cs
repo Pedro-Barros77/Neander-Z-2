@@ -310,6 +310,9 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="target">O alvo que determinará a direção de movimento do inimigo.</param>
     protected virtual void Movement(IEnemyTarget target)
     {
+        if (target == null)
+            return;
+
         var targetDir = target.transform.position.x < transform.position.x ? -1 : 1;
 
         if (Mathf.Abs(RigidBody.velocity.x) < MovementSpeed && !IsInAttackRange && !isAttacking)
@@ -350,6 +353,9 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="target">O alvo que está atacando.</param>
     protected virtual void StartAttack(IEnemyTarget target)
     {
+        if (target == null)
+            return;
+
         isAttacking = true;
 
         if (AttackStartSounds.Any())

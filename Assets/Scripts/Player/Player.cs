@@ -205,6 +205,9 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// <param name="value">O valor a ser subtraнdo da vida.</param>
     public void TakeDamage(float value, string bodyPartName, Vector3? hitPosition = null)
     {
+        if (!IsAlive)
+            return;
+
         if (value < 0) return;
 
         Health = Mathf.Clamp(Health - value, 0, MaxHealth);
@@ -258,6 +261,7 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// </summary>
     protected virtual void Die()
     {
+        WavesManager.Instance.EnemiesTargets.Remove(this);
         IsAlive = false;
         isDying = true;
         StaminaBar.gameObject.SetActive(false);

@@ -68,7 +68,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!Player.IsAlive || Player.isDying)
         {
-            Animation();
+            isRolling = false;
+            isJumpingSideways = false;
+            isTurning = false;
+            isTurningBack = false;
+            isRunning = false;
+            isFalling = false;
+            isCrouching = false;
+            isSprinting = false;
+            SyncAnimationStates();
             return;
         }
 
