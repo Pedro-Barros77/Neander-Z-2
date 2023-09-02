@@ -18,7 +18,7 @@ MonoBehaviour:
   MaxRifleAmmo: 90
   MaxSniperAmmo: 15
   MaxRocketAmmo: 5
-  PistolAmmo: 30
+  PistolAmmo: 29
   ShotgunAmmo: 0
   RifleAmmo: 0
   SniperAmmo: 0
@@ -26,3 +26,7 @@ MonoBehaviour:
   EquippedPrimaryType: 4
   EquippedSecondaryType: 1
   CurrentWeaponIndex: 0
+  PrimaryWeaponsArsenalData:
+  - {fileID: 11400000, guid: eaf31b039c56dea4f96b499cc98b1cc3, type: 2}
+  SecondaryWeaponsArsenalData:
+  - {fileID: 11400000, guid: 976393cf083fb2c4eba671ef5caa9f6c, type: 2}

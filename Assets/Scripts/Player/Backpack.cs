@@ -118,14 +118,18 @@ public class Backpack
 
         if (EquippedPrimaryType != WeaponTypes.None)
         {
-            AddWeapon(EquippedPrimaryType);
+            var primWeapon = AddWeapon(EquippedPrimaryType);
             EquippedPrimaryWeapon.IsActive = isEquippedPrimary;
+            if (!Data.HasWeapon(primWeapon.Type))
+                Data.PrimaryWeaponsArsenalData.Add(primWeapon.Data);
         }
 
         if (EquippedSecondaryType != WeaponTypes.None)
         {
-            AddWeapon(EquippedSecondaryType);
+            var secWeapon = AddWeapon(EquippedSecondaryType);
             EquippedSecondaryWeapon.IsActive = !isEquippedPrimary;
+            if (!Data.HasWeapon(secWeapon.Type))
+                Data.SecondaryWeaponsArsenalData.Add(secWeapon.Data);
         }
     }
 

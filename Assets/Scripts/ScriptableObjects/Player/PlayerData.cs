@@ -32,4 +32,18 @@ public class PlayerData : ScriptableObject
 
     public float Score;
     public float Money;
+
+    public void GetMoney(float value)
+    {
+        if (value < 0) return;
+
+        Money += value;
+    }
+
+    public void TakeMoney(float value)
+    {
+        if (value < 0) return;
+
+        Money -= value;
+    }
 }

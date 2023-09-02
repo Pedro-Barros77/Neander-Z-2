@@ -237,23 +237,13 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// Adiciona dinheiro ao jogador.
     /// </summary>
     /// <param name="value">O valor a ser adicionado.</param>
-    public void GetMoney(float value)
-    {
-        if (value < 0) return;
-
-        Data.Money += value;
-    }
+    public void GetMoney(float value) => Data.GetMoney(value);
 
     /// <summary>
     /// Retira dinheiro do jogador.
     /// </summary>
     /// <param name="value">O valor a ser retirado.</param>
-    public void TakeMoney(float value)
-    {
-        if (value < 0) return;
-
-        Data.Money -= value;
-    }
+    public void TakeMoney(float value) => Data.TakeMoney(value);
 
     /// <summary>
     /// Função que é chamada quando o jogador morre.
