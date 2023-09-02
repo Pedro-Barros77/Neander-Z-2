@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Player Data", menuName = "Neander Z/Player/Player Data", order = 2)]
 public class PlayerData : ScriptableObject
 {
+    public InventoryData InventoryData;
+
     public CharacterTypes Character;
 
     public float MaxHealth;
@@ -15,6 +17,16 @@ public class PlayerData : ScriptableObject
 
     public float JumpForce;
     public float RollForce;
+
+    public float MaxStamina;
+    public float Stamina;
+    public float StaminaRegenDelayMs;
+    public float StaminaRegenRate;
+
+    public float SprintStaminaDrain;
+    public float JumpStaminaDrain;
+    public float AttackStaminaDrain;
+    public float RollStaminaDrain;
 
     public float RollCooldownMs;
 

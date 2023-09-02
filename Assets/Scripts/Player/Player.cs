@@ -7,97 +7,103 @@ using UnityEngine.Device;
 
 public class Player : MonoBehaviour, IEnemyTarget
 {
+    public PlayerData Data;
+
+    #region Data properties forwarding
+
     /// <summary>
     /// A vida mбxima do jogador.
     /// </summary>
-    public float MaxHealth { get; private set; }
+    public float MaxHealth => Data.MaxHealth;
     /// <summary>
     /// A vida atual do jogador.
     /// </summary>
-    public float Health { get; private set; } = 100f;
+    public float Health => Data.Health;
     /// <summary>
     /// A velocidade de movimento atual do jogador.
     /// </summary>
-    public float MovementSpeed { get; private set; } = 4f;
+    public float MovementSpeed => Data.MovementSpeed;
     /// <summary>
     /// A velocidade de movimento mбxima do jogador.
     /// </summary>
-    public float MaxMovementSpeed { get; private set; }
+    public float MaxMovementSpeed => Data.MaxMovementSpeed;
     /// <summary>
     /// A velocidade de aceleraзгo do jogador.
     /// </summary>
-    public float AccelerationSpeed { get; private set; } = 1f;
+    public float AccelerationSpeed => Data.AccelerationSpeed;
     /// <summary>
     /// Boost de velocidade do jogador ao correr pressionando o botгo de sprint (correr).
     /// </summary>
-    public float SprintSpeedMultiplier { get; private set; } = 1.5f;
+    public float SprintSpeedMultiplier => Data.SprintSpeedMultiplier;
     /// <summary>
     /// A forзa do pulo do jogador.
     /// </summary>
-    public float JumpForce { get; private set; } = 1800f;
+    public float JumpForce => Data.JumpForce;
     /// <summary>
     /// A forзa de rolagem da habilidade Rolada Tбtica.
     /// </summary>
-    public float RollForce { get; private set; } = 1800f;
+    public float RollForce => Data.RollForce;
     /// <summary>
     /// O tempo de recarga da habilidade Rolada Tбtica.
     /// </summary>
-    public float RollCooldownMs { get; set; } = 2000f;
-    #region Stamina Stats
+    public float RollCooldownMs => Data.RollCooldownMs;
     /// <summary>
     /// A stamina mбxima do jogador.
     /// </summary>
-    public float MaxStamina { get; private set; }
+    public float MaxStamina => Data.MaxStamina;
     /// <summary>
     /// A stamina atual do jogador.
     /// </summary>
-    public float Stamina { get; private set; } = 100f;
+    public float Stamina => Data.Stamina;
     /// <summary>
     /// Quanto tempo o jogador deve esperar para comeзar a regenerar stamina.
     /// </summary>
-    public float StaminaRegenDelayMs { get; private set; } = 2000f;
+    public float StaminaRegenDelayMs => Data.StaminaRegenDelayMs;
     /// <summary>
     /// A taxa de regeneraзгo de stamina do jogador.
     /// </summary>
-    public float StaminaRegenRate { get; private set; } = 15f;
+    public float StaminaRegenRate => Data.StaminaRegenRate;
     /// <summary>
     /// A taxa de drenagem de stamina do jogador ao correr.
     /// </summary>
-    public float SprintStaminaDrain { get; private set; } = 2f;
+    public float SprintStaminaDrain => Data.SprintStaminaDrain;
     /// <summary>
     /// A taxa de drenagem de stamina do jogador ao pular.
     /// </summary>
-    public float JumpStaminaDrain { get; private set; } = 10f;
+    public float JumpStaminaDrain => Data.JumpStaminaDrain;
     /// <summary>
     /// A taxa de drenagem de stamina do jogador ao atacar com uma arma corpo-a-corpo.
     /// </summary>
-    public float AttackStaminaDrain { get; private set; }
+    public float AttackStaminaDrain => Data.AttackStaminaDrain;
     /// <summary>
     /// A taxa de drenagem de stamina do jogador ao utilizar a Rolada Tбtica.
     /// </summary>
-    public float RollStaminaDrain { get; private set; } = 20f;
+    public float RollStaminaDrain => Data.RollStaminaDrain;
+    /// <summary>
+    /// O tipo de personagem do jogador.
+    /// </summary>
+    public CharacterTypes Character => Data.Character;
+    /// <summary>
+    /// A pontuaзгo total do jogador.
+    /// </summary>
+    public float Score => Data.Score;
+    /// <summary>
+    /// O dinheiro total do jogador.
+    /// </summary>
+    public float Money => Data.Money;
+
+    #endregion
+
     /// <summary>
     /// A ъltima vez que o jogador gastou stamina.
     /// </summary>
+    /// 
     public float LastStaminaUse { get; private set; }
     public bool IsAlive { get; private set; }
     public bool isDying { get; private set; }
     public float DeathTime { get; private set; }
     public float DeathTimeDelayMs { get; private set; } = 5000f;
-    #endregion
 
-    /// <summary>
-    /// O tipo de personagem do jogador.
-    /// </summary>
-    public CharacterTypes Character { get; private set; }
-    /// <summary>
-    /// A pontuaзгo total do jogador.
-    /// </summary>
-    public float Score { get; private set; }
-    /// <summary>
-    /// O dinheiro total do jogador.
-    /// </summary>
-    public float Money { get; private set; }
 
     /// <summary>
     /// A mochila do jogador, carrega suas armas e acessуrios.
@@ -124,12 +130,8 @@ public class Player : MonoBehaviour, IEnemyTarget
     {
         IsAlive = true;
         Screen = GameObject.Find("Screen").GetComponent<InGameScreen>();
-        Backpack = new Backpack(this);
-        Backpack.AddWeapon(WeaponTypes.ShortBarrel);
-        WeaponController.SwitchWeapon(0);
-        MaxMovementSpeed = MovementSpeed;
-        MaxHealth = Health;
-        MaxStamina = Stamina;
+        Backpack = new Backpack(this, Data.InventoryData);
+
         WorldPosCanvas = GameObject.Find("WorldPositionCanvas").GetComponent<Canvas>();
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
         SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -194,7 +196,7 @@ public class Player : MonoBehaviour, IEnemyTarget
     {
         if (value < 0) return;
 
-        Health = Mathf.Clamp(Health + value, 0, MaxHealth);
+        Data.Health = Mathf.Clamp(Health + value, 0, MaxHealth);
         HealthBar.AddValue(value);
         ShowPopup(value.ToString("0"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
     }
@@ -207,7 +209,7 @@ public class Player : MonoBehaviour, IEnemyTarget
     {
         if (value < 0) return;
 
-        Health = Mathf.Clamp(Health - value, 0, MaxHealth);
+        Data.Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         HealthBar.RemoveValue(value);
         ShowPopup(value.ToString("0"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
@@ -239,7 +241,7 @@ public class Player : MonoBehaviour, IEnemyTarget
     {
         if (value < 0) return;
 
-        Money += value;
+        Data.Money += value;
     }
 
     /// <summary>
@@ -250,7 +252,7 @@ public class Player : MonoBehaviour, IEnemyTarget
     {
         if (value < 0) return;
 
-        Money -= value;
+        Data.Money -= value;
     }
 
     /// <summary>
@@ -273,7 +275,7 @@ public class Player : MonoBehaviour, IEnemyTarget
     {
         if (value < 0) return;
 
-        Stamina = Mathf.Clamp(Stamina + value, 0, MaxStamina);
+        Data.Stamina = Mathf.Clamp(Stamina + value, 0, MaxStamina);
         StaminaBar.AddValue(value);
     }
 
@@ -286,7 +288,7 @@ public class Player : MonoBehaviour, IEnemyTarget
         if (value < 0) return;
 
         LastStaminaUse = Time.time;
-        Stamina = Mathf.Clamp(Stamina - value, 0, MaxStamina);
+        Data.Stamina = Mathf.Clamp(Stamina - value, 0, MaxStamina);
         StaminaBar.RemoveValue(value);
     }
 }

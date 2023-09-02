@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Inventory Data", menuName = "Neander Z/Player/Inventory Data", order = 3)]
 public class InventoryData : ScriptableObject
 {
     public int BackpackLevel;
@@ -18,4 +19,6 @@ public class InventoryData : ScriptableObject
 
     public WeaponTypes EquippedPrimaryType;
     public WeaponTypes EquippedSecondaryType;
+
+    public int CurrentWeaponIndex;
 }

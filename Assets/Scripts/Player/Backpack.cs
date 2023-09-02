@@ -7,31 +7,67 @@ using UnityEngine;
 /// </summary>
 public class Backpack
 {
+    public InventoryData Data;
+
+    #region Data Properties forwarding
+
     /// <summary>
     /// ´Define o nível de melhoria atual da mochila. Inicia em zero (sem upgrade).
     /// </summary>
-    public int UpgradeStep { get; private set; }
+    public int BackpackLevel => Data.BackpackLevel;
     /// <summary>
     /// Número de munições de pistola restantes.
     /// </summary>
-    public int PistolAmmo { get; private set; }
+    public int PistolAmmo => Data.PistolAmmo;
     /// <summary>
     /// Número de munições de escopeta restantes.
     /// </summary>
-    public int ShotgunAmmo { get; private set; }
+    public int ShotgunAmmo => Data.ShotgunAmmo;
     /// <summary>
     /// Número de munições de fuzil restantes.
     /// </summary>
-    public int RifleAmmo { get; private set; }
+    public int RifleAmmo => Data.RifleAmmo;
     /// <summary>
     /// Número de munições de sniper restantes.
     /// </summary>
-    public int SniperAmmo { get; private set; }
+    public int SniperAmmo => Data.SniperAmmo;
     /// <summary>
     /// Número de munições de foguete restantes.
     /// </summary>
-    public int RocketAmmo { get; private set; }
+    public int RocketAmmo => Data.RocketAmmo;
     //public List<Throwable> Throwables { get; set; }
+    /// <summary>
+    /// Número máximo de munições de pistola que o jogador pode carregar, neste nível de upgrade da mochila.
+    /// </summary>
+    public int MaxPistolAmmo => Data.MaxPistolAmmo;
+    /// <summary>
+    /// Número máximo de munições de escopeta que o jogador pode carregar, neste nível de upgrade da mochila.
+    /// </summary>
+    public int MaxShotgunAmmo => Data.MaxShotgunAmmo;
+    /// <summary>
+    /// Número máximo de munições de fuzil que o jogador pode carregar, neste nível de upgrade da mochila.
+    /// </summary>
+    public int MaxRifleAmmo => Data.MaxRifleAmmo;
+    /// <summary>
+    /// Número máximo de munições de sniper que o jogador pode carregar, neste nível de upgrade da mochila.
+    /// </summary>
+    public int MaxSniperAmmo => Data.MaxSniperAmmo;
+    /// <summary>
+    /// Número máximo de munições de foguete que o jogador pode carregar, neste nível de upgrade da mochila.
+    /// </summary>
+    public int MaxRocketAmmo => Data.MaxRocketAmmo;
+    /// <summary>
+    /// Número máximo de itens arremessáveis de cada tipo que o jogador pode carregar, neste nível de upgrade da mochila.
+    /// </summary>
+    public int MaxThrowableType { get; private set; }
+
+    /// <summary>
+    /// Índice da arma atualmente equipada nas mãos do jogador (0= Primária, 1= Secundária).
+    /// </summary>
+    public int CurrentWeaponIndex => Data.CurrentWeaponIndex;
+
+    #endregion
+
     /// <summary>
     /// Lista de armas primárias adquiridas pelo jogador.
     /// </summary>
@@ -41,46 +77,18 @@ public class Backpack
     /// </summary>
     public List<BaseWeapon> SecondaryWeaponsArsenal { get; private set; }
     /// <summary>
-    /// Número máximo de munições de pistola que o jogador pode carregar, neste nível de upgrade da mochila.
-    /// </summary>
-    public int MaxPistolAmmo { get; private set; }
-    /// <summary>
-    /// Número máximo de munições de escopeta que o jogador pode carregar, neste nível de upgrade da mochila.
-    /// </summary>
-    public int MaxShotgunAmmo { get; private set; }
-    /// <summary>
-    /// Número máximo de munições de fuzil que o jogador pode carregar, neste nível de upgrade da mochila.
-    /// </summary>
-    public int MaxRifleAmmo { get; private set; }
-    /// <summary>
-    /// Número máximo de munições de sniper que o jogador pode carregar, neste nível de upgrade da mochila.
-    /// </summary>
-    public int MaxSniperAmmo { get; private set; }
-    /// <summary>
-    /// Número máximo de munições de foguete que o jogador pode carregar, neste nível de upgrade da mochila.
-    /// </summary>
-    public int MaxRocketAmmo { get; private set; }
-    /// <summary>
-    /// Número máximo de itens arremessáveis de cada tipo que o jogador pode carregar, neste nível de upgrade da mochila.
-    /// </summary>
-    public int MaxThrowableType { get; private set; }
-    /// <summary>
     /// Referência ao jogador portador dessa mochila.
     /// </summary>
     public Player Player { get; private set; }
 
     /// <summary>
-    /// Índice da arma atualmente equipada nas mãos do jogador (0= Primária, 1= Secundária).
-    /// </summary>
-    public int CurrentWeaponIndex { get; private set; }
-    /// <summary>
     /// O tipo da arma atualmente escolhida como primária pelo jogador.
     /// </summary>
-    public WeaponTypes EquippedPrimaryType { get; private set; }
+    public WeaponTypes EquippedPrimaryType => Data.EquippedPrimaryType;
     /// <summary>
     /// O tipo da arma atualmente escolhida como secundária pelo jogador.
     /// </summary>
-    public WeaponTypes EquippedSecondaryType { get; private set; }
+    public WeaponTypes EquippedSecondaryType => Data.EquippedSecondaryType;
 
     public bool HasPrimaryEquipped => EquippedPrimaryType != WeaponTypes.None;
     public bool HasSecondaryEquipped => EquippedSecondaryType != WeaponTypes.None;
@@ -98,23 +106,25 @@ public class Backpack
     /// </summary>
     public BaseWeapon EquippedWeapon => CurrentWeaponIndex == 0 ? EquippedPrimaryWeapon : EquippedSecondaryWeapon;
 
-    public Backpack(Player player)
+    public Backpack(Player player, InventoryData data)
     {
-        PistolAmmo = 30;
-        ShotgunAmmo = 20;
-        RifleAmmo = 0;
-        SniperAmmo = 0;
-        RocketAmmo = 0;
-
-        MaxPistolAmmo = 50;
-        MaxShotgunAmmo = 20;
-        MaxRifleAmmo = 90;
-        MaxSniperAmmo = 15;
-        MaxRocketAmmo = 5;
+        Player = player;
+        Data = data;
         MaxThrowableType = 3;
         PrimaryWeaponsArsenal = new List<BaseWeapon>();
         SecondaryWeaponsArsenal = new List<BaseWeapon>();
-        Player = player;
+
+        if (EquippedPrimaryType != WeaponTypes.None)
+        {
+            AddWeapon(EquippedPrimaryType);
+            EquippedPrimaryWeapon.IsActive = CurrentWeaponIndex == 0;
+        }
+
+        if (EquippedSecondaryType != WeaponTypes.None)
+        {
+            AddWeapon(EquippedSecondaryType);
+            EquippedSecondaryWeapon.IsActive = CurrentWeaponIndex == 1;
+        }
     }
 
     /// <summary>
@@ -138,8 +148,8 @@ public class Backpack
             PrimaryWeaponsArsenal.Add(weapon);
             if (equip)
             {
-                EquippedPrimaryType = weaponType;
-                CurrentWeaponIndex = 0;
+                Data.EquippedPrimaryType = weaponType;
+                Data.CurrentWeaponIndex = 0;
             }
         }
         else
@@ -147,8 +157,8 @@ public class Backpack
             SecondaryWeaponsArsenal.Add(weapon);
             if (equip)
             {
-                EquippedSecondaryType = weaponType;
-                CurrentWeaponIndex = 1;
+                Data.EquippedSecondaryType = weaponType;
+                Data.CurrentWeaponIndex = 1;
             }
         }
 
@@ -161,7 +171,7 @@ public class Backpack
     /// <param name="index">O índice da arma a ser equipada. 0 = primária, 1 = secundária. Null = inverter.</param>
     public void SwitchWeapon(int? index = null)
     {
-        CurrentWeaponIndex = index ?? (CurrentWeaponIndex == 0 ? 1 : 0);
+        Data.CurrentWeaponIndex = index ?? (CurrentWeaponIndex == 0 ? 1 : 0);
     }
 
     /// <summary>
@@ -205,19 +215,19 @@ public class Backpack
         switch (type)
         {
             case BulletTypes.Pistol:
-                PistolAmmo = count;
+                Data.PistolAmmo = count;
                 break;
             case BulletTypes.Shotgun:
-                ShotgunAmmo = count;
+                Data.ShotgunAmmo = count;
                 break;
             case BulletTypes.AssaultRifle:
-                RifleAmmo = count;
+                Data.RifleAmmo = count;
                 break;
             case BulletTypes.Sniper:
-                SniperAmmo = count;
+                Data.SniperAmmo = count;
                 break;
             case BulletTypes.Rocket:
-                RocketAmmo = count;
+                Data.RocketAmmo = count;
                 break;
             default:
                 break;
