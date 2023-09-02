@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Robert : BaseEnemy
 {
     protected override void Start()
@@ -19,5 +21,18 @@ public class Robert : BaseEnemy
         base.Start();
 
         HealthBar.AnimationSpeed = 5f;
+    }
+
+    protected override void StartAttack(IEnemyTarget target)
+    {
+        if (isAttacking)
+            return;
+
+        if (target == null)
+            return;
+
+        RigidBody.velocity = new Vector2(RigidBody.velocity.x / 2, RigidBody.velocity.y);
+
+        base.StartAttack(target);
     }
 }

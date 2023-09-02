@@ -353,6 +353,9 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="target">O alvo que está atacando.</param>
     protected virtual void StartAttack(IEnemyTarget target)
     {
+        if (isAttacking)
+            return;
+
         if (target == null)
             return;
 
