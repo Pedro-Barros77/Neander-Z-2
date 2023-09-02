@@ -8,13 +8,14 @@ using UnityEngine.UI;
 
 public class StoreScreen : MonoBehaviour
 {
-    public Player Player { get; set; }
     public List<GameObject> StoreItems { get; private set; }
     public StoreItem SelectedItem { get; private set; }
     public StoreTabs ActiveTab { get; private set; } = StoreTabs.Weapons;
     public readonly Color32 RedMoney = new(205, 86, 99, 255);
     public readonly Color32 GreenMoney = new(72, 164, 80, 255);
 
+    [SerializeField]
+    public PlayerData PlayerData;
     [SerializeField]
     TextMeshProUGUI PlayerMoneyText, PreviewTitleText, PreviewPriceText, PreviewDescriptionText, PreviewIsPrimaryText, PreviewTagsText, PreviewHeadshotMultiplierText, PreviewMgazineBulletsText, PreviewPelletsCountText, PreviewDispersionText;
     [SerializeField]
@@ -32,7 +33,6 @@ public class StoreScreen : MonoBehaviour
     void Start()
     {
         StoreItems = GameObject.FindGameObjectsWithTag("StoreItem").ToList();
-        Player = GameObject.FindAnyObjectByType<Player>(FindObjectsInactive.Include);
         storePanelAnimator = StorePanel.GetComponent<Animator>();
     }
 
@@ -41,10 +41,10 @@ public class StoreScreen : MonoBehaviour
         PreviewPanelContent.SetActive(hasItem);
         EmptyPreviewPanel.SetActive(!hasItem);
 
-        if (Player != null)
+        if (PlayerData != null)
         {
-            PlayerMoneyText.text = $"$ {Player.Money:N2}";
-            PlayerMoneyText.color = Player.Money > 0 ? GreenMoney : RedMoney;
+            PlayerMoneyText.text = $"$ {PlayerData.Money:N2}";
+            PlayerMoneyText.color = PlayerData.Money > 0 ? GreenMoney : RedMoney;
 
             if (hasItem)
             {
@@ -55,11 +55,11 @@ public class StoreScreen : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Player.GetMoney(100);
+            PlayerData.GetMoney(100);
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Player.TakeMoney(100);
+            PlayerData.TakeMoney(100);
         }
     }
 
@@ -190,5 +190,37 @@ public class StoreScreen : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         MenuController.Instance.ChangeScene(SceneNames.Graveyard, LoadSceneMode.Single);
+    }
+
+    /// <summary>
+    /// Função chamada quando o player clica no botão de comprar.
+    /// </summary>
+    public void BuyItem()
+    {
+        if (SelectedItem == null || SelectedItem.Data == null)
+            return;
+
+        if (!SelectedItem.Data.CanAfford)
+            return;
+
+        if (SelectedItem.Data.IsWeapon)
+            BuyWeapon();
+    }
+
+    /// <summary>
+    /// Compra a arma selecionada.
+    /// </summary>
+    private void BuyWeapon()
+    {
+        var data = SelectedItem.Data as StoreWeaponData;
+
+        if (PlayerData.InventoryData.HasWeapon(data.WeaponType))
+            return;
+
+        PlayerData.TakeMoney(SelectedItem.Data.Price);
+        if (data.IsPrimary)
+            PlayerData.InventoryData.EquippedPrimaryType = data.WeaponType;
+        else
+            PlayerData.InventoryData.EquippedSecondaryType = data.WeaponType;
     }
 }

@@ -182,27 +182,27 @@ public abstract class BaseWeapon : MonoBehaviour
 
     protected virtual void Awake()
     {
-    }
+        var sprite = transform.Find("Sprite");
+        SpriteRenderer = sprite.GetComponent<SpriteRenderer>();
+        ShadowCaster = sprite.GetComponent<ShadowCaster2D>();
+        Animator = sprite.GetComponent<Animator>();
+        FlashLight = sprite.Find("FlashLight").GetComponent<Light2D>();
 
-    protected virtual void Start()
-    {
         BulletSpawnPoint = transform.GetChild(0).Find("BulletSpawnPoint");
         BulletsContainer = GameObject.Find("ProjectilesContainer").transform;
         AudioSource = GetComponent<AudioSource>();
-        Player = PlayerWeaponController.transform.parent.GetComponent<Player>();
 
-        var sprite = transform.Find("Sprite");
-        Animator = sprite.GetComponent<Animator>();
-        SpriteRenderer = sprite.GetComponent<SpriteRenderer>();
-        ShadowCaster = sprite.GetComponent<ShadowCaster2D>();
-
-        FlashLight = sprite.Find("FlashLight").GetComponent<Light2D>();
         InnerFlashLight = FlashLight.transform.Find("InnerFlashLight").GetComponent<Light2D>();
         FlashLightStartIntensity = FlashLight.intensity;
         FlashLight.intensity = 0f;
         InnerFlashLight.intensity = 0f;
         FlashLight.gameObject.SetActive(false);
         InnerFlashLight.gameObject.SetActive(false);
+    }
+
+    protected virtual void Start()
+    {
+        Player = PlayerWeaponController.transform.parent.GetComponent<Player>();
     }
 
     protected virtual void Update()

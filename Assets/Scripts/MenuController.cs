@@ -106,16 +106,8 @@ public class MenuController : MonoBehaviour
     /// </summary>
     /// <param name="scene">O nome da nova cena.</param>
     /// <param name="mode">O modo de carregamento.</param>
-    public void ChangeScene(SceneNames scene, LoadSceneMode mode, bool deactivatePreviousObjects = false)
+    public void ChangeScene(SceneNames scene, LoadSceneMode mode)
     {
-        if (deactivatePreviousObjects)
-        {
-            var objects = SceneManager.GetActiveScene().GetRootGameObjects();
-            foreach (var obj in objects)
-            {
-                obj.SetActive(false);
-            }
-        }
         SceneManager.LoadScene(scene.ToString(), mode);
     }
 

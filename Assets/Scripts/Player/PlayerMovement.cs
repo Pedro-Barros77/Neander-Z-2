@@ -4,31 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    /// <summary>
-    /// A velocidade de aceleração do jogador.
-    /// </summary>
-    public float AccelerationSpeed => Player.AccelerationSpeed;
-    /// <summary>
-    /// A velocidade de movimento máxima do jogador.
-    /// </summary>
-    public float MovementSpeed => Player.MovementSpeed;
-    /// <summary>
-    /// Boost de velocidade do jogador ao correr pressionando o botão de sprint (correr).
-    /// </summary>
-    public float SprintSpeedMultiplier => Player.SprintSpeedMultiplier;
-    /// <summary>
-    /// A força do pulo do jogador.
-    /// </summary>
-    public float JumpForce => Player.JumpForce;
-    /// <summary>
-    /// A força de rolagem da habilidade Rolada Tática.
-    /// </summary>
-    public float RollForce => Player.RollForce;
-    /// <summary>
-    /// O tempo de recarga da habilidade Rolada Tática.
-    /// </summary>
-    public float RollCooldownMs => Player.RollCooldownMs;
-
     float LastRollTime;
     float dirInput;
     bool isGrounded;
@@ -81,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         dirInput = Input.GetAxisRaw("Horizontal");
-        var rollCooledDown = LastRollTime + (RollCooldownMs / 1000) <= Time.time;
+        var rollCooledDown = LastRollTime + (Player.RollCooldownMs / 1000) <= Time.time;
 
         if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isJumpingSideways)
         {
@@ -156,12 +131,12 @@ public class PlayerMovement : MonoBehaviour
         if ((isPressingLeft && isPressingRight) || isCrouching)
             return;
 
-        if (Mathf.Abs(rigidBody.velocity.x) < MovementSpeed && !isSprinting)
-            rigidBody.velocity += new Vector2(dirInput * AccelerationSpeed, 0);
+        if (Mathf.Abs(rigidBody.velocity.x) < Player.MovementSpeed && !isSprinting)
+            rigidBody.velocity += new Vector2(dirInput * Player.AccelerationSpeed, 0);
 
-        else if (Mathf.Abs(rigidBody.velocity.x) < MovementSpeed * SprintSpeedMultiplier && isSprinting)
+        else if (Mathf.Abs(rigidBody.velocity.x) < Player.MovementSpeed * Player.SprintSpeedMultiplier && isSprinting)
         {
-            rigidBody.velocity += new Vector2(dirInput * (AccelerationSpeed * SprintSpeedMultiplier), 0);
+            rigidBody.velocity += new Vector2(dirInput * (Player.AccelerationSpeed * Player.SprintSpeedMultiplier), 0);
             if (dirInput != 0)
                 Player.LoseStamina(Player.SprintStaminaDrain);
         }
@@ -175,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
         if (Player.Stamina < Player.JumpStaminaDrain)
             return;
         Player.LoseStamina(Player.JumpStaminaDrain);
-        rigidBody.AddForce(new Vector2(0f, JumpForce));
+        rigidBody.AddForce(new Vector2(0f, Player.JumpForce));
     }
 
     /// <summary>
@@ -192,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
         isTurning = false;
         isTurningBack = false;
         float rollDirection = isLeft ? -1 : 1;
-        rigidBody.AddForce(new Vector2(RollForce * rollDirection, 10f));
+        rigidBody.AddForce(new Vector2(Player.RollForce * rollDirection, 10f));
         Player.LoseStamina(Player.RollStaminaDrain);
     }
 
@@ -325,7 +300,7 @@ public class PlayerMovement : MonoBehaviour
             animator.ResetTrigger("Die");
 
         if (isSprinting)
-            animator.SetFloat("SprintSpeedMultiplier", SprintSpeedMultiplier);
+            animator.SetFloat("SprintSpeedMultiplier", Player.SprintSpeedMultiplier);
         else
             animator.SetFloat("SprintSpeedMultiplier", 1f);
 

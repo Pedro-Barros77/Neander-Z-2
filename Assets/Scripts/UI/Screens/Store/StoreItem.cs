@@ -48,9 +48,9 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (Data == null)
             return;
 
-        if (storeScreen.Player != null)
+        if (storeScreen.PlayerData != null)
         {
-            Data.CanAfford = storeScreen.Player.Money >= Data.Price;
+            Data.CanAfford = storeScreen.PlayerData.Money >= Data.Price;
             PriceText.color = Data.CanAfford ? storeScreen.GreenMoney : storeScreen.RedMoney;
         }
     }
