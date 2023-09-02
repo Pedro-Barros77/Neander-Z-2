@@ -246,7 +246,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         ShowPopup(value.ToString("0"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
-        if (DamageSounds.Any())
+        if (DamageSounds.Any() && !AudioSource.isPlaying)
         {
             var randomDamageSound = DamageSounds[Random.Range(0, DamageSounds.Count)];
             AudioSource.PlayOneShot(randomDamageSound, DamageSoundVolume);
