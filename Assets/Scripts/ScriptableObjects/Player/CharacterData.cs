@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Character Data", menuName = "Neander Z/Player/Character Data", order = 1)]
-public class CharacterData : ScriptableObject
+public class CharacterData : AutoRevertSO
 {
     public CharacterTypes Character;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item Data", menuName = "Neander Z/Store/Item Data", order = 1)]
-public class StoreItemData : ScriptableObject
+public class StoreItemData : AutoRevertSO
 {
     public Sprite Icon;
     public string Title;

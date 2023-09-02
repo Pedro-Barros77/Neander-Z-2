@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BaseWeaponData : ScriptableObject
+public abstract class BaseWeaponData : AutoRevertSO
 {
     public bool IsPrimary;
     public WeaponTypes Type;
