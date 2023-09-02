@@ -136,12 +136,7 @@ public class Player : MonoBehaviour, IEnemyTarget
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
         SpriteRenderer = GetComponent<SpriteRenderer>();
 
-        //float weaponContainerHeight = CurrentWeapon.WeaponContainerOffset.y;
-        //var clipCrouch = animator.runtimeAnimatorController.animationClips.FirstOrDefault(x => x.name == "Carlos_Crouch");
-        //var key = new Keyframe(0, weaponContainerHeight);
-        //clipCrouch.SetCurve("", typeof(Transform), "WeaponContainer.localPosition.y", new AnimationCurve(key));
-
-        HealthBar.SetMaxValue(MaxHealth, true);
+        HealthBar.SetMaxValue(MaxHealth, Health);
         HealthBar.AnimationSpeed = 20f;
         StaminaBar.gameObject.SetActive(true);
         StaminaBar.AnimationSpeed = 20f;
@@ -150,7 +145,7 @@ public class Player : MonoBehaviour, IEnemyTarget
         StaminaBar.UseOutline = false;
         StaminaBar.UseAnimation = false;
         StaminaBar.HideOnFull = true;
-        StaminaBar.SetMaxValue(MaxStamina, true);
+        StaminaBar.SetMaxValue(MaxStamina, MaxStamina);
         (StaminaBar.transform as RectTransform).pivot = new Vector2(0.5f, 0.5f);
         WavesManager.Instance.EnemiesTargets.Add(this);
     }

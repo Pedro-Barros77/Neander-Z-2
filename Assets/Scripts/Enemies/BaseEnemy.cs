@@ -144,7 +144,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         HealthBar = Instantiate(HealthBarPrefab, WorldPosCanvas.transform).GetComponent<ProgressBar>();
         HealthBar.gameObject.name = $"{Type}-HealthBar";
-        HealthBar.SetMaxValue(MaxHealth, true);
+        HealthBar.SetMaxValue(MaxHealth, MaxHealth);
         HealthBar.UseShadows = false;
         HealthBar.UseOutline = false;
         HealthBar.HideOnFull = true;

@@ -86,7 +86,7 @@ public class ProgressBar : MonoBehaviour
     {
         if (Value == MaxValue && HideOnFull && fill.activeSelf)
             SetVisible(false);
-        else if(Value < MaxValue && !fill.activeSelf)
+        else if (Value < MaxValue && !fill.activeSelf)
             SetVisible(true);
     }
 
@@ -141,19 +141,20 @@ public class ProgressBar : MonoBehaviour
     /// <summary>
     /// Define o valor da barra quando completa.
     /// </summary>
-    /// <param name="value">O valor a ser difinido como total (100%).</param>
+    /// <param name="maxValue">O valor a ser difinido como total (100%).</param>
     /// <param name="setValue">Se o valor atual da barra também deve ser preenchido com o total.</param>
-    public void SetMaxValue(float value, bool setValue = false)
+    public void SetMaxValue(float maxValue, float? currentValue = null)
     {
-        MaxValue = value;
-        targetValue = value;
-        slider.maxValue = value;
-        animationSlider.maxValue = value;
-        if (setValue)
+        MaxValue = maxValue;
+        slider.maxValue = maxValue;
+        animationSlider.maxValue = maxValue;
+
+        if (currentValue != null)
         {
-            Value = value;
-            slider.value = value;
-            animationSlider.value = value;
+            Value = currentValue.Value;
+            slider.value = currentValue.Value;
+            animationSlider.value = currentValue.Value;
+            targetValue = currentValue.Value;
         }
     }
 
