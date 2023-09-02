@@ -68,7 +68,7 @@ public class InGameScreen : MonoBehaviour
     public void OpenStore()
     {
         ContinueGame();
-        MenuController.Instance.ChangeScene(SceneNames.Store, LoadSceneMode.Additive, true);
+        MenuController.Instance.ChangeScene(SceneNames.Store, LoadSceneMode.Single);
     }
 
     /// <summary>

@@ -114,16 +114,18 @@ public class Backpack
         PrimaryWeaponsArsenal = new List<BaseWeapon>();
         SecondaryWeaponsArsenal = new List<BaseWeapon>();
 
+        bool isEquippedPrimary = CurrentWeaponIndex == 0;
+
         if (EquippedPrimaryType != WeaponTypes.None)
         {
             AddWeapon(EquippedPrimaryType);
-            EquippedPrimaryWeapon.IsActive = CurrentWeaponIndex == 0;
+            EquippedPrimaryWeapon.IsActive = isEquippedPrimary;
         }
 
         if (EquippedSecondaryType != WeaponTypes.None)
         {
             AddWeapon(EquippedSecondaryType);
-            EquippedSecondaryWeapon.IsActive = CurrentWeaponIndex == 1;
+            EquippedSecondaryWeapon.IsActive = !isEquippedPrimary;
         }
     }
 
@@ -149,7 +151,6 @@ public class Backpack
             if (equip)
             {
                 Data.EquippedPrimaryType = weaponType;
-                Data.CurrentWeaponIndex = 0;
             }
         }
         else
@@ -158,7 +159,6 @@ public class Backpack
             if (equip)
             {
                 Data.EquippedSecondaryType = weaponType;
-                Data.CurrentWeaponIndex = 1;
             }
         }
 
