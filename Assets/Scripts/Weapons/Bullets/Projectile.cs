@@ -113,14 +113,12 @@ public abstract class Projectile : MonoBehaviour
         var target = collision.GetComponentInParent<IPlayerTarget>();
         if (target != null)
         {
-            if (!target.IsAlive)
+            if (target.IsAlive)
             {
                 KillSelf();
                 return;
             }
         }
-
-        KillSelf();
     }
 
     /// <summary>
@@ -174,7 +172,10 @@ public abstract class Projectile : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Rigidbody.position = hit.point;
+            var target = hit.transform.GetComponentInParent<IPlayerTarget>();
+            if (target != null && target.IsAlive)
+                Rigidbody.position = hit.point;
+
             if (hit.collider.isTrigger)
                 HandleTrigger(hit.collider);
             else

@@ -233,15 +233,19 @@ public class PlayerMovement : MonoBehaviour
         movementDir = rigidBody.velocity.x;
         isMoving = Mathf.Abs(movementDir) > 0.1;
 
-        if (movementDir <= 0)
+        if (isCrouching)
         {
-            Player.CurrentWeapon.PlayerFlipDir = 1;
-            transform.localScale = new Vector3(1, 1, 1);
+            if (Player.WeaponController.IsAimingLeft)
+                FlipPlayer(true);
+            else
+                FlipPlayer(false);
         }
         else
         {
-            Player.CurrentWeapon.PlayerFlipDir = -1;
-            transform.localScale = new Vector3(-1, 1, 1);
+            if (movementDir < 0)
+                FlipPlayer(true);
+            else if (movementDir > 0)
+                FlipPlayer(false);
         }
 
         if ((isPressingRight ^ isPressingLeft) && !isTurning && !isRunning && !isRolling && !isJumpingSideways && !isCrouching)
@@ -281,6 +285,20 @@ public class PlayerMovement : MonoBehaviour
         }
 
         SyncAnimationStates();
+    }
+
+    private void FlipPlayer(bool isLeft)
+    {
+        if (isLeft)
+        {
+            Player.CurrentWeapon.PlayerFlipDir = 1;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            Player.CurrentWeapon.PlayerFlipDir = -1;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 
 

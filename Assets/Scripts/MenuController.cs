@@ -5,19 +5,11 @@ using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
-    static MenuController _instance;
 
     /// <summary>
     /// A instância deste Singleton.
     /// </summary>
-    public static MenuController Instance
-    {
-        get
-        {
-            if (_instance == null) _instance = GameObject.Find("MenuController").GetComponent<MenuController>();
-            return _instance;
-        }
-    }
+    public static MenuController Instance { get; private set; }
 
     public bool IsGamePaused { get; private set; }
     public bool IsInGame { get; set; }
@@ -36,9 +28,11 @@ public class MenuController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         PersistentCanvas = GameObject.Find("PersistentCanvas");
 
-        if (_instance == null || _instance == this)
+        if (Instance == null)
+            Instance = GameObject.Find("MenuController").GetComponent<MenuController>();
+
+        if (Instance == this)
         {
-            _instance = this;
             gameObject.tag = "Original";
             if (PersistentCanvas != null)
                 PersistentCanvas.tag = "Original";

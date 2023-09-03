@@ -300,11 +300,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f5ca350258cea634c8dbfd8324f5f270, type: 3}
   - {fileID: 8300000, guid: 2b952b04c4fe17a41bb51bdfd51d9c67, type: 3}
   - {fileID: 8300000, guid: ffdc010a8acfe5446b49a30d1e1dc3ff, type: 3}
-  AttackStartSounds: []
-  AttackHitSounds:
+  AttackStartSounds:
   - {fileID: 8300000, guid: 24a6176217de0d049b0d3deb69bc0db1, type: 3}
   - {fileID: 8300000, guid: 917c7fe7500c5284caa5cf71fe0bc66d, type: 3}
   - {fileID: 8300000, guid: ed6b87b518f537148898e4f5405ce6d8, type: 3}
+  AttackHitSounds: []
   DeathSounds:
   - {fileID: 8300000, guid: 4ce5134a02d97a641b24f6b4b3a56ab2, type: 3}
   - {fileID: 8300000, guid: 54f0bf309e9c0ac43bfbaecd27989ab3, type: 3}
@@ -335,7 +335,7 @@ MonoBehaviour:
   - {x: 0.5857179, y: -0.7, z: 0}
   m_ShapePathHash: -1287385339
   m_Mesh: {fileID: 0}
-  m_InstanceId: -12326
+  m_InstanceId: 55404
   m_LocalBounds:
     m_Center: {x: -0.22061956, y: -0.07583803, z: 0}
     m_Extent: {x: 0.8063375, y: 0.62416196, z: 0}

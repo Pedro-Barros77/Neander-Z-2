@@ -83,6 +83,11 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// </summary>
     protected float DeathSoundVolume { get; set; } = 1;
     /// <summary>
+    /// A cor do sangue deste inimigo.
+    /// </summary>
+    protected Color32 BloodColor { get; set; } = new Color32(140, 0, 0, 255);
+
+    /// <summary>
     /// Lista de alvos disponíveis para esse inimigo perseguir e atacar.
     /// </summary>
     protected List<IEnemyTarget> Targets => WavesManager.Instance.EnemiesTargets;
@@ -123,6 +128,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     protected bool isAttacking;
     protected bool isDying;
     protected bool isIdle => !isRunning && !isAttacking && !isDying;
+    protected float lastBloodSplatterTime;
+    protected float bloodSplatterDelay = 0.03f;
 
     protected virtual void Awake()
     {
@@ -246,7 +253,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         ShowPopup(value.ToString("0"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
-        if (DamageSounds.Any())
+        if (DamageSounds.Any() && !AudioSource.isPlaying)
         {
             var randomDamageSound = DamageSounds[Random.Range(0, DamageSounds.Count)];
             AudioSource.PlayOneShot(randomDamageSound, DamageSoundVolume);
@@ -343,8 +350,15 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         if (BloodSplatterPrefab == null)
             return;
 
+        if (lastBloodSplatterTime + bloodSplatterDelay > Time.time)
+            return;
+
         var bloodSplatter = Instantiate(BloodSplatterPrefab, hitPoint, Quaternion.identity, EffectsContainer);
         bloodSplatter.transform.up = pointToDirection;
+        var bloodParticles = bloodSplatter.GetComponent<ParticleSystem>();
+        var mainBloodSystem = bloodParticles.main;
+        mainBloodSystem.startColor = new(BloodColor);
+        lastBloodSplatterTime = Time.time;
     }
 
     /// <summary>
@@ -353,6 +367,9 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="target">O alvo que está atacando.</param>
     protected virtual void StartAttack(IEnemyTarget target)
     {
+        if (isAttacking)
+            return;
+
         if (target == null)
             return;
 
