@@ -7,11 +7,11 @@ public class ShotgunWeapon : BaseWeapon
     /// <summary>
     /// Quantidade de ballins disparados do cartucho da escopeta.
     /// </summary>
-    public int ShellPelletsCount { get; protected set; } = 12;
+    public int ShellPelletsCount => (Data as ShotgunData).ShellPelletsCount;
     /// <summary>
     /// A disperção dos ballins disparados.
     /// </summary>
-    public float PelletsDispersion { get; set; } = 50f;
+    public float PelletsDispersion => (Data as ShotgunData).PelletsDispersion;
     /// <summary>
     /// Se a arma está sendo bombeada atualmente.
     /// </summary>
@@ -19,7 +19,7 @@ public class ShotgunWeapon : BaseWeapon
     /// <summary>
     /// Se a arma utiliza cartucho/pente para o carregamento.
     /// </summary>
-    public bool UseMagazine { get; protected set; }
+    public bool UseMagazine => (Data as ShotgunData).UseMagazine;
     /// <summary>
     /// Se está pendente o bombeamento da arma (não pode atirar antes até bombear).
     /// </summary>
@@ -111,10 +111,10 @@ public class ShotgunWeapon : BaseWeapon
         return canReload;
     }
 
-    public override void BeforeSwitchWeapon()
+    public override bool BeforeSwitchWeapon()
     {
         ReloadCanceled = true;
-        base.BeforeSwitchWeapon();
+        return base.BeforeSwitchWeapon();
     }
 
     public override void OnReloadedChamber()

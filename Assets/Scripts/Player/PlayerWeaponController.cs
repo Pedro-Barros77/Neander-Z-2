@@ -55,7 +55,11 @@ public class PlayerWeaponController : MonoBehaviour
             isFiring = Input.GetKeyDown(KeyCode.Mouse0);
 
         if (isFiring)
-            Player.CurrentWeapon.Shoot();
+        {
+            bool isFiringBurst = Player.CurrentWeapon is BurstFireWeapon && (Player.CurrentWeapon as BurstFireWeapon).IsFiringBurst;
+            if (!isFiringBurst)
+                Player.CurrentWeapon.Shoot();
+        }
 
         if (Input.GetKeyDown(KeyCode.R))
             Player.CurrentWeapon.Reload();
@@ -86,8 +90,11 @@ public class PlayerWeaponController : MonoBehaviour
 
         if ((index == null || index != Player.Backpack.CurrentWeaponIndex) && Player.Backpack.HasPrimaryEquipped && Player.Backpack.HasSecondaryEquipped)
         {
+            bool canSwitch = Player.CurrentWeapon.BeforeSwitchWeapon();
+            if (!canSwitch)
+                return;
+
             IsSwitchingWeapon = true;
-            Player.CurrentWeapon.BeforeSwitchWeapon();
 
             Player.Backpack.SwitchWeapon(index);
 
