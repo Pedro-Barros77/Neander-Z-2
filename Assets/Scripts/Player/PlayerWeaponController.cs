@@ -1,6 +1,4 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class PlayerWeaponController : MonoBehaviour
 {
@@ -49,7 +47,14 @@ public class PlayerWeaponController : MonoBehaviour
         if (MenuController.Instance.IsGamePaused)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        bool isFiring;
+
+        if (Player.CurrentWeapon.FireMode == (FireModes.FullAuto | FireModes.Melee))
+            isFiring = Input.GetKey(KeyCode.Mouse0);
+        else
+            isFiring = Input.GetKeyDown(KeyCode.Mouse0);
+
+        if (isFiring)
             Player.CurrentWeapon.Shoot();
 
         if (Input.GetKeyDown(KeyCode.R))

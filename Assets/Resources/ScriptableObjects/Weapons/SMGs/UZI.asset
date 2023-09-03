@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252719e25f3c95149b77e1a44da14b6c, type: 3}
+  m_Name: UZI
+  m_EditorClassIdentifier: 
+  IsPrimary: 1
+  Type: 5
+  BulletType: 1
+  FireMode: 3
+  Damage: 4
+  FireRate: 10
+  BulletSpeed: 20
+  BulletMaxRange: 500
+  MaxDamageRange: 500
+  MinDamageRange: 300
+  MagazineSize: 25
+  MagazineBullets: 25
+  ReloadTimeMs: 1200
+  SwitchTimeMs: 220

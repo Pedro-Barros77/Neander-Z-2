@@ -63,6 +63,10 @@ public abstract class BaseWeapon : MonoBehaviour
     /// O tipo de arma.
     /// </summary>
     public WeaponTypes Type => Data.Type;
+    /// <summary>
+    /// Modo de disparo da arma.
+    /// </summary>
+    public FireModes FireMode => Data.FireMode;
 
     #endregion
 
