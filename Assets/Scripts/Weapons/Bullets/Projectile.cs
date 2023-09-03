@@ -111,12 +111,16 @@ public abstract class Projectile : MonoBehaviour
     protected virtual void OnEnemyHit(Collider2D collision)
     {
         var target = collision.GetComponentInParent<IPlayerTarget>();
-        if (target != null)
+        if (target != null && target.IsAlive)
         {
-            if (target.IsAlive)
+            if (PierceCount < MaxPierceCount)
+            {
+                PierceCount++;
+                Damage *= PierceDamageMultiplier;
+            }
+            else if (MaxPierceCount == 0 || PierceCount >= MaxPierceCount)
             {
                 KillSelf();
-                return;
             }
         }
     }

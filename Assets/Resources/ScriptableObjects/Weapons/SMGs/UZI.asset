@@ -19,9 +19,9 @@ MonoBehaviour:
   Damage: 4
   FireRate: 10
   BulletSpeed: 20
-  BulletMaxRange: 500
-  MaxDamageRange: 500
-  MinDamageRange: 300
+  BulletMaxRange: 15
+  MaxDamageRange: 5
+  MinDamageRange: 8
   MagazineSize: 25
   MagazineBullets: 25
   ReloadTimeMs: 1200

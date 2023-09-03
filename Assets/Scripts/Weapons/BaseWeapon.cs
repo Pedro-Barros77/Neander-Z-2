@@ -264,7 +264,7 @@ public abstract class BaseWeapon : MonoBehaviour
         var bulletInstance = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.Euler(0f, 0f, angleDegrees), BulletsContainer);
         var bullet = bulletInstance.GetComponent<Projectile>();
 
-        bullet.Type = BulletTypes.Pistol;
+        bullet.Type = BulletType;
         bullet.StartPos = BulletSpawnPoint.position;
         bullet.AngleDegrees = PlayerWeaponController.AimAngleDegrees;
         bullet.Speed = BulletSpeed;

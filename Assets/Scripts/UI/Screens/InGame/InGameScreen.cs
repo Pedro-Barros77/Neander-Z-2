@@ -16,7 +16,7 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon;
     [SerializeField]
-    Sprite Colt_1911Sprite, ShortBarrelSprite, UZISprite;
+    Sprite Colt_1911Sprite, ShortBarrelSprite, UZISprite, SV98Sprite;
 
     void Start()
     {
@@ -59,6 +59,7 @@ public class InGameScreen : MonoBehaviour
             WeaponTypes.Colt_1911 => Colt_1911Sprite,
             WeaponTypes.ShortBarrel => ShortBarrelSprite,
             WeaponTypes.UZI => UZISprite,
+            WeaponTypes.SV98 => SV98Sprite,
             _ => null,
         };
     }
