@@ -33,10 +33,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        Player = GetComponent<Player>();
-        rigidBody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        Player = GetComponentInParent<Player>();
+        rigidBody = GetComponentInParent<Rigidbody2D>();
+        animator = GetComponentInParent<Animator>();
+        spriteRenderer = GetComponentInParent<SpriteRenderer>();
     }
 
     void Update()
@@ -242,9 +242,9 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (movementDir < 0)
+            if (movementDir < 0 || isPressingLeft)
                 FlipPlayer(true);
-            else if (movementDir > 0)
+            else if (movementDir > 0 || isPressingRight)
                 FlipPlayer(false);
         }
 
@@ -292,12 +292,12 @@ public class PlayerMovement : MonoBehaviour
         if (isLeft)
         {
             Player.CurrentWeapon.PlayerFlipDir = 1;
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.parent.localScale = new Vector3(1, 1, 1);
         }
         else
         {
             Player.CurrentWeapon.PlayerFlipDir = -1;
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.parent.localScale = new Vector3(-1, 1, 1);
         }
     }
 
