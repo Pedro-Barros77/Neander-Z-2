@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Ronald : BaseEnemy
 {
-    private float spawnChance = 100f;
+    private float spawnChance = 0.1f;
     private bool SpawnRonaldo;
     private float MaxRonaldoSpawnDelayMs = 5000f;
     protected override void Start()
@@ -31,7 +31,7 @@ public class Ronald : BaseEnemy
 
     protected override void Die(string lastDamagedBodyPartName)
     {
-        float randomValue = Random.Range(0f, 100f);
+        float randomValue = Random.Range(0f, 1f);
         SpawnRonaldo = randomValue <= spawnChance;
 
         IsAlive = false;

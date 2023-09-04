@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
@@ -7,7 +8,6 @@ public abstract class Projectile : MonoBehaviour
     public float Speed { get; set; }
     public float Damage { get; set; }
     public float TotalDamage { get; set; }
-    public bool HasGravity { get; set; }
     public Vector3 StartPos { get; set; }
     public int MaxPierceCount { get; set; }
     public int PierceCount { get; set; }
@@ -15,18 +15,19 @@ public abstract class Projectile : MonoBehaviour
     public float MaxDistance { get; set; }
     public float MinDamageRange { get; set; }
     public float MaxDamageRange { get; set; }
-    public float BlastRadius { get; set; }
-    public float BlastKnockbackForce { get; set; }
-    public float BlastMaxDamageRadius { get; set; }
-    public float BlastMinDamageRadius { get; set; }
+    public bool RotateTowardsDirection { get; set; }
 
     protected Rigidbody2D Rigidbody { get; set; }
+    protected Collider2D Collider { get; set; }
+    protected SpriteRenderer Sprite { get; set; }
     protected Vector2 LastPosition;
     protected LayerMask TargetLayerMask;
 
     protected virtual void Start()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
+        Collider = GetComponent<Collider2D>();
+        Sprite = GetComponent<SpriteRenderer>();
         TotalDamage = Damage;
         TargetLayerMask = LayerMask.GetMask("Enemy", "Environment", "PlayerEnvironment");
     }
@@ -38,6 +39,13 @@ public abstract class Projectile : MonoBehaviour
         if (distanceFromStart >= MaxDistance || distanceFromStart >= 100f)
         {
             OnMaxDistanceReach();
+        }
+
+        if (RotateTowardsDirection)
+        {
+            Vector2 direction = Rigidbody.velocity.normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x).RadToDeg();
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
 
         CheckTunneling();
@@ -156,6 +164,17 @@ public abstract class Projectile : MonoBehaviour
     {
         gameObject.SetActive(false);
         Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// Destroi o projétil após um delay.
+    /// </summary>
+    /// <param name="delaySeconds">Delay em segundos para esperar antes de destruir o projétil.</param>
+    /// <returns></returns>
+    protected IEnumerator KillSelfDelayed(float delaySeconds)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+        KillSelf();
     }
 
     /// <summary>

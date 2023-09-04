@@ -214,6 +214,10 @@ public abstract class BaseWeapon : MonoBehaviour
         if (MenuController.Instance.IsGamePaused)
             return;
 
+        // Debug Reload Time
+        //if (reloadStartTime != null)
+        //    Debug.Log("Reload time: " + (Time.time - reloadStartTime.Value));
+
         Animation();
 
         if (IsActive)
@@ -340,12 +344,14 @@ public abstract class BaseWeapon : MonoBehaviour
     /// <summary>
     /// Função chamada antes de trocar de arma, desativando o sprite desta arma.
     /// </summary>
-    public virtual void BeforeSwitchWeapon()
+    public virtual bool BeforeSwitchWeapon()
     {
         isShooting = false;
         IsSwitchingWeapon = true;
 
         Animator.SetFloat("reloadSpeed", 0);
+
+        return true;
     }
 
     /// <summary>
@@ -479,7 +485,7 @@ public abstract class BaseWeapon : MonoBehaviour
     protected virtual void SyncAnimationStates()
     {
         Animator.SetFloat("shootSpeed", FireRate / 10);
-        Animator.SetFloat("reloadSpeed", ReloadTimeMs / 1000);
+        Animator.SetFloat("reloadSpeed", 1000 / ReloadTimeMs);
 
         if (IsReloading) Animator.SetTrigger("Reload");
         else Animator.ResetTrigger("Reload");

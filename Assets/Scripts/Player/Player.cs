@@ -126,11 +126,15 @@ public class Player : MonoBehaviour, IEnemyTarget
     [SerializeField]
     ProgressBar HealthBar, StaminaBar;
 
+    public PlayerMovement PlayerMovement { get; private set; }
+
     void Start()
     {
         IsAlive = true;
         Screen = GameObject.Find("Screen").GetComponent<InGameScreen>();
         Backpack = new Backpack(this, Data.InventoryData);
+
+        PlayerMovement = GetComponentInChildren<PlayerMovement>();
 
         WorldPosCanvas = GameObject.Find("WorldPositionCanvas").GetComponent<Canvas>();
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
@@ -280,4 +284,26 @@ public class Player : MonoBehaviour, IEnemyTarget
         Data.Stamina = Mathf.Clamp(Stamina - value, 0, MaxStamina);
         StaminaBar.RemoveValue(value);
     }
+
+    #region Movement Animation Forwarding
+    /// <summary>
+    /// Função chamada pelo evento de animação, no último frame da Rolada Tática.
+    /// </summary>
+    public void OnRollEnd() => PlayerMovement.OnRollEnd();
+
+    /// <summary>
+    /// Função chamada pelo evento de animação, no último frame do giro do personagem.
+    /// </summary>
+    public void OnTurnEnd() => PlayerMovement.OnTurnEnd();
+
+    /// <summary>
+    /// Função chamada pelo evento de animação, no último frame do giro do personagem.
+    /// </summary>
+    public void OnTurnBackEnd() => PlayerMovement.OnTurnBackEnd();
+
+    /// <summary>
+    /// Função chamada pelo evento de animação, no último frame ao cair no chão do personagem.
+    /// </summary>
+    public void OnFallGroundEnd() => PlayerMovement.OnFallGroundEnd();
+    #endregion
 }
