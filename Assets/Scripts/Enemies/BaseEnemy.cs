@@ -301,6 +301,13 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         {
             StartCoroutine(StartDeathFadeOutCountDown());
         }
+
+        Destroy(HealthBar.gameObject);
+    }
+
+    protected virtual void OnDeathEnd()
+    {
+
     }
 
     protected float DistanceFrom(Transform target) => Mathf.Abs(target.position.x - transform.position.x);

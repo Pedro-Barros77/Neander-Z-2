@@ -35,6 +35,9 @@ public class WavesManager : MonoBehaviour
             SpawnRogerTest(EnemyTypes.Z_Roger);
         if (Input.GetKeyDown(KeyCode.X))
             SpawnRogerTest(EnemyTypes.Z_Robert);
+        if (Input.GetKeyDown(KeyCode.V))
+            SpawnRogerTest(EnemyTypes.Z_Ronald);
+
     }
 
     void SpawnRogerTest(EnemyTypes type)
