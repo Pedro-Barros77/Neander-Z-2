@@ -190,18 +190,24 @@ public abstract class BaseWeapon : MonoBehaviour
         SpriteRenderer = sprite.GetComponent<SpriteRenderer>();
         ShadowCaster = sprite.GetComponent<ShadowCaster2D>();
         Animator = sprite.GetComponent<Animator>();
-        FlashLight = sprite.Find("FlashLight").GetComponent<Light2D>();
 
-        BulletSpawnPoint = transform.GetChild(0).Find("BulletSpawnPoint");
+        var flashLight = sprite.Find("FlashLight");
+        if (flashLight != null)
+            FlashLight = flashLight.GetComponent<Light2D>();
+
+        BulletSpawnPoint = sprite.Find("BulletSpawnPoint");
         BulletsContainer = GameObject.Find("ProjectilesContainer").transform;
         AudioSource = GetComponent<AudioSource>();
 
-        InnerFlashLight = FlashLight.transform.Find("InnerFlashLight").GetComponent<Light2D>();
-        FlashLightStartIntensity = FlashLight.intensity;
-        FlashLight.intensity = 0f;
-        InnerFlashLight.intensity = 0f;
-        FlashLight.gameObject.SetActive(false);
-        InnerFlashLight.gameObject.SetActive(false);
+        if (FlashLight != null)
+        {
+            InnerFlashLight = FlashLight.transform.Find("InnerFlashLight").GetComponent<Light2D>();
+            FlashLightStartIntensity = FlashLight.intensity;
+            FlashLight.intensity = 0f;
+            InnerFlashLight.intensity = 0f;
+            FlashLight.gameObject.SetActive(false);
+            InnerFlashLight.gameObject.SetActive(false);
+        }
     }
 
     protected virtual void Start()
@@ -337,7 +343,8 @@ public abstract class BaseWeapon : MonoBehaviour
     protected virtual void ToggleVisible(bool visible)
     {
         SpriteRenderer.enabled = visible;
-        ShadowCaster.enabled = visible;
+        if (ShadowCaster != null)
+            ShadowCaster.enabled = visible;
         IsActive = visible;
     }
 

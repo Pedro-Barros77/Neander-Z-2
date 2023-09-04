@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
@@ -26,6 +27,8 @@ public class PlayerWeaponController : MonoBehaviour
     Transform handTransform;
     float? startSwitchTime;
 
+    readonly FireModes[] HoldTriggerFireModes = { FireModes.FullAuto, FireModes.Melee };
+
     private void Awake()
     {
         handTransform = transform.Find("Hand");
@@ -49,7 +52,7 @@ public class PlayerWeaponController : MonoBehaviour
 
         bool isFiring;
 
-        if (Player.CurrentWeapon.FireMode == (FireModes.FullAuto | FireModes.Melee))
+        if (HoldTriggerFireModes.Contains(Player.CurrentWeapon.FireMode))
             isFiring = Input.GetKey(KeyCode.Mouse0);
         else
             isFiring = Input.GetKeyDown(KeyCode.Mouse0);

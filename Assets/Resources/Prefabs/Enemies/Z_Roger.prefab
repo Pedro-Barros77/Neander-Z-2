@@ -432,7 +432,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05518517, y: -0.19185317}
+  m_Offset: {x: 0.05518517, y: -0.7536386}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -443,7 +443,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4069357, y: 1.3762937}
+  m_Size: {x: 0.4069357, y: 0.25282288}
   m_EdgeRadius: 0
 --- !u!114 &5579682174834183307
 MonoBehaviour:
@@ -495,7 +495,7 @@ MonoBehaviour:
   - {x: 0.03659916, y: -0.3529129, z: 0}
   m_ShapePathHash: 2055473501
   m_Mesh: {fileID: 0}
-  m_InstanceId: 33226
+  m_InstanceId: 46378
   m_LocalBounds:
     m_Center: {x: -0.0049294233, y: -0.0061333776, z: 0}
     m_Extent: {x: 0.3692206, y: 0.8719939, z: 0}

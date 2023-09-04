@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce303ec638649fc49a44745568d0ee08, type: 3}
+  m_Name: Machete
+  m_EditorClassIdentifier: 
+  IsPrimary: 0
+  Type: 6
+  BulletType: 7
+  FireMode: 0
+  Damage: 3
+  FireRate: 2
+  BulletSpeed: 0
+  BulletMaxRange: 0
+  MaxDamageRange: 0
+  MinDamageRange: 0
+  MagazineSize: 0
+  MagazineBullets: 0
+  ReloadTimeMs: 0
+  SwitchTimeMs: 150
+  AttackAnimationsCount: 3
+  AttackStaminaCost: 7
