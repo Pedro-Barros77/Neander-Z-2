@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c2593df88964c439d0fe7e0c39958f, type: 3}
+  m_Name: RPG
+  m_EditorClassIdentifier: 
+  IsPrimary: 1
+  Type: 7
+  BulletType: 5
+  FireMode: 6
+  Damage: 50
+  FireRate: 2
+  BulletSpeed: 15
+  BulletMaxRange: 800
+  MaxDamageRange: 800
+  MinDamageRange: 800
+  MagazineSize: 1
+  MagazineBullets: 1
+  ReloadTimeMs: 2500
+  SwitchTimeMs: 500
+  ExplosionMaxDamageRadius: 1.5
+  ExplosionMinDamageRadius: 3
+  ExplosionSize: 2
