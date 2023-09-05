@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Ronald : BaseEnemy
 {
-    private float spawnChance = 0.1f;
+    private float spawnChance = 1f;
     private bool SpawnRonaldo;
     private float MaxRonaldoSpawnDelayMs = 5000f;
     protected override void Start()
@@ -72,9 +72,12 @@ public class Ronald : BaseEnemy
     private IEnumerator SpawnRonaldoDelayed(float delayMs)
     {
         yield return new WaitForSeconds(delayMs / 1000f);
-        Vector3 RonaldPosition = transform.position;
+        float ronaldoSpawnOffsetX = transform.localScale.x * (-1.7f);
+        float ronaldoSpawnOffsetY = transform.localScale.y * (-1);
+        Vector3 RonaldPosition = transform.position + new Vector3(ronaldoSpawnOffsetX * EnemyDirection, ronaldoSpawnOffsetY * EnemyDirection, 0);
+        FlipEnemy(EnemyDirection);
         Destroy(gameObject);
-        GameObject ronaldo = Instantiate(Resources.Load<GameObject>($"Prefabs/Enemies/{EnemyTypes.Z_Roger}"), RonaldPosition, Quaternion.identity);
+        GameObject ronaldo = Instantiate(Resources.Load<GameObject>($"Prefabs/Enemies/{EnemyTypes.Z_Ronaldo}"), RonaldPosition, Quaternion.identity);
     }
 
 }
