@@ -333,12 +333,25 @@ public abstract class BaseWeapon : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Define a arma como visível ou invisível, caso o jogador não esteja com ela na mão.
+    /// </summary>
+    /// <param name="visible">Se a arma está visível  ou não.</param>
     protected virtual void ToggleVisible(bool visible)
     {
         SpriteRenderer.enabled = visible;
         if (ShadowCaster != null)
             ShadowCaster.enabled = visible;
         IsActive = visible;
+    }
+
+    /// <summary>
+    /// Define se a arma está sem munição e deve exibir o alerta de recarregar.
+    /// </summary>
+    /// <returns>Se a arma precisa de recarregamento ou não.</returns>
+    public virtual bool NeedsReload()
+    {
+        return MagazineBullets <= 0;
     }
 
     /// <summary>

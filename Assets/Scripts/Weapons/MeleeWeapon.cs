@@ -101,4 +101,9 @@ public class MeleeWeapon : BaseWeapon
         target.OnPointHit(hitPosition, -transform.right);
         HitTargetsIds.Add(targetInstanceId);
     }
+
+    public override bool NeedsReload()
+    {
+        return false;
+    }
 }

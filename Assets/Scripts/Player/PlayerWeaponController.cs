@@ -24,8 +24,12 @@ public class PlayerWeaponController : MonoBehaviour
     /// </summary>
     public bool IsAimingLeft => AimAngleDegrees > 90 && AimAngleDegrees < 270;
 
+    [SerializeField]
+    public BlinkingText blinkingReloadText;
+
     Transform handTransform;
     float? startSwitchTime;
+    SpriteRenderer playerSprite;
 
     readonly FireModes[] HoldTriggerFireModes = { FireModes.FullAuto, FireModes.Melee };
 
@@ -38,6 +42,7 @@ public class PlayerWeaponController : MonoBehaviour
     void Start()
     {
         Player = transform.parent.GetComponent<Player>();
+        playerSprite = Player.GetComponent<SpriteRenderer>();
         StartLocalPosition = transform.localPosition;
     }
 
@@ -80,6 +85,9 @@ public class PlayerWeaponController : MonoBehaviour
             WeaponSwitchAnimation();
         else
             RotateToMouse();
+
+        blinkingReloadText.gameObject.SetActive(Player.CurrentWeapon.NeedsReload());
+        blinkingReloadText.transform.position = Player.transform.position + new Vector3(0, playerSprite.size.y * 0.7f);
     }
 
     /// <summary>
