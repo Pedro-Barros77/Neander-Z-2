@@ -51,6 +51,10 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// </summary>
     public bool IsAlive { get; protected set; } = true;
     /// <summary>
+    /// A direção em que o sprite do inimigo está virado atualmente.
+    /// </summary>
+    public float EnemyDirection { get; protected set; }
+    /// <summary>
     /// Infica se esse inimigo está na distância de ataque de um alvo.
     /// </summary>
     protected bool IsInAttackRange { get; set; }
@@ -452,9 +456,11 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         float movementDir = RigidBody.velocity.x;
         bool isMoving = Mathf.Abs(movementDir) > 0.1;
 
+        EnemyDirection = Mathf.Sign(movementDir);
+
         if (isMoving && !isAttacking)
         {
-            FlipEnemy(Mathf.Sign(movementDir));
+            FlipEnemy(EnemyDirection);
 
             isRunning = true;
         }
@@ -470,7 +476,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// Inverte a direção do inimigo.
     /// </summary>
     /// <param name="direction">1 para direita, -1 para esquerda.</param>
-    protected void FlipEnemy(float direction)
+    public void FlipEnemy(float direction)
     {
         if (direction == 0) return;
 
