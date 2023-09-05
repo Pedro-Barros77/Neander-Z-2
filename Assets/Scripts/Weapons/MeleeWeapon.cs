@@ -8,7 +8,7 @@ public class MeleeWeapon : BaseWeapon
     protected float AttackStaminaCost => (Data as MeleeData).AttackStaminaCost;
 
     [SerializeField]
-    protected List<AudioClip> HitSounds;
+    protected List<CustomAudio> HitSounds;
     protected AttackTrigger AttackTrigger;
 
     protected List<int> HitTargetsIds = new();
@@ -42,7 +42,8 @@ public class MeleeWeapon : BaseWeapon
         if (ShootSounds.Any())
         {
             var randomShootSound = ShootSounds[Random.Range(0, ShootSounds.Count)];
-            AudioSource.PlayOneShot(randomShootSound, ShootVolume);
+            AudioSource.pitch = randomShootSound.Pitch;
+            AudioSource.PlayOneShot(randomShootSound.Audio, randomShootSound.Volume);
         }
 
         return emptyBullets;
@@ -93,7 +94,7 @@ public class MeleeWeapon : BaseWeapon
         if (HitSounds.Any())
         {
             var randomHitSound = HitSounds[Random.Range(0, HitSounds.Count)];
-            AudioSource.PlayOneShot(randomHitSound);
+            AudioSource.PlayOneShot(randomHitSound.Audio, randomHitSound.Volume);
         }
         Vector2 hitPosition = targetCollider.ClosestPoint(AttackTrigger.transform.position);
         target.TakeDamage(Damage, targetCollider.name, hitPosition);

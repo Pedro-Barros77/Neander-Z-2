@@ -222,18 +222,31 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: 680d25ecd5cb67d4db581b34af1cad89, type: 2}
   BulletPrefab: {fileID: 0}
   ShootSounds:
-  - {fileID: 8300000, guid: c4506afb4f7683d42b32b0e79a5e3b5f, type: 3}
-  - {fileID: 8300000, guid: 856c51a628127da48a7d6c3e25af703c, type: 3}
-  ExtraSoundEffects:
-  - {fileID: 8300000, guid: 14510d654c4256f478519c51ed9c0005, type: 3}
-  - {fileID: 8300000, guid: 6ecb545818a1dc542b20021e104f762f, type: 3}
-  - {fileID: 8300000, guid: e58af3e00c311f845b09a9cf191e284e, type: 3}
-  EmptyChamberSound: {fileID: 0}
+  - Audio: {fileID: 8300000, guid: c4506afb4f7683d42b32b0e79a5e3b5f, type: 3}
+    Volume: 0.4
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 856c51a628127da48a7d6c3e25af703c, type: 3}
+    Volume: 0.4
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 24074206a16a84e4da252c1eb5dbec2f, type: 3}
+    Volume: 0.4
+    Pitch: 1
+  ExtraSoundEffects: []
+  EmptyChamberSound:
+    Audio: {fileID: 0}
+    Volume: 0
+    Pitch: 0
   SmokeParticlesPrefab: {fileID: 0}
   HitSounds:
-  - {fileID: 8300000, guid: 14510d654c4256f478519c51ed9c0005, type: 3}
-  - {fileID: 8300000, guid: 6ecb545818a1dc542b20021e104f762f, type: 3}
-  - {fileID: 8300000, guid: e58af3e00c311f845b09a9cf191e284e, type: 3}
+  - Audio: {fileID: 8300000, guid: 14510d654c4256f478519c51ed9c0005, type: 3}
+    Volume: 0.8
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 6ecb545818a1dc542b20021e104f762f, type: 3}
+    Volume: 0.8
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: e58af3e00c311f845b09a9cf191e284e, type: 3}
+    Volume: 0.8
+    Pitch: 1
 --- !u!82 &3081310445774181658
 AudioSource:
   m_ObjectHideFlags: 0

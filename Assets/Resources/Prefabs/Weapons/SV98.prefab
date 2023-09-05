@@ -146,7 +146,7 @@ MonoBehaviour:
   - {x: -1.6780434, y: -0.54289776, z: 0}
   m_ShapePathHash: 70987012
   m_Mesh: {fileID: 0}
-  m_InstanceId: -42588
+  m_InstanceId: 62732
   m_LocalBounds:
     m_Center: {x: -0.24874806, y: -0.10177785, z: 0}
     m_Extent: {x: 2.4760222, y: 0.44864762, z: 0}
@@ -273,12 +273,23 @@ MonoBehaviour:
   Data: {fileID: 11400000, guid: 4ab566083b2632d4bb2596e789566a4a, type: 2}
   BulletPrefab: {fileID: 7887129572111050252, guid: 9fecc1755a2c73e4fa0501885fcc20a1, type: 3}
   ShootSounds:
-  - {fileID: 8300000, guid: 8b995cf770d5529499b7dcc15c0baaa5, type: 3}
+  - Audio: {fileID: 8300000, guid: 8b995cf770d5529499b7dcc15c0baaa5, type: 3}
+    Volume: 1
+    Pitch: 1
   ExtraSoundEffects:
-  - {fileID: 8300000, guid: b04ff9af2a351eb49a5950a089129c81, type: 3}
-  - {fileID: 8300000, guid: ac69745ed24d277469a2d5b68c2ff338, type: 3}
-  - {fileID: 8300000, guid: 1e610793f191a6d4d8252208fb122710, type: 3}
-  EmptyChamberSound: {fileID: 8300000, guid: 1cae56894b1e0e642be2c82719b48b86, type: 3}
+  - Audio: {fileID: 8300000, guid: b04ff9af2a351eb49a5950a089129c81, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: ac69745ed24d277469a2d5b68c2ff338, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 1e610793f191a6d4d8252208fb122710, type: 3}
+    Volume: 1
+    Pitch: 1
+  EmptyChamberSound:
+    Audio: {fileID: 8300000, guid: 1cae56894b1e0e642be2c82719b48b86, type: 3}
+    Volume: 1
+    Pitch: 1
   SmokeParticlesPrefab: {fileID: 8758156699292232356, guid: e201a3dc5be386a468ae239537cfab91, type: 3}
 --- !u!82 &5407767097455220497
 AudioSource:
