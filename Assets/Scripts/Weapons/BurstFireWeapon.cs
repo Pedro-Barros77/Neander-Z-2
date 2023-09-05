@@ -15,6 +15,9 @@ public class BurstFireWeapon : BaseWeapon
     int CurrentBurstShotCount = 1;
     public override IEnumerable<GameObject> Shoot()
     {
+        if (MagazineBullets <= 0)
+            IsFiringBurst = false;
+
         var bulletInstances = base.Shoot();
         if (!bulletInstances.Any())
             return bulletInstances;

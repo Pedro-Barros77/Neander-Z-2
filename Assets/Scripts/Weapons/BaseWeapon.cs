@@ -100,23 +100,15 @@ public abstract class BaseWeapon : MonoBehaviour
     /// Define o offset da posição do container da arma em relação ao jogador.
     /// </summary>
     protected Vector3 WeaponContainerOffset { get; set; }
-    /// <summary>
-    /// Volume do som de disparo da arma, entre 0 e 1.
-    /// </summary>
-    protected float ShootVolume;
-    /// <summary>
-    /// Volume do som de disparo da arma, entre 0 e 1.
-    /// </summary>
-    protected float EmptyChamberVolume;
 
     #endregion
 
     [SerializeField]
     protected GameObject BulletPrefab;
     [SerializeField]
-    protected List<AudioClip> ShootSounds, ExtraSoundEffects;
+    protected List<CustomAudio> ShootSounds, ExtraSoundEffects;
     [SerializeField]
-    protected AudioClip EmptyChamberSound;
+    protected CustomAudio EmptyChamberSound;
     [SerializeField]
     protected GameObject SmokeParticlesPrefab;
 
@@ -261,7 +253,8 @@ public abstract class BaseWeapon : MonoBehaviour
         if (ShootSounds.Any())
         {
             var randomShootSound = ShootSounds[Random.Range(0, ShootSounds.Count)];
-            AudioSource.PlayOneShot(randomShootSound, ShootVolume);
+            AudioSource.pitch = randomShootSound.Pitch;
+            AudioSource.PlayOneShot(randomShootSound.Audio, randomShootSound.Volume);
         }
 
         var bullets = CreateBullets(angle);
@@ -419,7 +412,9 @@ public abstract class BaseWeapon : MonoBehaviour
     public virtual void PlayExtraSoundEffect(int index, float volume = 1f)
     {
         var randomExtraSoundEffect = ExtraSoundEffects[index];
-        AudioSource.PlayOneShot(randomExtraSoundEffect, volume);
+
+        AudioSource.pitch = randomExtraSoundEffect.Pitch;
+        AudioSource.PlayOneShot(randomExtraSoundEffect.Audio, randomExtraSoundEffect.Volume);
     }
 
     /// <summary>
@@ -431,7 +426,10 @@ public abstract class BaseWeapon : MonoBehaviour
         if (MagazineBullets <= 0)
         {
             if (!IsReloading)
-                AudioSource.PlayOneShot(EmptyChamberSound, EmptyChamberVolume);
+            {
+                AudioSource.pitch = EmptyChamberSound.Pitch;
+                AudioSource.PlayOneShot(EmptyChamberSound.Audio, EmptyChamberSound.Volume);
+            }
             return false;
         }
 
