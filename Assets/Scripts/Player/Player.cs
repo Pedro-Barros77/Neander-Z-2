@@ -140,8 +140,12 @@ public class Player : MonoBehaviour, IEnemyTarget
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
         SpriteRenderer = GetComponent<SpriteRenderer>();
 
-        HealthBar.SetMaxValue(MaxHealth, Health);
-        HealthBar.AnimationSpeed = 20f;
+        if (HealthBar != null)
+        {
+            HealthBar.SetMaxValue(MaxHealth, Health);
+            HealthBar.AnimationSpeed = 20f;
+        }
+
         StaminaBar.gameObject.SetActive(true);
         StaminaBar.AnimationSpeed = 20f;
         StaminaBar.ValueFillColor = new Color32(245, 238, 20, 255);
@@ -151,7 +155,6 @@ public class Player : MonoBehaviour, IEnemyTarget
         StaminaBar.HideOnFull = true;
         StaminaBar.SetMaxValue(MaxStamina, MaxStamina);
         (StaminaBar.transform as RectTransform).pivot = new Vector2(0.5f, 0.5f);
-        WavesManager.Instance.EnemiesTargets.Add(this);
     }
 
     void Update()
@@ -196,7 +199,8 @@ public class Player : MonoBehaviour, IEnemyTarget
         if (value < 0) return;
 
         Data.Health = Mathf.Clamp(Health + value, 0, MaxHealth);
-        HealthBar.AddValue(value);
+        if (HealthBar != null)
+            HealthBar.AddValue(value);
         ShowPopup(value.ToString("0"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
     }
 
@@ -212,7 +216,8 @@ public class Player : MonoBehaviour, IEnemyTarget
         if (value < 0) return;
 
         Data.Health = Mathf.Clamp(Health - value, 0, MaxHealth);
-        HealthBar.RemoveValue(value);
+        if (HealthBar != null)
+            HealthBar.RemoveValue(value);
         ShowPopup(value.ToString("0"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (Health <= 0 && IsAlive)
