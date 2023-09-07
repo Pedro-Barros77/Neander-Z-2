@@ -233,6 +233,8 @@ public class PlayerMovement : MonoBehaviour
         movementDir = rigidBody.velocity.x;
         isMoving = Mathf.Abs(movementDir) > 0.1;
 
+        Player.CurrentWeapon.PlayerFlipDir = transform.parent.localScale.x;
+
         if (isCrouching)
         {
             if (Player.WeaponController.IsAimingLeft)

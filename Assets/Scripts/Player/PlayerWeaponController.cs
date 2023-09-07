@@ -84,7 +84,11 @@ public class PlayerWeaponController : MonoBehaviour
         if (IsSwitchingWeapon)
             WeaponSwitchAnimation();
         else
-            RotateToMouse();
+        {
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, transform.position.z));
+            RotateTo(worldMousePos);
+        }
 
         blinkingReloadText.gameObject.SetActive(Player.CurrentWeapon.NeedsReload());
         blinkingReloadText.transform.position = Player.transform.position + new Vector3(0, playerSprite.size.y * 0.7f);
@@ -135,7 +139,9 @@ public class PlayerWeaponController : MonoBehaviour
             float t = (Time.time - startSwitchTime.Value) / (currentWeaponSwitchTimeMs / 1000);
             float animAngle = Mathf.Lerp(90, IsAimingLeft ? 180 : 0, t);
 
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, animAngle));
+            var rotation = Quaternion.AngleAxis(animAngle, Vector3.forward);
+            var newPosition = transform.position + rotation * Vector3.right;
+            RotateTo(newPosition);
         }
         else
         {
@@ -169,11 +175,9 @@ public class PlayerWeaponController : MonoBehaviour
     /// <summary>
     /// Rotaciona o container da arma (c�rculo) para apontar a m�o do jogador em dire��o ao mouse.
     /// </summary>
-    private void RotateToMouse()
+    private void RotateTo(Vector3 point)
     {
-        Vector3 mousePos = Input.mousePosition;
-        Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, transform.position.z));
-        Vector3 direction = worldMousePos - transform.position;
+        Vector3 direction = point - transform.position;
 
         AimAngleDegrees = Mathf.Atan2(direction.y, direction.x).RadToDeg();
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, AimAngleDegrees));
