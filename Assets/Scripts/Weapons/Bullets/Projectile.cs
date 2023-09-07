@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
@@ -22,6 +23,7 @@ public abstract class Projectile : MonoBehaviour
     protected SpriteRenderer Sprite { get; set; }
     protected Vector2 LastPosition;
     protected LayerMask TargetLayerMask;
+    protected List<int> PiercedTargetsIds = new();
 
     protected virtual void Start()
     {
@@ -58,12 +60,14 @@ public abstract class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        HandleCollision(collision.collider);
+        if (!Collider.isTrigger)
+            HandleCollision(collision.collider);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        HandleTrigger(collision);
+        if (Collider.isTrigger)
+            HandleCollision(collision);
     }
 
     /// <summary>
@@ -76,22 +80,19 @@ public abstract class Projectile : MonoBehaviour
             return;
 
         if (collision.gameObject.CompareTag("Enemy"))
-            OnEnemyHit(collision);
-        else if (collision.gameObject.CompareTag("Environment"))
-            OnObjectHit(collision);
-    }
+        {
+            var target = collision.GetComponentInParent<IPlayerTarget>();
+            if (target == null)
+                return;
 
-    /// <summary>
-    /// Lida com colisões do tipo Trigger do do projétil.
-    /// </summary>
-    /// <param name="collision">O collider do objeto com que o projétil colidiu.</param>
-    private void HandleTrigger(Collider2D collision)
-    {
-        if (!gameObject.activeSelf)
-            return;
+            int targetId = target.transform.GetInstanceID();
 
-        if (collision.gameObject.CompareTag("Enemy"))
-            OnEnemyHit(collision);
+            if (!PiercedTargetsIds.Contains(targetId))
+            {
+                PiercedTargetsIds.Add(targetId);
+                OnEnemyHit(collision);
+            }
+        }
         else if (collision.gameObject.CompareTag("Environment"))
             OnObjectHit(collision);
     }
@@ -119,7 +120,7 @@ public abstract class Projectile : MonoBehaviour
     protected virtual void OnEnemyHit(Collider2D collision)
     {
         var target = collision.GetComponentInParent<IPlayerTarget>();
-        if (target != null && target.IsAlive)
+        if (target != null)
         {
             if (PierceCount < MaxPierceCount)
             {
@@ -196,15 +197,17 @@ public abstract class Projectile : MonoBehaviour
         if (hit.collider != null)
         {
             var target = hit.transform.GetComponentInParent<IPlayerTarget>();
-            if (target != null && target.IsAlive)
-                Rigidbody.position = hit.point;
 
-            if (hit.collider.isTrigger)
-                HandleTrigger(hit.collider);
-            else
+            if (target != null)
+            {
+                int targetId = target.transform.GetInstanceID();
+
+                if (!PiercedTargetsIds.Contains(targetId) && target.IsAlive)
+                    Rigidbody.position = hit.point;
+
                 HandleCollision(hit.collider);
+            }
         }
-
         LastPosition = Rigidbody.position;
     }
 }
