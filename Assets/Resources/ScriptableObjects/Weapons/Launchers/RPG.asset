@@ -17,11 +17,12 @@ MonoBehaviour:
   BulletType: 5
   FireMode: 6
   Damage: 50
+  MinDamage: 10
   FireRate: 2
   BulletSpeed: 15
-  BulletMaxRange: 800
-  MaxDamageRange: 800
-  MinDamageRange: 800
+  MaxDamageRange: 0
+  MinDamageRange: 0
+  BulletMaxRange: 15
   MagazineSize: 1
   MagazineBullets: 1
   ReloadTimeMs: 2500

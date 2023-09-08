@@ -8,6 +8,7 @@ public abstract class Projectile : MonoBehaviour
     public float AngleDegrees { get; set; }
     public float Speed { get; set; }
     public float Damage { get; set; }
+    public float MinDamage { get; set; }
     public float TotalDamage { get; set; }
     public Vector3 StartPos { get; set; }
     public int MaxPierceCount { get; set; }
@@ -36,12 +37,10 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void Update()
     {
+        CheckRange();
 
-        var distanceFromStart = Vector3.Distance(transform.position, StartPos);
-        if (distanceFromStart >= MaxDistance || distanceFromStart >= 100f)
-        {
-            OnMaxDistanceReach();
-        }
+        if (PierceCount > 0)
+            Damage *= Mathf.Pow(PierceDamageMultiplier, PierceCount);
 
         if (RotateTowardsDirection)
         {
@@ -123,10 +122,7 @@ public abstract class Projectile : MonoBehaviour
         if (target != null)
         {
             if (PierceCount < MaxPierceCount)
-            {
                 PierceCount++;
-                Damage *= PierceDamageMultiplier;
-            }
             else if (MaxPierceCount == 0 || PierceCount >= MaxPierceCount)
             {
                 KillSelf();
@@ -176,6 +172,36 @@ public abstract class Projectile : MonoBehaviour
     {
         yield return new WaitForSeconds(delaySeconds);
         KillSelf();
+    }
+
+    /// <summary>
+    /// Verifica o alcance do projétil, aplica o dano proporcional e destrói no alcance máximo.
+    /// </summary>
+    protected virtual void CheckRange()
+    {
+        var distanceFromStart = Vector3.Distance(transform.position, StartPos);
+        if (distanceFromStart >= MaxDistance || distanceFromStart >= 100f)
+        {
+            OnMaxDistanceReach();
+            return;
+        }
+
+        if (MaxDamageRange <= 0 && MinDamageRange <= 0)
+        {
+            Damage = TotalDamage;
+            return;
+        }
+
+        if (distanceFromStart < MaxDamageRange)
+        {
+            Damage = TotalDamage;
+            return;
+        }
+
+        var clampedDistance = Mathf.Clamp(distanceFromStart, MaxDamageRange, MinDamageRange);
+        var percentage = (clampedDistance - MaxDamageRange) / (MinDamageRange - MaxDamageRange);
+
+        Damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
     }
 
     /// <summary>

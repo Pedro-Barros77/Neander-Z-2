@@ -67,7 +67,7 @@ public class BodyTarget : MonoBehaviour, IPlayerTarget
                 break;
         }
 
-        ShowPopup(value.ToString("0"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2)); ;
 
         if (HitSounds.Any())
         {

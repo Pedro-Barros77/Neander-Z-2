@@ -201,7 +201,7 @@ public class Player : MonoBehaviour, IEnemyTarget
         Data.Health = Mathf.Clamp(Health + value, 0, MaxHealth);
         if (HealthBar != null)
             HealthBar.AddValue(value);
-        ShowPopup(value.ToString("0"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        ShowPopup(value.ToString("N1"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
     }
 
     /// <summary>
@@ -218,7 +218,7 @@ public class Player : MonoBehaviour, IEnemyTarget
         Data.Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         if (HealthBar != null)
             HealthBar.RemoveValue(value);
-        ShowPopup(value.ToString("0"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        ShowPopup(value.ToString("N1"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (Health <= 0 && IsAlive)
             Die();

@@ -255,7 +255,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
                 break;
         }
 
-        ShowPopup(value.ToString("0"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (DamageSounds.Any() && !AudioSource.isPlaying)
         {
@@ -280,7 +280,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         Health = Mathf.Clamp(Health + value, 0, MaxHealth);
         HealthBar.AddValue(value);
-        ShowPopup(value.ToString("0"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        ShowPopup(value.ToString("N1"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
     }
 
     /// <summary>
