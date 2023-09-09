@@ -194,7 +194,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 3225538950323256849}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2cc76ca6b6a1fcd4f8c7c4370076318a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -233,7 +233,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.4
   m_AngularDrag: 5
   m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: 2cc76ca6b6a1fcd4f8c7c4370076318a, type: 2}
@@ -261,9 +261,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: fe8f631e021ecd64fbbd6e793650046e, type: 2}
   Rigidbody: {fileID: 0}
-  CookSounds: []
-  ThrowSounds: []
-  HitSounds: []
+  StartSounds:
+  - Audio: {fileID: 8300000, guid: 1ab36918fa5c9344aac84e1f3d31740b, type: 3}
+    Volume: 1
+    Pitch: 1
+  ThrowSounds:
+  - Audio: {fileID: 8300000, guid: 45f5d458ea03b9e4b9b019db60651d42, type: 3}
+    Volume: 0.7
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 45f5d458ea03b9e4b9b019db60651d42, type: 3}
+    Volume: 0.7
+    Pitch: 2
+  HitSounds:
+  - Audio: {fileID: 8300000, guid: 3306b36a00f694a4297bdd0c573013e3, type: 3}
+    Volume: 0.4
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 3306b36a00f694a4297bdd0c573013e3, type: 3}
+    Volume: 0.4
+    Pitch: 2
   DetonateSounds: []
   ExplosionPrefab: {fileID: 8881136829020695311, guid: 4f308d17d9f275c4d87dd5fd5f29db3a, type: 3}
 --- !u!1 &4947074646182293243

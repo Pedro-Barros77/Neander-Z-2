@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class BaseThrowable : MonoBehaviour
@@ -87,7 +88,7 @@ public abstract class BaseThrowable : MonoBehaviour
     #endregion
 
     [SerializeField]
-    protected List<CustomAudio> CookSounds, ThrowSounds, HitSounds, DetonateSounds;
+    protected List<CustomAudio> StartSounds, ThrowSounds, HitSounds, DetonateSounds;
 
     #region Gameobject Components
 
@@ -131,6 +132,8 @@ public abstract class BaseThrowable : MonoBehaviour
     protected float cookStartTime;
     protected float throwTime;
     protected List<int> PiercedTargetsIds = new();
+    protected float lastHitTime;
+    protected float hitSoundIntervalMs = 100;
 
     #endregion
 
@@ -154,6 +157,8 @@ public abstract class BaseThrowable : MonoBehaviour
         IsCooking = true;
         if (StartFuseOnCook)
             cookStartTime = Time.time;
+
+        StartSounds.PlayRandomIfAny(AudioSource);
     }
 
     protected virtual void Update()
@@ -186,6 +191,14 @@ public abstract class BaseThrowable : MonoBehaviour
     {
         if (!gameObject.activeSelf)
             return;
+
+        var now = Time.time;
+
+        if (lastHitTime == 0 || lastHitTime + (hitSoundIntervalMs / 1000) < now)
+        {
+            HitSounds.PlayRandomIfAny(AudioSource);
+            lastHitTime = now;
+        }
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -276,6 +289,8 @@ public abstract class BaseThrowable : MonoBehaviour
         var currentScale = transform.lossyScale;
         transform.parent = ProjectilesContainer;
         transform.localScale = currentScale;
+
+        ThrowSounds.PlayRandomIfAny(AudioSource);
 
         Rigidbody.AddForce(transform.right * ThrowForce, ForceMode2D.Impulse);
     }

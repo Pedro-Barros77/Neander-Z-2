@@ -37,6 +37,7 @@ public class PlayerWeaponController : MonoBehaviour
 
     Transform handTransform, throwingContainerTransform, throwableSpawnPointTransform;
     float? startSwitchTime;
+    float startThrowingContainerScale;
     SpriteRenderer playerSprite, handPalmSprite, fingersSprite;
     protected LineRenderer LineRenderer;
     Animator playerAnimator;
@@ -65,6 +66,7 @@ public class PlayerWeaponController : MonoBehaviour
         playerAnimator = Player.GetComponent<Animator>();
         LineRenderer = GetComponent<LineRenderer>();
         StartLocalPosition = transform.localPosition;
+        startThrowingContainerScale = throwingContainerTransform.localScale.x;
     }
 
     void Update()
@@ -124,6 +126,8 @@ public class PlayerWeaponController : MonoBehaviour
 
         blinkingReloadText.gameObject.SetActive(Player.CurrentWeapon.NeedsReload());
         blinkingReloadText.transform.position = Player.transform.position + new Vector3(0, playerSprite.size.y * 0.7f);
+
+        throwingContainerTransform.localScale = new Vector3(Player.CurrentWeapon.PlayerFlipDir * startThrowingContainerScale, startThrowingContainerScale, startThrowingContainerScale);
 
         handPalmSprite.flipY = IsAimingLeft;
         fingersSprite.flipY = IsAimingLeft;
@@ -205,7 +209,7 @@ public class PlayerWeaponController : MonoBehaviour
     private void RenderThrowTrajectory()
     {
         var throwable = Player.Backpack.EquippedThrowable;
-        if (throwable == null || throwable.gameObject.IsDestroyed())
+        if (throwable == null)
         {
             OnThrowEnd();
             return;
@@ -361,5 +365,6 @@ public class PlayerWeaponController : MonoBehaviour
         float orbitRadius = transform.localScale.x / 2;
         Vector3 offset = new Vector3(Mathf.Cos(AimAngleDegrees * Mathf.Deg2Rad), Mathf.Sin(AimAngleDegrees * Mathf.Deg2Rad), 0) * orbitRadius;
         handTransform.position = transform.position + offset;
+        throwingContainerTransform.position = transform.position + offset;
     }
 }
