@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   Damage: 30
-  HitDamage: 5
+  MinDamage: 5
+  HitDamage: 0
   ThrowForce: 20
   FuseTimeoutMs: 3000
   DetonateOnImpact: 0
   StartFuseOnCook: 1
-  EffectMaxRange: 1.5
-  EffectMinRange: 3
-  EffectSpriteSize: 1
+  EffectMaxRange: 1
+  EffectMinRange: 2
+  EffectSpriteSize: 2

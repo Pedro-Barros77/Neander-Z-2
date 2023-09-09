@@ -6,6 +6,7 @@ public class BaseThrowableData : AutoRevertSO
     public ThrowableTypes Type;
 
     public float Damage;
+    public float MinDamage;
     public float HitDamage;
     public float ThrowForce;
     public float FuseTimeoutMs;

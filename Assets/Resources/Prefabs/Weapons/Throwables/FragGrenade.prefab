@@ -265,8 +265,7 @@ MonoBehaviour:
   ThrowSounds: []
   HitSounds: []
   DetonateSounds: []
-  steps: 50
-  stepDistance: 10
+  ExplosionPrefab: {fileID: 8881136829020695311, guid: 4f308d17d9f275c4d87dd5fd5f29db3a, type: 3}
 --- !u!1 &4947074646182293243
 GameObject:
   m_ObjectHideFlags: 0

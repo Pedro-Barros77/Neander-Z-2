@@ -36,9 +36,8 @@ public class PlayerWeaponController : MonoBehaviour
     float ThrowTrajectoryStepDistance;
 
     Transform handTransform, throwingContainerTransform, throwableSpawnPointTransform;
-    float startThrowingContainerScale;
     float? startSwitchTime;
-    SpriteRenderer playerSprite;
+    SpriteRenderer playerSprite, handPalmSprite, fingersSprite;
     protected LineRenderer LineRenderer;
     Animator playerAnimator;
     Transform floor;
@@ -51,7 +50,11 @@ public class PlayerWeaponController : MonoBehaviour
     {
         handTransform = transform.Find("Hand");
         throwingContainerTransform = handTransform.Find("ThrowingContainer");
-        throwableSpawnPointTransform = throwingContainerTransform.Find("Palm").Find("ThrowableSpawnPoint");
+        var palm = throwingContainerTransform.Find("Palm");
+        var fingers = throwingContainerTransform.Find("Fingers");
+        throwableSpawnPointTransform = palm.Find("ThrowableSpawnPoint");
+        handPalmSprite = palm.GetComponent<SpriteRenderer>();
+        fingersSprite = fingers.GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -62,7 +65,6 @@ public class PlayerWeaponController : MonoBehaviour
         playerAnimator = Player.GetComponent<Animator>();
         LineRenderer = GetComponent<LineRenderer>();
         StartLocalPosition = transform.localPosition;
-        startThrowingContainerScale = throwingContainerTransform.localScale.x;
     }
 
     void Update()
@@ -123,7 +125,8 @@ public class PlayerWeaponController : MonoBehaviour
         blinkingReloadText.gameObject.SetActive(Player.CurrentWeapon.NeedsReload());
         blinkingReloadText.transform.position = Player.transform.position + new Vector3(0, playerSprite.size.y * 0.7f);
 
-        throwingContainerTransform.localScale = new Vector3(Player.CurrentWeapon.PlayerFlipDir * startThrowingContainerScale, startThrowingContainerScale, startThrowingContainerScale);
+        handPalmSprite.flipY = IsAimingLeft;
+        fingersSprite.flipY = IsAimingLeft;
     }
 
     /// <summary>
@@ -186,9 +189,11 @@ public class PlayerWeaponController : MonoBehaviour
     /// </summary>
     public void OnThrowEnd()
     {
+        playerAnimator.ResetTrigger("Throw");
+        playerAnimator.Play($"{Player.Character}_Idle", 1);
+        playerAnimator.SetFloat("ThrowSpeedMultiplier", 1);
         Player.CurrentWeapon.IsActive = true;
         IsThrowingItem = false;
-        playerAnimator.ResetTrigger("Throw");
         Player.Backpack.EquippedThrowable = null;
         LineRenderer.enabled = false;
         itemThrown = false;
@@ -199,7 +204,14 @@ public class PlayerWeaponController : MonoBehaviour
     /// </summary>
     private void RenderThrowTrajectory()
     {
-        Vector2[] trajectory = PlotTrajectory(lastThrowStartPoint, lastThrowTrajectoryForce, ThrowTrajectorySteps, ThrowTrajectoryStepDistance);
+        var throwable = Player.Backpack.EquippedThrowable;
+        if (throwable == null || throwable.gameObject.IsDestroyed())
+        {
+            OnThrowEnd();
+            return;
+        }
+
+        Vector2[] trajectory = PlotTrajectory(lastThrowStartPoint, lastThrowTrajectoryForce, throwable.Rigidbody.gravityScale, throwable.Rigidbody.drag, ThrowTrajectorySteps, ThrowTrajectoryStepDistance);
         LineRenderer.positionCount = trajectory.Length;
         LineRenderer.SetPositions(trajectory.Select(x => (Vector3)x).ToArray());
         LineRenderer.sortingOrder = 11;
@@ -213,20 +225,20 @@ public class PlayerWeaponController : MonoBehaviour
     /// <param name="steps">O número de pontos a ser calculados.</param>
     /// <param name="stepDistance">A distância entre cada ponto.</param>
     /// <returns>Uma lista contento as posições de cada ponto da trajetória.</returns>
-    public Vector2[] PlotTrajectory(Vector2 pos, Vector2 velocity, int steps, float stepDistance)
+    public Vector2[] PlotTrajectory(Vector2 pos, Vector2 velocity, float gravityScale, float drag, int steps, float stepDistance)
     {
         Vector2[] results = new Vector2[steps];
 
         float timestep = Time.fixedDeltaTime / Physics2D.velocityIterations * stepDistance;
-        Vector2 gravityAccel = Player.Backpack.EquippedThrowable.Rigidbody.gravityScale * timestep * timestep * Physics2D.gravity;
+        Vector2 gravityAccel = gravityScale * timestep * timestep * Physics2D.gravity;
 
-        float drag = 1f - timestep * Player.Backpack.EquippedThrowable.Rigidbody.drag;
+        float _drag = 1f - timestep * drag;
         Vector2 moveStep = velocity * timestep;
 
         for (int i = 0; i < steps; ++i)
         {
             moveStep += gravityAccel;
-            moveStep *= drag;
+            moveStep *= _drag;
             pos += moveStep;
             if (floor != null && pos.y < floor.position.y)
                 break;
@@ -349,6 +361,5 @@ public class PlayerWeaponController : MonoBehaviour
         float orbitRadius = transform.localScale.x / 2;
         Vector3 offset = new Vector3(Mathf.Cos(AimAngleDegrees * Mathf.Deg2Rad), Mathf.Sin(AimAngleDegrees * Mathf.Deg2Rad), 0) * orbitRadius;
         handTransform.position = transform.position + offset;
-        throwingContainerTransform.position = transform.position + offset;
     }
 }
