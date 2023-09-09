@@ -441,6 +441,8 @@ public abstract class BaseWeapon : MonoBehaviour
     /// <returns>True se a arma pode disparar, caso contr�rio, false.</returns>
     public virtual bool CanShoot()
     {
+        if (!IsActive)
+            return false;
         if (MagazineBullets <= 0)
         {
             if (!IsReloading)

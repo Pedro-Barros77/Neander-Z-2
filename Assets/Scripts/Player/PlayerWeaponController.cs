@@ -30,12 +30,20 @@ public class PlayerWeaponController : MonoBehaviour
 
     [SerializeField]
     public BlinkingText blinkingReloadText;
+    [SerializeField]
+    int ThrowTrajectorySteps;
+    [SerializeField]
+    float ThrowTrajectoryStepDistance;
 
     Transform handTransform, throwingContainerTransform, throwableSpawnPointTransform;
     float startThrowingContainerScale;
     float? startSwitchTime;
     SpriteRenderer playerSprite;
+    protected LineRenderer LineRenderer;
     Animator playerAnimator;
+    Transform floor;
+    Vector2 lastThrowTrajectoryForce, lastThrowStartPoint;
+    bool itemThrown;
 
     readonly FireModes[] HoldTriggerFireModes = { FireModes.FullAuto, FireModes.Melee };
 
@@ -46,17 +54,17 @@ public class PlayerWeaponController : MonoBehaviour
         throwableSpawnPointTransform = throwingContainerTransform.Find("Palm").Find("ThrowableSpawnPoint");
     }
 
-    // Start is called before the first frame update
     void Start()
     {
+        floor = GameObject.Find("Floor")?.transform;
         Player = transform.parent.GetComponent<Player>();
         playerSprite = Player.GetComponent<SpriteRenderer>();
         playerAnimator = Player.GetComponent<Animator>();
+        LineRenderer = GetComponent<LineRenderer>();
         StartLocalPosition = transform.localPosition;
         startThrowingContainerScale = throwingContainerTransform.localScale.x;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!Player.IsAlive)
@@ -82,11 +90,17 @@ public class PlayerWeaponController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
             Player.CurrentWeapon.Reload();
 
-        if (Input.GetKey(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G))
             StartThrowingItem();
+
+        if (Input.GetKey(KeyCode.G))
+            AimThrowable();
 
         if (Input.GetKeyUp(KeyCode.G))
             ThrowItem();
+
+        if (IsThrowingItem)
+            RenderThrowTrajectory();
 
         if (Input.mouseScrollDelta.y != 0)
             SwitchWeapon();
@@ -112,29 +126,52 @@ public class PlayerWeaponController : MonoBehaviour
         throwingContainerTransform.localScale = new Vector3(Player.CurrentWeapon.PlayerFlipDir * startThrowingContainerScale, startThrowingContainerScale, startThrowingContainerScale);
     }
 
+    /// <summary>
+    /// Inicia o arremeço de item.
+    /// </summary>
     private void StartThrowingItem()
     {
+        if (IsThrowingItem || IsSwitchingWeapon)
+            return;
+
+        IsThrowingItem = true;
+        LineRenderer.enabled = true;
+
         playerAnimator.SetTrigger("Throw");
         playerAnimator.SetFloat("ThrowSpeedMultiplier", 0);
         Player.CurrentWeapon.IsActive = false;
-        if (!IsThrowingItem)
-        {
-            var throwable = InstantiateThrowablePrefab(ThrowableTypes.FragGrenade);
-            var rb = throwable.GetComponent<Rigidbody2D>();
-            rb.isKinematic = true;
-            var collider = throwable.GetComponent<Collider2D>();
-            collider.enabled = false;
-        }
-        IsThrowingItem = true;
+
+        var throwable = InstantiateThrowablePrefab(ThrowableTypes.FragGrenade);
+        var rb = throwable.GetComponent<Rigidbody2D>();
+        var collider = throwable.GetComponent<Collider2D>();
+        rb.isKinematic = true;
+        collider.enabled = false;
+        Player.Backpack.EquippedThrowable = throwable.GetComponent<BaseThrowable>();
     }
 
+    /// <summary>
+    /// Atualiza a trajetória de arremesso do item.
+    /// </summary>
+    private void AimThrowable()
+    {
+        if (itemThrown || !IsThrowingItem)
+            return;
+
+        lastThrowTrajectoryForce = Player.Backpack.EquippedThrowable.transform.right.normalized * Player.Backpack.EquippedThrowable.ThrowForce;
+        lastThrowStartPoint = throwableSpawnPointTransform.position;
+    }
+
+    /// <summary>
+    /// Arremessa o item.
+    /// </summary>
     private void ThrowItem()
     {
-        playerAnimator.SetFloat("ThrowSpeedMultiplier", 1);
-    }
+        if (itemThrown || !IsThrowingItem)
+            return;
 
-    public void OnItemThrown()
-    {
+        itemThrown = true;
+
+        playerAnimator.SetFloat("ThrowSpeedMultiplier", 1);
         var throwableObj = throwableSpawnPointTransform.GetChild(0);
         var rb = throwableObj.GetComponent<Rigidbody2D>();
         var collider = throwableObj.GetComponent<Collider2D>();
@@ -144,11 +181,59 @@ public class PlayerWeaponController : MonoBehaviour
         throwable.Throw();
     }
 
+    /// <summary>
+    /// Função chamada pelo Animator no último frame da animação de arremesso.
+    /// </summary>
     public void OnThrowEnd()
     {
         Player.CurrentWeapon.IsActive = true;
         IsThrowingItem = false;
         playerAnimator.ResetTrigger("Throw");
+        Player.Backpack.EquippedThrowable = null;
+        LineRenderer.enabled = false;
+        itemThrown = false;
+    }
+
+    /// <summary>
+    /// Renderiza a trajetória de arremesso do item.
+    /// </summary>
+    private void RenderThrowTrajectory()
+    {
+        Vector2[] trajectory = PlotTrajectory(lastThrowStartPoint, lastThrowTrajectoryForce, ThrowTrajectorySteps, ThrowTrajectoryStepDistance);
+        LineRenderer.positionCount = trajectory.Length;
+        LineRenderer.SetPositions(trajectory.Select(x => (Vector3)x).ToArray());
+        LineRenderer.sortingOrder = 11;
+    }
+
+    /// <summary>
+    /// Cria os pontos da trajetória de arremesso do item.
+    /// </summary>
+    /// <param name="pos">O ponto de partida da trajetória.</param>
+    /// <param name="velocity">A velocidade/força e direção da trajetória.</param>
+    /// <param name="steps">O número de pontos a ser calculados.</param>
+    /// <param name="stepDistance">A distância entre cada ponto.</param>
+    /// <returns>Uma lista contento as posições de cada ponto da trajetória.</returns>
+    public Vector2[] PlotTrajectory(Vector2 pos, Vector2 velocity, int steps, float stepDistance)
+    {
+        Vector2[] results = new Vector2[steps];
+
+        float timestep = Time.fixedDeltaTime / Physics2D.velocityIterations * stepDistance;
+        Vector2 gravityAccel = Player.Backpack.EquippedThrowable.Rigidbody.gravityScale * timestep * timestep * Physics2D.gravity;
+
+        float drag = 1f - timestep * Player.Backpack.EquippedThrowable.Rigidbody.drag;
+        Vector2 moveStep = velocity * timestep;
+
+        for (int i = 0; i < steps; ++i)
+        {
+            moveStep += gravityAccel;
+            moveStep *= drag;
+            pos += moveStep;
+            if (floor != null && pos.y < floor.position.y)
+                break;
+            results[i] = pos;
+        }
+
+        return results.Where(pos => pos.x != 0 && pos.y != 0).ToArray();
     }
 
     /// <summary>
@@ -157,7 +242,7 @@ public class PlayerWeaponController : MonoBehaviour
     /// <param name="index">O índice da arma a ser equipada. 0 = primária, 1 = secundária. Null = inverter.</param>
     public void SwitchWeapon(int? index = null)
     {
-        if (IsSwitchingWeapon)
+        if (IsSwitchingWeapon || IsThrowingItem)
             return;
 
         if ((index == null || index != Player.Backpack.CurrentWeaponIndex) && Player.Backpack.HasPrimaryEquipped && Player.Backpack.HasSecondaryEquipped)

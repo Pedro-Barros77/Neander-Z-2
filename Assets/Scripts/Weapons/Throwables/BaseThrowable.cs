@@ -65,6 +65,10 @@ public abstract class BaseThrowable : MonoBehaviour
     /// Jogador portador deste item.
     /// </summary>
     public Player Player { get; set; }
+    /// <summary>
+    /// O componente Rigidbody2D deste item.
+    /// </summary>
+    public Rigidbody2D Rigidbody;
 
     #endregion
 
@@ -73,7 +77,6 @@ public abstract class BaseThrowable : MonoBehaviour
 
     #region Gameobject Components
 
-    protected Rigidbody2D Rigidbody;
     /// <summary>
     /// O componente Animator do item.
     /// </summary>

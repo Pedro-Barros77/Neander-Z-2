@@ -312,10 +312,6 @@ public class Player : MonoBehaviour, IEnemyTarget
     public void OnFallGroundEnd() => PlayerMovement.OnFallGroundEnd();
 
     /// <summary>
-    /// Função chamada pelo evento de animação, no frame em que o arremessável é solto da mão do jogador.
-    /// </summary>
-    public void OnItemThrown() => WeaponController.OnItemThrown();
-    /// <summary>
     /// Função chamada pelo evento de animação, no último frame ao arremessar um item.
     /// </summary>
     public void OnThrowEnd() => WeaponController.OnThrowEnd();
