@@ -6,7 +6,7 @@ public class RocketBullet : Projectile
     public float ExplosionKnockbackForce { get; set; }
     public float ExplosionMaxDamageRadius { get; set; }
     public float ExplosionMinDamageRadius { get; set; }
-    public float ExplosionSize { get; set; }
+    public float ExplosionSpriteSize { get; set; }
     public bool Exploded { get; private set; }
 
     [SerializeField]
@@ -58,7 +58,7 @@ public class RocketBullet : Projectile
         var hitPosition = transform.position;
 
         var explosion = Instantiate(ExplosionPrefab, hitPosition, Quaternion.identity);
-        explosion.transform.localScale = Vector3.one * ExplosionSize;
+        explosion.transform.localScale = Vector3.one * ExplosionSpriteSize;
 
         var hitObjects = Physics2D.OverlapCircleAll(hitPosition, ExplosionMinDamageRadius, TargetLayerMask);
 

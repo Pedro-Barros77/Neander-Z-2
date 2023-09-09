@@ -12,6 +12,10 @@ public class PlayerWeaponController : MonoBehaviour
     /// </summary>
     public bool IsSwitchingWeapon { get; set; }
     /// <summary>
+    /// Se o jogador está arremessando um item.
+    /// </summary>
+    public bool IsThrowingItem { get; set; }
+    /// <summary>
     /// O jogador pai deste controlador.
     /// </summary>
     public Player Player { get; set; }
@@ -27,15 +31,19 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField]
     public BlinkingText blinkingReloadText;
 
-    Transform handTransform;
+    Transform handTransform, throwingContainerTransform, throwableSpawnPointTransform;
+    float startThrowingContainerScale;
     float? startSwitchTime;
     SpriteRenderer playerSprite;
+    Animator playerAnimator;
 
     readonly FireModes[] HoldTriggerFireModes = { FireModes.FullAuto, FireModes.Melee };
 
     private void Awake()
     {
         handTransform = transform.Find("Hand");
+        throwingContainerTransform = handTransform.Find("ThrowingContainer");
+        throwableSpawnPointTransform = throwingContainerTransform.Find("Palm").Find("ThrowableSpawnPoint");
     }
 
     // Start is called before the first frame update
@@ -43,7 +51,9 @@ public class PlayerWeaponController : MonoBehaviour
     {
         Player = transform.parent.GetComponent<Player>();
         playerSprite = Player.GetComponent<SpriteRenderer>();
+        playerAnimator = Player.GetComponent<Animator>();
         StartLocalPosition = transform.localPosition;
+        startThrowingContainerScale = throwingContainerTransform.localScale.x;
     }
 
     // Update is called once per frame
@@ -72,6 +82,12 @@ public class PlayerWeaponController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
             Player.CurrentWeapon.Reload();
 
+        if (Input.GetKey(KeyCode.G))
+            StartThrowingItem();
+
+        if (Input.GetKeyUp(KeyCode.G))
+            ThrowItem();
+
         if (Input.mouseScrollDelta.y != 0)
             SwitchWeapon();
 
@@ -92,6 +108,47 @@ public class PlayerWeaponController : MonoBehaviour
 
         blinkingReloadText.gameObject.SetActive(Player.CurrentWeapon.NeedsReload());
         blinkingReloadText.transform.position = Player.transform.position + new Vector3(0, playerSprite.size.y * 0.7f);
+
+        throwingContainerTransform.localScale = new Vector3(Player.CurrentWeapon.PlayerFlipDir * startThrowingContainerScale, startThrowingContainerScale, startThrowingContainerScale);
+    }
+
+    private void StartThrowingItem()
+    {
+        playerAnimator.SetTrigger("Throw");
+        playerAnimator.SetFloat("ThrowSpeedMultiplier", 0);
+        Player.CurrentWeapon.IsActive = false;
+        if (!IsThrowingItem)
+        {
+            var throwable = InstantiateThrowablePrefab(ThrowableTypes.FragGrenade);
+            var rb = throwable.GetComponent<Rigidbody2D>();
+            rb.isKinematic = true;
+            var collider = throwable.GetComponent<Collider2D>();
+            collider.enabled = false;
+        }
+        IsThrowingItem = true;
+    }
+
+    private void ThrowItem()
+    {
+        playerAnimator.SetFloat("ThrowSpeedMultiplier", 1);
+    }
+
+    public void OnItemThrown()
+    {
+        var throwableObj = throwableSpawnPointTransform.GetChild(0);
+        var rb = throwableObj.GetComponent<Rigidbody2D>();
+        var collider = throwableObj.GetComponent<Collider2D>();
+        var throwable = throwableObj.GetComponent<BaseThrowable>();
+        rb.isKinematic = false;
+        collider.enabled = true;
+        throwable.Throw();
+    }
+
+    public void OnThrowEnd()
+    {
+        Player.CurrentWeapon.IsActive = true;
+        IsThrowingItem = false;
+        playerAnimator.ResetTrigger("Throw");
     }
 
     /// <summary>
@@ -161,6 +218,20 @@ public class PlayerWeaponController : MonoBehaviour
     /// <summary>
     /// Carrega o Prefab da arma do tipo especificado e o instancia na m�o do jogador.
     /// </summary>
+    /// <param name="throwableType">O tipo de arma para instanciar.</param>
+    /// <returns>O GameObject instanciado.</returns>
+    public GameObject InstantiateThrowablePrefab(ThrowableTypes throwableType)
+    {
+        var throwablePrefab = Resources.Load<GameObject>($"Prefabs/Weapons/Throwables/{throwableType}");
+        GameObject throwableObj = Instantiate(throwablePrefab, throwableSpawnPointTransform);
+        throwableObj.GetComponent<BaseThrowable>().PlayerWeaponController = this;
+        throwableObj.name = throwableType.ToString();
+        return throwableObj;
+    }
+
+    /// <summary>
+    /// Carrega o Prefab da arma do tipo especificado e o instancia na m�o do jogador.
+    /// </summary>
     /// <param name="weaponType">O tipo de arma para instanciar.</param>
     /// <returns>O GameObject instanciado.</returns>
     public GameObject InstantiateWeaponPrefab(WeaponTypes weaponType)
@@ -193,5 +264,6 @@ public class PlayerWeaponController : MonoBehaviour
         float orbitRadius = transform.localScale.x / 2;
         Vector3 offset = new Vector3(Mathf.Cos(AimAngleDegrees * Mathf.Deg2Rad), Mathf.Sin(AimAngleDegrees * Mathf.Deg2Rad), 0) * orbitRadius;
         handTransform.position = transform.position + offset;
+        throwingContainerTransform.position = transform.position + offset;
     }
 }

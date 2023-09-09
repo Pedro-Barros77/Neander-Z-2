@@ -25,7 +25,7 @@ public class LauncherWeapon : BaseWeapon
         var data = Data as LauncherData;
         bullet.ExplosionMinDamageRadius = data.ExplosionMinDamageRadius;
         bullet.ExplosionMaxDamageRadius = data.ExplosionMaxDamageRadius;
-        bullet.ExplosionSize = data.ExplosionSize;
+        bullet.ExplosionSpriteSize = data.ExplosionSpriteSize;
 
         return bullets;
     }

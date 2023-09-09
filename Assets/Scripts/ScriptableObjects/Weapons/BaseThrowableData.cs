@@ -1,0 +1,17 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "New Throwable", menuName = "Neander Z/Weapons/Throwable", order = 8)]
+public class BaseThrowableData : AutoRevertSO
+{
+    public ThrowableTypes Type;
+
+    public float Damage;
+    public float HitDamage;
+    public float ThrowForce;
+    public float FuseTimeoutMs;
+    public bool DetonateOnImpact;
+    public bool StartFuseOnCook;
+    public float EffectMaxRange;
+    public float EffectMinRange;
+    public float EffectSpriteSize = 1;
+}

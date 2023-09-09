@@ -290,7 +290,7 @@ public class Player : MonoBehaviour, IEnemyTarget
         StaminaBar.RemoveValue(value);
     }
 
-    #region Movement Animation Forwarding
+    #region Animation Forwarding
     /// <summary>
     /// Função chamada pelo evento de animação, no último frame da Rolada Tática.
     /// </summary>
@@ -310,5 +310,14 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// Função chamada pelo evento de animação, no último frame ao cair no chão do personagem.
     /// </summary>
     public void OnFallGroundEnd() => PlayerMovement.OnFallGroundEnd();
+
+    /// <summary>
+    /// Função chamada pelo evento de animação, no frame em que o arremessável é solto da mão do jogador.
+    /// </summary>
+    public void OnItemThrown() => WeaponController.OnItemThrown();
+    /// <summary>
+    /// Função chamada pelo evento de animação, no último frame ao arremessar um item.
+    /// </summary>
+    public void OnThrowEnd() => WeaponController.OnThrowEnd();
     #endregion
 }
