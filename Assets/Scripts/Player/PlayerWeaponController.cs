@@ -148,7 +148,7 @@ public class PlayerWeaponController : MonoBehaviour
         playerAnimator.SetFloat("ThrowSpeedMultiplier", 0);
         Player.CurrentWeapon.IsActive = false;
 
-        var throwable = InstantiateThrowablePrefab(ThrowableTypes.FragGrenade);
+        var throwable = InstantiateThrowablePrefab(ThrowableTypes.Molotov);
         var rb = throwable.GetComponent<Rigidbody2D>();
         var collider = throwable.GetComponent<Collider2D>();
         rb.isKinematic = true;

@@ -14,5 +14,8 @@ public class BaseThrowableData : AutoRevertSO
     public bool StartFuseOnCook;
     public float EffectMaxRange;
     public float EffectMinRange;
+    public float EffectDurationMs;
+    public float EffectDecoupledDurationMs;
+    public float EffectTickIntervalMs;
     public float EffectSpriteSize = 1;
 }

@@ -16,6 +16,9 @@ public class FragGrenade : BaseThrowable
         base.Detonate();
     }
 
+    /// <summary>
+    /// Cria uma explosão e aplica dano em todos os inimigos dentro do raio de efeito.
+    /// </summary>
     private void Explode()
     {
         var hitPosition = transform.position;

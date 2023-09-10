@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public abstract class BaseThrowable : MonoBehaviour
@@ -43,9 +42,21 @@ public abstract class BaseThrowable : MonoBehaviour
     /// </summary>
     public float EffectMaxRange => Data.EffectMaxRange;
     /// <summary>
-    ///A distância em que o efeito do item tem efetividade mínima.
+    /// A distância em que o efeito do item tem efetividade mínima.
     /// </summary>
     public float EffectMinRange => Data.EffectMinRange;
+    /// <summary>
+    /// A duração do efeito do item.
+    /// </summary>
+    public float EffectDurationMs => Data.EffectDurationMs;
+    /// <summary>
+    /// A duração do efeito do item após o item ser destruído.
+    /// </summary>
+    public float EffectDecoupledDurationMs => Data.EffectDecoupledDurationMs;
+    /// <summary>
+    /// Intervalo de tempo em que o efeito do item é causado.
+    /// </summary>
+    public float EffectTickIntervalMs => Data.EffectTickIntervalMs;
 
     #endregion
 
@@ -105,10 +116,6 @@ public abstract class BaseThrowable : MonoBehaviour
     /// </summary>
     protected AudioSource AudioSource;
     /// <summary>
-    /// Referência ao componente SpriteRenderer deste item.
-    /// </summary>
-    protected SpriteRenderer SpriteRenderer;
-    /// <summary>
     /// Objeto vazio na cena que contém todos os projéteis instanciados.
     /// </summary>
     protected Transform ProjectilesContainer;
@@ -141,13 +148,12 @@ public abstract class BaseThrowable : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody2D>();
         var sprite = transform.Find("Sprite");
-        SpriteRenderer = sprite.GetComponentInChildren<SpriteRenderer>();
+        Sprite = sprite.GetComponent<SpriteRenderer>();
         Animator = GetComponent<Animator>();
         AudioSource = GetComponent<AudioSource>();
         ProjectilesContainer = GameObject.Find("ProjectilesContainer").transform;
         Collider = GetComponent<Collider2D>();
         TargetLayerMask = LayerMask.GetMask("Enemy", "Environment", "PlayerEnvironment");
-        Sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     protected virtual void Start()
@@ -181,6 +187,14 @@ public abstract class BaseThrowable : MonoBehaviour
     {
         if (Collider.isTrigger)
             HandleCollision(collision);
+    }
+
+    protected virtual void OnCollisionExit2D(Collision2D collision)
+    {
+    }
+
+    protected virtual void OnTriggerExit2D(Collider2D collision)
+    {
     }
 
     /// <summary>
@@ -269,11 +283,7 @@ public abstract class BaseThrowable : MonoBehaviour
         if (IsCooking)
             PlayerWeaponController.OnThrowEnd();
 
-        if (DetonateSounds.Count > 0)
-        {
-            var sound = DetonateSounds[Random.Range(0, DetonateSounds.Count)];
-            AudioSource.PlayOneShot(sound.Audio, sound.Volume);
-        }
+        DetonateSounds.PlayRandomIfAny(AudioSource);
 
         KillSelf();
     }
