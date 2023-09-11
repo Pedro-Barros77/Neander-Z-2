@@ -17,12 +17,15 @@ MonoBehaviour:
   BulletType: 4
   FireMode: 4
   Damage: 25
+  MinDamage: 15
   FireRate: 1
   BulletSpeed: 45
-  BulletMaxRange: 40
-  MaxDamageRange: 30
-  MinDamageRange: 35
+  MaxDamageRange: 12
+  MinDamageRange: 15
+  BulletMaxRange: 25
   MagazineSize: 5
   MagazineBullets: 5
   ReloadTimeMs: 2000
   SwitchTimeMs: 400
+  MaxPierceCount: 5
+  PierceDamageMultiplier: 0.5

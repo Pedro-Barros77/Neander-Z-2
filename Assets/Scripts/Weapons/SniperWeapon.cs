@@ -9,6 +9,14 @@ public class SniperWeapon : BaseWeapon
     /// </summary>
     public bool IsPullingBolt { get; protected set; }
     /// <summary>
+    /// Número de alvos que a sniper atinge antes do projétil ser destruído.
+    /// </summary>
+    public int MaxPierceCount => (Data as SniperData).MaxPierceCount;
+    /// <summary>
+    /// Multiplicador de dano do projétil ao atingir um alvo.
+    /// </summary>
+    public float PierceDamageMultiplier => (Data as SniperData).PierceDamageMultiplier;
+    /// <summary>
     /// Se está pendente o manuseio do ferrolho (não pode atirar antes até terminar).
     /// </summary>
     private bool IsBoltActionPending;
@@ -44,8 +52,8 @@ public class SniperWeapon : BaseWeapon
         var bullets = base.CreateBullets(angleDegrees);
         var bullet = bullets[0].GetComponent<Projectile>();
 
-        bullet.MaxPierceCount = 5;
-        bullet.PierceDamageMultiplier = 0.5f;
+        bullet.MaxPierceCount = MaxPierceCount;
+        bullet.PierceDamageMultiplier = PierceDamageMultiplier;
 
         return bullets;
     }

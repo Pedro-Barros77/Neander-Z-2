@@ -6,9 +6,15 @@ public class LevelData : MonoBehaviour
 {
     [SerializeField]
     public Vector2 TopLeftSpawnLimit, BottomRightSpawnLimit;
+    [SerializeField]
+    public bool InitEnemyTargets;
+    [SerializeField]
+    public Player Player;
 
     private void Start()
     {
         MenuController.Instance.IsInGame = true;
+        if (InitEnemyTargets)
+            WavesManager.Instance.EnemiesTargets.Add(Player);
     }
 }

@@ -16,6 +16,10 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     public float Damage => Data.Damage;
     /// <summary>
+    /// O dano mínimo causado pela arma ou seus projéteis, uma vez que o alcance de MinDamageRange é atingido.
+    /// </summary>
+    public float MinDamage => Data.MinDamage;
+    /// <summary>
     /// A taxa de disparo da arma (disparos por segundo).
     /// </summary>
     public float FireRate => Data.FireRate;
@@ -272,6 +276,7 @@ public abstract class BaseWeapon : MonoBehaviour
         bullet.AngleDegrees = PlayerWeaponController.AimAngleDegrees;
         bullet.Speed = BulletSpeed;
         bullet.Damage = Damage;
+        bullet.MinDamage = MinDamage;
         bullet.MaxDistance = BulletMaxRange;
         bullet.MaxDamageRange = MaxDamageRange;
         bullet.MinDamageRange = MinDamageRange;
@@ -436,6 +441,8 @@ public abstract class BaseWeapon : MonoBehaviour
     /// <returns>True se a arma pode disparar, caso contr�rio, false.</returns>
     public virtual bool CanShoot()
     {
+        if (!IsActive)
+            return false;
         if (MagazineBullets <= 0)
         {
             if (!IsReloading)

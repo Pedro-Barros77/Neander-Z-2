@@ -5,5 +5,5 @@ public class LauncherData : BaseWeaponData
 {
     public float ExplosionMaxDamageRadius;
     public float ExplosionMinDamageRadius;
-    public float ExplosionSize = 1;
+    public float ExplosionSpriteSize = 1;
 }

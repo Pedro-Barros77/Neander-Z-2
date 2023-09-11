@@ -4,12 +4,17 @@ public class CameraManagement : MonoBehaviour
 {
     [SerializeField]
     public Transform cameraBoundary, player;
+    [SerializeField]
+    public HorizontalDir CameraAlignment = HorizontalDir.Center;
+
 
     Camera cam;
+    SpriteRenderer playerSprite;
 
     void Start()
     {
         cam = gameObject.GetComponent<Camera>();
+        playerSprite = player.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -20,8 +25,24 @@ public class CameraManagement : MonoBehaviour
         float halfCamHeight = cam.orthographicSize;
         float halfCamWidth = cam.aspect * halfCamHeight;
 
+        float playerWidth = playerSprite.bounds.size.x;
+
+        float camX;
+        switch (CameraAlignment)
+        {
+            case HorizontalDir.Left:
+                camX = player.position.x + halfCamWidth - playerWidth;
+                break;
+            case HorizontalDir.Right:
+                camX = player.position.x - halfCamWidth + playerWidth;
+                break;
+            default:
+                camX = player.position.x;
+                break;
+        }
+
         gameObject.transform.position = new Vector3(
-            Mathf.Clamp(player.position.x, boundaryLeft + halfCamWidth, boundaryRight - halfCamWidth),
+            Mathf.Clamp(camX, boundaryLeft + halfCamWidth, boundaryRight - halfCamWidth),
             gameObject.transform.position.y,
             gameObject.transform.position.z);
     }

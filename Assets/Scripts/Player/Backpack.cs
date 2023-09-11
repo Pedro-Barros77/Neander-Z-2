@@ -77,6 +77,10 @@ public class Backpack
     /// </summary>
     public List<BaseWeapon> SecondaryWeaponsArsenal { get; private set; }
     /// <summary>
+    /// Lista de arremessáveis adquiridos pelo jogador.
+    /// </summary>
+    public List<BaseThrowable> ThrowablesWeaponsArsenal { get; private set; }
+    /// <summary>
     /// Referência ao jogador portador dessa mochila.
     /// </summary>
     public Player Player { get; private set; }
@@ -105,6 +109,10 @@ public class Backpack
     /// Retorna a arma atualmente equipada nas mãos do jogador.
     /// </summary>
     public BaseWeapon EquippedWeapon => CurrentWeaponIndex == 0 ? EquippedPrimaryWeapon : EquippedSecondaryWeapon;
+    /// <summary>
+    /// O item atualmente sendo arremessado pelo jogador.
+    /// </summary>
+    public BaseThrowable EquippedThrowable;
 
     public Backpack(Player player, InventoryData data)
     {

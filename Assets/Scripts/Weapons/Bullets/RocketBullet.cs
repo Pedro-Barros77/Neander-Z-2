@@ -6,11 +6,13 @@ public class RocketBullet : Projectile
     public float ExplosionKnockbackForce { get; set; }
     public float ExplosionMaxDamageRadius { get; set; }
     public float ExplosionMinDamageRadius { get; set; }
-    public float ExplosionSize { get; set; }
+    public float ExplosionSpriteSize { get; set; }
     public bool Exploded { get; private set; }
 
     [SerializeField]
     public GameObject ExplosionPrefab;
+
+    readonly string[] IgnoreBodyPartsNames = { "Plate" };
 
     protected override void Start()
     {
@@ -24,7 +26,16 @@ public class RocketBullet : Projectile
         if (Exploded)
             return;
 
-        Explode(collision);
+        var target = collision.GetComponentInParent<IPlayerTarget>();
+
+        if (target != null)
+        {
+            var hitPosition = collision.ClosestPoint(transform.position);
+            target.TakeDamage(Damage, collision.name);
+            target.OnPointHit(hitPosition, -transform.right);
+        }
+
+        Explode();
     }
 
     protected override void OnObjectHit(Collider2D collision)
@@ -32,31 +43,51 @@ public class RocketBullet : Projectile
         if (Exploded)
             return;
 
-        Explode(collision);
+        Explode();
     }
 
-    private void Explode(Collider2D collision)
+    protected override void OnMaxDistanceReach()
     {
-        var hitPosition = collision.ClosestPoint(transform.position);
+        Explode();
+
+        base.OnMaxDistanceReach();
+    }
+
+    private void Explode()
+    {
+        var hitPosition = transform.position;
 
         var explosion = Instantiate(ExplosionPrefab, hitPosition, Quaternion.identity);
-        explosion.transform.localScale = Vector3.one * ExplosionSize;
+        explosion.transform.localScale = Vector3.one * ExplosionSpriteSize;
 
         var hitObjects = Physics2D.OverlapCircleAll(hitPosition, ExplosionMinDamageRadius, TargetLayerMask);
 
-        var enemies = hitObjects.Select(x => x.GetComponentInParent<IPlayerTarget>()).Where(x => x != null).ToList();
+        var enemiesHit = hitObjects.Select(x => new { target = x.GetComponentInParent<IPlayerTarget>(), collider = x }).Where(x => x.target != null).ToList();
 
-        foreach (var enemy in enemies)
+        foreach (var hit in enemiesHit)
         {
-            var enemyCollider = enemy.transform.GetComponent<Collider2D>();
-            var enemyHitPoint = enemyCollider.ClosestPoint(transform.position);
-            var distance = Vector2.Distance(enemyHitPoint, hitPosition);
+            IPlayerTarget target = hit.target;
+            Collider2D targetCollider = hit.collider;
+
+            var enemyHitPoint = targetCollider.ClosestPoint(transform.position);
+            var distance = Vector2.Distance(enemyHitPoint, transform.position);
+
             if (distance <= ExplosionMinDamageRadius)
             {
-                var damageMultiplier = Mathf.Clamp01((distance - ExplosionMinDamageRadius) / (ExplosionMaxDamageRadius - ExplosionMinDamageRadius));
-                Damage *= damageMultiplier;
-                enemy.TakeDamage(Damage, collision.name);
-                enemy.OnPointHit(enemyHitPoint, -transform.right);
+                int targetId = target.transform.GetInstanceID();
+
+                if (!PiercedTargetsIds.Contains(targetId))
+                {
+                    PiercedTargetsIds.Add(targetId);
+
+                    var clampedDistance = Mathf.Clamp(distance, ExplosionMaxDamageRadius, ExplosionMinDamageRadius);
+                    var percentage = (clampedDistance - ExplosionMaxDamageRadius) / (ExplosionMinDamageRadius - ExplosionMaxDamageRadius);
+
+                    Damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
+
+                    target.TakeDamage(Damage, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
+                    target.OnPointHit(enemyHitPoint, -transform.right);
+                }
             }
         }
 

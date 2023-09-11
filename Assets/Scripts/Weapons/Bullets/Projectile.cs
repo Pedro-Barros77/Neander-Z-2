@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
@@ -7,6 +8,7 @@ public abstract class Projectile : MonoBehaviour
     public float AngleDegrees { get; set; }
     public float Speed { get; set; }
     public float Damage { get; set; }
+    public float MinDamage { get; set; }
     public float TotalDamage { get; set; }
     public Vector3 StartPos { get; set; }
     public int MaxPierceCount { get; set; }
@@ -22,6 +24,7 @@ public abstract class Projectile : MonoBehaviour
     protected SpriteRenderer Sprite { get; set; }
     protected Vector2 LastPosition;
     protected LayerMask TargetLayerMask;
+    protected List<int> PiercedTargetsIds = new();
 
     protected virtual void Start()
     {
@@ -34,12 +37,10 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void Update()
     {
+        CheckRange();
 
-        var distanceFromStart = Vector3.Distance(transform.position, StartPos);
-        if (distanceFromStart >= MaxDistance || distanceFromStart >= 100f)
-        {
-            OnMaxDistanceReach();
-        }
+        if (PierceCount > 0)
+            Damage *= Mathf.Pow(PierceDamageMultiplier, PierceCount);
 
         if (RotateTowardsDirection)
         {
@@ -58,12 +59,14 @@ public abstract class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        HandleCollision(collision.collider);
+        if (!Collider.isTrigger)
+            HandleCollision(collision.collider);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        HandleTrigger(collision);
+        if (Collider.isTrigger)
+            HandleCollision(collision);
     }
 
     /// <summary>
@@ -76,22 +79,19 @@ public abstract class Projectile : MonoBehaviour
             return;
 
         if (collision.gameObject.CompareTag("Enemy"))
-            OnEnemyHit(collision);
-        else if (collision.gameObject.CompareTag("Environment"))
-            OnObjectHit(collision);
-    }
+        {
+            var target = collision.GetComponentInParent<IPlayerTarget>();
+            if (target == null)
+                return;
 
-    /// <summary>
-    /// Lida com colisões do tipo Trigger do do projétil.
-    /// </summary>
-    /// <param name="collision">O collider do objeto com que o projétil colidiu.</param>
-    private void HandleTrigger(Collider2D collision)
-    {
-        if (!gameObject.activeSelf)
-            return;
+            int targetId = target.transform.GetInstanceID();
 
-        if (collision.gameObject.CompareTag("Enemy"))
-            OnEnemyHit(collision);
+            if (!PiercedTargetsIds.Contains(targetId))
+            {
+                PiercedTargetsIds.Add(targetId);
+                OnEnemyHit(collision);
+            }
+        }
         else if (collision.gameObject.CompareTag("Environment"))
             OnObjectHit(collision);
     }
@@ -119,13 +119,10 @@ public abstract class Projectile : MonoBehaviour
     protected virtual void OnEnemyHit(Collider2D collision)
     {
         var target = collision.GetComponentInParent<IPlayerTarget>();
-        if (target != null && target.IsAlive)
+        if (target != null)
         {
             if (PierceCount < MaxPierceCount)
-            {
                 PierceCount++;
-                Damage *= PierceDamageMultiplier;
-            }
             else if (MaxPierceCount == 0 || PierceCount >= MaxPierceCount)
             {
                 KillSelf();
@@ -178,6 +175,36 @@ public abstract class Projectile : MonoBehaviour
     }
 
     /// <summary>
+    /// Verifica o alcance do projétil, aplica o dano proporcional e destrói no alcance máximo.
+    /// </summary>
+    protected virtual void CheckRange()
+    {
+        var distanceFromStart = Vector3.Distance(transform.position, StartPos);
+        if (distanceFromStart >= MaxDistance || distanceFromStart >= 100f)
+        {
+            OnMaxDistanceReach();
+            return;
+        }
+
+        if (MaxDamageRange <= 0 && MinDamageRange <= 0)
+        {
+            Damage = TotalDamage;
+            return;
+        }
+
+        if (distanceFromStart < MaxDamageRange)
+        {
+            Damage = TotalDamage;
+            return;
+        }
+
+        var clampedDistance = Mathf.Clamp(distanceFromStart, MaxDamageRange, MinDamageRange);
+        var percentage = (clampedDistance - MaxDamageRange) / (MinDamageRange - MaxDamageRange);
+
+        Damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
+    }
+
+    /// <summary>
     /// Verifica se o projétil está atravessando um objeto.
     /// </summary>
     protected virtual void CheckTunneling()
@@ -196,15 +223,17 @@ public abstract class Projectile : MonoBehaviour
         if (hit.collider != null)
         {
             var target = hit.transform.GetComponentInParent<IPlayerTarget>();
-            if (target != null && target.IsAlive)
-                Rigidbody.position = hit.point;
 
-            if (hit.collider.isTrigger)
-                HandleTrigger(hit.collider);
-            else
+            if (target != null)
+            {
+                int targetId = target.transform.GetInstanceID();
+
+                if (!PiercedTargetsIds.Contains(targetId) && target.IsAlive)
+                    Rigidbody.position = hit.point;
+
                 HandleCollision(hit.collider);
+            }
         }
-
         LastPosition = Rigidbody.position;
     }
 }

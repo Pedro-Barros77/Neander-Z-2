@@ -8,12 +8,13 @@ public abstract class BaseWeaponData : AutoRevertSO
     public FireModes FireMode;
 
     public float Damage;
+    public float MinDamage;
     public float FireRate;
     public float BulletSpeed;
 
-    public float BulletMaxRange;
     public float MaxDamageRange;
     public float MinDamageRange;
+    public float BulletMaxRange;
 
     public int MagazineSize;
     public int MagazineBullets;

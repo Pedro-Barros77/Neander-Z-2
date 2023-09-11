@@ -140,8 +140,12 @@ public class Player : MonoBehaviour, IEnemyTarget
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
         SpriteRenderer = GetComponent<SpriteRenderer>();
 
-        HealthBar.SetMaxValue(MaxHealth, Health);
-        HealthBar.AnimationSpeed = 20f;
+        if (HealthBar != null)
+        {
+            HealthBar.SetMaxValue(MaxHealth, Health);
+            HealthBar.AnimationSpeed = 20f;
+        }
+
         StaminaBar.gameObject.SetActive(true);
         StaminaBar.AnimationSpeed = 20f;
         StaminaBar.ValueFillColor = new Color32(245, 238, 20, 255);
@@ -151,7 +155,6 @@ public class Player : MonoBehaviour, IEnemyTarget
         StaminaBar.HideOnFull = true;
         StaminaBar.SetMaxValue(MaxStamina, MaxStamina);
         (StaminaBar.transform as RectTransform).pivot = new Vector2(0.5f, 0.5f);
-        WavesManager.Instance.EnemiesTargets.Add(this);
     }
 
     void Update()
@@ -196,8 +199,9 @@ public class Player : MonoBehaviour, IEnemyTarget
         if (value < 0) return;
 
         Data.Health = Mathf.Clamp(Health + value, 0, MaxHealth);
-        HealthBar.AddValue(value);
-        ShowPopup(value.ToString("0"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        if (HealthBar != null)
+            HealthBar.AddValue(value);
+        ShowPopup(value.ToString("N1"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
     }
 
     /// <summary>
@@ -212,8 +216,9 @@ public class Player : MonoBehaviour, IEnemyTarget
         if (value < 0) return;
 
         Data.Health = Mathf.Clamp(Health - value, 0, MaxHealth);
-        HealthBar.RemoveValue(value);
-        ShowPopup(value.ToString("0"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        if (HealthBar != null)
+            HealthBar.RemoveValue(value);
+        ShowPopup(value.ToString("N1"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (Health <= 0 && IsAlive)
             Die();
@@ -285,7 +290,7 @@ public class Player : MonoBehaviour, IEnemyTarget
         StaminaBar.RemoveValue(value);
     }
 
-    #region Movement Animation Forwarding
+    #region Animation Forwarding
     /// <summary>
     /// Função chamada pelo evento de animação, no último frame da Rolada Tática.
     /// </summary>
@@ -305,5 +310,10 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// Função chamada pelo evento de animação, no último frame ao cair no chão do personagem.
     /// </summary>
     public void OnFallGroundEnd() => PlayerMovement.OnFallGroundEnd();
+
+    /// <summary>
+    /// Função chamada pelo evento de animação, no último frame ao arremessar um item.
+    /// </summary>
+    public void OnThrowEnd() => WeaponController.OnThrowEnd();
     #endregion
 }
