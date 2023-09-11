@@ -134,7 +134,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     protected bool isIdle => !isRunning && !isAttacking && !isDying;
     protected float lastBloodSplatterTime;
     protected float bloodSplatterDelay = 0.03f;
-
+    protected Vector2 LevelXLimit;
     protected virtual void Awake()
     {
     }
@@ -166,6 +166,9 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         float scaleFactor = (enemyWidth / healthBarWidth) * 0.7f;
         HealthBar.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
         (HealthBar.transform as RectTransform).pivot = new Vector2(0.5f, 0.5f);
+
+        var env = GameObject.Find("Environment").GetComponent<LevelData>();
+        LevelXLimit = new Vector2(env.TopLeftSpawnLimit.x, env.BottomRightSpawnLimit.x);
     }
 
     protected virtual void Update()
@@ -332,7 +335,10 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
             return;
 
         var targetDir = target.transform.position.x < transform.position.x ? -1 : 1;
-
+        if (transform.position.x < LevelXLimit.x)
+            targetDir = 1;
+        else if (transform.position.x > LevelXLimit.y)
+            targetDir = -1;
         if (Mathf.Abs(RigidBody.velocity.x) < MovementSpeed && !IsInAttackRange && !isAttacking)
             RigidBody.velocity += new Vector2(targetDir * AccelerationSpeed, 0);
     }

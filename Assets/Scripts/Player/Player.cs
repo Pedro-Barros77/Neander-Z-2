@@ -113,7 +113,7 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// A arma atualmente equipada nas mгos do jogador.
     /// </summary>
     public BaseWeapon CurrentWeapon => Backpack.EquippedWeapon;
-    private SpriteRenderer SpriteRenderer;
+    public SpriteRenderer SpriteRenderer { get; private set; }
     private InGameScreen Screen;
     private Canvas WorldPosCanvas;
     private GameObject PopupPrefab;
