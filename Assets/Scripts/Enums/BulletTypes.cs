@@ -5,6 +5,5 @@ public enum BulletTypes
     Shotgun = 3,
     Sniper = 4,
     Rocket = 5,
-    Throwable = 6,
-    Melee = 7
+    Melee = 6
 }

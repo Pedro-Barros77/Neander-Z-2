@@ -218,9 +218,9 @@ public class StoreScreen : MonoBehaviour
             return;
 
         PlayerData.TakeMoney(SelectedItem.Data.Price);
-        if (data.IsPrimary)
-            PlayerData.InventoryData.EquippedPrimaryType = data.WeaponType;
-        else
-            PlayerData.InventoryData.EquippedSecondaryType = data.WeaponType;
+        //if (data.IsPrimary)
+        //    PlayerData.InventoryData.EquippedPrimaryType = data.WeaponType;
+        //else
+        //    PlayerData.InventoryData.EquippedSecondaryType = data.WeaponType;
     }
 }

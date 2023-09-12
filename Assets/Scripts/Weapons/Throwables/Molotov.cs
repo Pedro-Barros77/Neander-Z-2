@@ -11,6 +11,13 @@ public class Molotov : BaseThrowable
     private List<IPlayerTarget> PlayerTargets = new();
     private List<IEnemyTarget> EnemyTargets = new();
 
+    protected override void Awake()
+    {
+        Type = ThrowableTypes.Molotov;
+
+        base.Awake();
+    }
+
     protected override void Update()
     {
         if (MenuController.Instance.IsGamePaused)

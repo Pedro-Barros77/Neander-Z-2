@@ -8,6 +8,13 @@ public class FragGrenade : BaseThrowable
 
     readonly string[] IgnoreBodyPartsNames = { "Plate" };
 
+    protected override void Awake()
+    {
+        Type = ThrowableTypes.FragGrenade;
+
+        base.Awake();
+    }
+
 
     protected override void Detonate()
     {
