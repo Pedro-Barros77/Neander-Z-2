@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,7 +6,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Inventory Data", menuName = "Neander Z/Player/Inventory Data", order = 3)]
 public class InventoryData : AutoRevertSO
 {
-    public int BackpackLevel;
+    public int PistolAmmo;
+    public int ShotgunAmmo;
+    public int RifleAmmo;
+    public int SniperAmmo;
+    public int RocketAmmo;
 
     public int MaxPistolAmmo;
     public int MaxShotgunAmmo;
@@ -13,22 +18,40 @@ public class InventoryData : AutoRevertSO
     public int MaxSniperAmmo;
     public int MaxRocketAmmo;
 
-    public int PistolAmmo;
-    public int ShotgunAmmo;
-    public int RifleAmmo;
-    public int SniperAmmo;
-    public int RocketAmmo;
-
-    public WeaponTypes EquippedPrimaryType;
-    public WeaponTypes EquippedSecondaryType;
-
     public int CurrentWeaponIndex;
 
-    public List<BaseWeaponData> PrimaryWeaponsArsenalData;
-    public List<BaseWeaponData> SecondaryWeaponsArsenalData;
+    public List<WeaponSelection> PrimaryWeaponsSelection;
+    public List<WeaponSelection> SecondaryWeaponsSelection;
+    public List<ThrowableSelection> ThrowableItemsSelection;
 
     public bool HasWeapon(WeaponTypes weaponType)
-            => PrimaryWeaponsArsenalData.Any(w => w.Type == weaponType)
-            || SecondaryWeaponsArsenalData.Any(w => w.Type == weaponType);
+            => PrimaryWeaponsSelection.Any(w => w.Type == weaponType)
+            || SecondaryWeaponsSelection.Any(w => w.Type == weaponType);
 
+
+    [Serializable]
+    public class WeaponSelection
+    {
+        [SerializeField]
+        public WeaponTypes Type;
+        public WeaponEquippedSlot EquippedSlot;
+        public bool IsPrimary => Constants.IsPrimary(Type);
+
+        public WeaponSelection() { }
+        public WeaponSelection(WeaponTypes type, WeaponEquippedSlot equippedSlot)
+        {
+            Type = type;
+            EquippedSlot = equippedSlot;
+        }
+    }
+
+    [Serializable]
+    public class ThrowableSelection
+    {
+        public ThrowableTypes Type;
+        public int Count;
+        public bool IsEquipped;
+    }
 }
+
+

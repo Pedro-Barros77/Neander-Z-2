@@ -63,6 +63,10 @@ public abstract class BaseThrowable : MonoBehaviour
     #region Properties
 
     /// <summary>
+    /// O tipo de item arremessável.
+    /// </summary>
+    public ThrowableTypes Type { get; protected set; }
+    /// <summary>
     /// O dano total causado pelo item.
     /// </summary>
     public float TotalDamage { get; protected set; }

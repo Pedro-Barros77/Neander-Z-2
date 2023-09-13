@@ -138,7 +138,10 @@ public class PlayerWeaponController : MonoBehaviour
     /// </summary>
     private void StartThrowingItem()
     {
-        if (IsThrowingItem || IsSwitchingWeapon)
+        if (IsThrowingItem || IsSwitchingWeapon || Player.Backpack.EquippedThrowableType == ThrowableTypes.None)
+            return;
+
+        if (Player.Backpack.EquippedThrowable.Count <= 0)
             return;
 
         IsThrowingItem = true;
@@ -148,12 +151,14 @@ public class PlayerWeaponController : MonoBehaviour
         playerAnimator.SetFloat("ThrowSpeedMultiplier", 0);
         Player.CurrentWeapon.IsActive = false;
 
-        var throwable = InstantiateThrowablePrefab(ThrowableTypes.Molotov);
+        Player.Backpack.EquippedThrowable.Count--;
+
+        var throwable = InstantiateThrowablePrefab(Player.Backpack.EquippedThrowableType);
         var rb = throwable.GetComponent<Rigidbody2D>();
         var collider = throwable.GetComponent<Collider2D>();
         rb.isKinematic = true;
         collider.enabled = false;
-        Player.Backpack.EquippedThrowable = throwable.GetComponent<BaseThrowable>();
+        Player.Backpack.ThrowingThrowable = throwable.GetComponent<BaseThrowable>();
     }
 
     /// <summary>
@@ -164,7 +169,7 @@ public class PlayerWeaponController : MonoBehaviour
         if (itemThrown || !IsThrowingItem)
             return;
 
-        lastThrowTrajectoryForce = Player.Backpack.EquippedThrowable.transform.right.normalized * Player.Backpack.EquippedThrowable.ThrowForce;
+        lastThrowTrajectoryForce = Player.Backpack.ThrowingThrowable.transform.right.normalized * Player.Backpack.ThrowingThrowable.ThrowForce;
         lastThrowStartPoint = throwableSpawnPointTransform.position;
     }
 
@@ -198,7 +203,7 @@ public class PlayerWeaponController : MonoBehaviour
         playerAnimator.SetFloat("ThrowSpeedMultiplier", 1);
         Player.CurrentWeapon.IsActive = true;
         IsThrowingItem = false;
-        Player.Backpack.EquippedThrowable = null;
+        Player.Backpack.ThrowingThrowable = null;
         LineRenderer.enabled = false;
         itemThrown = false;
     }
@@ -208,7 +213,7 @@ public class PlayerWeaponController : MonoBehaviour
     /// </summary>
     private void RenderThrowTrajectory()
     {
-        var throwable = Player.Backpack.EquippedThrowable;
+        var throwable = Player.Backpack.ThrowingThrowable;
         if (throwable == null)
         {
             OnThrowEnd();

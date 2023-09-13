@@ -10,13 +10,15 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     private GameObject PausePanel, GameOverPanel;
     [SerializeField]
-    private Image ActiveWeaponImage, ActiveAmmoImage;
+    private Image ActiveWeaponImage, ActiveAmmoImage, ActiveThrowableImage;
     [SerializeField]
-    private TextMeshProUGUI MagazineBulletsText, TotalBulletsText;
+    private TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText;
     [SerializeField]
     Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon;
     [SerializeField]
     Sprite Colt_1911Sprite, ShortBarrelSprite, UZISprite, SV98Sprite, M16Sprite, RPGSprite, MacheteSprite;
+    [SerializeField]
+    Sprite FragGrenadeSprite, MolotovSprite;
 
     void Start()
     {
@@ -42,6 +44,7 @@ public class InGameScreen : MonoBehaviour
     {
         MagazineBulletsText.text = Player.CurrentWeapon.MagazineBullets.ToString();
         TotalBulletsText.text = Player.Backpack.GetAmmo(Player.CurrentWeapon.BulletType).ToString();
+        ThrowablesCountText.text = Player.Backpack.EquippedThrowable.Count.ToString();
 
         ActiveAmmoImage.sprite = Player.CurrentWeapon.BulletType switch
         {
@@ -51,6 +54,14 @@ public class InGameScreen : MonoBehaviour
             BulletTypes.Sniper => SniperAmmoIcon,
             BulletTypes.Rocket => RocketAmmoIcon,
             BulletTypes.Melee => MeleeAmmoIcon,
+            _ => null,
+        };
+
+
+        ActiveThrowableImage.sprite = Player.Backpack.EquippedThrowableType switch
+        {
+            ThrowableTypes.FragGrenade => FragGrenadeSprite,
+            ThrowableTypes.Molotov => MolotovSprite,
             _ => null,
         };
 

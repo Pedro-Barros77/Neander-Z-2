@@ -12,19 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26086c12e053d9c4ca584354f410cbe5, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  BackpackLevel: 0
+  PistolAmmo: 50
+  ShotgunAmmo: 20
+  RifleAmmo: 90
+  SniperAmmo: 15
+  RocketAmmo: 5
   MaxPistolAmmo: 50
   MaxShotgunAmmo: 20
   MaxRifleAmmo: 90
   MaxSniperAmmo: 15
   MaxRocketAmmo: 5
-  PistolAmmo: 300
-  ShotgunAmmo: 20
-  RifleAmmo: 500
-  SniperAmmo: 50
-  RocketAmmo: 100
-  EquippedPrimaryType: 7
-  EquippedSecondaryType: 1
   CurrentWeaponIndex: 1
-  PrimaryWeaponsArsenalData: []
-  SecondaryWeaponsArsenalData: []
+  PrimaryWeaponsSelection:
+  - Type: 9
+    EquippedSlot: 1
+  SecondaryWeaponsSelection:
+  - Type: 1
+    EquippedSlot: 2
+  ThrowableItemsSelection:
+  - Type: 2
+    Count: 3
+    IsEquipped: 0
+  - Type: 1
+    Count: 5
+    IsEquipped: 1
