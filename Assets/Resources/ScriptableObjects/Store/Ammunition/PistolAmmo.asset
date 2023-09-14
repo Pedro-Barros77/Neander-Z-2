@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe93714eff435b4da086b9a0a9e84b2, type: 3}
+  m_Script: {fileID: 11500000, guid: b0a0595b4bba1ab4692c4b04c1cb389c, type: 3}
   m_Name: PistolAmmo
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 0f20aae54da7fb844a775442db60bc34, type: 3}
@@ -17,7 +17,8 @@ MonoBehaviour:
   Description: It's ammo, for a pistol. You put it in a pistol and fire... What else
     shoud it be?
   Price: 10
-  Ammount: 10
+  Amount: 10
   IconScale: 0.4
   Tags: 
   CanAfford: 0
+  BulletType: 1

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -10,6 +8,7 @@ public class PopupSystem : MonoBehaviour
     private float LifeSpanMs;
     private Vector3 StartPosition;
     private string Text;
+    private RectTransform rectTransform;
     void Start()
     {
         PopupText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
@@ -31,7 +30,8 @@ public class PopupSystem : MonoBehaviour
     /// <param name="position">A posição inicial</param>
     /// <param name="lifeSpanMs">O tempo para o popup desaparecer(ser destruído)</param>
     /// <param name="textColor">A cor que o popup vai ser exibido</param>
-    public void Init(string text, Vector3 position, float lifeSpanMs, Color32? textColor = null)
+    /// <param name="scale">A escala (tamanho) do popup. O padrão é 1.</param>
+    public void Init(string text, Vector3 position, float lifeSpanMs, Color32? textColor = null, float scale = 1)
     {
         Text = text;
         TextColor = textColor ?? Color.white;
@@ -44,6 +44,8 @@ public class PopupSystem : MonoBehaviour
             PopupText.text = Text;
             PopupText.color = TextColor;
         }
+        rectTransform = GetComponent<RectTransform>();
+        rectTransform.localScale = Vector3.one * scale;
     }
 
 }

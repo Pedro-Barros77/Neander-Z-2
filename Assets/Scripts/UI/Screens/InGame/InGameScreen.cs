@@ -44,7 +44,8 @@ public class InGameScreen : MonoBehaviour
     {
         MagazineBulletsText.text = Player.CurrentWeapon.MagazineBullets.ToString();
         TotalBulletsText.text = Player.Backpack.GetAmmo(Player.CurrentWeapon.BulletType).ToString();
-        ThrowablesCountText.text = Player.Backpack.EquippedThrowable.Count.ToString();
+        if (Player.Backpack.EquippedThrowableType != ThrowableTypes.None)
+            ThrowablesCountText.text = Player.Backpack.EquippedThrowable?.Count.ToString();
 
         ActiveAmmoImage.sprite = Player.CurrentWeapon.BulletType switch
         {
@@ -57,13 +58,13 @@ public class InGameScreen : MonoBehaviour
             _ => null,
         };
 
-
-        ActiveThrowableImage.sprite = Player.Backpack.EquippedThrowableType switch
-        {
-            ThrowableTypes.FragGrenade => FragGrenadeSprite,
-            ThrowableTypes.Molotov => MolotovSprite,
-            _ => null,
-        };
+        if (Player.Backpack.EquippedThrowableType != ThrowableTypes.None)
+            ActiveThrowableImage.sprite = Player.Backpack.EquippedThrowableType switch
+            {
+                ThrowableTypes.FragGrenade => FragGrenadeSprite,
+                ThrowableTypes.Molotov => MolotovSprite,
+                _ => null,
+            };
 
         ActiveWeaponImage.sprite = Player.CurrentWeapon.Type switch
         {

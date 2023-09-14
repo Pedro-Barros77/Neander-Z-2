@@ -123,7 +123,7 @@ public abstract class Projectile : MonoBehaviour
         {
             if (PierceCount < MaxPierceCount)
                 PierceCount++;
-            else if (MaxPierceCount == 0 || PierceCount >= MaxPierceCount)
+            else if ((MaxPierceCount == 0 || PierceCount >= MaxPierceCount) && target.IsAlive)
             {
                 KillSelf();
             }

@@ -26,14 +26,24 @@ public class StoreScreen : MonoBehaviour
     Button BuyButton, TestItemButton;
     [SerializeField]
     GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, WeaponsContent, ItemsContent, PerksContent, BackpackContent, WeaponsTab, ItemsTab, PerksTab, BackpackTab;
+    [SerializeField]
+    CustomAudio PurchaseSound;
 
+    TextMeshProUGUI PreviewBtnBuyText;
+    AudioSource audioSource;
     Animator storePanelAnimator;
+    GameObject PopupPrefab;
+    Canvas WorldPosCanvas;
     bool hasItem => SelectedItem != null && SelectedItem.Data != null;
 
     void Start()
     {
         StoreItems = GameObject.FindGameObjectsWithTag("StoreItem").ToList();
         storePanelAnimator = StorePanel.GetComponent<Animator>();
+        PreviewBtnBuyText = BuyButton.GetComponentInChildren<TextMeshProUGUI>();
+        audioSource = GetComponent<AudioSource>();
+        PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
+        WorldPosCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
     }
 
     void Update()
@@ -49,7 +59,23 @@ public class StoreScreen : MonoBehaviour
             if (hasItem)
             {
                 PreviewPriceText.color = SelectedItem.Data.CanAfford ? GreenMoney : RedMoney;
-                BuyButton.interactable = SelectedItem.Data.CanAfford;
+                BuyButton.interactable = SelectedItem.Data.CanAfford && !SelectedItem.Data.MaxedUp && !SelectedItem.Data.Purchased;
+                PreviewPriceText.text = $"$ {SelectedItem.Data.Price - SelectedItem.Data.Discount:N2}";
+                if (SelectedItem.Data.Amount > 1)
+                    PreviewBtnBuyText.text = $"Buy +{SelectedItem.Data.Amount}";
+                else
+                    PreviewBtnBuyText.text = "Buy";
+
+                if (SelectedItem.Data.MaxedUp)
+                {
+                    BuyButton.interactable = false;
+                    PreviewBtnBuyText.text = "Max";
+                }
+                if (SelectedItem.Data.Purchased)
+                {
+                    BuyButton.interactable = false;
+                    PreviewBtnBuyText.text = "Purchased";
+                }
             }
         }
 
@@ -77,7 +103,6 @@ public class StoreScreen : MonoBehaviour
 
         PreviewIcon.sprite = item.Data.Icon;
         PreviewTitleText.text = item.Data.Title;
-        PreviewPriceText.text = $"$ {item.Data.Price:N2}";
         PreviewDescriptionText.text = item.Data.Description;
         PreviewTagsText.text = string.Join("  |  ", item.Data.Tags).Replace("_", "-");
 
@@ -193,6 +218,22 @@ public class StoreScreen : MonoBehaviour
     }
 
     /// <summary>
+    /// Função para exibir o popup com devidos parâmetros.
+    /// </summary>
+    /// <param name="text">Texto a ser exibido</param>
+    /// <param name="textColor">A cor que o popup vai ser exibido</param>
+    /// <param name="hitPosition">A posição que o popup vai aparecer</param>
+    private void ShowPopup(string text, Color32 textColor, Vector3 hitPosition)
+    {
+        var popup = Instantiate(PopupPrefab, hitPosition, Quaternion.identity, WorldPosCanvas.transform);
+        var popupSystem = popup.GetComponent<PopupSystem>();
+        if (popupSystem != null)
+        {
+            popupSystem.Init(text, hitPosition, 22000f, textColor, 50);
+        }
+    }
+
+    /// <summary>
     /// Função chamada quando o player clica no botão de comprar.
     /// </summary>
     public void BuyItem()
@@ -205,6 +246,9 @@ public class StoreScreen : MonoBehaviour
 
         if (SelectedItem.Data.IsWeapon)
             BuyWeapon();
+
+        if (SelectedItem.Data.IsAmmo)
+            BuyAmmo();
     }
 
     /// <summary>
@@ -217,10 +261,51 @@ public class StoreScreen : MonoBehaviour
         if (PlayerData.InventoryData.HasWeapon(data.WeaponType))
             return;
 
-        PlayerData.TakeMoney(SelectedItem.Data.Price);
-        //if (data.IsPrimary)
-        //    PlayerData.InventoryData.EquippedPrimaryType = data.WeaponType;
-        //else
-        //    PlayerData.InventoryData.EquippedSecondaryType = data.WeaponType;
+        float value = data.Price - data.Discount;
+
+        PlayerData.TakeMoney(value);
+        audioSource.PlayOneShot(PurchaseSound.Audio, PurchaseSound.Volume);
+        ShowPopup($"-{value:N2}", Color.red, PlayerMoneyText.transform.position);
+
+        if (data.IsPrimary)
+        {
+            PlayerData.InventoryData.UnequipAllWeapons(true, true);
+            PlayerData.InventoryData.UnequipAllWeapons(false, true);
+
+            PlayerData.InventoryData.PrimaryWeaponsSelection.Add(new(data.WeaponType, WeaponEquippedSlot.Primary));
+        }
+        else
+        {
+            PlayerData.InventoryData.UnequipAllWeapons(false, false);
+
+            PlayerData.InventoryData.SecondaryWeaponsSelection.Add(new(data.WeaponType, WeaponEquippedSlot.Secondary));
+        }
+    }
+
+    private void BuyAmmo()
+    {
+        var data = SelectedItem.Data as StoreAmmoData;
+
+        if (data.Amount <= 0)
+            return;
+
+        int currentAmmo = PlayerData.InventoryData.GetAmmo(data.BulletType);
+        int maxAmmo = PlayerData.InventoryData.GetMaxAmmo(data.BulletType);
+
+        if (currentAmmo >= maxAmmo)
+            return;
+
+        if (currentAmmo + data.Amount > maxAmmo)
+        {
+            int diff = maxAmmo - currentAmmo;
+            PlayerData.InventoryData.SetAmmo(data.BulletType, currentAmmo + diff);
+        }
+
+        float value = data.Price - data.Discount;
+        PlayerData.TakeMoney(value);
+        audioSource.PlayOneShot(PurchaseSound.Audio, PurchaseSound.Volume);
+        ShowPopup($"-{value:N2}", Color.red, PlayerMoneyText.transform.position);
+
+        PlayerData.InventoryData.SetAmmo(data.BulletType, (int)data.Amount + currentAmmo);
     }
 }

@@ -28,6 +28,83 @@ public class InventoryData : AutoRevertSO
             => PrimaryWeaponsSelection.Any(w => w.Type == weaponType)
             || SecondaryWeaponsSelection.Any(w => w.Type == weaponType);
 
+    /// <summary>
+    /// Marca todas as armas especificadas como não equipadas.
+    /// </summary>
+    /// <param name="primaryWeapons">Se a ação deve ser realizada na lista de primárias, caso contrário, lista de secundárias.</param>
+    /// <param name="primarySlots">Se a ação deve ser realizada para as armas equipadas no slot de primária, caso contrário, slot de secundária.</param>
+    public void UnequipAllWeapons(bool primaryWeapons, bool primarySlots)
+    {
+        var list = primaryWeapons ? PrimaryWeaponsSelection : SecondaryWeaponsSelection;
+
+        foreach (var weapon in list)
+        {
+            if (primarySlots && weapon.EquippedSlot == WeaponEquippedSlot.Primary)
+                weapon.EquippedSlot = WeaponEquippedSlot.None;
+            else if (!primarySlots && weapon.EquippedSlot == WeaponEquippedSlot.Secondary)
+                weapon.EquippedSlot = WeaponEquippedSlot.None;
+        }
+    }
+
+    /// <summary>
+    /// Retorna a quantidade de munições do tipo especificado restantes que o jogador possui.
+    /// </summary>
+    /// <param name="type">O tipo de munição a ser avaliado.</param>
+    /// <returns>O número de munições restantes.</returns>
+    public int GetAmmo(BulletTypes type) => type switch
+    {
+        BulletTypes.Pistol => PistolAmmo,
+        BulletTypes.Shotgun => ShotgunAmmo,
+        BulletTypes.AssaultRifle => RifleAmmo,
+        BulletTypes.Sniper => SniperAmmo,
+        BulletTypes.Rocket => RocketAmmo,
+        _ => 0
+    };
+
+    /// <summary>
+    /// Retorna a quantidade máxima de munições do tipo especificado que o jogador pode carregar, neste nível de upgrade da mochila.
+    /// </summary>
+    /// <param name="type">O tipo de munição a ser avaliado.</param>
+    /// <returns>O número máximo de munições que podem ser carregadas.</returns>
+    public int GetMaxAmmo(BulletTypes type) => type switch
+    {
+        BulletTypes.Pistol => MaxPistolAmmo,
+        BulletTypes.Shotgun => MaxShotgunAmmo,
+        BulletTypes.AssaultRifle => MaxRifleAmmo,
+        BulletTypes.Sniper => MaxSniperAmmo,
+        BulletTypes.Rocket => MaxRocketAmmo,
+        _ => 0
+    };
+
+    /// <summary>
+    /// Define a quantidade de munições do tipo especificado que o jogador possui.
+    /// </summary>
+    /// <param name="type">O tipo de munição a ser definida.</param>
+    /// <param name="count">A quantidade a ser definida.</param>
+    public void SetAmmo(BulletTypes type, int count)
+    {
+        switch (type)
+        {
+            case BulletTypes.Pistol:
+                PistolAmmo = count;
+                break;
+            case BulletTypes.Shotgun:
+                ShotgunAmmo = count;
+                break;
+            case BulletTypes.AssaultRifle:
+                RifleAmmo = count;
+                break;
+            case BulletTypes.Sniper:
+                SniperAmmo = count;
+                break;
+            case BulletTypes.Rocket:
+                RocketAmmo = count;
+                break;
+            default:
+                break;
+        }
+    }
+
 
     [Serializable]
     public class WeaponSelection

@@ -74,15 +74,15 @@ public class Backpack
     /// <summary>
     /// O tipo da arma atualmente escolhida como primária pelo jogador.
     /// </summary>
-    public WeaponTypes EquippedPrimaryType => Data.PrimaryWeaponsSelection.Concat(Data.SecondaryWeaponsSelection).FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Primary)?.Type ?? WeaponTypes.None;
+    public WeaponTypes EquippedPrimaryType => Data.PrimaryWeaponsSelection?.Concat(Data.SecondaryWeaponsSelection).FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Primary)?.Type ?? WeaponTypes.None;
     /// <summary>
     /// O tipo da arma atualmente escolhida como secundária pelo jogador.
     /// </summary>
-    public WeaponTypes EquippedSecondaryType => Data.SecondaryWeaponsSelection.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Secondary)?.Type ?? WeaponTypes.None;
+    public WeaponTypes EquippedSecondaryType => Data.SecondaryWeaponsSelection?.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Secondary)?.Type ?? WeaponTypes.None;
     /// <summary>
     /// O tipo do item arremessável atualmente escolhido pelo jogador.
     /// </summary>
-    public ThrowableTypes EquippedThrowableType => Data.ThrowableItemsSelection.FirstOrDefault(x => x.IsEquipped)?.Type ?? ThrowableTypes.None;
+    public ThrowableTypes EquippedThrowableType => Data.ThrowableItemsSelection?.FirstOrDefault(x => x.IsEquipped)?.Type ?? ThrowableTypes.None;
 
     public bool HasPrimaryEquipped => EquippedPrimaryType != WeaponTypes.None;
     public bool HasSecondaryEquipped => EquippedSecondaryType != WeaponTypes.None;
@@ -153,12 +153,12 @@ public class Backpack
             {
                 if (slot == WeaponEquippedSlot.Primary)
                 {
-                    UnequipAll(true, true);
-                    UnequipAll(false, true);
+                    Data.UnequipAllWeapons(true, true);
+                    Data.UnequipAllWeapons(false, true);
                 }
 
                 if (slot == WeaponEquippedSlot.Secondary)
-                    UnequipAll(false, false);
+                    Data.UnequipAllWeapons(false, false);
             }
         }
 
@@ -186,22 +186,6 @@ public class Backpack
         return weapon;
     }
 
-    //public void AddThrowable(ThrowableTypes throwableType, bool equip = true)
-    //{
-    //    if (ThrowableItemsArsenal.Any(x => x.Type == throwableType))
-    //    {
-    //        Debug.LogWarning($"Tentativa de adicionar um item {throwableType} ao arsenal do jogador, mas ele já existe.");
-    //        return null;
-    //    }
-
-    //    ThrowableItemsArsenal.Add(weapon);
-
-    //    if (equip)
-    //    {
-    //        Data.EquippedThrowableType = throwableType;
-    //    }
-    //}
-
     /// <summary>
     /// Alternar entre as armas primária e secundária equipadas.
     /// </summary>
@@ -216,75 +200,19 @@ public class Backpack
     /// </summary>
     /// <param name="type">O tipo de munição a ser avaliado.</param>
     /// <returns>O número de munições restantes.</returns>
-    public int GetAmmo(BulletTypes type) => type switch
-    {
-        BulletTypes.Pistol => PistolAmmo,
-        BulletTypes.Shotgun => ShotgunAmmo,
-        BulletTypes.AssaultRifle => RifleAmmo,
-        BulletTypes.Sniper => SniperAmmo,
-        BulletTypes.Rocket => RocketAmmo,
-        _ => 0
-    };
+    public int GetAmmo(BulletTypes type) => Data.GetAmmo(type);
 
     /// <summary>
     /// Retorna a quantidade máxima de munições do tipo especificado que o jogador pode carregar, neste nível de upgrade da mochila.
     /// </summary>
     /// <param name="type">O tipo de munição a ser avaliado.</param>
     /// <returns>O número máximo de munições que podem ser carregadas.</returns>
-    public int GetMaxAmmo(BulletTypes type) => type switch
-    {
-        BulletTypes.Pistol => MaxPistolAmmo,
-        BulletTypes.Shotgun => MaxShotgunAmmo,
-        BulletTypes.AssaultRifle => MaxRifleAmmo,
-        BulletTypes.Sniper => MaxSniperAmmo,
-        BulletTypes.Rocket => MaxRocketAmmo,
-        _ => 0
-    };
+    public int GetMaxAmmo(BulletTypes type) => Data.GetMaxAmmo(type);
 
     /// <summary>
     /// Define a quantidade de munições do tipo especificado que o jogador possui.
     /// </summary>
     /// <param name="type">O tipo de munição a ser definida.</param>
     /// <param name="count">A quantidade a ser definida.</param>
-    public void SetAmmo(BulletTypes type, int count)
-    {
-        switch (type)
-        {
-            case BulletTypes.Pistol:
-                Data.PistolAmmo = count;
-                break;
-            case BulletTypes.Shotgun:
-                Data.ShotgunAmmo = count;
-                break;
-            case BulletTypes.AssaultRifle:
-                Data.RifleAmmo = count;
-                break;
-            case BulletTypes.Sniper:
-                Data.SniperAmmo = count;
-                break;
-            case BulletTypes.Rocket:
-                Data.RocketAmmo = count;
-                break;
-            default:
-                break;
-        }
-    }
-
-    /// <summary>
-    /// Marca todas as armas especificadas como não equipadas.
-    /// </summary>
-    /// <param name="primaryWeapons">Se a ação deve ser realizada na lista de primárias, caso contrário, lista de secundárias.</param>
-    /// <param name="primarySlots">Se a ação deve ser realizada para as armas equipadas no slot de primária, caso contrário, slot de secundária.</param>
-    private void UnequipAll(bool primaryWeapons, bool primarySlots)
-    {
-        var list = primaryWeapons ? Data.PrimaryWeaponsSelection : Data.SecondaryWeaponsSelection;
-
-        foreach (var weapon in list)
-        {
-            if (primarySlots && weapon.EquippedSlot == WeaponEquippedSlot.Primary)
-                weapon.EquippedSlot = WeaponEquippedSlot.None;
-            else if (!primarySlots && weapon.EquippedSlot == WeaponEquippedSlot.Secondary)
-                weapon.EquippedSlot = WeaponEquippedSlot.None;
-        }
-    }
+    public void SetAmmo(BulletTypes type, int count) => Data.SetAmmo(type, count);
 }

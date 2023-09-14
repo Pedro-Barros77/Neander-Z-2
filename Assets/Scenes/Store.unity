@@ -3419,10 +3419,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713473260}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a780520fef4d89847ba2d7f4f006dab5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5fd6584d423bc1d4e85496cfc1ad1bf8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.8
   m_Pitch: 1
@@ -3554,6 +3554,10 @@ MonoBehaviour:
   ItemsTab: {fileID: 1429504479}
   PerksTab: {fileID: 1531589112}
   BackpackTab: {fileID: 1236255687}
+  PurchaseSound:
+    Audio: {fileID: 8300000, guid: 18fd2703b6d29b34e9dcdc14577ba80b, type: 3}
+    Volume: 1
+    Pitch: 1
 --- !u!1001 &729611036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3661,7 +3665,7 @@ PrefabInstance:
     - target: {fileID: 7977929826255435187, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: Data
       value: 
-      objectReference: {fileID: 11400000, guid: a6fb2caa57cdd7446afe3fe66f6e0c38, type: 2}
+      objectReference: {fileID: 11400000, guid: 8e959ae8559ba4742a95e5e7c522425c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4064,10 +4068,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2042655049}
     m_Modifications:
-    - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_text
-      value: $ 40,00
-      objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6
@@ -4160,14 +4160,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2418290609602172642, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: dd47c92fc5758314aae87d0d2dae649a, type: 3}
-    - target: {fileID: 3082090958430973502, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_text
-      value: Sniper Ammo
-      objectReference: {fileID: 0}
     - target: {fileID: 7962752121420682399, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Name
       value: SniperAmmo
@@ -4175,7 +4167,7 @@ PrefabInstance:
     - target: {fileID: 7977929826255435187, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: Data
       value: 
-      objectReference: {fileID: 11400000, guid: c53b2aba313fcc14794493906d99092e, type: 2}
+      objectReference: {fileID: 11400000, guid: b46a38237be714d4b92cafb16d14f33f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5241,7 +5233,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -63.6, y: -0.0000019073486}
-  m_SizeDelta: {x: 88.618, y: 21.3338}
+  m_SizeDelta: {x: 129.1169, y: 21.3338}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1154509543
 MonoBehaviour:
@@ -5263,7 +5255,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: $0.00
+  m_text: $0,00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 10d83dcb43afcd0408d0b825a6cd65a3, type: 2}
   m_sharedMaterial: {fileID: -1042838590190517419, guid: 10d83dcb43afcd0408d0b825a6cd65a3, type: 2}
@@ -5631,10 +5623,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2042655049}
     m_Modifications:
-    - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_text
-      value: $ 25,00
-      objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -5727,14 +5715,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2418290609602172642, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 104a74fe41b70594486a4b4a837749fd, type: 3}
-    - target: {fileID: 3082090958430973502, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_text
-      value: Rifle Ammo
-      objectReference: {fileID: 0}
     - target: {fileID: 7962752121420682399, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Name
       value: RifleAmmo
@@ -5742,7 +5722,7 @@ PrefabInstance:
     - target: {fileID: 7977929826255435187, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: Data
       value: 
-      objectReference: {fileID: 11400000, guid: 89d73cf0cb9cbe34aaf79240af0da6c9, type: 2}
+      objectReference: {fileID: 11400000, guid: 4232b736cbb7bab448d03e5562016aa6, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6583,10 +6563,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2042655049}
     m_Modifications:
-    - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_text
-      value: $ 60,00
-      objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9
@@ -6679,14 +6655,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2418290609602172642, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: fcca0ddc25acfbb49b7044b3651de04e, type: 3}
-    - target: {fileID: 3082090958430973502, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_text
-      value: Rocket Ammo
-      objectReference: {fileID: 0}
     - target: {fileID: 7962752121420682399, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Name
       value: RocketAmmo
@@ -6694,7 +6662,7 @@ PrefabInstance:
     - target: {fileID: 7977929826255435187, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: Data
       value: 
-      objectReference: {fileID: 11400000, guid: 73cd0220d149b6f41b64c8359d3e21c9, type: 2}
+      objectReference: {fileID: 11400000, guid: 9c86ea0c59f3e62499773673bcfcfdd5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6917,10 +6885,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2042655049}
     m_Modifications:
-    - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_text
-      value: $ 30,00
-      objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.45
@@ -7013,14 +6977,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2418290609602172642, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c6f7d53aff1fd6942911556a09bb381b, type: 3}
-    - target: {fileID: 3082090958430973502, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
-      propertyPath: m_text
-      value: Shotgun Ammo
-      objectReference: {fileID: 0}
     - target: {fileID: 7962752121420682399, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Name
       value: ShotgunAmmo
@@ -7028,7 +6984,7 @@ PrefabInstance:
     - target: {fileID: 7977929826255435187, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: Data
       value: 
-      objectReference: {fileID: 11400000, guid: deab6cad93523124ba9b4c5ba60f4341, type: 2}
+      objectReference: {fileID: 11400000, guid: 827620de370ca0c46895c569b9e77b06, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

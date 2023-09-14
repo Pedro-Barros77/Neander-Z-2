@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe93714eff435b4da086b9a0a9e84b2, type: 3}
+  m_Script: {fileID: 11500000, guid: b0a0595b4bba1ab4692c4b04c1cb389c, type: 3}
   m_Name: RocketAmmo
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: fcca0ddc25acfbb49b7044b3651de04e, type: 3}
   Title: Rocket Ammo
   Description: Booooom!
   Price: 60
-  Ammount: 1
+  Amount: 1
   IconScale: 0.9
   Tags: 
   CanAfford: 0
+  BulletType: 5

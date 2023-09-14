@@ -16,8 +16,11 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     TextMeshProUGUI TitleText, PriceText;
     [SerializeField]
     Image IconImage;
+    [SerializeField]
+    CustomAudio HoverSound, ClickSound;
 
     StoreScreen storeScreen;
+    AudioSource audioSource;
     bool IsInEditor => Application.isEditor && !Application.isPlaying;
 
     private void Awake()
@@ -29,6 +32,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         storeScreen = GameObject.Find("Screen").GetComponent<StoreScreen>();
         Animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -48,10 +52,17 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (Data == null)
             return;
 
+        PriceText.text = $"$ {Data.Price - Data.Discount:N2}";
+
         if (storeScreen.PlayerData != null)
         {
-            Data.CanAfford = storeScreen.PlayerData.Money >= Data.Price;
+            Data.CanAfford = storeScreen.PlayerData.Money >= Data.Price - Data.Discount;
             PriceText.color = Data.CanAfford ? storeScreen.GreenMoney : storeScreen.RedMoney;
+            if (Data.IsAmmo)
+                UpdateAmmo();
+
+            if (Data.IsWeapon)
+                UpdateWeapon();
         }
     }
 
@@ -70,7 +81,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
 
         TitleText.text = Data.Title;
-        PriceText.text = $"$ {Data.Price:N2}";
+        PriceText.text = $"$ {Data.Price - Data.Discount:N2}";
         IconImage.sprite = Data.Icon;
         IconImage.transform.localScale = Vector3.one * Data.IconScale;
         gameObject.name = Data.name;
@@ -85,7 +96,11 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             return;
 
         if (!IsSelected)
+        {
             storeScreen.SelectItem(this);
+            if (ClickSound != null)
+                audioSource.PlayOneShot(ClickSound.Audio, ClickSound.Volume);
+        }
     }
 
     /// <summary>
@@ -95,6 +110,12 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (IsInEditor)
             return;
+
+        //if (!button.interactable)
+        //    return;
+
+        if (HoverSound != null)
+            audioSource.PlayOneShot(HoverSound.Audio, HoverSound.Volume);
 
         MenuController.Instance.SetCursor(Cursors.Pointer);
     }
@@ -126,5 +147,39 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         IsSelected = false;
         Animator.ResetTrigger("Selected");
         Animator.SetTrigger("Normal");
+    }
+
+    private void UpdateWeapon()
+    {
+        var data = Data as StoreWeaponData;
+        if (data.Purchased)
+        {
+            PriceText.text = "Purchased";
+            return;
+        }
+
+        if (storeScreen.PlayerData.InventoryData.HasWeapon(data.WeaponType))
+            Data.Purchased = true;
+    }
+
+    private void UpdateAmmo()
+    {
+        var data = Data as StoreAmmoData;
+
+        int currentAmmo = storeScreen.PlayerData.InventoryData.GetAmmo(data.BulletType);
+        int maxAmmo = storeScreen.PlayerData.InventoryData.GetMaxAmmo(data.BulletType);
+        int diff = maxAmmo - currentAmmo;
+
+        Data.MaxedUp = diff <= 0;
+
+        if (Data.MaxedUp || currentAmmo + Data.Amount <= maxAmmo)
+        {
+            Data.Discount = 0;
+            return;
+        }
+
+        float percentage = (diff * 100 / Data.Amount) / 100;
+
+        Data.Discount = Data.Price * (1 - percentage);
     }
 }

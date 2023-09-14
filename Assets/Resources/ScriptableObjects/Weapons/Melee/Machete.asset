@@ -14,14 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPrimary: 0
   Type: 6
-  BulletType: 7
+  BulletType: 6
   FireMode: 0
   Damage: 3
+  MinDamage: 0
   FireRate: 2
   BulletSpeed: 0
-  BulletMaxRange: 0
   MaxDamageRange: 0
   MinDamageRange: 0
+  BulletMaxRange: 0
   MagazineSize: 0
   MagazineBullets: 0
   ReloadTimeMs: 0

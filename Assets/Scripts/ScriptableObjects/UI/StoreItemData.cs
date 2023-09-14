@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,15 +8,14 @@ public class StoreItemData : AutoRevertSO
     public string Title;
     public string Description;
     public float Price;
-    public float Ammount;
+    public float Discount;
+    public float Amount;
     public float IconScale = 1f;
     public List<StoreItemTags> Tags;
-    public bool CanAfford;
 
-    public readonly bool IsWeapon;
-
-    public StoreItemData(bool isWeapon = false)
-    {
-        IsWeapon = isWeapon;
-    }
+    public bool IsWeapon => this is StoreWeaponData;
+    public bool IsAmmo => this is StoreAmmoData;
+    public bool CanAfford { get; set; }
+    public bool MaxedUp { get; set; }
+    public bool Purchased { get; set; }
 }

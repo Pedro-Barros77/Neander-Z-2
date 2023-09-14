@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Weapon Data", menuName = "Neander Z/Store/Weapon Data", order = 1)]
+[CreateAssetMenu(fileName = "New Weapon Data", menuName = "Neander Z/Store/Weapon Data", order = 2)]
 public class StoreWeaponData : StoreItemData
 {
     public WeaponTypes WeaponType;
@@ -10,8 +10,4 @@ public class StoreWeaponData : StoreItemData
     public int MagazineBullets;
     public int PelletsCount;
     public float Dispersion;
-
-    public StoreWeaponData() : base(true)
-    {
-    }
 }
