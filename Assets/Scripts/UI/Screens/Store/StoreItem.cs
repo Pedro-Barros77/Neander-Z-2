@@ -63,6 +63,8 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
             if (Data.IsWeapon)
                 UpdateWeapon();
+
+            UpdateSpecials();
         }
     }
 
@@ -181,5 +183,16 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         float percentage = (diff * 100 / Data.Amount) / 100;
 
         Data.Discount = Data.Price * (1 - percentage);
+    }
+
+    private void UpdateSpecials()
+    {
+        switch (Data.name)
+        {
+            case "FirstAidKit":
+            case "MedKit":
+                Data.MaxedUp = storeScreen.PlayerData.Health >= storeScreen.PlayerData.MaxHealth;
+                break;
+        }
     }
 }

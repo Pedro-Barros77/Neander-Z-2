@@ -15,6 +15,7 @@ public class StoreItemData : AutoRevertSO
 
     public bool IsWeapon => this is StoreWeaponData;
     public bool IsAmmo => this is StoreAmmoData;
+    public bool IsThrowable => this is StoreThrowableData;
     public bool CanAfford { get; set; }
     public bool MaxedUp { get; set; }
     public bool Purchased { get; set; }

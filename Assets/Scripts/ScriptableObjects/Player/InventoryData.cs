@@ -28,6 +28,8 @@ public class InventoryData : AutoRevertSO
             => PrimaryWeaponsSelection.Any(w => w.Type == weaponType)
             || SecondaryWeaponsSelection.Any(w => w.Type == weaponType);
 
+    public bool HasThrowable(ThrowableTypes throwableType) => ThrowableItemsSelection.Any(t => t.Type == throwableType);
+
     /// <summary>
     /// Marca todas as armas especificadas como não equipadas.
     /// </summary>
@@ -43,6 +45,17 @@ public class InventoryData : AutoRevertSO
                 weapon.EquippedSlot = WeaponEquippedSlot.None;
             else if (!primarySlots && weapon.EquippedSlot == WeaponEquippedSlot.Secondary)
                 weapon.EquippedSlot = WeaponEquippedSlot.None;
+        }
+    }
+
+    /// <summary>
+    /// Marca todos os items arremessáveis como não equipados.
+    /// </summary>
+    public void UnequipAllThrowables()
+    {
+        foreach (var item in ThrowableItemsSelection)
+        {
+            item.IsEquipped = false;
         }
     }
 
@@ -128,6 +141,14 @@ public class InventoryData : AutoRevertSO
         public ThrowableTypes Type;
         public int Count;
         public bool IsEquipped;
+
+        public ThrowableSelection() { }
+        public ThrowableSelection(ThrowableTypes type, int count, bool isEquipped)
+        {
+            Type = type;
+            Count = count;
+            IsEquipped = isEquipped;
+        }
     }
 }
 

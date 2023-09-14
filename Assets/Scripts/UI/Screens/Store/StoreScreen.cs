@@ -244,28 +244,55 @@ public class StoreScreen : MonoBehaviour
         if (!SelectedItem.Data.CanAfford)
             return;
 
+        bool purchased = false;
+
         if (SelectedItem.Data.IsWeapon)
-            BuyWeapon();
+            purchased = BuyWeapon();
 
         if (SelectedItem.Data.IsAmmo)
-            BuyAmmo();
+            purchased = BuyAmmo();
+
+        if (SelectedItem.Data.IsThrowable)
+            purchased = BuyThrowable();
+
+        switch (SelectedItem.Data.name)
+        {
+            case "FirstAidKit":
+                if (PlayerData.Health < PlayerData.MaxHealth)
+                {
+                    PlayerData.Health = Mathf.Clamp(PlayerData.Health + SelectedItem.Data.Amount, 0, PlayerData.MaxHealth);
+                    purchased = true;
+                }
+                break;
+
+            case "MedKit":
+                if (PlayerData.Health < PlayerData.MaxHealth)
+                {
+                    PlayerData.Health = PlayerData.MaxHealth;
+                    purchased = true;
+                }
+                break;
+        }
+
+        if (purchased)
+        {
+            float value = SelectedItem.Data.Price - SelectedItem.Data.Discount;
+
+            PlayerData.TakeMoney(value);
+            audioSource.PlayOneShot(PurchaseSound.Audio, PurchaseSound.Volume);
+            ShowPopup($"-{value:N2}", Color.red, PlayerMoneyText.transform.position);
+        }
     }
 
     /// <summary>
     /// Compra a arma selecionada.
     /// </summary>
-    private void BuyWeapon()
+    private bool BuyWeapon()
     {
         var data = SelectedItem.Data as StoreWeaponData;
 
         if (PlayerData.InventoryData.HasWeapon(data.WeaponType))
-            return;
-
-        float value = data.Price - data.Discount;
-
-        PlayerData.TakeMoney(value);
-        audioSource.PlayOneShot(PurchaseSound.Audio, PurchaseSound.Volume);
-        ShowPopup($"-{value:N2}", Color.red, PlayerMoneyText.transform.position);
+            return false;
 
         if (data.IsPrimary)
         {
@@ -280,20 +307,26 @@ public class StoreScreen : MonoBehaviour
 
             PlayerData.InventoryData.SecondaryWeaponsSelection.Add(new(data.WeaponType, WeaponEquippedSlot.Secondary));
         }
+
+        return true;
     }
 
-    private void BuyAmmo()
+    /// <summary>
+    /// Compra a munição selecionada.
+    /// </summary>
+    /// <returns>Se o item foi comprado com sucesso.</returns>
+    private bool BuyAmmo()
     {
         var data = SelectedItem.Data as StoreAmmoData;
 
         if (data.Amount <= 0)
-            return;
+            return false;
 
         int currentAmmo = PlayerData.InventoryData.GetAmmo(data.BulletType);
         int maxAmmo = PlayerData.InventoryData.GetMaxAmmo(data.BulletType);
 
         if (currentAmmo >= maxAmmo)
-            return;
+            return false;
 
         if (currentAmmo + data.Amount > maxAmmo)
         {
@@ -301,11 +334,35 @@ public class StoreScreen : MonoBehaviour
             PlayerData.InventoryData.SetAmmo(data.BulletType, currentAmmo + diff);
         }
 
-        float value = data.Price - data.Discount;
-        PlayerData.TakeMoney(value);
-        audioSource.PlayOneShot(PurchaseSound.Audio, PurchaseSound.Volume);
-        ShowPopup($"-{value:N2}", Color.red, PlayerMoneyText.transform.position);
-
         PlayerData.InventoryData.SetAmmo(data.BulletType, (int)data.Amount + currentAmmo);
+
+        return true;
+    }
+
+    /// <summary>
+    /// Compra o item arremessável selecionado.
+    /// </summary>
+    /// <returns>Se o item foi comprado com sucesso.</returns>
+    private bool BuyThrowable()
+    {
+        var data = SelectedItem.Data as StoreThrowableData;
+
+        if (data.Amount <= 0)
+            return false;
+
+        PlayerData.InventoryData.UnequipAllThrowables();
+
+        bool hasThrowable = PlayerData.InventoryData.HasThrowable(data.ThrowableType);
+
+        if (!hasThrowable)
+            PlayerData.InventoryData.ThrowableItemsSelection.Add(new(data.ThrowableType, (int)data.Amount, true));
+        else
+        {
+            var throwable = PlayerData.InventoryData.ThrowableItemsSelection.Find(t => t.Type == data.ThrowableType);
+            throwable.Count += (int)data.Amount;
+            throwable.IsEquipped = true;
+        }
+
+        return true;
     }
 }

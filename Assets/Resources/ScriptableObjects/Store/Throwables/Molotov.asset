@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe93714eff435b4da086b9a0a9e84b2, type: 3}
+  m_Script: {fileID: 11500000, guid: cfe904436d21aa747bbad0080d06ae06, type: 3}
   m_Name: Molotov
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 8cc289f0d4865814a973c93a61a79991, type: 3}
@@ -21,4 +21,4 @@ MonoBehaviour:
   Amount: 1
   IconScale: 1
   Tags: 080000000a0000000b0000000f000000
-  CanAfford: 0
+  ThrowableType: 2
