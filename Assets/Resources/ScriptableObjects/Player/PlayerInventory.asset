@@ -23,9 +23,7 @@ MonoBehaviour:
   MaxSniperAmmo: 15
   MaxRocketAmmo: 5
   CurrentWeaponIndex: 1
-  PrimaryWeaponsSelection:
-  - Type: 9
-    EquippedSlot: 0
+  PrimaryWeaponsSelection: []
   SecondaryWeaponsSelection:
   - Type: 1
     EquippedSlot: 2
