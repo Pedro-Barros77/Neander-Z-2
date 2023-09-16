@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 322ccaa67122c66408f822261caf336b
+guid: 788821d1cb129a04a896e1ba4b890a65
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Raimundo_Run_0
+      name: Raimundo_Helmet_Break_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 264
-        width: 69
-        height: 88
+        y: 270
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f25a6de75eff3d7488309a66ddb82a4a
-      internalID: -1665577773
+      spriteID: 2dfb2a12e3caefc409046c1a2292483a
+      internalID: 135879974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raimundo_Run_1
+      name: Raimundo_Helmet_Break_1
       rect:
         serializedVersion: 2
-        x: 69
-        y: 264
-        width: 69
-        height: 88
+        x: 58
+        y: 270
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f64c123355759e0458f2fd7f0b1ba2a6
-      internalID: 999777551
+      spriteID: 5df0e740831f8bc4a9483ba6ccd8c70f
+      internalID: -905883313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raimundo_Run_2
+      name: Raimundo_Helmet_Break_2
       rect:
         serializedVersion: 2
-        x: 138
-        y: 264
-        width: 69
-        height: 88
+        x: 116
+        y: 270
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,41 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13798132a3a19474987ea009cc765659
-      internalID: -110796506
+      spriteID: 02f32343c7377344180bf8da25cdad4d
+      internalID: 1524211739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raimundo_Run_3
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 264
-        width: 69
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0487e69d34cea784f9892c859291e62e
-      internalID: -1191429903
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Raimundo_Run_4
+      name: Raimundo_Helmet_Break_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 176
-        width: 69
-        height: 88
+        y: 180
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef6909f9dcd975349acd6c3715d97fd8
-      internalID: -978072545
+      spriteID: c7728da62cc01e04093aa4bdcb034f5b
+      internalID: -2144762414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raimundo_Run_5
+      name: Raimundo_Helmet_Break_4
       rect:
         serializedVersion: 2
-        x: 69
-        y: 176
-        width: 69
-        height: 88
+        x: 58
+        y: 180
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +221,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47cb2b55d784d3043a3d32f6c602e036
-      internalID: 1183822786
+      spriteID: 73eb96ca5b11d4f43867cb4a60ec70bd
+      internalID: 2118933415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raimundo_Run_6
+      name: Raimundo_Helmet_Break_5
       rect:
         serializedVersion: 2
-        x: 138
-        y: 176
-        width: 69
-        height: 88
+        x: 116
+        y: 180
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,41 +242,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a0ae3b534a986b43851ae53dec7f0e8
-      internalID: -1571527514
+      spriteID: 38ed64347d3f8724d84a3804be74f620
+      internalID: -2099273486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raimundo_Run_7
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 176
-        width: 69
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b65269f0865655e468b82975ab12ca20
-      internalID: -154555389
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Raimundo_Run_8
+      name: Raimundo_Helmet_Break_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 88
-        width: 69
-        height: 88
+        y: 90
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,20 +263,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2939391716718de449b03d30edff707d
-      internalID: -720571519
+      spriteID: 0b5c3095536432e48b7e8897a3f4e033
+      internalID: 1621710943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raimundo_Run_9
+      name: Raimundo_Helmet_Break_7
       rect:
         serializedVersion: 2
-        x: 69
-        y: 88
-        width: 69
-        height: 88
+        x: 58
+        y: 90
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -326,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba0f9177193649241a5984f44b49be1b
-      internalID: 1150044015
+      spriteID: 557922449c6edb943bec4c8f0ca0e1cd
+      internalID: -1154780081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raimundo_Run_10
+      name: Raimundo_Helmet_Break_8
       rect:
         serializedVersion: 2
-        x: 138
-        y: 88
-        width: 69
-        height: 88
+        x: 116
+        y: 90
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -347,41 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa9ebca0f8c9a27488dbe6556913c115
-      internalID: 1481980530
+      spriteID: 1e622135e8fbdeb439760ff91c83db00
+      internalID: 315855045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raimundo_Run_11
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 88
-        width: 69
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b86a711b3c31c3844bce0236aa1d7992
-      internalID: 506168802
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Raimundo_Run_12
+      name: Raimundo_Helmet_Break_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 69
-        height: 88
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,20 +326,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98cdcf2789cf62c4b9e68a0e289234aa
-      internalID: -2101033624
+      spriteID: 46c50bb65b9c1254fa15e9f94598492d
+      internalID: 701030478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raimundo_Run_13
+      name: Raimundo_Helmet_Break_10
       rect:
         serializedVersion: 2
-        x: 69
+        x: 58
         y: 0
-        width: 69
-        height: 88
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -410,20 +347,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a75259da8d5ebe459648d3ca9d09362
-      internalID: -1229245267
+      spriteID: 8e184817c64ecf04dbdf998254b5229a
+      internalID: 1205426960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raimundo_Run_14
+      name: Raimundo_Helmet_Break_11
       rect:
         serializedVersion: 2
-        x: 138
+        x: 116
         y: 0
-        width: 69
-        height: 88
+        width: 58
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -431,29 +368,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cde7d7546dfba042ab004f105440b90
-      internalID: 2074198884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Raimundo_Run_15
-      rect:
-        serializedVersion: 2
-        x: 207
-        y: 0
-        width: 69
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56e673f0b5c4b624f9cd3a7a74c52ef9
-      internalID: 1035610766
+      spriteID: 97cf621c6821bca4c98dd056e62907dc
+      internalID: -83397391
       vertices: []
       indices: 
       edges: []
@@ -469,22 +385,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Raimundo_Run_0: -1665577773
-      Raimundo_Run_1: 999777551
-      Raimundo_Run_10: 1481980530
-      Raimundo_Run_11: 506168802
-      Raimundo_Run_12: -2101033624
-      Raimundo_Run_13: -1229245267
-      Raimundo_Run_14: 2074198884
-      Raimundo_Run_15: 1035610766
-      Raimundo_Run_2: -110796506
-      Raimundo_Run_3: -1191429903
-      Raimundo_Run_4: -978072545
-      Raimundo_Run_5: 1183822786
-      Raimundo_Run_6: -1571527514
-      Raimundo_Run_7: -154555389
-      Raimundo_Run_8: -720571519
-      Raimundo_Run_9: 1150044015
+      Raimundo_Helmet_Break_0: 135879974
+      Raimundo_Helmet_Break_1: -905883313
+      Raimundo_Helmet_Break_10: 1205426960
+      Raimundo_Helmet_Break_11: -83397391
+      Raimundo_Helmet_Break_2: 1524211739
+      Raimundo_Helmet_Break_3: -2144762414
+      Raimundo_Helmet_Break_4: 2118933415
+      Raimundo_Helmet_Break_5: -2099273486
+      Raimundo_Helmet_Break_6: 1621710943
+      Raimundo_Helmet_Break_7: -1154780081
+      Raimundo_Helmet_Break_8: 315855045
+      Raimundo_Helmet_Break_9: 701030478
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

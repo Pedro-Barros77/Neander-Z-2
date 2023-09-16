@@ -32,7 +32,7 @@ public class RocketBullet : Projectile
         {
             var hitPosition = collision.ClosestPoint(transform.position);
             target.TakeDamage(Damage, collision.name);
-            target.OnPointHit(hitPosition, -transform.right);
+            target.OnPointHit(hitPosition, -transform.right, collision.name);
         }
 
         Explode();
@@ -86,7 +86,7 @@ public class RocketBullet : Projectile
                     Damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
 
                     target.TakeDamage(Damage, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
-                    target.OnPointHit(enemyHitPoint, -transform.right);
+                    target.OnPointHit(enemyHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
                 }
             }
         }

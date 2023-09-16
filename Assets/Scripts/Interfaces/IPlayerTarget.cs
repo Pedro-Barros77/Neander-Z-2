@@ -14,5 +14,5 @@ public interface IPlayerTarget
     /// </summary>
     /// <param name="hitPoint">A posição do acerto.</param>
     /// <param name="pointToDirection">A direção em que os efeitos devem ser lançados.</param>
-    void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection);
+    void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName);
 }

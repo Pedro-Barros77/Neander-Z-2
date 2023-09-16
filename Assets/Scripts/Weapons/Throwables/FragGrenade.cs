@@ -59,7 +59,7 @@ public class FragGrenade : BaseThrowable
                     float damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
 
                     target.TakeDamage(damage, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
-                    target.OnPointHit(enemyHitPoint, -transform.right);
+                    target.OnPointHit(enemyHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
                 }
             }
         }

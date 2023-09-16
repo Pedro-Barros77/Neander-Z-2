@@ -31,7 +31,7 @@ public class BodyTarget : MonoBehaviour, IPlayerTarget
 
     }
 
-    public void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection)
+    public void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName)
     {
         if (SparksPrefab == null)
             return;

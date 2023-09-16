@@ -225,7 +225,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="text">Texto a ser exibido</param>
     /// <param name="textColor">A cor que o popup vai ser exibido</param>
     /// <param name="hitPosition">A posição que o popup vai aparecer</param>
-    private void ShowPopup(string text, Color32 textColor, Vector3 hitPosition)
+    protected void ShowPopup(string text, Color32 textColor, Vector3 hitPosition)
     {
         var popup = Instantiate(PopupPrefab, hitPosition, Quaternion.identity, WorldPosCanvas.transform);
         var popupSystem = popup.GetComponent<PopupSystem>();
@@ -362,7 +362,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         target.TakeDamage(Damage, "");
     }
 
-    public virtual void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection)
+    public virtual void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName)
     {
         if (BloodSplatterPrefab == null)
             return;

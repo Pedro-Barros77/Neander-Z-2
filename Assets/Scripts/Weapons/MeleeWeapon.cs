@@ -98,7 +98,7 @@ public class MeleeWeapon : BaseWeapon
         }
         Vector2 hitPosition = targetCollider.ClosestPoint(AttackTrigger.transform.position);
         target.TakeDamage(Damage, targetCollider.name, hitPosition);
-        target.OnPointHit(hitPosition, -transform.right);
+        target.OnPointHit(hitPosition, -transform.right, targetCollider.name);
         HitTargetsIds.Add(targetInstanceId);
     }
 
