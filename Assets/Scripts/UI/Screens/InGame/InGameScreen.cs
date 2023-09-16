@@ -16,7 +16,7 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon;
     [SerializeField]
-    Sprite Colt_1911Sprite, ShortBarrelSprite, UZISprite, SV98Sprite, M16Sprite, RPGSprite, MacheteSprite;
+    Sprite Colt_1911Sprite, ShortBarrelSprite, UZISprite, SV98Sprite, M16Sprite, RPGSprite, MacheteSprite, DeagleSprite;
     [SerializeField]
     Sprite FragGrenadeSprite, MolotovSprite;
 
@@ -75,6 +75,7 @@ public class InGameScreen : MonoBehaviour
             WeaponTypes.M16 => M16Sprite,
             WeaponTypes.RPG => RPGSprite,
             WeaponTypes.Machete => MacheteSprite,
+            WeaponTypes.Deagle => DeagleSprite,
             _ => null,
         };
     }
