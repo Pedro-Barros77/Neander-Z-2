@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Deagle_Shoot
+  m_Name: Scar_Shoot
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1994827371, guid: 902371b3cf6dd094b9934b2655cb096d, type: 3}
+      value: {fileID: -334436377, guid: aa4688d73c87c814e9e9ad983541a92b, type: 3}
     - time: 0.016666668
-      value: {fileID: -323532660, guid: 902371b3cf6dd094b9934b2655cb096d, type: 3}
+      value: {fileID: 2132312094, guid: aa4688d73c87c814e9e9ad983541a92b, type: 3}
     - time: 0.033333335
-      value: {fileID: 794619788, guid: 902371b3cf6dd094b9934b2655cb096d, type: 3}
+      value: {fileID: 1003645223, guid: aa4688d73c87c814e9e9ad983541a92b, type: 3}
     - time: 0.05
-      value: {fileID: -438855373, guid: 902371b3cf6dd094b9934b2655cb096d, type: 3}
+      value: {fileID: -1194489759, guid: aa4688d73c87c814e9e9ad983541a92b, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,10 +50,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1994827371, guid: 902371b3cf6dd094b9934b2655cb096d, type: 3}
-    - {fileID: -323532660, guid: 902371b3cf6dd094b9934b2655cb096d, type: 3}
-    - {fileID: 794619788, guid: 902371b3cf6dd094b9934b2655cb096d, type: 3}
-    - {fileID: -438855373, guid: 902371b3cf6dd094b9934b2655cb096d, type: 3}
+    - {fileID: -334436377, guid: aa4688d73c87c814e9e9ad983541a92b, type: 3}
+    - {fileID: 2132312094, guid: aa4688d73c87c814e9e9ad983541a92b, type: 3}
+    - {fileID: 1003645223, guid: aa4688d73c87c814e9e9ad983541a92b, type: 3}
+    - {fileID: -1194489759, guid: aa4688d73c87c814e9e9ad983541a92b, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

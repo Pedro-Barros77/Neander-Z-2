@@ -14,4 +14,5 @@ public enum WeaponTypes
     SV98,
     M16,
     Scar,
+    ScarDebug,
 }

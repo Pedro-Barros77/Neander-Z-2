@@ -105,6 +105,8 @@ public class Raimundo : BaseEnemy
                 break;
         }
 
+        HelmetHealth = Mathf.Clamp(HelmetHealth - value, 0, HelmetMaxHealth);
+
         ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (bodyPartName != "Helmet")
