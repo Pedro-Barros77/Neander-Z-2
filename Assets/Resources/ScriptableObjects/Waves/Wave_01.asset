@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4179ae6cd2d084dbdd0e7b22c4be37, type: 3}
+  m_Name: Wave_01
+  m_EditorClassIdentifier: 
+  Number: 1
+  Title: 
+  Description: And so it begins...
+  EnemyGroups:
+  - EnemyType: 0
+    Count: 20
+    MinHealth: 25
+    MaxHealth: 30
+    MinSpeed: 0.3
+    MaxSpeed: 0.7
+    MinDamage: 13
+    MaxDamage: 18
+    SpawnChanceMultiplier: 2
+    IsInfinite: 0
+  MinEnemiesAlive: 3
+  MaxEnemiesAlive: 10
+  MinSpawnDelayMs: 4000
+  MaxSpawnDelayMs: 8000
+  MinSpawnCount: 4
+  MaxSpawnCount: 6
+  StartDelayMs: 2000
+  EndDelayMs: 1500
+  MoneyMultiplier: 1

@@ -76,8 +76,9 @@ public class Ronald : BaseEnemy
         float ronaldoSpawnOffsetY = transform.localScale.y * (-1);
         Vector3 RonaldPosition = transform.position + new Vector3(ronaldoSpawnOffsetX * EnemyDirection, ronaldoSpawnOffsetY * EnemyDirection, 0);
         FlipEnemy(EnemyDirection);
+        BaseEnemy ronaldo = WavesManager.Instance.CurrentWave.SpawnEnemy(EnemyTypes.Z_Ronaldo, RonaldPosition, WavesManager.Instance.CurrentWave.EnemiesContainer);
+        WavesManager.Instance.CurrentWave.TotalEnemiesCount++;
         Destroy(gameObject);
-        GameObject ronaldo = Instantiate(Resources.Load<GameObject>($"Prefabs/Enemies/{EnemyTypes.Z_Ronaldo}"), RonaldPosition, Quaternion.identity);
     }
 
 }

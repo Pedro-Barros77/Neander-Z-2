@@ -35,7 +35,8 @@ public class BlinkingText : MonoBehaviour
         textComponent = GetComponentInChildren<TextMeshProUGUI>();
         backgroundImage = GetComponent<Image>();
         backgroundStartColor = backgroundImage.color;
-        StartBlinking();
+        textComponent.color = FirstColor;
+        RestartBlinking();
     }
 
     private void Update()
@@ -43,8 +44,9 @@ public class BlinkingText : MonoBehaviour
         backgroundImage.enabled = ShowBackground;
     }
 
-    private void StartBlinking()
+    public void RestartBlinking()
     {
+        StopAllCoroutines();
         isBlinking = true;
         blinkRoutine = StartCoroutine(BlinkRoutine());
     }
@@ -60,10 +62,10 @@ public class BlinkingText : MonoBehaviour
     {
         while (isBlinking)
         {
+            yield return new WaitForSeconds(FirstColorDurationMs / 1000f);
             yield return LerpColor(FirstColor, SecondColor, FirstTransitionDurationMs);
             yield return new WaitForSeconds(SecondColorDurationMs / 1000f);
             yield return LerpColor(SecondColor, FirstColor, SecondTransitionDurationMs);
-            yield return new WaitForSeconds(FirstColorDurationMs / 1000f);
         }
     }
 
@@ -82,12 +84,12 @@ public class BlinkingText : MonoBehaviour
             float t = (Time.time - startTime) / (endTime - startTime);
             textComponent.color = Color32.Lerp(startColor, endColor, t);
             if (BlinkBackground)
-                backgroundImage.color = new Color(backgroundStartColor.r, backgroundStartColor.g, backgroundStartColor.b, textComponent.color.a);
+                backgroundImage.color = new Color(backgroundStartColor.r, backgroundStartColor.g, backgroundStartColor.b, backgroundStartColor.a * textComponent.color.a);
             yield return null;
         }
 
         if (BlinkBackground)
-            backgroundImage.color = new Color(backgroundStartColor.r, backgroundStartColor.g, backgroundStartColor.b, textComponent.color.a);
+            backgroundImage.color = new Color(backgroundStartColor.r, backgroundStartColor.g, backgroundStartColor.b, backgroundStartColor.a * textComponent.color.a);
 
         textComponent.color = endColor;
 
@@ -108,6 +110,6 @@ public class BlinkingText : MonoBehaviour
     private void OnEnable()
     {
         if (blinkRoutine == null)
-            StartBlinking();
+            RestartBlinking();
     }
 }

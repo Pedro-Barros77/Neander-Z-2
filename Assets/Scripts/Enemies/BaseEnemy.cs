@@ -220,6 +220,20 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     }
 
     /// <summary>
+    /// Função chamada pela wave ao criar este inimigo para setar os valores aleatórios.
+    /// </summary>
+    /// <param name="health">A vida do inimigo.</param>
+    /// <param name="speed">A velocidade do inimigo.</param>
+    /// <param name="damage">O dano do inimigo.</param>
+    public virtual void SetRandomValues(float health, float speed, float damage)
+    {
+        MaxHealth = Mathf.Clamp(health, 0, health);
+        Health = MaxHealth;
+        MovementSpeed = Mathf.Clamp(speed, 0, speed);
+        Damage = Mathf.Clamp(damage, 0, damage);
+    }
+
+    /// <summary>
     /// Função para exibir o popup com devidos parâmetros.
     /// </summary>
     /// <param name="text">Texto a ser exibido</param>

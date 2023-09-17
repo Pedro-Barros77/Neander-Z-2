@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26086c12e053d9c4ca584354f410cbe5, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  PistolAmmo: 25
+  PistolAmmo: 50
   ShotgunAmmo: 20
   RifleAmmo: 90
   SniperAmmo: 15
@@ -25,7 +25,7 @@ MonoBehaviour:
   CurrentWeaponIndex: 1
   PrimaryWeaponsSelection:
   - Type: 9
-    EquippedSlot: 0
+    EquippedSlot: 1
   SecondaryWeaponsSelection:
   - Type: 1
     EquippedSlot: 2
