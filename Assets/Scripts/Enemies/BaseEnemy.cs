@@ -175,6 +175,11 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     {
         if (!IsAlive || isDying)
         {
+            if (DeathTime + (DeathFadeOutDelayMs / 1000) + 3 < Time.time)
+            {
+                DeathFadeOutDelayMs = 0;
+                StartCoroutine(StartDeathFadeOutCountDown());
+            }
             Animation();
             return;
         }
@@ -254,9 +259,11 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// </summary>
     /// <param name="value">O valor a ser subtraído da vida.</param>
     /// <param name="bodyPartName">O nome da parte do corpo (GameObject) do inimigo que foi atingida.</param>
-    public virtual void TakeDamage(float value, string bodyPartName, Vector3? hitPosition = null)
+    /// <param name="attacker">O player qye atacou este inimigo.</param>
+    /// <param name="hitPosition">O local em que o inimigo recebeu dano.</param>
+    public virtual void TakeDamage(float value, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null)
     {
-        if (value < 0 || Health <= 0) return;
+        if (value < 0 || Health <= 0 || isDying || !IsAlive) return;
 
         Color32 color;
 
@@ -284,7 +291,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         HealthBar.RemoveValue(value);
 
         if (Health <= 0)
-            Die(bodyPartName);
+            Die(bodyPartName, attacker);
     }
 
     /// <summary>
@@ -303,16 +310,24 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <summary>
     /// Inicia a animação de morte do inimigo.
     /// </summary>
-    /// <param name="lastDamagedBodyPartName"></param>
-    protected virtual void Die(string lastDamagedBodyPartName)
+    /// <param name="lastDamagedBodyPartName">O nome da parte do corpo do inimigo que recebeu dano.</param>
+    /// <param name="attacker">O player que matou esse inimigo.</param>
+    public virtual void Die(string lastDamagedBodyPartName, IEnemyTarget attacker)
     {
+        if (isDying || !IsAlive)
+            return;
+
         IsAlive = false;
         isDying = true;
         DeathTime = Time.time;
         isRunning = false;
         isAttacking = false;
 
-        if (DeathSounds.Any())
+        bool isHeadshot = lastDamagedBodyPartName == "Head";
+
+        WavesManager.Instance.CurrentWave.HandleScore(this, attacker, isHeadshot);
+
+        if (DeathSounds.Any() && AudioSource != null)
         {
             var randomDeathSound = DeathSounds[Random.Range(0, DeathSounds.Count)];
             AudioSource.PlayOneShot(randomDeathSound, DeathSoundVolume);
@@ -323,7 +338,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
             StartCoroutine(StartDeathFadeOutCountDown());
         }
 
-        Destroy(HealthBar.gameObject);
+        if (HealthBar != null)
+            Destroy(HealthBar.gameObject);
     }
 
     protected virtual void OnDeathEnd()
@@ -432,7 +448,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <returns></returns>
     protected virtual IEnumerator StartDeathFadeOutCountDown()
     {
-        Destroy(HealthBar.gameObject);
+        if (HealthBar != null)
+            Destroy(HealthBar.gameObject);
 
         if (DeathFadeOutDelayMs > 0)
             yield return new WaitForSeconds(DeathFadeOutDelayMs / 1000f);

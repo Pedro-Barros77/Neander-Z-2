@@ -11,29 +11,38 @@ public class Wave : MonoBehaviour
     public int TotalEnemiesCount { get; set; }
     public bool HasMoreSpawns => SpawnCount < TotalEnemiesCount;
     public List<BaseEnemy> EnemiesAlive { get; private set; } = new List<BaseEnemy>();
+    public float P1Score { get; private set; }
+    public float P1Money { get; private set; }
+    public float P1TotalKills { get; private set; }
+    public float P1HeadshotKills { get; private set; }
+    public float P1Precision { get; private set; }
+    public int P1AttacksCount { get; private set; }
+    public int P1AttacksHit { get; private set; }
+    public bool HasStarted { get; private set; }
 
     public float FloorHeight => LevelData.BottomRightSpawnLimit.y;
     float LeftBoundary => LevelData.TopLeftSpawnLimit.x;
     float RightBoundary => LevelData.BottomRightSpawnLimit.x;
-    bool FinishedSpawner;
 
-    LevelData LevelData;
     public Transform EnemiesContainer { get; private set; }
+    LevelData LevelData;
+    Coroutine EnemySpawner;
 
     void Start()
     {
-        Debug.Log(Data.Description);
         LevelData = GameObject.Find("Environment").GetComponent<LevelData>();
         EnemiesContainer = GameObject.Find("EnemiesContainer").transform;
-        TotalEnemiesCount = Data.EnemyGroups.Sum(x => x.Count);
     }
 
     void Update()
     {
+        if (!HasStarted)
+            return;
+
         EnemiesAlive = EnemiesAlive.Where(x => x != null && x.IsAlive).ToList();
 
-        if (Input.GetKeyDown(KeyCode.I))
-            SpawnEnemy(EnemyTypes.Z_Roger, new Vector3(GetRandomXPosition(), FloorHeight, 0), EnemiesContainer);
+        if (Input.GetKeyDown(KeyCode.End))
+            KillAllWave();
 
         if (EnemiesAlive.Count <= Data.MinEnemiesAlive && SpawnCount > 0)
         {
@@ -41,8 +50,11 @@ public class Wave : MonoBehaviour
             SpawnMultipleEnemies(diff);
         }
 
-        if (FinishedSpawner && EnemiesAlive.Count == 0 && !IsFinished)
+        if (SpawnCount >= TotalEnemiesCount && EnemiesAlive.Count == 0 && !IsFinished)
+        {
+            StopCoroutine(EnemySpawner);
             StartCoroutine(EndWaveDelayed());
+        }
     }
 
     /// <summary>
@@ -50,9 +62,38 @@ public class Wave : MonoBehaviour
     /// </summary>
     public void StartWave()
     {
-        Debug.Log("Starting wave " + Data.Number);
+        TotalEnemiesCount = Data.EnemyGroups.Sum(x => x.Count);
+        HasStarted = true;
+        EnemySpawner = StartCoroutine(EnemiesSpawner());
+    }
 
-        StartCoroutine(EnemiesSpawner());
+    /// <summary>
+    /// Atualiza as pontuações do jogador ao eliminar um inimigo.
+    /// </summary>
+    /// <param name="enemy">O inimigo eliminado.</param>
+    /// <param name="attacker">O jogador que matou o inimigo.</param>
+    /// <param name="headshotKill">Se a morte foi feita com um tiro na cabeça.</param>
+    public void HandleScore(BaseEnemy enemy, IEnemyTarget attacker, bool headshotKill = false)
+    {
+        float newScore = enemy.KillScore;
+        if (headshotKill)
+            newScore *= enemy.HeadshotScoreMultiplier;
+
+        P1Score += newScore;
+        P1TotalKills++;
+        if (headshotKill)
+            P1HeadshotKills++;
+    }
+
+    /// <summary>
+    /// Atualiza a precisão do jogador ao atacar ou acertar um ataque.
+    /// </summary>
+    /// <param name="count">A quantidade de ataques/tiros disparados.</param>
+    /// <param name="hitCount">A quantidade de ataques/tiros acertados.</param>
+    public void HandlePlayerAttack(int count, int hitCount)
+    {
+        P1AttacksCount += count;
+        P1AttacksHit += hitCount;
     }
 
     /// <summary>
@@ -73,8 +114,6 @@ public class Wave : MonoBehaviour
 
             yield return new WaitForSeconds(randomDelay / 1000);
         }
-
-        FinishedSpawner = true;
     }
 
     /// <summary>
@@ -190,10 +229,22 @@ public class Wave : MonoBehaviour
     private IEnumerator EndWaveDelayed()
     {
         Debug.Log("Waiting end delay");
-        yield return new WaitForSeconds(Data.EndDelayMs / 1000);
-
         IsFinished = true;
+        yield return new WaitForSeconds(Data.EndDelayMs / 1000);
+        Debug.Log("Wave finished");
 
-        Debug.Log("Ending wave " + Data.Number);
+        P1Money = (P1Score / 4) * Data.MoneyMultiplier;
+        P1Precision = P1AttacksHit * 100f / P1AttacksCount;
+        WavesManager.Instance.ShowWaveSummary();
+    }
+
+    public void KillAllWave()
+    {
+        SpawnMultipleEnemies(TotalEnemiesCount - SpawnCount);
+
+        EnemiesAlive.ForEach(x => x.Die("", null));
+        EnemiesAlive.Clear();
+
+        P1AttacksCount++;
     }
 }

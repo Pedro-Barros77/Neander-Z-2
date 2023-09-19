@@ -84,7 +84,7 @@ public class Raimundo : BaseEnemy
                 break;
         }
     }
-    public override void TakeDamage(float value, string bodyPartName, Vector3? hitPosition = null)
+    public override void TakeDamage(float value, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null)
     {
         if (value < 0 || Health <= 0) return;
 
@@ -121,7 +121,7 @@ public class Raimundo : BaseEnemy
         }
 
         if (Health <= 0)
-            Die(bodyPartName);
+            Die(bodyPartName, attacker);
 
         if (HitHelmetSounds.Any() && bodyPartName == "Helmet")
         {

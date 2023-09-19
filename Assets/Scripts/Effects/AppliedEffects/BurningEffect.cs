@@ -11,6 +11,15 @@ public class BurningEffect : BaseAppliedEffect
     IEnemyTarget enemyTarget;
     IPlayerTarget playerTarget;
 
+    /// <summary>
+    /// O dono desse efeito, se for um inimigo.
+    /// </summary>
+    public IPlayerTarget EnemyOwner;
+    /// <summary>
+    /// O dono desse efeito, se for um player.
+    /// </summary>
+    public IEnemyTarget PlayerOwner;
+
     protected override void Start()
     {
         base.Start();
@@ -39,7 +48,7 @@ public class BurningEffect : BaseAppliedEffect
             return;
 
         enemyTarget?.TakeDamage(TickDamage, "");
-        playerTarget?.TakeDamage(TickDamage, "");
+        playerTarget?.TakeDamage(TickDamage, "", PlayerOwner);
 
         SetSpriteRed(targetSprite);
     }

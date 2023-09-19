@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d4179ae6cd2d084dbdd0e7b22c4be37, type: 3}
-  m_Name: Wave_01
+  m_Name: Wave_03
   m_EditorClassIdentifier: 
-  Number: 1
+  Number: 3
   Title: 
-  Description: And so it begins...
+  Description: Taporra ataque aereo
   EnemyGroups:
-  - EnemyType: 0
-    Count: 10
-    MinHealth: 25
-    MaxHealth: 30
-    MinSpeed: 0.3
-    MaxSpeed: 0.7
-    MinDamage: 13
-    MaxDamage: 18
-    SpawnChanceMultiplier: 2
+  - EnemyType: 4
+    Count: 50
+    MinHealth: 1
+    MaxHealth: 3
+    MinSpeed: 1.5
+    MaxSpeed: 2.5
+    MinDamage: 3
+    MaxDamage: 7
+    SpawnChanceMultiplier: 1
     IsInfinite: 0
-  MinEnemiesAlive: 3
-  MaxEnemiesAlive: 6
-  MinSpawnDelayMs: 4000
-  MaxSpawnDelayMs: 8000
-  MinSpawnCount: 4
-  MaxSpawnCount: 6
+  MinEnemiesAlive: 10
+  MaxEnemiesAlive: 30
+  MinSpawnDelayMs: 3000
+  MaxSpawnDelayMs: 5000
+  MinSpawnCount: 10
+  MaxSpawnCount: 15
   StartDelayMs: 2000
   EndDelayMs: 1500
   MoneyMultiplier: 1

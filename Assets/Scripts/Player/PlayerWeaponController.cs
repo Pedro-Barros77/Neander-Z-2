@@ -330,8 +330,10 @@ public class PlayerWeaponController : MonoBehaviour
     {
         var throwablePrefab = Resources.Load<GameObject>($"Prefabs/Weapons/Throwables/{throwableType}");
         GameObject throwableObj = Instantiate(throwablePrefab, throwableSpawnPointTransform);
-        throwableObj.GetComponent<BaseThrowable>().PlayerWeaponController = this;
         throwableObj.name = throwableType.ToString();
+        var throwable = throwableObj.GetComponent<BaseThrowable>();
+        throwable.PlayerWeaponController = this;
+        throwable.PlayerOwner = Player;
         return throwableObj;
     }
 

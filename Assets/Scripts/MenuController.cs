@@ -15,6 +15,11 @@ public class MenuController : MonoBehaviour
     public bool IsInGame { get; set; }
     public FPSCount FpsCount { get; private set; }
     public Image GameCursor { get; private set; }
+    public delegate void OnRestart();
+    /// <summary>
+    /// Evento chamado quando a cena é reiniciada.
+    /// </summary>
+    public static event OnRestart RestartEvent;
 
     [SerializeField]
     Sprite ArrowCursor, PointerCursor;
@@ -137,5 +142,13 @@ public class MenuController : MonoBehaviour
     {
         Time.timeScale = 0;
         IsGamePaused = true;
+    }
+
+    /// <summary>
+    /// Função chamada quando o botão de reiniciar o jogo é pressionado.
+    /// </summary>
+    public void OnRestartGame()
+    {
+        RestartEvent?.Invoke();
     }
 }

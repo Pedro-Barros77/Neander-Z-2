@@ -40,6 +40,9 @@ public class FragGrenade : BaseThrowable
         foreach (var hit in enemiesHit)
         {
             IPlayerTarget target = hit.target;
+            if (target.IsAlive)
+                IsTargetHit = true;
+
             Collider2D targetCollider = hit.collider;
 
             var enemyHitPoint = targetCollider.ClosestPoint(transform.position);
@@ -58,7 +61,7 @@ public class FragGrenade : BaseThrowable
 
                     float damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
 
-                    target.TakeDamage(damage, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
+                    target.TakeDamage(damage, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, PlayerOwner);
                     target.OnPointHit(enemyHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
                 }
             }

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d4179ae6cd2d084dbdd0e7b22c4be37, type: 3}
-  m_Name: Wave_01
+  m_Name: Wave_02
   m_EditorClassIdentifier: 
-  Number: 1
+  Number: 2
   Title: 
-  Description: And so it begins...
+  Description: 
   EnemyGroups:
   - EnemyType: 0
-    Count: 10
+    Count: 20
     MinHealth: 25
     MaxHealth: 30
     MinSpeed: 0.3
@@ -27,7 +27,7 @@ MonoBehaviour:
     SpawnChanceMultiplier: 2
     IsInfinite: 0
   MinEnemiesAlive: 3
-  MaxEnemiesAlive: 6
+  MaxEnemiesAlive: 10
   MinSpawnDelayMs: 4000
   MaxSpawnDelayMs: 8000
   MinSpawnCount: 4

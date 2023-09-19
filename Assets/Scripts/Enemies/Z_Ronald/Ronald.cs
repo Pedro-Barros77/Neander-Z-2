@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Ronald : BaseEnemy
@@ -29,7 +30,7 @@ public class Ronald : BaseEnemy
         HealthBar.AnimationSpeed = 5f;
     }
 
-    protected override void Die(string lastDamagedBodyPartName)
+    public override void Die(string lastDamagedBodyPartName, IEnemyTarget attacker)
     {
         float randomValue = Random.Range(0f, 1f);
         SpawnRonaldo = randomValue <= spawnChance;
@@ -39,6 +40,10 @@ public class Ronald : BaseEnemy
         DeathTime = Time.time;
         isRunning = false;
         isAttacking = false;
+
+        bool isHeadshot = lastDamagedBodyPartName == "Head";
+
+        WavesManager.Instance.CurrentWave.HandleScore(this, attacker, isHeadshot);
 
         if (DeathSounds.Any())
         {
