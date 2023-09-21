@@ -20,8 +20,9 @@ public class WavesManager : MonoBehaviour
     }
 
     public int WaveNumber;
-    public TextMeshProUGUI WaveStartTitleText, WaveStartDescriptionText, WaveTitleText, WaveEnemiesCountText, P1WaveScoreValue, P1EarnedMoneyValue, P1TotalKillsValue, P1HeadshotKillsValue, P1PrecisionValue;
+    public TextMeshProUGUI WaveStartTitleText, WaveStartDescriptionText, WaveTitleText, WaveEnemiesCountText, SummaryTitle, P1WaveScoreValue, P1EarnedMoneyValue, P1TotalKillsValue, P1HeadshotKillsValue, P1PrecisionValue;
     public GameObject WaveSummaryPanel;
+    public Player Player;
 
     public Wave CurrentWave { get; private set; }
 
@@ -36,6 +37,7 @@ public class WavesManager : MonoBehaviour
     private void Awake()
     {
         CurrentWave = GetComponent<Wave>();
+        WaveNumber = Player.Data.CurrentWaveIndex;
         LoadWaveData();
     }
 
@@ -130,11 +132,14 @@ public class WavesManager : MonoBehaviour
     {
         MenuController.Instance.PauseGame();
         WaveSummaryPanel.SetActive(true);
+        SummaryTitle.text = $"Survived {CurrentWave.Data.Title.ValueOrDefault($"Wave {WaveNumber}")}";
         P1WaveScoreValue.text = CurrentWave.P1Score.ToString();
         P1EarnedMoneyValue.text = $"$ {CurrentWave.P1Money:N2}";
         P1TotalKillsValue.text = CurrentWave.P1TotalKills.ToString();
         P1HeadshotKillsValue.text = CurrentWave.P1HeadshotKills.ToString();
         P1PrecisionValue.text = $"{CurrentWave.P1Precision:N1} %";
+        Player.Data.CurrentWaveIndex = WaveNumber + 1;
+        Player.Data.GetMoney(CurrentWave.P1Money);
     }
 
     /// <summary>

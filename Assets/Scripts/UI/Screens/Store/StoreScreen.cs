@@ -23,13 +23,13 @@ public class StoreScreen : MonoBehaviour
     [SerializeField]
     Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, ActiveTabImage, InactiveTabImage;
     [SerializeField]
-    Button BuyButton, TestItemButton;
+    Button BuyButton, TestItemButton, BtnReady;
     [SerializeField]
     GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, WeaponsContent, ItemsContent, PerksContent, BackpackContent, WeaponsTab, ItemsTab, PerksTab, BackpackTab;
     [SerializeField]
     CustomAudio PurchaseSound;
 
-    TextMeshProUGUI PreviewBtnBuyText;
+    TextMeshProUGUI PreviewBtnBuyText, BtnReadyText;
     AudioSource audioSource;
     Animator storePanelAnimator;
     GameObject PopupPrefab;
@@ -44,6 +44,7 @@ public class StoreScreen : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
         WorldPosCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        BtnReadyText = BtnReady.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     void Update()
@@ -76,6 +77,17 @@ public class StoreScreen : MonoBehaviour
                     BuyButton.interactable = false;
                     PreviewBtnBuyText.text = "Purchased";
                 }
+            }
+
+            if(PlayerData.InventoryData.PrimaryWeaponsSelection.Count + PlayerData.InventoryData.SecondaryWeaponsSelection.Count > 0)
+            {
+                BtnReady.interactable = true;
+                BtnReadyText.text = "Ready!";
+            }
+            else
+            {
+                BtnReady.interactable = false;
+                BtnReadyText.text = "No Weapon";
             }
         }
 

@@ -32,6 +32,9 @@ public class Ronald : BaseEnemy
 
     public override void Die(string lastDamagedBodyPartName, IEnemyTarget attacker)
     {
+        if (isDying || !IsAlive)
+            return;
+
         float randomValue = Random.Range(0f, 1f);
         SpawnRonaldo = randomValue <= spawnChance;
 
@@ -51,7 +54,8 @@ public class Ronald : BaseEnemy
             AudioSource.PlayOneShot(randomDeathSound, DeathSoundVolume);
         }
 
-        Destroy(HealthBar.gameObject);
+        if (HealthBar != null)
+            Destroy(HealthBar.gameObject);
 
         if (!SpawnRonaldo && DeathFadeOutDelayMs > 0)
         {

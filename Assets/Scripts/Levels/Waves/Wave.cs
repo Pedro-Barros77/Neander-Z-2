@@ -228,10 +228,8 @@ public class Wave : MonoBehaviour
     /// </summary>
     private IEnumerator EndWaveDelayed()
     {
-        Debug.Log("Waiting end delay");
         IsFinished = true;
         yield return new WaitForSeconds(Data.EndDelayMs / 1000);
-        Debug.Log("Wave finished");
 
         P1Money = (P1Score / 4) * Data.MoneyMultiplier;
         P1Precision = P1AttacksHit * 100f / P1AttacksCount;
