@@ -6,5 +6,5 @@ public enum StoreTabs
     Weapons = 0,
     Items = 1,
     Perks = 2,
-    Backpack = 3
+    Inventory = 3
 }

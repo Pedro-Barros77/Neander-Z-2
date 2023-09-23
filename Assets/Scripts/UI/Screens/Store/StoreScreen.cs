@@ -25,7 +25,7 @@ public class StoreScreen : MonoBehaviour
     [SerializeField]
     Button BuyButton, TestItemButton, BtnReady;
     [SerializeField]
-    GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, WeaponsContent, ItemsContent, PerksContent, BackpackContent, WeaponsTab, ItemsTab, PerksTab, BackpackTab;
+    GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab;
     [SerializeField]
     CustomAudio PurchaseSound;
 
@@ -49,8 +49,15 @@ public class StoreScreen : MonoBehaviour
 
     void Update()
     {
+        InventoryPreviewPanel.SetActive(hasItem);
+        InventoryPreviewEmptyPanel.SetActive(!hasItem);
         PreviewPanelContent.SetActive(hasItem);
         EmptyPreviewPanel.SetActive(!hasItem);
+
+        PreviewPanelContent.transform.parent.gameObject.SetActive(ActiveTab != StoreTabs.Inventory);
+        InventoryPreviewPanel.transform.parent.gameObject.SetActive(ActiveTab == StoreTabs.Inventory);
+        InventorySlotsPanel.SetActive(ActiveTab == StoreTabs.Inventory);
+
 
         if (PlayerData != null)
         {
@@ -79,7 +86,7 @@ public class StoreScreen : MonoBehaviour
                 }
             }
 
-            if(PlayerData.InventoryData.PrimaryWeaponsSelection.Count + PlayerData.InventoryData.SecondaryWeaponsSelection.Count > 0)
+            if (PlayerData.InventoryData.PrimaryWeaponsSelection.Count + PlayerData.InventoryData.SecondaryWeaponsSelection.Count > 0)
             {
                 BtnReady.interactable = true;
                 BtnReadyText.text = "Ready!";
@@ -178,17 +185,17 @@ public class StoreScreen : MonoBehaviour
         WeaponsContent.SetActive(tab == StoreTabs.Weapons);
         ItemsContent.SetActive(tab == StoreTabs.Items);
         PerksContent.SetActive(tab == StoreTabs.Perks);
-        BackpackContent.SetActive(tab == StoreTabs.Backpack);
+        InventoryContent.SetActive(tab == StoreTabs.Inventory);
 
         WeaponsTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
         ItemsTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
         PerksTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
-        BackpackTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
+        InventoryTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
 
         SetTabActive(WeaponsTab, tab == StoreTabs.Weapons);
         SetTabActive(ItemsTab, tab == StoreTabs.Items);
         SetTabActive(PerksTab, tab == StoreTabs.Perks);
-        SetTabActive(BackpackTab, tab == StoreTabs.Backpack);
+        SetTabActive(InventoryTab, tab == StoreTabs.Inventory);
     }
 
     /// <summary>

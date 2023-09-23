@@ -1,3 +1,6 @@
+/// <summary>
+/// Direções horizontais.
+/// </summary>
 public enum HorizontalDir
 {
     Left = -1,
