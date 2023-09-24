@@ -62,6 +62,8 @@ public class WavesManager : MonoBehaviour
             SpawnEnemyTest(EnemyTypes.Z_Raven);
         if (Input.GetKeyDown(KeyCode.M))
             SpawnEnemyTest(EnemyTypes.Z_Raimundo);
+        if (Input.GetKeyDown(KeyCode.L))
+            SpawnEnemyTest(EnemyTypes.Z_Rui);
 
         WaveEnemiesCountText.text = $"{CurrentWave.SpawnCount - CurrentWave.EnemiesAlive.Count}/{CurrentWave.TotalEnemiesCount}";
     }
