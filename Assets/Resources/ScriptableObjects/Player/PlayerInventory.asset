@@ -26,10 +26,17 @@ MonoBehaviour:
   PrimaryWeaponsSelection:
   - Type: 4
     EquippedSlot: 1
+  - Type: 8
+    EquippedSlot: 0
   SecondaryWeaponsSelection:
   - Type: 1
     EquippedSlot: 2
+  - Type: 2
+    EquippedSlot: 0
   ThrowableItemsSelection:
   - Type: 1
     Count: 5
+    IsEquipped: 1
+  TacticalAbilitiesSelection:
+  - Type: 1
     IsEquipped: 1

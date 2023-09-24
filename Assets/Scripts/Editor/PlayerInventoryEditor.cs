@@ -9,10 +9,10 @@ public class PlayerInventoryEditor : Editor
 {
     InventoryData data;
     SerializedObject GetTarget;
-    SerializedProperty PrimaryWeapons, SecondaryWeapons, ThrowableItems;
+    SerializedProperty PrimaryWeapons, SecondaryWeapons, ThrowableItems, TacticalAbilities;
 
     GUIStyle ammoLabelStyle, maxAmmoLabelStyle, weaponLabelStyle;
-    ReorderableList PrimaryWeaponsList, SecondaryWeaponsList, ThrowableItemsList;
+    ReorderableList PrimaryWeaponsList, SecondaryWeaponsList, ThrowableItemsList, TacticalAbilitiesList;
 
     void OnEnable()
     {
@@ -21,6 +21,7 @@ public class PlayerInventoryEditor : Editor
         PrimaryWeapons = GetTarget.FindProperty("PrimaryWeaponsSelection");
         SecondaryWeapons = GetTarget.FindProperty("SecondaryWeaponsSelection");
         ThrowableItems = GetTarget.FindProperty("ThrowableItemsSelection");
+        TacticalAbilities = GetTarget.FindProperty("TacticalAbilitiesSelection");
 
         weaponLabelStyle = new()
         {
@@ -59,6 +60,12 @@ public class PlayerInventoryEditor : Editor
         ThrowableItemsList = new ReorderableList(serializedObject, ThrowableItems, true, true, true, true)
         {
             drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => RenderThrowable(rect, index),
+            headerHeight = 0
+        };
+
+        TacticalAbilitiesList = new ReorderableList(serializedObject, TacticalAbilities, true, true, true, true)
+        {
+            drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => RenderTacticalAbility(rect, index),
             headerHeight = 0
         };
     }
@@ -121,6 +128,14 @@ public class PlayerInventoryEditor : Editor
         ThrowableItems.isExpanded = EditorGUILayout.BeginFoldoutHeaderGroup(ThrowableItems.isExpanded, "Throwable Items");
         if (ThrowableItems.isExpanded)
             ThrowableItemsList.DoLayoutList();
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        EditorGUILayout.Space();
+
+        // Tactical Abilities
+        TacticalAbilities.isExpanded = EditorGUILayout.BeginFoldoutHeaderGroup(TacticalAbilities.isExpanded, "Tactical Abilities");
+        if (TacticalAbilities.isExpanded)
+            TacticalAbilitiesList.DoLayoutList();
         EditorGUILayout.EndFoldoutHeaderGroup();
 
         GetTarget.ApplyModifiedProperties();
@@ -257,6 +272,53 @@ public class PlayerInventoryEditor : Editor
             for (int i = 0; i < ThrowableItems.arraySize; i++)
             {
                 ThrowableItems.GetArrayElementAtIndex(i).FindPropertyRelative("IsEquipped").boolValue = false;
+            }
+            item.FindPropertyRelative("IsEquipped").boolValue = true;
+        }
+    }
+
+    /// <summary>
+    /// Renderiza a linha de um item da lista de habilidades taticas.
+    /// </summary>
+    /// <param name="rect">Retângulo da lista, fornecido pelo callback.</param>
+    /// <param name="index">Index desse item da lista, fornecido pelo callback.</param>
+    void RenderTacticalAbility(Rect rect, int index)
+    {
+        rect.y += 2;
+
+        var item = TacticalAbilities.GetArrayElementAtIndex(index);
+        string typeLabel = "Type", isEquippedLabel = "Equipped";
+        float marginX = 10;
+        float typeWidth = 120, isEquippedWidth = 100, lblTypeWidth, lblIsEquippedWidth;
+
+        lblTypeWidth = weaponLabelStyle.CalcSize(new GUIContent(typeLabel)).x;
+        lblIsEquippedWidth = weaponLabelStyle.CalcSize(new GUIContent(isEquippedLabel)).x;
+
+        float x = rect.x;
+
+        EditorGUI.LabelField(new Rect(x, rect.y, lblTypeWidth, EditorGUIUtility.singleLineHeight), typeLabel, weaponLabelStyle);
+
+        x += lblTypeWidth + marginX;
+
+        EditorGUI.PropertyField(
+            new Rect(x, rect.y, typeWidth, EditorGUIUtility.singleLineHeight),
+            item.FindPropertyRelative("Type"), GUIContent.none);
+
+        x += typeWidth + marginX * 2;
+
+        EditorGUI.LabelField(new Rect(x, rect.y, 0, EditorGUIUtility.singleLineHeight), isEquippedLabel, weaponLabelStyle);
+
+        x += lblIsEquippedWidth + marginX;
+
+        item.FindPropertyRelative("IsEquipped").boolValue = EditorGUI.Toggle(
+            new Rect(x, rect.y + 2, isEquippedWidth, EditorGUIUtility.singleLineHeight),
+            item.FindPropertyRelative("IsEquipped").boolValue, EditorStyles.radioButton);
+
+        if (item.FindPropertyRelative("IsEquipped").boolValue)
+        {
+            for (int i = 0; i < TacticalAbilities.arraySize; i++)
+            {
+                TacticalAbilities.GetArrayElementAtIndex(i).FindPropertyRelative("IsEquipped").boolValue = false;
             }
             item.FindPropertyRelative("IsEquipped").boolValue = true;
         }

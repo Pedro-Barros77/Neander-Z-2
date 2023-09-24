@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe93714eff435b4da086b9a0a9e84b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f864c8edb21313479ca5857d3c5ddfb, type: 3}
   m_Name: TacticalRoll
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 65b33b37d0a176e499a8ff5ce85a628f, type: 3}
@@ -20,3 +20,4 @@ MonoBehaviour:
   Amount: 1
   IconScale: 0.7
   Tags: 
+  AbilityType: 1

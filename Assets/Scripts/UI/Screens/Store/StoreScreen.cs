@@ -13,6 +13,7 @@ public class StoreScreen : MonoBehaviour
     public StoreTabs ActiveTab { get; private set; } = StoreTabs.Weapons;
     public readonly Color32 RedMoney = new(205, 86, 99, 255);
     public readonly Color32 GreenMoney = new(72, 164, 80, 255);
+    public bool hasItem => SelectedItem != null && SelectedItem.Data != null;
 
     [SerializeField]
     public PlayerData PlayerData;
@@ -34,7 +35,6 @@ public class StoreScreen : MonoBehaviour
     Animator storePanelAnimator;
     GameObject PopupPrefab;
     Canvas WorldPosCanvas;
-    bool hasItem => SelectedItem != null && SelectedItem.Data != null;
 
     void Start()
     {
