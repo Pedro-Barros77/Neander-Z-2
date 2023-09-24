@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: And so it begins...
   EnemyGroups:
   - EnemyType: 0
-    Count: 0
+    Count: 10
     MinHealth: 25
     MaxHealth: 30
     MinSpeed: 0.3
@@ -27,7 +27,7 @@ MonoBehaviour:
     SpawnChanceMultiplier: 2
     IsInfinite: 0
   MinEnemiesAlive: 3
-  MaxEnemiesAlive: 10
+  MaxEnemiesAlive: 6
   MinSpawnDelayMs: 4000
   MaxSpawnDelayMs: 8000
   MinSpawnCount: 4

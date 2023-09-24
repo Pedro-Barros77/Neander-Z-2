@@ -280,6 +280,7 @@ public abstract class BaseWeapon : MonoBehaviour
         bullet.MaxDistance = BulletMaxRange;
         bullet.MaxDamageRange = MaxDamageRange;
         bullet.MinDamageRange = MinDamageRange;
+        bullet.PlayerOwner = Player;
         bullet.Init();
 
         return new List<GameObject>() { bulletInstance };

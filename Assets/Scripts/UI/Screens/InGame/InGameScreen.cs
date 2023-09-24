@@ -111,6 +111,15 @@ public class InGameScreen : MonoBehaviour
     }
 
     /// <summary>
+    /// Inicia a próxima wave.
+    /// </summary>
+    public void NextWave()
+    {
+        ContinueGame();
+        WavesManager.Instance.StartNextWave();
+    }
+
+    /// <summary>
     /// Reinicia o jogo, recarregando a cena atual.
     /// </summary>
     public void RestartGame()
@@ -118,6 +127,7 @@ public class InGameScreen : MonoBehaviour
         ContinueGame();
         GameOverPanel.SetActive(false);
         MenuController.Instance.RestartScene();
+        MenuController.Instance.OnRestartGame();
     }
 
     /// <summary>

@@ -91,9 +91,21 @@ public abstract class BaseThrowable : MonoBehaviour
     /// </summary>
     public PlayerWeaponController PlayerWeaponController { get; set; }
     /// <summary>
+    /// Se ao menos um alvo foi atingido pelo item ou seu efeito.
+    /// </summary>
+    public bool IsTargetHit { get; set; }
+    /// <summary>
     /// Jogador portador deste item.
     /// </summary>
     public Player Player { get; set; }
+    /// <summary>
+    /// O dono deste item, se for um inimigo.
+    /// </summary>
+    public IPlayerTarget EnemyOwner;
+    /// <summary>
+    /// O dono deste item, se for um jogador.
+    /// </summary>
+    public IEnemyTarget PlayerOwner;
     /// <summary>
     /// O componente Rigidbody2D deste item.
     /// </summary>
@@ -167,6 +179,8 @@ public abstract class BaseThrowable : MonoBehaviour
         IsCooking = true;
         if (StartFuseOnCook)
             cookStartTime = Time.time;
+
+        WavesManager.Instance.CurrentWave.HandlePlayerAttack(1, 0);
 
         StartSounds.PlayRandomIfAny(AudioSource);
     }
@@ -314,6 +328,9 @@ public abstract class BaseThrowable : MonoBehaviour
     /// </summary>
     protected virtual void KillSelf()
     {
+        if (IsTargetHit && PlayerOwner != null)
+            WavesManager.Instance.CurrentWave.HandlePlayerAttack(0, 1);
+
         gameObject.SetActive(false);
         Destroy(gameObject);
     }

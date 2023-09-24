@@ -13,6 +13,7 @@ public class MeleeWeapon : BaseWeapon
 
     protected List<int> HitTargetsIds = new();
     protected int RandomAttackAnimationIndex = 1;
+    protected bool AddedTargetHitScore;
 
     protected override void Awake()
     {
@@ -32,8 +33,10 @@ public class MeleeWeapon : BaseWeapon
 
         Player.LoseStamina(AttackStaminaCost);
 
+        AddedTargetHitScore = false;
         HitTargetsIds.Clear();
 
+        WavesManager.Instance.CurrentWave.HandlePlayerAttack(1, 0);
         isShooting = true;
         lastShotTime = Time.time;
 
@@ -54,7 +57,7 @@ public class MeleeWeapon : BaseWeapon
         if (IsSwitchingWeapon)
             return false;
 
-        if(Player.Stamina < AttackStaminaCost)
+        if (Player.Stamina < AttackStaminaCost)
             return false;
 
         var now = Time.time;
@@ -97,8 +100,16 @@ public class MeleeWeapon : BaseWeapon
             AudioSource.PlayOneShot(randomHitSound.Audio, randomHitSound.Volume);
         }
         Vector2 hitPosition = targetCollider.ClosestPoint(AttackTrigger.transform.position);
-        target.TakeDamage(Damage, targetCollider.name, hitPosition);
+        target.TakeDamage(Damage, targetCollider.name, Player, hitPosition);
         target.OnPointHit(hitPosition, -transform.right, targetCollider.name);
+
+        if (target.IsAlive)
+        {
+            if (!AddedTargetHitScore)
+                WavesManager.Instance.CurrentWave.HandlePlayerAttack(0, 1);
+            AddedTargetHitScore = true;
+        }
+
         HitTargetsIds.Add(targetInstanceId);
     }
 

@@ -53,6 +53,9 @@ public class Molotov : BaseThrowable
         {
             if (!PlayerTargets.Contains(playerTarget))
                 PlayerTargets.Add(playerTarget);
+
+            if (playerTarget.IsAlive)
+                IsTargetHit = true;
         }
     }
 
@@ -143,6 +146,12 @@ public class Molotov : BaseThrowable
                 var burnEffectObj = CreateBurningEffect(playerTarget.transform);
                 burnFX = burnEffectObj.GetComponent<BurningEffect>();
             }
+
+            if (PlayerOwner != null)
+                burnFX.PlayerOwner = PlayerOwner;
+            else if (EnemyOwner != null)
+                burnFX.EnemyOwner = EnemyOwner;
+
             burnFX.SetEffect(EffectDecoupledDurationMs, EffectTickIntervalMs);
         }
 
@@ -154,6 +163,12 @@ public class Molotov : BaseThrowable
                 var burnEffectObj = CreateBurningEffect(enemyTarget.transform);
                 burnFX = burnEffectObj.GetComponent<BurningEffect>();
             }
+
+            if (PlayerOwner != null)
+                burnFX.PlayerOwner = PlayerOwner;
+            else if (EnemyOwner != null)
+                burnFX.EnemyOwner = EnemyOwner;
+
             burnFX.SetEffect(EffectDecoupledDurationMs, EffectTickIntervalMs);
         }
     }

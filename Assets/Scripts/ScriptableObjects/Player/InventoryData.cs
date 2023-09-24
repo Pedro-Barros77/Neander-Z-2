@@ -23,6 +23,7 @@ public class InventoryData : AutoRevertSO
     public List<WeaponSelection> PrimaryWeaponsSelection;
     public List<WeaponSelection> SecondaryWeaponsSelection;
     public List<ThrowableSelection> ThrowableItemsSelection;
+    public List<TacticalAbilitySelection> TacticalAbilitiesSelection;
 
     public bool HasWeapon(WeaponTypes weaponType)
             => PrimaryWeaponsSelection.Any(w => w.Type == weaponType)
@@ -147,6 +148,19 @@ public class InventoryData : AutoRevertSO
         {
             Type = type;
             Count = count;
+            IsEquipped = isEquipped;
+        }
+    }
+
+    [Serializable]
+    public class TacticalAbilitySelection
+    {
+        public TacticalAbilityTypes Type;
+        public bool IsEquipped;
+
+        public TacticalAbilitySelection() { }
+        public TacticalAbilitySelection(bool isEquipped)
+        {
             IsEquipped = isEquipped;
         }
     }

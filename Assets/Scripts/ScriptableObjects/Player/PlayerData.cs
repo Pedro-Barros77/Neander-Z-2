@@ -32,6 +32,7 @@ public class PlayerData : AutoRevertSO
 
     public float Score;
     public float Money;
+    public int CurrentWaveIndex;
 
     public void GetMoney(float value)
     {

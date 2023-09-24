@@ -13,6 +13,7 @@ public class StoreScreen : MonoBehaviour
     public StoreTabs ActiveTab { get; private set; } = StoreTabs.Weapons;
     public readonly Color32 RedMoney = new(205, 86, 99, 255);
     public readonly Color32 GreenMoney = new(72, 164, 80, 255);
+    public bool hasItem => SelectedItem != null && SelectedItem.Data != null;
 
     [SerializeField]
     public PlayerData PlayerData;
@@ -23,18 +24,17 @@ public class StoreScreen : MonoBehaviour
     [SerializeField]
     Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, ActiveTabImage, InactiveTabImage;
     [SerializeField]
-    Button BuyButton, TestItemButton;
+    Button BuyButton, TestItemButton, BtnReady;
     [SerializeField]
-    GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, WeaponsContent, ItemsContent, PerksContent, BackpackContent, WeaponsTab, ItemsTab, PerksTab, BackpackTab;
+    GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab;
     [SerializeField]
     CustomAudio PurchaseSound;
 
-    TextMeshProUGUI PreviewBtnBuyText;
+    TextMeshProUGUI PreviewBtnBuyText, BtnReadyText;
     AudioSource audioSource;
     Animator storePanelAnimator;
     GameObject PopupPrefab;
     Canvas WorldPosCanvas;
-    bool hasItem => SelectedItem != null && SelectedItem.Data != null;
 
     void Start()
     {
@@ -44,12 +44,20 @@ public class StoreScreen : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
         WorldPosCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        BtnReadyText = BtnReady.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     void Update()
     {
+        InventoryPreviewPanel.SetActive(hasItem);
+        InventoryPreviewEmptyPanel.SetActive(!hasItem);
         PreviewPanelContent.SetActive(hasItem);
         EmptyPreviewPanel.SetActive(!hasItem);
+
+        PreviewPanelContent.transform.parent.gameObject.SetActive(ActiveTab != StoreTabs.Inventory);
+        InventoryPreviewPanel.transform.parent.gameObject.SetActive(ActiveTab == StoreTabs.Inventory);
+        InventorySlotsPanel.SetActive(ActiveTab == StoreTabs.Inventory);
+
 
         if (PlayerData != null)
         {
@@ -76,6 +84,17 @@ public class StoreScreen : MonoBehaviour
                     BuyButton.interactable = false;
                     PreviewBtnBuyText.text = "Purchased";
                 }
+            }
+
+            if (PlayerData.InventoryData.PrimaryWeaponsSelection.Count + PlayerData.InventoryData.SecondaryWeaponsSelection.Count > 0)
+            {
+                BtnReady.interactable = true;
+                BtnReadyText.text = "Ready!";
+            }
+            else
+            {
+                BtnReady.interactable = false;
+                BtnReadyText.text = "No Weapon";
             }
         }
 
@@ -166,17 +185,17 @@ public class StoreScreen : MonoBehaviour
         WeaponsContent.SetActive(tab == StoreTabs.Weapons);
         ItemsContent.SetActive(tab == StoreTabs.Items);
         PerksContent.SetActive(tab == StoreTabs.Perks);
-        BackpackContent.SetActive(tab == StoreTabs.Backpack);
+        InventoryContent.SetActive(tab == StoreTabs.Inventory);
 
         WeaponsTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
         ItemsTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
         PerksTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
-        BackpackTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
+        InventoryTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
 
         SetTabActive(WeaponsTab, tab == StoreTabs.Weapons);
         SetTabActive(ItemsTab, tab == StoreTabs.Items);
         SetTabActive(PerksTab, tab == StoreTabs.Perks);
-        SetTabActive(BackpackTab, tab == StoreTabs.Backpack);
+        SetTabActive(InventoryTab, tab == StoreTabs.Inventory);
     }
 
     /// <summary>

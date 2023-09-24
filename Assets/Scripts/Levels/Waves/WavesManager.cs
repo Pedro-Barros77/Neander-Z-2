@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -21,12 +20,14 @@ public class WavesManager : MonoBehaviour
     }
 
     public int WaveNumber;
-    public TextMeshProUGUI WaveStartTitleText, WaveStartDescriptionText, WaveTitleText, WaveEnemiesCountText;
+    public TextMeshProUGUI WaveStartTitleText, WaveStartDescriptionText, WaveTitleText, WaveEnemiesCountText, SummaryTitle, P1WaveScoreValue, P1EarnedMoneyValue, P1TotalKillsValue, P1HeadshotKillsValue, P1PrecisionValue;
+    public GameObject WaveSummaryPanel;
+    public Player Player;
 
     public Wave CurrentWave { get; private set; }
 
-    LevelData LevelData;
     BlinkingText WaveStartTitleContainer, WaveStartDescriptionContainer;
+    Coroutine DeactivateStartPanelRoutine;
 
     /// <summary>
     /// Objetos alvos dos inimigos (player, torretas etc).
@@ -36,6 +37,7 @@ public class WavesManager : MonoBehaviour
     private void Awake()
     {
         CurrentWave = GetComponent<Wave>();
+        WaveNumber = Player.Data.CurrentWaveIndex;
         LoadWaveData();
     }
 
@@ -44,7 +46,6 @@ public class WavesManager : MonoBehaviour
         WaveStartTitleContainer = WaveStartTitleText.GetComponentInParent<BlinkingText>(true);
         WaveStartDescriptionContainer = WaveStartDescriptionText.GetComponentInParent<BlinkingText>(true);
 
-        LevelData = GameObject.Find("Environment").GetComponent<LevelData>();
         StartWave();
     }
 
@@ -71,7 +72,7 @@ public class WavesManager : MonoBehaviour
     /// <summary>
     /// Inicia a próxima Wave.
     /// </summary>
-    void StartNextWave()
+    public void StartNextWave()
     {
         WaveNumber++;
         LoadWaveData();
@@ -83,7 +84,22 @@ public class WavesManager : MonoBehaviour
     /// </summary>
     void LoadWaveData()
     {
-        CurrentWave.Data = Resources.Load<WaveData>($"ScriptableObjects/Waves/Wave_{WaveNumber:D2}");
+        Destroy(CurrentWave);
+        CurrentWave = gameObject.AddComponent<Wave>();
+
+        var SO = Resources.Load<WaveData>($"ScriptableObjects/Waves/Wave_{WaveNumber:D2}");
+
+        if (SO != null)
+        {
+            SO.UnloadSO();
+            CurrentWave.Data = Resources.Load<WaveData>($"ScriptableObjects/Waves/Wave_{WaveNumber:D2}");
+        }
+        else
+        {
+            Debug.LogWarning("Acabaram as waves. Iniciando da primeira");
+            WaveNumber = 1;
+            LoadWaveData();
+        }
     }
 
     /// <summary>
@@ -91,20 +107,41 @@ public class WavesManager : MonoBehaviour
     /// </summary>
     void StartWave()
     {
+        if (DeactivateStartPanelRoutine != null)
+            StopCoroutine(DeactivateStartPanelRoutine);
+        WaveSummaryPanel.SetActive(false);
         WaveStartTitleContainer.transform.parent.gameObject.SetActive(true);
-        WaveStartTitleContainer.RestartBlinking();
-        WaveStartDescriptionContainer.RestartBlinking();
-
         WaveStartTitleText.text = CurrentWave.Data.Title.ValueOrDefault($"Wave {WaveNumber}");
         WaveStartDescriptionText.text = CurrentWave.Data.Description;
+
         bool hasDescription = !WaveStartDescriptionText.text.IsNullOrEmpty();
         WaveStartDescriptionContainer.gameObject.SetActive(hasDescription);
+        WaveStartTitleContainer.RestartBlinking();
+        if (hasDescription)
+            WaveStartDescriptionContainer.RestartBlinking();
 
         WaveTitleText.text = WaveStartTitleText.text;
 
         CurrentWave.StartWave();
 
-        StartCoroutine(DeactivateWavePanel());
+        DeactivateStartPanelRoutine = StartCoroutine(DeactivateWavePanel());
+    }
+
+    /// <summary>
+    /// Exibe o painel de resumo da wave na tela.
+    /// </summary>
+    public void ShowWaveSummary()
+    {
+        MenuController.Instance.PauseGame();
+        WaveSummaryPanel.SetActive(true);
+        SummaryTitle.text = $"Survived {CurrentWave.Data.Title.ValueOrDefault($"Wave {WaveNumber}")}";
+        P1WaveScoreValue.text = CurrentWave.P1Score.ToString();
+        P1EarnedMoneyValue.text = $"$ {CurrentWave.P1Money:N2}";
+        P1TotalKillsValue.text = CurrentWave.P1TotalKills.ToString();
+        P1HeadshotKillsValue.text = CurrentWave.P1HeadshotKills.ToString();
+        P1PrecisionValue.text = $"{CurrentWave.P1Precision:N1} %";
+        Player.Data.CurrentWaveIndex = WaveNumber + 1;
+        Player.Data.GetMoney(CurrentWave.P1Money);
     }
 
     /// <summary>

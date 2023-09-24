@@ -44,13 +44,25 @@ public class BlinkingText : MonoBehaviour
         backgroundImage.enabled = ShowBackground;
     }
 
+    /// <summary>
+    /// Para a rotina de animação atual e inicia uma nova, com os valores iniciais.
+    /// </summary>
     public void RestartBlinking()
     {
-        StopAllCoroutines();
+        StopBlinking();
+
+        if (textComponent != null)
+            textComponent.color = FirstColor;
+        if (backgroundImage != null && BlinkBackground)
+            backgroundImage.color = backgroundStartColor;
+
         isBlinking = true;
         blinkRoutine = StartCoroutine(BlinkRoutine());
     }
 
+    /// <summary>
+    /// Para a rotina de animação atual.
+    /// </summary>
     private void StopBlinking()
     {
         StopAllCoroutines();
@@ -58,6 +70,10 @@ public class BlinkingText : MonoBehaviour
         blinkRoutine = null;
     }
 
+    /// <summary>
+    /// Rotina de animação.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator BlinkRoutine()
     {
         while (isBlinking)
@@ -69,6 +85,12 @@ public class BlinkingText : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Realiza a interpolação da cor, de acordo com os parâmetros informados.
+    /// </summary>
+    /// <param name="startColor">A cor inicial da interpolação.</param>
+    /// <param name="endColor">A cor final da interpolação.</param>
+    /// <param name="durationMs">A duração da transição entre uma cor e outra.</param>
     private IEnumerator LerpColor(Color32 startColor, Color32 endColor, float durationMs)
     {
         float startTime = Time.time;

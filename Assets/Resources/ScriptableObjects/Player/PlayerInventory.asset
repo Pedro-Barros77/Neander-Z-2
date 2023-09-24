@@ -24,9 +24,19 @@ MonoBehaviour:
   MaxRocketAmmo: 5
   CurrentWeaponIndex: 1
   PrimaryWeaponsSelection:
-  - Type: 9
+  - Type: 4
     EquippedSlot: 1
+  - Type: 8
+    EquippedSlot: 0
   SecondaryWeaponsSelection:
   - Type: 1
     EquippedSlot: 2
-  ThrowableItemsSelection: []
+  - Type: 2
+    EquippedSlot: 0
+  ThrowableItemsSelection:
+  - Type: 1
+    Count: 5
+    IsEquipped: 1
+  TacticalAbilitiesSelection:
+  - Type: 1
+    IsEquipped: 1

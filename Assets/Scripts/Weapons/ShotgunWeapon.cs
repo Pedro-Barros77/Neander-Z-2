@@ -72,7 +72,7 @@ public class ShotgunWeapon : BaseWeapon
 
     protected override List<GameObject> CreateBullets(float radiansAngle)
     {
-        List<GameObject> bulletsInstances = new List<GameObject>();
+        List<GameObject> bulletsInstances = new();
 
         void InitBullet(Projectile bullet)
         {
@@ -83,6 +83,7 @@ public class ShotgunWeapon : BaseWeapon
             bullet.MaxDistance = BulletMaxRange;
             bullet.MaxDamageRange = MaxDamageRange;
             bullet.MinDamageRange = MinDamageRange;
+            bullet.PlayerOwner = Player;
             bullet.Init();
         }
 

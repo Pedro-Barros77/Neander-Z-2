@@ -184,11 +184,17 @@ public class Raven : BaseEnemy
         }
     }
 
-    protected override void Die(string lastDamagedBodyPartName)
+    public override void Die(string lastDamagedBodyPartName, IEnemyTarget attacker)
     {
-        RigidBody.gravityScale = 4;
-        RigidBody.freezeRotation = false;
-        RigidBody.AddTorque(Random.Range(-2f, 2f) * 15);
-        base.Die(lastDamagedBodyPartName);
+        if (isDying || !IsAlive)
+            return;
+
+        if (RigidBody != null)
+        {
+            RigidBody.gravityScale = 4;
+            RigidBody.freezeRotation = false;
+            RigidBody.AddTorque(Random.Range(-2f, 2f) * 15);
+        }
+        base.Die(lastDamagedBodyPartName, attacker);
     }
 }

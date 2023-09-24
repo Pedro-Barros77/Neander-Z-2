@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4179ae6cd2d084dbdd0e7b22c4be37, type: 3}
+  m_Name: Wave_03
+  m_EditorClassIdentifier: 
+  Number: 3
+  Title: 
+  Description: Taporra ataque aereo
+  EnemyGroups:
+  - EnemyType: 4
+    Count: 50
+    MinHealth: 1
+    MaxHealth: 3
+    MinSpeed: 1.5
+    MaxSpeed: 2.5
+    MinDamage: 3
+    MaxDamage: 7
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+  MinEnemiesAlive: 10
+  MaxEnemiesAlive: 30
+  MinSpawnDelayMs: 3000
+  MaxSpawnDelayMs: 5000
+  MinSpawnCount: 10
+  MaxSpawnCount: 15
+  StartDelayMs: 2000
+  EndDelayMs: 1500
+  MoneyMultiplier: 1

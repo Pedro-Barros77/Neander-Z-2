@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -8,6 +9,7 @@ using UnityEngine.UI;
 public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public bool IsSelected { get; private set; }
+    public bool IsInventoryItem { get; set; }
     public Animator Animator { get; private set; }
 
     [SerializeField]
@@ -52,17 +54,26 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (Data == null)
             return;
 
-        PriceText.text = $"$ {Data.Price - Data.Discount:N2}";
+        if (!IsInventoryItem)
+            PriceText.text = $"$ {Data.Price - Data.Discount:N2}";
 
         if (storeScreen.PlayerData != null)
         {
             Data.CanAfford = storeScreen.PlayerData.Money >= Data.Price - Data.Discount;
-            PriceText.color = Data.CanAfford ? storeScreen.GreenMoney : storeScreen.RedMoney;
+            if (!IsInventoryItem)
+                PriceText.color = Data.CanAfford ? storeScreen.GreenMoney : storeScreen.RedMoney;
+
             if (Data.IsAmmo)
                 UpdateAmmo();
 
             if (Data.IsWeapon)
                 UpdateWeapon();
+
+            if (Data.IsThrowable)
+                UpdateThrowable();
+
+            if (Data.IsTacticalAbility)
+                UpdateTacticalAbility();
 
             UpdateSpecials();
         }
@@ -154,14 +165,54 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void UpdateWeapon()
     {
         var data = Data as StoreWeaponData;
-        if (data.Purchased)
+
+        if (IsInventoryItem)
         {
-            PriceText.text = "Purchased";
-            return;
+            var weapon = storeScreen.PlayerData.InventoryData.PrimaryWeaponsSelection
+                 .Concat(storeScreen.PlayerData.InventoryData.SecondaryWeaponsSelection)
+                 .FirstOrDefault(x => x.Type == data.WeaponType);
+            PriceText.text = weapon.EquippedSlot switch
+            {
+                WeaponEquippedSlot.Primary => "Primary",
+                WeaponEquippedSlot.Secondary => "Secondary",
+                _ => ""
+            };
+        }
+        else
+        {
+            if (data.Purchased)
+            {
+                PriceText.text = "Purchased";
+                return;
+            }
         }
 
         if (storeScreen.PlayerData.InventoryData.HasWeapon(data.WeaponType))
             Data.Purchased = true;
+    }
+
+    private void UpdateThrowable()
+    {
+        var data = Data as StoreThrowableData;
+
+        if (IsInventoryItem)
+        {
+            var throwable = storeScreen.PlayerData.InventoryData.ThrowableItemsSelection
+                .FirstOrDefault(x => x.Type == data.ThrowableType);
+            PriceText.text = throwable.IsEquipped ? "Equipped" : "";
+        }
+    }
+
+    private void UpdateTacticalAbility()
+    {
+        var data = Data as StoreTacticalAbilityData;
+
+        if (IsInventoryItem)
+        {
+            var tacticalAbility = storeScreen.PlayerData.InventoryData.TacticalAbilitiesSelection
+                .FirstOrDefault(x => x.Type == data.AbilityType);
+            PriceText.text = tacticalAbility.IsEquipped ? "Equipped" : "";
+        }
     }
 
     private void UpdateAmmo()

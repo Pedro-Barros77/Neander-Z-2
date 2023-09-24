@@ -1,3 +1,6 @@
+/// <summary>
+/// Tipos de munição disponíveis no jogo.
+/// </summary>
 public enum BulletTypes
 {
     Pistol = 1,

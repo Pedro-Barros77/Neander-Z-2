@@ -18,6 +18,16 @@ public abstract class Projectile : MonoBehaviour
     public float MinDamageRange { get; set; }
     public float MaxDamageRange { get; set; }
     public bool RotateTowardsDirection { get; set; }
+    public bool IsTargetHit { get; set; }
+
+    /// <summary>
+    /// O dono do projétil, se for um inimigo.
+    /// </summary>
+    public IPlayerTarget EnemyOwner { get; set; }
+    /// <summary>
+    /// O dono do projétil, se for um player.
+    /// </summary>
+    public IEnemyTarget PlayerOwner { get; set; }
 
     protected Rigidbody2D Rigidbody { get; set; }
     protected Collider2D Collider { get; set; }
@@ -33,6 +43,7 @@ public abstract class Projectile : MonoBehaviour
         Sprite = GetComponent<SpriteRenderer>();
         TotalDamage = Damage;
         TargetLayerMask = LayerMask.GetMask("Enemy", "Environment", "PlayerEnvironment");
+        WavesManager.Instance.CurrentWave.HandlePlayerAttack(1, 0);
     }
 
     protected virtual void Update()
@@ -121,6 +132,8 @@ public abstract class Projectile : MonoBehaviour
         var target = collision.GetComponentInParent<IPlayerTarget>();
         if (target != null)
         {
+            if (target.IsAlive)
+                IsTargetHit = true;
             if (PierceCount < MaxPierceCount)
                 PierceCount++;
             else if ((MaxPierceCount == 0 || PierceCount >= MaxPierceCount) && target.IsAlive)
@@ -159,6 +172,9 @@ public abstract class Projectile : MonoBehaviour
     /// </summary>
     protected virtual void KillSelf()
     {
+        if (IsTargetHit && PlayerOwner != null)
+            WavesManager.Instance.CurrentWave.HandlePlayerAttack(0, 1);
+
         gameObject.SetActive(false);
         Destroy(gameObject);
     }
