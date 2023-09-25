@@ -22,7 +22,7 @@ public class StoreScreen : MonoBehaviour
     [SerializeField]
     Image PreviewIcon, PreviewBulletIcon;
     [SerializeField]
-    Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, ActiveTabImage, InactiveTabImage;
+    public Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, ActiveTabImage, InactiveTabImage;
     [SerializeField]
     Button BuyButton, TestItemButton, BtnReady;
     [SerializeField]
@@ -35,6 +35,7 @@ public class StoreScreen : MonoBehaviour
     Animator storePanelAnimator;
     GameObject PopupPrefab;
     Canvas WorldPosCanvas;
+    InventoryTab inventoryTab;
 
     void Start()
     {
@@ -45,6 +46,7 @@ public class StoreScreen : MonoBehaviour
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
         WorldPosCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         BtnReadyText = BtnReady.GetComponentInChildren<TextMeshProUGUI>();
+        inventoryTab = GetComponent<InventoryTab>();
     }
 
     void Update()
@@ -119,6 +121,9 @@ public class StoreScreen : MonoBehaviour
 
         SelectedItem = item;
         SelectedItem.Select();
+
+        if (ActiveTab == StoreTabs.Inventory)
+            inventoryTab.SelectItem(item);
 
         PreviewIcon.sprite = item.Data.Icon;
         PreviewTitleText.text = item.Data.Title;

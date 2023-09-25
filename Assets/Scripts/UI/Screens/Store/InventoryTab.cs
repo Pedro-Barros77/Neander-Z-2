@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryTab : MonoBehaviour
 {
@@ -11,6 +11,13 @@ public class InventoryTab : MonoBehaviour
     Transform weaponsColumn, throwablesColumn, itemsColumn, skillsColumn;
     [SerializeField]
     GameObject StoreItemPrefab;
+
+    [SerializeField]
+    TextMeshProUGUI PistolAmmo, PistolMaxAmmo, ShotgunAmmo, ShotgunMaxAmmo, RifleAmmo, RifleMaxAmmo, SniperAmmo, SniperMaxAmmo, RocketAmmo, RocketMaxAmmo;
+    [SerializeField]
+    TextMeshProUGUI PreviewTitleText, PreviewHeadshotMultiplierText, PreviewMgazineBulletsText, PreviewPelletsCountText, PreviewDispersionText;
+    [SerializeField]
+    Image PreviewBulletIcon;
 
     InventoryData Inventory => storeScreen.PlayerData.InventoryData;
 
@@ -25,7 +32,19 @@ public class InventoryTab : MonoBehaviour
 
     void Update()
     {
-        
+        if (storeScreen.PlayerData != null)
+        {
+            PistolAmmo.text = Inventory.PistolAmmo.ToString();
+            PistolMaxAmmo.text = $"/{Inventory.MaxPistolAmmo}";
+            ShotgunAmmo.text = Inventory.ShotgunAmmo.ToString();
+            ShotgunMaxAmmo.text = $"/{Inventory.MaxShotgunAmmo}";
+            RifleAmmo.text = Inventory.RifleAmmo.ToString();
+            RifleMaxAmmo.text = $"/{Inventory.MaxRifleAmmo}";
+            SniperAmmo.text = Inventory.SniperAmmo.ToString();
+            SniperMaxAmmo.text = $"/{Inventory.MaxSniperAmmo}";
+            RocketAmmo.text = Inventory.RocketAmmo.ToString();
+            RocketMaxAmmo.text = $"/{Inventory.MaxRocketAmmo}";
+        }
     }
 
     void ClearInventoryItems()
@@ -82,6 +101,34 @@ public class InventoryTab : MonoBehaviour
             GameObject abilityStoreItem = Instantiate(StoreItemPrefab, skillsColumn);
             StoreItem storeItem = abilityStoreItem.GetComponent<StoreItem>();
             storeItem.IsInventoryItem = true;
+        }
+    }
+
+    public void SelectItem(StoreItem item)
+    {
+        PreviewTitleText.text = item.Data.Title;
+
+        if (item.Data.IsWeapon)
+        {
+            var data = item.Data as StoreWeaponData;
+            PreviewHeadshotMultiplierText.text = data.HeadshotMultiplier.ToString("N1");
+            PreviewMgazineBulletsText.text = data.MagazineBullets.ToString();
+            PreviewPelletsCountText.text = data.PelletsCount.ToString();
+            PreviewDispersionText.text = data.Dispersion.ToString();
+
+            PreviewPelletsCountText.transform.parent.gameObject.SetActive(data.PelletsCount > 0);
+            PreviewDispersionText.transform.parent.gameObject.SetActive(data.Dispersion > 0);
+
+            PreviewBulletIcon.sprite = data.BulletType switch
+            {
+                BulletTypes.Pistol => storeScreen.PistolBulletIcon,
+                BulletTypes.Shotgun => storeScreen.ShotgunBulletIcon,
+                BulletTypes.AssaultRifle => storeScreen.RifleAmmoIcon,
+                BulletTypes.Sniper => storeScreen.SniperAmmoIcon,
+                BulletTypes.Rocket => storeScreen.RocketAmmoIcon,
+                BulletTypes.Melee => storeScreen.MeleeAmmoIcon,
+                _ => null,
+            };
         }
     }
 }
