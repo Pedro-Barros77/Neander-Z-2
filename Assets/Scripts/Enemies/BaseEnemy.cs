@@ -131,10 +131,11 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     protected bool isRunning;
     protected bool isAttacking;
     protected bool isDying;
-    protected bool isIdle => !isRunning && !isAttacking && !isDying;
+    protected virtual bool isIdle => !isRunning && !isAttacking && !isDying;
     protected float lastBloodSplatterTime;
     protected float bloodSplatterDelay = 0.03f;
     protected Vector2 LevelXLimit;
+    protected List<int> HitTargetsIds = new();
     protected virtual void Awake()
     {
     }
@@ -383,6 +384,10 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         if (target == null)
             return;
 
+        int targetInstanceId = target.gameObject.GetInstanceID();
+        if (HitTargetsIds.Contains(targetInstanceId))
+            return;
+
         if (AttackHitSounds.Any())
         {
             var randomHitSound = AttackHitSounds[Random.Range(0, AttackHitSounds.Count)];
@@ -390,6 +395,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         }
 
         target.TakeDamage(Damage, "");
+        HitTargetsIds.Add(targetInstanceId);
     }
 
     public virtual void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName)
@@ -421,7 +427,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
             return;
 
         isAttacking = true;
-
+        HitTargetsIds.Clear();
         if (AttackStartSounds.Any())
         {
             var randomAttackStartSound = AttackStartSounds[Random.Range(0, AttackStartSounds.Count)];
@@ -526,7 +532,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <summary>
     /// Sinconiza os estados da animação do Animator com as variáveis de controle.
     /// </summary>
-    private void SyncAnimationStates()
+    protected virtual void SyncAnimationStates()
     {
         Animator.SetBool("isIdle", isIdle);
         Animator.SetBool("isRunning", isRunning);

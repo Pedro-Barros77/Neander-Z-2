@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Device;
 
-public class Player : MonoBehaviour, IEnemyTarget
+public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
 {
     public PlayerData Data;
 
@@ -117,7 +117,6 @@ public class Player : MonoBehaviour, IEnemyTarget
     private InGameScreen Screen;
     private Canvas WorldPosCanvas;
     private GameObject PopupPrefab;
-
     /// <summary>
     /// Script responsбvel por controlar a arma do jogador, como mira, troca e recarregamento.
     /// </summary>
@@ -127,13 +126,14 @@ public class Player : MonoBehaviour, IEnemyTarget
     ProgressBar HealthBar, StaminaBar;
 
     public PlayerMovement PlayerMovement { get; private set; }
+    public Rigidbody2D RigidBody { get; private set; }
 
     void Start()
     {
         IsAlive = true;
         Screen = GameObject.Find("Screen").GetComponent<InGameScreen>();
         Backpack = new Backpack(this, Data.InventoryData);
-
+        RigidBody = GetComponent<Rigidbody2D>();
         PlayerMovement = GetComponentInChildren<PlayerMovement>();
 
         WorldPosCanvas = GameObject.Find("WorldPositionCanvas").GetComponent<Canvas>();
@@ -164,6 +164,7 @@ public class Player : MonoBehaviour, IEnemyTarget
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             GetHealth(20);
+            GetStamina(20);
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -315,5 +316,10 @@ public class Player : MonoBehaviour, IEnemyTarget
     /// Função chamada pelo evento de animação, no último frame ao arremessar um item.
     /// </summary>
     public void OnThrowEnd() => WeaponController.OnThrowEnd();
+
     #endregion
+    public void TakeKnockBack(float pushForce, Vector3 direction)
+    {
+        RigidBody.AddForce(direction * pushForce);
+    }
 }

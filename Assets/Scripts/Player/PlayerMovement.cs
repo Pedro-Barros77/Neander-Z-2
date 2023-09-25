@@ -27,14 +27,12 @@ public class PlayerMovement : MonoBehaviour
     bool isMoving;
 
     Player Player;
-    Rigidbody2D rigidBody;
     Animator animator;
     SpriteRenderer spriteRenderer;
-
+    
     void Start()
     {
         Player = GetComponentInParent<Player>();
-        rigidBody = GetComponentInParent<Rigidbody2D>();
         animator = GetComponentInParent<Animator>();
         spriteRenderer = GetComponentInParent<SpriteRenderer>();
     }
@@ -131,12 +129,12 @@ public class PlayerMovement : MonoBehaviour
         if ((isPressingLeft && isPressingRight) || isCrouching)
             return;
 
-        if (Mathf.Abs(rigidBody.velocity.x) < Player.MovementSpeed && !isSprinting)
-            rigidBody.velocity += new Vector2(dirInput * Player.AccelerationSpeed, 0);
+        if (Mathf.Abs(Player.RigidBody.velocity.x) < Player.MovementSpeed && !isSprinting)
+            Player.RigidBody.velocity += new Vector2(dirInput * Player.AccelerationSpeed, 0);
 
-        else if (Mathf.Abs(rigidBody.velocity.x) < Player.MovementSpeed * Player.SprintSpeedMultiplier && isSprinting)
+        else if (Mathf.Abs(Player.RigidBody.velocity.x) < Player.MovementSpeed * Player.SprintSpeedMultiplier && isSprinting)
         {
-            rigidBody.velocity += new Vector2(dirInput * (Player.AccelerationSpeed * Player.SprintSpeedMultiplier), 0);
+            Player.RigidBody.velocity += new Vector2(dirInput * (Player.AccelerationSpeed * Player.SprintSpeedMultiplier), 0);
             if (dirInput != 0)
                 Player.LoseStamina(Player.SprintStaminaDrain);
         }
@@ -150,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
         if (Player.Stamina < Player.JumpStaminaDrain)
             return;
         Player.LoseStamina(Player.JumpStaminaDrain);
-        rigidBody.AddForce(new Vector2(0f, Player.JumpForce));
+        Player.RigidBody.AddForce(new Vector2(0f, Player.JumpForce));
     }
 
     /// <summary>
@@ -167,7 +165,7 @@ public class PlayerMovement : MonoBehaviour
         isTurning = false;
         isTurningBack = false;
         float rollDirection = isLeft ? -1 : 1;
-        rigidBody.AddForce(new Vector2(Player.RollForce * rollDirection, 10f));
+        Player.RigidBody.AddForce(new Vector2(Player.RollForce * rollDirection, 10f));
         Player.LoseStamina(Player.RollStaminaDrain);
     }
 
@@ -180,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
         isTurning = false;
         isTurningBack = false;
         isFalling = false;
-        rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+        Player.RigidBody.velocity = new Vector2(0, Player.RigidBody.velocity.y);
         isCrouching = true;
     }
 
@@ -230,7 +228,7 @@ public class PlayerMovement : MonoBehaviour
         wasPressingRight = Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D);
         wasPressingLeft = Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A);
 
-        movementDir = rigidBody.velocity.x;
+        movementDir = Player.RigidBody.velocity.x;
         isMoving = Mathf.Abs(movementDir) > 0.1;
 
         Player.CurrentWeapon.PlayerFlipDir = transform.parent.localScale.x;
