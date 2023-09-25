@@ -11,9 +11,10 @@ public class StoreScreen : MonoBehaviour
     public List<GameObject> StoreItems { get; private set; }
     public StoreItem SelectedItem { get; private set; }
     public StoreTabs ActiveTab { get; private set; } = StoreTabs.Weapons;
-    public readonly Color32 RedMoney = new(205, 86, 99, 255);
-    public readonly Color32 GreenMoney = new(72, 164, 80, 255);
     public bool hasItem => SelectedItem != null && SelectedItem.Data != null;
+
+    public delegate void OnStartDragCallback(StoreItem storeItem);
+    public OnStartDragCallback OnStartDrag;
 
     [SerializeField]
     public PlayerData PlayerData;
@@ -64,11 +65,11 @@ public class StoreScreen : MonoBehaviour
         if (PlayerData != null)
         {
             PlayerMoneyText.text = $"$ {PlayerData.Money:N2}";
-            PlayerMoneyText.color = PlayerData.Money > 0 ? GreenMoney : RedMoney;
+            PlayerMoneyText.color = PlayerData.Money > 0 ? Constants.Colors.GreenMoney: Constants.Colors.RedMoney;
 
             if (hasItem)
             {
-                PreviewPriceText.color = SelectedItem.Data.CanAfford ? GreenMoney : RedMoney;
+                PreviewPriceText.color = SelectedItem.Data.CanAfford ? Constants.Colors.GreenMoney : Constants.Colors.RedMoney;
                 BuyButton.interactable = SelectedItem.Data.CanAfford && !SelectedItem.Data.MaxedUp && !SelectedItem.Data.Purchased;
                 PreviewPriceText.text = $"$ {SelectedItem.Data.Price - SelectedItem.Data.Discount:N2}";
                 if (SelectedItem.Data.Amount > 1)
@@ -88,7 +89,7 @@ public class StoreScreen : MonoBehaviour
                 }
             }
 
-            if (PlayerData.InventoryData.PrimaryWeaponsSelection.Count + PlayerData.InventoryData.SecondaryWeaponsSelection.Count > 0)
+            if (inventoryTab.PrimarySlot.Data != null || inventoryTab.SecondarySlot.Data != null)
             {
                 BtnReady.interactable = true;
                 BtnReadyText.text = "Ready!";
@@ -318,18 +319,19 @@ public class StoreScreen : MonoBehaviour
         if (PlayerData.InventoryData.HasWeapon(data.WeaponType))
             return false;
 
+        var item = inventoryTab.CreateInventoryItem(data, true);
+
         if (data.IsPrimary)
         {
-            PlayerData.InventoryData.UnequipAllWeapons(true, true);
-            PlayerData.InventoryData.UnequipAllWeapons(false, true);
-
             PlayerData.InventoryData.PrimaryWeaponsSelection.Add(new(data.WeaponType, WeaponEquippedSlot.Primary));
+
+            inventoryTab.PrimarySlot.DropItem(item);
         }
         else
         {
-            PlayerData.InventoryData.UnequipAllWeapons(false, false);
-
             PlayerData.InventoryData.SecondaryWeaponsSelection.Add(new(data.WeaponType, WeaponEquippedSlot.Secondary));
+
+            inventoryTab.SecondarySlot.DropItem(item);
         }
 
         return true;

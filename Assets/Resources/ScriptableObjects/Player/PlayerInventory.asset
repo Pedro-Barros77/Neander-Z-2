@@ -36,7 +36,12 @@ MonoBehaviour:
   ThrowableItemsSelection:
   - Type: 1
     Count: 5
+    MaxCount: 5
     IsEquipped: 1
+  - Type: 2
+    Count: 1
+    MaxCount: 5
+    IsEquipped: 0
   TacticalAbilitiesSelection:
   - Type: 1
     IsEquipped: 1

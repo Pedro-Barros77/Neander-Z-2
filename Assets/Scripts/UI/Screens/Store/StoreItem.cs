@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [ExecuteInEditMode()]
-public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public bool IsSelected { get; private set; }
     public bool IsInventoryItem { get; set; }
@@ -23,6 +23,9 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     StoreScreen storeScreen;
     AudioSource audioSource;
+    CanvasGroup canvasGroup;
+    Canvas Canvas;
+    GameObject DragClone;
     bool IsInEditor => Application.isEditor && !Application.isPlaying;
 
     private void Awake()
@@ -35,6 +38,8 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         storeScreen = GameObject.Find("Screen").GetComponent<StoreScreen>();
         Animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        canvasGroup = GetComponent<CanvasGroup>();
+        Canvas = GetComponentInParent<Canvas>();
     }
 
     void Update()
@@ -61,7 +66,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             Data.CanAfford = storeScreen.PlayerData.Money >= Data.Price - Data.Discount;
             if (!IsInventoryItem)
-                PriceText.color = Data.CanAfford ? storeScreen.GreenMoney : storeScreen.RedMoney;
+                PriceText.color = Data.CanAfford ? Constants.Colors.GreenMoney : Constants.Colors.RedMoney;
 
             if (Data.IsAmmo)
                 UpdateAmmo();
@@ -245,5 +250,53 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 Data.MaxedUp = storeScreen.PlayerData.Health >= storeScreen.PlayerData.MaxHealth;
                 break;
         }
+    }
+
+    /// <summary>
+    /// Função chamada pelo evento do Unity quando o item começa a ser arrastado.
+    /// </summary>
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (!IsInventoryItem)
+            return;
+
+        DragClone = Instantiate(gameObject, Canvas.transform);
+        DragClone.GetComponent<StoreItem>().IsInventoryItem = true;
+
+        canvasGroup.alpha = 0.3f;
+
+        Image iconImage = DragClone.transform.Find("Icon").GetComponent<Image>();
+        Image containerImage = DragClone.GetComponent<Image>();
+        Image labelContainerImage = DragClone.transform.Find("LabelContainer").GetComponent<Image>();
+        iconImage.raycastTarget = false;
+        containerImage.raycastTarget = false;
+        labelContainerImage.raycastTarget = false;
+
+        storeScreen.OnStartDrag?.Invoke(this);
+    }
+
+    /// <summary>
+    /// Função chamada pelo evento do Unity quando o item está sendo arrastado.
+    /// </summary>
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (!IsInventoryItem)
+            return;
+        
+        DragClone.transform.position = Input.mousePosition;
+    }
+
+    /// <summary>
+    /// Função chamada pelo evento do Unity quando o item termina de ser arrastado.
+    /// </summary>
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        if (!IsInventoryItem)
+            return;
+
+        Destroy(DragClone);
+        canvasGroup.alpha = 1f;
+
+        storeScreen.OnStartDrag?.Invoke(null);
     }
 }

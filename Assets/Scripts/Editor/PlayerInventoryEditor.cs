@@ -229,13 +229,17 @@ public class PlayerInventoryEditor : Editor
         rect.y += 2;
 
         var item = ThrowableItems.GetArrayElementAtIndex(index);
-        string typeLabel = "Type", countLabel = "Count", isEquippedLabel = "Equipped";
+        string typeLabel = "Type", countLabel = "Count", maxLabel = "Max", isEquippedLabel = "Equipped";
         float marginX = 10;
-        float typeWidth = 120, countWidth = 30, isEquippedWidth = 100, lblTypeWidth, lblCountWidth, lblIsEquippedWidth;
+        float typeWidth = 120, countWidth = 30, maxWidth = 30, isEquippedWidth = 100, lblTypeWidth, lblCountWidth, lblMaxWidth, lblIsEquippedWidth;
 
         lblTypeWidth = weaponLabelStyle.CalcSize(new GUIContent(typeLabel)).x;
         lblCountWidth = weaponLabelStyle.CalcSize(new GUIContent(countLabel)).x;
+        lblMaxWidth = weaponLabelStyle.CalcSize(new GUIContent(maxLabel)).x;
         lblIsEquippedWidth = weaponLabelStyle.CalcSize(new GUIContent(isEquippedLabel)).x;
+
+        var countProp = item.FindPropertyRelative("Count");
+        var maxProp = item.FindPropertyRelative("MaxCount");
 
         float x = rect.x;
 
@@ -255,9 +259,19 @@ public class PlayerInventoryEditor : Editor
 
         EditorGUI.PropertyField(
             new Rect(x, rect.y, countWidth, EditorGUIUtility.singleLineHeight),
-            item.FindPropertyRelative("Count"), GUIContent.none);
+            countProp, GUIContent.none);
 
         x += countWidth + marginX * 2;
+
+        EditorGUI.LabelField(new Rect(x, rect.y, 0, EditorGUIUtility.singleLineHeight), maxLabel, weaponLabelStyle);
+
+        x += lblMaxWidth + marginX;
+
+        EditorGUI.PropertyField(
+            new Rect(x, rect.y, maxWidth, EditorGUIUtility.singleLineHeight),
+            maxProp, GUIContent.none);
+
+        x += maxWidth + marginX * 2;
 
         EditorGUI.LabelField(new Rect(x, rect.y, 0, EditorGUIUtility.singleLineHeight), isEquippedLabel, weaponLabelStyle);
 
@@ -275,6 +289,9 @@ public class PlayerInventoryEditor : Editor
             }
             item.FindPropertyRelative("IsEquipped").boolValue = true;
         }
+
+        if (countProp.intValue > maxProp.intValue)
+            countProp.intValue = maxProp.intValue;
     }
 
     /// <summary>

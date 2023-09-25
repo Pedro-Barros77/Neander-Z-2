@@ -18,16 +18,28 @@ public class InventoryTab : MonoBehaviour
     TextMeshProUGUI PreviewTitleText, PreviewHeadshotMultiplierText, PreviewMgazineBulletsText, PreviewPelletsCountText, PreviewDispersionText;
     [SerializeField]
     Image PreviewBulletIcon;
+    [SerializeField]
+    Button BtnSwitchWeapons;
+
+    [SerializeField]
+    public InventorySlot PrimarySlot, SecondarySlot, GrenadeSlot, DeployableSlot, SupportSlot, AbilitySlot, SkillSlot;
+
+    CanvasGroup PistolAmmoGroup, ShotgunAmmoGroup, RifleAmmoGroup, SniperAmmoGroup, RocketAmmoGroup;
 
     InventoryData Inventory => storeScreen.PlayerData.InventoryData;
+    bool columnsLayoutDirty, loaded;
 
     void Start()
     {
+        PistolAmmoGroup = PistolAmmo.transform.parent.GetComponent<CanvasGroup>();
+        ShotgunAmmoGroup = ShotgunAmmo.transform.parent.GetComponent<CanvasGroup>();
+        RifleAmmoGroup = RifleAmmo.transform.parent.GetComponent<CanvasGroup>();
+        SniperAmmoGroup = SniperAmmo.transform.parent.GetComponent<CanvasGroup>();
+        RocketAmmoGroup = RocketAmmo.transform.parent.GetComponent<CanvasGroup>();
+
         storeScreen = GetComponent<StoreScreen>();
-        ClearInventoryItems();
-        LoadWeapons();
-        LoadThrowables();
-        LoadTacticalAbilities();
+        if (storeScreen.ActiveTab == StoreTabs.Inventory)
+            LoadAll();
     }
 
     void Update()
@@ -36,17 +48,127 @@ public class InventoryTab : MonoBehaviour
         {
             PistolAmmo.text = Inventory.PistolAmmo.ToString();
             PistolMaxAmmo.text = $"/{Inventory.MaxPistolAmmo}";
+            PistolAmmo.color = Constants.GetAlertColor(Inventory.PistolAmmo, Inventory.MaxPistolAmmo, 0.2f);
+
             ShotgunAmmo.text = Inventory.ShotgunAmmo.ToString();
             ShotgunMaxAmmo.text = $"/{Inventory.MaxShotgunAmmo}";
+            ShotgunAmmo.color = Constants.GetAlertColor(Inventory.ShotgunAmmo, Inventory.MaxShotgunAmmo, 0.2f);
+
             RifleAmmo.text = Inventory.RifleAmmo.ToString();
             RifleMaxAmmo.text = $"/{Inventory.MaxRifleAmmo}";
+            RifleAmmo.color = Constants.GetAlertColor(Inventory.RifleAmmo, Inventory.MaxRifleAmmo, 0.2f);
+
             SniperAmmo.text = Inventory.SniperAmmo.ToString();
             SniperMaxAmmo.text = $"/{Inventory.MaxSniperAmmo}";
+            SniperAmmo.color = Constants.GetAlertColor(Inventory.SniperAmmo, Inventory.MaxSniperAmmo, 0.2f);
+
             RocketAmmo.text = Inventory.RocketAmmo.ToString();
             RocketMaxAmmo.text = $"/{Inventory.MaxRocketAmmo}";
+            RocketAmmo.color = Constants.GetAlertColor(Inventory.RocketAmmo, Inventory.MaxSniperAmmo, 0.2f);
         }
+
+        BtnSwitchWeapons.interactable = PrimarySlot.Data == null || (PrimarySlot.Data is StoreWeaponData primSlotWeapon && !primSlotWeapon.IsPrimary);
+
+        if (storeScreen.ActiveTab == StoreTabs.Inventory)
+        {
+            if (!loaded)
+                LoadAll();
+
+            if (columnsLayoutDirty)
+            {
+                LayoutRebuilder.ForceRebuildLayoutImmediate(weaponsColumn.transform.parent.GetComponent<RectTransform>());
+                columnsLayoutDirty = false;
+            }
+        }
+
     }
 
+    /// <summary>
+    /// Troca as armas entre os slots primário e secundário.
+    /// </summary>
+    public void SwitchWeapons()
+    {
+        if (PrimarySlot.Data is StoreWeaponData primSlotWeapon && primSlotWeapon.IsPrimary)
+            return;
+
+        StoreItem primary = PrimarySlot.Item, secondary = SecondarySlot.Item;
+
+        PrimarySlot.DropItem(secondary);
+        SecondarySlot.DropItem(primary);
+    }
+
+    /// <summary>
+    /// Cria um item de inventário.
+    /// </summary>
+    /// <param name="data">Os dados deste item.</param>
+    /// <param name="updateUiLayout">Se o layout deve ser atualizado após a adição.</param>
+    /// <returns>O item criado.</returns>
+    public StoreItem CreateInventoryItem(StoreItemData data, bool updateUiLayout = false)
+    {
+        Transform column;
+        StoreItem prefabItem = StoreItemPrefab.GetComponent<StoreItem>();
+        if (data is StoreWeaponData weaponData)
+        {
+            prefabItem.Data = weaponData;
+            column = weaponsColumn;
+        }
+        else if (data is StoreThrowableData throwableData)
+        {
+            prefabItem.Data = throwableData;
+            column = throwablesColumn;
+        }
+        else if (data is StoreTacticalAbilityData abilityData)
+        {
+            prefabItem.Data = abilityData;
+            column = skillsColumn;
+        }
+        else
+        {
+            column = itemsColumn;
+        }
+
+        GameObject weaponStoreItem = Instantiate(StoreItemPrefab, column);
+        StoreItem storeItem = weaponStoreItem.GetComponent<StoreItem>();
+        storeItem.IsInventoryItem = true;
+
+        if (updateUiLayout)
+        {
+            columnsLayoutDirty = true;
+        }
+
+        return storeItem;
+    }
+
+    /// <summary>
+    /// Função chamada por cada slot sempre que seu conteúdo é alterado.
+    /// </summary>
+    public void OnSlotChanged()
+    {
+        var primaryWeapon = PrimarySlot.Item?.Data as StoreWeaponData;
+        var secondaryWeapon = SecondarySlot.Item?.Data as StoreWeaponData;
+
+        PistolAmmoGroup.alpha = primaryWeapon?.BulletType == BulletTypes.Pistol || secondaryWeapon?.BulletType == BulletTypes.Pistol ? 1 : 0.1f;
+        ShotgunAmmoGroup.alpha = primaryWeapon?.BulletType == BulletTypes.Shotgun || secondaryWeapon?.BulletType == BulletTypes.Shotgun ? 1 : 0.1f;
+        RifleAmmoGroup.alpha = primaryWeapon?.BulletType == BulletTypes.AssaultRifle || secondaryWeapon?.BulletType == BulletTypes.AssaultRifle ? 1 : 0.1f;
+        SniperAmmoGroup.alpha = primaryWeapon?.BulletType == BulletTypes.Sniper || secondaryWeapon?.BulletType == BulletTypes.Sniper ? 1 : 0.1f;
+        RocketAmmoGroup.alpha = primaryWeapon?.BulletType == BulletTypes.Rocket || secondaryWeapon?.BulletType == BulletTypes.Rocket ? 1 : 0.1f;
+    }
+
+    /// <summary>
+    /// Carrega todos os itens do inventário.
+    /// </summary>
+    void LoadAll()
+    {
+        ClearInventoryItems();
+        LoadWeapons();
+        LoadThrowables();
+        LoadTacticalAbilities();
+        loaded = true;
+    }
+
+    /// <summary>
+    /// Limpa todos os items do grid do inventário.
+    /// </summary>
     void ClearInventoryItems()
     {
         foreach (Transform weapon in weaponsColumn)
@@ -59,51 +181,67 @@ public class InventoryTab : MonoBehaviour
             Destroy(skill.gameObject);
     }
 
+    /// <summary>
+    /// Carrega as armas do inventário.
+    /// </summary>
     void LoadWeapons()
     {
         var weaponDatas = Resources.LoadAll<StoreWeaponData>("ScriptableObjects/Store/Weapons");
+        var primaryWeapon = Inventory.PrimaryWeaponsSelection.Concat(Inventory.SecondaryWeaponsSelection).FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Primary);
+        var secondaryWeapon = Inventory.SecondaryWeaponsSelection.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Secondary);
 
         foreach (var weapon in Inventory.PrimaryWeaponsSelection.Concat(Inventory.SecondaryWeaponsSelection))
         {
             StoreWeaponData weaponData = weaponDatas.FirstOrDefault(x => x.WeaponType == weapon.Type);
-            StoreItemPrefab.GetComponent<StoreItem>().Data = weaponData;
+            var storeItem = CreateInventoryItem(weaponData);
 
-            GameObject weaponStoreItem = Instantiate(StoreItemPrefab, weaponsColumn);
-            StoreItem storeItem = weaponStoreItem.GetComponent<StoreItem>();
-            storeItem.IsInventoryItem = true;
+            if (primaryWeapon != null && primaryWeapon.Type == weapon.Type)
+                PrimarySlot.DropItem(storeItem);
+            else if (secondaryWeapon != null && secondaryWeapon.Type == weapon.Type)
+                SecondarySlot.DropItem(storeItem);
         }
     }
 
+    /// <summary>
+    /// Carraga os itens arremessáveis do inventário.
+    /// </summary>
     void LoadThrowables()
     {
         var throwablesDatas = Resources.LoadAll<StoreThrowableData>("ScriptableObjects/Store/Throwables");
+        var equippedThrowable = Inventory.ThrowableItemsSelection.FirstOrDefault(x => x.IsEquipped);
 
         foreach (var throwable in Inventory.ThrowableItemsSelection)
         {
             StoreThrowableData throwableData = throwablesDatas.FirstOrDefault(x => x.ThrowableType == throwable.Type);
-            StoreItemPrefab.GetComponent<StoreItem>().Data = throwableData;
+            var storeItem = CreateInventoryItem(throwableData);
 
-            GameObject throwableStoreItem = Instantiate(StoreItemPrefab, throwablesColumn);
-            StoreItem storeItem = throwableStoreItem.GetComponent<StoreItem>();
-            storeItem.IsInventoryItem = true;
+            if (equippedThrowable != null && equippedThrowable.Type == throwable.Type)
+                GrenadeSlot.DropItem(storeItem);
         }
     }
 
+    /// <summary>
+    /// Carrega as habilidades táticas do inventário.
+    /// </summary>
     void LoadTacticalAbilities()
     {
         var abilitiesDatas = Resources.LoadAll<StoreTacticalAbilityData>("ScriptableObjects/Store/TacticalAbilities");
+        var equippedAbility = Inventory.TacticalAbilitiesSelection.FirstOrDefault(x => x.IsEquipped);
 
         foreach (var ability in Inventory.TacticalAbilitiesSelection)
         {
             StoreTacticalAbilityData abilityData = abilitiesDatas.FirstOrDefault(x => x.AbilityType == ability.Type);
-            StoreItemPrefab.GetComponent<StoreItem>().Data = abilityData;
+            var storeItem = CreateInventoryItem(abilityData);
 
-            GameObject abilityStoreItem = Instantiate(StoreItemPrefab, skillsColumn);
-            StoreItem storeItem = abilityStoreItem.GetComponent<StoreItem>();
-            storeItem.IsInventoryItem = true;
+            if (equippedAbility != null && equippedAbility.Type == ability.Type)
+                AbilitySlot.DropItem(storeItem);
         }
     }
 
+    /// <summary>
+    /// Seleciona um item para a visualização no preview.
+    /// </summary>
+    /// <param name="item">O item a ser selecionado.</param>
     public void SelectItem(StoreItem item)
     {
         PreviewTitleText.text = item.Data.Title;

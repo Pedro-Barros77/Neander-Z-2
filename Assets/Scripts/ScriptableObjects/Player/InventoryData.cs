@@ -141,6 +141,7 @@ public class InventoryData : AutoRevertSO
     {
         public ThrowableTypes Type;
         public int Count;
+        public int MaxCount;
         public bool IsEquipped;
 
         public ThrowableSelection() { }
