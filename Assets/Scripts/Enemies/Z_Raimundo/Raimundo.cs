@@ -32,10 +32,6 @@ public class Raimundo : BaseEnemy
         AttackHitSoundVolume = 0.6f;
         DeathSoundVolume = 0.7f;
 
-        base.Start();
-
-        HealthBar.AnimationSpeed = 5f;
-
         Helmet = transform.Find("Helmet");
         Head = transform.Find("Head");
         HelmetHealth = Health;
@@ -43,6 +39,10 @@ public class Raimundo : BaseEnemy
         HelmetRigidBody = Helmet.GetComponent<Rigidbody2D>();
         HelmetSprite = Helmet.GetComponent<SpriteRenderer>();
         HelmetRigidBody.isKinematic = true;
+
+        base.Start();
+
+        HealthBar.AnimationSpeed = 5f;
     }
 
     protected override void Update()

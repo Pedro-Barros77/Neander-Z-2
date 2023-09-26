@@ -29,6 +29,7 @@ public class Rui : BaseEnemy
         DeathSoundVolume = 0.7f;
         BumpTrigger = transform.Find("BumpArea").GetComponent<AttackTrigger>();
         BumpTrigger.OnTagTriggered += OnTargetHit;
+
         base.Start();
 
         HealthBar.AnimationSpeed = 5f;

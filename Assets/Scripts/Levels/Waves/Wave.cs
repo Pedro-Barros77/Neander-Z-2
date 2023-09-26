@@ -218,7 +218,7 @@ public class Wave : MonoBehaviour
         float speed = Random.Range(group.MinSpeed, group.MaxSpeed);
         float damage = Random.Range(group.MinDamage, group.MaxDamage);
 
-        enemy.SetRandomValues(health, speed, damage);
+        enemy.OnStartFinished += () => enemy.SetRandomValues(health, speed, damage);
 
         return enemy;
     }

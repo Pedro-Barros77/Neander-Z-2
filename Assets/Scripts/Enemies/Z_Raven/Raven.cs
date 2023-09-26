@@ -32,6 +32,7 @@ public class Raven : BaseEnemy
         DeathSoundVolume = 0.7f;
         Altitude = Random.Range(minAltitude, maxAltitude);
         transform.position = new Vector3(transform.position.x, Altitude, 0);
+
         base.Start();
 
         HealthBar.AnimationSpeed = 5f;

@@ -123,6 +123,9 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     protected List<AudioClip> DamageSounds, AttackStartSounds, AttackHitSounds, DeathSounds;
     protected GameObject PopupPrefab;
 
+    public delegate void OnStartFinishedCallback();
+    public OnStartFinishedCallback OnStartFinished;
+
     protected Transform EffectsContainer;
     protected bool isRunning;
     protected bool isAttacking;
@@ -166,6 +169,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         var env = GameObject.Find("Environment").GetComponent<LevelData>();
         LevelXLimit = new Vector2(env.TopLeftSpawnLimit.x, env.BottomRightSpawnLimit.x);
+
+        OnStartFinished?.Invoke();
     }
 
     protected virtual void Update()
@@ -231,7 +236,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     {
         MaxHealth = Mathf.Clamp(health, 0, health);
         Health = MaxHealth;
-        MovementSpeed = Mathf.Clamp(speed, 0, speed);
+        MaxMovementSpeed = Mathf.Clamp(speed, 0, speed);
+        MovementSpeed = MaxMovementSpeed;
         Damage = Mathf.Clamp(damage, 0, damage);
     }
 
@@ -366,6 +372,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
             targetDir = 1;
         else if (transform.position.x > LevelXLimit.y)
             targetDir = -1;
+
         if (Mathf.Abs(RigidBody.velocity.x) < MovementSpeed && !IsInAttackRange && !isAttacking)
             RigidBody.velocity += new Vector2(targetDir * AccelerationSpeed, 0);
     }
