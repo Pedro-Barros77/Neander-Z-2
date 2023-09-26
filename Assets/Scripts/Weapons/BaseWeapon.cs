@@ -20,6 +20,10 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     public float MinDamage => Data.MinDamage;
     /// <summary>
+    /// O multiplicador de dano causado por um tiro na cabeça.
+    /// </summary>
+    public float HeadshotMultiplier => Data.HeadshotMultiplier;
+    /// <summary>
     /// A taxa de disparo da arma (disparos por segundo).
     /// </summary>
     public float FireRate => Data.FireRate;
@@ -281,6 +285,7 @@ public abstract class BaseWeapon : MonoBehaviour
         bullet.MaxDamageRange = MaxDamageRange;
         bullet.MinDamageRange = MinDamageRange;
         bullet.PlayerOwner = Player;
+        bullet.HeadshotMultiplier = HeadshotMultiplier;
         bullet.Init();
 
         return new List<GameObject>() { bulletInstance };

@@ -48,7 +48,7 @@ public class BurningEffect : BaseAppliedEffect
             return;
 
         enemyTarget?.TakeDamage(TickDamage, "");
-        playerTarget?.TakeDamage(TickDamage, "", PlayerOwner);
+        playerTarget?.TakeDamage(TickDamage, 1.0f, "", PlayerOwner);
 
         SetSpriteRed(targetSprite);
     }

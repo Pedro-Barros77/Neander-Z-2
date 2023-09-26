@@ -24,7 +24,6 @@ public class Raimundo : BaseEnemy
         AccelerationSpeed = 1f;
         Health = 40f;
         Damage = 19f;
-        HeadshotDamageMultiplier = 2f;
         KillScore = 53;
         HeadshotScoreMultiplier = 1.5f;
         DeathFadeOutDelayMs = 5000f;
@@ -84,7 +83,7 @@ public class Raimundo : BaseEnemy
                 break;
         }
     }
-    public override void TakeDamage(float value, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null)
+    public override void TakeDamage(float value, float headshotMultiplier, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null)
     {
         if (value < 0 || Health <= 0) return;
 
@@ -97,7 +96,7 @@ public class Raimundo : BaseEnemy
                 color = Color.white;
                 break;
             case "Head":
-                value *= HeadshotDamageMultiplier;
+                value *= headshotMultiplier;
                 color = Color.red;
                 break;
             default:

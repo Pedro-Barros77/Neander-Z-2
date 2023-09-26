@@ -22,6 +22,10 @@ public abstract class BaseThrowable : MonoBehaviour
     /// </summary>
     public float HitDamage => Data.HitDamage;
     /// <summary>
+    /// O multiplicador de dano causado por um acerto na cabeça.
+    /// </summary>
+    public float HeadshotMultiplier => Data.HeadshotMultiplier;
+    /// <summary>
     /// A força em que o item é arremessado.
     /// </summary>
     public float ThrowForce => Data.ThrowForce;

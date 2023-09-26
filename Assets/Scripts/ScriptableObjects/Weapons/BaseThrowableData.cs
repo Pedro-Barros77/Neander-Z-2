@@ -8,6 +8,7 @@ public class BaseThrowableData : AutoRevertSO
     public float Damage;
     public float MinDamage;
     public float HitDamage;
+    public float HeadshotMultiplier;
     public float ThrowForce;
     public float FuseTimeoutMs;
     public bool DetonateOnImpact;

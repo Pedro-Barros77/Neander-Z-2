@@ -9,7 +9,6 @@ public class Robert : BaseEnemy
         AccelerationSpeed = 1.5f;
         Health = 18f;
         Damage = 24f;
-        HeadshotDamageMultiplier = 2f;
         KillScore = 53;
         HeadshotScoreMultiplier = 1.5f;
         DeathFadeOutDelayMs = 5000f;

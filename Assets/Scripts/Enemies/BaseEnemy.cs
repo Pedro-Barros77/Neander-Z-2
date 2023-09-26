@@ -31,10 +31,6 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// </summary>
     public float AccelerationSpeed { get; protected set; } = 1f;
     /// <summary>
-    /// O multiplicador de dano recebido por um tiro na cabeça desse inimigo.
-    /// </summary>
-    public float HeadshotDamageMultiplier { protected get; set; }
-    /// <summary>
     /// A pontuação recebida por matar esse inimigo.
     /// </summary>
     public int KillScore { get; protected set; }
@@ -262,7 +258,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="bodyPartName">O nome da parte do corpo (GameObject) do inimigo que foi atingida.</param>
     /// <param name="attacker">O player qye atacou este inimigo.</param>
     /// <param name="hitPosition">O local em que o inimigo recebeu dano.</param>
-    public virtual void TakeDamage(float value, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null)
+    public virtual void TakeDamage(float value, float headshotMultiplier, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null)
     {
         if (value < 0 || Health <= 0 || isDying || !IsAlive) return;
 
@@ -271,7 +267,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         switch (bodyPartName)
         {
             case "Head":
-                value *= HeadshotDamageMultiplier;
+                value *= headshotMultiplier;
                 color = Color.red;
                 break;
 

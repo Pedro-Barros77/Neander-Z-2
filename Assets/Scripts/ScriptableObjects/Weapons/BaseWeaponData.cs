@@ -9,6 +9,7 @@ public abstract class BaseWeaponData : AutoRevertSO
 
     public float Damage;
     public float MinDamage;
+    public float HeadshotMultiplier;
     public float FireRate;
     public float BulletSpeed;
 

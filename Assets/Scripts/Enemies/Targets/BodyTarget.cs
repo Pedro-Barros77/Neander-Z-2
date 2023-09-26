@@ -44,7 +44,7 @@ public class BodyTarget : MonoBehaviour, IPlayerTarget
         lastSparkTime = Time.time;
     }
 
-    public void TakeDamage(float value, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null)
+    public void TakeDamage(float value, float headshotMultiplier, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null)
     {
         if (value < 0) return;
 
@@ -53,7 +53,7 @@ public class BodyTarget : MonoBehaviour, IPlayerTarget
         switch (bodyPartName)
         {
             case "Head":
-                //value *= HeadshotDamageMultiplier;
+                value *= headshotMultiplier;
                 color = Color.red;
                 break;
 

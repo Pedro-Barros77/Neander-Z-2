@@ -10,6 +10,7 @@ public abstract class Projectile : MonoBehaviour
     public float Damage { get; set; }
     public float MinDamage { get; set; }
     public float TotalDamage { get; set; }
+    public float HeadshotMultiplier { get; set; }
     public Vector3 StartPos { get; set; }
     public int MaxPierceCount { get; set; }
     public int PierceCount { get; set; }

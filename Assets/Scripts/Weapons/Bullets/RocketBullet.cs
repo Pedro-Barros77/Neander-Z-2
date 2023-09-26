@@ -33,7 +33,7 @@ public class RocketBullet : Projectile
             if (target.IsAlive)
                 IsTargetHit = true;
             var hitPosition = collision.ClosestPoint(transform.position);
-            target.TakeDamage(Damage, collision.name, PlayerOwner);
+            target.TakeDamage(Damage, HeadshotMultiplier, collision.name, PlayerOwner);
             target.OnPointHit(hitPosition, -transform.right, collision.name);
         }
 
@@ -91,7 +91,7 @@ public class RocketBullet : Projectile
 
                     Damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
 
-                    target.TakeDamage(Damage, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, PlayerOwner);
+                    target.TakeDamage(Damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, PlayerOwner);
                     target.OnPointHit(enemyHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
                 }
             }

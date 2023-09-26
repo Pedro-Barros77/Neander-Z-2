@@ -23,7 +23,6 @@ public class Raven : BaseEnemy
         AccelerationSpeed = 1f;
         Health = 1f;
         Damage = 5f;
-        HeadshotDamageMultiplier = 2f;
         KillScore = 53;
         HeadshotScoreMultiplier = 1.5f;
         DeathFadeOutDelayMs = 5000f;

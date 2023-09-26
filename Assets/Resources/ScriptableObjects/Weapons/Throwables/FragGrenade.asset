@@ -16,10 +16,14 @@ MonoBehaviour:
   Damage: 30
   MinDamage: 5
   HitDamage: 0
+  HeadshotMultiplier: 1
   ThrowForce: 20
   FuseTimeoutMs: 3000
   DetonateOnImpact: 0
   StartFuseOnCook: 1
   EffectMaxRange: 1
   EffectMinRange: 2
+  EffectDurationMs: 0
+  EffectDecoupledDurationMs: 0
+  EffectTickIntervalMs: 0
   EffectSpriteSize: 2

@@ -84,6 +84,7 @@ public class ShotgunWeapon : BaseWeapon
             bullet.MaxDamageRange = MaxDamageRange;
             bullet.MinDamageRange = MinDamageRange;
             bullet.PlayerOwner = Player;
+            bullet.HeadshotMultiplier = HeadshotMultiplier;
             bullet.Init();
         }
 

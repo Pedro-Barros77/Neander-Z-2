@@ -8,7 +8,7 @@ public interface IPlayerTarget
     public GameObject gameObject { get; }
     public Transform transform { get; }
     public bool IsAlive { get; }
-    public void TakeDamage(float damage, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null);
+    public void TakeDamage(float damage, float headshotMultiplier, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null);
     /// <summary>
     /// Função chamada ao ser atingido em um ponto específico.
     /// </summary>

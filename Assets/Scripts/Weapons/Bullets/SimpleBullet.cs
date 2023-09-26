@@ -17,7 +17,7 @@ public class SimpleBullet : Projectile
                 IsTargetHit = true;
 
             var hitPosition = collision.ClosestPoint(transform.position);
-            target.TakeDamage(Damage, collision.name, PlayerOwner, hitPosition);
+            target.TakeDamage(Damage, HeadshotMultiplier, collision.name, PlayerOwner, hitPosition);
             target.OnPointHit(hitPosition, -transform.right, collision.name);
         }
 
