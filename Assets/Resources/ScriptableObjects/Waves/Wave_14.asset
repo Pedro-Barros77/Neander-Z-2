@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4179ae6cd2d084dbdd0e7b22c4be37, type: 3}
+  m_Name: Wave_14
+  m_EditorClassIdentifier: 
+  Number: 14
+  Title: 
+  Description: 
+  EnemyGroups:
+  - EnemyType: 0
+    Count: 15
+    MinHealth: 35
+    MaxHealth: 40
+    MinSpeed: 0.4
+    MaxSpeed: 0.7
+    MinDamage: 15
+    MaxDamage: 20
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+  - EnemyType: 2
+    Count: 12
+    MinHealth: 25
+    MaxHealth: 30
+    MinSpeed: 0.4
+    MaxSpeed: 0.57
+    MinDamage: 25
+    MaxDamage: 28
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+  - EnemyType: 6
+    Count: 8
+    MinHealth: 20
+    MaxHealth: 26
+    MinSpeed: 0.4
+    MaxSpeed: 0.7
+    MinDamage: 15
+    MaxDamage: 18
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+  - EnemyType: 1
+    Count: 5
+    MinHealth: 15
+    MaxHealth: 18
+    MinSpeed: 3
+    MaxSpeed: 5
+    MinDamage: 20
+    MaxDamage: 24
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+  - EnemyType: 5
+    Count: 4
+    MinHealth: 60
+    MaxHealth: 70
+    MinSpeed: 0.4
+    MaxSpeed: 0.5
+    MinDamage: 15
+    MaxDamage: 19
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+  - EnemyType: 4
+    Count: 10
+    MinHealth: 1
+    MaxHealth: 3
+    MinSpeed: 1.4
+    MaxSpeed: 2
+    MinDamage: 3
+    MaxDamage: 8
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+  MinEnemiesAlive: 10
+  MaxEnemiesAlive: 15
+  MinSpawnDelayMs: 4000
+  MaxSpawnDelayMs: 8000
+  MinSpawnCount: 5
+  MaxSpawnCount: 6
+  StartDelayMs: 2000
+  EndDelayMs: 1500
+  MoneyMultiplier: 1

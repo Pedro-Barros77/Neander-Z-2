@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d4179ae6cd2d084dbdd0e7b22c4be37, type: 3}
-  m_Name: Wave_03
+  m_Name: Wave_07
   m_EditorClassIdentifier: 
-  Number: 3
+  Number: 7
   Title: 
   Description: 
   EnemyGroups:
   - EnemyType: 0
-    Count: 15
-    MinHealth: 28
-    MaxHealth: 30
+    Count: 14
+    MinHealth: 25
+    MaxHealth: 32
     MinSpeed: 0.4
     MaxSpeed: 0.7
     MinDamage: 13
@@ -27,7 +27,7 @@ MonoBehaviour:
     SpawnChanceMultiplier: 1
     IsInfinite: 0
   - EnemyType: 2
-    Count: 5
+    Count: 14
     MinHealth: 20
     MaxHealth: 24
     MinSpeed: 0.4
@@ -36,12 +36,22 @@ MonoBehaviour:
     MaxDamage: 20
     SpawnChanceMultiplier: 1
     IsInfinite: 0
-  MinEnemiesAlive: 5
-  MaxEnemiesAlive: 10
+  - EnemyType: 6
+    Count: 6
+    MinHealth: 20
+    MaxHealth: 24
+    MinSpeed: 0.4
+    MaxSpeed: 0.7
+    MinDamage: 15
+    MaxDamage: 20
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+  MinEnemiesAlive: 7
+  MaxEnemiesAlive: 12
   MinSpawnDelayMs: 4000
   MaxSpawnDelayMs: 8000
   MinSpawnCount: 5
   MaxSpawnCount: 8
   StartDelayMs: 2000
   EndDelayMs: 1500
-  MoneyMultiplier: 1
+  MoneyMultiplier: 0.6

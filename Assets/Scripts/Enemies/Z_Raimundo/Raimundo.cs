@@ -7,7 +7,7 @@ public class Raimundo : BaseEnemy
 {
     public GameObject SparksPrefab;
     private int HelmetStage = 3;
-    private float HelmetHealth;
+    private float HelmetHealth = 50f;
     private float HelmetMaxHealth;
     private int HelmetStageCount = 3;
     private Transform Helmet, Head;
@@ -22,7 +22,7 @@ public class Raimundo : BaseEnemy
         Type = EnemyTypes.Z_Raimundo;
         MovementSpeed = 0.5f;
         AccelerationSpeed = 1f;
-        Health = 40f;
+        Health = 70f;
         Damage = 19f;
         KillScore = 53;
         HeadshotScoreMultiplier = 1.5f;
@@ -34,8 +34,7 @@ public class Raimundo : BaseEnemy
 
         Helmet = transform.Find("Helmet");
         Head = transform.Find("Head");
-        HelmetHealth = Health;
-        HelmetMaxHealth = Health;
+        HelmetMaxHealth = HelmetHealth;
         HelmetRigidBody = Helmet.GetComponent<Rigidbody2D>();
         HelmetSprite = Helmet.GetComponent<SpriteRenderer>();
         HelmetRigidBody.isKinematic = true;

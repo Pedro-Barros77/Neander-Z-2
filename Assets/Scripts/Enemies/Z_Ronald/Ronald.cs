@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Ronald : BaseEnemy
 {
-    private float spawnChance = 1f;
+    private float spawnChance = 0.1f;
     private bool SpawnRonaldo;
     private float MaxRonaldoSpawnDelayMs = 5000f;
     protected override void Start()

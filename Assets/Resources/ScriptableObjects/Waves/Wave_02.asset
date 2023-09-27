@@ -17,14 +17,14 @@ MonoBehaviour:
   Description: 
   EnemyGroups:
   - EnemyType: 0
-    Count: 20
-    MinHealth: 25
+    Count: 14
+    MinHealth: 28
     MaxHealth: 30
-    MinSpeed: 0.3
+    MinSpeed: 0.4
     MaxSpeed: 0.7
     MinDamage: 13
     MaxDamage: 18
-    SpawnChanceMultiplier: 2
+    SpawnChanceMultiplier: 1
     IsInfinite: 0
   MinEnemiesAlive: 3
   MaxEnemiesAlive: 10

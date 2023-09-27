@@ -26,6 +26,16 @@ MonoBehaviour:
     MaxDamage: 18
     SpawnChanceMultiplier: 1
     IsInfinite: 0
+  - EnemyType: 4
+    Count: 5
+    MinHealth: 1
+    MaxHealth: 2
+    MinSpeed: 1.2
+    MaxSpeed: 2
+    MinDamage: 2
+    MaxDamage: 8
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
   MinEnemiesAlive: 3
   MaxEnemiesAlive: 6
   MinSpawnDelayMs: 4000
