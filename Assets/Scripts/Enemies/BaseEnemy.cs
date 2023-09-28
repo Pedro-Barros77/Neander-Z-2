@@ -232,13 +232,14 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="health">A vida do inimigo.</param>
     /// <param name="speed">A velocidade do inimigo.</param>
     /// <param name="damage">O dano do inimigo.</param>
-    public virtual void SetRandomValues(float health, float speed, float damage)
+    public virtual void SetRandomValues(float health, float speed, float damage, int killscore)
     {
         MaxHealth = Mathf.Clamp(health, 0, health);
         Health = MaxHealth;
         MaxMovementSpeed = Mathf.Clamp(speed, 0, speed);
         MovementSpeed = MaxMovementSpeed;
         Damage = Mathf.Clamp(damage, 0, damage);
+        KillScore = Mathf.Clamp(killscore, 0, killscore);
     }
 
     /// <summary>

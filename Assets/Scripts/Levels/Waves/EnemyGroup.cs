@@ -39,6 +39,14 @@ public class EnemyGroup
     /// </summary>
     public float MaxDamage;
     /// <summary>
+    /// A quantidade mínima de score que o inimigo vale.
+    /// </summary>
+    public int MinKillScore;
+    /// <summary>
+    /// A quantidade máxima de score que o inimigo vale.
+    /// </summary>
+    public int MaxKillScore;
+    /// <summary>
     /// A chance de spawnar um inimigo com essas configurações.
     /// </summary>
     public float SpawnChanceMultiplier = 1;
