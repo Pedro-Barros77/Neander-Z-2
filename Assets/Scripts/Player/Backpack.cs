@@ -83,6 +83,10 @@ public class Backpack
     /// O tipo do item arremessável atualmente escolhido pelo jogador.
     /// </summary>
     public ThrowableTypes EquippedThrowableType => Data.ThrowableItemsSelection?.FirstOrDefault(x => x.IsEquipped)?.Type ?? ThrowableTypes.None;
+    /// <summary>
+    /// O tipo da habilidade tática atualmente escolhida pelo jogador.
+    /// </summary>
+    public TacticalAbilityTypes EquippedTacticalAbilityType => Data.TacticalAbilitiesSelection?.FirstOrDefault(x => x.IsEquipped)?.Type ?? TacticalAbilityTypes.None;
 
     public bool HasPrimaryEquipped => EquippedPrimaryType != WeaponTypes.None;
     public bool HasSecondaryEquipped => EquippedSecondaryType != WeaponTypes.None;

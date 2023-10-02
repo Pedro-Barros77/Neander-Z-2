@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         dirInput = Input.GetAxisRaw("Horizontal");
         var rollCooledDown = LastRollTime + (Player.RollCooldownMs / 1000) <= Time.time;
 
-        if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isJumpingSideways)
+        if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isJumpingSideways && Player.Backpack.EquippedTacticalAbilityType == TacticalAbilityTypes.TacticalRoll)
         {
             if (isPressingRight && !isPressingLeft && rollCooledDown)
                 Roll(false);
