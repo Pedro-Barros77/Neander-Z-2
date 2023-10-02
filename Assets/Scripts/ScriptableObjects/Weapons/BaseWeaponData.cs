@@ -6,6 +6,7 @@ public abstract class BaseWeaponData : AutoRevertSO
     public WeaponTypes Type;
     public BulletTypes BulletType;
     public FireModes FireMode;
+    public ReloadTypes ReloadType;
 
     public float Damage;
     public float MinDamage;

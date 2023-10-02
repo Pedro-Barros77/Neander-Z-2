@@ -30,6 +30,8 @@ public class StoreScreen : MonoBehaviour
     GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab;
     [SerializeField]
     CustomAudio PurchaseSound;
+    [SerializeField]
+    SectionedBar DamageBar, FireRateBar, ReloadSpeedBar, RangeBar;
 
     TextMeshProUGUI PreviewBtnBuyText, BtnReadyText;
     AudioSource audioSource;
@@ -65,7 +67,7 @@ public class StoreScreen : MonoBehaviour
         if (PlayerData != null)
         {
             PlayerMoneyText.text = $"$ {PlayerData.Money:N2}";
-            PlayerMoneyText.color = PlayerData.Money > 0 ? Constants.Colors.GreenMoney: Constants.Colors.RedMoney;
+            PlayerMoneyText.color = PlayerData.Money > 0 ? Constants.Colors.GreenMoney : Constants.Colors.RedMoney;
 
             if (hasItem)
             {
@@ -131,19 +133,31 @@ public class StoreScreen : MonoBehaviour
         PreviewDescriptionText.text = item.Data.Description;
         PreviewTagsText.text = string.Join("  |  ", item.Data.Tags).Replace("_", "-");
 
-        if (SelectedItem.Data.IsWeapon)
+        if (SelectedItem.Data is StoreWeaponData storeWeaponData)
         {
-            var data = item.Data as StoreWeaponData;
-            PreviewIsPrimaryText.text = data.IsPrimary ? "-Primary" : "-Secondary";
-            PreviewHeadshotMultiplierText.text = data.HeadshotMultiplier.ToString("N1");
-            PreviewMgazineBulletsText.text = data.MagazineBullets.ToString();
-            PreviewPelletsCountText.text = data.PelletsCount.ToString();
-            PreviewDispersionText.text = data.Dispersion.ToString();
+            int pelletsCount;
+            float pelletsDispersion;
+            if (storeWeaponData.WeaponData is ShotgunData shotgunData)
+            {
+                pelletsCount = shotgunData.ShellPelletsCount;
+                pelletsDispersion = shotgunData.PelletsDispersion;
+            }
+            else
+            {
+                pelletsCount = 0;
+                pelletsDispersion = 0;
+            }
 
-            PreviewPelletsCountText.transform.parent.gameObject.SetActive(data.PelletsCount > 0);
-            PreviewDispersionText.transform.parent.gameObject.SetActive(data.Dispersion > 0);
+            PreviewIsPrimaryText.text = storeWeaponData.WeaponData.IsPrimary ? "-Primary" : "-Secondary";
+            PreviewHeadshotMultiplierText.text = storeWeaponData.WeaponData.HeadshotMultiplier.ToString("N1");
+            PreviewMgazineBulletsText.text = storeWeaponData.WeaponData.MagazineSize.ToString();
+            PreviewPelletsCountText.text = pelletsCount.ToString();
+            PreviewDispersionText.text = pelletsDispersion.ToString();
 
-            PreviewBulletIcon.sprite = data.BulletType switch
+            PreviewPelletsCountText.transform.parent.gameObject.SetActive(pelletsCount > 0);
+            PreviewDispersionText.transform.parent.gameObject.SetActive(pelletsDispersion > 0);
+
+            PreviewBulletIcon.sprite = storeWeaponData.WeaponData.BulletType switch
             {
                 BulletTypes.Pistol => PistolBulletIcon,
                 BulletTypes.Shotgun => ShotgunBulletIcon,
@@ -153,6 +167,28 @@ public class StoreScreen : MonoBehaviour
                 BulletTypes.Melee => MeleeAmmoIcon,
                 _ => null,
             };
+
+            DamageBar.transform.parent.parent.gameObject.SetActive(true);
+
+            DamageBar.MaxValue = Constants.MaxWeaponDamage;
+            DamageBar.Value = Constants.CalculateDamage(storeWeaponData.WeaponData);
+            DamageBar.CalculateSections();
+
+            FireRateBar.MaxValue = Constants.MaxWeaponFireRate;
+            FireRateBar.Value = Constants.CalculateFireRate(storeWeaponData.WeaponData);
+            FireRateBar.CalculateSections();
+
+            ReloadSpeedBar.MaxValue = Constants.MaxWeaponReloadSpeed;
+            ReloadSpeedBar.Value = Constants.CalculateReloadSpeed(storeWeaponData.WeaponData);
+            ReloadSpeedBar.CalculateSections();
+
+            RangeBar.MaxValue = Constants.MaxWeaponRange;
+            RangeBar.Value = Constants.CalculateRange(storeWeaponData.WeaponData);
+            RangeBar.CalculateSections();
+        }
+        else
+        {
+            DamageBar.transform.parent.parent.gameObject.SetActive(false);
         }
     }
 
@@ -316,20 +352,20 @@ public class StoreScreen : MonoBehaviour
     {
         var data = SelectedItem.Data as StoreWeaponData;
 
-        if (PlayerData.InventoryData.HasWeapon(data.WeaponType))
+        if (PlayerData.InventoryData.HasWeapon(data.WeaponData.Type))
             return false;
 
         var item = inventoryTab.CreateInventoryItem(data, true);
 
-        if (data.IsPrimary)
+        if (data.WeaponData.IsPrimary)
         {
-            PlayerData.InventoryData.PrimaryWeaponsSelection.Add(new(data.WeaponType, WeaponEquippedSlot.Primary));
+            PlayerData.InventoryData.PrimaryWeaponsSelection.Add(new(data.WeaponData.Type, WeaponEquippedSlot.Primary));
 
             inventoryTab.PrimarySlot.DropItem(item);
         }
         else
         {
-            PlayerData.InventoryData.SecondaryWeaponsSelection.Add(new(data.WeaponType, WeaponEquippedSlot.Secondary));
+            PlayerData.InventoryData.SecondaryWeaponsSelection.Add(new(data.WeaponData.Type, WeaponEquippedSlot.Secondary));
 
             inventoryTab.SecondarySlot.DropItem(item);
         }

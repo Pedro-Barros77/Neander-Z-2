@@ -175,7 +175,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             var weapon = storeScreen.PlayerData.InventoryData.PrimaryWeaponsSelection
                  .Concat(storeScreen.PlayerData.InventoryData.SecondaryWeaponsSelection)
-                 .FirstOrDefault(x => x.Type == data.WeaponType);
+                 .FirstOrDefault(x => x.Type == data.WeaponData.Type);
             PriceText.text = weapon.EquippedSlot switch
             {
                 WeaponEquippedSlot.Primary => "Primary",
@@ -192,7 +192,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             }
         }
 
-        if (storeScreen.PlayerData.InventoryData.HasWeapon(data.WeaponType))
+        if (storeScreen.PlayerData.InventoryData.HasWeapon(data.WeaponData.Type))
             Data.Purchased = true;
     }
 

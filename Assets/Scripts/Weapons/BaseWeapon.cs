@@ -75,6 +75,10 @@ public abstract class BaseWeapon : MonoBehaviour
     /// Modo de disparo da arma.
     /// </summary>
     public FireModes FireMode => Data.FireMode;
+    /// <summary>
+    /// Tipo de recarregamento da arma.
+    /// </summary>
+    public ReloadTypes ReloadType => Data.ReloadType;
 
     #endregion
 

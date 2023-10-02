@@ -17,14 +17,8 @@ MonoBehaviour:
   Description: UZI with caution! You'll run out of bullets before you can say OH
     CRAP.
   Price: 650
-  Ammount: 1
+  Discount: 0
+  Amount: 0
   IconScale: 0.7
   Tags: 060000000b000000
-  CanAfford: 0
-  WeaponType: 5
-  IsPrimary: 1
-  BulletType: 1
-  HeadshotMultiplier: 1.2
-  MagazineBullets: 25
-  PelletsCount: 0
-  Dispersion: 0
+  WeaponData: {fileID: 11400000, guid: c7c6ec6d05c23fb4484018e85b967dba, type: 2}

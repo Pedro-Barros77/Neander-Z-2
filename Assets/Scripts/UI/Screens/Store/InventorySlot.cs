@@ -132,7 +132,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         {
             AmmoText.transform.parent.gameObject.SetActive(true);
 
-            AmmoIconImage.sprite = weaponData.BulletType switch
+            AmmoIconImage.sprite = weaponData.WeaponData.BulletType switch
             {
                 BulletTypes.Pistol => storeScreen.PistolBulletIcon,
                 BulletTypes.Shotgun => storeScreen.ShotgunBulletIcon,
@@ -149,19 +149,19 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
                 Inventory.PrimaryWeaponsSelection
                     .Concat(Inventory.SecondaryWeaponsSelection)
-                    .FirstOrDefault(x => x.Type == oldWeapon.WeaponType)
+                    .FirstOrDefault(x => x.Type == oldWeapon.WeaponData.Type)
                         .EquippedSlot = WeaponEquippedSlot.None;
             }
 
             // Prevents the same weapon from being in primary slot and secondary slot
-            if (SlotType == InventorySlots.Primary && inventoryTab.SecondarySlot.Data is StoreWeaponData secData && secData.WeaponType == weaponData.WeaponType)
+            if (SlotType == InventorySlots.Primary && inventoryTab.SecondarySlot.Data is StoreWeaponData secData && secData.WeaponData.Type == weaponData.WeaponData.Type)
                 inventoryTab.SecondarySlot.ClearSlot();
-            else if (SlotType == InventorySlots.Secondary && inventoryTab.PrimarySlot.Data is StoreWeaponData primData && primData.WeaponType == weaponData.WeaponType)
+            else if (SlotType == InventorySlots.Secondary && inventoryTab.PrimarySlot.Data is StoreWeaponData primData && primData.WeaponData.Type == weaponData.WeaponData.Type)
                 inventoryTab.PrimarySlot.ClearSlot();
 
             Inventory.PrimaryWeaponsSelection
                 .Concat(Inventory.SecondaryWeaponsSelection)
-                .FirstOrDefault(x => x.Type == weaponData.WeaponType)
+                .FirstOrDefault(x => x.Type == weaponData.WeaponData.Type)
                     .EquippedSlot = SlotType switch
                     {
                         InventorySlots.Primary => WeaponEquippedSlot.Primary,
@@ -215,9 +215,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
         if (Data is StoreWeaponData weaponData)
         {
-            AmmoText.color = Constants.GetAlertColor(Inventory.GetAmmo(weaponData.BulletType), Inventory.GetMaxAmmo(weaponData.BulletType), 0.2f);
-            AmmoText.text = storeScreen.PlayerData.InventoryData.GetAmmo(weaponData.BulletType).ToString();
-            MaxAmmoText.text = $"/{storeScreen.PlayerData.InventoryData.GetMaxAmmo(weaponData.BulletType)}";
+            AmmoText.color = Constants.GetAlertColor(Inventory.GetAmmo(weaponData.WeaponData.BulletType), Inventory.GetMaxAmmo(weaponData.WeaponData.BulletType), 0.2f);
+            AmmoText.text = storeScreen.PlayerData.InventoryData.GetAmmo(weaponData.WeaponData.BulletType).ToString();
+            MaxAmmoText.text = $"/{storeScreen.PlayerData.InventoryData.GetMaxAmmo(weaponData.WeaponData.BulletType)}";
         }
         else if (Data is StoreThrowableData throwableData)
         {
@@ -263,7 +263,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
         bool canDrop = false;
 
-        if (item.Data is StoreWeaponData weapondata && (SlotType == InventorySlots.Primary || (SlotType == InventorySlots.Secondary && !weapondata.IsPrimary)))
+        if (item.Data is StoreWeaponData weapondata && (SlotType == InventorySlots.Primary || (SlotType == InventorySlots.Secondary && !weapondata.WeaponData.IsPrimary)))
             canDrop = true;
 
         if (item.Data is StoreThrowableData && SlotType == InventorySlots.Grenade)

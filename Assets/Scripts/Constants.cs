@@ -1,8 +1,15 @@
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public static class Constants
 {
+    public static float MaxWeaponDamage { get; private set; } = 60;
+    public static float MaxWeaponFireRate { get; private set; } = 18;
+    public static float MaxWeaponReloadSpeed { get; private set; } = 12;
+    public static float MaxWeaponRange { get; private set; } = 48;
+
+    static float ReloadSpeedRatio = 5000;
+
+
     /// <summary>
     /// Define se a arma é primária ou secundária.
     /// </summary>
@@ -27,6 +34,76 @@ public static class Constants
 
             _ => false,
         };
+    }
+
+    /// <summary>
+    /// Calcula o dano dessa arma para exibir na barra de estatística, levando em consideração as variações de cada arma.
+    /// </summary>
+    /// <param name="weaponData">As informações dessa arma.</param>
+    /// <returns>O Dano calculado.</returns>
+    public static float CalculateDamage(BaseWeaponData weaponData)
+    {
+        float damage = weaponData.Damage;
+        if (weaponData is ShotgunData shotgunData)
+            damage = shotgunData.Damage * shotgunData.ShellPelletsCount;
+
+        return damage;
+    }
+
+    /// <summary>
+    /// Calcula a cadência de tiro dessa arma para exibir na barra de estatística, levando em consideração as variações de cada arma.
+    /// </summary>
+    /// <param name="weaponData">As informações dessa arma.</param>
+    /// <returns>A cadência de tiro calculada.</returns>
+    public static float CalculateFireRate(BaseWeaponData weaponData)
+    {
+        float fireRate = weaponData.FireRate;
+
+        switch (weaponData.FireMode)
+        {
+            case FireModes.Burst:
+                if (weaponData is BurstFireData burstData)
+                    fireRate = (burstData.FireRate + burstData.BurstFireRate) / 2;
+                break;
+        }
+
+        return fireRate;
+    }
+
+    /// <summary>
+    /// Calcula a velocidade de recarga dessa arma para exibir na barra de estatística, levando em consideração as variações de cada arma.
+    /// </summary>
+    /// <param name="weaponData">As informações dessa arma.</param>
+    /// <returns>A velocidade de recarga calculada.</returns>
+    public static float CalculateReloadSpeed(BaseWeaponData weaponData)
+    {
+        float reloadSpeed = ReloadSpeedRatio / weaponData.ReloadTimeMs;
+
+        switch (weaponData.ReloadType)
+        {
+            case ReloadTypes.NoReload:
+                reloadSpeed = 0;
+                break;
+            case ReloadTypes.SingleBullet:
+                reloadSpeed = ReloadSpeedRatio / (weaponData.ReloadTimeMs * weaponData.MagazineSize);
+                break;
+        }
+
+        return reloadSpeed;
+    }
+
+    /// <summary>
+    /// Calcula o alcance dessa arma para exibir na barra de estatística, levando em consideração as variações de cada arma.
+    /// </summary>
+    /// <param name="weaponData">As informações dessa arma.</param>
+    /// <returns>O alcance calculado.</returns>
+    public static float CalculateRange(BaseWeaponData weaponData)
+    {
+        float range = (weaponData.MinDamageRange + weaponData.MaxDamageRange + weaponData.BulletMaxRange) / 3;
+        if (weaponData is MeleeData || weaponData.BulletType == BulletTypes.Melee || weaponData.FireMode == FireModes.Melee)
+            range = 0;
+
+        return range;
     }
 
     /// <summary>

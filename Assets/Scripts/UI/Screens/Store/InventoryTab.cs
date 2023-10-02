@@ -67,7 +67,7 @@ public class InventoryTab : MonoBehaviour
             RocketAmmo.color = Constants.GetAlertColor(Inventory.RocketAmmo, Inventory.MaxSniperAmmo, 0.2f);
         }
 
-        BtnSwitchWeapons.interactable = PrimarySlot.Data == null || (PrimarySlot.Data is StoreWeaponData primSlotWeapon && !primSlotWeapon.IsPrimary);
+        BtnSwitchWeapons.interactable = PrimarySlot.Data == null || (PrimarySlot.Data is StoreWeaponData primSlotWeapon && !primSlotWeapon.WeaponData.IsPrimary);
 
         if (storeScreen.ActiveTab == StoreTabs.Inventory)
         {
@@ -88,7 +88,7 @@ public class InventoryTab : MonoBehaviour
     /// </summary>
     public void SwitchWeapons()
     {
-        if (PrimarySlot.Data is StoreWeaponData primSlotWeapon && primSlotWeapon.IsPrimary)
+        if (PrimarySlot.Data is StoreWeaponData primSlotWeapon && primSlotWeapon.WeaponData.IsPrimary)
             return;
 
         StoreItem primary = PrimarySlot.Item, secondary = SecondarySlot.Item;
@@ -147,11 +147,11 @@ public class InventoryTab : MonoBehaviour
         var primaryWeapon = PrimarySlot.Item?.Data as StoreWeaponData;
         var secondaryWeapon = SecondarySlot.Item?.Data as StoreWeaponData;
 
-        PistolAmmoGroup.alpha = primaryWeapon?.BulletType == BulletTypes.Pistol || secondaryWeapon?.BulletType == BulletTypes.Pistol ? 1 : 0.1f;
-        ShotgunAmmoGroup.alpha = primaryWeapon?.BulletType == BulletTypes.Shotgun || secondaryWeapon?.BulletType == BulletTypes.Shotgun ? 1 : 0.1f;
-        RifleAmmoGroup.alpha = primaryWeapon?.BulletType == BulletTypes.AssaultRifle || secondaryWeapon?.BulletType == BulletTypes.AssaultRifle ? 1 : 0.1f;
-        SniperAmmoGroup.alpha = primaryWeapon?.BulletType == BulletTypes.Sniper || secondaryWeapon?.BulletType == BulletTypes.Sniper ? 1 : 0.1f;
-        RocketAmmoGroup.alpha = primaryWeapon?.BulletType == BulletTypes.Rocket || secondaryWeapon?.BulletType == BulletTypes.Rocket ? 1 : 0.1f;
+        PistolAmmoGroup.alpha = primaryWeapon?.WeaponData.BulletType == BulletTypes.Pistol || secondaryWeapon?.WeaponData.BulletType == BulletTypes.Pistol ? 1 : 0.1f;
+        ShotgunAmmoGroup.alpha = primaryWeapon?.WeaponData.BulletType == BulletTypes.Shotgun || secondaryWeapon?.WeaponData.BulletType == BulletTypes.Shotgun ? 1 : 0.1f;
+        RifleAmmoGroup.alpha = primaryWeapon?.WeaponData.BulletType == BulletTypes.AssaultRifle || secondaryWeapon?.WeaponData.BulletType == BulletTypes.AssaultRifle ? 1 : 0.1f;
+        SniperAmmoGroup.alpha = primaryWeapon?.WeaponData.BulletType == BulletTypes.Sniper || secondaryWeapon?.WeaponData.BulletType == BulletTypes.Sniper ? 1 : 0.1f;
+        RocketAmmoGroup.alpha = primaryWeapon?.WeaponData.BulletType == BulletTypes.Rocket || secondaryWeapon?.WeaponData.BulletType == BulletTypes.Rocket ? 1 : 0.1f;
     }
 
     /// <summary>
@@ -192,7 +192,7 @@ public class InventoryTab : MonoBehaviour
 
         foreach (var weapon in Inventory.PrimaryWeaponsSelection.Concat(Inventory.SecondaryWeaponsSelection))
         {
-            StoreWeaponData weaponData = weaponDatas.FirstOrDefault(x => x.WeaponType == weapon.Type);
+            StoreWeaponData weaponData = weaponDatas.FirstOrDefault(x => x.WeaponData.Type == weapon.Type);
             var storeItem = CreateInventoryItem(weaponData);
 
             if (primaryWeapon != null && primaryWeapon.Type == weapon.Type)
@@ -249,15 +249,28 @@ public class InventoryTab : MonoBehaviour
         if (item.Data.IsWeapon)
         {
             var data = item.Data as StoreWeaponData;
-            PreviewHeadshotMultiplierText.text = data.HeadshotMultiplier.ToString("N1");
-            PreviewMgazineBulletsText.text = data.MagazineBullets.ToString();
-            PreviewPelletsCountText.text = data.PelletsCount.ToString();
-            PreviewDispersionText.text = data.Dispersion.ToString();
+            int pelletsCount;
+            float pelletsDispersion;
+            if (data.WeaponData is ShotgunData shotgunData)
+            {
+                pelletsCount = shotgunData.ShellPelletsCount;
+                pelletsDispersion = shotgunData.PelletsDispersion;
+            }
+            else
+            {
+                pelletsCount = 0;
+                pelletsDispersion = 0;
+            }
 
-            PreviewPelletsCountText.transform.parent.gameObject.SetActive(data.PelletsCount > 0);
-            PreviewDispersionText.transform.parent.gameObject.SetActive(data.Dispersion > 0);
+            PreviewHeadshotMultiplierText.text = data.WeaponData.HeadshotMultiplier.ToString("N1");
+            PreviewMgazineBulletsText.text = data.WeaponData.MagazineSize.ToString();
+            PreviewPelletsCountText.text = pelletsCount.ToString();
+            PreviewDispersionText.text = pelletsDispersion.ToString();
 
-            PreviewBulletIcon.sprite = data.BulletType switch
+            PreviewPelletsCountText.transform.parent.gameObject.SetActive(pelletsCount > 0);
+            PreviewDispersionText.transform.parent.gameObject.SetActive(pelletsDispersion > 0);
+
+            PreviewBulletIcon.sprite = data.WeaponData.BulletType switch
             {
                 BulletTypes.Pistol => storeScreen.PistolBulletIcon,
                 BulletTypes.Shotgun => storeScreen.ShotgunBulletIcon,

@@ -72,6 +72,41 @@ public class SectionedBar : MonoBehaviour
     }
 
     /// <summary>
+    /// Calcula quais seções devem ser exibidas e quais cores devem ser aplicadas, baseado no Value, MaxValue e ModificationValue.
+    /// </summary>
+    public void CalculateSections()
+    {
+        int sectionsCount = Sections.GetLength(0);
+        float fullSectionValue = MaxValue / sectionsCount;
+
+        for (int i = 0; i < sectionsCount; i++)
+        {
+            float half1Value = fullSectionValue / 2 * (i * 2 + 1);
+            float half2Value = half1Value + (fullSectionValue / 2);
+
+            Image half1 = Sections[i, 0];
+            Image half2 = Sections[i, 1];
+
+            if (half1Value > Value && half1Value <= ModificationValue + Value)
+                half1.color = UpgradeColor;
+            else if (half1Value <= Value && half1Value > ModificationValue + Value)
+                half1.color = DowngradeColor;
+            else
+                half1.color = StartFillColor;
+
+            if (half2Value > Value && half2Value <= ModificationValue + Value)
+                half2.color = UpgradeColor;
+            else if (half2Value <= Value && half2Value > ModificationValue + Value)
+                half2.color = DowngradeColor;
+            else
+                half2.color = StartFillColor;
+
+            half1.enabled = Value >= half1Value || half1.color != StartFillColor;
+            half2.enabled = Value >= half2Value || half2.color != StartFillColor;
+        }
+    }
+
+    /// <summary>
     /// Realiza a animação de blink das barras de upgrade/downgrade.
     /// </summary>
     IEnumerator BlinkModificationLoop()
@@ -121,41 +156,6 @@ public class SectionedBar : MonoBehaviour
 
             Sections[i, 0] = half1;
             Sections[i, 1] = half2;
-        }
-    }
-
-    /// <summary>
-    /// Calcula quais seções devem ser exibidas e quais cores devem ser aplicadas, baseado no Value, MaxValue e ModificationValue.
-    /// </summary>
-    void CalculateSections()
-    {
-        int sectionsCount = Sections.GetLength(0);
-        float fullSectionValue = MaxValue / sectionsCount;
-
-        for (int i = 0; i < sectionsCount; i++)
-        {
-            float half1Value = fullSectionValue / 2 * (i * 2 + 1);
-            float half2Value = half1Value + (fullSectionValue / 2);
-
-            Image half1 = Sections[i, 0];
-            Image half2 = Sections[i, 1];
-
-            if (half1Value > Value && half1Value <= ModificationValue + Value)
-                half1.color = UpgradeColor;
-            else if (half1Value <= Value && half1Value > ModificationValue + Value)
-                half1.color = DowngradeColor;
-            else
-                half1.color = StartFillColor;
-
-            if (half2Value > Value && half2Value <= ModificationValue + Value)
-                half2.color = UpgradeColor;
-            else if (half2Value <= Value && half2Value > ModificationValue + Value)
-                half2.color = DowngradeColor;
-            else
-                half2.color = StartFillColor;
-
-            half1.enabled = Value >= half1Value || half1.color != StartFillColor;
-            half2.enabled = Value >= half2Value || half2.color != StartFillColor;
         }
     }
 }
