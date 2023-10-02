@@ -104,16 +104,18 @@ public class WaveEditor : Editor
                lblMaxHealth = "Max Health", lblMinHealth = "Min Health",
                lblMaxSpeed = "Max Speed", lblMinSpeed = "Min Speed",
                lblMaxDamage = "Max Damage", lblMinDamage = "Min Damage",
+               lblMaxKillScore = "Max KillScore", lblMinKillScore = "Min KillScore",
                lblSpawnChance = "Spawn Chance";
 
         float typeWidth = 108, countWidth = 30, isInfiniteWidth = 100,
                 maxHealthWidth = 50, minHealthWidth = 50,
                 maxSpeedWidth = 50, minSpeedWidth = 50,
                 maxDamageWidth = 50, minDamageWidth = 50,
+                maxKillScoreWidth = 50, minKillScoreWidth = 50,
                 spawnChanceWidth = 50;
 
         float lblTypeWidth, lblCountWidth, lblIsInfiniteWidth, lblMaxHealthWidth, lblMinHealthWidth,
-              lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblSpawnChanceWidth;
+              lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth;
 
         lblTypeWidth = labelStyle.CalcSize(new GUIContent(lblType)).x;
         lblCountWidth = labelStyle.CalcSize(new GUIContent(lblCount)).x;
@@ -124,10 +126,12 @@ public class WaveEditor : Editor
         lblMinSpeedWidth = labelStyle.CalcSize(new GUIContent(lblMinSpeed)).x;
         lblMaxDamageWidth = labelStyle.CalcSize(new GUIContent(lblMaxDamage)).x;
         lblMinDamageWidth = labelStyle.CalcSize(new GUIContent(lblMinDamage)).x;
+        lblMaxKillScoreWidth = labelStyle.CalcSize(new GUIContent(lblMaxKillScore)).x;
+        lblMinKillScoreWidth = labelStyle.CalcSize(new GUIContent(lblMinKillScore)).x;
         lblSpawnChanceWidth = labelStyle.CalcSize(new GUIContent(lblSpawnChance)).x;
 
         float maxLabelWidth = Mathf.Max(lblTypeWidth, lblCountWidth, lblIsInfiniteWidth, lblMaxHealthWidth, lblMinHealthWidth,
-                                                   lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblSpawnChanceWidth);
+                                                   lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth);
 
         float marginX = 10;
         float x = rect.x;
@@ -214,6 +218,25 @@ public class WaveEditor : Editor
                         new Rect(x, y, maxDamageWidth, EditorGUIUtility.singleLineHeight),
                                   item.FindPropertyRelative("MaxDamage"), GUIContent.none);
         x += maxDamageWidth + marginX * 2;
+
+        y += EditorGUIUtility.singleLineHeight + 2;
+        x = startX;
+
+        // Min Score
+        EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblMinKillScore, labelStyle);
+        x += maxLabelWidth + marginX;
+        EditorGUI.PropertyField(
+                        new Rect(x, y, minKillScoreWidth, EditorGUIUtility.singleLineHeight),
+                                  item.FindPropertyRelative("MinKillScore"), GUIContent.none);
+        x += minKillScoreWidth + marginX * 2;
+
+        // Max Score
+        EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblMaxKillScore, labelStyle);
+        x += maxLabelWidth + marginX;
+        EditorGUI.PropertyField(
+                        new Rect(x, y, maxKillScoreWidth, EditorGUIUtility.singleLineHeight),
+                                  item.FindPropertyRelative("MaxKillScore"), GUIContent.none);
+        x += maxKillScoreWidth + marginX * 2;
 
         y += EditorGUIUtility.singleLineHeight + 2;
         x = startX;

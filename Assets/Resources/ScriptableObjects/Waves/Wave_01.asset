@@ -24,6 +24,8 @@ MonoBehaviour:
     MaxSpeed: 0.6
     MinDamage: 13
     MaxDamage: 18
+    MinKillScore: 46
+    MaxKillScore: 53
     SpawnChanceMultiplier: 1
     IsInfinite: 0
   - EnemyType: 4
@@ -34,6 +36,8 @@ MonoBehaviour:
     MaxSpeed: 2
     MinDamage: 2
     MaxDamage: 8
+    MinKillScore: 15
+    MaxKillScore: 20
     SpawnChanceMultiplier: 1
     IsInfinite: 0
   MinEnemiesAlive: 3
