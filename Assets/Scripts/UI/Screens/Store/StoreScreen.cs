@@ -129,6 +129,7 @@ public class StoreScreen : MonoBehaviour
             inventoryTab.SelectItem(item);
 
         PreviewIcon.sprite = item.Data.Icon;
+        PreviewIcon.transform.localScale = Vector3.one * item.Data.PreviewIconScale;
         PreviewTitleText.text = item.Data.Title;
         PreviewDescriptionText.text = item.Data.Description;
         PreviewTagsText.text = string.Join("  |  ", item.Data.Tags).Replace("_", "-");
