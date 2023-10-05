@@ -203,7 +203,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (IsInventoryItem)
         {
             var throwable = storeScreen.PlayerData.InventoryData.ThrowableItemsSelection
-                .FirstOrDefault(x => x.Type == data.ThrowableType);
+                .FirstOrDefault(x => x.Type == data.ThrowableData.Type);
             PriceText.text = throwable.IsEquipped ? "Equipped" : "";
         }
     }

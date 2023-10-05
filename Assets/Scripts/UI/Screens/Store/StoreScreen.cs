@@ -188,6 +188,15 @@ public class StoreScreen : MonoBehaviour
             RangeBar.Value = Constants.CalculateRange(storeWeaponData.WeaponData);
             RangeBar.CalculateSections();
         }
+        else if(SelectedItem.Data is StoreThrowableData storeThrowableData)
+        {
+            PreviewHeadshotMultiplierText.text = storeThrowableData.ThrowableData.HeadshotMultiplier.ToString("N1");
+            PreviewHeadshotMultiplierText.transform.parent.gameObject.SetActive(true);
+
+            PreviewMgazineBulletsText.transform.parent.gameObject.SetActive(false);
+            PreviewPelletsCountText.transform.parent.gameObject.SetActive(false);
+            PreviewDispersionText.transform.parent.gameObject.SetActive(false);
+        }
         else
         {
             DamageBar.transform.parent.parent.gameObject.SetActive(false);
@@ -421,13 +430,13 @@ public class StoreScreen : MonoBehaviour
 
         PlayerData.InventoryData.UnequipAllThrowables();
 
-        bool hasThrowable = PlayerData.InventoryData.HasThrowable(data.ThrowableType);
+        bool hasThrowable = PlayerData.InventoryData.HasThrowable(data.ThrowableData.Type);
 
         if (!hasThrowable)
-            PlayerData.InventoryData.ThrowableItemsSelection.Add(new(data.ThrowableType, (int)data.Amount, true));
+            PlayerData.InventoryData.ThrowableItemsSelection.Add(new(data.ThrowableData.Type, (int)data.Amount, true));
         else
         {
-            var throwable = PlayerData.InventoryData.ThrowableItemsSelection.Find(t => t.Type == data.ThrowableType);
+            var throwable = PlayerData.InventoryData.ThrowableItemsSelection.Find(t => t.Type == data.ThrowableData.Type);
             throwable.Count += (int)data.Amount;
             throwable.IsEquipped = true;
         }

@@ -212,7 +212,7 @@ public class InventoryTab : MonoBehaviour
 
         foreach (var throwable in Inventory.ThrowableItemsSelection)
         {
-            StoreThrowableData throwableData = throwablesDatas.FirstOrDefault(x => x.ThrowableType == throwable.Type);
+            StoreThrowableData throwableData = throwablesDatas.FirstOrDefault(x => x.ThrowableData.Type == throwable.Type);
             var storeItem = CreateInventoryItem(throwableData);
 
             if (equippedThrowable != null && equippedThrowable.Type == throwable.Type)
