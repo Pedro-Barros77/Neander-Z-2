@@ -188,6 +188,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             if (data.Purchased)
             {
                 PriceText.text = "Purchased";
+                PriceText.color = Constants.Colors.GreenMoney;
                 return;
             }
         }
