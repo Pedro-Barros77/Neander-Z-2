@@ -154,6 +154,8 @@ public class StoreScreen : MonoBehaviour
             PreviewPelletsCountText.text = pelletsCount.ToString();
             PreviewDispersionText.text = pelletsDispersion.ToString();
 
+            PreviewMgazineBulletsText.transform.parent.gameObject.SetActive(true);
+            PreviewHeadshotMultiplierText.transform.parent.gameObject.SetActive(true);
             PreviewPelletsCountText.transform.parent.gameObject.SetActive(pelletsCount > 0);
             PreviewDispersionText.transform.parent.gameObject.SetActive(pelletsDispersion > 0);
 
@@ -189,6 +191,11 @@ public class StoreScreen : MonoBehaviour
         else
         {
             DamageBar.transform.parent.parent.gameObject.SetActive(false);
+
+            PreviewMgazineBulletsText.transform.parent.gameObject.SetActive(false);
+            PreviewHeadshotMultiplierText.transform.parent.gameObject.SetActive(false);
+            PreviewPelletsCountText.transform.parent.gameObject.SetActive(false);
+            PreviewDispersionText.transform.parent.gameObject.SetActive(false);
         }
     }
 
