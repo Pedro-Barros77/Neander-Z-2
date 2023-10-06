@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -300,7 +301,11 @@ public class PlayerWeaponController : MonoBehaviour
         if (Time.time - startSwitchTime < currentWeaponSwitchTimeMs / 1000)
         {
             float t = (Time.time - startSwitchTime.Value) / (currentWeaponSwitchTimeMs / 1000);
-            float animAngle = Mathf.Lerp(90, IsAimingLeft ? 180 : 0, t);
+            float animAngle;
+            if(IsAimingLeft)
+                animAngle = Mathf.Lerp(91, 180, t);
+            else
+                animAngle = Mathf.Lerp(89, 0, t);
 
             var rotation = Quaternion.AngleAxis(animAngle, Vector3.forward);
             var newPosition = transform.position + rotation * Vector3.right;
