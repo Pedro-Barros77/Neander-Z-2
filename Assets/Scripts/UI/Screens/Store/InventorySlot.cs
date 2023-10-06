@@ -178,12 +178,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 var oldThrowable = oldData as StoreThrowableData;
 
                 Inventory.ThrowableItemsSelection
-                    .FirstOrDefault(x => x.Type == oldThrowable.ThrowableType)
+                    .FirstOrDefault(x => x.Type == oldThrowable.ThrowableData.Type)
                         .IsEquipped = false;
             }
 
             Inventory.ThrowableItemsSelection
-                .FirstOrDefault(x => x.Type == throwableData.ThrowableType)
+                .FirstOrDefault(x => x.Type == throwableData.ThrowableData.Type)
                     .IsEquipped = true;
         }
         else if (isTacticalAbility && Data is StoreTacticalAbilityData tacticalAbilityData)
@@ -221,7 +221,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         }
         else if (Data is StoreThrowableData throwableData)
         {
-            var throwable = Inventory.ThrowableItemsSelection.FirstOrDefault(x => x.Type == throwableData.ThrowableType);
+            var throwable = Inventory.ThrowableItemsSelection.FirstOrDefault(x => x.Type == throwableData.ThrowableData.Type);
 
             AmmoText.color = Constants.GetAlertColor(throwable.Count, throwable.MaxCount, 0.2f);
             AmmoText.text = throwable.Count.ToString();

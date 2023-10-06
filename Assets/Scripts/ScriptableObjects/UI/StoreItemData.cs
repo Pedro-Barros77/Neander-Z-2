@@ -11,6 +11,7 @@ public class StoreItemData : AutoRevertSO
     public float Discount;
     public float Amount;
     public float IconScale = 1f;
+    public float PreviewIconScale = 1f;
     public List<StoreItemTags> Tags;
 
     public bool IsWeapon => this is StoreWeaponData;
