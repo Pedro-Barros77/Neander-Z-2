@@ -128,6 +128,9 @@ public class StoreScreen : MonoBehaviour
         if (ActiveTab == StoreTabs.Inventory)
             inventoryTab.SelectItem(item);
 
+        bool isTestable = SelectedItem.Data.IsWeapon || SelectedItem.Data.IsThrowable;
+        TestItemButton.gameObject.SetActive(isTestable);
+
         PreviewIcon.sprite = item.Data.Icon;
         PreviewTitleText.text = item.Data.Title;
         PreviewDescriptionText.text = item.Data.Description;
