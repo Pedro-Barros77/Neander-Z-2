@@ -71,6 +71,14 @@ public class MeleeWeapon : BaseWeapon
         return true;
     }
 
+    public override bool BeforeSwitchWeapon()
+    {
+        isShooting = false;
+        IsSwitchingWeapon = true;
+
+        return true;
+    }
+
     protected override void SyncAnimationStates()
     {
         Animator.SetFloat("shootSpeed", FireRate / 5);
