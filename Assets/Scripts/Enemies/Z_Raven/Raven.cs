@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -16,6 +17,8 @@ public class Raven : BaseEnemy
     private bool isHovering = true;
     private float DiveSpeedMultiplier = 8f;
     private float maxDistanceHover = 5f;
+    [SerializeField]
+    protected List<CustomAudio> DiveSounds;
     protected override void Start()
     {
         Type = EnemyTypes.Z_Raven;
@@ -137,6 +140,7 @@ public class Raven : BaseEnemy
         if (attack)
         {
             Dive();
+            DiveSounds.PlayRandomIfAny(AudioSource);
         }
     }
     /// <summary>

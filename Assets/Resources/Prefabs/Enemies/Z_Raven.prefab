@@ -492,6 +492,16 @@ MonoBehaviour:
   DeathSounds:
   - {fileID: 8300000, guid: 2e0193057ccce0847af11158a8a02920, type: 3}
   - {fileID: 8300000, guid: ee9e725570f0e0640b12045b236a4485, type: 3}
+  DiveSounds:
+  - Audio: {fileID: 8300000, guid: c2e6634417c3cae4ca0f31295b62c089, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 29ec330c34920f345b0430b7f65d505a, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: c348246e1b2b43f448e596574fedf843, type: 3}
+    Volume: 1
+    Pitch: 1
 --- !u!95 &1801084079953146224
 Animator:
   serializedVersion: 5
