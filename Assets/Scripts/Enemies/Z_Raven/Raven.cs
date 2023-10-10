@@ -98,7 +98,7 @@ public class Raven : BaseEnemy
             RigidBody.AddForce(direction * MovementSpeed * DiveSpeedMultiplier, ForceMode2D.Force);
         }
 
-        if (!IsInAttackRange && transform.position.y < Target.transform.position.y + (targetHeight / 3f))
+        if (!IsInAttackRange && transform.position.y < Target.transform.position.y + (targetHeight / 2.5f))
             Rise();
 
         if (transform.position.y > Altitude)
