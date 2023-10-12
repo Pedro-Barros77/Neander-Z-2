@@ -16,20 +16,8 @@ MonoBehaviour:
   Title: 
   Description: 
   EnemyGroups:
-  - EnemyType: 0
-    Count: 12
-    MinHealth: 25
-    MaxHealth: 32
-    MinSpeed: 0.4
-    MaxSpeed: 0.7
-    MinDamage: 13
-    MaxDamage: 18
-    MinKillScore: 46
-    MaxKillScore: 53
-    SpawnChanceMultiplier: 1
-    IsInfinite: 0
   - EnemyType: 2
-    Count: 12
+    Count: 15
     MinHealth: 20
     MaxHealth: 24
     MinSpeed: 0.4
@@ -40,36 +28,36 @@ MonoBehaviour:
     MaxKillScore: 60
     SpawnChanceMultiplier: 1
     IsInfinite: 0
-  - EnemyType: 6
-    Count: 8
-    MinHealth: 25
-    MaxHealth: 30
-    MinSpeed: 0.4
-    MaxSpeed: 0.7
-    MinDamage: 15
-    MaxDamage: 20
-    MinKillScore: 55
-    MaxKillScore: 60
+  - EnemyType: 4
+    Count: 20
+    MinHealth: 1.5
+    MaxHealth: 3
+    MinSpeed: 1.2
+    MaxSpeed: 2.5
+    MinDamage: 3
+    MaxDamage: 9
+    MinKillScore: 16
+    MaxKillScore: 22
     SpawnChanceMultiplier: 1
     IsInfinite: 0
-  - EnemyType: 5
-    Count: 3
-    MinHealth: 60
-    MaxHealth: 70
-    MinSpeed: 0.4
-    MaxSpeed: 0.5
-    MinDamage: 15
-    MaxDamage: 19
-    MinKillScore: 70
-    MaxKillScore: 80
+  - EnemyType: 1
+    Count: 10
+    MinHealth: 15
+    MaxHealth: 19
+    MinSpeed: 3
+    MaxSpeed: 5.5
+    MinDamage: 20
+    MaxDamage: 25
+    MinKillScore: 65
+    MaxKillScore: 70
     SpawnChanceMultiplier: 1
     IsInfinite: 0
   MinEnemiesAlive: 7
   MaxEnemiesAlive: 13
   MinSpawnDelayMs: 4000
   MaxSpawnDelayMs: 8000
-  MinSpawnCount: 5
-  MaxSpawnCount: 8
+  MinSpawnCount: 6
+  MaxSpawnCount: 10
   StartDelayMs: 2000
   EndDelayMs: 1500
   MoneyMultiplier: 0.6

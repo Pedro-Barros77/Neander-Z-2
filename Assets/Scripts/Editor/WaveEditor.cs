@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -80,7 +81,7 @@ public class WaveEditor : Editor
 
         EditorGUILayout.Space();
 
-        EnemyGroups.isExpanded = EditorGUILayout.BeginFoldoutHeaderGroup(EnemyGroups.isExpanded, "Enemy Groups");
+        EnemyGroups.isExpanded = EditorGUILayout.BeginFoldoutHeaderGroup(EnemyGroups.isExpanded, $"Enemy Groups (total: {data.EnemyGroups.Sum(x => x.Count)})");
         if (EnemyGroups.isExpanded)
             EnemyGroupsList.DoLayoutList();
         EditorGUILayout.EndFoldoutHeaderGroup();

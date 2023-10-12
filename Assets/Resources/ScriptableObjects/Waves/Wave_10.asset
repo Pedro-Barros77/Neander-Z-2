@@ -18,7 +18,7 @@ MonoBehaviour:
   EnemyGroups:
   - EnemyType: 0
     Count: 30
-    MinHealth: 25
+    MinHealth: 28
     MaxHealth: 32
     MinSpeed: 0.4
     MaxSpeed: 0.7
@@ -40,18 +40,6 @@ MonoBehaviour:
     MaxKillScore: 60
     SpawnChanceMultiplier: 1
     IsInfinite: 0
-  - EnemyType: 6
-    Count: 30
-    MinHealth: 20
-    MaxHealth: 24
-    MinSpeed: 0.4
-    MaxSpeed: 0.7
-    MinDamage: 13
-    MaxDamage: 18
-    MinKillScore: 55
-    MaxKillScore: 60
-    SpawnChanceMultiplier: 1
-    IsInfinite: 0
   - EnemyType: 1
     Count: 30
     MinHealth: 15
@@ -62,18 +50,6 @@ MonoBehaviour:
     MaxDamage: 24
     MinKillScore: 65
     MaxKillScore: 70
-    SpawnChanceMultiplier: 1
-    IsInfinite: 0
-  - EnemyType: 5
-    Count: 30
-    MinHealth: 60
-    MaxHealth: 70
-    MinSpeed: 0.4
-    MaxSpeed: 0.6
-    MinDamage: 15
-    MaxDamage: 19
-    MinKillScore: 70
-    MaxKillScore: 80
     SpawnChanceMultiplier: 1
     IsInfinite: 0
   - EnemyType: 4
@@ -104,7 +80,7 @@ MonoBehaviour:
   MaxEnemiesAlive: 15
   MinSpawnDelayMs: 4000
   MaxSpawnDelayMs: 8000
-  MinSpawnCount: 5
+  MinSpawnCount: 4
   MaxSpawnCount: 6
   StartDelayMs: 2000
   EndDelayMs: 1500
