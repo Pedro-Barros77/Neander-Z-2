@@ -9,6 +9,8 @@ public class SimpleBullet : Projectile
 
     protected override void OnEnemyHit(Collider2D collision)
     {
+        base.OnEnemyHit(collision);
+
         var target = collision.GetComponentInParent<IPlayerTarget>();
 
         if (target != null)
@@ -20,7 +22,5 @@ public class SimpleBullet : Projectile
             target.TakeDamage(Damage, HeadshotMultiplier, collision.name, PlayerOwner, hitPosition);
             target.OnPointHit(hitPosition, -transform.right, collision.name);
         }
-
-        base.OnEnemyHit(collision);
     }
 }
