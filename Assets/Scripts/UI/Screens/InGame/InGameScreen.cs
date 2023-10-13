@@ -126,7 +126,7 @@ public class InGameScreen : MonoBehaviour
     {
         ContinueGame();
         GameOverPanel.SetActive(false);
-        MenuController.Instance.RestartScene();
+        MenuController.Instance.ChangeScene(SceneNames.Store, LoadSceneMode.Single);
         MenuController.Instance.OnRestartGame();
     }
 
