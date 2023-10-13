@@ -318,12 +318,24 @@ public class StoreScreen : MonoBehaviour
         MenuController.Instance.ChangeScene(SceneNames.Graveyard, LoadSceneMode.Single);
     }
 
+    /// <summary>
+    /// Preenche o texto das tags e ativa o gameobject. Caso não haja tags, desativa o gameobject.
+    /// </summary>
+    /// <param name="tagsList">A coleção de tags.</param>
     private void SetTags(IEnumerable<StoreItemTags> tagsList)
     {
         PreviewTagsText.text = string.Join("  |  ", tagsList).Replace("_", "-");
         PreviewTagsText.transform.parent.gameObject.SetActive(tagsList.Any());
     }
 
+    /// <summary>
+    /// Prepara os textos e ativa os gameobjects de cada estatística. Caso não haja estatísticas, desativa os gameobjects.
+    /// </summary>
+    /// <param name="magazine">O texto de capacidade do carregador. Null para desativar.</param>
+    /// <param name="headshot">O texto de multiplicador de dano na cabeça. Null para desativar.</param>
+    /// <param name="pellets">O texto do número de balins. Null para desativar.</param>
+    /// <param name="dispersion">O texto da dispersão dos balins. Null para desativar.</param>
+    /// <param name="bulletType">O tipo de munição para definir no ícone de capacidade do carregador.</param>
     private void SetIconStats(string? magazine = null, string? headshot = null, string? pellets = null, string? dispersion = null, BulletTypes? bulletType = null)
     {
         PreviewMagazineBulletsText.text = magazine ?? "";
@@ -350,6 +362,11 @@ public class StoreScreen : MonoBehaviour
         PreviewMagazineBulletsText.transform.parent.parent.gameObject.SetActive(magazine != null || headshot != null || pellets != null || dispersion != null);
     }
 
+    /// <summary>
+    /// Preenche os textos de quantidade e total. Caso não haja quantidade, desativa os gameobjects.
+    /// </summary>
+    /// <param name="count">Quantidade.</param>
+    /// <param name="total">Total.</param>
     private void SetCountStats(string? count = null, string? total = null)
     {
         PreviewCountText.text = count ?? "0";
@@ -359,6 +376,13 @@ public class StoreScreen : MonoBehaviour
         PreviewCountText.transform.parent.gameObject.SetActive(count != null);
     }
 
+    /// <summary>
+    /// Preenche as barras de estatísticas da arma. Caso não haja nenhuma, desativa os gameobjects.
+    /// </summary>
+    /// <param name="damage">As informações da arma para calcular o dano. Null para desativar.</param>
+    /// <param name="fireRate">As informações da arma para calcular a cadência. Null para desativar.</param>
+    /// <param name="reloadSpeed">As informações da arma para calcular a velocidade de recarga. Null para desativar.</param>
+    /// <param name="range">As informações da arma para calcular o alcance. Null para desativar.</param>
     private void SetBarStats(BaseWeaponData? damage = null, BaseWeaponData? fireRate = null, BaseWeaponData? reloadSpeed = null, BaseWeaponData? range = null)
     {
         if (damage != null)
