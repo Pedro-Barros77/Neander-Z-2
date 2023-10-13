@@ -219,6 +219,17 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 .FirstOrDefault(x => x.Type == data.AbilityType);
             PriceText.text = tacticalAbility.IsEquipped ? "Equipped" : "";
         }
+        else
+        {
+            if (data.Purchased)
+            {
+                PriceText.text = "Purchased";
+                PriceText.color = Constants.Colors.GreenMoney;
+                return;
+            }
+        }
+
+        data.Purchased = storeScreen.PlayerData.InventoryData.TacticalAbilitiesSelection.Any(x => x.Type == data.AbilityType);
     }
 
     private void UpdateAmmo()
@@ -249,6 +260,9 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             case "FirstAidKit":
             case "MedKit":
                 Data.MaxedUp = storeScreen.PlayerData.Health >= storeScreen.PlayerData.MaxHealth;
+                break;
+            case "Locked":
+                PriceText.text = "";
                 break;
         }
     }
@@ -283,7 +297,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (!IsInventoryItem)
             return;
-        
+
         DragClone.transform.position = Input.mousePosition;
     }
 

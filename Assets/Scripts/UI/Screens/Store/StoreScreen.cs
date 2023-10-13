@@ -155,6 +155,12 @@ public class StoreScreen : MonoBehaviour
         if (SelectedItem != null)
             SelectedItem.Deselect();
 
+        if (item.name == "Locked")
+        {
+            SelectedItem = null;
+            return;
+        }
+
         SelectedItem = item;
         SelectedItem.Select();
 

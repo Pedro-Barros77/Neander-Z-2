@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fe93714eff435b4da086b9a0a9e84b2, type: 3}
-  m_Name: FirstAidKit
+  m_Name: Locked
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: e201f84319ae4fe4283f7d236073da8b, type: 3}
-  Title: First Aid Kit
-  Description: Heals 30hp from the player.<br><br>Don't let a little digital bloodshed
-    slow you down. Heal it back up before it becomes a truly mess!
-  Price: 75
+  Icon: {fileID: 21300000, guid: 942e1c765edc1bf4a8d316309c035b50, type: 3}
+  Title: Locked
+  Description: 
+  Price: 0
   Discount: 0
-  Amount: 30
-  IconScale: 0.5
-  PreviewIconScale: 0.8
-  Tags: 0f000000
+  Amount: 0
+  IconScale: 1
+  PreviewIconScale: 1
+  Tags: 
