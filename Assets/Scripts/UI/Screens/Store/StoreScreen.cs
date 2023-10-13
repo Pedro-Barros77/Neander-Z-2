@@ -99,10 +99,17 @@ public class StoreScreen : MonoBehaviour
                 }
                 else if (SelectedItem.Data is StoreAmmoData storeAmmoData)
                 {
+                    int currentAmmo = PlayerData.InventoryData.GetAmmo(storeAmmoData.BulletType);
+                    int maxAmmo = PlayerData.InventoryData.GetMaxAmmo(storeAmmoData.BulletType);
+
                     SetCountStats(
-                        count: PlayerData.InventoryData.GetAmmo(storeAmmoData.BulletType).ToString(),
-                        total: $"/{PlayerData.InventoryData.GetMaxAmmo(storeAmmoData.BulletType)}"
+                        count: currentAmmo.ToString(),
+                        total: $"/{maxAmmo}"
                     );
+
+                    int diff = maxAmmo - currentAmmo;
+                    if (diff > 0 && diff < storeAmmoData.Amount)
+                        PreviewBtnBuyText.text = $"Buy +{diff}";
                 }
                 else
                 {
@@ -496,8 +503,8 @@ public class StoreScreen : MonoBehaviour
             int diff = maxAmmo - currentAmmo;
             PlayerData.InventoryData.SetAmmo(data.BulletType, currentAmmo + diff);
         }
-
-        PlayerData.InventoryData.SetAmmo(data.BulletType, (int)data.Amount + currentAmmo);
+        else
+            PlayerData.InventoryData.SetAmmo(data.BulletType, (int)data.Amount + currentAmmo);
 
         return true;
     }
