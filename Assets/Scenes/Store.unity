@@ -6838,8 +6838,8 @@ MonoBehaviour:
   MeleeAmmoIcon: {fileID: 21300000, guid: cea6c50c2cd35af4bba8189565a85eeb, type: 3}
   ActiveTabImage: {fileID: 21300000, guid: c741e835f1f0f9e4781886aedbeabc42, type: 3}
   InactiveTabImage: {fileID: 21300000, guid: 559e97848730b8a4483de403e667c2b2, type: 3}
-  BuyButton: {fileID: 1758491424}
-  TestItemButton: {fileID: 3903200130096629237}
+  BuyButton: {fileID: 1758491420}
+  TestItemButton: {fileID: 3903200130096629233}
   BtnReady: {fileID: 1265069652}
   StorePanel: {fileID: 629065986}
   PreviewPanelContent: {fileID: 260411950}
@@ -15983,7 +15983,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
   m_PrefabInstance: {fileID: 1758491418}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1758491424 stripped
+--- !u!114 &1758491420 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5717224317639493136, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
   m_PrefabInstance: {fileID: 1758491418}
@@ -20290,7 +20290,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6043085274171295550, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
   m_PrefabInstance: {fileID: 3903200130096629231}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3903200130096629237 stripped
+--- !u!114 &3903200130096629233 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5717224317639493136, guid: 16f6ff72df520fd4f9b296b5fd8210a2, type: 3}
   m_PrefabInstance: {fileID: 3903200130096629231}
