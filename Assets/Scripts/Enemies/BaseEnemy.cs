@@ -83,6 +83,10 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// </summary>
     protected float DeathSoundVolume { get; set; } = 1;
     /// <summary>
+    /// Se esse inimigo é um boss da wave.
+    /// </summary>
+    public bool IsBoss { get; protected set; }
+    /// <summary>
     /// A cor do sangue deste inimigo.
     /// </summary>
     protected Color32 BloodColor { get; set; } = new Color32(140, 0, 0, 255);
@@ -232,7 +236,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="health">A vida do inimigo.</param>
     /// <param name="speed">A velocidade do inimigo.</param>
     /// <param name="damage">O dano do inimigo.</param>
-    public virtual void SetRandomValues(float health, float speed, float damage, int killscore)
+    /// <param name="isBoss">Se o inimigo é um boss dessa wave.</param>
+    public virtual void SetRandomValues(float health, float speed, float damage, int killscore, bool isBoss = false)
     {
         MaxHealth = Mathf.Clamp(health, 0, health);
         Health = MaxHealth;
@@ -240,6 +245,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         MovementSpeed = MaxMovementSpeed;
         Damage = Mathf.Clamp(damage, 0, damage);
         KillScore = Mathf.Clamp(killscore, 0, killscore);
+        IsBoss = isBoss;
     }
 
     /// <summary>

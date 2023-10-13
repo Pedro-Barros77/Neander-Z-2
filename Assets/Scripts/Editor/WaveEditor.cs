@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditorInternal;
@@ -85,6 +83,24 @@ public class WaveEditor : Editor
         if (EnemyGroups.isExpanded)
             EnemyGroupsList.DoLayoutList();
         EditorGUILayout.EndFoldoutHeaderGroup();
+
+        EditorGUILayout.Space();
+
+        GUILayout.BeginHorizontal();
+
+        SerializedProperty isBossProp = GetTarget.FindProperty("IsBossWave");
+        GUILayout.Label(isBossProp.displayName, GUILayout.Width(80));
+        EditorGUILayout.PropertyField(isBossProp, GUIContent.none, true, GUILayout.MinWidth(20), GUILayout.MaxWidth(40));
+
+        if (isBossProp.boolValue)
+        {
+            SerializedProperty bossIndexProp = GetTarget.FindProperty("BossGroupIndex");
+            GUILayout.Label("Boss", GUILayout.Width(40));
+            string[] groupLabels = data.EnemyGroups.Select(x => $"{x.EnemyType} ({x.Count})").ToArray();
+            bossIndexProp.intValue = EditorGUILayout.Popup(bossIndexProp.intValue, groupLabels, GUILayout.MaxWidth(130));
+        }
+
+        GUILayout.EndHorizontal();
 
         GetTarget.ApplyModifiedProperties();
     }

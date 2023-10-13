@@ -17,7 +17,7 @@ MonoBehaviour:
   Description: RUI IS COMMING!
   EnemyGroups:
   - EnemyType: 0
-    Count: 30
+    Count: 10
     MinHealth: 28
     MaxHealth: 32
     MinSpeed: 0.4
@@ -27,9 +27,9 @@ MonoBehaviour:
     MinKillScore: 46
     MaxKillScore: 53
     SpawnChanceMultiplier: 1
-    IsInfinite: 0
+    IsInfinite: 1
   - EnemyType: 2
-    Count: 30
+    Count: 10
     MinHealth: 20
     MaxHealth: 24
     MinSpeed: 0.4
@@ -39,9 +39,9 @@ MonoBehaviour:
     MinKillScore: 55
     MaxKillScore: 60
     SpawnChanceMultiplier: 1
-    IsInfinite: 0
+    IsInfinite: 1
   - EnemyType: 1
-    Count: 30
+    Count: 10
     MinHealth: 15
     MaxHealth: 18
     MinSpeed: 3
@@ -51,9 +51,9 @@ MonoBehaviour:
     MinKillScore: 65
     MaxKillScore: 70
     SpawnChanceMultiplier: 1
-    IsInfinite: 0
+    IsInfinite: 1
   - EnemyType: 4
-    Count: 30
+    Count: 10
     MinHealth: 1
     MaxHealth: 3
     MinSpeed: 1.2
@@ -63,7 +63,7 @@ MonoBehaviour:
     MinKillScore: 15
     MaxKillScore: 20
     SpawnChanceMultiplier: 1
-    IsInfinite: 0
+    IsInfinite: 1
   - EnemyType: 3
     Count: 1
     MinHealth: 1000
@@ -74,7 +74,7 @@ MonoBehaviour:
     MaxDamage: 20
     MinKillScore: 110
     MaxKillScore: 120
-    SpawnChanceMultiplier: 5
+    SpawnChanceMultiplier: 100
     IsInfinite: 0
   MinEnemiesAlive: 10
   MaxEnemiesAlive: 15
@@ -85,3 +85,5 @@ MonoBehaviour:
   StartDelayMs: 2000
   EndDelayMs: 1500
   MoneyMultiplier: 1
+  IsBossWave: 1
+  BossGroupIndex: 4

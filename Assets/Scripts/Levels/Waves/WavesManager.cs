@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,7 +8,7 @@ public class WavesManager : MonoBehaviour
     static WavesManager _instance;
 
     /// <summary>
-    /// A instância deste Singleton.
+    /// A instÃ¢ncia deste Singleton.
     /// </summary>
     public static WavesManager Instance
     {
@@ -66,11 +66,11 @@ public class WavesManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
             SpawnEnemyTest(EnemyTypes.Z_Rui);
 
-        WaveEnemiesCountText.text = $"{CurrentWave.SpawnCount - CurrentWave.EnemiesAlive.Count}/{CurrentWave.TotalEnemiesCount}";
+        WaveEnemiesCountText.text = $"{CurrentWave.SpawnCount - CurrentWave.EnemiesAlive.Count}/{(CurrentWave.Data.IsBossWave ? "âˆž" : CurrentWave.TotalEnemiesCount)}";
     }
 
     /// <summary>
-    /// Inicia a próxima Wave.
+    /// Inicia a prÃ³xima Wave.
     /// </summary>
     public void StartNextWave()
     {
@@ -145,7 +145,7 @@ public class WavesManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Desativa o painel de WaveStart após 5 segundos.
+    /// Desativa o painel de WaveStart apÃ³s 5 segundos.
     /// </summary>
     IEnumerator DeactivateWavePanel()
     {

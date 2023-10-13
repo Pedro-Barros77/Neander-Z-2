@@ -27,6 +27,7 @@ public class Wave : MonoBehaviour
     public Transform EnemiesContainer { get; private set; }
     LevelData LevelData;
     Coroutine EnemySpawner;
+    EnemyGroup BossGroup;
 
     void Start()
     {
@@ -63,6 +64,7 @@ public class Wave : MonoBehaviour
     public void StartWave()
     {
         TotalEnemiesCount = Data.EnemyGroups.Sum(x => x.Count);
+        BossGroup = Data.EnemyGroups[Data.BossGroupIndex];
         HasStarted = true;
         EnemySpawner = StartCoroutine(EnemiesSpawner());
     }
@@ -83,6 +85,12 @@ public class Wave : MonoBehaviour
         P1TotalKills++;
         if (headshotKill)
             P1HeadshotKills++;
+
+        if (enemy.IsBoss && !EnemiesAlive.Where(x => x.IsAlive).Any(x => x.IsBoss))
+        {
+            Data.EnemyGroups.Remove(BossGroup);
+            OnBossDeath();
+        }
     }
 
     /// <summary>
@@ -94,6 +102,17 @@ public class Wave : MonoBehaviour
     {
         P1AttacksCount += count;
         P1AttacksHit += hitCount;
+    }
+
+    /// <summary>
+    /// Função chamada quando o ultimo boss do BossGroup da wave é morto.
+    /// </summary>
+    private void OnBossDeath()
+    {
+        foreach (EnemyGroup group in Data.EnemyGroups)
+            group.IsInfinite = false;
+
+        Data.IsBossWave = false;
     }
 
     /// <summary>
@@ -208,7 +227,7 @@ public class Wave : MonoBehaviour
         if (!group.IsInfinite)
         {
             group.Count--;
-            if (group.Count <= 0)
+            if (group.Count <= 0 && group != BossGroup)
                 Data.EnemyGroups.Remove(group);
         }
 
@@ -219,7 +238,7 @@ public class Wave : MonoBehaviour
         float damage = Random.Range(group.MinDamage, group.MaxDamage);
         int killscore = Random.Range(group.MinKillScore, group.MaxKillScore);
 
-        enemy.OnStartFinished += () => enemy.SetRandomValues(health, speed, damage, killscore);
+        enemy.OnStartFinished += () => enemy.SetRandomValues(health, speed, damage, killscore, group == BossGroup);
 
         return enemy;
     }

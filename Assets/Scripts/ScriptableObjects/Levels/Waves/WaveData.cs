@@ -56,4 +56,12 @@ public class WaveData : AutoRevertSO
     /// O multiplicador de dinheiro ganho nesta wave.
     /// </summary>
     public float MoneyMultiplier = 1;
+    /// <summary>
+    /// Se essa wave possui um ou mais Bosses.
+    /// </summary>
+    public bool IsBossWave = false;
+    /// <summary>
+    /// O Boss dessa wave (ou grupo de bosses).
+    /// </summary>
+    public int BossGroupIndex;
 }
