@@ -26,7 +26,7 @@ public class InGameScreen : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && Player.IsAlive)
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && Player.IsAlive && !WavesManager.Instance.WaveSummaryPanel.activeSelf)
         {
             if (MenuController.Instance.IsGamePaused)
                 ContinueGame();
@@ -124,9 +124,8 @@ public class InGameScreen : MonoBehaviour
     /// </summary>
     public void RestartGame()
     {
-        ContinueGame();
         GameOverPanel.SetActive(false);
-        MenuController.Instance.ChangeScene(SceneNames.Store, LoadSceneMode.Single);
+        OpenStore();
         MenuController.Instance.OnRestartGame();
     }
 
