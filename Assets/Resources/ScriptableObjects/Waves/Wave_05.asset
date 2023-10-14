@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 5
   Title: 
-  Description: 
+  Description: The death comes from above!
   EnemyGroups:
   - EnemyType: 0
     Count: 18
@@ -48,4 +48,6 @@ MonoBehaviour:
   MaxSpawnCount: 10
   StartDelayMs: 2000
   EndDelayMs: 1500
-  MoneyMultiplier: 0.6
+  MoneyMultiplier: 1
+  IsBossWave: 0
+  BossGroupIndex: 0

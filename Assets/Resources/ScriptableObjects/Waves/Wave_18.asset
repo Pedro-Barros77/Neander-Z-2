@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 18
   Title: 
-  Description: demon
+  Description: The Hell on Earth
   EnemyGroups:
   - EnemyType: 1
     Count: 25
@@ -49,3 +49,5 @@ MonoBehaviour:
   StartDelayMs: 2000
   EndDelayMs: 1500
   MoneyMultiplier: 1
+  IsBossWave: 0
+  BossGroupIndex: 0

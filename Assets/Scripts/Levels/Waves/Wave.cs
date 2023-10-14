@@ -28,6 +28,7 @@ public class Wave : MonoBehaviour
     LevelData LevelData;
     Coroutine EnemySpawner;
     EnemyGroup BossGroup;
+    bool isSpawningMinAlive;
 
     void Start()
     {
@@ -47,8 +48,10 @@ public class Wave : MonoBehaviour
 
         if (EnemiesAlive.Count <= Data.MinEnemiesAlive && SpawnCount > 0)
         {
+            isSpawningMinAlive = true;
             int diff = Data.MinEnemiesAlive - EnemiesAlive.Count;
             SpawnMultipleEnemies(diff);
+            isSpawningMinAlive = false;
         }
 
         if (SpawnCount >= TotalEnemiesCount && EnemiesAlive.Count == 0 && !IsFinished)
@@ -124,10 +127,13 @@ public class Wave : MonoBehaviour
 
         while (HasMoreSpawns)
         {
-            int randomCount = Random.Range(Data.MinSpawnCount, Data.MaxSpawnCount);
-            int toSpawn = Mathf.Clamp(randomCount, 0, Data.MaxEnemiesAlive - EnemiesAlive.Count);
+            if (!isSpawningMinAlive)
+            {
+                int randomCount = Random.Range(Data.MinSpawnCount, Data.MaxSpawnCount);
+                int toSpawn = Mathf.Clamp(randomCount, 0, Data.MaxEnemiesAlive - EnemiesAlive.Count);
 
-            SpawnMultipleEnemies(toSpawn);
+                SpawnMultipleEnemies(toSpawn);
+            }
 
             float randomDelay = Random.Range(Data.MinSpawnDelayMs, Data.MaxSpawnDelayMs);
 
@@ -222,7 +228,7 @@ public class Wave : MonoBehaviour
     /// <returns>O script BaseEnemy da instância do inimigo spawnado.</returns>
     private BaseEnemy SpawnEnemyFromGroup(EnemyGroup group)
     {
-        if (group.Count <= 0) return null;
+        if (group == null || group.Count <= 0) return null;
 
         if (!group.IsInfinite)
         {

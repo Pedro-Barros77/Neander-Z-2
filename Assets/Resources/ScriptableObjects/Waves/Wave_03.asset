@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 3
   Title: 
-  Description: 
+  Description: Crawling bastards
   EnemyGroups:
   - EnemyType: 0
     Count: 15
@@ -49,3 +49,5 @@ MonoBehaviour:
   StartDelayMs: 2000
   EndDelayMs: 1500
   MoneyMultiplier: 1
+  IsBossWave: 0
+  BossGroupIndex: 0

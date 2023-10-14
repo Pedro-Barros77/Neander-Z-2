@@ -194,7 +194,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         if (IsInAttackRange)
             StartAttack(closestTarget);
 
-        HealthBar.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
+        if (HealthBar != null)
+            HealthBar.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
 
         Animation();
     }
@@ -256,6 +257,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="hitPosition">A posição que o popup vai aparecer</param>
     protected void ShowPopup(string text, Color32 textColor, Vector3 hitPosition)
     {
+        if (PopupPrefab == null)
+            return;
         var popup = Instantiate(PopupPrefab, hitPosition, Quaternion.identity, WorldPosCanvas.transform);
         var popupSystem = popup.GetComponent<PopupSystem>();
         if (popupSystem != null)
@@ -298,7 +301,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         }
 
         Health = Mathf.Clamp(Health - value, 0, MaxHealth);
-        HealthBar.RemoveValue(value);
+        if (HealthBar != null)
+            HealthBar.RemoveValue(value);
 
         if (Health <= 0)
             Die(bodyPartName, attacker);

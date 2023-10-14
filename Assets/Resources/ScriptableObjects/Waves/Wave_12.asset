@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 12
   Title: 
-  Description: 
+  Description: Remember the "Double Tap" rule!
   EnemyGroups:
   - EnemyType: 0
     Count: 15
@@ -28,18 +28,6 @@ MonoBehaviour:
     MaxKillScore: 53
     SpawnChanceMultiplier: 1
     IsInfinite: 0
-  - EnemyType: 2
-    Count: 12
-    MinHealth: 25
-    MaxHealth: 28
-    MinSpeed: 0.4
-    MaxSpeed: 0.57
-    MinDamage: 18
-    MaxDamage: 22
-    MinKillScore: 55
-    MaxKillScore: 60
-    SpawnChanceMultiplier: 1
-    IsInfinite: 0
   - EnemyType: 6
     Count: 8
     MinHealth: 20
@@ -50,7 +38,7 @@ MonoBehaviour:
     MaxDamage: 18
     MinKillScore: 55
     MaxKillScore: 60
-    SpawnChanceMultiplier: 1
+    SpawnChanceMultiplier: 1.5
     IsInfinite: 0
   - EnemyType: 4
     Count: 15
@@ -73,3 +61,5 @@ MonoBehaviour:
   StartDelayMs: 2000
   EndDelayMs: 1500
   MoneyMultiplier: 0.8
+  IsBossWave: 0
+  BossGroupIndex: 0

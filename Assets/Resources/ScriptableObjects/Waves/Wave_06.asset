@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 6
   Title: 
-  Description: 
+  Description: You hear barks at the distance...
   EnemyGroups:
   - EnemyType: 0
     Count: 15
@@ -38,7 +38,7 @@ MonoBehaviour:
     MaxDamage: 20
     MinKillScore: 50
     MaxKillScore: 56
-    SpawnChanceMultiplier: 2
+    SpawnChanceMultiplier: 1
     IsInfinite: 0
   - EnemyType: 1
     Count: 2
@@ -50,7 +50,7 @@ MonoBehaviour:
     MaxDamage: 24
     MinKillScore: 65
     MaxKillScore: 70
-    SpawnChanceMultiplier: 0.8
+    SpawnChanceMultiplier: 1.5
     IsInfinite: 0
   MinEnemiesAlive: 7
   MaxEnemiesAlive: 12
@@ -60,4 +60,6 @@ MonoBehaviour:
   MaxSpawnCount: 10
   StartDelayMs: 2000
   EndDelayMs: 1500
-  MoneyMultiplier: 0.6
+  MoneyMultiplier: 1
+  IsBossWave: 0
+  BossGroupIndex: 0

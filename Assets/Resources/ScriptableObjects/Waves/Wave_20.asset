@@ -14,38 +14,76 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 20
   Title: 
-  Description: 
+  Description: RUI returned and brought his TWIN BROTHER with him!
   EnemyGroups:
+  - EnemyType: 5
+    Count: 10
+    MinHealth: 70
+    MaxHealth: 80
+    MinSpeed: 0.4
+    MaxSpeed: 0.6
+    MinDamage: 25
+    MaxDamage: 26
+    MinKillScore: 48
+    MaxKillScore: 55
+    SpawnChanceMultiplier: 1.5
+    IsInfinite: 1
+  - EnemyType: 2
+    Count: 10
+    MinHealth: 20
+    MaxHealth: 24
+    MinSpeed: 0.4
+    MaxSpeed: 0.57
+    MinDamage: 13
+    MaxDamage: 18
+    MinKillScore: 55
+    MaxKillScore: 60
+    SpawnChanceMultiplier: 1
+    IsInfinite: 1
   - EnemyType: 1
     Count: 10
     MinHealth: 15
     MaxHealth: 18
     MinSpeed: 3
     MaxSpeed: 5
-    MinDamage: 25
-    MaxDamage: 25
-    MinKillScore: 48
-    MaxKillScore: 55
-    SpawnChanceMultiplier: 1
-    IsInfinite: 0
-  - EnemyType: 5
-    Count: 25
-    MinHealth: 70
-    MaxHealth: 80
-    MinSpeed: 0.4
-    MaxSpeed: 0.5
     MinDamage: 20
     MaxDamage: 24
-    MinKillScore: 60
-    MaxKillScore: 65
+    MinKillScore: 65
+    MaxKillScore: 70
     SpawnChanceMultiplier: 1
+    IsInfinite: 1
+  - EnemyType: 4
+    Count: 10
+    MinHealth: 1
+    MaxHealth: 3
+    MinSpeed: 1.2
+    MaxSpeed: 2
+    MinDamage: 2
+    MaxDamage: 8
+    MinKillScore: 15
+    MaxKillScore: 20
+    SpawnChanceMultiplier: 0.8
+    IsInfinite: 1
+  - EnemyType: 3
+    Count: 2
+    MinHealth: 1000
+    MaxHealth: 1000
+    MinSpeed: 0.4
+    MaxSpeed: 0.6
+    MinDamage: 20
+    MaxDamage: 20
+    MinKillScore: 110
+    MaxKillScore: 120
+    SpawnChanceMultiplier: 100
     IsInfinite: 0
   MinEnemiesAlive: 10
   MaxEnemiesAlive: 15
   MinSpawnDelayMs: 4000
   MaxSpawnDelayMs: 8000
-  MinSpawnCount: 5
-  MaxSpawnCount: 8
+  MinSpawnCount: 4
+  MaxSpawnCount: 6
   StartDelayMs: 2000
   EndDelayMs: 1500
-  MoneyMultiplier: 0.8
+  MoneyMultiplier: 1
+  IsBossWave: 1
+  BossGroupIndex: 4

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 17
   Title: 
-  Description: Look who's back, but more evolved
+  Description: Some zombies have evolved...
   EnemyGroups:
   - EnemyType: 0
     Count: 10
@@ -73,3 +73,5 @@ MonoBehaviour:
   StartDelayMs: 2000
   EndDelayMs: 1500
   MoneyMultiplier: 1
+  IsBossWave: 0
+  BossGroupIndex: 0

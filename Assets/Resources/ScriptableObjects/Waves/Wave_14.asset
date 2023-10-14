@@ -14,20 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 14
   Title: 
-  Description: 
+  Description: I'll take more than a headache to knock em down!
   EnemyGroups:
-  - EnemyType: 0
-    Count: 15
-    MinHealth: 35
-    MaxHealth: 40
-    MinSpeed: 0.4
-    MaxSpeed: 0.7
-    MinDamage: 15
-    MaxDamage: 20
-    MinKillScore: 46
-    MaxKillScore: 53
-    SpawnChanceMultiplier: 1
-    IsInfinite: 0
   - EnemyType: 2
     Count: 12
     MinHealth: 25
@@ -41,7 +29,7 @@ MonoBehaviour:
     SpawnChanceMultiplier: 1
     IsInfinite: 0
   - EnemyType: 6
-    Count: 8
+    Count: 10
     MinHealth: 20
     MaxHealth: 26
     MinSpeed: 0.4
@@ -52,20 +40,8 @@ MonoBehaviour:
     MaxKillScore: 60
     SpawnChanceMultiplier: 1
     IsInfinite: 0
-  - EnemyType: 1
-    Count: 5
-    MinHealth: 15
-    MaxHealth: 18
-    MinSpeed: 3
-    MaxSpeed: 5
-    MinDamage: 20
-    MaxDamage: 24
-    MinKillScore: 65
-    MaxKillScore: 70
-    SpawnChanceMultiplier: 1
-    IsInfinite: 0
   - EnemyType: 5
-    Count: 4
+    Count: 7
     MinHealth: 60
     MaxHealth: 70
     MinSpeed: 0.4
@@ -77,7 +53,7 @@ MonoBehaviour:
     SpawnChanceMultiplier: 1
     IsInfinite: 0
   - EnemyType: 4
-    Count: 10
+    Count: 12
     MinHealth: 1
     MaxHealth: 3
     MinSpeed: 1.4
@@ -97,3 +73,5 @@ MonoBehaviour:
   StartDelayMs: 2000
   EndDelayMs: 1500
   MoneyMultiplier: 1
+  IsBossWave: 0
+  BossGroupIndex: 0

@@ -158,7 +158,8 @@ public class Raimundo : BaseEnemy
 
     protected override IEnumerator StartDeathFadeOutCountDown()
     {
-        Destroy(HealthBar.gameObject);
+        if (HealthBar != null)
+            Destroy(HealthBar.gameObject);
 
         if (DeathFadeOutDelayMs > 0)
             yield return new WaitForSeconds(DeathFadeOutDelayMs / 1000f);

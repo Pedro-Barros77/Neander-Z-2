@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 11
   Title: 
-  Description: kill the remnants of the boss fight
+  Description: Kill the remnants of the boss fight
   EnemyGroups:
   - EnemyType: 0
     Count: 40
     MinHealth: 40
     MaxHealth: 40
-    MinSpeed: 0.4
-    MaxSpeed: 0.7
+    MinSpeed: 0.6
+    MaxSpeed: 0.9
     MinDamage: 15
     MaxDamage: 18
     MinKillScore: 46
@@ -37,3 +37,5 @@ MonoBehaviour:
   StartDelayMs: 2000
   EndDelayMs: 1500
   MoneyMultiplier: 0.1
+  IsBossWave: 0
+  BossGroupIndex: 0

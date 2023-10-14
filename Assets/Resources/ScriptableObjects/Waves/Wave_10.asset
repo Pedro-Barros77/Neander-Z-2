@@ -50,7 +50,7 @@ MonoBehaviour:
     MaxDamage: 24
     MinKillScore: 65
     MaxKillScore: 70
-    SpawnChanceMultiplier: 1
+    SpawnChanceMultiplier: 1.5
     IsInfinite: 1
   - EnemyType: 4
     Count: 10
@@ -62,7 +62,7 @@ MonoBehaviour:
     MaxDamage: 8
     MinKillScore: 15
     MaxKillScore: 20
-    SpawnChanceMultiplier: 1
+    SpawnChanceMultiplier: 1.2
     IsInfinite: 1
   - EnemyType: 3
     Count: 1
