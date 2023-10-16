@@ -28,7 +28,6 @@ public class Wave : MonoBehaviour
     LevelData LevelData;
     Coroutine EnemySpawner;
     EnemyGroup BossGroup;
-    bool isSpawningMinAlive;
 
     void Start()
     {
@@ -48,10 +47,8 @@ public class Wave : MonoBehaviour
 
         if (EnemiesAlive.Count <= Data.MinEnemiesAlive && SpawnCount > 0)
         {
-            isSpawningMinAlive = true;
             int diff = Data.MinEnemiesAlive - EnemiesAlive.Count;
             SpawnMultipleEnemies(diff);
-            isSpawningMinAlive = false;
         }
 
         if (SpawnCount >= TotalEnemiesCount && EnemiesAlive.Count == 0 && !IsFinished)
@@ -67,7 +64,8 @@ public class Wave : MonoBehaviour
     public void StartWave()
     {
         TotalEnemiesCount = Data.EnemyGroups.Sum(x => x.Count);
-        BossGroup = Data.EnemyGroups[Data.BossGroupIndex];
+        if (Data.IsBossWave)
+            BossGroup = Data.EnemyGroups[Data.BossGroupIndex];
         HasStarted = true;
         EnemySpawner = StartCoroutine(EnemiesSpawner());
     }
@@ -127,13 +125,9 @@ public class Wave : MonoBehaviour
 
         while (HasMoreSpawns)
         {
-            if (!isSpawningMinAlive)
-            {
-                int randomCount = Random.Range(Data.MinSpawnCount, Data.MaxSpawnCount);
-                int toSpawn = Mathf.Clamp(randomCount, 0, Data.MaxEnemiesAlive - EnemiesAlive.Count);
-
-                SpawnMultipleEnemies(toSpawn);
-            }
+            int randomCount = Random.Range(Data.MinSpawnCount, Data.MaxSpawnCount);
+            int toSpawn = Mathf.Clamp(randomCount, 0, Data.MaxEnemiesAlive - EnemiesAlive.Count);
+            SpawnMultipleEnemies(toSpawn);
 
             float randomDelay = Random.Range(Data.MinSpawnDelayMs, Data.MaxSpawnDelayMs);
 
@@ -202,10 +196,7 @@ public class Wave : MonoBehaviour
     private EnemyGroup ChooseEnemyGroup()
     {
         if (Data.EnemyGroups.Count == 0)
-        {
-            Debug.LogWarning("No Enemy Group Found");
             return null;
-        }
 
         float weightSum = Data.EnemyGroups.Sum(x => x.SpawnChanceMultiplier);
         var randomWeight = Random.Range(0f, weightSum);
