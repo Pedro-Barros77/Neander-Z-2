@@ -59,7 +59,7 @@ public class Rui : BaseEnemy
 
         Animation();
 
-        if (isBumping || isAttacking)
+        if (isBumping && Target != null)
         {
             var targetDirection = Target.transform.position.x - transform.position.x;
             FlipEnemy(Mathf.Sign(targetDirection));

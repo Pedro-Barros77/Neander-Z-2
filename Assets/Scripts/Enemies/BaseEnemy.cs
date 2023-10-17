@@ -197,6 +197,12 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         if (HealthBar != null)
             HealthBar.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
 
+        if (isAttacking && closestTarget != null)
+        {
+            var targetDirection = closestTarget.transform.position.x - transform.position.x;
+            FlipEnemy(Mathf.Sign(targetDirection));
+        }
+
         Animation();
     }
 
