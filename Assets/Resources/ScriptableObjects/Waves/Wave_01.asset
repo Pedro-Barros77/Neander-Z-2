@@ -17,19 +17,7 @@ MonoBehaviour:
   Description: And so it begins...
   EnemyGroups:
   - EnemyType: 0
-    Count: 0
-    MinHealth: 20
-    MaxHealth: 25
-    MinSpeed: 0.4
-    MaxSpeed: 0.6
-    MinDamage: 13
-    MaxDamage: 18
-    MinKillScore: 46
-    MaxKillScore: 53
-    SpawnChanceMultiplier: 1
-    IsInfinite: 0
-  - EnemyType: 3
-    Count: 1
+    Count: 10
     MinHealth: 20
     MaxHealth: 25
     MinSpeed: 0.4
@@ -49,5 +37,5 @@ MonoBehaviour:
   StartDelayMs: 2000
   EndDelayMs: 1500
   MoneyMultiplier: 1
-  IsBossWave: 1
+  IsBossWave: 0
   BossGroupIndex: 1
