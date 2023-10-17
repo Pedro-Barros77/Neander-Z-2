@@ -15,7 +15,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField]
     public StoreItemData Data;
     [SerializeField]
-    TextMeshProUGUI TitleText, PriceText;
+    public TextMeshProUGUI TitleText, PriceText, CountText;
     [SerializeField]
     Image IconImage;
     [SerializeField]
@@ -184,6 +184,8 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 WeaponEquippedSlot.Secondary => "Secondary",
                 _ => ""
             };
+
+            CountText.text = $"{storeScreen.PlayerData.InventoryData.GetAmmo(data.WeaponData.BulletType)}/{storeScreen.PlayerData.InventoryData.GetMaxAmmo(data.WeaponData.BulletType)}";
         }
         else
         {
@@ -211,7 +213,10 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         Data.MaxedUp = throwable.Count >= throwable.MaxCount;
 
         if (IsInventoryItem)
+        {
             PriceText.text = throwable.IsEquipped ? "Equipped" : "";
+            CountText.text = $"{throwable.Count}/{throwable.MaxCount}";
+        }
     }
 
     private void UpdateTacticalAbility()
