@@ -32,7 +32,7 @@ public class Rui : BaseEnemy
 
         base.Start();
 
-        HealthBar.AnimationSpeed = 5f;
+        HealthBar.AnimationSpeed = 30f;
     }
 
     protected override void Update()
