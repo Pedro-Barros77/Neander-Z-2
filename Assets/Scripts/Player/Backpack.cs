@@ -94,11 +94,11 @@ public class Backpack
     /// <summary>
     /// Retorna a arma primária escolhida, caso exista no arsenal de primárias.
     /// </summary>
-    public BaseWeapon EquippedPrimaryWeapon => PrimaryWeaponsInstances.Concat(SecondaryWeaponsInstances).First(w => w.Type == EquippedPrimaryType);
+    public BaseWeapon EquippedPrimaryWeapon => PrimaryWeaponsInstances.Concat(SecondaryWeaponsInstances).FirstOrDefault(w => w.Type == EquippedPrimaryType);
     /// <summary>
     /// Retorna a arma secundária escolhida, caso exista no arsenal de secundárias.
     /// </summary>
-    public BaseWeapon EquippedSecondaryWeapon => SecondaryWeaponsInstances.First(w => w.Type == EquippedSecondaryType);
+    public BaseWeapon EquippedSecondaryWeapon => SecondaryWeaponsInstances.FirstOrDefault(w => w.Type == EquippedSecondaryType);
     /// <summary>
     /// Retorna a arma atualmente equipada nas mãos do jogador.
     /// </summary>

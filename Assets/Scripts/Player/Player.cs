@@ -260,8 +260,8 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         IsAlive = false;
         isDying = true;
         StaminaBar.gameObject.SetActive(false);
-        Destroy(Backpack.EquippedPrimaryWeapon.gameObject);
-        Destroy(Backpack.EquippedSecondaryWeapon.gameObject);
+        Destroy(Backpack.EquippedPrimaryWeapon?.gameObject);
+        Destroy(Backpack.EquippedSecondaryWeapon?.gameObject);
     }
 
     /// <summary>
