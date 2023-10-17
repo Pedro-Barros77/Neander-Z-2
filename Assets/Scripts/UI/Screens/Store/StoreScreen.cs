@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class StoreScreen : MonoBehaviour
 {
     public List<GameObject> StoreItems { get; private set; }
-    public StoreItem SelectedItem { get; private set; }
+    public StoreItem SelectedItem { get; set; }
     public StoreTabs ActiveTab { get; private set; } = StoreTabs.Weapons;
     public bool hasItem => SelectedItem != null && SelectedItem.Data != null;
 
@@ -18,23 +18,23 @@ public class StoreScreen : MonoBehaviour
 
     [SerializeField]
     public PlayerData PlayerData;
+    public Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, ActiveTabImage, InactiveTabImage;
+    public CustomAudio PurchaseSound;
+    public AudioSource audioSource;
+    public TextMeshProUGUI PlayerMoneyText;
+
     [SerializeField]
-    TextMeshProUGUI PlayerMoneyText, PreviewTitleText, PreviewPriceText, PreviewDescriptionText, PreviewIsPrimaryText, PreviewTagsText, PreviewHeadshotMultiplierText, PreviewMagazineBulletsText, PreviewPelletsCountText, PreviewDispersionText, PreviewCountText, PreviewTotalCountText;
+    TextMeshProUGUI PreviewTitleText, PreviewPriceText, PreviewDescriptionText, PreviewIsPrimaryText, PreviewTagsText, PreviewHeadshotMultiplierText, PreviewMagazineBulletsText, PreviewPelletsCountText, PreviewDispersionText, PreviewCountText, PreviewTotalCountText;
     [SerializeField]
     Image PreviewIcon, PreviewBulletIcon;
-    [SerializeField]
-    public Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, ActiveTabImage, InactiveTabImage;
     [SerializeField]
     Button BuyButton, TestItemButton, BtnReady;
     [SerializeField]
     GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab;
     [SerializeField]
-    CustomAudio PurchaseSound;
-    [SerializeField]
     SectionedBar DamageBar, FireRateBar, ReloadSpeedBar, RangeBar;
 
     TextMeshProUGUI PreviewBtnBuyText, BtnReadyText;
-    AudioSource audioSource;
     Animator storePanelAnimator;
     GameObject PopupPrefab;
     Canvas WorldPosCanvas;
@@ -319,6 +319,22 @@ public class StoreScreen : MonoBehaviour
     }
 
     /// <summary>
+    /// Função para exibir o popup com devidos parâmetros.
+    /// </summary>
+    /// <param name="text">Texto a ser exibido</param>
+    /// <param name="textColor">A cor que o popup vai ser exibido</param>
+    /// <param name="hitPosition">A posição que o popup vai aparecer</param>
+    public void ShowPopup(string text, Color32 textColor, Vector3 hitPosition)
+    {
+        var popup = Instantiate(PopupPrefab, hitPosition, Quaternion.identity, WorldPosCanvas.transform);
+        var popupSystem = popup.GetComponent<PopupSystem>();
+        if (popupSystem != null)
+        {
+            popupSystem.Init(text, hitPosition, 22000f, textColor, 50);
+        }
+    }
+
+    /// <summary>
     /// Preenche o texto das tags e ativa o gameobject. Caso não haja tags, desativa o gameobject.
     /// </summary>
     /// <param name="tagsList">A coleção de tags.</param>
@@ -414,22 +430,6 @@ public class StoreScreen : MonoBehaviour
         }
 
         DamageBar.transform.parent.parent.gameObject.SetActive(damage != null || fireRate != null || reloadSpeed != null || range != null);
-    }
-
-    /// <summary>
-    /// Função para exibir o popup com devidos parâmetros.
-    /// </summary>
-    /// <param name="text">Texto a ser exibido</param>
-    /// <param name="textColor">A cor que o popup vai ser exibido</param>
-    /// <param name="hitPosition">A posição que o popup vai aparecer</param>
-    private void ShowPopup(string text, Color32 textColor, Vector3 hitPosition)
-    {
-        var popup = Instantiate(PopupPrefab, hitPosition, Quaternion.identity, WorldPosCanvas.transform);
-        var popupSystem = popup.GetComponent<PopupSystem>();
-        if (popupSystem != null)
-        {
-            popupSystem.Init(text, hitPosition, 22000f, textColor, 50);
-        }
     }
 
     /// <summary>

@@ -15,11 +15,11 @@ public class InventoryTab : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI PistolAmmo, PistolMaxAmmo, ShotgunAmmo, ShotgunMaxAmmo, RifleAmmo, RifleMaxAmmo, SniperAmmo, SniperMaxAmmo, RocketAmmo, RocketMaxAmmo;
     [SerializeField]
-    TextMeshProUGUI PreviewTitleText, PreviewHeadshotMultiplierText, PreviewMgazineBulletsText, PreviewPelletsCountText, PreviewDispersionText;
+    TextMeshProUGUI PreviewTitleText, PreviewHeadshotMultiplierText, PreviewMgazineBulletsText, PreviewPelletsCountText, PreviewDispersionText, PreviewBtnSellText;
     [SerializeField]
     Image PreviewBulletIcon;
     [SerializeField]
-    Button BtnSwitchWeapons;
+    Button BtnSwitchWeapons, BtnSell;
 
     [SerializeField]
     public InventorySlot PrimarySlot, SecondarySlot, GrenadeSlot, DeployableSlot, SupportSlot, AbilitySlot, SkillSlot;
@@ -246,6 +246,12 @@ public class InventoryTab : MonoBehaviour
     {
         PreviewTitleText.text = item.Data.Title;
 
+        BtnSell.interactable = item.Data.IsSellable;
+        if (item.Data.IsSellable)
+            PreviewBtnSellText.text = $"Sell for $ {(item.Data.Price - item.Data.Discount) / 2}";
+        else
+            PreviewBtnSellText.text = "Can't sell";
+
         if (item.Data.IsWeapon)
         {
             var data = item.Data as StoreWeaponData;
@@ -281,5 +287,99 @@ public class InventoryTab : MonoBehaviour
                 _ => null,
             };
         }
+    }
+
+    /// <summary>
+    /// Função chamada quando o player clica no botão de vender.
+    /// </summary>
+    public void SellItem()
+    {
+        var item = storeScreen.SelectedItem;
+
+        if (item == null || item.Data == null)
+            return;
+
+        if (!item.Data.IsSellable)
+            return;
+
+        bool sold = false;
+
+        if (item.Data is StoreWeaponData weaponData)
+            sold = SellWeapon(weaponData);
+
+        if (item.Data is StoreThrowableData throwableData)
+            sold = SellThrowable(throwableData);
+
+        if (!sold)
+            return;
+
+        float value = (item.Data.Price - item.Data.Discount) / 2;
+
+        storeScreen.PlayerData.GetMoney(value);
+        storeScreen.audioSource.PlayOneShot(storeScreen.PurchaseSound.Audio, storeScreen.PurchaseSound.Volume);
+        storeScreen.ShowPopup($"+{value:N2}", Color.green, storeScreen.PlayerMoneyText.transform.position);
+    }
+
+    /// <summary>
+    /// Verifica se o player possui a arma e a remove.
+    /// </summary>
+    /// <param name="data">Os dados da arma a ser vendida.</param>
+    /// <returns>Se a arma foi encontrada e removida.</returns>
+    private bool SellWeapon(StoreWeaponData data)
+    {
+        var weapon = Inventory.PrimaryWeaponsSelection
+                 .Concat(Inventory.SecondaryWeaponsSelection)
+                 .FirstOrDefault(x => x.Type == data.WeaponData.Type);
+
+        if (weapon == null)
+            return false;
+
+        if (weapon.EquippedSlot == WeaponEquippedSlot.Primary)
+            PrimarySlot.ClearSlot();
+        else if (weapon.EquippedSlot == WeaponEquippedSlot.Secondary)
+            SecondarySlot.ClearSlot();
+
+        Transform inventoryWeapon = weaponsColumn.Find(data.WeaponData.Type.ToString());
+        if (inventoryWeapon != null)
+            Destroy(inventoryWeapon.gameObject);
+
+        Inventory.PrimaryWeaponsSelection = Inventory.PrimaryWeaponsSelection.Where(x => x.Type != data.WeaponData.Type).ToList();
+        Inventory.SecondaryWeaponsSelection = Inventory.SecondaryWeaponsSelection.Where(x => x.Type != data.WeaponData.Type).ToList();
+
+        storeScreen.SelectedItem = null;
+
+        return true;
+    }
+
+    /// <summary>
+    /// Verifica se o player possui o arremessável e o remove.
+    /// </summary>
+    /// <param name="data">Os dados do arremessável a ser vendido.</param>
+    /// <returns>Se o arremessável foi encontrado e removido.</returns>
+    private bool SellThrowable(StoreThrowableData data)
+    {
+        var throwable = Inventory.ThrowableItemsSelection
+                .FirstOrDefault(x => x.Type == data.ThrowableData.Type);
+
+        if (throwable == null)
+            return false;
+
+        if (throwable.Count > 1)
+            throwable.Count--;
+        else
+        {
+            if (throwable.IsEquipped)
+                GrenadeSlot.ClearSlot();
+
+            Transform inventoryThrowable = throwablesColumn.Find(data.ThrowableData.Type.ToString());
+            if (inventoryThrowable != null)
+                Destroy(inventoryThrowable.gameObject);
+
+            Inventory.ThrowableItemsSelection = Inventory.ThrowableItemsSelection.Where(x => x.Type != data.ThrowableData.Type).ToList();
+
+            storeScreen.SelectedItem = null;
+        }
+
+        return true;
     }
 }
