@@ -4,6 +4,7 @@ using UnityEngine;
 public class BaseThrowableData : AutoRevertSO
 {
     public ThrowableTypes Type;
+    public int MaxCount;
 
     public float Damage;
     public float MinDamage;

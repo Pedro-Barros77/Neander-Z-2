@@ -202,13 +202,16 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void UpdateThrowable()
     {
         var data = Data as StoreThrowableData;
+        var throwable = storeScreen.PlayerData.InventoryData.ThrowableItemsSelection
+            .FirstOrDefault(x => x.Type == data.ThrowableData.Type);
+
+        if (throwable == null)
+            return;
+
+        Data.MaxedUp = throwable.Count >= throwable.MaxCount;
 
         if (IsInventoryItem)
-        {
-            var throwable = storeScreen.PlayerData.InventoryData.ThrowableItemsSelection
-                .FirstOrDefault(x => x.Type == data.ThrowableData.Type);
             PriceText.text = throwable.IsEquipped ? "Equipped" : "";
-        }
     }
 
     private void UpdateTacticalAbility()

@@ -549,19 +549,21 @@ public class StoreScreen : MonoBehaviour
         if (data.Amount <= 0)
             return false;
 
-        PlayerData.InventoryData.UnequipAllThrowables();
-
         bool hasThrowable = PlayerData.InventoryData.HasThrowable(data.ThrowableData.Type);
 
         if (!hasThrowable)
         {
-            PlayerData.InventoryData.ThrowableItemsSelection.Add(new(data.ThrowableData.Type, (int)data.Amount, true));
+            PlayerData.InventoryData.UnequipAllThrowables();
+            PlayerData.InventoryData.ThrowableItemsSelection.Add(new(data.ThrowableData.Type, (int)data.Amount, data.ThrowableData.MaxCount, true));
             var item = inventoryTab.CreateInventoryItem(data, true);
             inventoryTab.GrenadeSlot.DropItem(item);
         }
         else
         {
             var throwable = PlayerData.InventoryData.ThrowableItemsSelection.Find(t => t.Type == data.ThrowableData.Type);
+            if (throwable.Count >= throwable.MaxCount)
+                return false;
+            PlayerData.InventoryData.UnequipAllThrowables();
             throwable.Count += (int)data.Amount;
             throwable.IsEquipped = true;
         }
