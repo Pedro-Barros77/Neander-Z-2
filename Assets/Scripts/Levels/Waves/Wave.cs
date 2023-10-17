@@ -42,8 +42,11 @@ public class Wave : MonoBehaviour
 
         EnemiesAlive = EnemiesAlive.Where(x => x != null && x.IsAlive).ToList();
 
-        if (Input.GetKeyDown(KeyCode.End))
-            KillAllWave();
+        if (Constants.EnableDevKeybinds)
+        {
+            if (Input.GetKeyDown(KeyCode.End))
+                KillAllWave();
+        }
 
         if (EnemiesAlive.Count <= Data.MinEnemiesAlive && SpawnCount > 0)
         {

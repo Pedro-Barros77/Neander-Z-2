@@ -71,9 +71,11 @@ public class MenuController : MonoBehaviour
         }
         else
             Cursor.visible = true;
-        if (Input.GetKeyDown(KeyCode.U))
+
+        if (Constants.EnableDevKeybinds)
         {
-            FpsCount.gameObject.SetActive(!FpsCount.gameObject.activeSelf);
+            if (Input.GetKeyDown(KeyCode.U))
+                FpsCount.gameObject.SetActive(!FpsCount.gameObject.activeSelf);
         }
     }
 

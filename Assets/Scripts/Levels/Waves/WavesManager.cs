@@ -51,20 +51,23 @@ public class WavesManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-            SpawnEnemyTest(EnemyTypes.Z_Roger);
-        if (Input.GetKeyDown(KeyCode.X))
-            SpawnEnemyTest(EnemyTypes.Z_Robert);
-        if (Input.GetKeyDown(KeyCode.V))
-            SpawnEnemyTest(EnemyTypes.Z_Ronald);
-        if (Input.GetKeyDown(KeyCode.B))
-            SpawnEnemyTest(EnemyTypes.Z_Ronaldo);
-        if (Input.GetKeyDown(KeyCode.N))
-            SpawnEnemyTest(EnemyTypes.Z_Raven);
-        if (Input.GetKeyDown(KeyCode.M))
-            SpawnEnemyTest(EnemyTypes.Z_Raimundo);
-        if (Input.GetKeyDown(KeyCode.L))
-            SpawnEnemyTest(EnemyTypes.Z_Rui);
+        if (Constants.EnableDevKeybinds)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+                SpawnEnemyTest(EnemyTypes.Z_Roger);
+            if (Input.GetKeyDown(KeyCode.X))
+                SpawnEnemyTest(EnemyTypes.Z_Robert);
+            if (Input.GetKeyDown(KeyCode.V))
+                SpawnEnemyTest(EnemyTypes.Z_Ronald);
+            if (Input.GetKeyDown(KeyCode.B))
+                SpawnEnemyTest(EnemyTypes.Z_Ronaldo);
+            if (Input.GetKeyDown(KeyCode.N))
+                SpawnEnemyTest(EnemyTypes.Z_Raven);
+            if (Input.GetKeyDown(KeyCode.M))
+                SpawnEnemyTest(EnemyTypes.Z_Raimundo);
+            if (Input.GetKeyDown(KeyCode.L))
+                SpawnEnemyTest(EnemyTypes.Z_Rui);
+        }
 
         WaveEnemiesCountText.text = $"{CurrentWave.SpawnCount - CurrentWave.EnemiesAlive.Count}/{(CurrentWave.Data.IsBossWave ? "∞" : CurrentWave.TotalEnemiesCount)}";
     }

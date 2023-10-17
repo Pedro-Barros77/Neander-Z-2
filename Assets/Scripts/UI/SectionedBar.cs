@@ -36,15 +36,8 @@ public class SectionedBar : MonoBehaviour
         else if (Value < MaxValue && canvasGroup.alpha != 1)
             canvasGroup.alpha = 1;
 
-        if (Input.GetKeyDown(KeyCode.K))
-            AddValue(10);
-        if (Input.GetKeyDown(KeyCode.J))
-            RemoveValue(10);
-
         if (BlinkModification && !isBlinkingModification)
-        {
             StartCoroutine(BlinkModificationLoop());
-        }
     }
 
     /// <summary>

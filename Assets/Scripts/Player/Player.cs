@@ -156,14 +156,17 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     {
         StaminaBar.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Constants.EnableDevKeybinds)
         {
-            GetHealth(20);
-            GetStamina(20);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            TakeDamage(20, "");
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                GetHealth(20);
+                GetStamina(20);
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                TakeDamage(20, "");
+            }
         }
     }
 

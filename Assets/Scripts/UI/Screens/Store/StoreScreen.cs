@@ -136,13 +136,12 @@ public class StoreScreen : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Constants.EnableDevKeybinds)
         {
-            PlayerData.GetMoney(100);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            PlayerData.TakeMoney(100);
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+                PlayerData.GetMoney(100);
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                PlayerData.TakeMoney(100);
         }
     }
 
