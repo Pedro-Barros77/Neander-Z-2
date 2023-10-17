@@ -138,7 +138,7 @@ public class WavesManager : MonoBehaviour
         MenuController.Instance.PauseGame();
         WaveSummaryPanel.SetActive(true);
         SummaryTitle.text = $"Survived {CurrentWave.Data.Title.ValueOrDefault($"Wave {WaveNumber}")}";
-        P1WaveScoreValue.text = CurrentWave.P1Score.ToString();
+        P1WaveScoreValue.text = CurrentWave.P1Score.ToString("N0");
         P1EarnedMoneyValue.text = $"$ {CurrentWave.P1Money:N2}";
         P1TotalKillsValue.text = CurrentWave.P1TotalKills.ToString();
         P1HeadshotKillsValue.text = CurrentWave.P1HeadshotKills.ToString();
