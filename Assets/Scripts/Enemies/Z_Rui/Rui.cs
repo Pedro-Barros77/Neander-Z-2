@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Rui : BaseEnemy
 {
-    private float knockBackForce = 3500f;
+    private float knockBackForce = 1500f;
     private float bumpDamage = 10f;
     private float bumpDistance = 2f;
     private IEnemyTarget Target;
