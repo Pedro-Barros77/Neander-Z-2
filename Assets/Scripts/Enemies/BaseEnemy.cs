@@ -247,6 +247,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         Damage = Mathf.Clamp(damage, 0, damage);
         KillScore = Mathf.Clamp(killscore, 0, killscore);
         IsBoss = isBoss;
+        HealthBar.SetMaxValue(health, health);
     }
 
     /// <summary>
