@@ -91,8 +91,10 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (Data == null)
         {
+#if UNITY_EDITOR
             if (PrefabUtility.HasPrefabInstanceAnyOverrides(gameObject, false))
                 PrefabUtility.RevertPrefabInstance(gameObject, InteractionMode.AutomatedAction);
+#endif
 
             gameObject.name = "StoreItem";
             return;

@@ -5,10 +5,13 @@ public class AutoRevertSO : ScriptableObject
 {
     protected virtual void OnEnable()
     {
+#if UNITY_EDITOR
         EditorApplication.playModeStateChanged += OnPlayModeChanged;
+#endif
         MenuController.RestartEvent += UnloadSO;
     }
 
+#if UNITY_EDITOR
     protected virtual void OnPlayModeChanged(PlayModeStateChange state)
     {
         if (state == PlayModeStateChange.ExitingPlayMode)
@@ -16,6 +19,7 @@ public class AutoRevertSO : ScriptableObject
             UnloadSO();
         }
     }
+#endif
 
     public virtual void UnloadSO()
     {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.Device;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
 {
