@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Rui : BaseEnemy
 {
-    private float knockBackForce = 2500f;
+    private float knockBackForce = 3500f;
     private float bumpDamage = 10f;
     private float bumpDistance = 2f;
     private IEnemyTarget Target;
@@ -130,7 +130,7 @@ public class Rui : BaseEnemy
 
         HitTargetsIds.Add(targetInstanceId);
 
-        Vector3 direction = new(Mathf.Sign(Target.transform.position.x - transform.position.x), 0.5f);
+        Vector3 direction = new(Mathf.Sign(Target.transform.position.x - transform.position.x), 0.9f);
         if (Target is IKnockBackable knockBackable)
             knockBackable.TakeKnockBack(_pushForce, direction);
     }
