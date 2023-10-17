@@ -555,7 +555,11 @@ public class StoreScreen : MonoBehaviour
         bool hasThrowable = PlayerData.InventoryData.HasThrowable(data.ThrowableData.Type);
 
         if (!hasThrowable)
+        {
             PlayerData.InventoryData.ThrowableItemsSelection.Add(new(data.ThrowableData.Type, (int)data.Amount, true));
+            var item = inventoryTab.CreateInventoryItem(data, true);
+            inventoryTab.GrenadeSlot.DropItem(item);
+        }
         else
         {
             var throwable = PlayerData.InventoryData.ThrowableItemsSelection.Find(t => t.Type == data.ThrowableData.Type);
