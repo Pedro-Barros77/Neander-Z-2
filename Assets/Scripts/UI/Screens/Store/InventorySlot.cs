@@ -131,6 +131,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (isWeapon && Data is StoreWeaponData weaponData)
         {
             AmmoText.transform.parent.gameObject.SetActive(true);
+            item.CountText.gameObject.SetActive(true);
 
             AmmoIconImage.sprite = weaponData.WeaponData.BulletType switch
             {
@@ -171,6 +172,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         }
         else if (isThrowable && Data is StoreThrowableData throwableData)
         {
+            item.CountText.gameObject.SetActive(true);
             AmmoText.transform.parent.gameObject.SetActive(true);
 
             if (oldData != null)
