@@ -145,10 +145,11 @@ public class InventoryData : AutoRevertSO
         public bool IsEquipped;
 
         public ThrowableSelection() { }
-        public ThrowableSelection(ThrowableTypes type, int count, bool isEquipped)
+        public ThrowableSelection(ThrowableTypes type, int count, int maxCount, bool isEquipped)
         {
             Type = type;
             Count = count;
+            MaxCount = maxCount;
             IsEquipped = isEquipped;
         }
     }

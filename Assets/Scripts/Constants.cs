@@ -2,7 +2,7 @@ using UnityEngine;
 
 public static class Constants
 {
-    public static bool EnableDevKeybinds { get; private set; } = false;
+    public static bool EnableDevKeybinds { get; private set; } = true;
     public static float MaxWeaponDamage { get; private set; } = 60;
     public static float MaxWeaponFireRate { get; private set; } = 18;
     public static float MaxWeaponReloadSpeed { get; private set; } = 12;
