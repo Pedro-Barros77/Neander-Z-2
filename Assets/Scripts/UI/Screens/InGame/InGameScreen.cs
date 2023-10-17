@@ -12,7 +12,7 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     private Image ActiveWeaponImage, ActiveAmmoImage, ActiveThrowableImage;
     [SerializeField]
-    private TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText;
+    private TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText, PlayerMoneyText, WaveScoreText;
     [SerializeField]
     Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon;
     [SerializeField]
@@ -42,6 +42,9 @@ public class InGameScreen : MonoBehaviour
     /// </summary>
     private void UpdateInGameUI()
     {
+        PlayerMoneyText.text = Player.Data.Money.ToString("N2");
+        WaveScoreText.text = WavesManager.Instance.CurrentWave.P1Score.ToString("N0");
+
         MagazineBulletsText.text = Player.CurrentWeapon.MagazineBullets.ToString();
         TotalBulletsText.text = Player.Backpack.GetAmmo(Player.CurrentWeapon.BulletType).ToString();
         if (Player.Backpack.EquippedThrowableType != ThrowableTypes.None)
