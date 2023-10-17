@@ -17,6 +17,7 @@ public class Raimundo : BaseEnemy
     private Rigidbody2D HelmetRigidBody;
     private SpriteRenderer HelmetSprite;
     private float CurrentHelmetSpriteAlpha = 1f;
+    private float BodyDamageMultiplier = 0.2f;
     protected override void Start()
     {
         Type = EnemyTypes.Z_Raimundo;
@@ -99,6 +100,7 @@ public class Raimundo : BaseEnemy
                 color = Color.red;
                 break;
             default:
+                value *= BodyDamageMultiplier;
                 color = Color.yellow;
                 break;
         }
