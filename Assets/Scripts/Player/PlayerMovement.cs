@@ -165,6 +165,7 @@ public class PlayerMovement : MonoBehaviour
         float rollDirection = isLeft ? -1 : 1;
         Player.RigidBody.AddForce(new Vector2(Player.RollForce * rollDirection, 10f));
         Player.LoseStamina(Player.RollStaminaDrain);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyAttack"), LayerMask.NameToLayer("Player"), true);
     }
 
     /// <summary>
@@ -187,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isRolling = false;
         isRunning = true;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("EnemyAttack"), LayerMask.NameToLayer("Player"), false);
     }
 
     /// <summary>
