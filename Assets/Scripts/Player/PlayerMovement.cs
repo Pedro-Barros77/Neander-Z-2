@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     Player Player;
     Animator animator;
     SpriteRenderer spriteRenderer;
-    
+
     void Start()
     {
         Player = GetComponentInParent<Player>();
@@ -51,10 +51,13 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        dirInput = Input.GetAxisRaw("Horizontal");
+        dirInput = 0;
+        if (Constants.GetAction(InputActions.MoveLeft)) dirInput = -1;
+        if (Constants.GetAction(InputActions.MoveRight)) dirInput = 1;
+
         var rollCooledDown = LastRollTime + (Player.RollCooldownMs / 1000) <= Time.time;
 
-        if (Input.GetKey(KeyCode.LeftControl) && isGrounded && !isJumpingSideways && Player.Backpack.EquippedTacticalAbilityType == TacticalAbilityTypes.TacticalRoll)
+        if (Constants.GetAction(InputActions.TacticalAbility) && isGrounded && !isJumpingSideways && Player.Backpack.EquippedTacticalAbilityType == TacticalAbilityTypes.TacticalRoll)
         {
             if (isPressingRight && !isPressingLeft && rollCooledDown)
                 Roll(false);
@@ -63,16 +66,16 @@ public class PlayerMovement : MonoBehaviour
                 Roll(true);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isRolling && !isCrouching)
+        if (Constants.GetActionDown(InputActions.Jump) && isGrounded && !isRolling && !isCrouching)
             Jump();
 
-        isPressingCrouch = Input.GetKey(KeyCode.C) || Input.GetKey(KeyCode.S);
+        isPressingCrouch = Constants.GetAction(InputActions.Crouch);
         if (isPressingCrouch && isGrounded && !isJumpingSideways && !isRolling)
             Crouch();
         else
             isCrouching = false;
 
-        if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && !isJumpingSideways && !isRolling && Player.Stamina >= Player.SprintStaminaDrain)
+        if (Constants.GetAction(InputActions.Sprint) && !isCrouching && !isJumpingSideways && !isRolling && Player.Stamina >= Player.SprintStaminaDrain)
         {
             isSprinting = true;
         }
@@ -223,10 +226,10 @@ public class PlayerMovement : MonoBehaviour
     private void Animation()
     {
         //Debug.Log($"turn:{isTurning}, turnBack:{isTurningBack}, run:{isRunning}, fall:{isFalling}, jump:{isJumpingSideways}, roll:{isRolling}, crouch:{isCrouching}");
-        isPressingRight = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
-        isPressingLeft = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
-        wasPressingRight = Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D);
-        wasPressingLeft = Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A);
+        isPressingRight = Constants.GetAction(InputActions.MoveRight);
+        isPressingLeft = Constants.GetAction(InputActions.MoveLeft);
+        wasPressingRight = Constants.GetActionUp(InputActions.MoveRight);
+        wasPressingLeft = Constants.GetActionUp(InputActions.MoveLeft);
 
         movementDir = Player.RigidBody.velocity.x;
         isMoving = Mathf.Abs(movementDir) > 0.1;

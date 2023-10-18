@@ -138,9 +138,9 @@ public class StoreScreen : MonoBehaviour
 
         if (Constants.EnableDevKeybinds)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Constants.GetActionDown(InputActions.DEBUG_IncreaseMoney))
                 PlayerData.GetMoney(100);
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Constants.GetActionDown(InputActions.DEBUG_DecreaseMoney))
                 PlayerData.TakeMoney(100);
         }
     }

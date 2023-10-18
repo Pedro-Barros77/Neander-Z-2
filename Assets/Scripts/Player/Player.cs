@@ -158,12 +158,12 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
 
         if (Constants.EnableDevKeybinds)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Constants.GetActionDown(InputActions.DEBUG_IncreaseHealth))
             {
                 GetHealth(20);
                 GetStamina(20);
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Constants.GetActionDown(InputActions.DEBUG_DecreaseHealth))
             {
                 TakeDamage(20, "");
             }

@@ -53,23 +53,23 @@ public class WavesManager : MonoBehaviour
     {
         if (Constants.EnableDevKeybinds)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Constants.GetActionDown(InputActions.DEBUG_SpawnRoger))
                 SpawnEnemyTest(EnemyTypes.Z_Roger);
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Constants.GetActionDown(InputActions.DEBUG_SpawnRobert))
                 SpawnEnemyTest(EnemyTypes.Z_Robert);
-            if (Input.GetKeyDown(KeyCode.V))
+            if (Constants.GetActionDown(InputActions.DEBUG_SpawnRonald))
                 SpawnEnemyTest(EnemyTypes.Z_Ronald);
-            if (Input.GetKeyDown(KeyCode.B))
+            if (Constants.GetActionDown(InputActions.DEBUG_SpawnRonaldo))
                 SpawnEnemyTest(EnemyTypes.Z_Ronaldo);
-            if (Input.GetKeyDown(KeyCode.N))
+            if (Constants.GetActionDown(InputActions.DEBUG_SpawnRaven))
                 SpawnEnemyTest(EnemyTypes.Z_Raven);
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Constants.GetActionDown(InputActions.DEBUG_SpawnRaimundo))
                 SpawnEnemyTest(EnemyTypes.Z_Raimundo);
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Constants.GetActionDown(InputActions.DEBUG_SpawnRUI))
                 SpawnEnemyTest(EnemyTypes.Z_Rui);
-            if (Input.GetKeyDown(KeyCode.Delete))
+            if (Constants.GetActionDown(InputActions.DEBUG_KillAllEnemiesAlive))
                 CurrentWave.KillAllAlive();
-            if (Input.GetKeyDown(KeyCode.End))
+            if (Constants.GetActionDown(InputActions.DEBUG_EndWave))
                 CurrentWave.KillAllWave();
         }
 

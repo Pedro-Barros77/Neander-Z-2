@@ -20,6 +20,7 @@ public class MenuController : MonoBehaviour
     /// Evento chamado quando a cena é reiniciada.
     /// </summary>
     public static event OnRestart RestartEvent;
+    public KeybindConfig Keybind;
 
     [SerializeField]
     Sprite ArrowCursor, PointerCursor;

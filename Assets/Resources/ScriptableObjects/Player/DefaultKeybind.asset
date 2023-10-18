@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ddc9deffc715742bc7e83384f0c882, type: 3}
+  m_Name: DefaultKeybind
+  m_EditorClassIdentifier: 
+  MoveLeft:
+  - Action: 1
+    Key: 97
+    IsListening: 0
+  - Action: 1
+    Key: 276
+    IsListening: 0
+  MoveRight:
+  - Action: 2
+    Key: 100
+    IsListening: 0
+  - Action: 2
+    Key: 275
+    IsListening: 0
+  Jump:
+  - Action: 3
+    Key: 119
+    IsListening: 0
+  - Action: 3
+    Key: 273
+    IsListening: 0
+  Crouch:
+  - Action: 4
+    Key: 115
+    IsListening: 0
+  - Action: 4
+    Key: 99
+    IsListening: 0
+  - Action: 4
+    Key: 274
+    IsListening: 0
+  Sprint:
+  - Action: 5
+    Key: 304
+    IsListening: 0
+  - Action: 5
+    Key: 303
+    IsListening: 0
+  Shoot:
+  - Action: 6
+    Key: 323
+    IsListening: 0
+  ThrowGrenade:
+  - Action: 7
+    Key: 103
+    IsListening: 0
+  TacticalAbility:
+  - Action: 8
+    Key: 32
+    IsListening: 0
+  Reload:
+  - Action: 9
+    Key: 114
+    IsListening: 0
+  PauseContinueGame:
+  - Action: 10
+    Key: 112
+    IsListening: 0
+  - Action: 10
+    Key: 27
+    IsListening: 0
+  SwitchWeapon:
+  - Action: 11
+    Key: 325
+    IsListening: 0
+  EquipPrimaryWeapon:
+  - Action: 12
+    Key: 49
+    IsListening: 0
+  EquipSecondaryWeapon:
+  - Action: 13
+    Key: 50
+    IsListening: 0
+  DEBUG_IncreaseHealth:
+  - Action: 14
+    Key: 270
+    IsListening: 0
+  - Action: 14
+    Key: 61
+    IsListening: 0
+  DEBUG_DecreaseHealth:
+  - Action: 15
+    Key: 269
+    IsListening: 0
+  - Action: 15
+    Key: 45
+    IsListening: 0
+  DEBUG_IncreaseMoney:
+  - Action: 16
+    Key: 270
+    IsListening: 0
+  - Action: 16
+    Key: 61
+    IsListening: 0
+  DEBUG_DecreaseMoney:
+  - Action: 17
+    Key: 269
+    IsListening: 0
+  - Action: 17
+    Key: 45
+    IsListening: 0
+  DEBUG_SpawnRoger:
+  - Action: 18
+    Key: 257
+    IsListening: 0
+  DEBUG_SpawnRonald:
+  - Action: 19
+    Key: 258
+    IsListening: 0
+  DEBUG_SpawnRonaldo:
+  - Action: 20
+    Key: 259
+    IsListening: 0
+  DEBUG_SpawnRaven:
+  - Action: 21
+    Key: 260
+    IsListening: 0
+  DEBUG_SpawnRobert:
+  - Action: 22
+    Key: 261
+    IsListening: 0
+  DEBUG_SpawnRaimundo:
+  - Action: 23
+    Key: 262
+    IsListening: 0
+  DEBUG_SpawnRUI:
+  - Action: 24
+    Key: 263
+    IsListening: 0
+  DEBUG_KillAllEnemiesAlive:
+  - Action: 25
+    Key: 127
+    IsListening: 0
+  DEBUG_EndWave:
+  - Action: 26
+    Key: 279
+    IsListening: 0

@@ -26,7 +26,7 @@ public class InGameScreen : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && Player.IsAlive && !WavesManager.Instance.WaveSummaryPanel.activeSelf)
+        if ((Constants.GetActionDown(InputActions.PauseContinueGame)) && Player.IsAlive && !WavesManager.Instance.WaveSummaryPanel.activeSelf)
         {
             if (MenuController.Instance.IsGamePaused)
                 ContinueGame();

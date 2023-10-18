@@ -6,7 +6,7 @@ public class FullAutoWeapon : BaseWeapon
 {
     public override bool CanShoot()
     {
-        if (MagazineBullets <= 0 && !Input.GetKeyDown(KeyCode.Mouse0))
+        if (MagazineBullets <= 0 && !Constants.GetActionDown(InputActions.Shoot))
             return false;
 
         return base.CanShoot();

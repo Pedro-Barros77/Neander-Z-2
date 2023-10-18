@@ -81,9 +81,9 @@ public class PlayerWeaponController : MonoBehaviour
         bool isFiring;
 
         if (HoldTriggerFireModes.Contains(Player.CurrentWeapon.FireMode))
-            isFiring = Input.GetKey(KeyCode.Mouse0);
+            isFiring = Constants.GetAction(InputActions.Shoot);
         else
-            isFiring = Input.GetKeyDown(KeyCode.Mouse0);
+            isFiring = Constants.GetActionDown(InputActions.Shoot);
 
         if (isFiring)
         {
@@ -92,28 +92,28 @@ public class PlayerWeaponController : MonoBehaviour
                 Player.CurrentWeapon.Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Constants.GetActionDown(InputActions.Reload))
             Player.CurrentWeapon.Reload();
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Constants.GetActionDown(InputActions.ThrowGrenade))
             StartThrowingItem();
 
-        if (Input.GetKey(KeyCode.G))
+        if (Constants.GetAction(InputActions.ThrowGrenade))
             AimThrowable();
 
-        if (Input.GetKeyUp(KeyCode.G))
+        if (Constants.GetActionUp(InputActions.ThrowGrenade))
             ThrowItem();
 
         if (IsThrowingItem)
             RenderThrowTrajectory();
 
-        if (Input.mouseScrollDelta.y != 0)
+        if (Constants.GetActionDown(InputActions.SwitchWeapon))
             SwitchWeapon();
 
-        if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
+        if (Constants.GetActionDown(InputActions.EquipPrimaryWeapon))
             SwitchWeapon(0);
 
-        if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
+        if (Constants.GetActionDown(InputActions.EquipSecondaryWeapon))
             SwitchWeapon(1);
 
         if (IsSwitchingWeapon)
