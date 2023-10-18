@@ -29,10 +29,25 @@ public class Wave : MonoBehaviour
     Coroutine EnemySpawner;
     EnemyGroup BossGroup;
 
+    /// <summary>
+    /// Distância mínima entre os zumbis, antes de serem considerados sobrepostos.
+    /// </summary>
+    readonly float ClusteringMinDistance = 0.6f;
+    /// <summary>
+    /// Número máximo de zumbis sobrepostos, antes de começar a repelir.
+    /// </summary>
+    readonly int ClusteringMaxZombies = 5;
+    /// <summary>
+    /// Força em que os zumbis sobrepostos se repelem.
+    /// </summary>
+    readonly float ClusteringRepulsionForce = 80f;
+    LayerMask EnemiesLayerMask;
+
     void Start()
     {
         LevelData = GameObject.Find("Environment").GetComponent<LevelData>();
         EnemiesContainer = GameObject.Find("EnemiesContainer").transform;
+        EnemiesLayerMask = LayerMask.GetMask("Enemy");
     }
 
     void Update()
@@ -65,6 +80,7 @@ public class Wave : MonoBehaviour
             BossGroup = Data.EnemyGroups[Data.BossGroupIndex];
         HasStarted = true;
         EnemySpawner = StartCoroutine(EnemiesSpawner());
+        StartCoroutine(ClusteringChecker());
     }
 
     /// <summary>
@@ -249,6 +265,43 @@ public class Wave : MonoBehaviour
         P1Money = (P1Score / 4) * Data.MoneyMultiplier;
         P1Precision = P1AttacksHit * 100f / P1AttacksCount;
         WavesManager.Instance.ShowWaveSummary();
+    }
+
+    private IEnumerator ClusteringChecker()
+    {
+        while (true)
+        {
+            CheckClustering();
+
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    /// <summary>
+    /// Verifica quais zumbis estão sobrepostos acima do limite e repulsa um dos outros.
+    /// </summary>
+    private void CheckClustering()
+    {
+        foreach (BaseEnemy enemy in EnemiesAlive)
+        {
+            var colliders = Physics2D.OverlapCircleAll(enemy.transform.position, ClusteringMinDistance, EnemiesLayerMask);
+            colliders = colliders.Where(x => x.gameObject != enemy.gameObject && x.gameObject.name.StartsWith("Z_")).ToArray();
+
+            if (colliders.Length < ClusteringMaxZombies)
+                continue;
+
+            foreach (Collider2D collider in colliders)
+            {
+                float enemy1X = enemy.transform.position.x;
+                float enemy2X = collider.transform.position.x;
+                if (enemy1X == enemy2X)
+                    enemy2X += Random.Range(-0.001f, 0.001f);
+                float repulsionDirection = Mathf.Sign(enemy1X - enemy2X);
+
+                enemy.RigidBody.AddForce(new Vector3(repulsionDirection, 0) * ClusteringRepulsionForce, ForceMode2D.Force);
+                collider.GetComponent<Rigidbody2D>().AddForce(new Vector3(-(repulsionDirection / 2), 0) * ClusteringRepulsionForce, ForceMode2D.Force);
+            }
+        }
     }
 
     public void KillAllWave()

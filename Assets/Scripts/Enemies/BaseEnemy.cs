@@ -98,7 +98,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <summary>
     /// Referência ao componente Rigidbody2D desse inimigo.
     /// </summary>
-    protected Rigidbody2D RigidBody;
+    public Rigidbody2D RigidBody;
     /// <summary>
     /// Referência ao componente SpriteRenderer desse inimigo.
     /// </summary>
