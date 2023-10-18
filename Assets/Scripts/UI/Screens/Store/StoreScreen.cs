@@ -410,21 +410,21 @@ public class StoreScreen : MonoBehaviour
         if (fireRate != null)
         {
             FireRateBar.MaxValue = Constants.MaxWeaponFireRate;
-            FireRateBar.Value = Constants.CalculateDamage(fireRate);
+            FireRateBar.Value = Constants.CalculateFireRate(fireRate);
             FireRateBar.CalculateSections();
         }
 
         if (fireRate != null)
         {
             ReloadSpeedBar.MaxValue = Constants.MaxWeaponReloadSpeed;
-            ReloadSpeedBar.Value = Constants.CalculateDamage(reloadSpeed);
+            ReloadSpeedBar.Value = Constants.CalculateReloadSpeed(reloadSpeed);
             ReloadSpeedBar.CalculateSections();
         }
 
         if (fireRate != null)
         {
             RangeBar.MaxValue = Constants.MaxWeaponRange;
-            RangeBar.Value = Constants.CalculateDamage(range);
+            RangeBar.Value = Constants.CalculateRange(range);
             RangeBar.CalculateSections();
         }
 
