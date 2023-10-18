@@ -67,6 +67,10 @@ public class WavesManager : MonoBehaviour
                 SpawnEnemyTest(EnemyTypes.Z_Raimundo);
             if (Input.GetKeyDown(KeyCode.L))
                 SpawnEnemyTest(EnemyTypes.Z_Rui);
+            if (Input.GetKeyDown(KeyCode.Delete))
+                CurrentWave.KillAllAlive();
+            if (Input.GetKeyDown(KeyCode.End))
+                CurrentWave.KillAllWave();
         }
 
         WaveEnemiesCountText.text = $"{CurrentWave.SpawnCount - CurrentWave.EnemiesAlive.Count}/{(CurrentWave.Data.IsBossWave ? "∞" : CurrentWave.TotalEnemiesCount)}";

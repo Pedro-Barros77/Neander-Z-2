@@ -42,12 +42,6 @@ public class Wave : MonoBehaviour
 
         EnemiesAlive = EnemiesAlive.Where(x => x != null && x.IsAlive).ToList();
 
-        if (Constants.EnableDevKeybinds)
-        {
-            if (Input.GetKeyDown(KeyCode.End))
-                KillAllWave();
-        }
-
         if (EnemiesAlive.Count <= Data.MinEnemiesAlive && SpawnCount > 0)
         {
             int diff = Data.MinEnemiesAlive - EnemiesAlive.Count;
@@ -179,9 +173,10 @@ public class Wave : MonoBehaviour
     {
         if (hideFromCamera)
         {
-            float cameraWidth = Camera.main.orthographicSize * Camera.main.aspect;
-            float cameraLeftLimit = -cameraWidth;
-            float cameraRightLimit = cameraWidth;
+            float cameraWidth = Camera.main.orthographicSize * Camera.main.aspect * 2;
+            float cameraLeft = Camera.main.transform.position.x - (cameraWidth / 2);
+            float cameraLeftLimit = cameraLeft;
+            float cameraRightLimit = cameraLeft + cameraWidth;
 
             float leftX = Random.Range(LeftBoundary, cameraLeftLimit);
             float rightX = Random.Range(cameraRightLimit, RightBoundary);
@@ -259,7 +254,11 @@ public class Wave : MonoBehaviour
     public void KillAllWave()
     {
         SpawnMultipleEnemies(TotalEnemiesCount - SpawnCount);
+        KillAllAlive();
+    }
 
+    public void KillAllAlive()
+    {
         EnemiesAlive.ForEach(x => x.Die("", null));
         EnemiesAlive.Clear();
 
