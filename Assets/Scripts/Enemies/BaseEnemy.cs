@@ -191,7 +191,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         }
 
         var closestTarget = GetClosestTarget();
-        if (IsInAttackRange)
+        if (closestTarget != null && IsInAttackRange)
             StartAttack(closestTarget);
 
         if (HealthBar != null)
@@ -212,7 +212,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
             return;
 
         var closestTarget = GetClosestTarget();
-        Movement(closestTarget);
+        if (closestTarget != null)
+            Movement(closestTarget);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

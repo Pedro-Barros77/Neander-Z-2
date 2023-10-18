@@ -44,10 +44,11 @@ public class Rui : BaseEnemy
         }
 
         Target = GetClosestTarget();
-
-        float distanceX = Mathf.Abs(Target.transform.position.x - transform.position.x);
-
-        isInBumpRange = distanceX <= bumpDistance;
+        if (Target != null)
+        {
+            float distanceX = Mathf.Abs(Target.transform.position.x - transform.position.x);
+            isInBumpRange = distanceX <= bumpDistance;
+        }
 
         if (isInBumpRange && !isBumping && !isAttacking)
             BumpAttack(Target);

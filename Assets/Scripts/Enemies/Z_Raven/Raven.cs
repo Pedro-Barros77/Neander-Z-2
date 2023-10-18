@@ -110,7 +110,8 @@ public class Raven : BaseEnemy
     void UpdateDirection()
     {
         Target = GetClosestTarget();
-        isMovingLeft = Target.transform.position.x < transform.position.x;
+        if (Target != null)
+            isMovingLeft = Target.transform.position.x < transform.position.x;
     }
     /// <summary>
     /// Loop responsável por verificar se pode rodar o dado.
