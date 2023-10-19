@@ -111,11 +111,9 @@ public class Raimundo : BaseEnemy
 
         if (bodyPartName != "Helmet")
         {
-            if (DamageSounds.Any() && !AudioSource.isPlaying)
-            {
-                var randomDamageSound = DamageSounds[Random.Range(0, DamageSounds.Count)];
-                AudioSource.PlayOneShot(randomDamageSound, DamageSoundVolume);
-            }
+            if (!AudioSource.isPlaying)
+                DamageSounds.PlayRandomIfAny(AudioSource);
+
             Health = Mathf.Clamp(Health - value, 0, MaxHealth);
             HealthBar.RemoveValue(value);
         }

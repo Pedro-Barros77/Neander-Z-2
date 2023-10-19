@@ -355,24 +355,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c837f5884a0964e851ae007a86d20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RigidBody: {fileID: 0}
   HealthBarPrefab: {fileID: 5826301193245720848, guid: b772a17772a316c458ab20c5a7ac87fe, type: 3}
   BloodSplatterPrefab: {fileID: 7444960458494065295, guid: 1f360cc0117f0d14db021d5b0edac523, type: 3}
   DamageSounds:
-  - {fileID: 8300000, guid: dbb62e4dc25c24147b1fd1b07bbff3fb, type: 3}
-  - {fileID: 8300000, guid: bcc940868c4d4ab4d82da916962e17ff, type: 3}
-  - {fileID: 8300000, guid: 1504eb29f652ea14792525934c7dadcd, type: 3}
-  - {fileID: 8300000, guid: 161d68bf087a2554d9492aaf315f2f11, type: 3}
+  - Audio: {fileID: 8300000, guid: dbb62e4dc25c24147b1fd1b07bbff3fb, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: bcc940868c4d4ab4d82da916962e17ff, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 1504eb29f652ea14792525934c7dadcd, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 161d68bf087a2554d9492aaf315f2f11, type: 3}
+    Volume: 1
+    Pitch: 1
   AttackStartSounds: []
   AttackHitSounds:
-  - {fileID: 8300000, guid: 317bd2eaeff8bea44820c9c49e582a28, type: 3}
-  - {fileID: 8300000, guid: 05363fd37f2420e499273124e605631f, type: 3}
-  - {fileID: 8300000, guid: 70e4a1b373222ff4fb04eecf3c0b904a, type: 3}
-  - {fileID: 8300000, guid: 6d800df9290ca1f4ead521e38fee6ad7, type: 3}
+  - Audio: {fileID: 8300000, guid: 317bd2eaeff8bea44820c9c49e582a28, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 05363fd37f2420e499273124e605631f, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 70e4a1b373222ff4fb04eecf3c0b904a, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 6d800df9290ca1f4ead521e38fee6ad7, type: 3}
+    Volume: 1
+    Pitch: 1
+  SpawnSounds: []
   DeathSounds:
-  - {fileID: 8300000, guid: ecc94059c60527b4fbd309af97f50cd7, type: 3}
-  - {fileID: 8300000, guid: 4d080dbaef6954b41be4a716f9cd41b9, type: 3}
-  - {fileID: 8300000, guid: d1380579c834c894495c2e7a7044ff03, type: 3}
-  - {fileID: 8300000, guid: e9e2587f98bea7f4381e93fc24abb47c, type: 3}
+  - Audio: {fileID: 8300000, guid: ecc94059c60527b4fbd309af97f50cd7, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 4d080dbaef6954b41be4a716f9cd41b9, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: d1380579c834c894495c2e7a7044ff03, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 161d68bf087a2554d9492aaf315f2f11, type: 3}
+    Volume: 1
+    Pitch: 1
 --- !u!50 &7224592029183127622
 Rigidbody2D:
   serializedVersion: 4
@@ -495,7 +521,7 @@ MonoBehaviour:
   - {x: 0.03659916, y: -0.3529129, z: 0}
   m_ShapePathHash: 2055473501
   m_Mesh: {fileID: 0}
-  m_InstanceId: 32274
+  m_InstanceId: 168298
   m_LocalBounds:
     m_Center: {x: -0.0049294233, y: -0.0061333776, z: 0}
     m_Extent: {x: 0.3692206, y: 0.8719939, z: 0}

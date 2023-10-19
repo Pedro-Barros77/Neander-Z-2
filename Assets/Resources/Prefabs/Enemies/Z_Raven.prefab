@@ -477,21 +477,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b5387363baac844bfb483eeef0c1c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RigidBody: {fileID: 0}
   HealthBarPrefab: {fileID: 5826301193245720848, guid: b772a17772a316c458ab20c5a7ac87fe, type: 3}
   BloodSplatterPrefab: {fileID: 7444960458494065295, guid: 1f360cc0117f0d14db021d5b0edac523, type: 3}
   DamageSounds:
-  - {fileID: 8300000, guid: faecc6d5de7293d4bbef7fc3f791db36, type: 3}
-  - {fileID: 8300000, guid: ab134d08eb6a5ef449c6842478249471, type: 3}
-  - {fileID: 8300000, guid: 33a2b1bc5595b8147b8a07fa13f68c96, type: 3}
-  - {fileID: 8300000, guid: f2b43c72a4271a54d8b2d495eceda343, type: 3}
+  - Audio: {fileID: 8300000, guid: faecc6d5de7293d4bbef7fc3f791db36, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: ab134d08eb6a5ef449c6842478249471, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 33a2b1bc5595b8147b8a07fa13f68c96, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: f2b43c72a4271a54d8b2d495eceda343, type: 3}
+    Volume: 1
+    Pitch: 1
   AttackStartSounds: []
   AttackHitSounds:
-  - {fileID: 8300000, guid: 1b896c483e217d7449c995918aa3e5c4, type: 3}
-  - {fileID: 8300000, guid: f7356376468f3094e92babec54490c3e, type: 3}
-  - {fileID: 8300000, guid: a6b11f6ad51f33e40a5a23dc4aa86a00, type: 3}
+  - Audio: {fileID: 8300000, guid: 1b896c483e217d7449c995918aa3e5c4, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: f7356376468f3094e92babec54490c3e, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: a6b11f6ad51f33e40a5a23dc4aa86a00, type: 3}
+    Volume: 1
+    Pitch: 1
+  SpawnSounds: []
   DeathSounds:
-  - {fileID: 8300000, guid: 2e0193057ccce0847af11158a8a02920, type: 3}
-  - {fileID: 8300000, guid: ee9e725570f0e0640b12045b236a4485, type: 3}
+  - Audio: {fileID: 8300000, guid: 2e0193057ccce0847af11158a8a02920, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: ee9e725570f0e0640b12045b236a4485, type: 3}
+    Volume: 1
+    Pitch: 1
   DiveSounds:
   - Audio: {fileID: 8300000, guid: c2e6634417c3cae4ca0f31295b62c089, type: 3}
     Volume: 1

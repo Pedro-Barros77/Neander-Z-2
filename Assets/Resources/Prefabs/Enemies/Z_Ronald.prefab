@@ -441,7 +441,7 @@ MonoBehaviour:
   - {x: 0.33359337, y: -1.1528175, z: 0}
   m_ShapePathHash: 565006412
   m_Mesh: {fileID: 0}
-  m_InstanceId: -133930
+  m_InstanceId: 169714
   m_LocalBounds:
     m_Center: {x: -0.077947795, y: -0.038973927, z: 0}
     m_Extent: {x: 0.53820646, y: 1.1138436, z: 0}
@@ -574,24 +574,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4ad449670e10447bd87ee9375c90ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RigidBody: {fileID: 0}
   HealthBarPrefab: {fileID: 5826301193245720848, guid: b772a17772a316c458ab20c5a7ac87fe, type: 3}
   BloodSplatterPrefab: {fileID: 7444960458494065295, guid: 1f360cc0117f0d14db021d5b0edac523, type: 3}
   DamageSounds:
-  - {fileID: 8300000, guid: 35f695469c4f3484c9bcfad381c505dd, type: 3}
-  - {fileID: 8300000, guid: 8d2a3fde1187bf645830f85d37d6b2c8, type: 3}
-  - {fileID: 8300000, guid: 9b41b3a76b3e48d478ac1f4861aabb41, type: 3}
-  - {fileID: 8300000, guid: a0cbee1ee44a9274d82b855e2a099d2a, type: 3}
+  - Audio: {fileID: 8300000, guid: 35f695469c4f3484c9bcfad381c505dd, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 8d2a3fde1187bf645830f85d37d6b2c8, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 9b41b3a76b3e48d478ac1f4861aabb41, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: a0cbee1ee44a9274d82b855e2a099d2a, type: 3}
+    Volume: 1
+    Pitch: 1
   AttackStartSounds: []
   AttackHitSounds:
-  - {fileID: 8300000, guid: fc032fe532867f24b95012bfed27f5de, type: 3}
-  - {fileID: 8300000, guid: 32d4ce1a0477bba4aa5937f2fefcfedd, type: 3}
-  - {fileID: 8300000, guid: e7938c8949eaf654085d0d07b4e9b3d7, type: 3}
-  - {fileID: 8300000, guid: b701035e0b77b864fbdc258afc6a51fd, type: 3}
+  - Audio: {fileID: 8300000, guid: fc032fe532867f24b95012bfed27f5de, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 32d4ce1a0477bba4aa5937f2fefcfedd, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: e7938c8949eaf654085d0d07b4e9b3d7, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: b701035e0b77b864fbdc258afc6a51fd, type: 3}
+    Volume: 1
+    Pitch: 1
+  SpawnSounds: []
   DeathSounds:
-  - {fileID: 8300000, guid: 852b2184ca099cf4d90854ae4e266d20, type: 3}
-  - {fileID: 8300000, guid: 1a2f0ccfec62aa34d938df4a65fa9821, type: 3}
-  - {fileID: 8300000, guid: cab81c74ff12ab94cb3c2f957dc1d1c5, type: 3}
-  - {fileID: 8300000, guid: 127d8207ffccca5409657fd3f5816121, type: 3}
+  - Audio: {fileID: 8300000, guid: 852b2184ca099cf4d90854ae4e266d20, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 1a2f0ccfec62aa34d938df4a65fa9821, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: cab81c74ff12ab94cb3c2f957dc1d1c5, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 127d8207ffccca5409657fd3f5816121, type: 3}
+    Volume: 1
+    Pitch: 1
 --- !u!1001 &8514751714962993159
 PrefabInstance:
   m_ObjectHideFlags: 0

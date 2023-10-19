@@ -441,7 +441,7 @@ MonoBehaviour:
   - {x: 0.8249435, y: -0.49733138, z: 0}
   m_ShapePathHash: -951491636
   m_Mesh: {fileID: 0}
-  m_InstanceId: 316384
+  m_InstanceId: 171126
   m_LocalBounds:
     m_Center: {x: 0.10556382, y: -0.0560807, z: 0}
     m_Extent: {x: 0.7259774, y: 0.44125068, z: 0}
@@ -553,23 +553,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07eda4b4abd319948817ffba8031710f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RigidBody: {fileID: 0}
   HealthBarPrefab: {fileID: 5826301193245720848, guid: b772a17772a316c458ab20c5a7ac87fe, type: 3}
   BloodSplatterPrefab: {fileID: 7444960458494065295, guid: 1f360cc0117f0d14db021d5b0edac523, type: 3}
   DamageSounds:
-  - {fileID: 8300000, guid: e407f0be698ef5e4f8a67ea995ff6d98, type: 3}
-  - {fileID: 8300000, guid: 019af14137f0b9d4b86984c6cf9ae21f, type: 3}
-  - {fileID: 8300000, guid: bc44274218953eb438e096f2e3fe16b5, type: 3}
-  - {fileID: 8300000, guid: 6984485141724474cb3f93485d24b222, type: 3}
+  - Audio: {fileID: 8300000, guid: e407f0be698ef5e4f8a67ea995ff6d98, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 019af14137f0b9d4b86984c6cf9ae21f, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: bc44274218953eb438e096f2e3fe16b5, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 6984485141724474cb3f93485d24b222, type: 3}
+    Volume: 1
+    Pitch: 1
   AttackStartSounds: []
   AttackHitSounds:
-  - {fileID: 8300000, guid: 2519456e307c4c14dbdcf479c523861d, type: 3}
-  - {fileID: 8300000, guid: 68756933887c4544b98205b245cac2d2, type: 3}
-  - {fileID: 8300000, guid: 35b3bb82f240da34ba2c8c5d9a0ecc71, type: 3}
+  - Audio: {fileID: 8300000, guid: 2519456e307c4c14dbdcf479c523861d, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 68756933887c4544b98205b245cac2d2, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 35b3bb82f240da34ba2c8c5d9a0ecc71, type: 3}
+    Volume: 1
+    Pitch: 1
+  SpawnSounds: []
   DeathSounds:
-  - {fileID: 8300000, guid: 170065e451553b94ab451b65cde262a4, type: 3}
-  - {fileID: 8300000, guid: bc49b1bce7f6873408c2e9ad3ed37f94, type: 3}
-  - {fileID: 8300000, guid: ef5b4c49aed3ad44db1943fd0eea9a78, type: 3}
-  - {fileID: 8300000, guid: add726f3ff85d98479ef75fb289cedd0, type: 3}
+  - Audio: {fileID: 8300000, guid: 170065e451553b94ab451b65cde262a4, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: bc49b1bce7f6873408c2e9ad3ed37f94, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: ef5b4c49aed3ad44db1943fd0eea9a78, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: add726f3ff85d98479ef75fb289cedd0, type: 3}
+    Volume: 1
+    Pitch: 1
 --- !u!95 &1142127764392509526
 Animator:
   serializedVersion: 5

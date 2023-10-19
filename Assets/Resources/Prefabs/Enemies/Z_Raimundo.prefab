@@ -526,23 +526,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21412a215ae9264ab52e6a534134081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RigidBody: {fileID: 0}
   HealthBarPrefab: {fileID: 5826301193245720848, guid: b772a17772a316c458ab20c5a7ac87fe, type: 3}
   BloodSplatterPrefab: {fileID: 7444960458494065295, guid: 1f360cc0117f0d14db021d5b0edac523, type: 3}
   DamageSounds:
-  - {fileID: 8300000, guid: 1b794a0ffb05e324d83bdec6c3cec4fc, type: 3}
-  - {fileID: 8300000, guid: 23f510f7095dda94c8ebeeb9bf4a42f1, type: 3}
-  - {fileID: 8300000, guid: fa719ac48deb8fa4d9d4190d6f99f6e6, type: 3}
-  - {fileID: 8300000, guid: 77a63940233d1b14b91da01ece60ab3a, type: 3}
+  - Audio: {fileID: 8300000, guid: 1b794a0ffb05e324d83bdec6c3cec4fc, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 23f510f7095dda94c8ebeeb9bf4a42f1, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: fa719ac48deb8fa4d9d4190d6f99f6e6, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 77a63940233d1b14b91da01ece60ab3a, type: 3}
+    Volume: 1
+    Pitch: 1
   AttackStartSounds: []
   AttackHitSounds:
-  - {fileID: 8300000, guid: 069a007e6f1ae1c4691a9bb7bcbae23e, type: 3}
-  - {fileID: 8300000, guid: e5f4ba2cc8482c8449f734e5eca6f050, type: 3}
-  - {fileID: 8300000, guid: bb5184d06a8dcaa4b818b565e392d26d, type: 3}
+  - Audio: {fileID: 8300000, guid: 069a007e6f1ae1c4691a9bb7bcbae23e, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: e5f4ba2cc8482c8449f734e5eca6f050, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: bb5184d06a8dcaa4b818b565e392d26d, type: 3}
+    Volume: 1
+    Pitch: 1
+  SpawnSounds: []
   DeathSounds:
-  - {fileID: 8300000, guid: 67fc78e69117e5f499c1d2646e3b2a1d, type: 3}
-  - {fileID: 8300000, guid: 374133f805cd4e6449dabd3f384a037c, type: 3}
-  - {fileID: 8300000, guid: c6b3525db1dc94d4fa76d8d26ec479f7, type: 3}
-  - {fileID: 8300000, guid: c59a1875311ab94429ef0da3c3918aba, type: 3}
+  - Audio: {fileID: 8300000, guid: 67fc78e69117e5f499c1d2646e3b2a1d, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 374133f805cd4e6449dabd3f384a037c, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: c6b3525db1dc94d4fa76d8d26ec479f7, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: c59a1875311ab94429ef0da3c3918aba, type: 3}
+    Volume: 1
+    Pitch: 1
   SparksPrefab: {fileID: 2938044135751428389, guid: a4d12147491b3f94dbf3c654e93f7b15, type: 3}
   HitHelmetSounds:
   - Audio: {fileID: 8300000, guid: 61d8370587ae7c34fa3530408e87ac68, type: 3}
@@ -652,7 +676,7 @@ MonoBehaviour:
   - {x: 0.44441786, y: -0.88, z: 0}
   m_ShapePathHash: 1316181860
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1868
+  m_InstanceId: 164012
   m_LocalBounds:
     m_Center: {x: 0.0076993406, y: -0.11164075, z: 0}
     m_Extent: {x: 0.47521538, y: 0.76835924, z: 0}

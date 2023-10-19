@@ -124,7 +124,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     [SerializeField]
     protected GameObject HealthBarPrefab, BloodSplatterPrefab;
     [SerializeField]
-    protected List<AudioClip> DamageSounds, AttackStartSounds, AttackHitSounds, DeathSounds;
+    protected List<CustomAudio> DamageSounds, AttackStartSounds, AttackHitSounds, SpawnSounds, DeathSounds;
     protected GameObject PopupPrefab;
 
     public delegate void OnStartFinishedCallback();
@@ -173,6 +173,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         var env = GameObject.Find("Environment").GetComponent<LevelData>();
         LevelXLimit = new Vector2(env.TopLeftSpawnLimit.x, env.BottomRightSpawnLimit.x);
+
+        SpawnSounds.PlayRandomIfAny(AudioSource);
 
         OnStartFinished?.Invoke();
     }
@@ -302,11 +304,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
-        if (DamageSounds.Any() && !AudioSource.isPlaying)
-        {
-            var randomDamageSound = DamageSounds[Random.Range(0, DamageSounds.Count)];
-            AudioSource.PlayOneShot(randomDamageSound, DamageSoundVolume);
-        }
+        if (!AudioSource.isPlaying)
+            DamageSounds.PlayRandomIfAny(AudioSource);
 
         Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         if (HealthBar != null)
@@ -349,11 +348,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         WavesManager.Instance.CurrentWave.HandleScore(this, attacker, isHeadshot);
 
-        if (DeathSounds.Any() && AudioSource != null)
-        {
-            var randomDeathSound = DeathSounds[Random.Range(0, DeathSounds.Count)];
-            AudioSource.PlayOneShot(randomDeathSound, DeathSoundVolume);
-        }
+        if (AudioSource != null)
+            DeathSounds.PlayRandomIfAny(AudioSource);
 
         if (DeathFadeOutDelayMs > 0)
         {
@@ -410,11 +406,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         if (HitTargetsIds.Contains(targetInstanceId))
             return;
 
-        if (AttackHitSounds.Any())
-        {
-            var randomHitSound = AttackHitSounds[Random.Range(0, AttackHitSounds.Count)];
-            AudioSource.PlayOneShot(randomHitSound, AttackHitSoundVolume);
-        }
+        AttackHitSounds.PlayRandomIfAny(AudioSource);
 
         target.TakeDamage(Damage, "");
         HitTargetsIds.Add(targetInstanceId);
@@ -450,11 +442,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         isAttacking = true;
         HitTargetsIds.Clear();
-        if (AttackStartSounds.Any())
-        {
-            var randomAttackStartSound = AttackStartSounds[Random.Range(0, AttackStartSounds.Count)];
-            AudioSource.PlayOneShot(randomAttackStartSound, AttackStartSoundVolume);
-        }
+
+        AttackStartSounds.PlayRandomIfAny(AudioSource);
 
         var targetDir = target.transform.position.x < transform.position.x ? -1 : 1;
         FlipEnemy(Mathf.Sign(targetDir));
