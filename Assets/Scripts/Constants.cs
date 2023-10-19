@@ -11,18 +11,23 @@ public static class Constants
 
     static float ReloadSpeedRatio = 5000;
 
-    public static bool GetActionDown(InputActions action) => action == InputActions.SwitchWeapon ? Input.mouseScrollDelta.y != 0 
+    public static bool GetActionDown(InputActions action) => action == InputActions.SwitchWeapon ? Input.mouseScrollDelta.y != 0
                                                        : GetActionPerformed(action, 0);
     public static bool GetAction(InputActions action) => GetActionPerformed(action, 1);
     public static bool GetActionUp(InputActions action) => GetActionPerformed(action, 2);
 
-    private static bool GetActionPerformed(InputActions action, int pressingState) =>
-        MenuController.Instance.Keybind.Inputs.Any(inp => inp.Any(keybind => keybind.Action == action
+    private static bool GetActionPerformed(InputActions action, int pressingState)
+    {
+        if (MenuController.Instance.Keybind.Inputs == null)
+            MenuController.Instance.Keybind.Init();
+
+        return MenuController.Instance.Keybind.Inputs.Any(inp => inp.Any(keybind => keybind.Action == action
             && (
                        (pressingState == 0 && Input.GetKeyDown(keybind.Key))
                     || (pressingState == 1 && Input.GetKey(keybind.Key))
                     || (pressingState == 2 && Input.GetKeyUp(keybind.Key))
                )));
+    }
 
 
     /// <summary>

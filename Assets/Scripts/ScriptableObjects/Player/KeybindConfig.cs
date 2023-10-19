@@ -7,10 +7,8 @@ public class KeybindConfig : AutoRevertSO
 {
     public List<List<KeybindItem>> Inputs;
 
-    protected override void OnEnable()
+    public void Init()
     {
-        base.OnEnable();
-
         Inputs = new()
         {
             MoveLeft, MoveRight, Jump, Crouch, Sprint, Shoot, ThrowGrenade, TacticalAbility, Reload, PauseContinueGame, SwitchWeapon, EquipPrimaryWeapon, EquipSecondaryWeapon,
