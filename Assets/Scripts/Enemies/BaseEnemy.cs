@@ -102,7 +102,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <summary>
     /// Referência ao componente SpriteRenderer desse inimigo.
     /// </summary>
-    protected SpriteRenderer SpriteRenderer;
+    public SpriteRenderer SpriteRenderer { get; protected set; }
     /// <summary>
     /// Referência ao componente Animator desse inimigo.
     /// </summary>
@@ -247,7 +247,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <param name="speed">A velocidade do inimigo.</param>
     /// <param name="damage">O dano do inimigo.</param>
     /// <param name="isBoss">Se o inimigo é um boss dessa wave.</param>
-    public virtual void SetRandomValues(float health, float speed, float damage, int killscore, bool isBoss = false)
+    public virtual void SetRandomValues(float health, float speed, float damage, int killscore, BaseEnemy enemy, bool isBoss = false)
     {
         MaxHealth = Mathf.Clamp(health, 0, health);
         Health = MaxHealth;
@@ -257,6 +257,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         KillScore = Mathf.Clamp(killscore, 0, killscore);
         IsBoss = isBoss;
         HealthBar.SetMaxValue(health, health);
+        int randomZombieZindex = Random.Range(10, 111);
+        enemy.SpriteRenderer.sortingOrder = randomZombieZindex;
     }
 
     /// <summary>
