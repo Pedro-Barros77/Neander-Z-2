@@ -317,4 +317,12 @@ public class Wave : MonoBehaviour
 
         P1AttacksCount++;
     }
+
+    public void CenterEnemies()
+    {
+        foreach (var enemy in EnemiesAlive)
+        {
+            enemy.transform.position = new Vector3(0, 3);
+        }
+    }
 }

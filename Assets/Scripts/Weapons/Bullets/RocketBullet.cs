@@ -31,7 +31,10 @@ public class RocketBullet : Projectile
         if (target != null)
         {
             if (target.IsAlive)
+            {
                 IsTargetHit = true;
+                LastEnemyHit = target;
+            }
             var hitPosition = collision.ClosestPoint(transform.position);
             target.TakeDamage(Damage, HeadshotMultiplier, collision.name, PlayerOwner);
             target.OnPointHit(hitPosition, -transform.right, collision.name);
@@ -70,9 +73,6 @@ public class RocketBullet : Projectile
         {
             IPlayerTarget target = hit.target;
 
-            if (target.IsAlive)
-                IsTargetHit = true;
-
             Collider2D targetCollider = hit.collider;
 
             var enemyHitPoint = targetCollider.ClosestPoint(transform.position);
@@ -85,6 +85,12 @@ public class RocketBullet : Projectile
                 if (!PiercedTargetsIds.Contains(targetId))
                 {
                     PiercedTargetsIds.Add(targetId);
+
+                    if (target.IsAlive)
+                    {
+                        IsTargetHit = true;
+                        LastEnemyHit = target;
+                    }
 
                     var clampedDistance = Mathf.Clamp(distance, ExplosionMaxDamageRadius, ExplosionMinDamageRadius);
                     var percentage = (clampedDistance - ExplosionMaxDamageRadius) / (ExplosionMinDamageRadius - ExplosionMaxDamageRadius);

@@ -290,7 +290,11 @@ public abstract class BaseWeapon : MonoBehaviour
         bullet.MinDamageRange = MinDamageRange;
         bullet.PlayerOwner = Player;
         bullet.HeadshotMultiplier = HeadshotMultiplier;
+        bullet.OnBulletKill += OnBulletKill;
+        bullet.ShotTime = Time.time;
         bullet.Init();
+
+        WavesManager.Instance.CurrentWave.HandlePlayerAttack(1, 0);
 
         return new List<GameObject>() { bulletInstance };
     }
@@ -527,5 +531,17 @@ public abstract class BaseWeapon : MonoBehaviour
 
         if (isShooting) Animator.SetTrigger("Shoot");
         else Animator.ResetTrigger("Shoot");
+    }
+
+    /// <summary>
+    /// Função chamada quando cada bala disparada é destruída (ao colidir com algo, alcançar o limite, etc).
+    /// </summary>
+    /// <param name="projectile">A instância do projétil em si, antes de ser destruído.</param>
+    /// <param name="playerTarget">O último alvo inimigo que o projétil acertou, nulo caso não tenha acertado.</param>
+    /// <param name="enemyTarget">O último alvo player que o projétil acertou, nulo caso não tenha acertado.</param>
+    protected virtual void OnBulletKill(Projectile projectile, IPlayerTarget playerTarget, IEnemyTarget enemyTarget)
+    {
+        if (playerTarget != null)
+            WavesManager.Instance.CurrentWave.HandlePlayerAttack(0, 1);
     }
 }

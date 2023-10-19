@@ -28,6 +28,10 @@ public class ShotgunWeapon : BaseWeapon
     /// Se o carregamento em cadeia foi cancelado.
     /// </summary>
     private bool ReloadCanceled;
+    /// <summary>
+    /// Lista de tempos em que cada disparo foi efetuado e sua precisão contabilizada (para previnir que cada balin da escopeta contabilize na precisão do disparo).
+    /// </summary>
+    private List<float> HandledShotScoreTimes = new();
 
     protected override void Start()
     {
@@ -74,6 +78,7 @@ public class ShotgunWeapon : BaseWeapon
     {
         List<GameObject> bulletsInstances = new();
 
+        float shotTime = Time.time;
         void InitBullet(Projectile bullet)
         {
             bullet.Type = BulletTypes.Pistol;
@@ -85,6 +90,8 @@ public class ShotgunWeapon : BaseWeapon
             bullet.MinDamageRange = MinDamageRange;
             bullet.PlayerOwner = Player;
             bullet.HeadshotMultiplier = HeadshotMultiplier;
+            bullet.OnBulletKill += OnBulletKill;
+            bullet.ShotTime = shotTime;
             bullet.Init();
         }
 
@@ -97,6 +104,8 @@ public class ShotgunWeapon : BaseWeapon
             InitBullet(bullet);
             bulletsInstances.Add(bulletInstance);
         }
+
+        WavesManager.Instance.CurrentWave.HandlePlayerAttack(1, 0);
 
         return bulletsInstances;
     }
@@ -163,5 +172,17 @@ public class ShotgunWeapon : BaseWeapon
 
         if (IsPumping) Animator.SetTrigger("Pump");
         else Animator.ResetTrigger("Pump");
+    }
+
+    protected override void OnBulletKill(Projectile projectile, IPlayerTarget playerTarget, IEnemyTarget enemyTarget)
+    {
+        if (playerTarget != null)
+        {
+            if (HandledShotScoreTimes.Contains(projectile.ShotTime))
+                return;
+
+            HandledShotScoreTimes.Add(projectile.ShotTime);
+            WavesManager.Instance.CurrentWave.HandlePlayerAttack(0, 1);
+        }
     }
 }
