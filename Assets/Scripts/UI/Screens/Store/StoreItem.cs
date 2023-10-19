@@ -193,12 +193,10 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             {
                 PriceText.text = "Purchased";
                 PriceText.color = Constants.Colors.GreenMoney;
-                return;
             }
         }
 
-        if (storeScreen.PlayerData.InventoryData.HasWeapon(data.WeaponData.Type))
-            Data.Purchased = true;
+        Data.Purchased = storeScreen.PlayerData.InventoryData.HasWeapon(data.WeaponData.Type);
     }
 
     private void UpdateThrowable()
