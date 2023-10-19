@@ -99,6 +99,10 @@ public abstract class BaseThrowable : MonoBehaviour
     /// </summary>
     public bool IsTargetHit { get; set; }
     /// <summary>
+    /// O tempo em que o cozimento foi iniciado.
+    /// </summary>
+    public float CookStartTime { get; protected set; }
+    /// <summary>
     /// Jogador portador deste item.
     /// </summary>
     public Player Player { get; set; }
@@ -153,10 +157,6 @@ public abstract class BaseThrowable : MonoBehaviour
     #region Control Variables
 
 
-    /// <summary>
-    /// O tempo em que o cozimento foi iniciado.
-    /// </summary>
-    protected float cookStartTime;
     protected float throwTime;
     protected List<int> PiercedTargetsIds = new();
     protected float lastHitTime;
@@ -182,7 +182,7 @@ public abstract class BaseThrowable : MonoBehaviour
         Player = PlayerWeaponController.transform.parent.GetComponent<Player>();
         IsCooking = true;
         if (StartFuseOnCook)
-            cookStartTime = Time.time;
+            CookStartTime = Time.time;
 
         WavesManager.Instance.CurrentWave.HandlePlayerAttack(1, 0);
 
@@ -288,7 +288,7 @@ public abstract class BaseThrowable : MonoBehaviour
         if (FuseTimeoutMs <= 0 || HasDetonated || (!StartFuseOnCook && !IsThrown))
             return;
 
-        float elapsedTime = Time.time - (StartFuseOnCook ? cookStartTime : throwTime);
+        float elapsedTime = Time.time - (StartFuseOnCook ? CookStartTime : throwTime);
         bool timedOut = elapsedTime >= FuseTimeoutMs / 1000f;
 
         if (timedOut)

@@ -45,6 +45,7 @@ public class PlayerWeaponController : MonoBehaviour
     Transform floor;
     Vector2 lastThrowTrajectoryForce, lastThrowStartPoint;
     bool itemThrown;
+    Gradient ThrowableLineRendererColor;
 
     readonly FireModes[] HoldTriggerFireModes = { FireModes.FullAuto, FireModes.Melee };
 
@@ -68,6 +69,12 @@ public class PlayerWeaponController : MonoBehaviour
         LineRenderer = GetComponent<LineRenderer>();
         StartLocalPosition = transform.localPosition;
         startThrowingContainerScale = throwingContainerTransform.localScale.x;
+
+        ThrowableLineRendererColor = LineRenderer.colorGradient = new Gradient()
+        {
+            colorKeys = new GradientColorKey[] { new GradientColorKey(Color.white, 0), new GradientColorKey(Color.white, 1) },
+            alphaKeys = new GradientAlphaKey[] { new GradientAlphaKey(0, 0), new GradientAlphaKey(1, 0.2f), new GradientAlphaKey(1, 0.6f), new GradientAlphaKey(0, 1) }
+        };
     }
 
     void Update()
@@ -172,6 +179,32 @@ public class PlayerWeaponController : MonoBehaviour
 
         lastThrowTrajectoryForce = Player.Backpack.ThrowingThrowable.transform.right.normalized * Player.Backpack.ThrowingThrowable.ThrowForce;
         lastThrowStartPoint = throwableSpawnPointTransform.position;
+        LineRenderer.colorGradient = ThrowableLineRendererColor;
+
+        if (Player.Backpack.ThrowingThrowable.StartFuseOnCook)
+        {
+            float timeLeft = (Player.Backpack.ThrowingThrowable.FuseTimeoutMs / 1000) - (Time.time - Player.Backpack.ThrowingThrowable.CookStartTime);
+            float percentage = 1 - (timeLeft / (Player.Backpack.ThrowingThrowable.FuseTimeoutMs / 1000));
+            Color color = Color.Lerp(Color.white, Color.red, percentage);
+            LineRenderer.colorGradient = new Gradient()
+            {
+                colorKeys = new GradientColorKey[] { new GradientColorKey(color, 0), new GradientColorKey(color, 1) },
+                alphaKeys = new GradientAlphaKey[] { new GradientAlphaKey(0, 0), new GradientAlphaKey(1, 0.2f), new GradientAlphaKey(1, 0.6f), new GradientAlphaKey(0, 1) }
+            };
+
+            if (percentage > 0.5)
+            {
+                float alpha = Mathf.PingPong(30 * percentage * (percentage / 1.5f), 1.0f);
+                LineRenderer.enabled = alpha > 0.5f;
+            }
+            else
+                LineRenderer.enabled = true;
+        }
+        else
+        {
+            LineRenderer.enabled = true;
+            LineRenderer.colorGradient = ThrowableLineRendererColor;
+        }
     }
 
     /// <summary>
@@ -302,7 +335,7 @@ public class PlayerWeaponController : MonoBehaviour
         {
             float t = (Time.time - startSwitchTime.Value) / (currentWeaponSwitchTimeMs / 1000);
             float animAngle;
-            if(IsAimingLeft)
+            if (IsAimingLeft)
                 animAngle = Mathf.Lerp(91, 180, t);
             else
                 animAngle = Mathf.Lerp(89, 0, t);
