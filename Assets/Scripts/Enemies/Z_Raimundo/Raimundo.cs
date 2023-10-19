@@ -92,7 +92,7 @@ public class Raimundo : BaseEnemy
         switch (bodyPartName)
         {
             case "Helmet":
-                HelmetHealth -= value;
+                HelmetHealth = Mathf.Clamp(HelmetHealth - value, 0, HelmetMaxHealth);
                 color = Color.white;
                 break;
             case "Head":
@@ -104,9 +104,7 @@ public class Raimundo : BaseEnemy
                 color = Color.yellow;
                 break;
         }
-
-        HelmetHealth = Mathf.Clamp(HelmetHealth - value, 0, HelmetMaxHealth);
-
+        
         ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (bodyPartName != "Helmet")
@@ -204,5 +202,12 @@ public class Raimundo : BaseEnemy
         }
         if (Helmet != null)
             Destroy(Helmet.gameObject);
+    }
+
+    public override void SetRandomValues(float health, float speed, float damage, int killscore, BaseEnemy enemy, bool isBoss = false)
+    {
+        base.SetRandomValues(health, speed, damage, killscore, enemy, isBoss);
+
+        HelmetSprite.sortingOrder = SpriteRenderer.sortingOrder + 1;
     }
 }
