@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour
 
     public bool IsGamePaused { get; private set; }
     public bool IsInGame { get; set; }
+    public bool IsTutorialActive { get; set; }
     public FPSCount FpsCount { get; private set; }
     public Image GameCursor { get; private set; }
     public delegate void OnRestart();
@@ -35,7 +36,10 @@ public class MenuController : MonoBehaviour
         PersistentCanvas = GameObject.Find("PersistentCanvas");
 
         if (Instance == null)
+        {
             Instance = GameObject.Find("MenuController").GetComponent<MenuController>();
+            IsTutorialActive = true;
+        }
 
         if (Instance == this)
         {

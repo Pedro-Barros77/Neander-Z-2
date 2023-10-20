@@ -46,7 +46,9 @@ public class WavesManager : MonoBehaviour
         WaveStartTitleContainer = WaveStartTitleText.GetComponentInParent<BlinkingText>(true);
         WaveStartDescriptionContainer = WaveStartDescriptionText.GetComponentInParent<BlinkingText>(true);
 
-        StartWave();
+        WaveEnemiesCountText.transform.parent.gameObject.SetActive(!MenuController.Instance.IsTutorialActive);
+        if (!MenuController.Instance.IsTutorialActive)
+            StartWave();
     }
 
     void Update()

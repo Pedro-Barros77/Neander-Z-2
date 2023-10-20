@@ -19,9 +19,18 @@ public class InGameScreen : MonoBehaviour
     Sprite Colt_1911Sprite, ShortBarrelSprite, UZISprite, SV98Sprite, M16Sprite, RPGSprite, MacheteSprite, DeagleSprite, Beretta_93RSprite, ScarSprite, ScarDebugSprite;
     [SerializeField]
     Sprite FragGrenadeSprite, MolotovSprite;
+    [SerializeField]
+    GameObject TutorialPanel;
+    [SerializeField]
+    Button BtnReady;
 
     void Start()
     {
+        BtnReady.gameObject.SetActive(MenuController.Instance.IsTutorialActive);
+        TutorialPanel.SetActive(MenuController.Instance.IsTutorialActive);
+
+        if (MenuController.Instance.IsTutorialActive)
+            Player.Data.InventoryData = Resources.Load<InventoryData>("ScriptableObjects/Player/TutorialInventory");
     }
 
     void Update()
@@ -87,7 +96,17 @@ public class InGameScreen : MonoBehaviour
     }
 
     /// <summary>
-    /// Change the scene to the game store.
+    /// Troca para a cena da loja após o tutorial concluído.
+    /// </summary>
+    public void ExitTutorial()
+    {
+        MenuController.Instance.IsTutorialActive = false;
+        Player.Data.InventoryData = Resources.Load<InventoryData>("ScriptableObjects/Player/PlayerInventory");
+        OpenStore();
+    }
+
+    /// <summary>
+    /// Muda a cena para a loja do jogo.
     /// </summary>
     public void OpenStore()
     {
