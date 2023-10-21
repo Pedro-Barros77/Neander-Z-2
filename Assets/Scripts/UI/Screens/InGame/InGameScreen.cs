@@ -20,9 +20,17 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     Sprite FragGrenadeSprite, MolotovSprite;
     [SerializeField]
-    GameObject TutorialPanel;
+    GameObject TutorialPanel, MobileInputPanel;
     [SerializeField]
     Button BtnReady;
+
+    [SerializeField]
+    Joystick MobileMovementJoystick, MobileGrenadeJoystick;
+    [SerializeField]
+    BaseButton MobileReloadButton, MobileTacticalAbilityButton, MobileSwitchWeaponsButton, MobileTouchBackgroundFire;
+
+    Image SprintThreshold;
+    Color32 NotSprintingJoystickColor = new(212, 210, 159, 15), SprintingJoystickColor = new(255, 243, 73, 50);
 
     void Start()
     {
@@ -31,6 +39,20 @@ public class InGameScreen : MonoBehaviour
 
         if (MenuController.Instance.IsTutorialActive)
             Player.Data.InventoryData = Resources.Load<InventoryData>("ScriptableObjects/Player/TutorialInventory");
+
+        MobileInputPanel.SetActive(MenuController.Instance.IsMobileInput);
+
+        if (MenuController.Instance.IsMobileInput)
+        {
+            MenuController.Instance.MobileMovementJoystick = MobileMovementJoystick;
+            MenuController.Instance.MobileGrenadeJoystick = MobileGrenadeJoystick;
+            MenuController.Instance.MobileReloadButton = MobileReloadButton;
+            MenuController.Instance.MobileTacticalAbilityButton = MobileTacticalAbilityButton;
+            MenuController.Instance.MobileSwitchWeaponsButton = MobileSwitchWeaponsButton;
+            MenuController.Instance.MobileTouchBackgroundFire = MobileTouchBackgroundFire;
+
+            SprintThreshold = MobileMovementJoystick.transform.Find("SprintThresholdMask").GetChild(0).GetComponent<Image>();
+        }
     }
 
     void Update()
@@ -42,6 +64,9 @@ public class InGameScreen : MonoBehaviour
             else
                 PauseGame();
         }
+
+        if (MenuController.Instance.IsMobileInput)
+            SprintThreshold.color = Constants.GetAction(InputActions.Sprint) ? SprintingJoystickColor : NotSprintingJoystickColor;
 
         UpdateInGameUI();
     }
@@ -156,10 +181,12 @@ public class InGameScreen : MonoBehaviour
     /// </summary>
     public void QuitGame()
     {
+        GameOverPanel.SetActive(false);
         ContinueGame();
         MenuController.Instance.IsInGame = false;
-        GameOverPanel.SetActive(false);
         MenuController.Instance.ChangeScene(SceneNames.MainMenu, LoadSceneMode.Single);
+        MenuController.Instance.OnRestartGame();
+        MenuController.Instance.IsTutorialActive = true;
     }
 
     /// <summary>

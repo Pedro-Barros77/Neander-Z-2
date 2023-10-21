@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BaseButton : MonoBehaviour
+public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public bool Pressed { get; private set; }
+    public bool IsPressing { get; private set; }
+    public bool Released { get; private set; }
+    public Vector3 ClickPosition { get; private set; }
     [SerializeField]
     public AudioClip HoverSound, ClickSound;
     [SerializeField]
     public float HoverVolume = 1f, ClickVolume = 1f;
 
     private Animator animator;
-    private Button button;
+    public Button button;
     private AudioSource audioSource;
+    private int touchId = -1;
 
     void Start()
     {
@@ -23,7 +29,14 @@ public class BaseButton : MonoBehaviour
 
     void Update()
     {
+        if (IsPressing)
+            UpdateClickPosition();
+    }
 
+    private void LateUpdate()
+    {
+        Pressed = false;
+        Released = false;
     }
 
     /// <summary>
@@ -36,6 +49,9 @@ public class BaseButton : MonoBehaviour
 
         if (HoverSound != null)
             audioSource.PlayOneShot(ClickSound, ClickVolume);
+
+        IsPressing = true;
+        Pressed = true;
     }
 
     /// <summary>
@@ -69,7 +85,8 @@ public class BaseButton : MonoBehaviour
     /// <param name="btnAnimator">Botão a ser reiniciado.</param>
     public void ResetButton()
     {
-        //animator.ResetTrigger("Highlighted");
+        if (animator == null)
+            return;
         animator.ResetTrigger("Pressed");
         animator.ResetTrigger("Selected");
         animator.SetTrigger("Normal");
@@ -81,5 +98,36 @@ public class BaseButton : MonoBehaviour
         var menuController = MenuController.Instance;
         if (menuController != null)
             menuController.SetCursor(Cursors.Arrow);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        touchId = eventData.pointerId;
+        Pressed = true;
+        IsPressing = true;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (eventData.pointerId == touchId)
+        {
+            IsPressing = false;
+            touchId = -1;
+            Released = true;
+        }
+    }
+
+    void UpdateClickPosition()
+    {
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            if (Input.GetTouch(i).fingerId == touchId)
+            {
+                ClickPosition = Input.GetTouch(i).position;
+                return;
+            }
+        }
+
+        ClickPosition = Input.mousePosition;
     }
 }

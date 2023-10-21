@@ -85,20 +85,6 @@ public class PlayerWeaponController : MonoBehaviour
         if (MenuController.Instance.IsGamePaused)
             return;
 
-        bool isFiring;
-
-        if (HoldTriggerFireModes.Contains(Player.CurrentWeapon.FireMode))
-            isFiring = Constants.GetAction(InputActions.Shoot);
-        else
-            isFiring = Constants.GetActionDown(InputActions.Shoot);
-
-        if (isFiring)
-        {
-            bool isFiringBurst = Player.CurrentWeapon is BurstFireWeapon && (Player.CurrentWeapon as BurstFireWeapon).IsFiringBurst;
-            if (!isFiringBurst)
-                Player.CurrentWeapon.Shoot();
-        }
-
         if (Constants.GetActionDown(InputActions.Reload))
             Player.CurrentWeapon.Reload();
 
@@ -127,9 +113,42 @@ public class PlayerWeaponController : MonoBehaviour
             WeaponSwitchAnimation();
         else
         {
-            Vector3 mousePos = Input.mousePosition;
-            Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, transform.position.z));
-            RotateTo(worldMousePos);
+
+            if (MenuController.Instance.IsMobileInput)
+            {
+                if (IsThrowingItem)
+                {
+                    Vector2 grenadeJoystickAim = MenuController.Instance.MobileGrenadeJoystick.Direction;
+                    Vector3 aimPosition = transform.position + new Vector3(grenadeJoystickAim.x, grenadeJoystickAim.y, 0);
+                    RotateTo(aimPosition);
+                }
+                else
+                {
+                    Vector3 touchPos = MenuController.Instance.MobileTouchBackgroundFire.ClickPosition;
+                    Vector3 worldTouchPos = Camera.main.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, transform.position.z));
+                    RotateTo(worldTouchPos);
+                }
+            }
+            else
+            {
+                Vector3 mousePos = Input.mousePosition;
+                Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, transform.position.z));
+                RotateTo(worldMousePos);
+            }
+        }
+
+        bool isFiring;
+
+        if (HoldTriggerFireModes.Contains(Player.CurrentWeapon.FireMode))
+            isFiring = Constants.GetAction(InputActions.Shoot);
+        else
+            isFiring = Constants.GetActionDown(InputActions.Shoot);
+
+        if (isFiring)
+        {
+            bool isFiringBurst = Player.CurrentWeapon is BurstFireWeapon && (Player.CurrentWeapon as BurstFireWeapon).IsFiringBurst;
+            if (!isFiringBurst)
+                Player.CurrentWeapon.Shoot();
         }
 
         blinkingReloadText.gameObject.SetActive(Player.CurrentWeapon.NeedsReload());

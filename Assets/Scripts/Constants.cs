@@ -10,9 +10,11 @@ public static class Constants
     public static float MaxWeaponRange { get; private set; } = 48;
 
     static float ReloadSpeedRatio = 5000;
+    static float JoystickHorizontalDeadzone = 0.2f;
+    static float JoystickSprintDeadzone = 0.9f;
+    static float JoystickVerticalDeadzone = 0.5f;
 
-    public static bool GetActionDown(InputActions action) => action == InputActions.SwitchWeapon ? Input.mouseScrollDelta.y != 0
-                                                       : GetActionPerformed(action, 0);
+    public static bool GetActionDown(InputActions action) => GetActionPerformed(action, 0);
     public static bool GetAction(InputActions action) => GetActionPerformed(action, 1);
     public static bool GetActionUp(InputActions action) => GetActionPerformed(action, 2);
 
@@ -21,12 +23,69 @@ public static class Constants
         if (MenuController.Instance.Keybind.Inputs == null)
             MenuController.Instance.Keybind.Init();
 
-        return MenuController.Instance.Keybind.Inputs.Any(inp => inp.Any(keybind => keybind.Action == action
-            && (
-                       (pressingState == 0 && Input.GetKeyDown(keybind.Key))
-                    || (pressingState == 1 && Input.GetKey(keybind.Key))
-                    || (pressingState == 2 && Input.GetKeyUp(keybind.Key))
-               )));
+        if (!MenuController.Instance.IsMobileInput)
+        {
+            if (action == InputActions.SwitchWeapon && pressingState == 0)
+                return Input.mouseScrollDelta.y != 0;
+
+            return MenuController.Instance.Keybind.Inputs.Any(inp => inp.Any(keybind => keybind.Action == action
+                && (
+                           (pressingState == 0 && Input.GetKeyDown(keybind.Key))
+                        || (pressingState == 1 && Input.GetKey(keybind.Key))
+                        || (pressingState == 2 && Input.GetKeyUp(keybind.Key))
+                   )));
+        }
+
+        bool ButtonState(BaseButton button) => pressingState switch
+        {
+            0 => button.Pressed,
+            1 => button.IsPressing,
+            2 => button.Released,
+            _ => false
+        };
+
+        switch (action)
+        {
+            case InputActions.MoveLeft:
+                if (pressingState == 0 || pressingState == 1)
+                    return MenuController.Instance.MobileMovementJoystick.Horizontal <= -JoystickHorizontalDeadzone;
+                break;
+            case InputActions.MoveRight:
+                if (pressingState == 0 || pressingState == 1)
+                    return MenuController.Instance.MobileMovementJoystick.Horizontal >= JoystickHorizontalDeadzone;
+                break;
+            case InputActions.Jump:
+                if (pressingState == 0)
+                    return MenuController.Instance.MobileMovementJoystick.Vertical >= JoystickVerticalDeadzone;
+                break;
+            case InputActions.Crouch:
+                if (pressingState == 0 || pressingState == 1)
+                    return MenuController.Instance.MobileMovementJoystick.Vertical <= -JoystickVerticalDeadzone;
+                break;
+            case InputActions.Sprint:
+                if (pressingState == 0 || pressingState == 1)
+                    return Mathf.Abs(MenuController.Instance.MobileMovementJoystick.Horizontal) >= JoystickSprintDeadzone;
+                break;
+            case InputActions.Reload:
+                return ButtonState(MenuController.Instance.MobileReloadButton);
+
+            case InputActions.SwitchWeapon:
+                return ButtonState(MenuController.Instance.MobileSwitchWeaponsButton);
+
+            case InputActions.TacticalAbility:
+                return ButtonState(MenuController.Instance.MobileTacticalAbilityButton);
+
+            case InputActions.Shoot:
+                return ButtonState(MenuController.Instance.MobileTouchBackgroundFire);
+
+            case InputActions.ThrowGrenade:
+                if (pressingState == 0 || pressingState == 1)
+                    return MenuController.Instance.MobileGrenadeJoystick.Vertical != 0 || MenuController.Instance.MobileGrenadeJoystick.Horizontal != 0;
+                else
+                    return MenuController.Instance.MobileGrenadeJoystick.Vertical == 0 && MenuController.Instance.MobileGrenadeJoystick.Horizontal == 0;
+        }
+
+        return false;
     }
 
 

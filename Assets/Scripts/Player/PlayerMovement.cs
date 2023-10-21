@@ -148,6 +148,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Player.Stamina < Player.JumpStaminaDrain)
             return;
+        isGrounded = false;
         Player.LoseStamina(Player.JumpStaminaDrain);
         Player.RigidBody.AddForce(new Vector2(0f, Player.JumpForce));
     }
