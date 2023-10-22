@@ -172,7 +172,13 @@ public class InGameScreen : MonoBehaviour
     public void RestartGame()
     {
         GameOverPanel.SetActive(false);
-        OpenStore();
+        if (MenuController.Instance.IsTutorialActive)
+        {
+            ContinueGame();
+            MenuController.Instance.RestartScene();
+        }
+        else
+            OpenStore();
         MenuController.Instance.OnRestartGame();
     }
 

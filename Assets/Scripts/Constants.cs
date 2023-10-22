@@ -20,6 +20,9 @@ public static class Constants
 
     private static bool GetActionPerformed(InputActions action, int pressingState)
     {
+        if (MenuController.Instance.Keybind == null)
+            return false;
+
         if (MenuController.Instance.Keybind.Inputs == null)
             MenuController.Instance.Keybind.Init();
 

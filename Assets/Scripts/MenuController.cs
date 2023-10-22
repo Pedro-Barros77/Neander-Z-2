@@ -173,5 +173,6 @@ public class MenuController : MonoBehaviour
     public void OnRestartGame()
     {
         RestartEvent?.Invoke();
+        Keybind = Resources.Load<KeybindConfig>("ScriptableObjects/Player/DefaultKeybind");
     }
 }
