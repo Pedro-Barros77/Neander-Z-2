@@ -10,9 +10,11 @@ public class Rui : BaseEnemy
     private IEnemyTarget Target;
     private bool isInBumpRange;
     private bool isBumping;
+    private bool isHalfHealth => Health <= MaxHealth / 2;
     [SerializeField]
     protected List<CustomAudio> ImpactSounds, BumpSounds;
     protected AttackTrigger BumpTrigger;
+    private CameraManagement CameraManagement;
     protected override bool isIdle => base.isIdle && !isBumping;
     protected override void Start()
     {
@@ -29,6 +31,7 @@ public class Rui : BaseEnemy
         DeathSoundVolume = 0.7f;
         BumpTrigger = transform.Find("BumpArea").GetComponent<AttackTrigger>();
         BumpTrigger.OnTagTriggered += OnTargetHit;
+        CameraManagement = Camera.main.GetComponent<CameraManagement>();
 
         base.Start();
 
@@ -60,7 +63,7 @@ public class Rui : BaseEnemy
 
         Animation();
 
-        if (isBumping && Target != null)
+        if ((isBumping || isAttacking) && Target != null)
         {
             var targetDirection = Target.transform.position.x - transform.position.x;
             FlipEnemy(Mathf.Sign(targetDirection));
@@ -107,7 +110,10 @@ public class Rui : BaseEnemy
     protected override void OnAttackHit()
     {
         ImpactSounds.PlayRandomIfAny(AudioSource);
+        if (isHalfHealth)
+            HitTargetsIds.Clear();
 
+        StartCoroutine(CameraManagement.ShakeCameraEffect(500, 1));
         base.OnAttackHit();
     }
     protected override void OnTargetHit(Collider2D targetCollider)
@@ -115,7 +121,6 @@ public class Rui : BaseEnemy
         IEnemyTarget target = targetCollider.GetComponent<IEnemyTarget>();
         if (target == null)
             return;
-
         int targetInstanceId = target.gameObject.GetInstanceID();
         if (HitTargetsIds.Contains(targetInstanceId))
             return;
@@ -141,6 +146,21 @@ public class Rui : BaseEnemy
         if (isBumping) Animator.SetTrigger("Bump");
         else Animator.ResetTrigger("Bump");
 
-        base.SyncAnimationStates();
+        Animator.SetBool("isIdle", isIdle);
+        Animator.SetBool("isRunning", isRunning);
+
+        if (isHalfHealth)
+        {
+            if (isAttacking) Animator.SetTrigger("FlipAttack");
+            else Animator.ResetTrigger("FlipAttack");
+        }
+        else
+        {
+            if (isAttacking) Animator.SetTrigger("Attack");
+            else Animator.ResetTrigger("Attack");
+        }
+
+        if (isDying) Animator.SetTrigger("Die");
+        else Animator.ResetTrigger("Die");
     }
 }
