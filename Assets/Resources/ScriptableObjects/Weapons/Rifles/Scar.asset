@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Scar
   m_EditorClassIdentifier: 
   IsPrimary: 1
+  WeaponClass: 3
   Type: 10
   BulletType: 2
   FireMode: 3
@@ -29,3 +30,4 @@ MonoBehaviour:
   MagazineBullets: 25
   ReloadTimeMs: 2000
   SwitchTimeMs: 350
+  Upgrades: []

@@ -22,6 +22,7 @@ public class BlinkingText : MonoBehaviour
 
     public bool ShowBackground;
     public bool BlinkBackground;
+    public bool DisableOnStartFinish;
 
     private TextMeshProUGUI textComponent;
     private Image backgroundImage;
@@ -34,14 +35,22 @@ public class BlinkingText : MonoBehaviour
     {
         textComponent = GetComponentInChildren<TextMeshProUGUI>();
         backgroundImage = GetComponent<Image>();
-        backgroundStartColor = backgroundImage.color;
+        if (backgroundImage != null)
+            backgroundStartColor = backgroundImage.color;
         textComponent.color = FirstColor;
-        RestartBlinking();
+        if (DisableOnStartFinish)
+        {
+            this.enabled = false;
+            textComponent.color = Color.white;
+        }
+        else
+            RestartBlinking();
     }
 
     private void Update()
     {
-        backgroundImage.enabled = ShowBackground;
+        if (backgroundImage != null)
+            backgroundImage.enabled = ShowBackground;
     }
 
     /// <summary>

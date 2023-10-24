@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Deagle
   m_EditorClassIdentifier: 
   IsPrimary: 0
+  WeaponClass: 2
   Type: 2
   BulletType: 2
   FireMode: 1
@@ -29,3 +30,4 @@ MonoBehaviour:
   MagazineBullets: 7
   ReloadTimeMs: 1400
   SwitchTimeMs: 200
+  Upgrades: []

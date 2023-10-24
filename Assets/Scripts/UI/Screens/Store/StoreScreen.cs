@@ -32,7 +32,7 @@ public class StoreScreen : MonoBehaviour
     [SerializeField]
     GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab;
     [SerializeField]
-    SectionedBar DamageBar, FireRateBar, ReloadSpeedBar, RangeBar;
+    SectionedBar DamageBar, FireRateBar, ReloadSpeedBar, RangeBar, BulletSpeedBar;
 
     TextMeshProUGUI PreviewBtnBuyText, BtnReadyText;
     Animator storePanelAnimator;
@@ -92,9 +92,9 @@ public class StoreScreen : MonoBehaviour
                 if (SelectedItem.Data is StoreThrowableData storeThrowableData)
                 {
                     InventoryData.ThrowableSelection playerThrowable = PlayerData.InventoryData.ThrowableItemsSelection.FirstOrDefault(x => x.Type == storeThrowableData.ThrowableData.Type);
-                    // todo: implementar quantidade máxima de granadas
                     SetCountStats(
-                        count: (playerThrowable?.Count ?? 0).ToString()
+                        count: (playerThrowable?.Count ?? 0).ToString(),
+                        total: $"/{playerThrowable.MaxCount}"
                     );
                 }
                 else if (SelectedItem.Data is StoreAmmoData storeAmmoData)
@@ -193,8 +193,8 @@ public class StoreScreen : MonoBehaviour
             SetIconStats(
                 headshot: storeWeaponData.WeaponData.HeadshotMultiplier.ToString("N1"),
                 magazine: storeWeaponData.WeaponData.MagazineSize.ToString(),
-                pellets: pelletsCount.ToString(),
-                dispersion: pelletsDispersion.ToString(),
+                pellets: pelletsCount > 0 ? pelletsCount.ToString() : null,
+                dispersion: pelletsDispersion > 0 ? pelletsDispersion.ToString() : null,
                 bulletType: storeWeaponData.WeaponData.BulletType
             );
 
@@ -204,7 +204,8 @@ public class StoreScreen : MonoBehaviour
                 damage: storeWeaponData.WeaponData,
                 fireRate: storeWeaponData.WeaponData,
                 reloadSpeed: storeWeaponData.WeaponData,
-                range: storeWeaponData.WeaponData
+                range: storeWeaponData.WeaponData,
+                bulletSpeed: storeWeaponData.WeaponData
             );
         }
         else if (SelectedItem.Data is StoreThrowableData storeThrowableData)
@@ -398,7 +399,7 @@ public class StoreScreen : MonoBehaviour
     /// <param name="fireRate">As informações da arma para calcular a cadência. Null para desativar.</param>
     /// <param name="reloadSpeed">As informações da arma para calcular a velocidade de recarga. Null para desativar.</param>
     /// <param name="range">As informações da arma para calcular o alcance. Null para desativar.</param>
-    private void SetBarStats(BaseWeaponData? damage = null, BaseWeaponData? fireRate = null, BaseWeaponData? reloadSpeed = null, BaseWeaponData? range = null)
+    private void SetBarStats(BaseWeaponData? damage = null, BaseWeaponData? fireRate = null, BaseWeaponData? reloadSpeed = null, BaseWeaponData? range = null, BaseWeaponData? bulletSpeed = null)
     {
         if (damage != null)
         {
@@ -426,6 +427,13 @@ public class StoreScreen : MonoBehaviour
             RangeBar.MaxValue = Constants.MaxWeaponRange;
             RangeBar.Value = Constants.CalculateRange(range);
             RangeBar.CalculateSections();
+        }
+
+        if (bulletSpeed != null)
+        {
+            BulletSpeedBar.MaxValue = Constants.MaxWeaponBulletSpeed;
+            BulletSpeedBar.Value = Constants.CalculateBulletSpeed(range);
+            BulletSpeedBar.CalculateSections();
         }
 
         DamageBar.transform.parent.parent.gameObject.SetActive(damage != null || fireRate != null || reloadSpeed != null || range != null);
@@ -496,13 +504,21 @@ public class StoreScreen : MonoBehaviour
 
         if (data.WeaponData.IsPrimary)
         {
-            PlayerData.InventoryData.PrimaryWeaponsSelection.Add(new(data.WeaponData.Type, WeaponEquippedSlot.Primary));
+            InventoryData.WeaponSelection newWeaponSelection = new(data.WeaponData.Type, WeaponEquippedSlot.Primary)
+            {
+                UpgradesMap = data.WeaponData.Upgrades.Select(x => new InventoryData.WeaponSelection.WeaponUpgradeMap(x.Attribute, 0)).ToList()
+            };
+            PlayerData.InventoryData.PrimaryWeaponsSelection.Add(newWeaponSelection);
 
             inventoryTab.PrimarySlot.DropItem(item);
         }
         else
         {
-            PlayerData.InventoryData.SecondaryWeaponsSelection.Add(new(data.WeaponData.Type, WeaponEquippedSlot.Secondary));
+            InventoryData.WeaponSelection newWeaponSelection = new(data.WeaponData.Type, WeaponEquippedSlot.Secondary)
+            {
+                UpgradesMap = data.WeaponData.Upgrades.Select(x => new InventoryData.WeaponSelection.WeaponUpgradeMap(x.Attribute, 0)).ToList()
+            };
+            PlayerData.InventoryData.SecondaryWeaponsSelection.Add(newWeaponSelection);
 
             inventoryTab.SecondarySlot.DropItem(item);
         }

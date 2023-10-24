@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Beretta_93R
   m_EditorClassIdentifier: 
   IsPrimary: 0
+  WeaponClass: 2
   Type: 3
   BulletType: 1
   FireMode: 2
@@ -21,7 +22,7 @@ MonoBehaviour:
   MinDamage: 1
   HeadshotMultiplier: 1.5
   FireRate: 5
-  BulletSpeed: 30
+  BulletSpeed: 28
   MaxDamageRange: 4
   MinDamageRange: 6
   BulletMaxRange: 8
@@ -29,5 +30,6 @@ MonoBehaviour:
   MagazineBullets: 15
   ReloadTimeMs: 1300
   SwitchTimeMs: 230
+  Upgrades: []
   BurstShotsCount: 3
   BurstFireRate: 12

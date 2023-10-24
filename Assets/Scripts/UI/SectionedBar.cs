@@ -14,6 +14,7 @@ public class SectionedBar : MonoBehaviour
     public bool BlinkModification;
     public float BlinkDelayMs;
     public bool HideOnFull;
+    public int SectionsCount => backgroundImage?.transform.childCount ?? 0;
 
     Image backgroundImage;
     Image[,] Sections;
@@ -134,11 +135,9 @@ public class SectionedBar : MonoBehaviour
     /// </summary>
     void LoadSections()
     {
-        int sectionsCount = backgroundImage.transform.childCount;
+        Sections = new Image[SectionsCount, 2];
 
-        Sections = new Image[sectionsCount, 2];
-
-        for (int i = 0; i < sectionsCount; i++)
+        for (int i = 0; i < SectionsCount; i++)
         {
             var section = backgroundImage.transform.GetChild(i);
             var fill = section.Find("Fill");

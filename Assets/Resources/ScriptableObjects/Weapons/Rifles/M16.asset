@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: M16
   m_EditorClassIdentifier: 
   IsPrimary: 1
+  WeaponClass: 3
   Type: 9
   BulletType: 2
   FireMode: 2
@@ -29,5 +30,6 @@ MonoBehaviour:
   MagazineBullets: 20
   ReloadTimeMs: 2500
   SwitchTimeMs: 350
+  Upgrades: []
   BurstShotsCount: 3
   BurstFireRate: 11

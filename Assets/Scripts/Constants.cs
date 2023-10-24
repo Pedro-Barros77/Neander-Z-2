@@ -8,6 +8,7 @@ public static class Constants
     public static float MaxWeaponFireRate { get; private set; } = 18;
     public static float MaxWeaponReloadSpeed { get; private set; } = 12;
     public static float MaxWeaponRange { get; private set; } = 48;
+    public static float MaxWeaponBulletSpeed { get; private set; } = 60;
 
     static float ReloadSpeedRatio = 5000;
     static float JoystickHorizontalDeadzone = 0.2f;
@@ -186,6 +187,20 @@ public static class Constants
             range = 0;
 
         return range;
+    }
+
+    /// <summary>
+    /// Calcula a velocidade dos projéteis dessa arma para exibir na barra de estatística, levando em consideração as variações de cada arma.
+    /// </summary>
+    /// <param name="weaponData">As informações dessa arma.</param>
+    /// <returns>A velocidade de projétil calculada calculado.</returns>
+    public static float CalculateBulletSpeed(BaseWeaponData weaponData)
+    {
+        float speed = weaponData.BulletSpeed;
+        if (weaponData is MeleeData || weaponData.BulletType == BulletTypes.Melee || weaponData.FireMode == FireModes.Melee)
+            speed = 0;
+
+        return speed;
     }
 
     /// <summary>

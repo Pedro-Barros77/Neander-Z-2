@@ -14,6 +14,8 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public AudioClip HoverSound, ClickSound;
     [SerializeField]
     public float HoverVolume = 1f, ClickVolume = 1f;
+    public delegate void OnHover(BaseButton button, bool hovered);
+    public event OnHover HoverEvent;
 
     private Animator animator;
     public Button button;
@@ -65,6 +67,8 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (HoverSound != null)
             audioSource.PlayOneShot(HoverSound, HoverVolume);
 
+        HoverEvent?.Invoke(this, true);
+
         MenuController.Instance.SetCursor(Cursors.Pointer);
     }
 
@@ -75,6 +79,8 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (!button.interactable)
             return;
+
+        HoverEvent?.Invoke(this, false);
 
         MenuController.Instance.SetCursor(Cursors.Arrow);
     }

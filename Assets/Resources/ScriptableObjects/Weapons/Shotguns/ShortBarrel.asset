@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ShortBarrel
   m_EditorClassIdentifier: 
   IsPrimary: 1
+  WeaponClass: 4
   Type: 4
   BulletType: 3
   FireMode: 5
@@ -29,6 +30,7 @@ MonoBehaviour:
   MagazineBullets: 5
   ReloadTimeMs: 600
   SwitchTimeMs: 350
+  Upgrades: []
   ShellPelletsCount: 12
   PelletsDispersion: 50
   UseMagazine: 0

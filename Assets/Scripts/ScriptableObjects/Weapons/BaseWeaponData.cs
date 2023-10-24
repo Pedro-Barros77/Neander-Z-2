@@ -1,8 +1,11 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class BaseWeaponData : AutoRevertSO
 {
     public bool IsPrimary;
+    public WeaponClasses WeaponClass;
     public WeaponTypes Type;
     public BulletTypes BulletType;
     public FireModes FireMode;
@@ -23,5 +26,22 @@ public abstract class BaseWeaponData : AutoRevertSO
     public float ReloadTimeMs;
 
     public float SwitchTimeMs;
+
+    public List<WeaponUpgradeGroup> Upgrades;
+
     protected Vector3 WeaponContainerOffset;
+
+    [Serializable]
+    public class WeaponUpgradeGroup
+    {
+        public WeaponAttributes Attribute;
+        public List<WeaponUpgrade> UpgradeSteps;
+
+        [Serializable]
+        public class WeaponUpgrade
+        {
+            public float Price;
+            public float Value;
+        }
+    }
 }

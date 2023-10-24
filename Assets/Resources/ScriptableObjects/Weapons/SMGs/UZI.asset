@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: UZI
   m_EditorClassIdentifier: 
   IsPrimary: 1
+  WeaponClass: 5
   Type: 5
   BulletType: 1
   FireMode: 3
@@ -29,3 +30,4 @@ MonoBehaviour:
   MagazineBullets: 25
   ReloadTimeMs: 1500
   SwitchTimeMs: 220
+  Upgrades: []

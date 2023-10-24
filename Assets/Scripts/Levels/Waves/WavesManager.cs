@@ -98,12 +98,13 @@ public class WavesManager : MonoBehaviour
         Destroy(CurrentWave);
         CurrentWave = gameObject.AddComponent<Wave>();
 
-        var SO = Resources.Load<WaveData>($"ScriptableObjects/Waves/Wave_{WaveNumber:D2}");
+        string path = $"ScriptableObjects/Waves/Wave_{WaveNumber:D2}";
+        var SO = Resources.Load<WaveData>(path);
 
         if (SO != null)
         {
             SO.UnloadSO();
-            CurrentWave.Data = Resources.Load<WaveData>($"ScriptableObjects/Waves/Wave_{WaveNumber:D2}");
+            CurrentWave.Data = Resources.Load<WaveData>(path);
         }
         else
         {

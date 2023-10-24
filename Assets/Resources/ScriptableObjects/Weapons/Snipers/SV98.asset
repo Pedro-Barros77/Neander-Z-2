@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SV98
   m_EditorClassIdentifier: 
   IsPrimary: 1
+  WeaponClass: 6
   Type: 8
   BulletType: 4
   FireMode: 4
@@ -29,5 +30,6 @@ MonoBehaviour:
   MagazineBullets: 5
   ReloadTimeMs: 2000
   SwitchTimeMs: 400
+  Upgrades: []
   MaxPierceCount: 5
   PierceDamageMultiplier: 0.5

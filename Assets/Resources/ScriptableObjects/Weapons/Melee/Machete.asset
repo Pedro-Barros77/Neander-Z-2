@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Machete
   m_EditorClassIdentifier: 
   IsPrimary: 0
+  WeaponClass: 1
   Type: 6
   BulletType: 6
   FireMode: 0
+  ReloadType: 0
   Damage: 3
   MinDamage: 0
   HeadshotMultiplier: 1.3
@@ -28,5 +30,6 @@ MonoBehaviour:
   MagazineBullets: 0
   ReloadTimeMs: 0
   SwitchTimeMs: 150
+  Upgrades: []
   AttackAnimationsCount: 3
   AttackStaminaCost: 7
