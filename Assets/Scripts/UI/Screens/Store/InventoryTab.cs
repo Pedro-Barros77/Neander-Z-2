@@ -23,9 +23,15 @@ public class InventoryTab : MonoBehaviour
     [SerializeField]
     SectionedBar DamageBar, FireRateBar, ReloadSpeedBar, RangeBar, BulletSpeedBar;
     [SerializeField]
-    BaseButton BtnUpgradeDamage, BtnUpgradeFireRate, BtnUpgradeReloadSpeed, BtnUpgradeRange, BtnUpgradeBulletSpeed, BtnUpgradeHeadshotMultiplier, BtnUpgradeMagazineCapacity, BtnUpgradeBallinsDispersion;
+    GameObject BackpackContent, PlayerContent;
+    [SerializeField]
+    BaseButton BtnUpgradeDamage, BtnUpgradeFireRate, BtnUpgradeReloadSpeed, BtnUpgradeRange, BtnUpgradeBulletSpeed, BtnUpgradeHeadshotMultiplier, BtnUpgradeMagazineCapacity, BtnUpgradeBallinsDispersion, BackpackBtnUpgrade;
+    [SerializeField]
+    TextMeshProUGUI BackpackPistolAmmo, BackpackShotgunAmmo, BackpackRifleAmmo, BackpackSniperAmmo, BackpackRocketAmmo;
 
+    TextMeshProUGUI BackpackPistolAmmoUpgrade, BackpackShotgunAmmoUpgrade, BackpackRifleAmmoUpgrade, BackpackSniperAmmoUpgrade, BackpackRocketAmmoUpgrade, BackpackBtnUpgradeText;
     TextMeshProUGUI UpgradeDamagePrice, UpgradeFireRatePrice, UpgradeReloadSpeedPrice, UpgradeRangePrice, UpgradeBulletSpeedPrice, UpgradeHeadshotMultiplierPrice, UpgradeMagazineCapacityPrice, UpgradeBallinsDispersionPrice;
+    GameObject IconStatsContainer, StatsContainer, ButtonsContainer;
 
     [SerializeField]
     public InventorySlot PrimarySlot, SecondarySlot, GrenadeSlot, DeployableSlot, SupportSlot, AbilitySlot, SkillSlot;
@@ -55,6 +61,23 @@ public class InventoryTab : MonoBehaviour
         BtnUpgradeHeadshotMultiplier.HoverEvent += (BaseButton button, bool hovered) => OnHoverUpgrade(WeaponAttributes.HeadshotMultiplier, button, hovered);
         BtnUpgradeMagazineCapacity.HoverEvent += (BaseButton button, bool hovered) => OnHoverUpgrade(WeaponAttributes.MagazineSize, button, hovered);
         BtnUpgradeBallinsDispersion.HoverEvent += (BaseButton button, bool hovered) => OnHoverUpgrade(WeaponAttributes.BallinsConcentration, button, hovered);
+        BackpackBtnUpgradeText = BackpackBtnUpgrade.GetComponentInChildren<TextMeshProUGUI>();
+        BackpackBtnUpgrade.HoverEvent += (BaseButton button, bool hovered) =>
+        {
+            BackpackPistolAmmoUpgrade.GetComponent<BlinkingText>().enabled = hovered;
+            BackpackShotgunAmmoUpgrade.GetComponent<BlinkingText>().enabled = hovered;
+            BackpackRifleAmmoUpgrade.GetComponent<BlinkingText>().enabled = hovered;
+            BackpackSniperAmmoUpgrade.GetComponent<BlinkingText>().enabled = hovered;
+            BackpackRocketAmmoUpgrade.GetComponent<BlinkingText>().enabled = hovered;
+            if (!hovered)
+            {
+                BackpackPistolAmmoUpgrade.color = new Color(0, 0, 0, 0);
+                BackpackShotgunAmmoUpgrade.color = new Color(0, 0, 0, 0);
+                BackpackRifleAmmoUpgrade.color = new Color(0, 0, 0, 0);
+                BackpackSniperAmmoUpgrade.color = new Color(0, 0, 0, 0);
+                BackpackRocketAmmoUpgrade.color = new Color(0, 0, 0, 0);
+            }
+        };
 
         UpgradeDamagePrice = BtnUpgradeDamage.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
         UpgradeFireRatePrice = BtnUpgradeFireRate.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
@@ -64,6 +87,16 @@ public class InventoryTab : MonoBehaviour
         UpgradeHeadshotMultiplierPrice = BtnUpgradeHeadshotMultiplier.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
         UpgradeMagazineCapacityPrice = BtnUpgradeMagazineCapacity.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
         UpgradeBallinsDispersionPrice = BtnUpgradeBallinsDispersion.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
+
+        BackpackPistolAmmoUpgrade = BackpackPistolAmmo.transform.parent.Find("UpgradeValue").GetComponent<TextMeshProUGUI>();
+        BackpackShotgunAmmoUpgrade = BackpackShotgunAmmo.transform.parent.Find("UpgradeValue").GetComponent<TextMeshProUGUI>();
+        BackpackRifleAmmoUpgrade = BackpackRifleAmmo.transform.parent.Find("UpgradeValue").GetComponent<TextMeshProUGUI>();
+        BackpackSniperAmmoUpgrade = BackpackSniperAmmo.transform.parent.Find("UpgradeValue").GetComponent<TextMeshProUGUI>();
+        BackpackRocketAmmoUpgrade = BackpackRocketAmmo.transform.parent.Find("UpgradeValue").GetComponent<TextMeshProUGUI>();
+
+        IconStatsContainer = PreviewMagazineBulletsText.transform.parent.parent.gameObject;
+        StatsContainer = DamageBar.transform.parent.parent.gameObject;
+        ButtonsContainer = BtnSell.transform.parent.gameObject;
     }
 
     void Update()
@@ -114,7 +147,7 @@ public class InventoryTab : MonoBehaviour
                     }
                     else
                     {
-                        priceText.color = Constants.Colors.GreenMoney;
+                        priceText.color = Color.white;
                         button.button.interactable = true;
                     }
 
@@ -129,6 +162,33 @@ public class InventoryTab : MonoBehaviour
                 SetUpgrade(WeaponAttributes.HeadshotMultiplier, BtnUpgradeHeadshotMultiplier, UpgradeHeadshotMultiplierPrice);
                 SetUpgrade(WeaponAttributes.MagazineSize, BtnUpgradeMagazineCapacity, UpgradeMagazineCapacityPrice);
                 SetUpgrade(WeaponAttributes.BallinsConcentration, BtnUpgradeBallinsDispersion, UpgradeBallinsDispersionPrice);
+            }
+            else if (storeScreen.hasItem && storeScreen.SelectedItem.Data is StoreBackpackData storeBackpack)
+            {
+                var backpackUpgrade = storeBackpack.AmmoUpgrades.ElementAtOrDefault(Inventory.UpgradeIndex);
+
+                BackpackPistolAmmo.text = Inventory.MaxPistolAmmo.ToString();
+                BackpackShotgunAmmo.text = Inventory.MaxShotgunAmmo.ToString();
+                BackpackRifleAmmo.text = Inventory.MaxRifleAmmo.ToString();
+                BackpackSniperAmmo.text = Inventory.MaxSniperAmmo.ToString();
+                BackpackRocketAmmo.text = Inventory.MaxRocketAmmo.ToString();
+
+                if (backpackUpgrade != null)
+                {
+                    BackpackBtnUpgrade.button.interactable = storeScreen.PlayerData.Money >= backpackUpgrade.Price;
+
+                    BackpackBtnUpgradeText.text = $"Upgrade for ${backpackUpgrade.Price:N2}";
+                    BackpackPistolAmmoUpgrade.text = $"+{backpackUpgrade.PistolAmmo}";
+                    BackpackShotgunAmmoUpgrade.text = $"+{backpackUpgrade.ShotgunAmmo}";
+                    BackpackRifleAmmoUpgrade.text = $"+{backpackUpgrade.RifleAmmo}";
+                    BackpackSniperAmmoUpgrade.text = $"+{backpackUpgrade.SniperAmmo}";
+                    BackpackRocketAmmoUpgrade.text = $"+{backpackUpgrade.RocketAmmo}";
+                }
+                else
+                {
+                    BackpackBtnUpgradeText.text = "MAX";
+                }
+
             }
         }
 
@@ -310,6 +370,9 @@ public class InventoryTab : MonoBehaviour
     public void SelectItem(StoreItem item)
     {
         PreviewTitleText.text = item.Data.Title;
+        ButtonsContainer.SetActive(true);
+        BackpackContent.SetActive(false);
+        PlayerContent.SetActive(false);
 
         BtnSell.interactable = item.Data.IsSellable;
         if (item.Data.IsSellable)
@@ -360,6 +423,27 @@ public class InventoryTab : MonoBehaviour
         }
         else
         {
+            switch (item.Data.name)
+            {
+                case "Backpack":
+                    BackpackContent.SetActive(true);
+
+                    PlayerContent.SetActive(false);
+                    IconStatsContainer.SetActive(false);
+                    StatsContainer.SetActive(false);
+                    ButtonsContainer.SetActive(false);
+                    break;
+
+                case "Player":
+                    PlayerContent.SetActive(true);
+
+                    BackpackContent.SetActive(false);
+                    IconStatsContainer.SetActive(false);
+                    StatsContainer.SetActive(false);
+                    ButtonsContainer.SetActive(false);
+                    break;
+            }
+
             SetIconStats();
 
             SetBarStats();
@@ -397,7 +481,7 @@ public class InventoryTab : MonoBehaviour
             _ => null,
         };
 
-        PreviewMagazineBulletsText.transform.parent.parent.gameObject.SetActive(magazine != null || headshot != null || pellets != null || dispersion != null);
+        IconStatsContainer.SetActive(magazine != null || headshot != null || pellets != null || dispersion != null);
     }
 
     /// <summary>
@@ -444,7 +528,7 @@ public class InventoryTab : MonoBehaviour
             BulletSpeedBar.CalculateSections();
         }
 
-        DamageBar.transform.parent.parent.gameObject.SetActive(damage != null || fireRate != null || reloadSpeed != null || range != null);
+        StatsContainer.SetActive(damage != null || fireRate != null || reloadSpeed != null || range != null);
     }
 
     /// <summary>
@@ -634,7 +718,7 @@ public class InventoryTab : MonoBehaviour
                     break;
 
                 case WeaponAttributes.MagazineSize:
-                    storeWeapon.WeaponData.MagazineBullets += (int)upgradeItem.Value;
+                    storeWeapon.WeaponData.MagazineSize += (int)upgradeItem.Value;
                     UpdateIconStat(PreviewMagazineBulletsText, storeWeapon.WeaponData.MagazineBullets.ToString());
                     break;
 
@@ -652,6 +736,50 @@ public class InventoryTab : MonoBehaviour
             upgradeMap.UpgradeStep++;
 
             PreviewBtnSellText.text = $"Sell for $ {GetWeaponSellPrice(storeWeapon)}";
+        }
+    }
+
+    /// <summary>
+    /// Função chamada quando o botão de upgrade da mochila é clicado..
+    /// </summary>
+    public void BuyBackpackUpgrade()
+    {
+        var data = storeScreen.SelectedItem.Data as StoreBackpackData;
+        var upgradeItem = data.AmmoUpgrades.ElementAtOrDefault(Inventory.UpgradeIndex);
+        if (upgradeItem == null)
+            return;
+
+        if (storeScreen.PlayerData.Money < upgradeItem.Price)
+            return;
+
+        Inventory.MaxPistolAmmo += upgradeItem.PistolAmmo;
+        Inventory.MaxRifleAmmo += upgradeItem.RifleAmmo;
+        Inventory.MaxShotgunAmmo += upgradeItem.ShotgunAmmo;
+        Inventory.MaxSniperAmmo += upgradeItem.SniperAmmo;
+        Inventory.MaxRocketAmmo += upgradeItem.RocketAmmo;
+
+        storeScreen.PlayerData.TakeMoney(upgradeItem.Price);
+        storeScreen.audioSource.PlayOneShot(storeScreen.PurchaseSound.Audio, storeScreen.PurchaseSound.Volume);
+        storeScreen.ShowPopup($"-{upgradeItem.Price:N2}", Color.red, storeScreen.PlayerMoneyText.transform.position);
+
+        Inventory.UpgradeIndex++;
+
+        if (Inventory.UpgradeIndex >= data.AmmoUpgrades.Count)
+        {
+            BackpackBtnUpgrade.button.interactable = false;
+
+            void setAmmo(TextMeshProUGUI txt)
+            {
+                txt.GetComponent<BlinkingText>().enabled = false;
+                txt.color = Constants.Colors.GreenMoney;
+                txt.text = "MAX";
+            }
+
+            setAmmo(BackpackPistolAmmoUpgrade);
+            setAmmo(BackpackShotgunAmmoUpgrade);
+            setAmmo(BackpackRifleAmmoUpgrade);
+            setAmmo(BackpackSniperAmmoUpgrade);
+            setAmmo(BackpackRocketAmmoUpgrade);
         }
     }
 

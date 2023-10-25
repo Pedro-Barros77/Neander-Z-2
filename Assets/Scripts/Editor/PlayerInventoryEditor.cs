@@ -108,6 +108,18 @@ public class PlayerInventoryEditor : Editor
         EditorGUILayout.Space();
         EditorGUILayout.Space();
 
+        GUILayout.BeginHorizontal();
+        SerializedProperty upgradeIndex = GetTarget.FindProperty("UpgradeIndex");
+
+        GUILayout.Label(upgradeIndex.displayName, GUILayout.Width(ammoLabelStyle.fixedWidth));
+        EditorGUILayout.PropertyField(upgradeIndex, GUIContent.none, true, GUILayout.Width(50));
+        GUILayout.FlexibleSpace();
+
+        GUILayout.EndHorizontal();
+
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+
         // Primary weapons
         PrimaryWeapons.isExpanded = EditorGUILayout.BeginFoldoutHeaderGroup(PrimaryWeapons.isExpanded, "Primary Weapons");
         if (PrimaryWeapons.isExpanded)

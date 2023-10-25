@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Inventory Data", menuName = "Neander Z/Player/Inventory Data", order = 3)]
 public class InventoryData : AutoRevertSO
 {
+    public int UpgradeIndex;
+
     public int PistolAmmo;
     public int ShotgunAmmo;
     public int RifleAmmo;

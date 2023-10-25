@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe93714eff435b4da086b9a0a9e84b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 84628d24303fb3b4e97e4666ecf3e8e9, type: 3}
   m_Name: Backpack
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: dcd7c7ab28457994495091e9c253ea88, type: 3}
@@ -19,4 +19,37 @@ MonoBehaviour:
   Discount: 0
   Amount: 1
   IconScale: 0.9
+  PreviewIconScale: 1
+  IsSellable: 0
   Tags: 
+  AmmoUpgrades:
+  - Price: 150
+    PistolAmmo: 10
+    ShotgunAmmo: 5
+    RifleAmmo: 10
+    SniperAmmo: 2
+    RocketAmmo: 1
+  - Price: 350
+    PistolAmmo: 10
+    ShotgunAmmo: 10
+    RifleAmmo: 10
+    SniperAmmo: 3
+    RocketAmmo: 1
+  - Price: 500
+    PistolAmmo: 20
+    ShotgunAmmo: 10
+    RifleAmmo: 20
+    SniperAmmo: 5
+    RocketAmmo: 1
+  - Price: 850
+    PistolAmmo: 20
+    ShotgunAmmo: 10
+    RifleAmmo: 20
+    SniperAmmo: 5
+    RocketAmmo: 1
+  - Price: 1200
+    PistolAmmo: 20
+    ShotgunAmmo: 10
+    RifleAmmo: 20
+    SniperAmmo: 5
+    RocketAmmo: 1
