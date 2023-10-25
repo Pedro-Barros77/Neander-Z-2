@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fe93714eff435b4da086b9a0a9e84b2, type: 3}
+  m_Script: {fileID: 11500000, guid: a11da802c8a665e41b6d97ab6d2abd80, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
   Icon: {fileID: 21300000, guid: 2c92131c499f25642a2073b80bd309e5, type: 3}
@@ -19,4 +19,114 @@ MonoBehaviour:
   Discount: 0
   Amount: 1
   IconScale: 0.9
+  PreviewIconScale: 1
+  IsSellable: 0
   Tags: 
+  MaxHealthUpgrades:
+  - Price: 250
+    Value: 35
+  - Price: 350
+    Value: 45
+  - Price: 500
+    Value: 60
+  - Price: 650
+    Value: 60
+  - Price: 800
+    Value: 60
+  MovementSpeedUpgrades:
+  - Price: 170
+    Value: 0.21
+  - Price: 230
+    Value: 0.42
+  - Price: 285
+    Value: 0.42
+  - Price: 320
+    Value: 0.42
+  SprintSpeedUpgrades:
+  - Price: 130
+    Value: 0.18
+  - Price: 200
+    Value: 0.18
+  - Price: 290
+    Value: 0.18
+  - Price: 350
+    Value: 0.18
+  JumpForceUpgrades:
+  - Price: 150
+    Value: 184
+  - Price: 190
+    Value: 92
+  - Price: 210
+    Value: 92
+  - Price: 250
+    Value: 92
+  MaxStaminaUpgrades:
+  - Price: 170
+    Value: 40
+  - Price: 245
+    Value: 60
+  - Price: 300
+    Value: 60
+  - Price: 370
+    Value: 60
+  - Price: 420
+    Value: 80
+  - Price: 500
+    Value: 80
+  StaminaRegenUpgrades:
+  - Price: 130
+    Value: 5
+  - Price: 195
+    Value: 5
+  - Price: 240
+    Value: 7.5
+  - Price: 300
+    Value: 7.5
+  - Price: 345
+    Value: 7.5
+  - Price: 400
+    Value: 10
+  StaminaHasteUpgrades:
+  - Price: 180
+    Value: 1.72
+  - Price: 240
+    Value: 2.52
+  - Price: 310
+    Value: 3.36
+  - Price: 385
+    Value: 3.36
+  - Price: 420
+    Value: 4.2
+  JumpStaminaUpgrades:
+  - Price: 80
+    Value: 4
+  - Price: 95
+    Value: 6
+  - Price: 115
+    Value: 8
+  - Price: 140
+    Value: 8
+  - Price: 175
+    Value: 12
+  SprintStaminaUpgrades:
+  - Price: 90
+    Value: 10
+  - Price: 120
+    Value: 10
+  - Price: 160
+    Value: 15
+  - Price: 205
+    Value: 15
+  - Price: 180
+    Value: 20
+  AttackStaminaUpgrades:
+  - Price: 50
+    Value: 16
+  - Price: 80
+    Value: 36
+  - Price: 115
+    Value: 45
+  - Price: 145
+    Value: 45
+  - Price: 170
+    Value: 54

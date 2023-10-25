@@ -4,11 +4,22 @@ using UnityEngine;
 public static class Constants
 {
     public static bool EnableDevKeybinds { get; private set; } = true;
-    public static float MaxWeaponDamage { get; private set; } = 60;
-    public static float MaxWeaponFireRate { get; private set; } = 18;
-    public static float MaxWeaponReloadSpeed { get; private set; } = 12;
-    public static float MaxWeaponRange { get; private set; } = 48;
-    public static float MaxWeaponBulletSpeed { get; private set; } = 60;
+    public static float MaxWeaponDamage { get; private set; } = 60; // half section = 2.5
+    public static float MaxWeaponFireRate { get; private set; } = 18; // half section = 0.75
+    public static float MaxWeaponReloadSpeed { get; private set; } = 12; // half section = 0.5
+    public static float MaxWeaponRange { get; private set; } = 48; // half section = 2
+    public static float MaxWeaponBulletSpeed { get; private set; } = 60; // half section = 2.5
+
+    public static float MaxPlayerMaxHealth { get; private set; } = 360; // half section = 15
+    public static float MaxPlayerMovementSpeed { get; private set; } = 5.04f; // half section = 0.21
+    public static float MaxPlayerSprintSpeed { get; private set; } = 2.16f; // half section = 0.09
+    public static float MaxPlayerJumpForce { get; private set; } = 2208; // half section = 92
+    public static float MaxPlayerMaxStamina { get; private set; } = 480; // half section = 20
+    public static float MaxPlayerStaminaRegen { get; private set; } = 60; // half section = 2.5
+    public static float MaxPlayerStaminaHaste { get; private set; } = 20.16f; // half section = 0.84
+    public static float MaxPlayerJumpStamina { get; private set; } = 48; // half section = 2
+    public static float MaxPlayerSprintStamina { get; private set; } = 120; // half section = 5
+    public static float MaxPlayerAttackStamina { get; private set; } = 216; // half section = 9
 
     static float ReloadSpeedRatio = 5000;
     static float JoystickHorizontalDeadzone = 0.2f;

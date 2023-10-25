@@ -31,7 +31,7 @@ public class MeleeWeapon : BaseWeapon
         if (!CanShoot())
             return emptyBullets;
 
-        Player.LoseStamina(AttackStaminaCost);
+        Player.LoseStamina(AttackStaminaCost + Player.Data.AttackStaminaDrain);
 
         AddedTargetHitScore = false;
         HitTargetsIds.Clear();

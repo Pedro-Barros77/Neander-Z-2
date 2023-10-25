@@ -34,6 +34,32 @@ public class PlayerData : AutoRevertSO
     public float Money;
     public int CurrentWaveIndex;
 
+    public int MaxHealthUpgradeIndex;
+    public int MovementSpeedUpgradeIndex;
+    public int SprintSpeedUpgradeIndex;
+    public int JumpForceUpgradeIndex;
+    public int MaxStaminaUpgradeIndex;
+    public int StaminaRegenUpgradeIndex;
+    public int StaminaHasteUpgradeIndex;
+    public int JumpStaminaUpgradeIndex;
+    public int SprintStaminaUpgradeIndex;
+    public int AttackStaminaUpgradeIndex;
+
+    public int GetUpgradeIndex(PlayerAttributes attribute) => attribute switch
+    {
+        PlayerAttributes.MaxHealth => MaxHealthUpgradeIndex,
+        PlayerAttributes.MovementSpeed => MovementSpeedUpgradeIndex,
+        PlayerAttributes.SprintSpeed => SprintSpeedUpgradeIndex,
+        PlayerAttributes.JumpForce => JumpForceUpgradeIndex,
+        PlayerAttributes.MaxStamina => MaxStaminaUpgradeIndex,
+        PlayerAttributes.StaminaRegen => StaminaRegenUpgradeIndex,
+        PlayerAttributes.StaminaHaste => StaminaHasteUpgradeIndex,
+        PlayerAttributes.JumpStamina => JumpStaminaUpgradeIndex,
+        PlayerAttributes.SprintStamina => SprintStaminaUpgradeIndex,
+        PlayerAttributes.AttackStamina => AttackStaminaUpgradeIndex,
+        _ => 0
+    };
+
     public void GetMoney(float value)
     {
         if (value < 0) return;

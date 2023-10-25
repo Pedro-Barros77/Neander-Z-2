@@ -21,16 +21,19 @@ public class InventoryTab : MonoBehaviour
     [SerializeField]
     Button BtnSwitchWeapons, BtnSell;
     [SerializeField]
-    SectionedBar DamageBar, FireRateBar, ReloadSpeedBar, RangeBar, BulletSpeedBar;
+    SectionedBar DamageBar, FireRateBar, ReloadSpeedBar, RangeBar, BulletSpeedBar,
+        PlayerMaxHealthBar, PlayerMovementSpeedBar, PlayerSprintSpeedBar, PlayerJumpForceBar, PlayerMaxStaminaBar, PlayerStaminaRegenBar, PlayerStaminaHasteBar, PlayerJumpStaminaBar, PlayerSprintStaminaBar, PlayerAttackStaminaBar;
     [SerializeField]
     GameObject BackpackContent, PlayerContent;
     [SerializeField]
-    BaseButton BtnUpgradeDamage, BtnUpgradeFireRate, BtnUpgradeReloadSpeed, BtnUpgradeRange, BtnUpgradeBulletSpeed, BtnUpgradeHeadshotMultiplier, BtnUpgradeMagazineCapacity, BtnUpgradeBallinsDispersion, BackpackBtnUpgrade;
+    BaseButton BtnUpgradeDamage, BtnUpgradeFireRate, BtnUpgradeReloadSpeed, BtnUpgradeRange, BtnUpgradeBulletSpeed, BtnUpgradeHeadshotMultiplier, BtnUpgradeMagazineCapacity, BtnUpgradeBallinsDispersion, BackpackBtnUpgrade,
+        BtnUpgradePlayerMaxHealth, BtnUpgradePlayerMovementSpeed, BtnUpgradePlayerSprintSpeed, BtnUpgradePlayerJumpForce, BtnUpgradePlayerMaxStamina, BtnUpgradePlayerStaminaRegen, BtnUpgradePlayerStaminaHaste, BtnUpgradePlayerJumpStamina, BtnUpgradePlayerSprintStamina, BtnUpgradePlayerAttackStamina;
     [SerializeField]
     TextMeshProUGUI BackpackPistolAmmo, BackpackShotgunAmmo, BackpackRifleAmmo, BackpackSniperAmmo, BackpackRocketAmmo;
 
     TextMeshProUGUI BackpackPistolAmmoUpgrade, BackpackShotgunAmmoUpgrade, BackpackRifleAmmoUpgrade, BackpackSniperAmmoUpgrade, BackpackRocketAmmoUpgrade, BackpackBtnUpgradeText;
-    TextMeshProUGUI UpgradeDamagePrice, UpgradeFireRatePrice, UpgradeReloadSpeedPrice, UpgradeRangePrice, UpgradeBulletSpeedPrice, UpgradeHeadshotMultiplierPrice, UpgradeMagazineCapacityPrice, UpgradeBallinsDispersionPrice;
+    TextMeshProUGUI UpgradeDamagePrice, UpgradeFireRatePrice, UpgradeReloadSpeedPrice, UpgradeRangePrice, UpgradeBulletSpeedPrice, UpgradeHeadshotMultiplierPrice, UpgradeMagazineCapacityPrice, UpgradeBallinsDispersionPrice,
+        UpgradePlayerMaxHealthPrice, UpgradePlayerMovementSpeedPrice, UpgradePlayerSprintSpeedPrice, UpgradePlayerJumpForcePrice, UpgradePlayerMaxStaminaPrice, UpgradePlayerStaminaRegenPrice, UpgradePlayerStaminaHastePrice, UpgradePlayerJumpStaminaPrice, UpgradePlayerSprintStaminaPrice, UpgradePlayerAttackStaminaPrice;
     GameObject IconStatsContainer, StatsContainer, ButtonsContainer;
 
     [SerializeField]
@@ -53,14 +56,14 @@ public class InventoryTab : MonoBehaviour
         if (storeScreen.ActiveTab == StoreTabs.Inventory)
             LoadAll();
 
-        BtnUpgradeDamage.HoverEvent += (BaseButton button, bool hovered) => OnHoverUpgrade(WeaponAttributes.Damage, button, hovered);
-        BtnUpgradeFireRate.HoverEvent += (BaseButton button, bool hovered) => OnHoverUpgrade(WeaponAttributes.FireRate, button, hovered);
-        BtnUpgradeReloadSpeed.HoverEvent += (BaseButton button, bool hovered) => OnHoverUpgrade(WeaponAttributes.ReloadSpeed, button, hovered);
-        BtnUpgradeRange.HoverEvent += (BaseButton button, bool hovered) => OnHoverUpgrade(WeaponAttributes.Range, button, hovered);
-        BtnUpgradeBulletSpeed.HoverEvent += (BaseButton button, bool hovered) => OnHoverUpgrade(WeaponAttributes.BulletSpeed, button, hovered);
-        BtnUpgradeHeadshotMultiplier.HoverEvent += (BaseButton button, bool hovered) => OnHoverUpgrade(WeaponAttributes.HeadshotMultiplier, button, hovered);
-        BtnUpgradeMagazineCapacity.HoverEvent += (BaseButton button, bool hovered) => OnHoverUpgrade(WeaponAttributes.MagazineSize, button, hovered);
-        BtnUpgradeBallinsDispersion.HoverEvent += (BaseButton button, bool hovered) => OnHoverUpgrade(WeaponAttributes.BallinsConcentration, button, hovered);
+        BtnUpgradeDamage.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.Damage, button, hovered);
+        BtnUpgradeFireRate.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.FireRate, button, hovered);
+        BtnUpgradeReloadSpeed.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.ReloadSpeed, button, hovered);
+        BtnUpgradeRange.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.Range, button, hovered);
+        BtnUpgradeBulletSpeed.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.BulletSpeed, button, hovered);
+        BtnUpgradeHeadshotMultiplier.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.HeadshotMultiplier, button, hovered);
+        BtnUpgradeMagazineCapacity.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.MagazineSize, button, hovered);
+        BtnUpgradeBallinsDispersion.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.BallinsConcentration, button, hovered);
         BackpackBtnUpgradeText = BackpackBtnUpgrade.GetComponentInChildren<TextMeshProUGUI>();
         BackpackBtnUpgrade.HoverEvent += (BaseButton button, bool hovered) =>
         {
@@ -78,6 +81,16 @@ public class InventoryTab : MonoBehaviour
                 BackpackRocketAmmoUpgrade.color = new Color(0, 0, 0, 0);
             }
         };
+        BtnUpgradePlayerMaxHealth.HoverEvent += (BaseButton button, bool hovered) => OnHoverPlayerUpgrade(PlayerAttributes.MaxHealth, button, hovered);
+        BtnUpgradePlayerMovementSpeed.HoverEvent += (BaseButton button, bool hovered) => OnHoverPlayerUpgrade(PlayerAttributes.MovementSpeed, button, hovered);
+        BtnUpgradePlayerSprintSpeed.HoverEvent += (BaseButton button, bool hovered) => OnHoverPlayerUpgrade(PlayerAttributes.SprintSpeed, button, hovered);
+        BtnUpgradePlayerJumpForce.HoverEvent += (BaseButton button, bool hovered) => OnHoverPlayerUpgrade(PlayerAttributes.JumpForce, button, hovered);
+        BtnUpgradePlayerMaxStamina.HoverEvent += (BaseButton button, bool hovered) => OnHoverPlayerUpgrade(PlayerAttributes.MaxStamina, button, hovered);
+        BtnUpgradePlayerStaminaRegen.HoverEvent += (BaseButton button, bool hovered) => OnHoverPlayerUpgrade(PlayerAttributes.StaminaRegen, button, hovered);
+        BtnUpgradePlayerStaminaHaste.HoverEvent += (BaseButton button, bool hovered) => OnHoverPlayerUpgrade(PlayerAttributes.StaminaHaste, button, hovered);
+        BtnUpgradePlayerJumpStamina.HoverEvent += (BaseButton button, bool hovered) => OnHoverPlayerUpgrade(PlayerAttributes.JumpStamina, button, hovered);
+        BtnUpgradePlayerSprintStamina.HoverEvent += (BaseButton button, bool hovered) => OnHoverPlayerUpgrade(PlayerAttributes.SprintStamina, button, hovered);
+        BtnUpgradePlayerAttackStamina.HoverEvent += (BaseButton button, bool hovered) => OnHoverPlayerUpgrade(PlayerAttributes.AttackStamina, button, hovered);
 
         UpgradeDamagePrice = BtnUpgradeDamage.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
         UpgradeFireRatePrice = BtnUpgradeFireRate.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
@@ -87,6 +100,17 @@ public class InventoryTab : MonoBehaviour
         UpgradeHeadshotMultiplierPrice = BtnUpgradeHeadshotMultiplier.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
         UpgradeMagazineCapacityPrice = BtnUpgradeMagazineCapacity.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
         UpgradeBallinsDispersionPrice = BtnUpgradeBallinsDispersion.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
+
+        UpgradePlayerMaxHealthPrice = BtnUpgradePlayerMaxHealth.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
+        UpgradePlayerMovementSpeedPrice = BtnUpgradePlayerMovementSpeed.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
+        UpgradePlayerSprintSpeedPrice = BtnUpgradePlayerSprintSpeed.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
+        UpgradePlayerJumpForcePrice = BtnUpgradePlayerJumpForce.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
+        UpgradePlayerMaxStaminaPrice = BtnUpgradePlayerMaxStamina.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
+        UpgradePlayerStaminaRegenPrice = BtnUpgradePlayerStaminaRegen.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
+        UpgradePlayerStaminaHastePrice = BtnUpgradePlayerStaminaHaste.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
+        UpgradePlayerJumpStaminaPrice = BtnUpgradePlayerJumpStamina.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
+        UpgradePlayerSprintStaminaPrice = BtnUpgradePlayerSprintStamina.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
+        UpgradePlayerAttackStaminaPrice = BtnUpgradePlayerAttackStamina.transform.parent.Find("UpgradePrice").GetComponent<TextMeshProUGUI>();
 
         BackpackPistolAmmoUpgrade = BackpackPistolAmmo.transform.parent.Find("UpgradeValue").GetComponent<TextMeshProUGUI>();
         BackpackShotgunAmmoUpgrade = BackpackShotgunAmmo.transform.parent.Find("UpgradeValue").GetComponent<TextMeshProUGUI>();
@@ -189,6 +213,45 @@ public class InventoryTab : MonoBehaviour
                     BackpackBtnUpgradeText.text = "MAX";
                 }
 
+            }
+            else if (storeScreen.hasItem && storeScreen.SelectedItem.Data is StorePlayerData storePlayer)
+            {
+                void SetUpgrade(PlayerAttributes attribute, BaseButton button, TextMeshProUGUI priceText)
+                {
+                    var upgrades = storePlayer.GetPlayerUpgrades(attribute);
+                    var upgradeStep = upgrades.ElementAtOrDefault(storeScreen.PlayerData.GetUpgradeIndex(attribute));
+
+                    if (upgradeStep == null)
+                    {
+                        priceText.text = "MAX";
+                        button.button.interactable = false;
+                        return;
+                    }
+
+                    if (upgradeStep.Price > storeScreen.PlayerData.Money)
+                    {
+                        priceText.color = Constants.Colors.RedMoney;
+                        button.button.interactable = false;
+                    }
+                    else
+                    {
+                        priceText.color = Color.white;
+                        button.button.interactable = true;
+                    }
+
+                    priceText.text = $"$ {upgradeStep.Price:N2}";
+                }
+
+                SetUpgrade(PlayerAttributes.MaxHealth, BtnUpgradePlayerMaxHealth, UpgradePlayerMaxHealthPrice);
+                SetUpgrade(PlayerAttributes.MovementSpeed, BtnUpgradePlayerMovementSpeed, UpgradePlayerMovementSpeedPrice);
+                SetUpgrade(PlayerAttributes.SprintSpeed, BtnUpgradePlayerSprintSpeed, UpgradePlayerSprintSpeedPrice);
+                SetUpgrade(PlayerAttributes.JumpForce, BtnUpgradePlayerJumpForce, UpgradePlayerJumpForcePrice);
+                SetUpgrade(PlayerAttributes.MaxStamina, BtnUpgradePlayerMaxStamina, UpgradePlayerMaxStaminaPrice);
+                SetUpgrade(PlayerAttributes.StaminaRegen, BtnUpgradePlayerStaminaRegen, UpgradePlayerStaminaRegenPrice);
+                SetUpgrade(PlayerAttributes.StaminaHaste, BtnUpgradePlayerStaminaHaste, UpgradePlayerStaminaHastePrice);
+                SetUpgrade(PlayerAttributes.JumpStamina, BtnUpgradePlayerJumpStamina, UpgradePlayerJumpStaminaPrice);
+                SetUpgrade(PlayerAttributes.SprintStamina, BtnUpgradePlayerSprintStamina, UpgradePlayerSprintStaminaPrice);
+                SetUpgrade(PlayerAttributes.AttackStamina, BtnUpgradePlayerAttackStamina, UpgradePlayerAttackStaminaPrice);
             }
         }
 
@@ -441,6 +504,8 @@ public class InventoryTab : MonoBehaviour
                     IconStatsContainer.SetActive(false);
                     StatsContainer.SetActive(false);
                     ButtonsContainer.SetActive(false);
+
+                    SetPlayerBarStats();
                     break;
             }
 
@@ -532,12 +597,145 @@ public class InventoryTab : MonoBehaviour
     }
 
     /// <summary>
+    /// Preenche as barras de estatísticas do player.
+    /// </summary>
+    private void SetPlayerBarStats()
+    {
+        if (storeScreen.SelectedItem == null || storeScreen.SelectedItem.Data == null)
+            return;
+
+        if (storeScreen.PlayerData == null)
+            return;
+
+        PlayerMaxHealthBar.MaxValue = Constants.MaxPlayerMaxHealth;
+        PlayerMaxHealthBar.Value = storeScreen.PlayerData.MaxHealth;
+        PlayerMaxHealthBar.CalculateSections();
+
+        PlayerMovementSpeedBar.MaxValue = Constants.MaxPlayerMovementSpeed;
+        PlayerMovementSpeedBar.Value = storeScreen.PlayerData.MaxMovementSpeed;
+        PlayerMovementSpeedBar.CalculateSections();
+
+        PlayerSprintSpeedBar.MaxValue = Constants.MaxPlayerSprintSpeed;
+        PlayerSprintSpeedBar.Value = storeScreen.PlayerData.SprintSpeedMultiplier;
+        PlayerSprintSpeedBar.CalculateSections();
+
+        PlayerJumpForceBar.MaxValue = Constants.MaxPlayerJumpForce;
+        PlayerJumpForceBar.Value = storeScreen.PlayerData.JumpForce;
+        PlayerJumpForceBar.CalculateSections();
+
+        PlayerMaxStaminaBar.MaxValue = Constants.MaxPlayerMaxStamina;
+        PlayerMaxStaminaBar.Value = storeScreen.PlayerData.MaxStamina;
+        PlayerMaxStaminaBar.CalculateSections();
+
+        PlayerStaminaRegenBar.MaxValue = Constants.MaxPlayerStaminaRegen;
+        PlayerStaminaRegenBar.Value = storeScreen.PlayerData.StaminaRegenRate;
+        PlayerStaminaRegenBar.CalculateSections();
+
+        PlayerStaminaHasteBar.MaxValue = Constants.MaxPlayerStaminaHaste;
+        PlayerStaminaHasteBar.Value = 5000 / storeScreen.PlayerData.StaminaRegenDelayMs;
+        PlayerStaminaHasteBar.CalculateSections();
+
+        PlayerJumpStaminaBar.MaxValue = Constants.MaxPlayerJumpStamina;
+        PlayerJumpStaminaBar.Value = 100 / storeScreen.PlayerData.JumpStaminaDrain;
+        PlayerJumpStaminaBar.CalculateSections();
+
+        PlayerSprintStaminaBar.MaxValue = Constants.MaxPlayerSprintStamina;
+        PlayerSprintStaminaBar.Value = 100 / storeScreen.PlayerData.SprintStaminaDrain;
+        PlayerSprintStaminaBar.CalculateSections();
+
+        PlayerAttackStaminaBar.MaxValue = Constants.MaxPlayerAttackStamina;
+        PlayerAttackStaminaBar.Value = 100 / storeScreen.PlayerData.AttackStaminaDrain;
+        PlayerAttackStaminaBar.CalculateSections();
+    }
+
+    /// <summary>
+    /// Função chamada quando o botão de upgrade do atributo esécificado do player é destacado com o mouse.
+    /// </summary>
+    /// <param name="attribute">O atributo do upgrade do player.</param>
+    /// <param name="button">O botão destacado.</param>
+    /// <param name="hovered">Se está sendo destacado ou desfocado.</param>
+    public void OnHoverPlayerUpgrade(PlayerAttributes attribute, BaseButton button, bool hovered)
+    {
+        if (storeScreen.SelectedItem.Data is StorePlayerData storePlayer)
+        {
+            var upgrades = storePlayer.GetPlayerUpgrades(attribute);
+
+            if (upgrades.IsNullOrEmpty())
+            {
+                button.gameObject.SetActive(false);
+                button.transform.parent.Find("UpgradePrice").gameObject.SetActive(false);
+                return;
+            }
+
+            var upgradeItem = upgrades.ElementAtOrDefault(storeScreen.PlayerData.GetUpgradeIndex(attribute));
+
+            if (upgradeItem == null)
+                return;
+
+            void UpdateBar(SectionedBar bar)
+            {
+                if (hovered)
+                {
+                    bar.ModificationValue = upgradeItem.Value;
+                    bar.BlinkModification = true;
+                }
+                else
+                    bar.ModificationValue = 0;
+                bar.CalculateSections();
+            }
+
+            switch (attribute)
+            {
+                case PlayerAttributes.MaxHealth:
+                    UpdateBar(PlayerMaxHealthBar);
+                    break;
+
+                case PlayerAttributes.MovementSpeed:
+                    UpdateBar(PlayerMovementSpeedBar);
+                    break;
+
+                case PlayerAttributes.SprintSpeed:
+                    UpdateBar(PlayerSprintSpeedBar);
+                    break;
+
+                case PlayerAttributes.JumpForce:
+                    UpdateBar(PlayerJumpForceBar);
+                    break;
+
+                case PlayerAttributes.MaxStamina:
+                    UpdateBar(PlayerMaxStaminaBar);
+                    break;
+
+                case PlayerAttributes.StaminaRegen:
+                    UpdateBar(PlayerStaminaRegenBar);
+                    break;
+
+                case PlayerAttributes.StaminaHaste:
+                    UpdateBar(PlayerStaminaHasteBar);
+                    break;
+
+                case PlayerAttributes.JumpStamina:
+                    UpdateBar(PlayerJumpStaminaBar);
+                    break;
+
+                case PlayerAttributes.SprintStamina:
+                    UpdateBar(PlayerSprintStaminaBar);
+                    break;
+
+                case PlayerAttributes.AttackStamina:
+                    UpdateBar(PlayerAttackStaminaBar);
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
     /// Função chamada quando o botão de upgrade do atributo esécificado é destacado com o mouse.
     /// </summary>
     /// <param name="attribute">O atributo do upgrade.</param>
     /// <param name="button">O botão destacado.</param>
     /// <param name="hovered">Se está sendo destacado ou desfocado.</param>
-    public void OnHoverUpgrade(WeaponAttributes attribute, BaseButton button, bool hovered)
+    public void OnHoverWeaponUpgrade(WeaponAttributes attribute, BaseButton button, bool hovered)
     {
         if (storeScreen.SelectedItem.Data is StoreWeaponData storeWeapon)
         {
@@ -780,6 +978,112 @@ public class InventoryTab : MonoBehaviour
             setAmmo(BackpackRifleAmmoUpgrade);
             setAmmo(BackpackSniperAmmoUpgrade);
             setAmmo(BackpackRocketAmmoUpgrade);
+        }
+    }
+
+    /// <summary>
+    /// Função chamada quando o botão de upgrade do atributo especificado do jogador é clicado.
+    /// </summary>
+    /// <param name="attributeValue"></param>
+    public void BuyPlayerUpgrade(int attributeValue)
+    {
+        PlayerAttributes attribute = (PlayerAttributes)attributeValue;
+
+
+        if (storeScreen.SelectedItem.Data is StorePlayerData storePlayer)
+        {
+            var upgrades = storePlayer.GetPlayerUpgrades(attribute);
+            var upgradeItem = upgrades.ElementAtOrDefault(storeScreen.PlayerData.GetUpgradeIndex(attribute));
+
+            var nextUpgradeItem = upgrades.ElementAtOrDefault(storeScreen.PlayerData.GetUpgradeIndex(attribute) + 1);
+
+            if (upgradeItem == null)
+                return;
+
+            if (upgradeItem.Price > storeScreen.PlayerData.Money)
+                return;
+
+            void UpdateBar(SectionedBar bar)
+            {
+                bar.AddValue(upgradeItem.Value);
+                if (nextUpgradeItem != null)
+                {
+                    if (nextUpgradeItem.Price > storeScreen.PlayerData.Money - upgradeItem.Price)
+                        bar.ModificationValue = 0;
+                    else
+                        bar.ModificationValue = nextUpgradeItem.Value;
+                }
+                else
+                    bar.ModificationValue = 0;
+                bar.CalculateSections();
+            }
+
+            switch (attribute)
+            {
+                case PlayerAttributes.MaxHealth:
+                    storeScreen.PlayerData.MaxHealth += upgradeItem.Value;
+                    UpdateBar(PlayerMaxHealthBar);
+                    storeScreen.PlayerData.MaxHealthUpgradeIndex++;
+                    break;
+
+                case PlayerAttributes.MovementSpeed:
+                    storeScreen.PlayerData.MaxMovementSpeed += upgradeItem.Value;
+                    UpdateBar(PlayerMovementSpeedBar);
+                    storeScreen.PlayerData.MovementSpeedUpgradeIndex++;
+                    break;
+
+                case PlayerAttributes.SprintSpeed:
+                    storeScreen.PlayerData.SprintSpeedMultiplier += upgradeItem.Value;
+                    UpdateBar(PlayerSprintSpeedBar);
+                    storeScreen.PlayerData.SprintSpeedUpgradeIndex++;
+                    break;
+
+                case PlayerAttributes.JumpForce:
+                    storeScreen.PlayerData.JumpForce += upgradeItem.Value;
+                    UpdateBar(PlayerJumpForceBar);
+                    storeScreen.PlayerData.JumpForceUpgradeIndex++;
+                    break;
+
+                case PlayerAttributes.MaxStamina:
+                    storeScreen.PlayerData.MaxStamina += upgradeItem.Value;
+                    UpdateBar(PlayerMaxStaminaBar);
+                    storeScreen.PlayerData.MaxStaminaUpgradeIndex++;
+                    break;
+
+                case PlayerAttributes.StaminaRegen:
+                    storeScreen.PlayerData.StaminaRegenRate += upgradeItem.Value;
+                    UpdateBar(PlayerStaminaRegenBar);
+                    storeScreen.PlayerData.StaminaRegenUpgradeIndex++;
+                    break;
+
+                case PlayerAttributes.StaminaHaste:
+                    storeScreen.PlayerData.StaminaRegenDelayMs = 5000 / (PlayerStaminaHasteBar.Value + upgradeItem.Value);
+                    UpdateBar(PlayerStaminaHasteBar);
+                    storeScreen.PlayerData.StaminaHasteUpgradeIndex++;
+                    break;
+
+                case PlayerAttributes.JumpStamina:
+                    storeScreen.PlayerData.JumpStaminaDrain = 100 / (PlayerJumpStaminaBar.Value + upgradeItem.Value);
+                    UpdateBar(PlayerJumpStaminaBar);
+                    storeScreen.PlayerData.JumpStaminaUpgradeIndex++;
+                    break;
+
+                case PlayerAttributes.SprintStamina:
+                    storeScreen.PlayerData.SprintStaminaDrain = 100 / (PlayerSprintStaminaBar.Value + upgradeItem.Value);
+                    UpdateBar(PlayerSprintStaminaBar);
+                    storeScreen.PlayerData.SprintStaminaUpgradeIndex++;
+                    break;
+
+                case PlayerAttributes.AttackStamina:
+                    storeScreen.PlayerData.AttackStaminaDrain = 100 / (PlayerAttackStaminaBar.Value + upgradeItem.Value);
+                    UpdateBar(PlayerAttackStaminaBar);
+                    storeScreen.PlayerData.AttackStaminaUpgradeIndex++;
+                    break;
+            }
+
+            storeScreen.PlayerData.TakeMoney(upgradeItem.Price);
+            storeScreen.audioSource.PlayOneShot(storeScreen.PurchaseSound.Audio, storeScreen.PurchaseSound.Volume);
+            storeScreen.ShowPopup($"-{upgradeItem.Price:N2}", Color.red, storeScreen.PlayerMoneyText.transform.position);
         }
     }
 

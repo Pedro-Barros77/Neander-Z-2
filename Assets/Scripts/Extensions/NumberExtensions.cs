@@ -10,4 +10,10 @@ public static class NumberExtensions
 
         return deg < 0 ? deg + 360 : deg;
     }
+
+    public static bool GreaterOrAproxEqual(this float input, float value) =>
+        input >= value || Mathf.Approximately(input, value);
+
+    public static bool LessOrAproxEqual(this float input, float value) =>
+        input <= value || Mathf.Approximately(input, value);
 }

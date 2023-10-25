@@ -2,7 +2,6 @@ using System;
 /// <summary>
 /// Atributos de cada arma no jogo.
 /// </summary>
-[Serializable]
 public enum WeaponAttributes
 {
     Damage = 0,

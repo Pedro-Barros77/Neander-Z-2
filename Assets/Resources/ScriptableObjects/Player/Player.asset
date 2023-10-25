@@ -16,21 +16,31 @@ MonoBehaviour:
   Character: 1
   MaxHealth: 100
   Health: 100
-  MaxMovementSpeed: 3.6
-  MovementSpeed: 3.6
+  MaxMovementSpeed: 3.57
+  MovementSpeed: 3.57
   AccelerationSpeed: 1
-  SprintSpeedMultiplier: 1.5
-  JumpForce: 1800
+  SprintSpeedMultiplier: 1.44
+  JumpForce: 1748
   RollForce: 1800
   MaxStamina: 100
   Stamina: 100
   StaminaRegenDelayMs: 1000
-  StaminaRegenRate: 17
+  StaminaRegenRate: 17.5
   SprintStaminaDrain: 2
   JumpStaminaDrain: 10
-  AttackStaminaDrain: 2
+  AttackStaminaDrain: 5
   RollStaminaDrain: 20
   RollCooldownMs: 2000
   Score: 0
   Money: 100
   CurrentWaveIndex: 1
+  MaxHealthUpgradeIndex: 0
+  MovementSpeedUpgradeIndex: 0
+  SprintSpeedUpgradeIndex: 0
+  JumpForceUpgradeIndex: 0
+  MaxStaminaUpgradeIndex: 0
+  StaminaRegenUpgradeIndex: 0
+  StaminaHasteUpgradeIndex: 0
+  JumpStaminaUpgradeIndex: 0
+  SprintStaminaUpgradeIndex: 0
+  AttackStaminaUpgradeIndex: 0

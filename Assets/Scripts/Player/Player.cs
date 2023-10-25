@@ -130,6 +130,8 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         Backpack = new Backpack(this, Data.InventoryData);
         RigidBody = GetComponent<Rigidbody2D>();
         PlayerMovement = GetComponentInChildren<PlayerMovement>();
+        Data.MovementSpeed = Data.MaxMovementSpeed;
+        Data.Stamina = Data.MaxStamina;
 
         WorldPosCanvas = GameObject.Find("WorldPositionCanvas").GetComponent<Canvas>();
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");

@@ -81,22 +81,24 @@ public class SectionedBar : MonoBehaviour
             Image half1 = Sections[i, 0];
             Image half2 = Sections[i, 1];
 
-            if (half1Value > Value && half1Value <= ModificationValue + Value)
+            float modification = ModificationValue + Value;
+
+            if (half1Value > Value && half1Value.LessOrAproxEqual(modification))
                 half1.color = UpgradeColor;
-            else if (half1Value <= Value && half1Value > ModificationValue + Value)
+            else if (half1Value <= Value && half1Value > modification)
                 half1.color = DowngradeColor;
             else
                 half1.color = StartFillColor;
 
-            if (half2Value > Value && half2Value <= ModificationValue + Value)
+            if (half2Value > Value && half2Value.LessOrAproxEqual(modification))
                 half2.color = UpgradeColor;
-            else if (half2Value <= Value && half2Value > ModificationValue + Value)
+            else if (half2Value <= Value && half2Value > modification)
                 half2.color = DowngradeColor;
             else
                 half2.color = StartFillColor;
 
-            half1.enabled = Value >= half1Value || half1.color != StartFillColor;
-            half2.enabled = Value >= half2Value || half2.color != StartFillColor;
+            half1.enabled = Value.GreaterOrAproxEqual(half1Value) || half1.color != StartFillColor;
+            half2.enabled = Value.GreaterOrAproxEqual(half2Value) || half2.color != StartFillColor;
         }
     }
 
