@@ -7,7 +7,7 @@ public static class Constants
     public static float MaxWeaponDamage { get; private set; } = 60; // half section = 2.5
     public static float MaxWeaponFireRate { get; private set; } = 18; // half section = 0.75
     public static float MaxWeaponReloadSpeed { get; private set; } = 12; // half section = 0.5
-    public static float MaxWeaponRange { get; private set; } = 48; // half section = 2
+    public static float MaxWeaponRange { get; private set; } = 24; // half section = 1
     public static float MaxWeaponBulletSpeed { get; private set; } = 60; // half section = 2.5
 
     public static float MaxPlayerMaxHealth { get; private set; } = 360; // half section = 15

@@ -546,6 +546,26 @@ public class InventoryTab : MonoBehaviour
             _ => null,
         };
 
+        if (storeScreen.SelectedItem.Data is StoreWeaponData storeWeaponData)
+        {
+            void setIconUpgrade(BaseButton button, WeaponAttributes attribute)
+            {
+                bool hasUpgrade = !storeWeaponData.WeaponData.Upgrades.IsNullOrEmpty() && storeWeaponData.WeaponData.Upgrades.Any(x => x.Attribute == attribute);
+                button.gameObject.SetActive(hasUpgrade);
+                button.transform.parent.Find("UpgradePrice").gameObject.SetActive(hasUpgrade);
+            }
+
+            setIconUpgrade(BtnUpgradeDamage, WeaponAttributes.Damage);
+            setIconUpgrade(BtnUpgradeFireRate, WeaponAttributes.FireRate);
+            setIconUpgrade(BtnUpgradeReloadSpeed, WeaponAttributes.ReloadSpeed);
+            setIconUpgrade(BtnUpgradeRange, WeaponAttributes.Range);
+            setIconUpgrade(BtnUpgradeBulletSpeed, WeaponAttributes.BulletSpeed);
+            setIconUpgrade(BtnUpgradeMagazineCapacity, WeaponAttributes.MagazineSize);
+            setIconUpgrade(BtnUpgradeHeadshotMultiplier, WeaponAttributes.HeadshotMultiplier);
+            if (storeWeaponData.WeaponData is ShotgunData)
+                setIconUpgrade(BtnUpgradeBallinsDispersion, WeaponAttributes.BallinsConcentration);
+        }
+
         IconStatsContainer.SetActive(magazine != null || headshot != null || pellets != null || dispersion != null);
     }
 
@@ -739,13 +759,6 @@ public class InventoryTab : MonoBehaviour
     {
         if (storeScreen.SelectedItem.Data is StoreWeaponData storeWeapon)
         {
-            if (storeWeapon.WeaponData.Upgrades.IsNullOrEmpty())
-            {
-                button.gameObject.SetActive(false);
-                button.transform.parent.Find("UpgradePrice").gameObject.SetActive(false);
-                return;
-            }
-
             var upgradeItem = GetWeaponUpgradeStep(storeWeapon.WeaponData, attribute);
             if (upgradeItem == null)
                 return;
@@ -810,8 +823,8 @@ public class InventoryTab : MonoBehaviour
 
                 case WeaponAttributes.MagazineSize:
                     UpdateIconStat(PreviewMagazineBulletsText,
-                        (upgradeItem.Value + storeWeapon.WeaponData.MagazineBullets).ToString(),
-                        storeWeapon.WeaponData.MagazineBullets.ToString());
+                        (upgradeItem.Value + storeWeapon.WeaponData.MagazineSize).ToString(),
+                        storeWeapon.WeaponData.MagazineSize.ToString());
                     break;
 
                 case WeaponAttributes.BallinsConcentration:
@@ -898,10 +911,19 @@ public class InventoryTab : MonoBehaviour
                     break;
 
                 case WeaponAttributes.Range:
-                    var step = RangeBar.MaxValue / RangeBar.SectionsCount;
-                    storeWeapon.WeaponData.MinDamageRange += step * upgradeItem.Value / 3;
-                    storeWeapon.WeaponData.MaxDamageRange += step * upgradeItem.Value / 3;
-                    storeWeapon.WeaponData.BulletMaxRange += step * upgradeItem.Value / 3;
+                    float currentValuesSum = storeWeapon.WeaponData.MinDamageRange + storeWeapon.WeaponData.MaxDamageRange + storeWeapon.WeaponData.BulletMaxRange;
+                    float currentAverage = currentValuesSum / 3;
+                    float targetAverage = currentAverage + upgradeItem.Value;
+
+                    float pesoMinDamageRange = storeWeapon.WeaponData.MinDamageRange / currentValuesSum;
+                    float pesoMaxDamageRange = storeWeapon.WeaponData.MaxDamageRange / currentValuesSum;
+                    float pesoBulletMaxRange = storeWeapon.WeaponData.BulletMaxRange / currentValuesSum;
+
+                    float averageDifference = (targetAverage * 3) - currentValuesSum;
+
+                    storeWeapon.WeaponData.MinDamageRange += averageDifference * pesoMinDamageRange;
+                    storeWeapon.WeaponData.MaxDamageRange += averageDifference * pesoMaxDamageRange;
+                    storeWeapon.WeaponData.BulletMaxRange += averageDifference * pesoBulletMaxRange;
                     UpdateBar(RangeBar);
                     break;
 
@@ -917,7 +939,7 @@ public class InventoryTab : MonoBehaviour
 
                 case WeaponAttributes.MagazineSize:
                     storeWeapon.WeaponData.MagazineSize += (int)upgradeItem.Value;
-                    UpdateIconStat(PreviewMagazineBulletsText, storeWeapon.WeaponData.MagazineBullets.ToString());
+                    UpdateIconStat(PreviewMagazineBulletsText, storeWeapon.WeaponData.MagazineSize.ToString());
                     break;
 
                 case WeaponAttributes.BallinsConcentration:
