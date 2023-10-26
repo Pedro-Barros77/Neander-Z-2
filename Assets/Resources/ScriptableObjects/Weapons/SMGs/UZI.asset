@@ -30,4 +30,60 @@ MonoBehaviour:
   MagazineBullets: 25
   ReloadTimeMs: 1500
   SwitchTimeMs: 220
-  Upgrades: []
+  Upgrades:
+  - Attribute: 0
+    UpgradeSteps:
+    - Price: 210
+      Value: 2.5
+  - Attribute: 1
+    UpgradeSteps:
+    - Price: 180
+      Value: 0.5
+    - Price: 245
+      Value: 0.75
+    - Price: 310
+      Value: 0.75
+  - Attribute: 2
+    UpgradeSteps:
+    - Price: 95
+      Value: 0.66
+    - Price: 115
+      Value: 0.5
+    - Price: 135
+      Value: 0.5
+    - Price: 150
+      Value: 0.5
+  - Attribute: 3
+    UpgradeSteps:
+    - Price: 80
+      Value: 1
+    - Price: 105
+      Value: 2
+    - Price: 120
+      Value: 2
+    - Price: 135
+      Value: 2
+  - Attribute: 4
+    UpgradeSteps:
+    - Price: 100
+      Value: 2.5
+    - Price: 120
+      Value: 2.5
+    - Price: 145
+      Value: 5
+    - Price: 160
+      Value: 5
+  - Attribute: 5
+    UpgradeSteps:
+    - Price: 85
+      Value: 3
+    - Price: 115
+      Value: 2
+    - Price: 140
+      Value: 2
+  - Attribute: 6
+    UpgradeSteps:
+    - Price: 205
+      Value: 0.1
+    - Price: 260
+      Value: 0.1

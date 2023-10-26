@@ -30,7 +30,77 @@ MonoBehaviour:
   MagazineBullets: 5
   ReloadTimeMs: 600
   SwitchTimeMs: 350
-  Upgrades: []
+  Upgrades:
+  - Attribute: 0
+    UpgradeSteps:
+    - Price: 220
+      Value: 3
+    - Price: 275
+      Value: 2.5
+    - Price: 350
+      Value: 2.5
+  - Attribute: 1
+    UpgradeSteps:
+    - Price: 115
+      Value: 0.75
+    - Price: 155
+      Value: 0.75
+  - Attribute: 2
+    UpgradeSteps:
+    - Price: 80
+      Value: 0.66
+    - Price: 130
+      Value: 0.5
+    - Price: 175
+      Value: 0.5
+    - Price: 210
+      Value: 0.5
+  - Attribute: 3
+    UpgradeSteps:
+    - Price: 110
+      Value: 1.44
+    - Price: 140
+      Value: 1
+    - Price: 200
+      Value: 2
+  - Attribute: 4
+    UpgradeSteps:
+    - Price: 110
+      Value: 2.5
+    - Price: 140
+      Value: 2.5
+    - Price: 200
+      Value: 2.5
+    - Price: 260
+      Value: 5
+  - Attribute: 5
+    UpgradeSteps:
+    - Price: 60
+      Value: 1
+    - Price: 95
+      Value: 2
+    - Price: 130
+      Value: 2
+  - Attribute: 6
+    UpgradeSteps:
+    - Price: 150
+      Value: 0.1
+    - Price: 225
+      Value: 0.1
+    - Price: 290
+      Value: 0.1
+  - Attribute: 8
+    UpgradeSteps:
+    - Price: 100
+      Value: 5
+    - Price: 125
+      Value: 5
+    - Price: 140
+      Value: 5
+    - Price: 165
+      Value: 5
+    - Price: 200
+      Value: 10
   ShellPelletsCount: 12
   PelletsDispersion: 50
   UseMagazine: 0

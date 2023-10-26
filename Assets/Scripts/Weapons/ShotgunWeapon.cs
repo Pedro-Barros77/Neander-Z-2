@@ -170,6 +170,7 @@ public class ShotgunWeapon : BaseWeapon
     {
         base.SyncAnimationStates();
 
+        Animator.SetFloat("pumpSpeed", FireRate);
         if (IsPumping) Animator.SetTrigger("Pump");
         else Animator.ResetTrigger("Pump");
     }

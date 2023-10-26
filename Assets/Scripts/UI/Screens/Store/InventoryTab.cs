@@ -829,7 +829,7 @@ public class InventoryTab : MonoBehaviour
 
                 case WeaponAttributes.BallinsConcentration:
                     UpdateIconStat(PreviewDispersionText,
-                        (upgradeItem.Value + (storeWeapon.WeaponData as ShotgunData).PelletsDispersion).ToString(),
+                        ((storeWeapon.WeaponData as ShotgunData).PelletsDispersion - upgradeItem.Value).ToString(),
                         (storeWeapon.WeaponData as ShotgunData).PelletsDispersion.ToString());
                     break;
             }
@@ -890,14 +890,32 @@ public class InventoryTab : MonoBehaviour
                 case WeaponAttributes.Damage:
                     storeWeapon.WeaponData.Damage += storeWeapon.WeaponData.BulletType switch
                     {
-                        BulletTypes.Shotgun => upgradeItem.Value * (storeWeapon.WeaponData as ShotgunData).ShellPelletsCount,
+                        BulletTypes.Shotgun => upgradeItem.Value / (storeWeapon.WeaponData as ShotgunData).ShellPelletsCount,
                         _ => upgradeItem.Value
                     };
                     UpdateBar(DamageBar);
                     break;
 
                 case WeaponAttributes.FireRate:
-                    storeWeapon.WeaponData.FireRate += upgradeItem.Value;
+                    if (storeWeapon.WeaponData is BurstFireData burstWeapon)
+                    {
+                        float fireRatesSum = burstWeapon.FireRate + burstWeapon.BurstFireRate;
+                        float fireRateAverage = fireRatesSum / 2;
+                        float targetFireRateAverage = fireRateAverage + upgradeItem.Value;
+
+                        float fireRateWeight = burstWeapon.FireRate / fireRatesSum;
+                        float burstFireRateWeight = burstWeapon.BurstFireRate / fireRatesSum;
+
+                        float fireRateAverageDifference = (targetFireRateAverage * 2) - fireRatesSum;
+
+                        burstWeapon.FireRate += fireRateAverageDifference * fireRateWeight;
+                        burstWeapon.BurstFireRate += fireRateAverageDifference * burstFireRateWeight;
+                    }
+                    else
+                    {
+                        storeWeapon.WeaponData.FireRate += upgradeItem.Value;
+                    }
+
                     UpdateBar(FireRateBar);
                     break;
 
@@ -915,15 +933,15 @@ public class InventoryTab : MonoBehaviour
                     float currentAverage = currentValuesSum / 3;
                     float targetAverage = currentAverage + upgradeItem.Value;
 
-                    float pesoMinDamageRange = storeWeapon.WeaponData.MinDamageRange / currentValuesSum;
-                    float pesoMaxDamageRange = storeWeapon.WeaponData.MaxDamageRange / currentValuesSum;
-                    float pesoBulletMaxRange = storeWeapon.WeaponData.BulletMaxRange / currentValuesSum;
+                    float minDamageRangeWeight = storeWeapon.WeaponData.MinDamageRange / currentValuesSum;
+                    float maxDamageRangeWeight = storeWeapon.WeaponData.MaxDamageRange / currentValuesSum;
+                    float bulletMaxRangeWeight = storeWeapon.WeaponData.BulletMaxRange / currentValuesSum;
 
                     float averageDifference = (targetAverage * 3) - currentValuesSum;
 
-                    storeWeapon.WeaponData.MinDamageRange += averageDifference * pesoMinDamageRange;
-                    storeWeapon.WeaponData.MaxDamageRange += averageDifference * pesoMaxDamageRange;
-                    storeWeapon.WeaponData.BulletMaxRange += averageDifference * pesoBulletMaxRange;
+                    storeWeapon.WeaponData.MinDamageRange += averageDifference * minDamageRangeWeight;
+                    storeWeapon.WeaponData.MaxDamageRange += averageDifference * maxDamageRangeWeight;
+                    storeWeapon.WeaponData.BulletMaxRange += averageDifference * bulletMaxRangeWeight;
                     UpdateBar(RangeBar);
                     break;
 
@@ -944,7 +962,7 @@ public class InventoryTab : MonoBehaviour
 
                 case WeaponAttributes.BallinsConcentration:
                     var data = storeWeapon.WeaponData as ShotgunData;
-                    data.PelletsDispersion = 90 / (data.PelletsDispersion + upgradeItem.Value);
+                    data.PelletsDispersion -= upgradeItem.Value;
                     UpdateIconStat(PreviewDispersionText, data.PelletsDispersion.ToString());
                     break;
             }

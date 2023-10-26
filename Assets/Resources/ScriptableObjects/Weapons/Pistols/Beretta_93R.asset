@@ -30,6 +30,66 @@ MonoBehaviour:
   MagazineBullets: 15
   ReloadTimeMs: 1300
   SwitchTimeMs: 230
-  Upgrades: []
+  Upgrades:
+  - Attribute: 0
+    UpgradeSteps:
+    - Price: 215
+      Value: 1.5
+    - Price: 310
+      Value: 2.5
+  - Attribute: 1
+    UpgradeSteps:
+    - Price: 130
+      Value: 1
+    - Price: 165
+      Value: 0.75
+    - Price: 200
+      Value: 0.75
+  - Attribute: 2
+    UpgradeSteps:
+    - Price: 50
+      Value: 0.31
+    - Price: 95
+      Value: 0.5
+    - Price: 115
+      Value: 1
+    - Price: 150
+      Value: 1
+  - Attribute: 3
+    UpgradeSteps:
+    - Price: 85
+      Value: 1.44
+    - Price: 105
+      Value: 1
+    - Price: 130
+      Value: 2
+    - Price: 155
+      Value: 2
+  - Attribute: 4
+    UpgradeSteps:
+    - Price: 110
+      Value: 2.7
+    - Price: 125
+      Value: 2.5
+    - Price: 140
+      Value: 2.5
+    - Price: 150
+      Value: 5
+  - Attribute: 5
+    UpgradeSteps:
+    - Price: 120
+      Value: 3
+    - Price: 145
+      Value: 3
+    - Price: 160
+      Value: 3
+  - Attribute: 6
+    UpgradeSteps:
+    - Price: 190
+      Value: 0.1
+    - Price: 220
+      Value: 0.1
+    - Price: 265
+      Value: 0.1
   BurstShotsCount: 3
   BurstFireRate: 12

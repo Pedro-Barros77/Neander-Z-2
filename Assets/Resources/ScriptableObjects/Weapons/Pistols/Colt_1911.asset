@@ -33,20 +33,18 @@ MonoBehaviour:
   Upgrades:
   - Attribute: 0
     UpgradeSteps:
-    - Price: 150
+    - Price: 200
       Value: 1.5
-    - Price: 210
-      Value: 2.5
-    - Price: 295
+    - Price: 270
       Value: 2.5
   - Attribute: 1
     UpgradeSteps:
-    - Price: 70
-      Value: 0.5
-    - Price: 95
-      Value: 0.75
     - Price: 120
-      Value: 1.5
+      Value: 0.5
+    - Price: 155
+      Value: 0.75
+    - Price: 190
+      Value: 0.75
   - Attribute: 2
     UpgradeSteps:
     - Price: 30
@@ -87,9 +85,9 @@ MonoBehaviour:
       Value: 3
   - Attribute: 6
     UpgradeSteps:
-    - Price: 140
-      Value: 0.2
-    - Price: 195
-      Value: 0.2
-    - Price: 260
+    - Price: 160
+      Value: 0.1
+    - Price: 230
+      Value: 0.1
+    - Price: 300
       Value: 0.1

@@ -30,6 +30,28 @@ MonoBehaviour:
   MagazineBullets: 0
   ReloadTimeMs: 0
   SwitchTimeMs: 150
-  Upgrades: []
+  Upgrades:
+  - Attribute: 0
+    UpgradeSteps:
+    - Price: 250
+      Value: 3
+    - Price: 310
+      Value: 2.5
+    - Price: 395
+      Value: 2.5
+  - Attribute: 1
+    UpgradeSteps:
+    - Price: 310
+      Value: 0.25
+    - Price: 380
+      Value: 0.75
+  - Attribute: 6
+    UpgradeSteps:
+    - Price: 245
+      Value: 0.1
+    - Price: 300
+      Value: 0.1
+    - Price: 370
+      Value: 0.1
   AttackAnimationsCount: 3
   AttackStaminaCost: 2
