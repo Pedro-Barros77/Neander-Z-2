@@ -101,5 +101,6 @@ public class SniperWeapon : BaseWeapon
 
         if (IsPullingBolt) Animator.SetTrigger("BoltAction");
         else Animator.ResetTrigger("BoltAction");
+        Animator.SetFloat("boltActionSpeed", FireRate);
     }
 }

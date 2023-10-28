@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RPG
   m_EditorClassIdentifier: 
   IsPrimary: 1
+  WeaponClass: 0
   Type: 7
   BulletType: 5
   FireMode: 6
@@ -29,6 +30,63 @@ MonoBehaviour:
   MagazineBullets: 1
   ReloadTimeMs: 2500
   SwitchTimeMs: 500
+  Upgrades:
+  - Attribute: 0
+    UpgradeSteps:
+    - Price: 270
+      Value: 2.5
+    - Price: 320
+      Value: 2.5
+    - Price: 365
+      Value: 2.5
+    - Price: 400
+      Value: 2.5
+  - Attribute: 1
+    UpgradeSteps:
+    - Price: 50
+      Value: 1.19
+    - Price: 70
+      Value: 0.75
+    - Price: 95
+      Value: 0.75
+    - Price: 100
+      Value: 0.75
+  - Attribute: 2
+    UpgradeSteps:
+    - Price: 240
+      Value: 0.5
+    - Price: 275
+      Value: 0.5
+    - Price: 300
+      Value: 1
+    - Price: 320
+      Value: 1
+  - Attribute: 3
+    UpgradeSteps:
+    - Price: 40
+      Value: 1
+    - Price: 75
+      Value: 1
+    - Price: 90
+      Value: 1
+  - Attribute: 4
+    UpgradeSteps:
+    - Price: 115
+      Value: 2.5
+    - Price: 130
+      Value: 2.5
+    - Price: 155
+      Value: 2.5
+    - Price: 180
+      Value: 2.5
+  - Attribute: 8
+    UpgradeSteps:
+    - Price: 200
+      Value: 0.25
+    - Price: 250
+      Value: 0.25
+    - Price: 290
+      Value: 0.25
   ExplosionMaxDamageRadius: 1.5
   ExplosionMinDamageRadius: 3
   ExplosionSpriteSize: 3

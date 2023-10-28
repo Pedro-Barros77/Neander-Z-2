@@ -30,6 +30,68 @@ MonoBehaviour:
   MagazineBullets: 5
   ReloadTimeMs: 2000
   SwitchTimeMs: 400
-  Upgrades: []
+  Upgrades:
+  - Attribute: 0
+    UpgradeSteps:
+    - Price: 230
+      Value: 2.5
+    - Price: 275
+      Value: 2.5
+    - Price: 310
+      Value: 5
+  - Attribute: 1
+    UpgradeSteps:
+    - Price: 165
+      Value: 1
+    - Price: 230
+      Value: 0.75
+  - Attribute: 2
+    UpgradeSteps:
+    - Price: 150
+      Value: 0.5
+    - Price: 180
+      Value: 0.5
+    - Price: 210
+      Value: 0.5
+    - Price: 235
+      Value: 0.5
+  - Attribute: 3
+    UpgradeSteps:
+    - Price: 80
+      Value: 1.66
+    - Price: 120
+      Value: 2
+    - Price: 145
+      Value: 2
+    - Price: 160
+      Value: 2
+  - Attribute: 4
+    UpgradeSteps:
+    - Price: 110
+      Value: 2.5
+    - Price: 135
+      Value: 2.5
+    - Price: 150
+      Value: 5
+    - Price: 175
+      Value: 5
+  - Attribute: 5
+    UpgradeSteps:
+    - Price: 160
+      Value: 2
+    - Price: 190
+      Value: 3
+    - Price: 250
+      Value: 2
+    - Price: 300
+      Value: 3
+  - Attribute: 6
+    UpgradeSteps:
+    - Price: 250
+      Value: 0.1
+    - Price: 295
+      Value: 0.1
+    - Price: 340
+      Value: 0.1
   MaxPierceCount: 5
   PierceDamageMultiplier: 0.5

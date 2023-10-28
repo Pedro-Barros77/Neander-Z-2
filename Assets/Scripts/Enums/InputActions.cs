@@ -32,5 +32,6 @@ public enum InputActions
     DEBUG_SpawnRUI,
     DEBUG_KillAllEnemiesAlive,
     DEBUG_EndWave,
-    DEBUG_CenterEnemies
+    DEBUG_CenterEnemies,
+    DEBUG_RefillAllAmmo
 }

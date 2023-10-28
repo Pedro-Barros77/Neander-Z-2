@@ -68,6 +68,18 @@ public class InGameScreen : MonoBehaviour
         if (MenuController.Instance.IsMobileInput)
             SprintThreshold.color = Constants.GetAction(InputActions.Sprint) ? SprintingJoystickColor : NotSprintingJoystickColor;
 
+        if (Constants.EnableDevKeybinds)
+        {
+            if (Constants.GetActionDown(InputActions.DEBUG_RefillAllAmmo))
+            {
+                Player.Data.InventoryData.SetAmmo(BulletTypes.Pistol, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.Pistol));
+                Player.Data.InventoryData.SetAmmo(BulletTypes.Shotgun, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.Shotgun));
+                Player.Data.InventoryData.SetAmmo(BulletTypes.AssaultRifle, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.AssaultRifle));
+                Player.Data.InventoryData.SetAmmo(BulletTypes.Sniper, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.Sniper));
+                Player.Data.InventoryData.SetAmmo(BulletTypes.Rocket, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.Rocket));
+            }
+        }
+
         UpdateInGameUI();
     }
 

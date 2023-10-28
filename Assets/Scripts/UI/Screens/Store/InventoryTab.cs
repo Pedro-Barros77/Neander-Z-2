@@ -63,7 +63,7 @@ public class InventoryTab : MonoBehaviour
         BtnUpgradeBulletSpeed.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.BulletSpeed, button, hovered);
         BtnUpgradeHeadshotMultiplier.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.HeadshotMultiplier, button, hovered);
         BtnUpgradeMagazineCapacity.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.MagazineSize, button, hovered);
-        BtnUpgradeBallinsDispersion.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.BallinsConcentration, button, hovered);
+        BtnUpgradeBallinsDispersion.HoverEvent += (BaseButton button, bool hovered) => OnHoverWeaponUpgrade(WeaponAttributes.Dirspersion, button, hovered);
         BackpackBtnUpgradeText = BackpackBtnUpgrade.GetComponentInChildren<TextMeshProUGUI>();
         BackpackBtnUpgrade.HoverEvent += (BaseButton button, bool hovered) =>
         {
@@ -185,7 +185,7 @@ public class InventoryTab : MonoBehaviour
                 SetUpgrade(WeaponAttributes.BulletSpeed, BtnUpgradeBulletSpeed, UpgradeBulletSpeedPrice);
                 SetUpgrade(WeaponAttributes.HeadshotMultiplier, BtnUpgradeHeadshotMultiplier, UpgradeHeadshotMultiplierPrice);
                 SetUpgrade(WeaponAttributes.MagazineSize, BtnUpgradeMagazineCapacity, UpgradeMagazineCapacityPrice);
-                SetUpgrade(WeaponAttributes.BallinsConcentration, BtnUpgradeBallinsDispersion, UpgradeBallinsDispersionPrice);
+                SetUpgrade(WeaponAttributes.Dirspersion, BtnUpgradeBallinsDispersion, UpgradeBallinsDispersionPrice);
             }
             else if (storeScreen.hasItem && storeScreen.SelectedItem.Data is StoreBackpackData storeBackpack)
             {
@@ -447,24 +447,23 @@ public class InventoryTab : MonoBehaviour
         {
             PreviewBtnSellText.text = $"Sell for $ {GetWeaponSellPrice(storeWeaponData)}";
 
-            int pelletsCount;
-            float pelletsDispersion;
+            string dispersionValue = "";
+            int pelletsCount = 0;
             if (storeWeaponData.WeaponData is ShotgunData shotgunData)
             {
                 pelletsCount = shotgunData.ShellPelletsCount;
-                pelletsDispersion = shotgunData.PelletsDispersion;
+                dispersionValue = shotgunData.PelletsDispersion.ToString();
             }
+            else if (storeWeaponData.WeaponData is LauncherData launcherData)
+                dispersionValue = ((launcherData.ExplosionMinDamageRadius + launcherData.ExplosionMaxDamageRadius) / 2).ToString("N1");
             else
-            {
                 pelletsCount = 0;
-                pelletsDispersion = 0;
-            }
 
             SetIconStats(
                 headshot: storeWeaponData.WeaponData.HeadshotMultiplier.ToString("N1"),
                 magazine: storeWeaponData.WeaponData.MagazineSize.ToString(),
                 pellets: pelletsCount > 0 ? pelletsCount.ToString() : null,
-                dispersion: pelletsDispersion > 0 ? pelletsDispersion.ToString() : null,
+                dispersion: dispersionValue.Length > 0 ? dispersionValue : null,
                 bulletType: storeWeaponData.WeaponData.BulletType
             );
 
@@ -562,8 +561,8 @@ public class InventoryTab : MonoBehaviour
             setIconUpgrade(BtnUpgradeBulletSpeed, WeaponAttributes.BulletSpeed);
             setIconUpgrade(BtnUpgradeMagazineCapacity, WeaponAttributes.MagazineSize);
             setIconUpgrade(BtnUpgradeHeadshotMultiplier, WeaponAttributes.HeadshotMultiplier);
-            if (storeWeaponData.WeaponData is ShotgunData)
-                setIconUpgrade(BtnUpgradeBallinsDispersion, WeaponAttributes.BallinsConcentration);
+            if (storeWeaponData.WeaponData is ShotgunData || storeWeaponData.WeaponData is LauncherData)
+                setIconUpgrade(BtnUpgradeBallinsDispersion, WeaponAttributes.Dirspersion);
         }
 
         IconStatsContainer.SetActive(magazine != null || headshot != null || pellets != null || dispersion != null);
@@ -827,10 +826,19 @@ public class InventoryTab : MonoBehaviour
                         storeWeapon.WeaponData.MagazineSize.ToString());
                     break;
 
-                case WeaponAttributes.BallinsConcentration:
-                    UpdateIconStat(PreviewDispersionText,
-                        ((storeWeapon.WeaponData as ShotgunData).PelletsDispersion - upgradeItem.Value).ToString(),
-                        (storeWeapon.WeaponData as ShotgunData).PelletsDispersion.ToString());
+                case WeaponAttributes.Dirspersion:
+                    if (storeWeapon.WeaponData is ShotgunData shotgunData)
+                    {
+                        UpdateIconStat(PreviewDispersionText,
+                            (shotgunData.PelletsDispersion - upgradeItem.Value).ToString(),
+                            shotgunData.PelletsDispersion.ToString());
+                    }
+                    else if (storeWeapon.WeaponData is LauncherData launcherData)
+                    {
+                        UpdateIconStat(PreviewDispersionText,
+                            ((launcherData.ExplosionMinDamageRadius + launcherData.ExplosionMaxDamageRadius) / 2 + upgradeItem.Value).ToString("N1"),
+                            ((launcherData.ExplosionMinDamageRadius + launcherData.ExplosionMaxDamageRadius) / 2).ToString("N1"));
+                    }
                     break;
             }
         }
@@ -960,10 +968,27 @@ public class InventoryTab : MonoBehaviour
                     UpdateIconStat(PreviewMagazineBulletsText, storeWeapon.WeaponData.MagazineSize.ToString());
                     break;
 
-                case WeaponAttributes.BallinsConcentration:
-                    var data = storeWeapon.WeaponData as ShotgunData;
-                    data.PelletsDispersion -= upgradeItem.Value;
-                    UpdateIconStat(PreviewDispersionText, data.PelletsDispersion.ToString());
+                case WeaponAttributes.Dirspersion:
+                    if (storeWeapon.WeaponData is ShotgunData shotgunData)
+                    {
+                        shotgunData.PelletsDispersion -= upgradeItem.Value;
+                        UpdateIconStat(PreviewDispersionText, shotgunData.PelletsDispersion.ToString());
+                    }
+                    else if (storeWeapon.WeaponData is LauncherData launcherData)
+                    {
+                        float radiusSum = launcherData.ExplosionMinDamageRadius + launcherData.ExplosionMaxDamageRadius;
+                        float radiusAverage = radiusSum / 2;
+                        float targetRadiusAverage = radiusAverage + upgradeItem.Value;
+
+                        float minRadiusWeight = launcherData.ExplosionMinDamageRadius / radiusSum;
+                        float maxRadiusWeight = launcherData.ExplosionMaxDamageRadius / radiusSum;
+
+                        float radiusAverageDifference = (targetRadiusAverage * 2) - radiusSum;
+
+                        launcherData.ExplosionMinDamageRadius += radiusAverageDifference * minRadiusWeight;
+                        launcherData.ExplosionMaxDamageRadius += radiusAverageDifference * maxRadiusWeight;
+                        UpdateIconStat(PreviewDispersionText, targetRadiusAverage.ToString("N1"));
+                    }
                     break;
             }
 

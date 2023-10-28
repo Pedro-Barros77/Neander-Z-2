@@ -80,26 +80,19 @@ public class RocketBullet : Projectile
 
             if (distance <= ExplosionMinDamageRadius)
             {
-                int targetId = target.transform.GetInstanceID();
-
-                if (!PiercedTargetsIds.Contains(targetId))
+                if (target.IsAlive)
                 {
-                    PiercedTargetsIds.Add(targetId);
-
-                    if (target.IsAlive)
-                    {
-                        IsTargetHit = true;
-                        LastEnemyHit = target;
-                    }
-
-                    var clampedDistance = Mathf.Clamp(distance, ExplosionMaxDamageRadius, ExplosionMinDamageRadius);
-                    var percentage = (clampedDistance - ExplosionMaxDamageRadius) / (ExplosionMinDamageRadius - ExplosionMaxDamageRadius);
-
-                    Damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
-
-                    target.TakeDamage(Damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, PlayerOwner);
-                    target.OnPointHit(enemyHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
+                    IsTargetHit = true;
+                    LastEnemyHit = target;
                 }
+
+                var clampedDistance = Mathf.Clamp(distance, ExplosionMaxDamageRadius, ExplosionMinDamageRadius);
+                var percentage = (clampedDistance - ExplosionMaxDamageRadius) / (ExplosionMinDamageRadius - ExplosionMaxDamageRadius);
+
+                Damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
+
+                target.TakeDamage(Damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, PlayerOwner);
+                target.OnPointHit(enemyHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
             }
         }
 

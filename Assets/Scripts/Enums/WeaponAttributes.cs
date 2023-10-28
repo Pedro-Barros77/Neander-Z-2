@@ -12,5 +12,5 @@ public enum WeaponAttributes
     MagazineSize = 5,
     HeadshotMultiplier = 6,
     BallinsCount = 7,
-    BallinsConcentration = 8,
+    Dirspersion = 8,
 }

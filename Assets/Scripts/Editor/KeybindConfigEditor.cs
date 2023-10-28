@@ -55,6 +55,7 @@ public class KeybindConfigEditor : Editor
     SerializedProperty DEBUG_KillAllEnemiesAlive;
     SerializedProperty DEBUG_EndWave;
     SerializedProperty DEBUG_CenterEnemies;
+    SerializedProperty DEBUG_RefillAllAmmo;
     ReorderableList DEBUG_IncreaseHealthList;
     ReorderableList DEBUG_DecreaseHealthList;
     ReorderableList DEBUG_IncreaseMoneyList;
@@ -69,6 +70,7 @@ public class KeybindConfigEditor : Editor
     ReorderableList DEBUG_KillAllEnemiesAliveList;
     ReorderableList DEBUG_EndWaveList;
     ReorderableList DEBUG_CenterEnemiesList;
+    ReorderableList DEBUG_RefillAllAmmoList;
 
     GUIStyle labelStyle;
 
@@ -105,6 +107,7 @@ public class KeybindConfigEditor : Editor
         DEBUG_KillAllEnemiesAlive = GetTarget.FindProperty("DEBUG_KillAllEnemiesAlive");
         DEBUG_EndWave = GetTarget.FindProperty("DEBUG_EndWave");
         DEBUG_CenterEnemies = GetTarget.FindProperty("DEBUG_CenterEnemies");
+        DEBUG_RefillAllAmmo = GetTarget.FindProperty("DEBUG_RefillAllAmmo");
 
 
         labelStyle = new()
@@ -152,6 +155,7 @@ public class KeybindConfigEditor : Editor
         DEBUG_KillAllEnemiesAliveList = KeyItem(DEBUG_KillAllEnemiesAlive);
         DEBUG_EndWaveList = KeyItem(DEBUG_EndWave);
         DEBUG_CenterEnemiesList = KeyItem(DEBUG_CenterEnemies);
+        DEBUG_RefillAllAmmoList = KeyItem(DEBUG_RefillAllAmmo);
     }
 
     public override void OnInspectorGUI()
@@ -196,6 +200,7 @@ public class KeybindConfigEditor : Editor
         FoldoutKeybind(DEBUG_KillAllEnemiesAlive, DEBUG_KillAllEnemiesAliveList);
         FoldoutKeybind(DEBUG_EndWave, DEBUG_EndWaveList);
         FoldoutKeybind(DEBUG_CenterEnemies, DEBUG_CenterEnemiesList);
+        FoldoutKeybind(DEBUG_RefillAllAmmo, DEBUG_RefillAllAmmoList);
 
         GetTarget.ApplyModifiedProperties();
     }

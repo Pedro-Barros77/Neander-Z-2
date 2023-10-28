@@ -26,8 +26,66 @@ MonoBehaviour:
   MaxDamageRange: 10
   MinDamageRange: 13
   BulletMaxRange: 15
-  MagazineSize: 25
-  MagazineBullets: 25
+  MagazineSize: 20
+  MagazineBullets: 20
   ReloadTimeMs: 2000
   SwitchTimeMs: 350
-  Upgrades: []
+  Upgrades:
+  - Attribute: 0
+    UpgradeSteps:
+    - Price: 260
+      Value: 2.5
+    - Price: 320
+      Value: 2.5
+  - Attribute: 1
+    UpgradeSteps:
+    - Price: 245
+      Value: 0.5
+    - Price: 300
+      Value: 0.75
+  - Attribute: 2
+    UpgradeSteps:
+    - Price: 245
+      Value: 0.5
+    - Price: 300
+      Value: 0.5
+    - Price: 300
+      Value: 0.5
+  - Attribute: 3
+    UpgradeSteps:
+    - Price: 95
+      Value: 0.44
+    - Price: 135
+      Value: 1
+    - Price: 150
+      Value: 1
+  - Attribute: 4
+    UpgradeSteps:
+    - Price: 115
+      Value: 2.5
+    - Price: 140
+      Value: 5
+    - Price: 165
+      Value: 5
+    - Price: 180
+      Value: 5
+  - Attribute: 5
+    UpgradeSteps:
+    - Price: 150
+      Value: 5
+    - Price: 190
+      Value: 5
+    - Price: 250
+      Value: 10
+    - Price: 310
+      Value: 10
+    - Price: 360
+      Value: 10
+  - Attribute: 6
+    UpgradeSteps:
+    - Price: 250
+      Value: 0.1
+    - Price: 320
+      Value: 0.1
+    - Price: 400
+      Value: 0.1
