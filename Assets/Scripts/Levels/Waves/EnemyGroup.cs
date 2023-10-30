@@ -54,4 +54,8 @@ public class EnemyGroup
     /// Se a quantidade de inimigos dessa configuração é infinita. Utilizado na wave de boss para spawnar inimigos infinitamente até que ele seja derrotado.
     /// </summary>
     public bool IsInfinite;
+    /// <summary>
+    /// Desativa o groupo para fins de teste.
+    /// </summary>
+    public bool IsDisabled;
 }

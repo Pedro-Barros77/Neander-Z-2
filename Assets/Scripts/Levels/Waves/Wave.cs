@@ -9,7 +9,7 @@ public class Wave : MonoBehaviour
     public int SpawnCount { get; private set; }
     public bool IsFinished { get; private set; }
     public int TotalEnemiesCount { get; set; }
-    public bool HasMoreSpawns => SpawnCount < TotalEnemiesCount;
+    public bool HasMoreSpawns => SpawnCount - InfiniteGroupKills < TotalEnemiesCount;
     public List<BaseEnemy> EnemiesAlive { get; private set; } = new List<BaseEnemy>();
     public float P1Score { get; private set; }
     public float P1Money { get; private set; }
@@ -23,6 +23,7 @@ public class Wave : MonoBehaviour
     public float FloorHeight => LevelData.BottomRightSpawnLimit.y;
     float LeftBoundary => LevelData.TopLeftSpawnLimit.x;
     float RightBoundary => LevelData.BottomRightSpawnLimit.x;
+    int InfiniteGroupKills;
 
     public Transform EnemiesContainer { get; private set; }
     LevelData LevelData;
@@ -63,7 +64,7 @@ public class Wave : MonoBehaviour
             SpawnMultipleEnemies(diff);
         }
 
-        if (SpawnCount >= TotalEnemiesCount && EnemiesAlive.Count == 0 && !IsFinished)
+        if (SpawnCount - InfiniteGroupKills >= TotalEnemiesCount && EnemiesAlive.Count == 0 && !IsFinished)
         {
             StopCoroutine(EnemySpawner);
             StartCoroutine(EndWaveDelayed());
@@ -209,18 +210,20 @@ public class Wave : MonoBehaviour
     /// <returns>O grupo de inimigos selecionado.</returns>
     private EnemyGroup ChooseEnemyGroup()
     {
-        if (Data.EnemyGroups.Count == 0)
+        var groups = Data.EnemyGroups.Where(x => !x.IsDisabled).ToList();
+
+        if (!groups.Any())
             return null;
 
-        float weightSum = Data.EnemyGroups.Sum(x => x.SpawnChanceMultiplier);
+        float weightSum = groups.Sum(x => x.SpawnChanceMultiplier);
         var randomWeight = Random.Range(0f, weightSum);
 
         float processedWeight = 0;
-        for (int i = 0; i < Data.EnemyGroups.Count; i++)
+        for (int i = 0; i < groups.Count; i++)
         {
-            processedWeight += Data.EnemyGroups[i].SpawnChanceMultiplier;
+            processedWeight += groups[i].SpawnChanceMultiplier;
             if (randomWeight <= processedWeight)
-                return Data.EnemyGroups[i];
+                return groups[i];
         }
 
         return ChooseEnemyGroup();
@@ -235,7 +238,9 @@ public class Wave : MonoBehaviour
     {
         if (group == null || group.Count <= 0) return null;
 
-        if (!group.IsInfinite)
+        if (group.IsInfinite)
+            InfiniteGroupKills++;
+        else
         {
             group.Count--;
             if (group.Count <= 0 && group != BossGroup)
@@ -306,7 +311,7 @@ public class Wave : MonoBehaviour
 
     public void KillAllWave()
     {
-        SpawnMultipleEnemies(TotalEnemiesCount - SpawnCount);
+        SpawnMultipleEnemies(TotalEnemiesCount - (SpawnCount - InfiniteGroupKills));
         KillAllAlive();
     }
 

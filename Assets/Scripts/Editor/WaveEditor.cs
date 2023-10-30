@@ -122,17 +122,17 @@ public class WaveEditor : Editor
                lblMaxSpeed = "Max Speed", lblMinSpeed = "Min Speed",
                lblMaxDamage = "Max Damage", lblMinDamage = "Min Damage",
                lblMaxKillScore = "Max KillScore", lblMinKillScore = "Min KillScore",
-               lblSpawnChance = "Spawn Chance";
+               lblSpawnChance = "Spawn Chance", lblIsDisabled = "Disabled";
 
         float typeWidth = 108, countWidth = 30, isInfiniteWidth = 100,
                 maxHealthWidth = 50, minHealthWidth = 50,
                 maxSpeedWidth = 50, minSpeedWidth = 50,
                 maxDamageWidth = 50, minDamageWidth = 50,
                 maxKillScoreWidth = 50, minKillScoreWidth = 50,
-                spawnChanceWidth = 50;
+                spawnChanceWidth = 50, isDisabledWidth = 100;
 
         float lblTypeWidth, lblCountWidth, lblIsInfiniteWidth, lblMaxHealthWidth, lblMinHealthWidth,
-              lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth;
+              lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth, lblIsDisabledWidth;
 
         lblTypeWidth = labelStyle.CalcSize(new GUIContent(lblType)).x;
         lblCountWidth = labelStyle.CalcSize(new GUIContent(lblCount)).x;
@@ -146,9 +146,10 @@ public class WaveEditor : Editor
         lblMaxKillScoreWidth = labelStyle.CalcSize(new GUIContent(lblMaxKillScore)).x;
         lblMinKillScoreWidth = labelStyle.CalcSize(new GUIContent(lblMinKillScore)).x;
         lblSpawnChanceWidth = labelStyle.CalcSize(new GUIContent(lblSpawnChance)).x;
+        lblIsDisabledWidth = labelStyle.CalcSize(new GUIContent(lblIsDisabled)).x;
 
         float maxLabelWidth = Mathf.Max(lblTypeWidth, lblCountWidth, lblIsInfiniteWidth, lblMaxHealthWidth, lblMinHealthWidth,
-                                                   lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth);
+                                                   lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth, lblIsDisabledWidth);
 
         float marginX = 10;
         float x = rect.x;
@@ -265,6 +266,14 @@ public class WaveEditor : Editor
                         new Rect(x, y, spawnChanceWidth, EditorGUIUtility.singleLineHeight),
                                   item.FindPropertyRelative("SpawnChanceMultiplier"), GUIContent.none);
         x += spawnChanceWidth + marginX * 2;
+
+        // Is Disabled
+        EditorGUI.LabelField(new Rect(x, y, lblIsDisabledWidth, EditorGUIUtility.singleLineHeight), lblIsDisabled, labelStyle);
+        x += lblIsDisabledWidth + marginX;
+        EditorGUI.PropertyField(
+                       new Rect(x, y, isDisabledWidth, EditorGUIUtility.singleLineHeight),
+                                  item.FindPropertyRelative("IsDisabled"), GUIContent.none);
+        x += isDisabledWidth + marginX * 2;
 
         enemyGroupLineHeight = y - rect.y + EditorGUIUtility.singleLineHeight + 2;
     }
