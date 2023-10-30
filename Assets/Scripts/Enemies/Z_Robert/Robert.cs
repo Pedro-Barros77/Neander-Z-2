@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Robert : BaseEnemy
+public class Robert : BaseEnemy, IKnockBackable
 {
     protected override void Start()
     {

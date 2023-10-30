@@ -127,7 +127,7 @@ public class Rui : BaseEnemy
 
         var _pushForce = knockBackForce;
         if (isBumping)
-            Target.TakeDamage(bumpDamage, "Body");
+            Target.TakeDamage(bumpDamage, 1, "Body", this);
         else if (isAttacking)
         {
             _pushForce /= 2;

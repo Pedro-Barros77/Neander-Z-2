@@ -167,14 +167,6 @@ public abstract class Projectile : MonoBehaviour
     }
 
     /// <summary>
-    /// Função chamada quando a explosão do projétil atinge um inimigo.
-    /// </summary>
-    protected virtual void OnEnemyHitByExplosion()
-    {
-
-    }
-
-    /// <summary>
     /// Inicia o movimento do projétil.
     /// </summary>
     protected void StartForwardMovement()

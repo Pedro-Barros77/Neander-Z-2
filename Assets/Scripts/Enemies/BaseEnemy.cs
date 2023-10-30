@@ -98,7 +98,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <summary>
     /// Referência ao componente Rigidbody2D desse inimigo.
     /// </summary>
-    public Rigidbody2D RigidBody;
+    public Rigidbody2D RigidBody { get; protected set; }
     /// <summary>
     /// Referência ao componente SpriteRenderer desse inimigo.
     /// </summary>
@@ -410,7 +410,9 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         AttackHitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
-        target.TakeDamage(Damage, "");
+        var playerHitPoint = targetCollider.ClosestPoint(AttackTrigger.transform.position);
+        target.TakeDamage(Damage, 1, "", this, playerHitPoint);
+        target.OnPointHit(playerHitPoint, -transform.right, "");
         HitTargetsIds.Add(targetInstanceId);
     }
 
@@ -555,5 +557,15 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         if (isDying) Animator.SetTrigger("Die");
         else Animator.ResetTrigger("Die");
+    }
+
+    /// <summary>
+    /// Aplica um knockback no inimigo (empurrão).
+    /// </summary>
+    /// <param name="pushForce">A força do knockback.</param>
+    /// <param name="direction">A direção do knockback.</param>
+    public virtual void TakeKnockBack(float pushForce, Vector3 direction)
+    {
+        RigidBody.AddForce(direction * pushForce);
     }
 }

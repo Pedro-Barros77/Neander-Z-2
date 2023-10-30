@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Raimundo : BaseEnemy
+public class Raimundo : BaseEnemy, IKnockBackable
 {
     public GameObject SparksPrefab;
     private int HelmetStage = 3;
@@ -14,10 +14,10 @@ public class Raimundo : BaseEnemy
     public List<CustomAudio> HitHelmetSounds;
     float lastSparkTime;
     float sparksDelay = 0.03f;
-    private Rigidbody2D HelmetRigidBody;
     private SpriteRenderer HelmetSprite;
     private float CurrentHelmetSpriteAlpha = 1f;
     private float BodyDamageMultiplier = 0.2f;
+    bool isHelmetBroken;
     protected override void Start()
     {
         Type = EnemyTypes.Z_Raimundo;
@@ -36,9 +36,7 @@ public class Raimundo : BaseEnemy
         Helmet = transform.Find("Helmet");
         Head = transform.Find("Head");
         HelmetMaxHealth = HelmetHealth;
-        HelmetRigidBody = Helmet.GetComponent<Rigidbody2D>();
         HelmetSprite = Helmet.GetComponent<SpriteRenderer>();
-        HelmetRigidBody.isKinematic = true;
 
         base.Start();
 
@@ -145,7 +143,11 @@ public class Raimundo : BaseEnemy
     /// </summary>
     void BreakHelmet()
     {
-        HelmetRigidBody.isKinematic = false;
+        if (isHelmetBroken)
+            return;
+
+        isHelmetBroken = true;
+        Helmet.AddComponent<Rigidbody2D>();
         Helmet.parent = null;
         Helmet.GetComponent<Animator>().enabled = true;
         StartCoroutine(StartHelmetFadeOutCountDown());
