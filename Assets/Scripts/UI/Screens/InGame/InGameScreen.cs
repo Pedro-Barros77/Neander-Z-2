@@ -8,11 +8,11 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     Player Player;
     [SerializeField]
-    private GameObject PausePanel, GameOverPanel;
+    GameObject PausePanel, GameOverPanel;
     [SerializeField]
-    private Image ActiveWeaponImage, ActiveAmmoImage, ActiveThrowableImage;
+    Image ActiveWeaponImage, ActiveAmmoImage, ActiveThrowableImage;
     [SerializeField]
-    private TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText, PlayerMoneyText, WaveScoreText;
+    TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText, PlayerMoneyText, WaveScoreText, PauseTitle;
     [SerializeField]
     Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon;
     [SerializeField]
@@ -20,7 +20,7 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     Sprite FragGrenadeSprite, MolotovSprite;
     [SerializeField]
-    GameObject TutorialPanel, MobileInputPanel;
+    GameObject TutorialPanel, MobileInputPanel, PauseContent, OptionsContent;
     [SerializeField]
     Button BtnReady;
 
@@ -31,11 +31,23 @@ public class InGameScreen : MonoBehaviour
 
     Image SprintThreshold;
     Color32 NotSprintingJoystickColor = new(212, 210, 159, 15), SprintingJoystickColor = new(255, 243, 73, 50);
+    OptionsPanel OptionsPanel;
+    AudioSource AudioSource;
+    float musicStartVolume;
 
     void Start()
     {
+        AudioSource = GetComponent<AudioSource>();
+        musicStartVolume = AudioSource.volume;
         BtnReady.gameObject.SetActive(MenuController.Instance.IsTutorialActive);
         TutorialPanel.SetActive(MenuController.Instance.IsTutorialActive);
+        OptionsPanel = OptionsContent.GetComponent<OptionsPanel>();
+        OptionsPanel.GoBackFunction = () =>
+        {
+            OptionsContent.SetActive(false);
+            PauseContent.SetActive(true);
+            PauseTitle.text = "Game Paused";
+        };
 
         if (MenuController.Instance.IsTutorialActive)
             Player.Data.InventoryData = Resources.Load<InventoryData>("ScriptableObjects/Player/TutorialInventory");
@@ -79,6 +91,8 @@ public class InGameScreen : MonoBehaviour
                 Player.Data.InventoryData.SetAmmo(BulletTypes.Rocket, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.Rocket));
             }
         }
+
+        AudioSource.volume = musicStartVolume * MenuController.Instance.MusicVolume;
 
         UpdateInGameUI();
     }
@@ -167,6 +181,7 @@ public class InGameScreen : MonoBehaviour
     {
         MenuController.Instance.ContinueGame();
         PausePanel.SetActive(false);
+        OptionsPanel.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -192,6 +207,16 @@ public class InGameScreen : MonoBehaviour
         else
             OpenStore();
         MenuController.Instance.OnRestartGame();
+    }
+
+    /// <summary>
+    /// Abre o painel de opções.
+    /// </summary>
+    public void OpenOptions()
+    {
+        OptionsContent.SetActive(true);
+        PauseContent.SetActive(false);
+        OptionsPanel.Open();
     }
 
     /// <summary>

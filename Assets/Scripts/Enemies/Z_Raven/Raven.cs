@@ -141,7 +141,7 @@ public class Raven : BaseEnemy
         if (attack)
         {
             Dive();
-            DiveSounds.PlayRandomIfAny(AudioSource);
+            DiveSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
         }
     }
     /// <summary>

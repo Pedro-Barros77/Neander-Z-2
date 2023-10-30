@@ -104,13 +104,13 @@ public class Raimundo : BaseEnemy
                 color = Color.yellow;
                 break;
         }
-        
+
         ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (bodyPartName != "Helmet")
         {
             if (!AudioSource.isPlaying)
-                DamageSounds.PlayRandomIfAny(AudioSource);
+                DamageSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
             Health = Mathf.Clamp(Health - value, 0, MaxHealth);
             HealthBar.RemoveValue(value);
@@ -119,11 +119,8 @@ public class Raimundo : BaseEnemy
         if (Health <= 0)
             Die(bodyPartName, attacker);
 
-        if (HitHelmetSounds.Any() && bodyPartName == "Helmet")
-        {
-            var randomHitSound = HitHelmetSounds[Random.Range(0, HitHelmetSounds.Count)];
-            AudioSource.PlayOneShot(randomHitSound.Audio, randomHitSound.Volume);
-        }
+        if (bodyPartName == "Helmet")
+            HitHelmetSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
     }
 
     public override void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName)

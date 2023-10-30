@@ -42,12 +42,7 @@ public class MeleeWeapon : BaseWeapon
 
         RandomAttackAnimationIndex = Random.Range(1, AttackAnimationsCount + 1);
 
-        if (ShootSounds.Any())
-        {
-            var randomShootSound = ShootSounds[Random.Range(0, ShootSounds.Count)];
-            AudioSource.pitch = randomShootSound.Pitch;
-            AudioSource.PlayOneShot(randomShootSound.Audio, randomShootSound.Volume);
-        }
+        ShootSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
 
         return emptyBullets;
     }
@@ -102,11 +97,8 @@ public class MeleeWeapon : BaseWeapon
         if (HitTargetsIds.Contains(targetInstanceId))
             return;
 
-        if (HitSounds.Any())
-        {
-            var randomHitSound = HitSounds[Random.Range(0, HitSounds.Count)];
-            AudioSource.PlayOneShot(randomHitSound.Audio, randomHitSound.Volume);
-        }
+        HitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
+
         Vector2 hitPosition = targetCollider.ClosestPoint(AttackTrigger.transform.position);
         target.TakeDamage(Damage, HeadshotMultiplier, targetCollider.name, Player, hitPosition);
         target.OnPointHit(hitPosition, -transform.right, targetCollider.name);

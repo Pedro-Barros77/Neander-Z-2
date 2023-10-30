@@ -89,7 +89,7 @@ public class Rui : BaseEnemy
         if (Target == null)
             return;
 
-        BumpSounds.PlayRandomIfAny(AudioSource);
+        BumpSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         BumpTrigger.gameObject.SetActive(true);
         StartCoroutine(DeactivateBumpTrigger(0.1f));
@@ -109,7 +109,7 @@ public class Rui : BaseEnemy
 
     protected override void OnAttackHit()
     {
-        ImpactSounds.PlayRandomIfAny(AudioSource);
+        ImpactSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
         if (isHalfHealth)
             HitTargetsIds.Clear();
 

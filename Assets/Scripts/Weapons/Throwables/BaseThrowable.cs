@@ -186,7 +186,7 @@ public abstract class BaseThrowable : MonoBehaviour
 
         WavesManager.Instance.CurrentWave.HandlePlayerAttack(1, 0);
 
-        StartSounds.PlayRandomIfAny(AudioSource);
+        StartSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
     }
 
     protected virtual void Update()
@@ -232,7 +232,7 @@ public abstract class BaseThrowable : MonoBehaviour
 
         if (lastHitTime == 0 || lastHitTime + (hitSoundIntervalMs / 1000) < now)
         {
-            HitSounds.PlayRandomIfAny(AudioSource);
+            HitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
             lastHitTime = now;
         }
 
@@ -305,7 +305,7 @@ public abstract class BaseThrowable : MonoBehaviour
         if (IsCooking)
             PlayerWeaponController.OnThrowEnd();
 
-        DetonateSounds.PlayRandomIfAny(AudioSource);
+        DetonateSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
 
         KillSelf();
     }
@@ -322,7 +322,7 @@ public abstract class BaseThrowable : MonoBehaviour
         transform.parent = ProjectilesContainer;
         transform.localScale = currentScale;
 
-        ThrowSounds.PlayRandomIfAny(AudioSource);
+        ThrowSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
 
         Rigidbody.AddForce(transform.right * ThrowForce, ForceMode2D.Impulse);
     }

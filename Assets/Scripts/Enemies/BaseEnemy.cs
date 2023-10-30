@@ -174,7 +174,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         var env = GameObject.Find("Environment").GetComponent<LevelData>();
         LevelXLimit = new Vector2(env.TopLeftSpawnLimit.x, env.BottomRightSpawnLimit.x);
 
-        SpawnSounds.PlayRandomIfAny(AudioSource);
+        SpawnSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         OnStartFinished?.Invoke();
     }
@@ -307,7 +307,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (!AudioSource.isPlaying)
-            DamageSounds.PlayRandomIfAny(AudioSource);
+            DamageSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         if (HealthBar != null)
@@ -351,7 +351,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         WavesManager.Instance.CurrentWave.HandleScore(this, attacker, isHeadshot);
 
         if (AudioSource != null)
-            DeathSounds.PlayRandomIfAny(AudioSource);
+            DeathSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         if (DeathFadeOutDelayMs > 0)
         {
@@ -408,7 +408,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         if (HitTargetsIds.Contains(targetInstanceId))
             return;
 
-        AttackHitSounds.PlayRandomIfAny(AudioSource);
+        AttackHitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         target.TakeDamage(Damage, "");
         HitTargetsIds.Add(targetInstanceId);
@@ -445,7 +445,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         isAttacking = true;
         HitTargetsIds.Clear();
 
-        AttackStartSounds.PlayRandomIfAny(AudioSource);
+        AttackStartSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         var targetDir = target.transform.position.x < transform.position.x ? -1 : 1;
         FlipEnemy(Mathf.Sign(targetDir));

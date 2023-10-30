@@ -262,12 +262,7 @@ public abstract class BaseWeapon : MonoBehaviour
 
         lastShotTime = Time.time;
 
-        if (ShootSounds.Any())
-        {
-            var randomShootSound = ShootSounds[Random.Range(0, ShootSounds.Count)];
-            AudioSource.pitch = randomShootSound.Pitch;
-            AudioSource.PlayOneShot(randomShootSound.Audio, randomShootSound.Volume);
-        }
+        ShootSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
 
         var bullets = CreateBullets(angle);
 
@@ -443,10 +438,7 @@ public abstract class BaseWeapon : MonoBehaviour
     /// <param name="volume">O volume para tocar este som, de 0 a 1.</param>
     public virtual void PlayExtraSoundEffect(int index, float volume = 1f)
     {
-        var randomExtraSoundEffect = ExtraSoundEffects[index];
-
-        AudioSource.pitch = randomExtraSoundEffect.Pitch;
-        AudioSource.PlayOneShot(randomExtraSoundEffect.Audio, randomExtraSoundEffect.Volume);
+        ExtraSoundEffects.PlayAtIndex(index, AudioSource, AudioTypes.Player);
     }
 
     /// <summary>
@@ -460,10 +452,8 @@ public abstract class BaseWeapon : MonoBehaviour
         if (MagazineBullets <= 0)
         {
             if (!IsReloading)
-            {
-                AudioSource.pitch = EmptyChamberSound.Pitch;
-                AudioSource.PlayOneShot(EmptyChamberSound.Audio, EmptyChamberSound.Volume);
-            }
+                EmptyChamberSound.PlayIfNotNull(AudioSource, AudioTypes.Player);
+
             return false;
         }
 

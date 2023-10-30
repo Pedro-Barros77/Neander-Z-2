@@ -35,7 +35,7 @@ public class Molotov : BaseThrowable
 
         SpawnFlames();
 
-        DetonateSounds.PlayRandomIfAny(AudioSource);
+        DetonateSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

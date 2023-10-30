@@ -316,10 +316,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e671ebfd140b3134e9081d8a66fbfb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HoverSound: {fileID: 8300000, guid: 78010dacdd0b9c749906c0c8eb664d3c, type: 3}
-  ClickSound: {fileID: 8300000, guid: 8bf6dc908cd685f43a6e27d96e7e60ee, type: 3}
-  HoverVolume: 2
-  ClickVolume: 3
+  ClickSound:
+    Audio: {fileID: 8300000, guid: 8bf6dc908cd685f43a6e27d96e7e60ee, type: 3}
+    Volume: 3
+    Pitch: 1
+  HoverSound:
+    Audio: {fileID: 8300000, guid: 78010dacdd0b9c749906c0c8eb664d3c, type: 3}
+    Volume: 2
+    Pitch: 1
+  button: {fileID: 0}
 --- !u!114 &7093624296648852711
 MonoBehaviour:
   m_ObjectHideFlags: 0

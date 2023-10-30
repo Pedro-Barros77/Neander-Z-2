@@ -45,7 +45,7 @@ public class Ronald : BaseEnemy
 
         WavesManager.Instance.CurrentWave.HandleScore(this, attacker, isHeadshot);
 
-        DeathSounds.PlayRandomIfAny(AudioSource);
+        DeathSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         if (HealthBar != null)
             Destroy(HealthBar.gameObject);

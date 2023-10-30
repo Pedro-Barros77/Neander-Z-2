@@ -69,11 +69,7 @@ public class BodyTarget : MonoBehaviour, IPlayerTarget
 
         ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2)); ;
 
-        if (HitSounds.Any())
-        {
-            var randomHitSound = HitSounds[Random.Range(0, HitSounds.Count)];
-            AudioSource.PlayOneShot(randomHitSound.Audio, randomHitSound.Volume);
-        }
+        HitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
     }
 
     /// <summary>
