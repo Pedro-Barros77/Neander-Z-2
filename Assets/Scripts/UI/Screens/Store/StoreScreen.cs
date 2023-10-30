@@ -95,10 +95,11 @@ public class StoreScreen : MonoBehaviour
                 if (SelectedItem.Data is StoreThrowableData storeThrowableData)
                 {
                     InventoryData.ThrowableSelection playerThrowable = PlayerData.InventoryData.ThrowableItemsSelection.FirstOrDefault(x => x.Type == storeThrowableData.ThrowableData.Type);
-                    SetCountStats(
-                        count: (playerThrowable?.Count ?? 0).ToString(),
-                        total: $"/{playerThrowable.MaxCount}"
-                    );
+                    if (playerThrowable != null)
+                        SetCountStats(
+                            count: (playerThrowable?.Count ?? 0).ToString(),
+                            total: $"/{playerThrowable.MaxCount}"
+                        );
                 }
                 else if (SelectedItem.Data is StoreAmmoData storeAmmoData)
                 {

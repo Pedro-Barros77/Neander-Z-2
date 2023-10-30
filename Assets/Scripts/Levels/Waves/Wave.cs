@@ -285,7 +285,7 @@ public class Wave : MonoBehaviour
         foreach (BaseEnemy enemy in EnemiesAlive)
         {
             var colliders = Physics2D.OverlapCircleAll(enemy.transform.position, ClusteringMinDistance, EnemiesLayerMask);
-            colliders = colliders.Where(x => x.gameObject != enemy.gameObject && x.gameObject.name.StartsWith("Z_")).ToArray();
+            colliders = colliders.Where(x => x.gameObject != enemy.gameObject && x.gameObject.name.StartsWith("Z_") && x.GetComponentInParent<BaseEnemy>().IsAlive).ToArray();
 
             if (colliders.Length < ClusteringMaxZombies)
                 continue;
