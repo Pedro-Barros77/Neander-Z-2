@@ -50,7 +50,7 @@ public class MenuController : MonoBehaviour
         if (Instance == null)
         {
             Instance = GameObject.Find("MenuController").GetComponent<MenuController>();
-            //IsTutorialActive = true;
+            IsTutorialActive = true;
             MusicVolume = 1;
             UIVolume = 1;
             PlayerVolume = 1;
