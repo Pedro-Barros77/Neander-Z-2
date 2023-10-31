@@ -10,7 +10,7 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     GameObject PausePanel, GameOverPanel;
     [SerializeField]
-    Image ActiveWeaponImage, ActiveAmmoImage, ActiveThrowableImage;
+    Image ActiveWeaponImage, ActiveAmmoImage, ActiveThrowableImage, SwitchWeaponImage;
     [SerializeField]
     TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText, PlayerMoneyText, WaveScoreText, PauseTitle;
     [SerializeField]
@@ -129,7 +129,7 @@ public class InGameScreen : MonoBehaviour
                 _ => null,
             };
 
-        ActiveWeaponImage.sprite = Player.CurrentWeapon.Type switch
+        Sprite GetWeaponSprite(WeaponTypes type) => type switch
         {
             WeaponTypes.Colt_1911 => Colt_1911Sprite,
             WeaponTypes.ShortBarrel => ShortBarrelSprite,
@@ -144,6 +144,9 @@ public class InGameScreen : MonoBehaviour
             WeaponTypes.ScarDebug => ScarDebugSprite,
             _ => null,
         };
+
+        ActiveWeaponImage.sprite = GetWeaponSprite(Player.CurrentWeapon.Type);
+        SwitchWeaponImage.sprite = GetWeaponSprite(Player.Backpack.CurrentWeaponIndex == 0 ? Player.Backpack.EquippedSecondaryType : Player.Backpack.EquippedPrimaryType);
     }
 
     /// <summary>
