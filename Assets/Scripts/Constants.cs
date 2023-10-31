@@ -16,10 +16,10 @@ public static class Constants
     public static float MaxPlayerJumpForce { get; private set; } = 2208; // half section = 92
     public static float MaxPlayerMaxStamina { get; private set; } = 480; // half section = 20
     public static float MaxPlayerStaminaRegen { get; private set; } = 60; // half section = 2.5
-    public static float MaxPlayerStaminaHaste { get; private set; } = 20.16f; // half section = 0.84
+    public static float MaxPlayerStaminaHaste { get; private set; } = 12f; // half section = 0.5
     public static float MaxPlayerJumpStamina { get; private set; } = 48; // half section = 2
     public static float MaxPlayerSprintStamina { get; private set; } = 120; // half section = 5
-    public static float MaxPlayerAttackStamina { get; private set; } = 216; // half section = 9
+    public static float MaxPlayerAttackStamina { get; private set; } = 120; // half section = 5
 
     static float ReloadSpeedRatio = 5000;
     static float JoystickHorizontalDeadzone = 0.2f;
