@@ -267,8 +267,9 @@ public class Wave : MonoBehaviour
         IsFinished = true;
         yield return new WaitForSeconds(Data.EndDelayMs / 1000);
 
-        P1Money = (P1Score / 4) * Data.MoneyMultiplier;
-        P1Precision = P1AttacksHit * 100f / P1AttacksCount;
+        float attackHitRatio = (float)P1AttacksHit / P1AttacksCount;
+        P1Money = (P1Score / 4) * Data.MoneyMultiplier * (1 + (attackHitRatio / 2));
+        P1Precision = attackHitRatio * 100;
         WavesManager.Instance.ShowWaveSummary();
     }
 

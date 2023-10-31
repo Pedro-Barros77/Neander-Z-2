@@ -146,7 +146,10 @@ public class InGameScreen : MonoBehaviour
         };
 
         ActiveWeaponImage.sprite = GetWeaponSprite(Player.CurrentWeapon.Type);
-        SwitchWeaponImage.sprite = GetWeaponSprite(Player.Backpack.CurrentWeaponIndex == 0 ? Player.Backpack.EquippedSecondaryType : Player.Backpack.EquippedPrimaryType);
+
+        var switchType = Player.Backpack.CurrentWeaponIndex == 0 ? Player.Backpack.EquippedSecondaryType : Player.Backpack.EquippedPrimaryType;
+        SwitchWeaponImage.transform.parent.gameObject.SetActive(switchType != WeaponTypes.None);
+        SwitchWeaponImage.sprite = GetWeaponSprite(switchType);
     }
 
     /// <summary>
