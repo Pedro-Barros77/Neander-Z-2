@@ -1147,7 +1147,7 @@ public class InventoryTab : MonoBehaviour
             }
 
             storeScreen.PlayerData.TakeMoney(upgradeItem.Price);
-            storeScreen.audioSource.PlayOneShot(storeScreen.PurchaseSound.Audio, storeScreen.PurchaseSound.Volume);
+            storeScreen.PurchaseSound.PlayIfNotNull(storeScreen.audioSource, AudioTypes.UI);
             storeScreen.ShowPopup($"-{upgradeItem.Price:N2}", Color.red, storeScreen.PlayerMoneyText.transform.position);
         }
     }
@@ -1239,7 +1239,7 @@ public class InventoryTab : MonoBehaviour
             value = (item.Data.Price - item.Data.Discount) / 2;
 
         storeScreen.PlayerData.GetMoney(value);
-        storeScreen.audioSource.PlayOneShot(storeScreen.PurchaseSound.Audio, storeScreen.PurchaseSound.Volume);
+        storeScreen.PurchaseSound.PlayIfNotNull(storeScreen.audioSource, AudioTypes.UI);
         storeScreen.ShowPopup($"+{value:N2}", Color.green, storeScreen.PlayerMoneyText.transform.position);
     }
 

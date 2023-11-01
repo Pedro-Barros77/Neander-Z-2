@@ -2,7 +2,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-public class Ronald : BaseEnemy
+public class Ronald : BaseEnemy, IKnockBackable
 {
     private float spawnChance = 0.1f;
     private bool SpawnRonaldo;
@@ -45,7 +45,7 @@ public class Ronald : BaseEnemy
 
         WavesManager.Instance.CurrentWave.HandleScore(this, attacker, isHeadshot);
 
-        DeathSounds.PlayRandomIfAny(AudioSource);
+        DeathSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         if (HealthBar != null)
             Destroy(HealthBar.gameObject);

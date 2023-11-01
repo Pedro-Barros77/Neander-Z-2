@@ -1,4 +1,4 @@
-public class Ronaldo : BaseEnemy
+public class Ronaldo : BaseEnemy, IKnockBackable
 {
     protected override void Start()
     {

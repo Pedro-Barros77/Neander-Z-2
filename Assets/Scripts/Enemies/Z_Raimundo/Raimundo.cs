@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Raimundo : BaseEnemy
+public class Raimundo : BaseEnemy, IKnockBackable
 {
     public GameObject SparksPrefab;
     private int HelmetStage = 3;
@@ -14,10 +14,10 @@ public class Raimundo : BaseEnemy
     public List<CustomAudio> HitHelmetSounds;
     float lastSparkTime;
     float sparksDelay = 0.03f;
-    private Rigidbody2D HelmetRigidBody;
     private SpriteRenderer HelmetSprite;
     private float CurrentHelmetSpriteAlpha = 1f;
     private float BodyDamageMultiplier = 0.2f;
+    bool isHelmetBroken;
     protected override void Start()
     {
         Type = EnemyTypes.Z_Raimundo;
@@ -36,9 +36,7 @@ public class Raimundo : BaseEnemy
         Helmet = transform.Find("Helmet");
         Head = transform.Find("Head");
         HelmetMaxHealth = HelmetHealth;
-        HelmetRigidBody = Helmet.GetComponent<Rigidbody2D>();
         HelmetSprite = Helmet.GetComponent<SpriteRenderer>();
-        HelmetRigidBody.isKinematic = true;
 
         base.Start();
 
@@ -104,13 +102,13 @@ public class Raimundo : BaseEnemy
                 color = Color.yellow;
                 break;
         }
-        
+
         ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (bodyPartName != "Helmet")
         {
             if (!AudioSource.isPlaying)
-                DamageSounds.PlayRandomIfAny(AudioSource);
+                DamageSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
             Health = Mathf.Clamp(Health - value, 0, MaxHealth);
             HealthBar.RemoveValue(value);
@@ -119,11 +117,8 @@ public class Raimundo : BaseEnemy
         if (Health <= 0)
             Die(bodyPartName, attacker);
 
-        if (HitHelmetSounds.Any() && bodyPartName == "Helmet")
-        {
-            var randomHitSound = HitHelmetSounds[Random.Range(0, HitHelmetSounds.Count)];
-            AudioSource.PlayOneShot(randomHitSound.Audio, randomHitSound.Volume);
-        }
+        if (bodyPartName == "Helmet")
+            HitHelmetSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
     }
 
     public override void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName)
@@ -148,7 +143,11 @@ public class Raimundo : BaseEnemy
     /// </summary>
     void BreakHelmet()
     {
-        HelmetRigidBody.isKinematic = false;
+        if (isHelmetBroken)
+            return;
+
+        isHelmetBroken = true;
+        Helmet.AddComponent<Rigidbody2D>();
         Helmet.parent = null;
         Helmet.GetComponent<Animator>().enabled = true;
         StartCoroutine(StartHelmetFadeOutCountDown());

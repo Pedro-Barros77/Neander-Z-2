@@ -11,9 +11,8 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public bool Released { get; private set; }
     public Vector3 ClickPosition { get; private set; }
     [SerializeField]
-    public AudioClip HoverSound, ClickSound;
+    public CustomAudio ClickSound, HoverSound;
     [SerializeField]
-    public float HoverVolume = 1f, ClickVolume = 1f;
     public delegate void OnHover(BaseButton button, bool hovered);
     public event OnHover HoverEvent;
 
@@ -49,8 +48,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (!button.interactable)
             return;
 
-        if (HoverSound != null)
-            audioSource.PlayOneShot(ClickSound, ClickVolume);
+        ClickSound.PlayIfNotNull(audioSource, AudioTypes.UI);
 
         IsPressing = true;
         Pressed = true;
@@ -64,8 +62,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (!button.interactable)
             return;
 
-        if (HoverSound != null)
-            audioSource.PlayOneShot(HoverSound, HoverVolume);
+        HoverSound.PlayIfNotNull(audioSource, AudioTypes.UI);
 
         HoverEvent?.Invoke(this, true);
 

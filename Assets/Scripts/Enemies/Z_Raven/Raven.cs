@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class Raven : BaseEnemy
+public class Raven : BaseEnemy, IKnockBackable
 {
     private float Altitude = 8.57f;
     private float minAltitude = 6f;
@@ -141,7 +140,7 @@ public class Raven : BaseEnemy
         if (attack)
         {
             Dive();
-            DiveSounds.PlayRandomIfAny(AudioSource);
+            DiveSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
         }
     }
     /// <summary>

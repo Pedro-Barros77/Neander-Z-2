@@ -16,6 +16,10 @@ public class MenuController : MonoBehaviour
     public bool IsInGame { get; set; }
     public bool IsTutorialActive { get; set; }
     public bool IsMobileInput { get; set; }
+    public float MusicVolume { get; set; }
+    public float UIVolume { get; set; }
+    public float PlayerVolume { get; set; }
+    public float EnemiesVolume { get; set; }
     public FPSCount FpsCount { get; private set; }
     public Image GameCursor { get; private set; }
     public delegate void OnRestart();
@@ -49,6 +53,10 @@ public class MenuController : MonoBehaviour
             Instance = GameObject.Find("MenuController").GetComponent<MenuController>();
             IsTutorialActive = true;
             CanPause = true;
+            MusicVolume = 1;
+            UIVolume = 1;
+            PlayerVolume = 1;
+            EnemiesVolume = 1;
         }
 
         if (Instance == this)

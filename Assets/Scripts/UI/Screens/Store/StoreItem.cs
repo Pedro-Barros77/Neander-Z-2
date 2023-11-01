@@ -118,8 +118,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (!IsSelected)
         {
             storeScreen.SelectItem(this);
-            if (ClickSound != null)
-                audioSource.PlayOneShot(ClickSound.Audio, ClickSound.Volume);
+            ClickSound.PlayIfNotNull(audioSource, AudioTypes.UI);
         }
     }
 
@@ -134,8 +133,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         //if (!button.interactable)
         //    return;
 
-        if (HoverSound != null)
-            audioSource.PlayOneShot(HoverSound.Audio, HoverSound.Volume);
+        HoverSound.PlayIfNotNull(audioSource, AudioTypes.UI);
 
         MenuController.Instance.SetCursor(Cursors.Pointer);
     }

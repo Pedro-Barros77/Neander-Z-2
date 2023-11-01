@@ -375,7 +375,15 @@ public class PlayerWeaponController : MonoBehaviour
 
     public void SetWeaponOffset(Vector3 localPositionOffset)
     {
-        transform.localPosition = StartLocalPosition + localPositionOffset;
+        float crouchOffsetY = 0;
+        if (Player.PlayerMovement.isCrouching)
+        {
+            var currentAnim = Player.PlayerMovement.PlayerAnimator.GetCurrentAnimatorStateInfo(0);
+            if (currentAnim.IsName("Carlos_Crouch"))
+                crouchOffsetY = Mathf.Lerp(0, -0.4f, currentAnim.normalizedTime);
+        }
+
+        transform.localPosition = StartLocalPosition + localPositionOffset + new Vector3(0, crouchOffsetY);
     }
 
     /// <summary>

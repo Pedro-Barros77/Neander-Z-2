@@ -167,7 +167,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
             }
             if (Constants.GetActionDown(InputActions.DEBUG_DecreaseHealth))
             {
-                TakeDamage(20, "");
+                TakeDamage(20, 1, "", null);
             }
         }
     }
@@ -209,7 +209,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     /// Diminui a vida e modifica a barra de vida.
     /// </summary>
     /// <param name="value">O valor a ser subtraнdo da vida.</param>
-    public void TakeDamage(float value, string bodyPartName, Vector3? hitPosition = null)
+    public void TakeDamage(float value, float headshotMultiplier, string bodyPartName, IPlayerTarget attacker, Vector3? hitPosition = null)
     {
         if (!IsAlive)
             return;
@@ -321,5 +321,21 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     public void TakeKnockBack(float pushForce, Vector3 direction)
     {
         RigidBody.AddForce(direction * pushForce);
+    }
+
+    public void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName)
+    {
+        //if (BloodSplatterPrefab == null)
+        //    return;
+
+        //if (lastBloodSplatterTime + bloodSplatterDelay > Time.time)
+        //    return;
+
+        //var bloodSplatter = Instantiate(BloodSplatterPrefab, hitPoint, Quaternion.identity, EffectsContainer);
+        //bloodSplatter.transform.up = pointToDirection;
+        //var bloodParticles = bloodSplatter.GetComponent<ParticleSystem>();
+        //var mainBloodSystem = bloodParticles.main;
+        //mainBloodSystem.startColor = new(BloodColor);
+        //lastBloodSplatterTime = Time.time;
     }
 }

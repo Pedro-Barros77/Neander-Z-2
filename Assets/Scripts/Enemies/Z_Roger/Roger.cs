@@ -1,4 +1,4 @@
-public class Roger : BaseEnemy
+public class Roger : BaseEnemy, IKnockBackable
 {
     protected override void Start()
     {

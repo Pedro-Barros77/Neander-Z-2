@@ -4,6 +4,7 @@ using UnityEngine;
 public class AudioPlayer : MonoBehaviour
 {
     public AudioSource AudioSource { get; set; }
+    public AudioTypes AudioType;
 
     [SerializeField]
     public List<CustomAudio> AudioClips;
@@ -18,9 +19,7 @@ public class AudioPlayer : MonoBehaviour
     /// </summary>
     public void PlayRandomAudio()
     {
-        var customAudio = AudioClips[Random.Range(0, AudioClips.Count)];
-        AudioSource.pitch = customAudio.Pitch;
-        AudioSource.PlayOneShot(customAudio.Audio, customAudio.Volume);
+        AudioClips.PlayRandomIfAny(AudioSource, AudioType);
     }
 
     /// <summary>
@@ -29,10 +28,7 @@ public class AudioPlayer : MonoBehaviour
     /// <param name="index">O index do audio na lista a ser executado.</param>
     public void PlayAudio(int index)
     {
-        var customAudio = AudioClips[index];
-        AudioSource.pitch = customAudio.Pitch;
-        if (index < AudioClips.Count)
-            AudioSource.PlayOneShot(customAudio.Audio, customAudio.Volume);
+        AudioClips.PlayAtIndex(index, AudioSource, AudioType);
     }
 
     /// <summary>

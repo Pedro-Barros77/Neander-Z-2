@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 7898799336908636307}
   - component: {fileID: 981523022729205197}
   - component: {fileID: 4091426219714569899}
-  - component: {fileID: 4984084256782336902}
   - component: {fileID: 341637274021263001}
   m_Layer: 7
   m_Name: Helmet
@@ -242,33 +241,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.16058514, y: 0.44871175}
   m_Size: {x: 0.8389383, y: 0.8589518}
   m_Direction: 0
---- !u!50 &4984084256782336902
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483274825373644756}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0.5
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 5
 --- !u!95 &341637274021263001
 Animator:
   serializedVersion: 5
@@ -676,7 +648,7 @@ MonoBehaviour:
   - {x: 0.44441786, y: -0.88, z: 0}
   m_ShapePathHash: 1316181860
   m_Mesh: {fileID: 0}
-  m_InstanceId: 164012
+  m_InstanceId: 865368
   m_LocalBounds:
     m_Center: {x: 0.0076993406, y: -0.11164075, z: 0}
     m_Extent: {x: 0.47521538, y: 0.76835924, z: 0}

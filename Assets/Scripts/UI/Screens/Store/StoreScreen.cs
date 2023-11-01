@@ -20,7 +20,7 @@ public class StoreScreen : MonoBehaviour
     public PlayerData PlayerData;
     public Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, ActiveTabImage, InactiveTabImage;
     public CustomAudio PurchaseSound;
-    public AudioSource audioSource;
+    public AudioSource audioSource, musicAudioSource;
     public TextMeshProUGUI PlayerMoneyText;
 
     [SerializeField]
@@ -39,17 +39,20 @@ public class StoreScreen : MonoBehaviour
     GameObject PopupPrefab;
     Canvas WorldPosCanvas;
     InventoryTab inventoryTab;
+    float musicStartVolume;
 
     void Start()
     {
         StoreItems = GameObject.FindGameObjectsWithTag("StoreItem").ToList();
         storePanelAnimator = StorePanel.GetComponent<Animator>();
         PreviewBtnBuyText = BuyButton.GetComponentInChildren<TextMeshProUGUI>();
-        audioSource = GetComponent<AudioSource>();
+        musicAudioSource = GetComponent<AudioSource>();
+        audioSource = GameObject.Find("UI").GetComponent<AudioSource>();
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
         WorldPosCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         BtnReadyText = BtnReady.GetComponentInChildren<TextMeshProUGUI>();
         inventoryTab = GetComponent<InventoryTab>();
+        musicStartVolume = musicAudioSource.volume;
     }
 
     void Update()
@@ -92,10 +95,11 @@ public class StoreScreen : MonoBehaviour
                 if (SelectedItem.Data is StoreThrowableData storeThrowableData)
                 {
                     InventoryData.ThrowableSelection playerThrowable = PlayerData.InventoryData.ThrowableItemsSelection.FirstOrDefault(x => x.Type == storeThrowableData.ThrowableData.Type);
-                    SetCountStats(
-                        count: (playerThrowable?.Count ?? 0).ToString(),
-                        total: $"/{playerThrowable.MaxCount}"
-                    );
+                    if (playerThrowable != null)
+                        SetCountStats(
+                            count: (playerThrowable?.Count ?? 0).ToString(),
+                            total: $"/{playerThrowable.MaxCount}"
+                        );
                 }
                 else if (SelectedItem.Data is StoreAmmoData storeAmmoData)
                 {
@@ -143,6 +147,8 @@ public class StoreScreen : MonoBehaviour
             if (Constants.GetActionDown(InputActions.DEBUG_DecreaseMoney))
                 PlayerData.TakeMoney(100);
         }
+
+        musicAudioSource.volume = musicStartVolume * MenuController.Instance.MusicVolume;
     }
 
     /// <summary>
@@ -485,7 +491,7 @@ public class StoreScreen : MonoBehaviour
             float value = SelectedItem.Data.Price - SelectedItem.Data.Discount;
 
             PlayerData.TakeMoney(value);
-            audioSource.PlayOneShot(PurchaseSound.Audio, PurchaseSound.Volume);
+            PurchaseSound.PlayIfNotNull(audioSource, AudioTypes.UI);
             ShowPopup($"-{value:N2}", Color.red, PlayerMoneyText.transform.position);
         }
     }

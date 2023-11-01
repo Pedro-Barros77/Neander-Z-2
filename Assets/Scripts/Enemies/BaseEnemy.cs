@@ -98,7 +98,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <summary>
     /// Referência ao componente Rigidbody2D desse inimigo.
     /// </summary>
-    public Rigidbody2D RigidBody;
+    public Rigidbody2D RigidBody { get; protected set; }
     /// <summary>
     /// Referência ao componente SpriteRenderer desse inimigo.
     /// </summary>
@@ -174,7 +174,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         var env = GameObject.Find("Environment").GetComponent<LevelData>();
         LevelXLimit = new Vector2(env.TopLeftSpawnLimit.x, env.BottomRightSpawnLimit.x);
 
-        SpawnSounds.PlayRandomIfAny(AudioSource);
+        SpawnSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         OnStartFinished?.Invoke();
     }
@@ -307,7 +307,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (!AudioSource.isPlaying)
-            DamageSounds.PlayRandomIfAny(AudioSource);
+            DamageSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         if (HealthBar != null)
@@ -351,7 +351,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         WavesManager.Instance.CurrentWave.HandleScore(this, attacker, isHeadshot);
 
         if (AudioSource != null)
-            DeathSounds.PlayRandomIfAny(AudioSource);
+            DeathSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         if (DeathFadeOutDelayMs > 0)
         {
@@ -408,9 +408,11 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         if (HitTargetsIds.Contains(targetInstanceId))
             return;
 
-        AttackHitSounds.PlayRandomIfAny(AudioSource);
+        AttackHitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
-        target.TakeDamage(Damage, "");
+        var playerHitPoint = targetCollider.ClosestPoint(AttackTrigger.transform.position);
+        target.TakeDamage(Damage, 1, "", this, playerHitPoint);
+        target.OnPointHit(playerHitPoint, -transform.right, "");
         HitTargetsIds.Add(targetInstanceId);
     }
 
@@ -445,7 +447,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         isAttacking = true;
         HitTargetsIds.Clear();
 
-        AttackStartSounds.PlayRandomIfAny(AudioSource);
+        AttackStartSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         var targetDir = target.transform.position.x < transform.position.x ? -1 : 1;
         FlipEnemy(Mathf.Sign(targetDir));
@@ -555,5 +557,15 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         if (isDying) Animator.SetTrigger("Die");
         else Animator.ResetTrigger("Die");
+    }
+
+    /// <summary>
+    /// Aplica um knockback no inimigo (empurrão).
+    /// </summary>
+    /// <param name="pushForce">A força do knockback.</param>
+    /// <param name="direction">A direção do knockback.</param>
+    public virtual void TakeKnockBack(float pushForce, Vector3 direction)
+    {
+        RigidBody.AddForce(direction * pushForce);
     }
 }

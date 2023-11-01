@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool isCrouching { get; private set; }
+    public Animator PlayerAnimator => animator;
     float LastRollTime;
     float dirInput;
     bool isGrounded;
@@ -11,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     bool isTurningBack;
     bool isRunning;
     bool isFalling;
-    bool isCrouching;
     bool isSprinting;
 
     bool isIdle => !isRolling && !isJumpingSideways && !isTurning && !isTurningBack && !isRunning && !isFalling && !isCrouching && !Player.isDying;
