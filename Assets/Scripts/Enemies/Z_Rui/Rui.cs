@@ -6,13 +6,17 @@ public class Rui : BaseEnemy
 {
     private float knockBackForce = 1500f;
     private float bumpDamage = 10f;
-    private float bumpDistance = 2f;
+    private float bumpDistance = 1.5f;
     private IEnemyTarget Target;
     private bool isInBumpRange;
     private bool isBumping;
+    private bool isRageing;
+    private bool hasRaged;
+    private bool isBlinking = false;
+    private float blinkStartTime;
     private bool isHalfHealth => Health <= MaxHealth / 2;
     [SerializeField]
-    protected List<CustomAudio> ImpactSounds, BumpSounds;
+    protected List<CustomAudio> ImpactSounds, BumpSounds, RageSounds;
     protected AttackTrigger BumpTrigger;
     private CameraManagement CameraManagement;
     protected override bool isIdle => base.isIdle && !isBumping;
@@ -46,6 +50,30 @@ public class Rui : BaseEnemy
             return;
         }
 
+        if (isHalfHealth && !isRageing && !hasRaged && (isIdle || isRunning))
+        {
+            isRunning = false;
+            isAttacking = false;
+            Animator.ResetTrigger("Attack");
+            StartRageAnimation();
+        }
+
+        if (isBlinking)
+        {
+            float timeLeft = 2 - (Time.unscaledTime - blinkStartTime);
+            float timePercentage = 1 - (timeLeft / 2);
+            float colorPercentage = Mathf.PingPong(30 * timePercentage * (timePercentage / 1.5f), 1.0f);
+            Color color = Color.Lerp(Color.white, Constants.Colors.RedMoney, colorPercentage);
+
+            SpriteRenderer.color = color;
+
+            if (Time.unscaledTime - blinkStartTime >= 2)
+            {
+                isBlinking = false;
+                SpriteRenderer.color = Color.white;
+            }
+        }
+
         Target = GetClosestTarget();
         if (Target != null)
         {
@@ -53,10 +81,10 @@ public class Rui : BaseEnemy
             isInBumpRange = distanceX <= bumpDistance;
         }
 
-        if (isInBumpRange && !isBumping && !isAttacking)
+        if (isInBumpRange && !isBumping && !isAttacking && !isRageing)
             BumpAttack(Target);
 
-        if (IsInAttackRange && !isBumping && !isAttacking)
+        if (IsInAttackRange && !isBumping && !isAttacking && !isRageing)
             StartAttack(Target);
 
         HealthBar.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
@@ -140,6 +168,47 @@ public class Rui : BaseEnemy
         if (Target is IKnockBackable knockBackable)
             knockBackable.TakeKnockBack(_pushForce, direction);
     }
+    /// <summary>
+    /// Função que inicia a animação de Rage.
+    /// </summary>
+    private void StartRageAnimation()
+    {
+        Vector3 location = transform.position;
+        CameraManagement.FocusOnPosition(location, 3f, 1000f);
+        isRageing = true;
+        MenuController.Instance.CanPause = false;
+        Animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        Animator.SetTrigger("RageAnim");
+        Time.timeScale = 0;
+    }
+    /// <summary>
+    /// Função chamada pela animação de Rage no frame em que o inimigo começa a animação.
+    /// </summary>
+    public void OnRuiRageStart()
+    {
+        RageSounds.PlayRandomIfAny(AudioSource);
+        isBlinking = true;
+        blinkStartTime = Time.unscaledTime;
+    }
+    /// <summary>
+    /// Função chamada pela animação de Rage no frame em que o inimigo começa a gritar.
+    /// </summary>
+    public void OnRuiRageScreamStart()
+    {
+        StartCoroutine(CameraManagement.ShakeCameraEffect(2000, 1));
+    }
+    /// <summary>
+    /// Função chamada pela animação de Rage no frame em que o inimigo termina a animação.
+    /// </summary>
+    public void OnRageEnd()
+    {
+        Animator.updateMode = AnimatorUpdateMode.Normal;
+        isRageing = false;
+        hasRaged = true;
+        MenuController.Instance.CanPause = true;
+        Time.timeScale = 1;
+        CameraManagement.Unfocus();
+    }
 
     protected override void SyncAnimationStates()
     {
@@ -149,12 +218,12 @@ public class Rui : BaseEnemy
         Animator.SetBool("isIdle", isIdle);
         Animator.SetBool("isRunning", isRunning);
 
-        if (isHalfHealth)
+        if (isHalfHealth && hasRaged)
         {
             if (isAttacking) Animator.SetTrigger("FlipAttack");
             else Animator.ResetTrigger("FlipAttack");
         }
-        else
+        if (!isHalfHealth && !hasRaged)
         {
             if (isAttacking) Animator.SetTrigger("Attack");
             else Animator.ResetTrigger("Attack");

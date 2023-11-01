@@ -14,6 +14,13 @@ public class CameraManagement : MonoBehaviour
     bool isShaking;
     float startCameraY;
 
+    private bool isFocusing;
+    private float zoomLevel;
+    private float startZoom;
+    private float focusStartTime;
+    private float cameraMovementDurationMs;
+    private Vector3 focusPosition, focusStartPosition;
+
     Camera cam;
     SpriteRenderer playerSprite;
 
@@ -22,18 +29,21 @@ public class CameraManagement : MonoBehaviour
         cam = gameObject.GetComponent<Camera>();
         playerSprite = player.GetComponent<SpriteRenderer>();
         startCameraY = transform.position.y;
+        startZoom = cam.orthographicSize;
     }
 
     void Update()
     {
-        if (!isShaking)
+        if (isFocusing)
+            Camera.main.transform.position = GetCameraPosition(focusPosition);
+        else if (!isShaking)
             transform.position = GetCameraPosition();
     }
     /// <summary>
     /// Função responsável por retornar a posição da câmera de acordo com a posição do player.
     /// </summary>
     /// <returns></returns>
-    Vector3 GetCameraPosition()
+    Vector3 GetCameraPosition(Vector3? basePosition = null)
     {
         float boundaryLeft = cameraBoundary.position.x - cameraBoundary.transform.localScale.x / 2;
         float boundaryRight = cameraBoundary.position.x + cameraBoundary.transform.localScale.x / 2;
@@ -57,10 +67,24 @@ public class CameraManagement : MonoBehaviour
                 break;
         }
 
-        return new Vector3(
-            Mathf.Clamp(camX, boundaryLeft + halfCamWidth, boundaryRight - halfCamWidth),
-            startCameraY,
+        Vector3 result = new Vector3(
+            Mathf.Clamp(basePosition != null ? basePosition.Value.x : camX, boundaryLeft + halfCamWidth, boundaryRight - halfCamWidth),
+            basePosition != null ? basePosition.Value.y : startCameraY,
             gameObject.transform.position.z);
+
+        if (isFocusing)
+        {
+            if (Time.unscaledTime < (cameraMovementDurationMs / 1000) + focusStartTime)
+            {
+                float percentage = (Time.unscaledTime - focusStartTime) / (cameraMovementDurationMs / 1000);
+                percentage = percentage * percentage * (3f - 2f * percentage);
+                cam.orthographicSize = Mathf.Lerp(startZoom, zoomLevel, percentage);
+                return Vector3.Lerp(focusStartPosition, result, percentage);
+            }
+            else if(cameraMovementDurationMs == 0)
+                cam.orthographicSize = zoomLevel;
+        }
+        return result;
 
     }
     /// <summary>
@@ -78,12 +102,37 @@ public class CameraManagement : MonoBehaviour
         {
             if (MenuController.Instance.IsGamePaused)
                 break;
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
             float curveValue = ScreenShakeCurve.Evaluate(elapsedTime / durationMs);
-            Camera.main.transform.position = GetCameraPosition() + Random.insideUnitSphere * strenght * curveValue;
+            Vector3 defaultPosition = isFocusing ? GetCameraPosition(focusPosition) : GetCameraPosition();
+            Camera.main.transform.position = defaultPosition + Random.insideUnitSphere * strenght * curveValue;
             yield return null;
         }
         isShaking = false;
+    }
+    /// <summary>
+    /// Função responsável por fazer a câmera focar em uma posição.
+    /// </summary>
+    /// <param name="targetPosition">Posição do alvo a focar </param>
+    /// <param name="zoom">O zoom que câmera amplia</param>
+    /// <param name="cameraMovementDurationMs">Tempo que demora para mover a câmera até o foco </param>
+    public void FocusOnPosition(Vector3 targetPosition, float zoom, float? cameraMovementDurationMs = null)
+    {
+        this.cameraMovementDurationMs = cameraMovementDurationMs ?? 0;
+        focusStartTime = Time.unscaledTime;
+        focusStartPosition = Camera.main.transform.position;
+        zoomLevel = Mathf.Max(zoom, 1.0f);
+        focusPosition = new Vector3(targetPosition.x, targetPosition.y, transform.position.z);
+        isFocusing = true;
+    }
+    /// <summary>
+    /// Função responsável por fazer a câmera desfocar no player.
+    /// </summary>
+    public void Unfocus()
+    {
+        cam.orthographicSize = startZoom;
+        isFocusing = false;
+        Camera.main.transform.position = GetCameraPosition();
     }
 
 }

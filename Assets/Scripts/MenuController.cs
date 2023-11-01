@@ -12,6 +12,7 @@ public class MenuController : MonoBehaviour
     public static MenuController Instance { get; private set; }
 
     public bool IsGamePaused { get; private set; }
+    public bool CanPause { get; set; }
     public bool IsInGame { get; set; }
     public bool IsTutorialActive { get; set; }
     public bool IsMobileInput { get; set; }
@@ -47,6 +48,7 @@ public class MenuController : MonoBehaviour
         {
             Instance = GameObject.Find("MenuController").GetComponent<MenuController>();
             IsTutorialActive = true;
+            CanPause = true;
         }
 
         if (Instance == this)
@@ -146,6 +148,8 @@ public class MenuController : MonoBehaviour
     /// </summary>
     public void PauseGame()
     {
+        if (!CanPause)
+            return;
         Time.timeScale = 0;
         IsGamePaused = true;
     }

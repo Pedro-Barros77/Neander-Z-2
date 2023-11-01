@@ -156,6 +156,8 @@ public class InGameScreen : MonoBehaviour
     /// </summary>
     public void PauseGame()
     {
+        if (!MenuController.Instance.CanPause)
+            return;
         MenuController.Instance.PauseGame();
         PausePanel.SetActive(true);
     }
