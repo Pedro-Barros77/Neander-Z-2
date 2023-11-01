@@ -56,7 +56,8 @@ public class RocketBullet : Projectile
 
                 if (target is IKnockBackable knockBackable)
                 {
-                    Vector3 direction = new(Mathf.Sign(target.transform.position.x - transform.position.x), 0);
+                    bool isGoingLeft = AngleDegrees > 90 && AngleDegrees < 270;
+                    Vector3 direction = new(isGoingLeft ? -1 : 1, 0);
                     knockBackable.TakeKnockBack(projectilePushForce, direction);
                 }
                 else

@@ -383,7 +383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91c7e3376174f14a8423a104e538bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RigidBody: {fileID: 0}
   HealthBarPrefab: {fileID: 5826301193245720848, guid: b772a17772a316c458ab20c5a7ac87fe, type: 3}
   BloodSplatterPrefab: {fileID: 7444960458494065295, guid: 1f360cc0117f0d14db021d5b0edac523, type: 3}
   DamageSounds:
@@ -426,9 +425,9 @@ MonoBehaviour:
   - Audio: {fileID: 8300000, guid: 26b8371c8bc969f48a2c39d94c823f5d, type: 3}
     Volume: 1
     Pitch: 1
-  RageSound:
+  RageSounds:
   - Audio: {fileID: 8300000, guid: 83a26cab15123a94bbf02d9836a8cf18, type: 3}
-    Volume: 0.3
+    Volume: 0.5
     Pitch: 1
 --- !u!61 &5797189025733250839
 BoxCollider2D:
@@ -501,7 +500,7 @@ MonoBehaviour:
   - {x: 15, y: -8.05, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 179466
+  m_InstanceId: 104320
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 15, y: 8.05, z: 0}
