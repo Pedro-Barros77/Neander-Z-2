@@ -72,6 +72,9 @@ public class OptionsPanel : MonoBehaviour
 
     public void GoBack()
     {
+        if (!initialized)
+            return;
+
         switch (ActiveTab)
         {
             case ActiveOptionsContent.MainOptions:
