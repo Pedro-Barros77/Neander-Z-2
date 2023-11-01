@@ -188,7 +188,11 @@ public class InGameScreen : MonoBehaviour
     public void ContinueGame()
     {
         MenuController.Instance.ContinueGame();
+        OptionsPanel.Open();
+        OptionsPanel.GoBack();
         PausePanel.SetActive(false);
+        OptionsContent.SetActive(false);
+        PauseContent.SetActive(true);
         OptionsPanel.gameObject.SetActive(false);
     }
 

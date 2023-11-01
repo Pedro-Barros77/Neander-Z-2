@@ -186,7 +186,7 @@ public class Rui : BaseEnemy
     /// </summary>
     public void OnRuiRageStart()
     {
-        RageSounds.PlayRandomIfAny(AudioSource);
+        RageSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
         isBlinking = true;
         blinkStartTime = Time.unscaledTime;
     }
