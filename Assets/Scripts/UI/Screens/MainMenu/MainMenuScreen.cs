@@ -1,5 +1,5 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuScreen : MonoBehaviour
@@ -8,11 +8,9 @@ public class MainMenuScreen : MonoBehaviour
     Image KeyboardMouseImage, MobileImage;
 
     [SerializeField]
-    GameObject OptionsContent, MainMenuContent;
+    GameObject OptionsContent, MainMenuContent, SelectGameModeContent;
 
     OptionsPanel OptionsPanel;
-    Color SelectedInputColor = new Color32(70, 230, 130, 255);
-    Color UnselectedInputColor = new Color32(230, 230, 230, 255);
     AudioSource AudioSource;
     float musicStartVolume;
 
@@ -33,24 +31,25 @@ public class MainMenuScreen : MonoBehaviour
     {
         if (MenuController.Instance.IsMobileInput)
         {
-            MobileImage.color = SelectedInputColor;
-            KeyboardMouseImage.color = UnselectedInputColor;
+            MobileImage.color = Constants.Colors.SelectedOptionColor;
+            KeyboardMouseImage.color = Constants.Colors.UnselectedOptionColor;
         }
         else
         {
-            MobileImage.color = UnselectedInputColor;
-            KeyboardMouseImage.color = SelectedInputColor;
+            MobileImage.color = Constants.Colors.UnselectedOptionColor;
+            KeyboardMouseImage.color = Constants.Colors.SelectedOptionColor;
         }
 
         AudioSource.volume = musicStartVolume * MenuController.Instance.MusicVolume;
     }
 
     /// <summary>
-    /// Inicia o modo de jogo "Survival".
+    /// Navega para a tela de seleção de modo de jogo.
     /// </summary>
-    public void StartSurvivalMode()
+    public void PlayGame()
     {
-        MenuController.Instance.ChangeScene(SceneNames.Graveyard, LoadSceneMode.Single);
+        SelectGameModeContent.SetActive(true);
+        MainMenuContent.SetActive(false);
     }
 
     /// <summary>

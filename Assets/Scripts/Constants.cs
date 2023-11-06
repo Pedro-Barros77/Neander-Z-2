@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class Constants
 {
-    public static bool EnableDevKeybinds { get; private set; } = false;
+    public static bool EnableDevKeybinds { get; private set; } = true;
     public static float MaxWeaponDamage { get; private set; } = 60; // half section = 2.5
     public static float MaxWeaponFireRate { get; private set; } = 18; // half section = 0.75
     public static float MaxWeaponReloadSpeed { get; private set; } = 12; // half section = 0.5
@@ -242,5 +242,7 @@ public static class Constants
         public static readonly Color32 GreenMoney = new(72, 164, 80, 255);
         public static readonly Color32 RedMoney = new(205, 86, 99, 255);
         public static readonly Color32 YellowAmmo = new(230, 220, 80, 255);
+        public static readonly Color32 SelectedOptionColor = new(70, 230, 130, 255);
+        public static readonly Color32 UnselectedOptionColor = new(230, 230, 230, 255);
     }
 }

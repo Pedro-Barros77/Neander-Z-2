@@ -8028,6 +8028,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Short Barrel
       objectReference: {fileID: 0}
+    - target: {fileID: 4536206946393117218, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7962752121420682399, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Name
       value: Player
@@ -19370,6 +19374,10 @@ PrefabInstance:
     - target: {fileID: 3082090958430973502, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_text
       value: Short Barrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4536206946393117218, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7962752121420682399, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Name
