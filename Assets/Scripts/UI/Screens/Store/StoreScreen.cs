@@ -11,6 +11,7 @@ public class StoreScreen : MonoBehaviour
     public List<GameObject> StoreItems { get; private set; }
     public StoreItem SelectedItem { get; set; }
     public StoreTabs ActiveTab { get; private set; } = StoreTabs.Weapons;
+    public bool IsSaveDirty { get; set; }
     public bool hasItem => SelectedItem != null && SelectedItem.Data != null;
 
     public delegate void OnStartDragCallback(StoreItem storeItem);
@@ -28,7 +29,7 @@ public class StoreScreen : MonoBehaviour
     [SerializeField]
     Image PreviewIcon, PreviewBulletIcon;
     [SerializeField]
-    Button BuyButton, TestItemButton, BtnReady;
+    Button BuyButton, TestItemButton, BtnReady, BtnSaveGame;
     [SerializeField]
     GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab;
     [SerializeField]
@@ -65,6 +66,7 @@ public class StoreScreen : MonoBehaviour
         PreviewPanelContent.transform.parent.gameObject.SetActive(ActiveTab != StoreTabs.Inventory);
         InventoryPreviewPanel.transform.parent.gameObject.SetActive(ActiveTab == StoreTabs.Inventory);
         InventorySlotsPanel.SetActive(ActiveTab == StoreTabs.Inventory);
+        BtnSaveGame.interactable = IsSaveDirty;
 
         if (PlayerData != null)
         {
@@ -330,13 +332,13 @@ public class StoreScreen : MonoBehaviour
     /// <param name="text">Texto a ser exibido</param>
     /// <param name="textColor">A cor que o popup vai ser exibido</param>
     /// <param name="hitPosition">A posição que o popup vai aparecer</param>
-    public void ShowPopup(string text, Color32 textColor, Vector3 hitPosition)
+    public void ShowPopup(string text, Color32 textColor, Vector3 hitPosition, float duration = 1500f, float scale = 50)
     {
         var popup = Instantiate(PopupPrefab, hitPosition, Quaternion.identity, WorldPosCanvas.transform);
         var popupSystem = popup.GetComponent<PopupSystem>();
         if (popupSystem != null)
         {
-            popupSystem.Init(text, hitPosition, 22000f, textColor, 50);
+            popupSystem.Init(text, hitPosition, duration, textColor, scale);
         }
     }
 
@@ -488,12 +490,31 @@ public class StoreScreen : MonoBehaviour
 
         if (purchased)
         {
+            IsSaveDirty = true;
             float value = SelectedItem.Data.Price - SelectedItem.Data.Discount;
 
             PlayerData.TakeMoney(value);
             PurchaseSound.PlayIfNotNull(audioSource, AudioTypes.UI);
             ShowPopup($"-{value:N2}", Color.red, PlayerMoneyText.transform.position);
         }
+    }
+
+    /// <summary>
+    /// Salva o progresso atual do jogo.
+    /// </summary>
+    public void SaveGame()
+    {
+        if (!IsSaveDirty)
+            return;
+
+        if (SavesManager.SaveGame(GameModes.WaveMastery, SavesManager.SelectedSaveName))
+        {
+            IsSaveDirty = false;
+            MenuController.Instance.SetCursor(Cursors.Arrow);
+            ShowPopup("Game progress saved!", Constants.Colors.GreenMoney, BtnSaveGame.transform.position + new Vector3(10, -40), 2000f, 30);
+        }
+        else
+            ShowPopup("Failed to save game progress!", Color.red, BtnSaveGame.transform.position + new Vector3(10, -40), 2000f, 30);
     }
 
     /// <summary>

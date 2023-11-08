@@ -67,6 +67,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (item == null) return;
 
         DropItem(item);
+
+        storeScreen.IsSaveDirty = true;
     }
 
     /// <summary>
@@ -106,6 +108,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                         .IsEquipped = false;
                 break;
         }
+
+        storeScreen.IsSaveDirty = true;
     }
 
     /// <summary>

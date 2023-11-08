@@ -84,6 +84,7 @@ public class OptionsPanel : MonoBehaviour
 
             case ActiveOptionsContent.AudioOptions:
                 SetTab(ActiveOptionsContent.MainOptions);
+                SavesManager.SavePrefs();
                 break;
         }
     }

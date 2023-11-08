@@ -1,7 +1,5 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameModesScreen : MonoBehaviour
@@ -13,11 +11,12 @@ public class GameModesScreen : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI TxtGameModeTitle, TxtGameModeDescription;
     [SerializeField]
-    GameObject SelectGameModeContent, MainMenuContent;
-    [SerializeField]
     Button BtnPlay;
 
     TextMeshProUGUI BtnPlayText;
+    MainMenuScreen MainMenu;
+    Animator WaveMasteryAnimator, EndlessSurvivalAnimator, SiegeDefenseAnimator, CampaignAnimator;
+    Animator[] animators;
 
     const string WaveMasteryDescription = "   This game mode challenges you with a 50 waves progression, where the difficulty is always increasing and you'll encounter a powerful boss each 10 waves.\r\n   \r\n   You start with nothing, choose your first weapon and try to survive, carefully spending your earned resources into weapons, ammo, upgrades, skills and more!";
     const string EndlessSurvivalDescription = "   In 'Endless Survival,' there is no end in sight as you face an infinite and ever-escalating challenge. Your goal is simple: survive for as long as you can! \r\n   There are no set-waves, no scripted progression, just a continuous battle for survival.\r\n   Manage your resources wisely to resist the attacks and be the owner of the highest score!";
@@ -27,42 +26,52 @@ public class GameModesScreen : MonoBehaviour
     void Start()
     {
         BtnPlayText = BtnPlay.GetComponentInChildren<TextMeshProUGUI>();
+        MainMenu = GetComponent<MainMenuScreen>();
+
+        WaveMasteryAnimator = BtnWaveMastery.GetComponent<Animator>();
+        EndlessSurvivalAnimator = BtnEndlessSurvival.GetComponent<Animator>();
+        SiegeDefenseAnimator = BtnSiegeDefense.GetComponent<Animator>();
+        CampaignAnimator = BtnCampaign.GetComponent<Animator>();
+        animators = new Animator[] { WaveMasteryAnimator, EndlessSurvivalAnimator, SiegeDefenseAnimator, CampaignAnimator };
     }
 
 
     void Update()
     {
+        if (MainMenu.ActiveScreen != MenuScreens.SelectGameMode)
+            return;
+
         switch (SelectedGamemode)
         {
             case GameModes.WaveMastery:
-                BtnWaveMastery.Select();
+                WaveMasteryAnimator.SetTrigger("Selected");
+
                 TxtGameModeTitle.text = "Wave Mastery";
                 TxtGameModeDescription.text = WaveMasteryDescription;
-
                 BtnPlay.interactable = true;
                 BtnPlayText.text = "Play";
                 break;
             case GameModes.EndlessSurvival:
-                BtnEndlessSurvival.Select();
+                EndlessSurvivalAnimator.SetTrigger("Selected");
+
                 TxtGameModeTitle.text = "Endless Survival";
                 TxtGameModeDescription.text = EndlessSurvivalDescription;
-
                 BtnPlay.interactable = false;
                 BtnPlayText.text = "Soon...";
                 break;
             case GameModes.SiegeDefense:
-                BtnSiegeDefense.Select();
+                SiegeDefenseAnimator.SetTrigger("Selected");
+
                 TxtGameModeTitle.text = "Siege Defense";
                 TxtGameModeDescription.text = SiegeDefenseDescription;
-
                 BtnPlay.interactable = false;
                 BtnPlayText.text = "Soon...";
                 break;
             case GameModes.Campaign:
-                BtnCampaign.Select();
+                CampaignAnimator.SetTrigger("Selected");
+
                 TxtGameModeTitle.text = "Campaign";
                 TxtGameModeDescription.text = CampaignDescription;
-
                 BtnPlay.interactable = false;
                 BtnPlayText.text = "Soon...";
                 break;
@@ -75,7 +84,32 @@ public class GameModesScreen : MonoBehaviour
     /// <param name="modeIndex">O índice do tipo de modo de jogo.</param>
     public void SelectGameMode(int modeIndex)
     {
-        SelectedGamemode = (GameModes)modeIndex;
+        var mode = (GameModes)modeIndex;
+        if (SelectedGamemode == mode)
+        {
+            switch (mode)
+            {
+                case GameModes.WaveMastery:
+                    WaveMasteryAnimator.SetTrigger("Unselect");
+                    WaveMasteryAnimator.ResetTrigger("Selected");
+                    break;
+                case GameModes.EndlessSurvival:
+                    EndlessSurvivalAnimator.SetTrigger("Unselect");
+                    EndlessSurvivalAnimator.ResetTrigger("Selected");
+                    break;
+                case GameModes.SiegeDefense:
+                    SiegeDefenseAnimator.SetTrigger("Unselect");
+                    SiegeDefenseAnimator.ResetTrigger("Selected");
+                    break;
+                case GameModes.Campaign:
+                    CampaignAnimator.SetTrigger("Unselect");
+                    CampaignAnimator.ResetTrigger("Selected");
+                    break;
+            }
+            return;
+        }
+
+        SelectedGamemode = mode;
     }
 
     /// <summary>
@@ -83,8 +117,7 @@ public class GameModesScreen : MonoBehaviour
     /// </summary>
     public void GoBack()
     {
-        SelectGameModeContent.SetActive(false);
-        MainMenuContent.SetActive(true);
+        MainMenu.OpenScreen(MenuScreens.MainMenu);
     }
 
     /// <summary>
@@ -95,7 +128,7 @@ public class GameModesScreen : MonoBehaviour
         switch (SelectedGamemode)
         {
             case GameModes.WaveMastery:
-                MenuController.Instance.ChangeScene(SceneNames.Graveyard, LoadSceneMode.Single);
+                MainMenu.OpenScreen(MenuScreens.SelectSave);
                 break;
         }
     }

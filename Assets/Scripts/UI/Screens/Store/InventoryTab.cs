@@ -283,6 +283,8 @@ public class InventoryTab : MonoBehaviour
 
         PrimarySlot.DropItem(secondary);
         SecondarySlot.DropItem(primary);
+
+        storeScreen.IsSaveDirty = true;
     }
 
     /// <summary>
@@ -999,6 +1001,8 @@ public class InventoryTab : MonoBehaviour
             upgradeMap.UpgradeStep++;
 
             PreviewBtnSellText.text = $"Sell for $ {GetWeaponSellPrice(storeWeapon)}";
+
+            storeScreen.IsSaveDirty = true;
         }
     }
 
@@ -1044,6 +1048,8 @@ public class InventoryTab : MonoBehaviour
             setAmmo(BackpackSniperAmmoUpgrade);
             setAmmo(BackpackRocketAmmoUpgrade);
         }
+
+        storeScreen.IsSaveDirty = true;
     }
 
     /// <summary>
@@ -1149,6 +1155,8 @@ public class InventoryTab : MonoBehaviour
             storeScreen.PlayerData.TakeMoney(upgradeItem.Price);
             storeScreen.PurchaseSound.PlayIfNotNull(storeScreen.audioSource, AudioTypes.UI);
             storeScreen.ShowPopup($"-{upgradeItem.Price:N2}", Color.red, storeScreen.PlayerMoneyText.transform.position);
+
+            storeScreen.IsSaveDirty = true;
         }
     }
 
@@ -1241,6 +1249,8 @@ public class InventoryTab : MonoBehaviour
         storeScreen.PlayerData.GetMoney(value);
         storeScreen.PurchaseSound.PlayIfNotNull(storeScreen.audioSource, AudioTypes.UI);
         storeScreen.ShowPopup($"+{value:N2}", Color.green, storeScreen.PlayerMoneyText.transform.position);
+
+        storeScreen.IsSaveDirty = true;
     }
 
     /// <summary>
@@ -1278,6 +1288,8 @@ public class InventoryTab : MonoBehaviour
 
         storeScreen.SelectedItem = null;
 
+        storeScreen.IsSaveDirty = true;
+
         return true;
     }
 
@@ -1309,6 +1321,8 @@ public class InventoryTab : MonoBehaviour
 
             storeScreen.SelectedItem = null;
         }
+
+        storeScreen.IsSaveDirty = true;
 
         return true;
     }

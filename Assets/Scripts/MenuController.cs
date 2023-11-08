@@ -57,6 +57,7 @@ public class MenuController : MonoBehaviour
             UIVolume = 1;
             PlayerVolume = 1;
             EnemiesVolume = 1;
+            SavesManager.LoadSavedPrefs();
         }
 
         if (Instance == this)

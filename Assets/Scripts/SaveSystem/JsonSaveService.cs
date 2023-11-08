@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class JsonSaveService
 {
-    readonly string ROOT_FOLDER = Path.Combine(Application.persistentDataPath, "Saves");
-    string CombinePaths(params string[] paths) => Path.GetFullPath(Path.Combine(paths));
+    public readonly string ROOT_FOLDER = Path.Combine(Application.persistentDataPath, "Saves");
+    public string SAVE_EXTENSION => save_extension;
+    const string save_extension = "nzsave";
+    public string CombinePaths(params string[] paths) => Path.GetFullPath(Path.Combine(paths));
 
     /// <summary>
     /// Salva o objeto especificado em um arquivo JSON.
@@ -17,22 +19,15 @@ public class JsonSaveService
     /// <param name="data">O objeto a ser salvo.</param>
     /// <param name="encrypted">Se o arquivo deve ser criptografado para proteger seu conteúdo</param>
     /// <returns>True se o arquivo foi salvo com sucesso.</returns>
-    public bool SaveData<T>(string relativePath, string fileName, T data, bool encrypted)
+    public bool SaveData<T>(string relativePath, string fileName, T data, bool encrypted, string extension = save_extension)
     {
         string folderPath = CombinePaths(ROOT_FOLDER, relativePath);
-        string path = CombinePaths(folderPath, $"{fileName}.json");
-
-        Debug.Log("Path: " + path);
+        string path = CombinePaths(folderPath, $"{fileName}.{extension}");
 
         try
         {
             if (File.Exists(path))
-            {
-                Debug.Log("File exists, deleting");
                 File.Delete(path);
-            }
-            else
-                Debug.Log("Creating new file");
 
             Directory.CreateDirectory(folderPath);
             using FileStream fs = File.Create(path);
@@ -56,9 +51,9 @@ public class JsonSaveService
     /// <param name="fileName">O nome do arquivo a ser salvo, sem a extensãi.</param>
     /// <param name="encrypted">Se o arquivo foi criptografado quando salvo.</param>
     /// <returns>O objeto do tipo especificado, carregado do arquivo JSON.</returns>
-    public T LoadData<T>(string relativePath, string fileName, bool encrypted)
+    public T LoadData<T>(string relativePath, string fileName, bool encrypted, string extension = save_extension)
     {
-        string path = CombinePaths(ROOT_FOLDER, relativePath, $"{fileName}.json");
+        string path = CombinePaths(ROOT_FOLDER, relativePath, $"{fileName}.{extension}");
 
         if (!File.Exists(path))
         {

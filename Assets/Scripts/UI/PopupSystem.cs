@@ -9,8 +9,10 @@ public class PopupSystem : MonoBehaviour
     private Vector3 StartPosition;
     private string Text;
     private RectTransform rectTransform;
+    private Animator animator;
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         PopupText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         if (PopupText != null)
         {
@@ -37,6 +39,8 @@ public class PopupSystem : MonoBehaviour
         TextColor = textColor ?? Color.white;
         StartPosition = position;
         LifeSpanMs = lifeSpanMs;
+        animator = GetComponentInChildren<Animator>();
+        animator.SetFloat("animationSpeed", 1000 / LifeSpanMs);
         Destroy(gameObject, LifeSpanMs / 1000f);
 
         if (PopupText != null)

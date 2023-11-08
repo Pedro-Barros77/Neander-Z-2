@@ -237,7 +237,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         var popupSystem = popup.GetComponent<PopupSystem>();
         if (popupSystem != null)
         {
-            popupSystem.Init(text, hitPosition, 2000f, textColor);
+            popupSystem.Init(text, hitPosition, 1300f, textColor);
         }
     }
 
