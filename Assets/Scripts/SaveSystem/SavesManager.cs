@@ -147,11 +147,11 @@ public static class SavesManager
     {
         JsonSaveService jsonService = new();
         string path = jsonService.CombinePaths(jsonService.ROOT_FOLDER, folderRelativePath, $"{fileName}.{jsonService.SAVE_EXTENSION}");
-        if(!File.Exists(path))
+        if (!File.Exists(path))
         {
             Debug.LogError($"Save file {fileName} not found to delete!");
             return;
-        }   
+        }
         File.Delete(path);
     }
 
@@ -255,6 +255,21 @@ public static class SavesManager
         inventory.SecondaryWeaponsSelection = save.SecondaryWeaponsSelection;
         inventory.ThrowableItemsSelection = save.ThrowableItemsSelection;
         inventory.TacticalAbilitiesSelection = save.TacticalAbilitiesSelection;
+
+        //Player Upgrades
+        var storePlayerSO = GetStorePlayerSO();
+        LoadPlayerUpgrades(player, storePlayerSO);
+
+        //Backpack Upgrades
+        var storeBackpackSO = GetStoreBackpackSO();
+        LoadBackpackUpgrades(save.BackpackUpgradeIndex, storeBackpackSO, inventory);
+
+        //Weapons Upgrades
+        foreach (var weaponSelection in save.PrimaryWeaponsSelection.Concat(save.SecondaryWeaponsSelection))
+        {
+            var weaponData = GetWeaponDataSO(weaponSelection.Type, weaponSelection.WeaponClass);
+            LoadWeaponUpgrades(weaponData, weaponSelection);
+        }
     }
 
     /// <summary>
@@ -268,4 +283,206 @@ public static class SavesManager
     /// </summary>
     /// <returns>O SO do inventário.</returns>
     private static InventoryData GetInventorySO() => Resources.Load<InventoryData>("ScriptableObjects/Player/PlayerInventory");
+
+    /// <summary>
+    /// Obtém o ScriptableObject do Player na Loja.
+    /// </summary>
+    /// <returns>O SO do player na loja.</returns>
+    private static StorePlayerData GetStorePlayerSO() => Resources.Load<StorePlayerData>("ScriptableObjects/Store/Natives/Player");
+    
+    /// <summary>
+    /// Obtém o ScriptableObject da Mochila na Loja.
+    /// </summary>
+    /// <returns>O SO da Mochila na Loja.</returns>
+    private static StoreBackpackData GetStoreBackpackSO() => Resources.Load<StoreBackpackData>("ScriptableObjects/Store/Natives/Backpack");
+
+    /// <summary>
+    /// Obtém o ScriptableObject da Arma especificada.
+    /// </summary>
+    /// <param name="weaponType">O tipo da arma.</param>
+    /// <param name="weaponClass">A classe da arma.</param>
+    /// <returns>O SO da arma especificada.</returns>
+    private static BaseWeaponData GetWeaponDataSO(WeaponTypes weaponType, WeaponClasses weaponClass) => Resources.Load<BaseWeaponData>($"ScriptableObjects/Weapons/{weaponClass}/{weaponType}");
+
+    /// <summary>
+    /// Carrega todos os upgrades comprados da arma.
+    /// </summary>
+    /// <param name="weaponData">O SO da arma contendo os dados de upgrade.</param>
+    /// <param name="weaponSelection">A seleção da arma a receber os valores dos upgrades.</param>
+    private static void LoadWeaponUpgrades(BaseWeaponData weaponData, InventoryData.WeaponSelection weaponSelection)
+    {
+        if (weaponData == null || weaponSelection == null) return;
+
+        float GetAttributeUpgradedValue(WeaponAttributes attribute)
+        {
+            var upgradeMap = weaponSelection.UpgradesMap.FirstOrDefault(x => x.Attribute == attribute);
+
+            if (upgradeMap == null)
+                return 0;
+
+            if (!weaponData.Upgrades.Any(x => x.Attribute == attribute))
+                return 0;
+
+            var upgradeSteps = weaponData.Upgrades.FirstOrDefault(x => x.Attribute == attribute)
+                .UpgradeSteps
+                .Where((x, i) => i < upgradeMap.UpgradeStep);
+
+            if (upgradeSteps == null || !upgradeSteps.Any())
+                return 0;
+
+            return upgradeSteps.Sum(x => x.Value);
+        }
+
+        //Damage
+        float damageUpgradeValue = GetAttributeUpgradedValue(WeaponAttributes.Damage);
+        weaponData.Damage += weaponData.BulletType switch
+        {
+            BulletTypes.Shotgun => damageUpgradeValue / (weaponData as ShotgunData).ShellPelletsCount,
+            _ => damageUpgradeValue
+        };
+
+        //FireRate
+        float fireRateUpgradeValue = GetAttributeUpgradedValue(WeaponAttributes.FireRate);
+        if (weaponData is BurstFireData burstWeapon)
+        {
+            float fireRatesSum = burstWeapon.FireRate + burstWeapon.BurstFireRate;
+            float fireRateAverage = fireRatesSum / 2;
+            float targetFireRateAverage = fireRateAverage + fireRateUpgradeValue;
+
+            float fireRateWeight = burstWeapon.FireRate / fireRatesSum;
+            float burstFireRateWeight = burstWeapon.BurstFireRate / fireRatesSum;
+
+            float fireRateAverageDifference = (targetFireRateAverage * 2) - fireRatesSum;
+
+            burstWeapon.FireRate += fireRateAverageDifference * fireRateWeight;
+            burstWeapon.BurstFireRate += fireRateAverageDifference * burstFireRateWeight;
+        }
+        else
+            weaponData.FireRate += fireRateUpgradeValue;
+
+        //ReloadSpeed
+        float reloadSpeedUpgradeValue = GetAttributeUpgradedValue(WeaponAttributes.ReloadSpeed);
+        float barReloadSpeed = Constants.CalculateReloadSpeed(weaponData);
+        weaponData.ReloadTimeMs = weaponData.ReloadType switch
+        {
+            ReloadTypes.SingleBullet => 5000 / ((barReloadSpeed + reloadSpeedUpgradeValue) * weaponData.MagazineSize),
+            _ => 5000 / (barReloadSpeed + reloadSpeedUpgradeValue)
+        };
+
+        //Range
+        float rangeUpgradeValue = GetAttributeUpgradedValue(WeaponAttributes.Range);
+        float currentValuesSum = weaponData.MinDamageRange + weaponData.MaxDamageRange + weaponData.BulletMaxRange;
+        float currentAverage = currentValuesSum / 3;
+        float targetAverage = currentAverage + rangeUpgradeValue;
+        float minDamageRangeWeight = weaponData.MinDamageRange / currentValuesSum;
+        float maxDamageRangeWeight = weaponData.MaxDamageRange / currentValuesSum;
+        float bulletMaxRangeWeight = weaponData.BulletMaxRange / currentValuesSum;
+        float averageDifference = (targetAverage * 3) - currentValuesSum;
+        weaponData.MinDamageRange += averageDifference * minDamageRangeWeight;
+        weaponData.MaxDamageRange += averageDifference * maxDamageRangeWeight;
+        weaponData.BulletMaxRange += averageDifference * bulletMaxRangeWeight;
+
+        //BulletSpeed
+        float bulletSpeedUpgradeValue = GetAttributeUpgradedValue(WeaponAttributes.BulletSpeed);
+        weaponData.BulletSpeed += bulletSpeedUpgradeValue;
+
+        //HeadshotMultiplier
+        float headshotMultiplierUpgradeValue = GetAttributeUpgradedValue(WeaponAttributes.HeadshotMultiplier);
+        weaponData.HeadshotMultiplier += headshotMultiplierUpgradeValue;
+
+        //MagazineSize
+        float magazineSizeUpgradeValue = GetAttributeUpgradedValue(WeaponAttributes.MagazineSize);
+        weaponData.MagazineSize += (int)magazineSizeUpgradeValue;
+
+        //Dispersion
+        float dispersionUpgradeValue = GetAttributeUpgradedValue(WeaponAttributes.Dirspersion);
+        if (weaponData is ShotgunData shotgunData)
+            shotgunData.PelletsDispersion -= dispersionUpgradeValue;
+        else if (weaponData is LauncherData launcherData)
+        {
+            float radiusSum = launcherData.ExplosionMinDamageRadius + launcherData.ExplosionMaxDamageRadius;
+            float radiusAverage = radiusSum / 2;
+            float targetRadiusAverage = radiusAverage + dispersionUpgradeValue;
+
+            float minRadiusWeight = launcherData.ExplosionMinDamageRadius / radiusSum;
+            float maxRadiusWeight = launcherData.ExplosionMaxDamageRadius / radiusSum;
+
+            float radiusAverageDifference = (targetRadiusAverage * 2) - radiusSum;
+
+            launcherData.ExplosionMinDamageRadius += radiusAverageDifference * minRadiusWeight;
+            launcherData.ExplosionMaxDamageRadius += radiusAverageDifference * maxRadiusWeight;
+        }
+    }
+
+    /// <summary>
+    /// Carrega todos os upgrades do player comprados.
+    /// </summary>
+    /// <param name="playerData">O SO do player a receber os valores de upgrade.</param>
+    /// <param name="storePlayerData">O SO do player na loja contendo os dados de upgrades.</param>
+    private static void LoadPlayerUpgrades(PlayerData playerData, StorePlayerData storePlayerData)
+    {
+        if (playerData == null || storePlayerData == null) return;
+
+        float GetAttributeUpgradedValue(PlayerAttributes attribute)
+        {
+            int upgradeIndex = playerData.GetUpgradeIndex(attribute);
+
+            if (upgradeIndex == 0)
+                return 0;
+
+            var upgradeSteps = storePlayerData.GetPlayerUpgrades(attribute)
+                .Where((x, i) => i < upgradeIndex);
+
+            if (upgradeSteps == null || !upgradeSteps.Any())
+                return 0;
+
+            return upgradeSteps.Sum(x => x.Value);
+        }
+
+        playerData.MaxHealth += GetAttributeUpgradedValue(PlayerAttributes.MaxHealth);
+        playerData.MaxMovementSpeed += GetAttributeUpgradedValue(PlayerAttributes.MovementSpeed);
+        playerData.SprintSpeedMultiplier += GetAttributeUpgradedValue(PlayerAttributes.SprintSpeed);
+        playerData.JumpForce += GetAttributeUpgradedValue(PlayerAttributes.JumpForce);
+        playerData.MaxStamina += GetAttributeUpgradedValue(PlayerAttributes.MaxStamina);
+        playerData.StaminaRegenRate += GetAttributeUpgradedValue(PlayerAttributes.StaminaRegen);
+
+        float staminaHasteUpgradeValue = GetAttributeUpgradedValue(PlayerAttributes.StaminaHaste);
+        if (staminaHasteUpgradeValue > 0)
+            playerData.StaminaRegenDelayMs = 5000 / (5000 / playerData.StaminaRegenDelayMs + staminaHasteUpgradeValue);
+
+        float jumpStaminaUpgradeValue = GetAttributeUpgradedValue(PlayerAttributes.JumpStamina);
+        if (jumpStaminaUpgradeValue > 0)
+            playerData.JumpStaminaDrain = 100 / (100 / playerData.JumpStaminaDrain + jumpStaminaUpgradeValue);
+
+        float sprintStaminaUpgradeValue = GetAttributeUpgradedValue(PlayerAttributes.SprintStamina);
+        if (sprintStaminaUpgradeValue > 0)
+            playerData.SprintStaminaDrain = 100 / (100 / playerData.SprintStaminaDrain + sprintStaminaUpgradeValue);
+
+        float attackStaminaUpgrade = GetAttributeUpgradedValue(PlayerAttributes.AttackStamina);
+        if (jumpStaminaUpgradeValue > 0)
+            playerData.AttackStaminaDrain = 100 / (100 / playerData.AttackStaminaDrain + attackStaminaUpgrade);
+    }
+
+    /// <summary>
+    /// Carrega todos os upgrades da mochila comprados.
+    /// </summary>
+    /// <param name="backpackUpgradeIndex">O índice de upgrade atual da mochila.</param>
+    /// <param name="storeBackpackData">O SO da mochila na loja contendo os dados de upgrades.</param>
+    /// <param name="inventoryData">O SO do inventário para atualizar os valores.</param>
+    private static void LoadBackpackUpgrades(int backpackUpgradeIndex, StoreBackpackData storeBackpackData, InventoryData inventoryData)
+    {
+        if (backpackUpgradeIndex == 0 || storeBackpackData == null) return;
+
+        var backpackUpgrades = storeBackpackData.AmmoUpgrades
+            .Where((x, i) => i < backpackUpgradeIndex);
+
+        if (backpackUpgrades == null || !backpackUpgrades.Any())
+            return;
+
+        inventoryData.MaxPistolAmmo += backpackUpgrades.Sum(x => x.PistolAmmo);
+        inventoryData.MaxShotgunAmmo += backpackUpgrades.Sum(x => x.ShotgunAmmo);
+        inventoryData.MaxRifleAmmo += backpackUpgrades.Sum(x => x.RifleAmmo);
+        inventoryData.MaxSniperAmmo += backpackUpgrades.Sum(x => x.SniperAmmo);
+        inventoryData.MaxRocketAmmo += backpackUpgrades.Sum(x => x.RocketAmmo);
+    }
 }

@@ -531,7 +531,7 @@ public class StoreScreen : MonoBehaviour
 
         if (data.WeaponData.IsPrimary)
         {
-            InventoryData.WeaponSelection newWeaponSelection = new(data.WeaponData.Type, WeaponEquippedSlot.Primary)
+            InventoryData.WeaponSelection newWeaponSelection = new(data.WeaponData.Type, WeaponEquippedSlot.Primary, data.WeaponData.WeaponClass)
             {
                 UpgradesMap = data.WeaponData.Upgrades.Select(x => new InventoryData.WeaponSelection.WeaponUpgradeMap(x.Attribute, 0)).ToList()
             };
@@ -541,7 +541,7 @@ public class StoreScreen : MonoBehaviour
         }
         else
         {
-            InventoryData.WeaponSelection newWeaponSelection = new(data.WeaponData.Type, WeaponEquippedSlot.Secondary)
+            InventoryData.WeaponSelection newWeaponSelection = new(data.WeaponData.Type, WeaponEquippedSlot.Secondary, data.WeaponData.WeaponClass)
             {
                 UpgradesMap = data.WeaponData.Upgrades.Select(x => new InventoryData.WeaponSelection.WeaponUpgradeMap(x.Attribute, 0)).ToList()
             };

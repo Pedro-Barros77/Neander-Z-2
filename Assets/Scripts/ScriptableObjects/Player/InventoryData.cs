@@ -127,15 +127,17 @@ public class InventoryData : AutoRevertSO
     {
         [SerializeField]
         public WeaponTypes Type;
+        public WeaponClasses WeaponClass;
         public WeaponEquippedSlot EquippedSlot;
         public List<WeaponUpgradeMap> UpgradesMap;
         public bool IsPrimary => Constants.IsPrimary(Type);
 
         public WeaponSelection() { }
-        public WeaponSelection(WeaponTypes type, WeaponEquippedSlot equippedSlot)
+        public WeaponSelection(WeaponTypes type, WeaponEquippedSlot equippedSlot, WeaponClasses weaponClass)
         {
             Type = type;
             EquippedSlot = equippedSlot;
+            WeaponClass = weaponClass;
         }
 
         [Serializable]

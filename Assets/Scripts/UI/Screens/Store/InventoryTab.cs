@@ -1060,7 +1060,6 @@ public class InventoryTab : MonoBehaviour
     {
         PlayerAttributes attribute = (PlayerAttributes)attributeValue;
 
-
         if (storeScreen.SelectedItem.Data is StorePlayerData storePlayer)
         {
             var upgrades = storePlayer.GetPlayerUpgrades(attribute);
