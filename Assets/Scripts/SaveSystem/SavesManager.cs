@@ -65,6 +65,12 @@ public static class SavesManager
     {
         JsonSaveService jsonService = new();
         string folderPath = jsonService.CombinePaths(jsonService.ROOT_FOLDER, gameMode.ToString());
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+            return new List<NZSave>();
+        }
+
         var filePaths = Directory.GetFiles(folderPath);
 
         NZSave LoadSaveWithFileName(string fullFilePath)
@@ -90,8 +96,13 @@ public static class SavesManager
     {
         JsonSaveService jsonService = new();
         string folderPath = jsonService.CombinePaths(jsonService.ROOT_FOLDER, gameMode.ToString());
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+            return;
+        }
         var save = jsonService.LoadData<NZSave>(folderPath, fileName, encrypted);
-        if(save == null)
+        if (save == null)
         {
             Debug.LogError($"Save file {fileName} not found!");
             return;
@@ -136,6 +147,11 @@ public static class SavesManager
     {
         JsonSaveService jsonService = new();
         string path = jsonService.CombinePaths(jsonService.ROOT_FOLDER, folderRelativePath, $"{fileName}.{jsonService.SAVE_EXTENSION}");
+        if(!File.Exists(path))
+        {
+            Debug.LogError($"Save file {fileName} not found to delete!");
+            return;
+        }   
         File.Delete(path);
     }
 
@@ -147,6 +163,11 @@ public static class SavesManager
     {
         JsonSaveService jsonService = new();
         string path = jsonService.CombinePaths(save.FolderPath, $"{save.FileName}.{jsonService.SAVE_EXTENSION}");
+        if (!File.Exists(path))
+        {
+            Debug.LogError($"Save file {save.FileName} not found to delete!");
+            return;
+        }
         File.Delete(path);
     }
 
