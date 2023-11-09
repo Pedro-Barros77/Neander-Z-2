@@ -4,6 +4,7 @@ using UnityEngine;
 public static class Constants
 {
     public static bool EnableDevKeybinds { get; private set; } = true;
+    public static bool FormatSaveFiles { get; private set; } = true;
     public static float MaxWeaponDamage { get; private set; } = 60; // half section = 2.5
     public static float MaxWeaponFireRate { get; private set; } = 18; // half section = 0.75
     public static float MaxWeaponReloadSpeed { get; private set; } = 12; // half section = 0.5

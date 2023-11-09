@@ -32,7 +32,7 @@ public class JsonSaveService
             Directory.CreateDirectory(folderPath);
             using FileStream fs = File.Create(path);
             fs.Close();
-            string jsonData = JsonConvert.SerializeObject(data);
+            string jsonData = JsonConvert.SerializeObject(data, Constants.FormatSaveFiles ? Formatting.Indented : Formatting.None);
             File.WriteAllText(path, jsonData);
             return true;
         }

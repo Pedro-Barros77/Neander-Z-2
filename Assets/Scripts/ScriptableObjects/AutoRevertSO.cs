@@ -19,10 +19,18 @@ public class AutoRevertSO : ScriptableObject
             UnloadSO();
         }
     }
-#endif
 
+#endif
     public virtual void UnloadSO()
     {
+#if UNITY_EDITOR
+        if (!string.IsNullOrEmpty(AssetDatabase.GetAssetPath(this)))
+        {
+            Resources.UnloadAsset(this);
+        }
+#else
         Resources.UnloadAsset(this);
+#endif
     }
+
 }

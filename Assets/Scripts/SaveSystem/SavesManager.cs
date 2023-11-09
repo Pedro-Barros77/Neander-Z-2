@@ -19,10 +19,25 @@ public static class SavesManager
     /// <returns>True se o arquivo foi salvo com sucesso.</returns>
     public static bool SaveGame(GameModes gameMode, string fileName, bool encrypted = false)
     {
-        JsonSaveService jsonService = new();
         PlayerData player = GetPlayerSO();
         InventoryData inventory = GetInventorySO();
         NZSave save = Seed(new(), player, inventory);
+
+        return SaveNzSave(save, gameMode, fileName, encrypted);
+    }
+
+    /// <summary>
+    /// Dado um save, salva-o no arquivo.
+    /// </summary>
+    /// <param name="save">O save a ser salvo em disco.</param>
+    /// <param name="gameMode">O modo de jogo a ser salvo.</param>
+    /// <param name="fileName">O nome do arquivo a ser salvo.</param>
+    /// <param name="encrypted">Se o arquivo deve ser criptografado ou não.</param>
+    /// <returns>True se o arquivo foi salvo com sucesso.</returns>
+    public static bool SaveNzSave(NZSave save, GameModes gameMode, string fileName, bool encrypted = false)
+    {
+        JsonSaveService jsonService = new();
+
         save.FileName = fileName;
         save.FolderPath = jsonService.CombinePaths(jsonService.ROOT_FOLDER, gameMode.ToString());
 
@@ -53,6 +68,39 @@ public static class SavesManager
         if (jsonService.SaveData("", "Preferences", prefs, false, "json"))
             return true;
         return false;
+    }
+
+    /// <summary>
+    /// Atualiza informações da wave que devem ser imediatas (antes do ponto de save padrão) e as salva.
+    /// </summary>
+    /// <param name="waveNumber">O número da wave a ser atualizada.</param>
+    /// <param name="started">Se a wave está sendo iniciada agora.</param>
+    /// <param name="completed">Se a wave está sendo completada agora.</param>
+    /// <returns>Retorna as informações atualizadas da wave.</returns>
+    public static WaveStats.Data UpdateWaveStats(int waveNumber, bool started, bool completed)
+    {
+        var save = GetSave(GameModes.WaveMastery, SelectedSaveName);
+        if (save.WavesStats.Count < waveNumber)
+            save.WavesStats.Add(new WaveStats.Data()
+            {
+                WaveNumber = waveNumber
+            });
+
+        var stat = save.WavesStats.First(x => x.WaveNumber == waveNumber);
+
+        if (started)
+        {
+            if (stat.Started)
+                stat.RestartCount++;
+            stat.Started = true;
+        }
+
+        if (completed)
+            stat.Completed = true;
+
+        SaveNzSave(save, GameModes.WaveMastery, SelectedSaveName, true);
+
+        return stat;
     }
 
     /// <summary>
@@ -87,6 +135,35 @@ public static class SavesManager
     }
 
     /// <summary>
+    /// Carrega um arquivo de save.
+    /// </summary>
+    /// <param name="gameMode">O modo de jogo do save a ser carregado.</param>
+    /// <param name="fileName">O nome do arquivo do save.</param>
+    /// <param name="encrypted">Se o arquivo foi criptografado.</param>
+    /// <returns>O save carregado.</returns>
+    public static NZSave GetSave(GameModes gameMode, string fileName, bool encrypted = false)
+    {
+        JsonSaveService jsonService = new();
+        string folderPath = jsonService.CombinePaths(jsonService.ROOT_FOLDER, gameMode.ToString());
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+            return null;
+        }
+        var save = jsonService.LoadData<NZSave>(folderPath, fileName, encrypted);
+        if (save == null)
+        {
+            Debug.LogError($"Save file {fileName} not found!");
+            return null;
+        }
+
+        save.FileName = fileName;
+        save.FolderPath = folderPath;
+
+        return save;
+    }
+
+    /// <summary>
     /// Carrega o progresso de um save para dentro do jogo.
     /// </summary>
     /// <param name="gameMode">O modo de jogo do save a ser carregado.</param>
@@ -94,22 +171,8 @@ public static class SavesManager
     /// <param name="encrypted">Se o arquivo foi criptografado.</param>
     public static void LoadSavedGame(GameModes gameMode, string fileName, bool encrypted = false)
     {
-        JsonSaveService jsonService = new();
-        string folderPath = jsonService.CombinePaths(jsonService.ROOT_FOLDER, gameMode.ToString());
-        if (!Directory.Exists(folderPath))
-        {
-            Directory.CreateDirectory(folderPath);
-            return;
-        }
-        var save = jsonService.LoadData<NZSave>(folderPath, fileName, encrypted);
-        if (save == null)
-        {
-            Debug.LogError($"Save file {fileName} not found!");
-            return;
-        }
+        NZSave save = GetSave(gameMode, fileName, encrypted);
 
-        save.FileName = fileName;
-        save.FolderPath = folderPath;
         UnSeed(save, GetPlayerSO(), GetInventorySO());
     }
 
@@ -180,11 +243,18 @@ public static class SavesManager
     /// <returns></returns>
     private static NZSave Seed(NZSave save, PlayerData player, InventoryData inventory)
     {
+
+        InventoryData.WeaponSelection UpdateWeaponMagazine(InventoryData.WeaponSelection weaponSelection)
+        {
+            var weapon = GetWeaponDataSO(weaponSelection.Type, weaponSelection.WeaponClass);
+            weaponSelection.MagazineBullets = weapon.MagazineBullets;
+            return weaponSelection;
+        }
+
         //Player
         save.CurrentWave = player.CurrentWaveIndex;
         save.PlayerTotalMoney = player.Money;
         save.PlayerHealth = player.Health;
-        save.TotalScore = player.Score;
         save.MaxHealthUpgradeIndex = player.MaxHealthUpgradeIndex;
         save.MovementSpeedUpgradeIndex = player.MovementSpeedUpgradeIndex;
         save.SprintSpeedUpgradeIndex = player.SprintSpeedUpgradeIndex;
@@ -203,19 +273,17 @@ public static class SavesManager
         save.RifleAmmo = inventory.RifleAmmo;
         save.SniperAmmo = inventory.SniperAmmo;
         save.RocketAmmo = inventory.RocketAmmo;
-        save.PrimaryWeaponsSelection = inventory.PrimaryWeaponsSelection;
-        save.SecondaryWeaponsSelection = inventory.SecondaryWeaponsSelection;
+        save.PrimaryWeaponsSelection = inventory.PrimaryWeaponsSelection.Select(UpdateWeaponMagazine).ToList();
+        save.SecondaryWeaponsSelection = inventory.SecondaryWeaponsSelection.Select(UpdateWeaponMagazine).ToList();
         save.ThrowableItemsSelection = inventory.ThrowableItemsSelection;
         save.TacticalAbilitiesSelection = inventory.TacticalAbilitiesSelection;
 
+
+        //Waves
+        save.WavesStats = GetWaveStats().Where(x => x.Started).Select(x => x.GetData()).ToList();
+
         //Missing:
-        //save.TotalGameTime;
         //save.TotalInStoreTime;
-        //save.WavesRestarted;
-        //save.TotalKills;
-        //save.TotalHeadshotKills;
-        //save.TotalPrecision;
-        //save.InputMode;
 
         return save;
     }
@@ -232,7 +300,7 @@ public static class SavesManager
         player.CurrentWaveIndex = save.CurrentWave;
         player.Money = save.PlayerTotalMoney;
         player.Health = save.PlayerHealth;
-        player.Score = save.TotalScore;
+        player.Score = save.WavesStats.Sum(w => w.Score);
         player.MaxHealthUpgradeIndex = save.MaxHealthUpgradeIndex;
         player.MovementSpeedUpgradeIndex = save.MovementSpeedUpgradeIndex;
         player.SprintSpeedUpgradeIndex = save.SprintSpeedUpgradeIndex;
@@ -255,6 +323,25 @@ public static class SavesManager
         inventory.SecondaryWeaponsSelection = save.SecondaryWeaponsSelection;
         inventory.ThrowableItemsSelection = save.ThrowableItemsSelection;
         inventory.TacticalAbilitiesSelection = save.TacticalAbilitiesSelection;
+
+        //Waves
+        WaveStats[] waveStats = GetWaveStats().OrderBy(x => x.WaveNumber).ToArray();
+        for (int i = 0; i < save.WavesStats.OrderBy(x => x.WaveNumber).Count(); i++)
+        {
+            waveStats[i].WaveTitle = save.WavesStats[i].WaveTitle;
+            waveStats[i].WaveNumber = save.WavesStats[i].WaveNumber;
+            waveStats[i].Score = save.WavesStats[i].Score;
+            waveStats[i].MoneyEarned = save.WavesStats[i].MoneyEarned;
+            waveStats[i].EnemiesKilled = save.WavesStats[i].EnemiesKilled;
+            waveStats[i].HeadshotKills = save.WavesStats[i].HeadshotKills;
+            waveStats[i].Precision = save.WavesStats[i].Precision;
+            waveStats[i].RestartCount = save.WavesStats[i].RestartCount;
+            waveStats[i].TimeTaken = save.WavesStats[i].TimeTaken;
+            waveStats[i].DamageTaken = save.WavesStats[i].DamageTaken;
+            waveStats[i].Completed = save.WavesStats[i].Completed;
+            waveStats[i].Started = save.WavesStats[i].Started;
+            //Pendente salvar tempo na loja
+        }
 
         //Player Upgrades
         var storePlayerSO = GetStorePlayerSO();
@@ -289,7 +376,7 @@ public static class SavesManager
     /// </summary>
     /// <returns>O SO do player na loja.</returns>
     private static StorePlayerData GetStorePlayerSO() => Resources.Load<StorePlayerData>("ScriptableObjects/Store/Natives/Player");
-    
+
     /// <summary>
     /// Obtém o ScriptableObject da Mochila na Loja.
     /// </summary>
@@ -303,6 +390,11 @@ public static class SavesManager
     /// <param name="weaponClass">A classe da arma.</param>
     /// <returns>O SO da arma especificada.</returns>
     private static BaseWeaponData GetWeaponDataSO(WeaponTypes weaponType, WeaponClasses weaponClass) => Resources.Load<BaseWeaponData>($"ScriptableObjects/Weapons/{weaponClass}/{weaponType}");
+    /// <summary>
+    /// Carrega todas as estatísticas de waves.
+    /// </summary>
+    /// <returns>Uma lista contendo todos os SO de WaveStat.</returns>
+    private static IEnumerable<WaveStats> GetWaveStats() => Resources.LoadAll<WaveStats>($"ScriptableObjects/Waves/Stats");
 
     /// <summary>
     /// Carrega todos os upgrades comprados da arma.
@@ -412,6 +504,8 @@ public static class SavesManager
             launcherData.ExplosionMinDamageRadius += radiusAverageDifference * minRadiusWeight;
             launcherData.ExplosionMaxDamageRadius += radiusAverageDifference * maxRadiusWeight;
         }
+
+        weaponData.MagazineBullets = weaponSelection.MagazineBullets;
     }
 
     /// <summary>

@@ -221,6 +221,8 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
             HealthBar.RemoveValue(value);
         ShowPopup(value.ToString("N1"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
+        WavesManager.Instance.CurrentWave.Stats.DamageTaken += value;
+
         if (Health <= 0 && IsAlive)
             Die();
     }

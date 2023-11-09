@@ -105,7 +105,7 @@ public class InGameScreen : MonoBehaviour
     private void UpdateInGameUI()
     {
         PlayerMoneyText.text = Player.Data.Money.ToString("N2");
-        WaveScoreText.text = WavesManager.Instance.CurrentWave.P1Score.ToString("N0");
+        WaveScoreText.text = WavesManager.Instance.CurrentWave.Stats != null ? WavesManager.Instance.CurrentWave.Stats.Score.ToString("N0") : "";
 
         MagazineBulletsText.text = Player.CurrentWeapon.MagazineBullets.ToString();
         TotalBulletsText.text = Player.Backpack.GetAmmo(Player.CurrentWeapon.BulletType).ToString();

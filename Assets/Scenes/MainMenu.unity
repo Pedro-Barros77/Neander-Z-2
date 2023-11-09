@@ -11164,7 +11164,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Total Time:'
+  m_text: 'Gameplay Time:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 10d83dcb43afcd0408d0b825a6cd65a3, type: 2}
   m_sharedMaterial: {fileID: -1042838590190517419, guid: 10d83dcb43afcd0408d0b825a6cd65a3, type: 2}
@@ -11434,7 +11434,7 @@ GameObject:
   - component: {fileID: 1523489194}
   - component: {fileID: 1523489195}
   m_Layer: 5
-  m_Name: TotalTime
+  m_Name: GameplayTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

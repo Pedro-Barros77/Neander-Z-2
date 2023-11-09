@@ -131,6 +131,7 @@ public class InventoryData : AutoRevertSO
         public WeaponEquippedSlot EquippedSlot;
         public List<WeaponUpgradeMap> UpgradesMap;
         public bool IsPrimary => Constants.IsPrimary(Type);
+        public int MagazineBullets;
 
         public WeaponSelection() { }
         public WeaponSelection(WeaponTypes type, WeaponEquippedSlot equippedSlot, WeaponClasses weaponClass)

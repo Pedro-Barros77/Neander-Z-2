@@ -17,7 +17,6 @@ public class StoreScreen : MonoBehaviour
     public delegate void OnStartDragCallback(StoreItem storeItem);
     public OnStartDragCallback OnStartDrag;
 
-    [SerializeField]
     public PlayerData PlayerData;
     public Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, ActiveTabImage, InactiveTabImage;
     public CustomAudio PurchaseSound;
@@ -44,6 +43,7 @@ public class StoreScreen : MonoBehaviour
 
     void Start()
     {
+        PlayerData = Resources.Load<PlayerData>("ScriptableObjects/Player/Player");
         StoreItems = GameObject.FindGameObjectsWithTag("StoreItem").ToList();
         storePanelAnimator = StorePanel.GetComponent<Animator>();
         PreviewBtnBuyText = BuyButton.GetComponentInChildren<TextMeshProUGUI>();

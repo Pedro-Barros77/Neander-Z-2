@@ -70,8 +70,8 @@ public class SelectSaveScreen : MonoBehaviour
 
         SaveTitleText.text = save.FileName;
         CurrentWaveText.text = save.CurrentWave.ToString("D2");
-        TotalScoreText.text = save.TotalScore.ToString("N0");
-        MoneyText.text = save.PlayerTotalMoney.ToString("N2");
+        TotalScoreText.text = save.WavesStats.Sum(x => x.Score).ToString("N0");
+        MoneyText.text = $"$ {save.PlayerTotalMoney:N2}";
 
         var weaponSelection = save.PrimaryWeaponsSelection.Concat(save.SecondaryWeaponsSelection);
         var primaryType = weaponSelection.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Primary)?.Type ?? WeaponTypes.None;
@@ -80,12 +80,15 @@ public class SelectSaveScreen : MonoBehaviour
         PrimaryWeaponText.text = primaryType.ToString();
         SecondaryWeaponText.text = secondaryType.ToString();
         HealthText.text = save.PlayerHealth.ToString("N0");
-        TotalTimeText.text = save.TotalGameTime.ToString();
-        TotalInStoreTimeText.text = save.TotalInStoreTime.ToString();
-        WavesRestartedText.text = save.WavesRestarted.ToString();
-        TotalEnemiesKilledText.text = save.TotalKills.ToString();
-        TotalHeadshotKillsText.text = save.TotalHeadshotKills.ToString();
-        TotalPrecisionText.text = save.TotalPrecision.ToString("N1");
+
+        TimeSpan timeSpan = TimeSpan.FromSeconds(save.WavesStats.Sum(x => x.TimeTaken));
+        TotalTimeText.text = $"{timeSpan.Hours}h {timeSpan.Minutes}m {timeSpan.Seconds}s {timeSpan.Milliseconds:00}ms";
+        
+        TotalInStoreTimeText.text = "soon...";
+        WavesRestartedText.text = save.WavesStats.Sum(x => x.RestartCount).ToString();
+        TotalEnemiesKilledText.text = save.WavesStats.Sum(x => x.EnemiesKilled).ToString();
+        TotalHeadshotKillsText.text = save.WavesStats.Sum(x => x.HeadshotKills).ToString();
+        TotalPrecisionText.text = $"{save.WavesStats.Sum(x => x.Precision) / save.WavesStats.Count:N1}%";
     }
 
     /// <summary>

@@ -8,16 +8,6 @@ public class NZSave
     public float PlayerHealth;
     #endregion
 
-    #region GameplayStats
-    public float TotalScore;
-    public float TotalGameTime;
-    public float TotalInStoreTime;
-    public int WavesRestarted;
-    public int TotalKills;
-    public int TotalHeadshotKills;
-    public float TotalPrecision;
-    #endregion
-
     #region Inventory
     public int PistolAmmo;
     public int ShotgunAmmo;
@@ -42,6 +32,10 @@ public class NZSave
     public int JumpStaminaUpgradeIndex;
     public int SprintStaminaUpgradeIndex;
     public int AttackStaminaUpgradeIndex;
+    #endregion
+
+    #region WavesStats
+    public List<WaveStats.Data> WavesStats;
     #endregion
 
     public string FolderPath;
