@@ -429,6 +429,23 @@ MonoBehaviour:
   - Audio: {fileID: 8300000, guid: 83a26cab15123a94bbf02d9836a8cf18, type: 3}
     Volume: 0.5
     Pitch: 1
+  LaughtSounds:
+  - Audio: {fileID: 8300000, guid: 7628cfe8493a9df4eae99a347b485550, type: 3}
+    Volume: 1
+    Pitch: 1
+  StepSounds:
+  - Audio: {fileID: 8300000, guid: 3a39090eefa70fb4095033759b67acb1, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 4fbd2e3e81cf0574784960568c421b35, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 94088ed7fd3adfe469d29d82f0457044, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 9b44e3b67aaeb7f4a9a2a31093908ce1, type: 3}
+    Volume: 1
+    Pitch: 1
 --- !u!61 &5797189025733250839
 BoxCollider2D:
   m_ObjectHideFlags: 0

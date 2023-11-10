@@ -42,12 +42,15 @@ public class InGameScreen : MonoBehaviour
         BtnReady.gameObject.SetActive(MenuController.Instance.IsTutorialActive);
         TutorialPanel.SetActive(MenuController.Instance.IsTutorialActive);
         OptionsPanel = OptionsContent.GetComponent<OptionsPanel>();
-        OptionsPanel.GoBackFunction = () =>
+        OptionsPanel.GoBackFunction += () =>
         {
             OptionsContent.SetActive(false);
             PauseContent.SetActive(true);
             PauseTitle.text = "Game Paused";
         };
+
+        OptionsPanel.VolumeChangeFunction += HandleVolumeChange;
+        AudioSource.volume = MenuController.Instance.MusicVolume;
 
         if (MenuController.Instance.IsTutorialActive)
             Player.Data.InventoryData = Resources.Load<InventoryData>("ScriptableObjects/Player/TutorialInventory");
@@ -92,9 +95,13 @@ public class InGameScreen : MonoBehaviour
             }
         }
 
-        AudioSource.volume = musicStartVolume * MenuController.Instance.MusicVolume;
-
         UpdateInGameUI();
+    }
+
+    private void HandleVolumeChange(AudioTypes audioType, float volume)
+    {
+        if (audioType == AudioTypes.Music)
+            AudioSource.volume = musicStartVolume * volume;
     }
 
     /// <summary>
