@@ -3,7 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Wave Stats", menuName = "Neander Z/Wave Stats", order = 5)]
 public class WaveStats : AutoRevertSO
 {
-    public string WaveTitle;
     public int WaveNumber;
     public float Score;
     public float MoneyEarned;
@@ -11,14 +10,15 @@ public class WaveStats : AutoRevertSO
     public int HeadshotKills;
     public float Precision;
     public int RestartCount;
+    public int DeathCount;
     public float TimeTaken;
     public float DamageTaken;
     public bool Completed;
     public bool Started;
+    public int InputMode;
 
     public WaveStats.Data GetData() => new()
     {
-        WaveTitle = WaveTitle,
         WaveNumber = WaveNumber,
         Score = Score,
         MoneyEarned = MoneyEarned,
@@ -26,15 +26,16 @@ public class WaveStats : AutoRevertSO
         HeadshotKills = HeadshotKills,
         Precision = Precision,
         RestartCount = RestartCount,
+        DeathCount = DeathCount,
         TimeTaken = TimeTaken,
         DamageTaken = DamageTaken,
         Completed = Completed,
-        Started = Started
+        Started = Started,
+        InputMode = InputMode
     };
 
     public class Data
     {
-        public string WaveTitle;
         public int WaveNumber;
         public float Score;
         public float MoneyEarned;
@@ -42,10 +43,12 @@ public class WaveStats : AutoRevertSO
         public int HeadshotKills;
         public float Precision;
         public int RestartCount;
+        public int DeathCount;
         public float TimeTaken;
         public float DamageTaken;
         public bool Completed;
         public bool Started;
+        public int InputMode;
     }
 }
 

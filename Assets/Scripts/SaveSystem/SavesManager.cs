@@ -77,7 +77,7 @@ public static class SavesManager
     /// <param name="started">Se a wave está sendo iniciada agora.</param>
     /// <param name="completed">Se a wave está sendo completada agora.</param>
     /// <returns>Retorna as informações atualizadas da wave.</returns>
-    public static WaveStats.Data UpdateWaveStats(int waveNumber, bool started, bool completed)
+    public static WaveStats.Data UpdateWaveStats(int waveNumber, bool started = false, bool died = false)
     {
         var save = GetSave(GameModes.WaveMastery, SelectedSaveName);
         if (save.WavesStats.Count < waveNumber)
@@ -95,8 +95,8 @@ public static class SavesManager
             stat.Started = true;
         }
 
-        if (completed)
-            stat.Completed = true;
+        if (died)
+            stat.DeathCount++;
 
         SaveNzSave(save, GameModes.WaveMastery, SelectedSaveName, true);
 
@@ -328,7 +328,6 @@ public static class SavesManager
         WaveStats[] waveStats = GetWaveStats().OrderBy(x => x.WaveNumber).ToArray();
         for (int i = 0; i < save.WavesStats.OrderBy(x => x.WaveNumber).Count(); i++)
         {
-            waveStats[i].WaveTitle = save.WavesStats[i].WaveTitle;
             waveStats[i].WaveNumber = save.WavesStats[i].WaveNumber;
             waveStats[i].Score = save.WavesStats[i].Score;
             waveStats[i].MoneyEarned = save.WavesStats[i].MoneyEarned;

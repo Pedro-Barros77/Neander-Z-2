@@ -74,7 +74,8 @@ public class Wave : MonoBehaviour
     /// </summary>
     public void StartWave()
     {
-        var stat = SavesManager.UpdateWaveStats(Data.Number, true, false);
+        var stat = SavesManager.UpdateWaveStats(Data.Number, started: true);
+        stat.InputMode = MenuController.Instance.IsMobileInput ? 1 : 0;
         Stats = Resources.Load<WaveStats>($"ScriptableObjects/Waves/Stats/{Data.Number:D2}");
         Stats.Started = true;
         Stats.RestartCount = stat.RestartCount;
@@ -277,7 +278,6 @@ public class Wave : MonoBehaviour
         Stats.MoneyEarned = (Stats.Score / 4) * Data.MoneyMultiplier * (1 + (attackHitRatio / 2));
         Stats.Precision = attackHitRatio * 100;
 
-        Stats.WaveTitle = Data.Title;
         Stats.WaveNumber = Data.Number;
         Stats.Completed = true;
         Stats.TimeTaken = EndTime - StartTime;

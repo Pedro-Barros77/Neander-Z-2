@@ -260,6 +260,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     /// </summary>
     protected virtual void Die()
     {
+        SavesManager.UpdateWaveStats(WavesManager.Instance.CurrentWave.Data.Number, died: true);
         WavesManager.Instance.EnemiesTargets.Remove(this);
         IsAlive = false;
         isDying = true;

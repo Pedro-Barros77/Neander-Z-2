@@ -14,11 +14,10 @@ public class SelectSaveScreen : MonoBehaviour
     GameObject SaveFilePrefab, NewSaveModal, PreviewContent, EmptyPreview;
     [SerializeField]
     InputField InputNewSaveName;
-    //TMP_InputField InputNewSaveName;
 
     [SerializeField]
     TextMeshProUGUI SaveTitleText, CurrentWaveText, TotalScoreText, MoneyText, PrimaryWeaponText, SecondaryWeaponText, HealthText,
-        TotalTimeText, TotalInStoreTimeText, WavesRestartedText, TotalEnemiesKilledText, TotalHeadshotKillsText, TotalPrecisionText;
+        TotalTimeText, TotalInStoreTimeText, WavesRestartedText, TotalDeathsText, TotalEnemiesKilledText, TotalHeadshotKillsText, TotalPrecisionText;
 
     List<Animator> SavesAnimators = new();
     NZSave[] Saves;
@@ -84,11 +83,12 @@ public class SelectSaveScreen : MonoBehaviour
 
         TimeSpan timeSpan = TimeSpan.FromSeconds(save.WavesStats.Sum(x => x.TimeTaken));
         TotalTimeText.text = $"{timeSpan.Hours}h {timeSpan.Minutes}m {timeSpan.Seconds}s {timeSpan.Milliseconds:00}ms";
-        
+
         TotalInStoreTimeText.text = "soon...";
         WavesRestartedText.text = save.WavesStats.Sum(x => x.RestartCount).ToString();
+        TotalDeathsText.text = save.WavesStats.Sum(x => x.DeathCount).ToString();
         TotalEnemiesKilledText.text = save.WavesStats.Sum(x => x.EnemiesKilled).ToString();
-        TotalHeadshotKillsText.text = save.WavesStats.Sum(x => x.HeadshotKills).ToString();
+        TotalHeadshotKillsText.text = $"{save.WavesStats.Sum(x => x.HeadshotKills)} ({save.WavesStats.Sum(x => x.HeadshotKills) / save.WavesStats.Sum(x => x.EnemiesKilled) * 100:N0}%)";
         TotalPrecisionText.text = $"{save.WavesStats.Sum(x => x.Precision) / save.WavesStats.Count:N1}%";
     }
 
