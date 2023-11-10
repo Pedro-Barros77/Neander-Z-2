@@ -26,8 +26,8 @@ MonoBehaviour:
   MaxDamageRange: 8
   MinDamageRange: 10
   BulletMaxRange: 12
-  MagazineSize: 7
-  MagazineBullets: 7
+  MagazineSize: 5
+  MagazineBullets: 5
   ReloadTimeMs: 1400
   SwitchTimeMs: 200
   Upgrades:
@@ -78,7 +78,7 @@ MonoBehaviour:
     - Price: 135
       Value: 3
     - Price: 150
-      Value: 2
+      Value: 4
   - Attribute: 6
     UpgradeSteps:
     - Price: 300
