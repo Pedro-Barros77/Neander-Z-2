@@ -160,7 +160,8 @@ public class InGameScreen : MonoBehaviour
     public void ExitTutorial()
     {
         MenuController.Instance.IsTutorialActive = false;
-        Player.Data.InventoryData = Resources.Load<InventoryData>("ScriptableObjects/Player/PlayerInventory");
+        MenuController.Instance.OnRestartGame();
+
         OpenStore();
     }
 
