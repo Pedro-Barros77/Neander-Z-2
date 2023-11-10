@@ -85,75 +85,82 @@ MonoBehaviour:
   - Action: 13
     Key: 50
     IsListening: 0
-  DEBUG_IncreaseHealth:
+  BuyMaxStoreItems:
   - Action: 14
-    Key: 270
+    Key: 304
     IsListening: 0
   - Action: 14
+    Key: 303
+    IsListening: 0
+  DEBUG_IncreaseHealth:
+  - Action: 100
+    Key: 270
+    IsListening: 0
+  - Action: 100
     Key: 61
     IsListening: 0
   DEBUG_DecreaseHealth:
-  - Action: 15
+  - Action: 101
     Key: 269
     IsListening: 0
-  - Action: 15
+  - Action: 101
     Key: 45
     IsListening: 0
   DEBUG_IncreaseMoney:
-  - Action: 16
+  - Action: 102
     Key: 270
     IsListening: 0
-  - Action: 16
+  - Action: 102
     Key: 61
     IsListening: 0
   DEBUG_DecreaseMoney:
-  - Action: 17
+  - Action: 103
     Key: 269
     IsListening: 0
-  - Action: 17
+  - Action: 103
     Key: 45
     IsListening: 0
   DEBUG_SpawnRoger:
-  - Action: 18
+  - Action: 104
     Key: 257
     IsListening: 0
   DEBUG_SpawnRonald:
-  - Action: 19
+  - Action: 105
     Key: 258
     IsListening: 0
   DEBUG_SpawnRonaldo:
-  - Action: 20
+  - Action: 106
     Key: 259
     IsListening: 0
   DEBUG_SpawnRaven:
-  - Action: 21
+  - Action: 107
     Key: 260
     IsListening: 0
   DEBUG_SpawnRobert:
-  - Action: 22
+  - Action: 108
     Key: 261
     IsListening: 0
   DEBUG_SpawnRaimundo:
-  - Action: 23
+  - Action: 109
     Key: 262
     IsListening: 0
   DEBUG_SpawnRUI:
-  - Action: 24
+  - Action: 110
     Key: 263
     IsListening: 0
   DEBUG_KillAllEnemiesAlive:
-  - Action: 25
+  - Action: 111
     Key: 127
     IsListening: 0
   DEBUG_EndWave:
-  - Action: 26
+  - Action: 112
     Key: 279
     IsListening: 0
   DEBUG_CenterEnemies:
-  - Action: 27
+  - Action: 113
     Key: 278
     IsListening: 0
   DEBUG_RefillAllAmmo:
-  - Action: 28
+  - Action: 114
     Key: 280
     IsListening: 0

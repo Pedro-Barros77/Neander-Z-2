@@ -203,10 +203,23 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         var throwable = storeScreen.PlayerData.InventoryData.ThrowableItemsSelection
             .FirstOrDefault(x => x.Type == data.ThrowableData.Type);
 
+        int diff = 0;
+
+        if (throwable == null)
+            diff = data.ThrowableData.MaxCount;
+        else
+            diff = throwable.MaxCount - throwable.Count;
+
+        if (Constants.GetAction(InputActions.BuyMaxStoreItems))
+            data.Discount = -(Data.Price * ((diff - Data.Amount) / Data.Amount));
+        else
+            data.Discount = 0;
+
         if (throwable == null)
             return;
 
-        Data.MaxedUp = throwable.Count >= throwable.MaxCount;
+        Data.MaxedUp = diff <= 0;
+
 
         if (IsInventoryItem)
         {
@@ -248,7 +261,16 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         Data.MaxedUp = diff <= 0;
 
-        if (Data.MaxedUp || currentAmmo + Data.Amount <= maxAmmo)
+        if (Data.MaxedUp)
+            return;
+
+        if (Constants.GetAction(InputActions.BuyMaxStoreItems))
+        {
+            data.Discount = -(Data.Price * ((diff - Data.Amount) / Data.Amount));
+            return;
+        }
+
+        if (currentAmmo + Data.Amount <= maxAmmo)
         {
             Data.Discount = 0;
             return;

@@ -97,11 +97,28 @@ public class StoreScreen : MonoBehaviour
                 if (SelectedItem.Data is StoreThrowableData storeThrowableData)
                 {
                     InventoryData.ThrowableSelection playerThrowable = PlayerData.InventoryData.ThrowableItemsSelection.FirstOrDefault(x => x.Type == storeThrowableData.ThrowableData.Type);
+
+                    int diff = 0;
                     if (playerThrowable != null)
+                    {
                         SetCountStats(
                             count: (playerThrowable?.Count ?? 0).ToString(),
                             total: $"/{playerThrowable.MaxCount}"
                         );
+
+                        diff = playerThrowable.MaxCount - playerThrowable.Count;
+                    }
+                    else
+                    {
+                        diff = storeThrowableData.ThrowableData.MaxCount;
+                        SetCountStats(
+                            count: "0",
+                            total: $"/{storeThrowableData.ThrowableData.MaxCount}"
+                        );
+                    }
+
+                    if (Constants.GetAction(InputActions.BuyMaxStoreItems) && diff > 0)
+                        PreviewBtnBuyText.text = $"Fill all +{diff}";
                 }
                 else if (SelectedItem.Data is StoreAmmoData storeAmmoData)
                 {
@@ -114,8 +131,16 @@ public class StoreScreen : MonoBehaviour
                     );
 
                     int diff = maxAmmo - currentAmmo;
-                    if (diff > 0 && diff < storeAmmoData.Amount)
-                        PreviewBtnBuyText.text = $"Buy +{diff}";
+                    if (Constants.GetAction(InputActions.BuyMaxStoreItems))
+                    {
+                        if (diff > 0)
+                            PreviewBtnBuyText.text = $"Fill all +{diff}";
+                    }
+                    else
+                    {
+                        if (diff > 0 && diff < storeAmmoData.Amount)
+                            PreviewBtnBuyText.text = $"Buy +{diff}";
+                    }
                 }
                 else
                 {
@@ -570,13 +595,20 @@ public class StoreScreen : MonoBehaviour
         if (currentAmmo >= maxAmmo)
             return false;
 
+        int diff = maxAmmo - currentAmmo;
+
+        if (Constants.GetAction(InputActions.BuyMaxStoreItems))
+        {
+            PlayerData.InventoryData.SetAmmo(data.BulletType, currentAmmo + diff);
+            return true;
+        }
+
         if (currentAmmo + data.Amount > maxAmmo)
         {
-            int diff = maxAmmo - currentAmmo;
             PlayerData.InventoryData.SetAmmo(data.BulletType, currentAmmo + diff);
         }
         else
-            PlayerData.InventoryData.SetAmmo(data.BulletType, (int)data.Amount + currentAmmo);
+            PlayerData.InventoryData.SetAmmo(data.BulletType, currentAmmo + (int)data.Amount);
 
         return true;
     }
@@ -592,12 +624,16 @@ public class StoreScreen : MonoBehaviour
         if (data.Amount <= 0)
             return false;
 
+        int buyCount = (int)data.Amount;
+
         bool hasThrowable = PlayerData.InventoryData.HasThrowable(data.ThrowableData.Type);
 
         if (!hasThrowable)
         {
+            if (Constants.GetAction(InputActions.BuyMaxStoreItems))
+                buyCount = data.ThrowableData.MaxCount;
             PlayerData.InventoryData.UnequipAllThrowables();
-            PlayerData.InventoryData.ThrowableItemsSelection.Add(new(data.ThrowableData.Type, (int)data.Amount, data.ThrowableData.MaxCount, true));
+            PlayerData.InventoryData.ThrowableItemsSelection.Add(new(data.ThrowableData.Type, buyCount, data.ThrowableData.MaxCount, true));
             var item = inventoryTab.CreateInventoryItem(data, true);
             inventoryTab.GrenadeSlot.DropItem(item);
         }
@@ -606,8 +642,10 @@ public class StoreScreen : MonoBehaviour
             var throwable = PlayerData.InventoryData.ThrowableItemsSelection.Find(t => t.Type == data.ThrowableData.Type);
             if (throwable.Count >= throwable.MaxCount)
                 return false;
+            if (Constants.GetAction(InputActions.BuyMaxStoreItems))
+                buyCount = throwable.MaxCount - throwable.Count;
             PlayerData.InventoryData.UnequipAllThrowables();
-            throwable.Count += (int)data.Amount;
+            throwable.Count += buyCount;
             throwable.IsEquipped = true;
         }
 
