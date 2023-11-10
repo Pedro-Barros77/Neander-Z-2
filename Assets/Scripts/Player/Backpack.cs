@@ -171,7 +171,7 @@ public class Backpack
             if (slot == WeaponEquippedSlot.Primary && !Data.PrimaryWeaponsSelection.Any(x => x.Type == weaponType))
             {
                 Unequip();
-                Data.PrimaryWeaponsSelection.Add(new InventoryData.WeaponSelection(weaponType, slot));
+                Data.PrimaryWeaponsSelection.Add(new InventoryData.WeaponSelection(weaponType, slot, weapon.Data.WeaponClass));
             }
 
             PrimaryWeaponsInstances.Add(weapon);
@@ -181,7 +181,7 @@ public class Backpack
             if (slot != WeaponEquippedSlot.None && !Data.SecondaryWeaponsSelection.Any(x => x.Type == weaponType))
             {
                 Unequip();
-                Data.SecondaryWeaponsSelection.Add(new InventoryData.WeaponSelection(weaponType, slot));
+                Data.SecondaryWeaponsSelection.Add(new InventoryData.WeaponSelection(weaponType, slot, weapon.Data.WeaponClass));
             }
 
             SecondaryWeaponsInstances.Add(weapon);

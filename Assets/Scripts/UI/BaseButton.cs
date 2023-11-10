@@ -9,6 +9,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public bool Pressed { get; private set; }
     public bool IsPressing { get; private set; }
     public bool Released { get; private set; }
+    public bool IsHovering { get; private set; }
     public Vector3 ClickPosition { get; private set; }
     [SerializeField]
     public CustomAudio ClickSound, HoverSound;
@@ -45,7 +46,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     /// </summary>
     public void OnClick()
     {
-        if (!button.interactable)
+        if (button != null && !button.interactable)
             return;
 
         ClickSound.PlayIfNotNull(audioSource, AudioTypes.UI);
@@ -59,11 +60,12 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     /// </summary>
     public void OnHoverIn()
     {
-        if (!button.interactable)
+        if (button != null && !button.interactable)
             return;
 
         HoverSound.PlayIfNotNull(audioSource, AudioTypes.UI);
 
+        IsHovering = true;
         HoverEvent?.Invoke(this, true);
 
         MenuController.Instance.SetCursor(Cursors.Pointer);
@@ -74,9 +76,10 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     /// </summary>
     public void OnHoverOut()
     {
-        if (!button.interactable)
+        if (button != null && !button.interactable)
             return;
 
+        IsHovering = false;
         HoverEvent?.Invoke(this, false);
 
         MenuController.Instance.SetCursor(Cursors.Arrow);
@@ -88,6 +91,9 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     /// <param name="btnAnimator">Botão a ser reiniciado.</param>
     public void ResetButton()
     {
+        if (button == null)
+            return;
+
         if (animator == null)
             return;
         animator.ResetTrigger("Pressed");
@@ -132,5 +138,13 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
 
         ClickPosition = Input.mousePosition;
+    }
+
+    private void OnDisable()
+    {
+        if (IsHovering)
+            MenuController.Instance.SetCursor(Cursors.Arrow);
+
+        IsHovering = false;
     }
 }

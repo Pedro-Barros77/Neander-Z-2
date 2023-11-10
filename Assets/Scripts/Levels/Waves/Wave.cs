@@ -6,19 +6,18 @@ using UnityEngine;
 public class Wave : MonoBehaviour
 {
     public WaveData Data { get; set; }
+    public WaveStats Stats { get; private set; }
     public int SpawnCount { get; private set; }
     public bool IsFinished { get; private set; }
     public int TotalEnemiesCount { get; set; }
-    public bool HasMoreSpawns => SpawnCount - InfiniteGroupKills < TotalEnemiesCount;
+    public bool HasMoreSpawns => SpawnCount - InfiniteEnemiesKilled < TotalEnemiesCount;
     public List<BaseEnemy> EnemiesAlive { get; private set; } = new List<BaseEnemy>();
-    public float P1Score { get; private set; }
-    public float P1Money { get; private set; }
-    public float P1TotalKills { get; private set; }
-    public float P1HeadshotKills { get; private set; }
-    public float P1Precision { get; private set; }
     public int P1AttacksCount { get; private set; }
     public int P1AttacksHit { get; private set; }
     public bool HasStarted { get; private set; }
+    public float StartTime { get; private set; }
+    public float EndTime { get; private set; }
+    public int InfiniteEnemiesKilled { get; private set; }
     public bool CanSpawn { get; set; }
 
     public float FloorHeight => LevelData.BottomRightSpawnLimit.y;
@@ -26,7 +25,6 @@ public class Wave : MonoBehaviour
     float RightBoundary => LevelData.BottomRightSpawnLimit.x;
     float RightMapBoundary => LevelData.RightMapBoundary.x;
     float LeftMapBoundary => LevelData.LeftMapBoundary.x;
-    int InfiniteGroupKills;
 
     public Transform EnemiesContainer { get; private set; }
     LevelData LevelData;
@@ -67,7 +65,7 @@ public class Wave : MonoBehaviour
             SpawnMultipleEnemies(diff);
         }
 
-        if (SpawnCount - InfiniteGroupKills >= TotalEnemiesCount && EnemiesAlive.Count == 0 && !IsFinished)
+        if (SpawnCount - InfiniteEnemiesKilled >= TotalEnemiesCount && EnemiesAlive.Count == 0 && !IsFinished)
         {
             StopCoroutine(EnemySpawner);
             StartCoroutine(EndWaveDelayed());
@@ -80,12 +78,19 @@ public class Wave : MonoBehaviour
     public void StartWave()
     {
         CanSpawn = true;
+        var stat = SavesManager.UpdateWaveStats(Data.Number, started: true);
+        stat.InputMode = MenuController.Instance.IsMobileInput ? 1 : 0;
+        Stats = Resources.Load<WaveStats>($"ScriptableObjects/Waves/Stats/{Data.Number:D2}");
+        Stats.Started = true;
+        Stats.RestartCount = stat.RestartCount;
+
         TotalEnemiesCount = Data.EnemyGroups.Sum(x => x.Count);
         if (Data.IsBossWave)
             BossGroup = Data.EnemyGroups[Data.BossGroupIndex];
         HasStarted = true;
         EnemySpawner = StartCoroutine(EnemiesSpawner());
         StartCoroutine(ClusteringChecker());
+        StartTime = Time.time;
     }
 
     /// <summary>
@@ -100,10 +105,10 @@ public class Wave : MonoBehaviour
         if (headshotKill)
             newScore *= enemy.HeadshotScoreMultiplier;
 
-        P1Score += newScore;
-        P1TotalKills++;
+        Stats.Score += newScore;
+        Stats.EnemiesKilled++;
         if (headshotKill)
-            P1HeadshotKills++;
+            Stats.HeadshotKills++;
 
         if (enemy.IsBoss && !EnemiesAlive.Where(x => x.IsAlive).Any(x => x.IsBoss))
         {
@@ -130,6 +135,10 @@ public class Wave : MonoBehaviour
     {
         foreach (EnemyGroup group in Data.EnemyGroups)
             group.IsInfinite = false;
+
+        EnemiesAlive = EnemiesAlive.Where(x => x != null && x.IsAlive).ToList();
+
+        InfiniteEnemiesKilled -= EnemiesAlive.Count;
 
         Data.IsBossWave = false;
     }
@@ -254,7 +263,7 @@ public class Wave : MonoBehaviour
         if (group == null || group.Count <= 0) return null;
 
         if (group.IsInfinite)
-            InfiniteGroupKills++;
+            InfiniteEnemiesKilled++;
         else
         {
             group.Count--;
@@ -286,9 +295,16 @@ public class Wave : MonoBehaviour
         IsFinished = true;
         yield return new WaitForSeconds(Data.EndDelayMs / 1000);
 
+        EndTime = Time.time;
+
         float attackHitRatio = (float)P1AttacksHit / P1AttacksCount;
-        P1Money = (P1Score / 4) * Data.MoneyMultiplier * (1 + (attackHitRatio / 2));
-        P1Precision = attackHitRatio * 100;
+        Stats.MoneyEarned = (Stats.Score / 4) * Data.MoneyMultiplier * (1 + (attackHitRatio / 2));
+        Stats.Precision = attackHitRatio * 100;
+
+        Stats.WaveNumber = Data.Number;
+        Stats.Completed = true;
+        Stats.TimeTaken = EndTime - StartTime;
+
         WavesManager.Instance.ShowWaveSummary();
     }
 
@@ -331,7 +347,7 @@ public class Wave : MonoBehaviour
 
     public void KillAllWave()
     {
-        SpawnMultipleEnemies(TotalEnemiesCount - (SpawnCount - InfiniteGroupKills));
+        SpawnMultipleEnemies(TotalEnemiesCount - (SpawnCount - InfiniteEnemiesKilled));
         KillAllAlive();
     }
 

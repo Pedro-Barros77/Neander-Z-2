@@ -1,4 +1,3 @@
-using UnityEngine;
 /// <summary>
 /// Tipos de ações realizadas pelas entradas do jogador.
 /// </summary>
@@ -18,20 +17,21 @@ public enum InputActions
     SwitchWeapon = 11,
     EquipPrimaryWeapon = 12,
     EquipSecondaryWeapon = 13,
+    BuyMaxStoreItems = 14,
 
-    DEBUG_IncreaseHealth,
-    DEBUG_DecreaseHealth,
-    DEBUG_IncreaseMoney,
-    DEBUG_DecreaseMoney,
-    DEBUG_SpawnRoger,
-    DEBUG_SpawnRonald,
-    DEBUG_SpawnRonaldo,
-    DEBUG_SpawnRaven,
-    DEBUG_SpawnRobert,
-    DEBUG_SpawnRaimundo,
-    DEBUG_SpawnRUI,
-    DEBUG_KillAllEnemiesAlive,
-    DEBUG_EndWave,
-    DEBUG_CenterEnemies,
-    DEBUG_RefillAllAmmo
+    DEBUG_IncreaseHealth = 100,
+    DEBUG_DecreaseHealth = 101,
+    DEBUG_IncreaseMoney = 102,
+    DEBUG_DecreaseMoney = 103,
+    DEBUG_SpawnRoger = 104,
+    DEBUG_SpawnRonald = 105,
+    DEBUG_SpawnRonaldo = 106,
+    DEBUG_SpawnRaven = 107,
+    DEBUG_SpawnRobert = 108,
+    DEBUG_SpawnRaimundo = 109,
+    DEBUG_SpawnRUI = 110,
+    DEBUG_KillAllEnemiesAlive = 111,
+    DEBUG_EndWave = 112,
+    DEBUG_CenterEnemies = 113,
+    DEBUG_RefillAllAmmo = 114
 }

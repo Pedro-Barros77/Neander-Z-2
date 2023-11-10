@@ -8,7 +8,7 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     Player Player;
     [SerializeField]
-    GameObject PausePanel, GameOverPanel;
+    GameObject PausePanel, GameOverPanel, PopupPrefab;
     [SerializeField]
     Image ActiveWeaponImage, ActiveAmmoImage, ActiveThrowableImage, SwitchWeaponImage;
     [SerializeField]
@@ -33,6 +33,7 @@ public class InGameScreen : MonoBehaviour
     Color32 NotSprintingJoystickColor = new(212, 210, 159, 15), SprintingJoystickColor = new(255, 243, 73, 50);
     OptionsPanel OptionsPanel;
     AudioSource AudioSource;
+    Canvas WorldPosCanvas;
     float musicStartVolume;
 
     void Start()
@@ -40,6 +41,7 @@ public class InGameScreen : MonoBehaviour
         AudioSource = GetComponent<AudioSource>();
         musicStartVolume = AudioSource.volume;
         BtnReady.gameObject.SetActive(MenuController.Instance.IsTutorialActive);
+        WorldPosCanvas = GameObject.Find("WorldPositionCanvas").GetComponent<Canvas>();
         TutorialPanel.SetActive(MenuController.Instance.IsTutorialActive);
         OptionsPanel = OptionsContent.GetComponent<OptionsPanel>();
         OptionsPanel.GoBackFunction += () =>
@@ -110,7 +112,7 @@ public class InGameScreen : MonoBehaviour
     private void UpdateInGameUI()
     {
         PlayerMoneyText.text = Player.Data.Money.ToString("N2");
-        WaveScoreText.text = WavesManager.Instance.CurrentWave.P1Score.ToString("N0");
+        WaveScoreText.text = WavesManager.Instance.CurrentWave.Stats != null ? WavesManager.Instance.CurrentWave.Stats.Score.ToString("N0") : "";
 
         MagazineBulletsText.text = Player.CurrentWeapon.MagazineBullets.ToString();
         TotalBulletsText.text = Player.Backpack.GetAmmo(Player.CurrentWeapon.BulletType).ToString();
@@ -165,7 +167,8 @@ public class InGameScreen : MonoBehaviour
     public void ExitTutorial()
     {
         MenuController.Instance.IsTutorialActive = false;
-        Player.Data.InventoryData = Resources.Load<InventoryData>("ScriptableObjects/Player/PlayerInventory");
+        MenuController.Instance.OnRestartGame();
+
         OpenStore();
     }
 
@@ -204,6 +207,20 @@ public class InGameScreen : MonoBehaviour
     }
 
     /// <summary>
+    /// Salva o progresso do jogo.
+    /// </summary>
+    public void SaveGame()
+    {
+        if (SavesManager.SaveGame(GameModes.WaveMastery, SavesManager.SelectedSaveName))
+            ShowPopup("Game progress saved!", Constants.Colors.GreenMoney, BtnReady.transform.position + new Vector3(10, 40));
+        else
+            ShowPopup("Failed to save game progress!", Color.red, BtnReady.transform.position + new Vector3(10, 40));
+
+        if (!SavesManager.SavePrefs())
+            ShowPopup("Failed to save preferences!", Color.red, BtnReady.transform.position + new Vector3(10, 40));
+    }
+
+    /// <summary>
     /// Inicia a próxima wave.
     /// </summary>
     public void NextWave()
@@ -226,6 +243,7 @@ public class InGameScreen : MonoBehaviour
         else
             OpenStore();
         MenuController.Instance.OnRestartGame();
+        SavesManager.LoadSavedGame(GameModes.WaveMastery, SavesManager.SelectedSaveName);
     }
 
     /// <summary>
@@ -248,7 +266,6 @@ public class InGameScreen : MonoBehaviour
         MenuController.Instance.IsInGame = false;
         MenuController.Instance.ChangeScene(SceneNames.MainMenu, LoadSceneMode.Single);
         MenuController.Instance.OnRestartGame();
-        MenuController.Instance.IsTutorialActive = true;
     }
 
     /// <summary>
@@ -258,5 +275,21 @@ public class InGameScreen : MonoBehaviour
     {
         MenuController.Instance.ShowGameOverPanel();
         GameOverPanel.SetActive(true);
+    }
+
+    /// <summary>
+    /// Exibe um Popup na tela.
+    /// </summary>
+    /// <param name="text">O texto a ser exibido.</param>
+    /// <param name="textColor">A cor do texto a ser exibido.</param>
+    /// <param name="position">A posição do texto a ser exibido.</param>
+    private void ShowPopup(string text, Color32 textColor, Vector3 position)
+    {
+        var popup = Instantiate(PopupPrefab, position, Quaternion.identity, WorldPosCanvas.transform);
+        var popupSystem = popup.GetComponent<PopupSystem>();
+        if (popupSystem != null)
+        {
+            popupSystem.Init(text, position, 2000f, textColor);
+        }
     }
 }

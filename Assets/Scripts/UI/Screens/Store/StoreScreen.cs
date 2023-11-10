@@ -11,12 +11,12 @@ public class StoreScreen : MonoBehaviour
     public List<GameObject> StoreItems { get; private set; }
     public StoreItem SelectedItem { get; set; }
     public StoreTabs ActiveTab { get; private set; } = StoreTabs.Weapons;
+    public bool IsSaveDirty { get; set; }
     public bool hasItem => SelectedItem != null && SelectedItem.Data != null;
 
     public delegate void OnStartDragCallback(StoreItem storeItem);
     public OnStartDragCallback OnStartDrag;
 
-    [SerializeField]
     public PlayerData PlayerData;
     public Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, ActiveTabImage, InactiveTabImage;
     public CustomAudio PurchaseSound;
@@ -28,7 +28,7 @@ public class StoreScreen : MonoBehaviour
     [SerializeField]
     Image PreviewIcon, PreviewBulletIcon;
     [SerializeField]
-    Button BuyButton, TestItemButton, BtnReady;
+    Button BuyButton, TestItemButton, BtnReady, BtnSaveGame;
     [SerializeField]
     GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab;
     [SerializeField]
@@ -43,6 +43,7 @@ public class StoreScreen : MonoBehaviour
 
     void Start()
     {
+        PlayerData = Resources.Load<PlayerData>("ScriptableObjects/Player/Player");
         StoreItems = GameObject.FindGameObjectsWithTag("StoreItem").ToList();
         storePanelAnimator = StorePanel.GetComponent<Animator>();
         PreviewBtnBuyText = BuyButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -65,6 +66,7 @@ public class StoreScreen : MonoBehaviour
         PreviewPanelContent.transform.parent.gameObject.SetActive(ActiveTab != StoreTabs.Inventory);
         InventoryPreviewPanel.transform.parent.gameObject.SetActive(ActiveTab == StoreTabs.Inventory);
         InventorySlotsPanel.SetActive(ActiveTab == StoreTabs.Inventory);
+        BtnSaveGame.interactable = IsSaveDirty;
 
         if (PlayerData != null)
         {
@@ -95,11 +97,28 @@ public class StoreScreen : MonoBehaviour
                 if (SelectedItem.Data is StoreThrowableData storeThrowableData)
                 {
                     InventoryData.ThrowableSelection playerThrowable = PlayerData.InventoryData.ThrowableItemsSelection.FirstOrDefault(x => x.Type == storeThrowableData.ThrowableData.Type);
+
+                    int diff = 0;
                     if (playerThrowable != null)
+                    {
                         SetCountStats(
                             count: (playerThrowable?.Count ?? 0).ToString(),
                             total: $"/{playerThrowable.MaxCount}"
                         );
+
+                        diff = playerThrowable.MaxCount - playerThrowable.Count;
+                    }
+                    else
+                    {
+                        diff = storeThrowableData.ThrowableData.MaxCount;
+                        SetCountStats(
+                            count: "0",
+                            total: $"/{storeThrowableData.ThrowableData.MaxCount}"
+                        );
+                    }
+
+                    if (Constants.GetAction(InputActions.BuyMaxStoreItems) && diff > 0)
+                        PreviewBtnBuyText.text = $"Fill all +{diff}";
                 }
                 else if (SelectedItem.Data is StoreAmmoData storeAmmoData)
                 {
@@ -112,8 +131,16 @@ public class StoreScreen : MonoBehaviour
                     );
 
                     int diff = maxAmmo - currentAmmo;
-                    if (diff > 0 && diff < storeAmmoData.Amount)
-                        PreviewBtnBuyText.text = $"Buy +{diff}";
+                    if (Constants.GetAction(InputActions.BuyMaxStoreItems))
+                    {
+                        if (diff > 0)
+                            PreviewBtnBuyText.text = $"Fill all +{diff}";
+                    }
+                    else
+                    {
+                        if (diff > 0 && diff < storeAmmoData.Amount)
+                            PreviewBtnBuyText.text = $"Buy +{diff}";
+                    }
                 }
                 else
                 {
@@ -330,13 +357,13 @@ public class StoreScreen : MonoBehaviour
     /// <param name="text">Texto a ser exibido</param>
     /// <param name="textColor">A cor que o popup vai ser exibido</param>
     /// <param name="hitPosition">A posição que o popup vai aparecer</param>
-    public void ShowPopup(string text, Color32 textColor, Vector3 hitPosition)
+    public void ShowPopup(string text, Color32 textColor, Vector3 hitPosition, float duration = 1500f, float scale = 50)
     {
         var popup = Instantiate(PopupPrefab, hitPosition, Quaternion.identity, WorldPosCanvas.transform);
         var popupSystem = popup.GetComponent<PopupSystem>();
         if (popupSystem != null)
         {
-            popupSystem.Init(text, hitPosition, 22000f, textColor, 50);
+            popupSystem.Init(text, hitPosition, duration, textColor, scale);
         }
     }
 
@@ -488,12 +515,31 @@ public class StoreScreen : MonoBehaviour
 
         if (purchased)
         {
+            IsSaveDirty = true;
             float value = SelectedItem.Data.Price - SelectedItem.Data.Discount;
 
             PlayerData.TakeMoney(value);
             PurchaseSound.PlayIfNotNull(audioSource, AudioTypes.UI);
             ShowPopup($"-{value:N2}", Color.red, PlayerMoneyText.transform.position);
         }
+    }
+
+    /// <summary>
+    /// Salva o progresso atual do jogo.
+    /// </summary>
+    public void SaveGame()
+    {
+        if (!IsSaveDirty)
+            return;
+
+        if (SavesManager.SaveGame(GameModes.WaveMastery, SavesManager.SelectedSaveName))
+        {
+            IsSaveDirty = false;
+            MenuController.Instance.SetCursor(Cursors.Arrow);
+            ShowPopup("Game progress saved!", Constants.Colors.GreenMoney, BtnSaveGame.transform.position + new Vector3(10, -40), 2000f, 30);
+        }
+        else
+            ShowPopup("Failed to save game progress!", Color.red, BtnSaveGame.transform.position + new Vector3(10, -40), 2000f, 30);
     }
 
     /// <summary>
@@ -510,7 +556,7 @@ public class StoreScreen : MonoBehaviour
 
         if (data.WeaponData.IsPrimary)
         {
-            InventoryData.WeaponSelection newWeaponSelection = new(data.WeaponData.Type, WeaponEquippedSlot.Primary)
+            InventoryData.WeaponSelection newWeaponSelection = new(data.WeaponData.Type, WeaponEquippedSlot.Primary, data.WeaponData.WeaponClass)
             {
                 UpgradesMap = data.WeaponData.Upgrades.Select(x => new InventoryData.WeaponSelection.WeaponUpgradeMap(x.Attribute, 0)).ToList()
             };
@@ -520,7 +566,7 @@ public class StoreScreen : MonoBehaviour
         }
         else
         {
-            InventoryData.WeaponSelection newWeaponSelection = new(data.WeaponData.Type, WeaponEquippedSlot.Secondary)
+            InventoryData.WeaponSelection newWeaponSelection = new(data.WeaponData.Type, WeaponEquippedSlot.Secondary, data.WeaponData.WeaponClass)
             {
                 UpgradesMap = data.WeaponData.Upgrades.Select(x => new InventoryData.WeaponSelection.WeaponUpgradeMap(x.Attribute, 0)).ToList()
             };
@@ -549,13 +595,20 @@ public class StoreScreen : MonoBehaviour
         if (currentAmmo >= maxAmmo)
             return false;
 
+        int diff = maxAmmo - currentAmmo;
+
+        if (Constants.GetAction(InputActions.BuyMaxStoreItems))
+        {
+            PlayerData.InventoryData.SetAmmo(data.BulletType, currentAmmo + diff);
+            return true;
+        }
+
         if (currentAmmo + data.Amount > maxAmmo)
         {
-            int diff = maxAmmo - currentAmmo;
             PlayerData.InventoryData.SetAmmo(data.BulletType, currentAmmo + diff);
         }
         else
-            PlayerData.InventoryData.SetAmmo(data.BulletType, (int)data.Amount + currentAmmo);
+            PlayerData.InventoryData.SetAmmo(data.BulletType, currentAmmo + (int)data.Amount);
 
         return true;
     }
@@ -571,12 +624,16 @@ public class StoreScreen : MonoBehaviour
         if (data.Amount <= 0)
             return false;
 
+        int buyCount = (int)data.Amount;
+
         bool hasThrowable = PlayerData.InventoryData.HasThrowable(data.ThrowableData.Type);
 
         if (!hasThrowable)
         {
+            if (Constants.GetAction(InputActions.BuyMaxStoreItems))
+                buyCount = data.ThrowableData.MaxCount;
             PlayerData.InventoryData.UnequipAllThrowables();
-            PlayerData.InventoryData.ThrowableItemsSelection.Add(new(data.ThrowableData.Type, (int)data.Amount, data.ThrowableData.MaxCount, true));
+            PlayerData.InventoryData.ThrowableItemsSelection.Add(new(data.ThrowableData.Type, buyCount, data.ThrowableData.MaxCount, true));
             var item = inventoryTab.CreateInventoryItem(data, true);
             inventoryTab.GrenadeSlot.DropItem(item);
         }
@@ -585,8 +642,10 @@ public class StoreScreen : MonoBehaviour
             var throwable = PlayerData.InventoryData.ThrowableItemsSelection.Find(t => t.Type == data.ThrowableData.Type);
             if (throwable.Count >= throwable.MaxCount)
                 return false;
+            if (Constants.GetAction(InputActions.BuyMaxStoreItems))
+                buyCount = throwable.MaxCount - throwable.Count;
             PlayerData.InventoryData.UnequipAllThrowables();
-            throwable.Count += (int)data.Amount;
+            throwable.Count += buyCount;
             throwable.IsEquipped = true;
         }
 

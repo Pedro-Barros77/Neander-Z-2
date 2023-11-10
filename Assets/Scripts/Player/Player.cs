@@ -221,6 +221,8 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
             HealthBar.RemoveValue(value);
         ShowPopup(value.ToString("N1"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
+        WavesManager.Instance.CurrentWave.Stats.DamageTaken += value;
+
         if (Health <= 0 && IsAlive)
             Die();
     }
@@ -237,7 +239,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         var popupSystem = popup.GetComponent<PopupSystem>();
         if (popupSystem != null)
         {
-            popupSystem.Init(text, hitPosition, 2000f, textColor);
+            popupSystem.Init(text, hitPosition, 1300f, textColor);
         }
     }
 
@@ -258,6 +260,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     /// </summary>
     protected virtual void Die()
     {
+        SavesManager.UpdateWaveStats(WavesManager.Instance.CurrentWave.Data.Number, died: true);
         WavesManager.Instance.EnemiesTargets.Remove(this);
         IsAlive = false;
         isDying = true;

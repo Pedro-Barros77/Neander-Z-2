@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEditor;
-using UnityEditor.Presets;
 using UnityEditor.Rendering;
 using UnityEditorInternal;
 using UnityEngine;
@@ -26,6 +22,7 @@ public class KeybindConfigEditor : Editor
     SerializedProperty SwitchWeapon;
     SerializedProperty EquipPrimaryWeapon;
     SerializedProperty EquipSecondaryWeapon;
+    SerializedProperty BuyMaxStoreItems;
     ReorderableList MoveLeftList;
     ReorderableList MoveRightList;
     ReorderableList JumpList;
@@ -39,6 +36,7 @@ public class KeybindConfigEditor : Editor
     ReorderableList SwitchWeaponList;
     ReorderableList EquipPrimaryWeaponList;
     ReorderableList EquipSecondaryWeaponList;
+    ReorderableList BuyMaxStoreItemsList;
 
 
     SerializedProperty DEBUG_IncreaseHealth;
@@ -92,6 +90,7 @@ public class KeybindConfigEditor : Editor
         SwitchWeapon = GetTarget.FindProperty("SwitchWeapon");
         EquipPrimaryWeapon = GetTarget.FindProperty("EquipPrimaryWeapon");
         EquipSecondaryWeapon = GetTarget.FindProperty("EquipSecondaryWeapon");
+        BuyMaxStoreItems = GetTarget.FindProperty("BuyMaxStoreItems");
 
         DEBUG_IncreaseHealth = GetTarget.FindProperty("DEBUG_IncreaseHealth");
         DEBUG_DecreaseHealth = GetTarget.FindProperty("DEBUG_DecreaseHealth");
@@ -140,6 +139,7 @@ public class KeybindConfigEditor : Editor
         SwitchWeaponList = KeyItem(SwitchWeapon);
         EquipPrimaryWeaponList = KeyItem(EquipPrimaryWeapon);
         EquipSecondaryWeaponList = KeyItem(EquipSecondaryWeapon);
+        BuyMaxStoreItemsList = KeyItem(BuyMaxStoreItems);
 
         DEBUG_IncreaseHealthList = KeyItem(DEBUG_IncreaseHealth);
         DEBUG_DecreaseHealthList = KeyItem(DEBUG_DecreaseHealth);
@@ -183,6 +183,7 @@ public class KeybindConfigEditor : Editor
         FoldoutKeybind(SwitchWeapon, SwitchWeaponList);
         FoldoutKeybind(EquipPrimaryWeapon, EquipPrimaryWeaponList);
         FoldoutKeybind(EquipSecondaryWeapon, EquipSecondaryWeaponList);
+        FoldoutKeybind(BuyMaxStoreItems, BuyMaxStoreItemsList);
 
         EditorGUILayout.Space(40);
 

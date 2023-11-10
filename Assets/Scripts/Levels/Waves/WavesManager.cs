@@ -77,7 +77,7 @@ public class WavesManager : MonoBehaviour
                 CurrentWave.CenterEnemies();
         }
 
-        WaveEnemiesCountText.text = $"{CurrentWave.SpawnCount - CurrentWave.EnemiesAlive.Count}/{(CurrentWave.Data.IsBossWave ? "∞" : CurrentWave.TotalEnemiesCount)}";
+        WaveEnemiesCountText.text = $"{Mathf.Clamp(CurrentWave.SpawnCount - CurrentWave.InfiniteEnemiesKilled - CurrentWave.EnemiesAlive.Count, 0, int.MaxValue)}/{(CurrentWave.Data.IsBossWave ? "∞" : CurrentWave.TotalEnemiesCount)}";
     }
 
     /// <summary>
@@ -147,13 +147,13 @@ public class WavesManager : MonoBehaviour
         MenuController.Instance.PauseGame();
         WaveSummaryPanel.SetActive(true);
         SummaryTitle.text = $"Survived {CurrentWave.Data.Title.ValueOrDefault($"Wave {WaveNumber}")}";
-        P1WaveScoreValue.text = CurrentWave.P1Score.ToString("N0");
-        P1EarnedMoneyValue.text = $"$ {CurrentWave.P1Money:N2}";
-        P1TotalKillsValue.text = CurrentWave.P1TotalKills.ToString();
-        P1HeadshotKillsValue.text = CurrentWave.P1HeadshotKills.ToString();
-        P1PrecisionValue.text = $"{CurrentWave.P1Precision:N1} %";
+        P1WaveScoreValue.text = CurrentWave.Stats.Score.ToString("N0");
+        P1EarnedMoneyValue.text = $"$ {CurrentWave.Stats.MoneyEarned:N2}";
+        P1TotalKillsValue.text = CurrentWave.Stats.EnemiesKilled.ToString();
+        P1HeadshotKillsValue.text = CurrentWave.Stats.HeadshotKills.ToString();
+        P1PrecisionValue.text = $"{CurrentWave.Stats.Precision:N1} %";
         Player.Data.CurrentWaveIndex = WaveNumber + 1;
-        Player.Data.GetMoney(CurrentWave.P1Money);
+        Player.Data.GetMoney(CurrentWave.Stats.MoneyEarned);
     }
 
     /// <summary>
