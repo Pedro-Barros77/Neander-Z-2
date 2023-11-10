@@ -87,8 +87,10 @@ public class SelectSaveScreen : MonoBehaviour
         TotalInStoreTimeText.text = "soon...";
         WavesRestartedText.text = save.WavesStats.Sum(x => x.RestartCount).ToString();
         TotalDeathsText.text = save.WavesStats.Sum(x => x.DeathCount).ToString();
-        TotalEnemiesKilledText.text = save.WavesStats.Sum(x => x.EnemiesKilled).ToString();
-        TotalHeadshotKillsText.text = $"{save.WavesStats.Sum(x => x.HeadshotKills)} ({save.WavesStats.Sum(x => x.HeadshotKills) / save.WavesStats.Sum(x => x.EnemiesKilled) * 100:N0}%)";
+        int enemiesKilled = save.WavesStats.Sum(x => x.EnemiesKilled);
+        int headshotKills = save.WavesStats.Sum(x => x.HeadshotKills);
+        TotalEnemiesKilledText.text = enemiesKilled.ToString();
+        TotalHeadshotKillsText.text = $"{headshotKills} ({(headshotKills + enemiesKilled == 0 ? 0 : headshotKills / enemiesKilled * 100):N0}%)";
         TotalPrecisionText.text = $"{save.WavesStats.Sum(x => x.Precision) / save.WavesStats.Count:N1}%";
     }
 

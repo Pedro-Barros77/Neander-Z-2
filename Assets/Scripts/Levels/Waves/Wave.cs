@@ -10,18 +10,18 @@ public class Wave : MonoBehaviour
     public int SpawnCount { get; private set; }
     public bool IsFinished { get; private set; }
     public int TotalEnemiesCount { get; set; }
-    public bool HasMoreSpawns => SpawnCount - InfiniteGroupKills < TotalEnemiesCount;
+    public bool HasMoreSpawns => SpawnCount - InfiniteEnemiesKilled < TotalEnemiesCount;
     public List<BaseEnemy> EnemiesAlive { get; private set; } = new List<BaseEnemy>();
     public int P1AttacksCount { get; private set; }
     public int P1AttacksHit { get; private set; }
     public bool HasStarted { get; private set; }
     public float StartTime { get; private set; }
     public float EndTime { get; private set; }
+    public int InfiniteEnemiesKilled { get; private set; }
 
     public float FloorHeight => LevelData.BottomRightSpawnLimit.y;
     float LeftBoundary => LevelData.TopLeftSpawnLimit.x;
     float RightBoundary => LevelData.BottomRightSpawnLimit.x;
-    int InfiniteGroupKills;
 
     public Transform EnemiesContainer { get; private set; }
     LevelData LevelData;
@@ -62,7 +62,7 @@ public class Wave : MonoBehaviour
             SpawnMultipleEnemies(diff);
         }
 
-        if (SpawnCount - InfiniteGroupKills >= TotalEnemiesCount && EnemiesAlive.Count == 0 && !IsFinished)
+        if (SpawnCount - InfiniteEnemiesKilled >= TotalEnemiesCount && EnemiesAlive.Count == 0 && !IsFinished)
         {
             StopCoroutine(EnemySpawner);
             StartCoroutine(EndWaveDelayed());
@@ -131,6 +131,10 @@ public class Wave : MonoBehaviour
     {
         foreach (EnemyGroup group in Data.EnemyGroups)
             group.IsInfinite = false;
+
+        EnemiesAlive = EnemiesAlive.Where(x => x != null && x.IsAlive).ToList();
+
+        InfiniteEnemiesKilled -= EnemiesAlive.Count;
 
         Data.IsBossWave = false;
     }
@@ -244,7 +248,7 @@ public class Wave : MonoBehaviour
         if (group == null || group.Count <= 0) return null;
 
         if (group.IsInfinite)
-            InfiniteGroupKills++;
+            InfiniteEnemiesKilled++;
         else
         {
             group.Count--;
@@ -324,7 +328,7 @@ public class Wave : MonoBehaviour
 
     public void KillAllWave()
     {
-        SpawnMultipleEnemies(TotalEnemiesCount - (SpawnCount - InfiniteGroupKills));
+        SpawnMultipleEnemies(TotalEnemiesCount - (SpawnCount - InfiniteEnemiesKilled));
         KillAllAlive();
     }
 

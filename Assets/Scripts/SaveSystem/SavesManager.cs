@@ -243,10 +243,10 @@ public static class SavesManager
     /// <returns></returns>
     private static NZSave Seed(NZSave save, PlayerData player, InventoryData inventory)
     {
-
         InventoryData.WeaponSelection UpdateWeaponMagazine(InventoryData.WeaponSelection weaponSelection)
         {
             var weapon = GetWeaponDataSO(weaponSelection.Type, weaponSelection.WeaponClass);
+            if (weapon == null) return null;
             weaponSelection.MagazineBullets = weapon.MagazineBullets;
             return weaponSelection;
         }
@@ -273,8 +273,8 @@ public static class SavesManager
         save.RifleAmmo = inventory.RifleAmmo;
         save.SniperAmmo = inventory.SniperAmmo;
         save.RocketAmmo = inventory.RocketAmmo;
-        save.PrimaryWeaponsSelection = inventory.PrimaryWeaponsSelection.Select(UpdateWeaponMagazine).ToList();
-        save.SecondaryWeaponsSelection = inventory.SecondaryWeaponsSelection.Select(UpdateWeaponMagazine).ToList();
+        save.PrimaryWeaponsSelection = inventory.PrimaryWeaponsSelection.Select(UpdateWeaponMagazine).Where(x => x != null).ToList();
+        save.SecondaryWeaponsSelection = inventory.SecondaryWeaponsSelection.Select(UpdateWeaponMagazine).Where(x => x != null).ToList();
         save.ThrowableItemsSelection = inventory.ThrowableItemsSelection;
         save.TacticalAbilitiesSelection = inventory.TacticalAbilitiesSelection;
 
