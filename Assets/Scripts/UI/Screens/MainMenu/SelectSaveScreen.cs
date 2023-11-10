@@ -13,7 +13,8 @@ public class SelectSaveScreen : MonoBehaviour
     [SerializeField]
     GameObject SaveFilePrefab, NewSaveModal, PreviewContent, EmptyPreview;
     [SerializeField]
-    TMP_InputField InputNewSaveName;
+    InputField InputNewSaveName;
+    //TMP_InputField InputNewSaveName;
 
     [SerializeField]
     TextMeshProUGUI SaveTitleText, CurrentWaveText, TotalScoreText, MoneyText, PrimaryWeaponText, SecondaryWeaponText, HealthText,
