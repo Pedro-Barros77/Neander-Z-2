@@ -18,10 +18,13 @@ public class Wave : MonoBehaviour
     public float StartTime { get; private set; }
     public float EndTime { get; private set; }
     public int InfiniteEnemiesKilled { get; private set; }
+    public bool CanSpawn { get; set; }
 
     public float FloorHeight => LevelData.BottomRightSpawnLimit.y;
     float LeftBoundary => LevelData.TopLeftSpawnLimit.x;
     float RightBoundary => LevelData.BottomRightSpawnLimit.x;
+    float RightMapBoundary => LevelData.RightMapBoundary.x;
+    float LeftMapBoundary => LevelData.LeftMapBoundary.x;
 
     public Transform EnemiesContainer { get; private set; }
     LevelData LevelData;
@@ -56,7 +59,7 @@ public class Wave : MonoBehaviour
 
         EnemiesAlive = EnemiesAlive.Where(x => x != null && x.IsAlive).ToList();
 
-        if (EnemiesAlive.Count <= Data.MinEnemiesAlive && SpawnCount > 0)
+        if (EnemiesAlive.Count <= Data.MinEnemiesAlive && SpawnCount > 0 && CanSpawn)
         {
             int diff = Data.MinEnemiesAlive - EnemiesAlive.Count;
             SpawnMultipleEnemies(diff);
@@ -74,6 +77,7 @@ public class Wave : MonoBehaviour
     /// </summary>
     public void StartWave()
     {
+        CanSpawn = true;
         var stat = SavesManager.UpdateWaveStats(Data.Number, started: true);
         stat.InputMode = MenuController.Instance.IsMobileInput ? 1 : 0;
         Stats = Resources.Load<WaveStats>($"ScriptableObjects/Waves/Stats/{Data.Number:D2}");
@@ -144,8 +148,15 @@ public class Wave : MonoBehaviour
     /// </summary>
     private IEnumerator EnemiesSpawner()
     {
+        if(Data.IsBossWave)
+            MenuController.Instance.CanPause = false;
+
+        if (!CanSpawn)
+            yield return null;
+
         yield return new WaitForSeconds(Data.StartDelayMs / 1000);
 
+        MenuController.Instance.CanPause = true;
         while (HasMoreSpawns)
         {
             int randomCount = Random.Range(Data.MinSpawnCount, Data.MaxSpawnCount);
@@ -195,8 +206,12 @@ public class Wave : MonoBehaviour
     /// </summary>
     /// <param name="hideFromCamera">Se a posição deve ser fora da área visível da câmera.</param>
     /// <returns>Um valor aleatório do X da posição.</returns>
-    public float GetRandomXPosition(bool hideFromCamera = true)
+    public float GetRandomXPosition(bool hideFromCamera = true, bool forceInsideMap = false)
     {
+
+        float leftBoundary = forceInsideMap ? LeftMapBoundary : LeftBoundary;
+        float rightBoundary = forceInsideMap ? RightMapBoundary : RightBoundary;
+
         if (hideFromCamera)
         {
             float cameraWidth = Camera.main.orthographicSize * Camera.main.aspect * 2;
@@ -204,13 +219,13 @@ public class Wave : MonoBehaviour
             float cameraLeftLimit = cameraLeft;
             float cameraRightLimit = cameraLeft + cameraWidth;
 
-            float leftX = Random.Range(LeftBoundary, cameraLeftLimit);
-            float rightX = Random.Range(cameraRightLimit, RightBoundary);
+            float leftX = Random.Range(leftBoundary, cameraLeftLimit);
+            float rightX = Random.Range(cameraRightLimit, rightBoundary);
 
             return Random.value < 0.5 ? leftX : rightX;
         }
 
-        return Random.Range(LeftBoundary, RightBoundary);
+        return Random.Range(leftBoundary, rightBoundary);
     }
 
     /// <summary>
@@ -256,7 +271,11 @@ public class Wave : MonoBehaviour
                 Data.EnemyGroups.Remove(group);
         }
 
-        BaseEnemy enemy = SpawnEnemy(group.EnemyType, new Vector3(GetRandomXPosition(), FloorHeight, 0), EnemiesContainer);
+        BaseEnemy enemy;
+        if (group == BossGroup)
+            enemy = SpawnEnemy(group.EnemyType, new Vector3(GetRandomXPosition(true, true), FloorHeight, 0), EnemiesContainer);
+        else
+            enemy = SpawnEnemy(group.EnemyType, new Vector3(GetRandomXPosition(), FloorHeight, 0), EnemiesContainer);
 
         float health = Random.Range(group.MinHealth, group.MaxHealth);
         float speed = Random.Range(group.MinSpeed, group.MaxSpeed);

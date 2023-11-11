@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelData : MonoBehaviour
 {
     [SerializeField]
-    public Vector2 TopLeftSpawnLimit, BottomRightSpawnLimit;
+    public Vector2 TopLeftSpawnLimit, BottomRightSpawnLimit, LeftMapBoundary, RightMapBoundary;
     [SerializeField]
     public bool InitEnemyTargets;
     [SerializeField]

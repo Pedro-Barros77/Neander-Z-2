@@ -4,8 +4,10 @@ using UnityEngine.UI;
 
 public class OptionsPanel : MonoBehaviour
 {
-    public OnGoBack GoBackFunction { get; set; }
     public delegate void OnGoBack();
+    public OnGoBack GoBackFunction { get; set; }
+    public delegate void OnVolumeChange(AudioTypes audioType, float volume);
+    public OnVolumeChange VolumeChangeFunction { get; set; }
 
     [SerializeField]
     TextMeshProUGUI TitleText;
@@ -38,6 +40,11 @@ public class OptionsPanel : MonoBehaviour
         UIVolumeCutLine = slidersContainer.Find("UIAudio").Find("Icon").GetChild(0).gameObject;
         PlayerVolumeCutLine = slidersContainer.Find("PlayerAudio").Find("Icon").GetChild(0).gameObject;
         EnemiesVolumeCutLine = slidersContainer.Find("EnemiesAudio").Find("Icon").GetChild(0).gameObject;
+
+        MusicVolumeSlider.onValueChanged.AddListener((value) => VolumeChangeFunction?.Invoke(AudioTypes.Music, value));
+        UIVolumeSlider.onValueChanged.AddListener((value) => VolumeChangeFunction?.Invoke(AudioTypes.UI, value));
+        PlayerVolumeSlider.onValueChanged.AddListener((value) => VolumeChangeFunction?.Invoke(AudioTypes.Player, value));
+        EnemiesVolumeSlider.onValueChanged.AddListener((value) => VolumeChangeFunction?.Invoke(AudioTypes.Enemies, value));
 
         initialized = true;
         Open();
