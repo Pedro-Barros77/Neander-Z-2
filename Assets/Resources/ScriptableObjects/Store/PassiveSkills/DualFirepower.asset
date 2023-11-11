@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cacafac5a99ad2c4895ceebb5ccccc33, type: 3}
+  m_Name: DualFirepower
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 7f66e03510734a74ea97cf117500d94b, type: 3}
+  Title: Dual Firepower
+  Description: Why settle for one when you can have two? Dual Firepower lets you
+    break the rules and carry *two primary weapons*. Become the walking armory, switching
+    between firepower with the finesse of a symphony conductor. Double trouble, double
+    the fun!
+  Price: 0
+  Discount: 0
+  Amount: 1
+  IconScale: 1
+  PreviewIconScale: 1
+  IsSellable: 0
+  Tags: 
+  SkillType: 5

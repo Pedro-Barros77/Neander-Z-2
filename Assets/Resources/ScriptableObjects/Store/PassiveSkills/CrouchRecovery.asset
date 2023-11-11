@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cacafac5a99ad2c4895ceebb5ccccc33, type: 3}
+  m_Name: CrouchRecovery
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 6c04669106392cf4aa30c9a1ab3601f0, type: 3}
+  Title: Crouch Recovery
+  Description: Ok this might sound stupid, but hold on! While the world is ending
+    right in front of you, why not just stop in the middle of nowhere and... Crouch?
+    While your're taking your breath, give your wounds a treat!<br><br> Heals the
+    player health by 2 each 0.5 second.
+  Price: 0
+  Discount: 0
+  Amount: 1
+  IconScale: 1
+  PreviewIconScale: 1
+  IsSellable: 0
+  Tags: 
+  SkillType: 5

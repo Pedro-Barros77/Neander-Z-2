@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Player Data", menuName = "Neander Z/Store/Player Data", order = 7)]
+[CreateAssetMenu(fileName = "New Player Data", menuName = "Neander Z/Store/Player Data", order = 8)]
 public class StorePlayerData : StoreItemData
 {
     public List<PlayerUpgrade> MaxHealthUpgrades;

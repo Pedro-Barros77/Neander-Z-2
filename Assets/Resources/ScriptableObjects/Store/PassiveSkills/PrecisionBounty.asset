@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cacafac5a99ad2c4895ceebb5ccccc33, type: 3}
+  m_Name: PrecisionBounty
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: b0b42fef2a06be2418e509a69882cff8, type: 3}
+  Title: Precision Bounty
+  Description: 'Aim for the head, collect the rewards! Precision Bounty turns every
+    headshot into a *possible* jackpot of ammo. <br><br>Each headshot kill grants
+    a small chance of dropping ammo for one of your weapons: <br>- Pistol Ammo: 1.0%
+    (6) <br>- Shotgun Ammo: 0.6% (2) <br>- Rifle Ammo: 0.8% (4) <br>- Sniper Ammo:
+    0.4% (2) <br>- Rocket Ammo: 0.2% (1)'
+  Price: 800
+  Discount: 0
+  Amount: 1
+  IconScale: 1
+  PreviewIconScale: 1
+  IsSellable: 0
+  Tags: 
+  SkillType: 5
