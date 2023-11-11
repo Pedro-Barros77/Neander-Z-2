@@ -28,6 +28,7 @@ MonoBehaviour:
     MaxKillScore: 53
     SpawnChanceMultiplier: 1
     IsInfinite: 1
+    IsDisabled: 0
   - EnemyType: 2
     Count: 10
     MinHealth: 20
@@ -40,6 +41,7 @@ MonoBehaviour:
     MaxKillScore: 60
     SpawnChanceMultiplier: 1
     IsInfinite: 1
+    IsDisabled: 0
   - EnemyType: 1
     Count: 10
     MinHealth: 15
@@ -52,6 +54,7 @@ MonoBehaviour:
     MaxKillScore: 70
     SpawnChanceMultiplier: 1.5
     IsInfinite: 1
+    IsDisabled: 0
   - EnemyType: 4
     Count: 10
     MinHealth: 1
@@ -64,6 +67,7 @@ MonoBehaviour:
     MaxKillScore: 20
     SpawnChanceMultiplier: 1.2
     IsInfinite: 1
+    IsDisabled: 0
   - EnemyType: 3
     Count: 1
     MinHealth: 1000
@@ -76,13 +80,14 @@ MonoBehaviour:
     MaxKillScore: 120
     SpawnChanceMultiplier: 100
     IsInfinite: 0
+    IsDisabled: 0
   MinEnemiesAlive: 10
   MaxEnemiesAlive: 15
   MinSpawnDelayMs: 4000
   MaxSpawnDelayMs: 8000
   MinSpawnCount: 4
   MaxSpawnCount: 6
-  StartDelayMs: 2000
+  StartDelayMs: 3700
   EndDelayMs: 2100
   MoneyMultiplier: 1
   IsBossWave: 1

@@ -64,7 +64,7 @@ public class Rui : BaseEnemy
         if (isWalking)
         {
             float targetDir = Target.transform.position.x < transform.position.x ? -1 : 1;
-            transform.Translate(new Vector2(targetDir * 0.01f, 0));
+            transform.Translate(new Vector2(targetDir * 0.5f * Time.unscaledDeltaTime, 0));
         }
 
         if (isHalfHealth && !isRageing && !hasRaged && (isIdle || isRunning) && !isBumping && hasSpawned)
