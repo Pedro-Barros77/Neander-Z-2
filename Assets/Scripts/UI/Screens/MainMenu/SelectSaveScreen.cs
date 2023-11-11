@@ -90,7 +90,10 @@ public class SelectSaveScreen : MonoBehaviour
         int enemiesKilled = save.WavesStats.Sum(x => x.EnemiesKilled);
         int headshotKills = save.WavesStats.Sum(x => x.HeadshotKills);
         TotalEnemiesKilledText.text = enemiesKilled.ToString();
-        TotalHeadshotKillsText.text = $"{headshotKills} ({(headshotKills + enemiesKilled == 0 ? 0 : headshotKills / enemiesKilled * 100):N0}%)";
+        int headshotPrecision = 0;
+        if (headshotKills + enemiesKilled > 0)
+            headshotPrecision = (int)((float)headshotKills / enemiesKilled * 100);
+        TotalHeadshotKillsText.text = $"{headshotKills} ({headshotPrecision:N0}%)";
         TotalPrecisionText.text = $"{save.WavesStats.Sum(x => x.Precision) / save.WavesStats.Count:N1}%";
     }
 
