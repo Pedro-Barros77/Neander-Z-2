@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 5253658418040489169}
   - component: {fileID: 3151383250216049219}
   - component: {fileID: 83341872644057029}
+  - component: {fileID: 9018258423031385161}
   m_Layer: 5
   m_Name: BlinkingText
   m_TagString: Untagged
@@ -235,3 +236,27 @@ MonoBehaviour:
   SecondTransitionDurationMs: 200
   ShowBackground: 0
   BlinkBackground: 0
+  DisableOnStartFinish: 0
+--- !u!223 &9018258423031385161
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604632442058216041}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 115
+  m_TargetDisplay: 0

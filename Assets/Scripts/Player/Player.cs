@@ -129,6 +129,8 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     CustomAudio SecondChanceActivationSound;
     [SerializeField]
     List<CustomAudio> CautiousHitSounds;
+    [SerializeField]
+    GameObject AmmoDropPrefab;
 
     public PlayerMovement PlayerMovement { get; private set; }
     public Rigidbody2D RigidBody { get; private set; }
@@ -394,6 +396,80 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         //lastBloodSplatterTime = Time.time;
     }
 
+    public void HandleEnemyKill(BaseEnemy enemy, string lastDamagedBodyPartName)
+    {
+        if (enemy == null) return;
+
+        bool isHeadshot = lastDamagedBodyPartName == "Head";
+        if (isHeadshot && Backpack.EquippedPassiveSkillType == PassiveSkillTypes.PrecisionBounty)
+            CheckAmmoDrop(enemy.transform.position);
+    }
+
+    /// <summary>
+    /// Sorteia se o inimigo vai dropar munição ou não.
+    /// </summary>
+    /// <param name="spawnPosition">A posição para spawnar a munição.</param>
+    private void CheckAmmoDrop(Vector3 spawnPosition)
+    {
+        BulletTypes? primaryType = Backpack.EquippedPrimaryWeapon?.BulletType;
+        if (primaryType == BulletTypes.Melee)
+            primaryType = null;
+        BulletTypes? secondaryType = Backpack.EquippedSecondaryWeapon?.BulletType;
+        if (secondaryType == BulletTypes.Melee)
+            secondaryType = null;
+
+        BulletTypes ammoDropType;
+        if (primaryType == null && secondaryType == null)
+            return;
+
+        if (primaryType == null)
+            ammoDropType = secondaryType.Value;
+        else if (secondaryType == null)
+            ammoDropType = primaryType.Value;
+        else
+            ammoDropType = Random.Range(0, 2) == 0 ? primaryType.Value : secondaryType.Value;
+
+        int dropCount = 0;
+        float dropChance = 0;
+
+        switch (ammoDropType)
+        {
+            case BulletTypes.Pistol:
+                dropCount = Constants.PrecisionBountyPistolCount;
+                dropChance = Constants.PrecisionBountyPistolChance;
+                break;
+            case BulletTypes.Shotgun:
+                dropCount = Constants.PrecisionBountyShotgunCount;
+                dropChance = Constants.PrecisionBountyShotgunChance;
+                break;
+            case BulletTypes.AssaultRifle:
+                dropCount = Constants.PrecisionBountyAssaultRifleCount;
+                dropChance = Constants.PrecisionBountyAssaultRifleChance;
+                break;
+            case BulletTypes.Sniper:
+                dropCount = Constants.PrecisionBountySniperCount;
+                dropChance = Constants.PrecisionBountySniperChance;
+                break;
+            case BulletTypes.Rocket:
+                dropCount = Constants.PrecisionBountyRocketCount;
+                dropChance = Constants.PrecisionBountyRocketChance;
+                break;
+        }
+
+        if (Random.Range(0f, 1f) > dropChance)
+            return;
+
+        var ammoDropObj = Instantiate(AmmoDropPrefab, spawnPosition, Quaternion.identity, WorldPosCanvas.transform);
+        var ammoDrop = ammoDropObj.GetComponent<AmmoDrop>();
+        ammoDrop.SetDrop(
+            ammoDropType,
+            dropCount,
+            (BulletTypes type, int count) => Data.InventoryData.SetAmmo(type, Data.InventoryData.GetAmmo(type) + count));
+    }
+
+    /// <summary>
+    /// Atualiza as habilidades passivas equipadas.
+    /// </summary>
     private void UpdatePassiveSkills()
     {
         if (Backpack.EquippedPassiveSkillType == PassiveSkillTypes.CrouchRecovery)

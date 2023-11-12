@@ -102,19 +102,19 @@ public class InventoryData : AutoRevertSO
         switch (type)
         {
             case BulletTypes.Pistol:
-                PistolAmmo = count;
+                PistolAmmo = Mathf.Clamp(count, 0, GetMaxAmmo(type));
                 break;
             case BulletTypes.Shotgun:
-                ShotgunAmmo = count;
+                ShotgunAmmo = Mathf.Clamp(count, 0, GetMaxAmmo(type));
                 break;
             case BulletTypes.AssaultRifle:
-                RifleAmmo = count;
+                RifleAmmo = Mathf.Clamp(count, 0, GetMaxAmmo(type));
                 break;
             case BulletTypes.Sniper:
-                SniperAmmo = count;
+                SniperAmmo = Mathf.Clamp(count, 0, GetMaxAmmo(type));
                 break;
             case BulletTypes.Rocket:
-                RocketAmmo = count;
+                RocketAmmo = Mathf.Clamp(count, 0, GetMaxAmmo(type));
                 break;
             default:
                 break;

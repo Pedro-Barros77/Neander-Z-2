@@ -10,6 +10,7 @@ public interface IEnemyTarget
     public bool IsAlive { get; }
     public SpriteRenderer SpriteRenderer { get; }
     public Rigidbody2D RigidBody { get; }
+    public void HandleEnemyKill(BaseEnemy enemy, string lastDamagedBodyPartName);
     public void TakeDamage(float damage, float headshotMultiplier, string bodyPartName, IPlayerTarget attacker, Vector3? hitPosition = null, bool selfDamage = false);
     public void GetHealth(float value);
     void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName);
