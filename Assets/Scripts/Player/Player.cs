@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
 {
@@ -95,9 +97,10 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     /// 
     public float LastStaminaUse { get; private set; }
     public bool IsAlive { get; private set; }
-    public bool isDying { get; private set; }
+    public bool IsDying { get; private set; }
     public float DeathTime { get; private set; }
     public float DeathTimeDelayMs { get; private set; } = 5000f;
+    public bool IsSecondChanceActive { get; private set; }
 
 
     /// <summary>
@@ -112,6 +115,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     private InGameScreen Screen;
     private Canvas WorldPosCanvas;
     private GameObject PopupPrefab;
+    private AudioSource AudioSource;
     /// <summary>
     /// Script responsбvel por controlar a arma do jogador, como mira, troca e recarregamento.
     /// </summary>
@@ -119,6 +123,12 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     public PlayerWeaponController WeaponController;
     [SerializeField]
     ProgressBar HealthBar, StaminaBar;
+    [SerializeField]
+    GameObject SecondChanceEffect, CautiousEffect;
+    [SerializeField]
+    CustomAudio SecondChanceActivationSound;
+    [SerializeField]
+    List<CustomAudio> CautiousHitSounds;
 
     public PlayerMovement PlayerMovement { get; private set; }
     public Rigidbody2D RigidBody { get; private set; }
@@ -129,6 +139,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         Screen = GameObject.Find("Screen").GetComponent<InGameScreen>();
         Backpack = new Backpack(this, Data.InventoryData);
         RigidBody = GetComponent<Rigidbody2D>();
+        AudioSource = GetComponent<AudioSource>();
         PlayerMovement = GetComponentInChildren<PlayerMovement>();
         Data.MovementSpeed = Data.MaxMovementSpeed;
         Data.Stamina = Data.MaxStamina;
@@ -157,6 +168,10 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     void Update()
     {
         StaminaBar.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
+        if (IsSecondChanceActive)
+            SecondChanceEffect.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
+        if (Backpack.EquippedPassiveSkillType == PassiveSkillTypes.Cautious)
+            CautiousEffect.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y, 0);
 
         UpdatePassiveSkills();
 
@@ -219,18 +234,46 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         if (value < 0) return;
 
         if (selfDamage && Backpack.EquippedPassiveSkillType == PassiveSkillTypes.Cautious)
-            value *= Constants.CautiousSkillDamageMultiplier;
+        {
+            value *= Constants.CautiousDamageMultiplier;
+            CautiousHitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
+            CautiousEffect.SetActive(true);
+            CautiousEffect.GetComponentInChildren<Animator>().SetTrigger("CautiousEffect");
+        }
+
+        if (Health / MaxHealth >= Constants.SecondChanceHealthTrheshold
+            && (Health - value) / MaxHealth < Constants.SecondChanceHealthTrheshold
+            && Backpack.EquippedPassiveSkillType == PassiveSkillTypes.SecondChance
+            && !IsSecondChanceActive)
+        {
+            IsSecondChanceActive = true;
+            GetStamina(MaxStamina);
+            SecondChanceEffect.SetActive(true);
+            SecondChanceEffect.GetComponentInChildren<Animator>().SetTrigger("SecondChanceEffect");
+            SecondChanceActivationSound.PlayIfNotNull(AudioSource, AudioTypes.Player);
+            StartCoroutine(DeactivateSecondChance());
+        }
+
+        if (IsSecondChanceActive && Backpack.EquippedPassiveSkillType == PassiveSkillTypes.SecondChance)
+            value *= Constants.SecondChanceDamageTakenMultiplier;
 
         Data.Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         if (HealthBar != null)
             HealthBar.RemoveValue(value);
         ShowPopup(value.ToString("N1"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
-        if (WavesManager.Instance.CurrentWave != null)
+        if (WavesManager.Instance != null && WavesManager.Instance.CurrentWave != null && WavesManager.Instance.CurrentWave.Stats != null)
             WavesManager.Instance.CurrentWave.Stats.DamageTaken += value;
 
         if (Health <= 0 && IsAlive)
             Die();
+    }
+
+    private IEnumerator DeactivateSecondChance()
+    {
+        yield return new WaitForSeconds(Constants.SecondChanceDurationMs / 1000);
+        IsSecondChanceActive = false;
+        SecondChanceEffect.SetActive(false);
     }
 
     /// <summary>
@@ -269,7 +312,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         SavesManager.UpdateWaveStats(WavesManager.Instance.CurrentWave.Data.Number, died: true);
         WavesManager.Instance.EnemiesTargets.Remove(this);
         IsAlive = false;
-        isDying = true;
+        IsDying = true;
         StaminaBar.gameObject.SetActive(false);
         Destroy(Backpack.EquippedPrimaryWeapon?.gameObject);
         Destroy(Backpack.EquippedSecondaryWeapon?.gameObject);
@@ -294,6 +337,9 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     public void LoseStamina(float value)
     {
         if (value < 0) return;
+
+        if (IsSecondChanceActive && Backpack.EquippedPassiveSkillType == PassiveSkillTypes.SecondChance)
+            value *= Constants.SecondChanceStaminaDrainMultiplier;
 
         LastStaminaUse = Time.time;
         Data.Stamina = Mathf.Clamp(Stamina - value, 0, MaxStamina);

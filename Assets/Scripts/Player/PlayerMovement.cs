@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     bool isFalling;
     bool isSprinting;
 
-    bool isIdle => !isRolling && !isJumpingSideways && !isTurning && !isTurningBack && !isRunning && !isFalling && !isCrouching && !Player.isDying;
+    bool isIdle => !isRolling && !isJumpingSideways && !isTurning && !isTurningBack && !isRunning && !isFalling && !isCrouching && !Player.IsDying;
 
     bool isPressingRight;
     bool isPressingLeft;
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!Player.IsAlive || Player.isDying)
+        if (!Player.IsAlive || Player.IsDying)
         {
             isRolling = false;
             isJumpingSideways = false;
@@ -317,7 +317,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isJumpingSideways", isJumpingSideways);
         animator.SetBool("isCrouching", isCrouching);
 
-        if (Player.isDying)
+        if (Player.IsDying)
             animator.SetTrigger("Die");
         else
             animator.ResetTrigger("Die");

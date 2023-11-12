@@ -22,9 +22,18 @@ public static class Constants
     public static float MaxPlayerSprintStamina { get; private set; } = 120; // half section = 5
     public static float MaxPlayerAttackStamina { get; private set; } = 120; // half section = 5
 
+    //Crouch Recovery
     public static float CrouchRecoveryHealthTick { get; private set; } = 1f;
     public static float CrouchRecoveryTickIntervalMs { get; private set; } = 500f;
-    public static float CautiousSkillDamageMultiplier { get; private set; } = 0.2f;
+
+    //Cautious 
+    public static float CautiousDamageMultiplier { get; private set; } = 0.2f;
+
+    //Second Chance
+    public static float SecondChanceStaminaDrainMultiplier { get; private set; } = 0.2f;
+    public static float SecondChanceDamageTakenMultiplier { get; private set; } = 0.85f;
+    public static float SecondChanceHealthTrheshold { get; private set; } = 0.3f;
+    public static float SecondChanceDurationMs { get; private set; } = 5000f;
 
     static float ReloadSpeedRatio = 5000;
     static float JoystickHorizontalDeadzone = 0.2f;
