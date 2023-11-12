@@ -94,6 +94,8 @@ public class InGameScreen : MonoBehaviour
                 Player.Data.InventoryData.SetAmmo(BulletTypes.AssaultRifle, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.AssaultRifle));
                 Player.Data.InventoryData.SetAmmo(BulletTypes.Sniper, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.Sniper));
                 Player.Data.InventoryData.SetAmmo(BulletTypes.Rocket, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.Rocket));
+                if (Player.Backpack.EquippedThrowableType != ThrowableTypes.None)
+                    Player.Backpack.EquippedThrowable.Count = Player.Backpack.EquippedThrowable.MaxCount;
             }
         }
 

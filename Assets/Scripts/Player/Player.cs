@@ -211,12 +211,15 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     /// Diminui a vida e modifica a barra de vida.
     /// </summary>
     /// <param name="value">O valor a ser subtraнdo da vida.</param>
-    public void TakeDamage(float value, float headshotMultiplier, string bodyPartName, IPlayerTarget attacker, Vector3? hitPosition = null)
+    public void TakeDamage(float value, float headshotMultiplier, string bodyPartName, IPlayerTarget attacker, Vector3? hitPosition = null, bool selfDamage = false)
     {
         if (!IsAlive)
             return;
 
         if (value < 0) return;
+
+        if (selfDamage && Backpack.EquippedPassiveSkillType == PassiveSkillTypes.Cautious)
+            value *= Constants.CautiousSkillDamageMultiplier;
 
         Data.Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         if (HealthBar != null)
@@ -356,9 +359,9 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
                 {
                     var healingEffectObj = new GameObject("HealingEffect");
                     var healingEffect = healingEffectObj.AddComponent<HealingEffect>();
-                    healingEffect.TickHealAmount = 1f;
+                    healingEffect.TickHealAmount = Constants.CrouchRecoveryHealthTick;
                     healingEffect.StartDelayMs = 1000f;
-                    healingEffect.SetEffect(99000, 500);
+                    healingEffect.SetEffect(99000, Constants.CrouchRecoveryTickIntervalMs);
                     healingEffectObj.transform.SetParent(transform);
                 }
             }

@@ -32,6 +32,10 @@ public class BaseAppliedEffect : MonoBehaviour
     /// O tempo restante para o efeito expirar.
     /// </summary>
     protected float TimeLeft => (DurationMs / 1000) - TimeElasped;
+    /// <summary>
+    /// Se o efeito foi aplicado pelo próprio alvo.
+    /// </summary>
+    public bool SelfAppliedEffect => (EnemyOwner != null && EnemyOwner == PlayerTarget) || (PlayerOwner != null && PlayerOwner == EnemyTarget);
 
     /// <summary>
     /// O alvo do efeito, se for um player/torreta etc.

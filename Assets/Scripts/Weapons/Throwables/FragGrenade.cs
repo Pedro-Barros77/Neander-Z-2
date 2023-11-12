@@ -7,12 +7,20 @@ public class FragGrenade : BaseThrowable
     public GameObject ExplosionPrefab;
 
     readonly string[] IgnoreBodyPartsNames = { "Plate" };
+    readonly float ExplosionPushForce = 2200;
 
     protected override void Awake()
     {
         Type = ThrowableTypes.FragGrenade;
 
         base.Awake();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        TargetLayerMask += LayerMask.GetMask("Player");
     }
 
 
@@ -36,35 +44,82 @@ public class FragGrenade : BaseThrowable
         var hitObjects = Physics2D.OverlapCircleAll(hitPosition, EffectMinRange, TargetLayerMask);
 
         var enemiesHit = hitObjects.Select(x => new { target = x.GetComponentInParent<IPlayerTarget>(), collider = x }).Where(x => x.target != null).ToList();
+        var playersHit = hitObjects.Select(x => new { target = x.GetComponentInParent<IEnemyTarget>(), collider = x }).Where(x => x.target != null).ToList();
 
         foreach (var hit in enemiesHit)
         {
             IPlayerTarget target = hit.target;
-            if (target.IsAlive)
-                IsTargetHit = true;
 
             Collider2D targetCollider = hit.collider;
 
             var enemyHitPoint = targetCollider.ClosestPoint(transform.position);
             var distance = Vector2.Distance(enemyHitPoint, transform.position);
 
-            if (distance <= EffectMinRange)
+            if (distance > EffectMinRange)
+                continue;
+
+            if (!target.IsAlive)
+                continue;
+
+            IsTargetHit = true;
+            int targetId = target.transform.GetInstanceID();
+
+            if (PiercedTargetsIds.Contains(targetId))
+                continue;
+
+            PiercedTargetsIds.Add(targetId);
+
+            if (target is IKnockBackable knockBackable)
             {
-                int targetId = target.transform.GetInstanceID();
-
-                if (!PiercedTargetsIds.Contains(targetId))
-                {
-                    PiercedTargetsIds.Add(targetId);
-
-                    var clampedDistance = Mathf.Clamp(distance, EffectMaxRange, EffectMinRange);
-                    var percentage = (clampedDistance - EffectMaxRange) / (EffectMinRange - EffectMaxRange);
-
-                    float damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
-
-                    target.TakeDamage(damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, PlayerOwner);
-                    target.OnPointHit(enemyHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
-                }
+                Vector3 direction = target.transform.position - transform.position;
+                knockBackable.TakeKnockBack(ExplosionPushForce, direction.normalized);
             }
+
+            var clampedDistance = Mathf.Clamp(distance, EffectMaxRange, EffectMinRange);
+            var percentage = (clampedDistance - EffectMaxRange) / (EffectMinRange - EffectMaxRange);
+
+            float damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
+
+            target.TakeDamage(damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, PlayerOwner);
+            target.OnPointHit(enemyHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
+        }
+
+        foreach (var hit in playersHit)
+        {
+            IEnemyTarget target = hit.target;
+
+            Collider2D targetCollider = hit.collider;
+
+            var playerHitPoint = targetCollider.ClosestPoint(transform.position);
+            var distance = Vector2.Distance(playerHitPoint, transform.position);
+
+            if (distance > EffectMinRange)
+                continue;
+
+            if (!target.IsAlive)
+                continue;
+
+            IsTargetHit = true;
+            int targetId = target.gameObject.GetInstanceID();
+
+            if (PiercedTargetsIds.Contains(targetId))
+                continue;
+
+            PiercedTargetsIds.Add(targetId);
+
+            if (target is IKnockBackable knockBackable)
+            {
+                Vector3 direction = target.transform.position - transform.position;
+                knockBackable.TakeKnockBack(ExplosionPushForce, direction.normalized);
+            }
+
+            var clampedDistance = Mathf.Clamp(distance, EffectMaxRange, EffectMinRange);
+            var percentage = (clampedDistance - EffectMaxRange) / (EffectMinRange - EffectMaxRange);
+
+            float damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
+
+            target.TakeDamage(damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, null, selfDamage: true);
+            target.OnPointHit(playerHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
         }
 
         Sprite.enabled = false;

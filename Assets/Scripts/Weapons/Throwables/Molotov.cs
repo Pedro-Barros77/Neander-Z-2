@@ -123,7 +123,7 @@ public class Molotov : BaseThrowable
     /// </summary>
     /// <param name="parent">O pai do efeito (alvo).</param>
     /// <returns>O objeto criado.</returns>
-    private GameObject CreateBurningEffect(Transform parent)
+    private GameObject CreateBurningEffect(Transform parent, bool selfDamage = false)
     {
         var burnEffectObj = new GameObject("BurningEffect");
         var burningEffect = burnEffectObj.AddComponent<BurningEffect>();
@@ -160,7 +160,7 @@ public class Molotov : BaseThrowable
             var burnFX = enemyTarget.transform.GetComponentInChildren<BurningEffect>();
             if (burnFX == null)
             {
-                var burnEffectObj = CreateBurningEffect(enemyTarget.transform);
+                var burnEffectObj = CreateBurningEffect(enemyTarget.transform, true);
                 burnFX = burnEffectObj.GetComponent<BurningEffect>();
             }
 

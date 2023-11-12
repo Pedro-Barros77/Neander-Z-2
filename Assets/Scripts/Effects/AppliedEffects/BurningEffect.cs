@@ -32,7 +32,7 @@ public class BurningEffect : BaseAppliedEffect
         if (transform.parent == null)
             return;
 
-        EnemyTarget?.TakeDamage(TickDamage, 1, "", null);
+        EnemyTarget?.TakeDamage(TickDamage, 1, "", null, selfDamage: SelfAppliedEffect);
         PlayerTarget?.TakeDamage(TickDamage, 1, "", PlayerOwner);
 
         SetSpriteRed(targetSprite);

@@ -179,7 +179,7 @@ public class RocketBullet : Projectile
 
                 Damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
 
-                target.TakeDamage(Damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, null);
+                target.TakeDamage(Damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, null, selfDamage: true);
                 target.OnPointHit(playerHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
             }
         }

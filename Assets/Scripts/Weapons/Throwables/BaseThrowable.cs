@@ -109,11 +109,11 @@ public abstract class BaseThrowable : MonoBehaviour
     /// <summary>
     /// O dono deste item, se for um inimigo.
     /// </summary>
-    public IPlayerTarget EnemyOwner;
+    public IPlayerTarget EnemyOwner { get; set; }
     /// <summary>
     /// O dono deste item, se for um jogador.
     /// </summary>
-    public IEnemyTarget PlayerOwner;
+    public IEnemyTarget PlayerOwner { get; set; }
     /// <summary>
     /// O componente Rigidbody2D deste item.
     /// </summary>
