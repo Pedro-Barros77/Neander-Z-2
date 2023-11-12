@@ -199,7 +199,7 @@ public class StoreScreen : MonoBehaviour
         if (ActiveTab == StoreTabs.Inventory)
             inventoryTab.SelectItem(item);
 
-        bool isTestable = SelectedItem.Data.IsWeapon || SelectedItem.Data.IsThrowable;
+        bool isTestable = SelectedItem.Data is StoreWeaponData || SelectedItem.Data is StoreThrowableData;
         TestItemButton.gameObject.SetActive(isTestable);
 
         PreviewIcon.sprite = item.Data.Icon;
@@ -473,6 +473,24 @@ public class StoreScreen : MonoBehaviour
     }
 
     /// <summary>
+    /// Salva o progresso atual do jogo.
+    /// </summary>
+    public void SaveGame()
+    {
+        if (!IsSaveDirty)
+            return;
+
+        if (SavesManager.SaveGame(GameModes.WaveMastery, SavesManager.SelectedSaveName))
+        {
+            IsSaveDirty = false;
+            MenuController.Instance.SetCursor(Cursors.Arrow);
+            ShowPopup("Game progress saved!", Constants.Colors.GreenMoney, BtnSaveGame.transform.position + new Vector3(10, -40), 2000f, 30);
+        }
+        else
+            ShowPopup("Failed to save game progress!", Color.red, BtnSaveGame.transform.position + new Vector3(10, -40), 2000f, 30);
+    }
+
+    /// <summary>
     /// Função chamada quando o player clica no botão de comprar.
     /// </summary>
     public void BuyItem()
@@ -485,14 +503,17 @@ public class StoreScreen : MonoBehaviour
 
         bool purchased = false;
 
-        if (SelectedItem.Data.IsWeapon)
+        if (SelectedItem.Data is StoreWeaponData)
             purchased = BuyWeapon();
 
-        if (SelectedItem.Data.IsAmmo)
+        if (SelectedItem.Data is StoreAmmoData)
             purchased = BuyAmmo();
 
-        if (SelectedItem.Data.IsThrowable)
+        if (SelectedItem.Data is StoreThrowableData)
             purchased = BuyThrowable();
+
+        if (SelectedItem.Data is StorePassiveSkillData)
+            purchased = BuyPassiveSkill();
 
         switch (SelectedItem.Data.name)
         {
@@ -522,24 +543,6 @@ public class StoreScreen : MonoBehaviour
             PurchaseSound.PlayIfNotNull(audioSource, AudioTypes.UI);
             ShowPopup($"-{value:N2}", Color.red, PlayerMoneyText.transform.position);
         }
-    }
-
-    /// <summary>
-    /// Salva o progresso atual do jogo.
-    /// </summary>
-    public void SaveGame()
-    {
-        if (!IsSaveDirty)
-            return;
-
-        if (SavesManager.SaveGame(GameModes.WaveMastery, SavesManager.SelectedSaveName))
-        {
-            IsSaveDirty = false;
-            MenuController.Instance.SetCursor(Cursors.Arrow);
-            ShowPopup("Game progress saved!", Constants.Colors.GreenMoney, BtnSaveGame.transform.position + new Vector3(10, -40), 2000f, 30);
-        }
-        else
-            ShowPopup("Failed to save game progress!", Color.red, BtnSaveGame.transform.position + new Vector3(10, -40), 2000f, 30);
     }
 
     /// <summary>
@@ -648,6 +651,27 @@ public class StoreScreen : MonoBehaviour
             throwable.Count += buyCount;
             throwable.IsEquipped = true;
         }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Compra a habilidade passive selecionada.
+    /// </summary>
+    /// <returns>Se o item foi comprado com sucesso.</returns>
+    private bool BuyPassiveSkill()
+    {
+        var data = SelectedItem.Data as StorePassiveSkillData;
+
+        var skills = PlayerData.InventoryData.PassiveSkillsSelection;
+
+        if (skills.Any(x => x.Type == data.SkillType))
+            return false;
+
+        PlayerData.InventoryData.UnequipAllPassiveSkills();
+        PlayerData.InventoryData.PassiveSkillsSelection.Add(new(data.SkillType, true));
+        var item = inventoryTab.CreateInventoryItem(data, true);
+        inventoryTab.SkillSlot.DropItem(item);
 
         return true;
     }

@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class BurningEffect : BaseAppliedEffect
+public class HealingEffect : BaseAppliedEffect
 {
-    public float TickDamage { get; set; }
+    public float TickHealAmount { get; set; }
 
     SpriteRenderer targetSprite;
     Color32 targetStartColor;
@@ -32,21 +32,21 @@ public class BurningEffect : BaseAppliedEffect
         if (transform.parent == null)
             return;
 
-        EnemyTarget?.TakeDamage(TickDamage, 1, "", null);
-        PlayerTarget?.TakeDamage(TickDamage, 1, "", PlayerOwner);
+        EnemyTarget?.GetHealth(TickHealAmount);
+        PlayerTarget?.GetHealth(TickHealAmount);
 
-        SetSpriteRed(targetSprite);
+        SetSpriteGreen(targetSprite);
     }
 
     /// <summary>
-    /// Define a cor do sprite para vermelho.
+    /// Define a cor do sprite para verde.
     /// </summary>
     /// <param name="sprite">O sprite do alvo a ser alterado.</param>
-    private void SetSpriteRed(SpriteRenderer sprite)
+    private void SetSpriteGreen(SpriteRenderer sprite)
     {
         if (sprite == null) return;
 
-        sprite.color = new Color32(255, 200, 200, 255);
+        sprite.color = new Color32(173, 255, 197, 255);
 
         StartCoroutine(ResetSpriteColor(sprite));
     }

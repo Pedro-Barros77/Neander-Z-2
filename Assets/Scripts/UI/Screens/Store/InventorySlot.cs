@@ -107,6 +107,11 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                     .FirstOrDefault(x => x.IsEquipped)
                         .IsEquipped = false;
                 break;
+            case InventorySlots.PassiveSkill:
+                Inventory.PassiveSkillsSelection
+                    .FirstOrDefault(x => x.IsEquipped)
+                        .IsEquipped = false;
+                break;
         }
 
         storeScreen.IsSaveDirty = true;
@@ -127,10 +132,11 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
         Item = item;
         IconImage.sprite = Data.Icon;
-        IconImage.transform.localScale = startIconScale * Data.IconScale;
+        IconImage.transform.localScale = startIconScale * Data.InventorySlotIconScale;
         bool isWeapon = SlotType == InventorySlots.Primary || SlotType == InventorySlots.Secondary;
         bool isThrowable = SlotType == InventorySlots.Grenade;
         bool isTacticalAbility = SlotType == InventorySlots.TacticalAbility;
+        bool isPassiveSkill = SlotType == InventorySlots.PassiveSkill;
 
         if (isWeapon && Data is StoreWeaponData weaponData)
         {
@@ -194,6 +200,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         }
         else if (isTacticalAbility && Data is StoreTacticalAbilityData tacticalAbilityData)
         {
+            item.CountText.gameObject.SetActive(false);
+            AmmoText.transform.parent.gameObject.SetActive(false);
+
             if (oldData != null)
             {
                 var oldTacticalAbility = oldData as StoreTacticalAbilityData;
@@ -205,6 +214,24 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
             Inventory.TacticalAbilitiesSelection
                 .FirstOrDefault(x => x.Type == tacticalAbilityData.AbilityType)
+                    .IsEquipped = true;
+        }
+        else if (isPassiveSkill && Data is StorePassiveSkillData passiveSkillData)
+        {
+            item.CountText.gameObject.SetActive(false);
+            AmmoText.transform.parent.gameObject.SetActive(false);
+
+            if (oldData != null)
+            {
+                var oldPassiveSkill = oldData as StorePassiveSkillData;
+
+                Inventory.PassiveSkillsSelection
+                    .FirstOrDefault(x => x.Type == oldPassiveSkill.SkillType)
+                        .IsEquipped = false;
+            }
+
+            Inventory.PassiveSkillsSelection
+                .FirstOrDefault(x => x.Type == passiveSkillData.SkillType)
                     .IsEquipped = true;
         }
 
@@ -278,9 +305,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (item.Data is StoreTacticalAbilityData && SlotType == InventorySlots.TacticalAbility)
             canDrop = true;
 
-        // todo passive skill
-        // if(item.Data is StorePassiveSkillData passiveSkillData && SlotType == InventorySlots.PassiveSkill)
-        //     canDrop = true;
+        if (item.Data is StorePassiveSkillData && SlotType == InventorySlots.PassiveSkill)
+            canDrop = true;
 
         // todo support
         // if(item.Data is StoreSupportData supportData && SlotType == InventorySlots.Support)

@@ -277,6 +277,7 @@ public static class SavesManager
         save.SecondaryWeaponsSelection = inventory.SecondaryWeaponsSelection.Select(UpdateWeaponMagazine).Where(x => x != null).ToList();
         save.ThrowableItemsSelection = inventory.ThrowableItemsSelection;
         save.TacticalAbilitiesSelection = inventory.TacticalAbilitiesSelection;
+        save.PassiveSkillsSelection = inventory.PassiveSkillsSelection;
 
 
         //Waves
@@ -323,6 +324,7 @@ public static class SavesManager
         inventory.SecondaryWeaponsSelection = save.SecondaryWeaponsSelection;
         inventory.ThrowableItemsSelection = save.ThrowableItemsSelection;
         inventory.TacticalAbilitiesSelection = save.TacticalAbilitiesSelection;
+        inventory.PassiveSkillsSelection = save.PassiveSkillsSelection;
 
         //Waves
         WaveStats[] waveStats = GetWaveStats().OrderBy(x => x.WaveNumber).ToArray();

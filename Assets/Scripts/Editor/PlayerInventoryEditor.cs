@@ -9,10 +9,10 @@ public class PlayerInventoryEditor : Editor
 {
     InventoryData data;
     SerializedObject GetTarget;
-    SerializedProperty PrimaryWeapons, SecondaryWeapons, ThrowableItems, TacticalAbilities;
+    SerializedProperty PrimaryWeapons, SecondaryWeapons, ThrowableItems, TacticalAbilities, PassiveSkills;
 
     GUIStyle ammoLabelStyle, maxAmmoLabelStyle, weaponLabelStyle;
-    ReorderableList PrimaryWeaponsList, SecondaryWeaponsList, ThrowableItemsList, TacticalAbilitiesList;
+    ReorderableList PrimaryWeaponsList, SecondaryWeaponsList, ThrowableItemsList, TacticalAbilitiesList, PassiveSkillsList;
 
     void OnEnable()
     {
@@ -22,6 +22,7 @@ public class PlayerInventoryEditor : Editor
         SecondaryWeapons = GetTarget.FindProperty("SecondaryWeaponsSelection");
         ThrowableItems = GetTarget.FindProperty("ThrowableItemsSelection");
         TacticalAbilities = GetTarget.FindProperty("TacticalAbilitiesSelection");
+        PassiveSkills = GetTarget.FindProperty("PassiveSkillsSelection");
 
         weaponLabelStyle = new()
         {
@@ -66,6 +67,12 @@ public class PlayerInventoryEditor : Editor
         TacticalAbilitiesList = new ReorderableList(serializedObject, TacticalAbilities, true, true, true, true)
         {
             drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => RenderTacticalAbility(rect, index),
+            headerHeight = 0
+        };
+
+        PassiveSkillsList = new ReorderableList(serializedObject, PassiveSkills, true, true, true, true)
+        {
+            drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => RenderPassiveSkill(rect, index),
             headerHeight = 0
         };
     }
@@ -148,6 +155,14 @@ public class PlayerInventoryEditor : Editor
         TacticalAbilities.isExpanded = EditorGUILayout.BeginFoldoutHeaderGroup(TacticalAbilities.isExpanded, "Tactical Abilities");
         if (TacticalAbilities.isExpanded)
             TacticalAbilitiesList.DoLayoutList();
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        EditorGUILayout.Space();
+
+        // Passive Skills
+        PassiveSkills.isExpanded = EditorGUILayout.BeginFoldoutHeaderGroup(PassiveSkills.isExpanded, "Passive Skills");
+        if (PassiveSkills.isExpanded)
+            PassiveSkillsList.DoLayoutList();
         EditorGUILayout.EndFoldoutHeaderGroup();
 
         GetTarget.ApplyModifiedProperties();
@@ -348,6 +363,53 @@ public class PlayerInventoryEditor : Editor
             for (int i = 0; i < TacticalAbilities.arraySize; i++)
             {
                 TacticalAbilities.GetArrayElementAtIndex(i).FindPropertyRelative("IsEquipped").boolValue = false;
+            }
+            item.FindPropertyRelative("IsEquipped").boolValue = true;
+        }
+    }
+
+    /// <summary>
+    /// Renderiza a linha de um item da lista de habilidades passivas.
+    /// </summary>
+    /// <param name="rect">Retângulo da lista, fornecido pelo callback.</param>
+    /// <param name="index">Index desse item da lista, fornecido pelo callback.</param>
+    void RenderPassiveSkill(Rect rect, int index)
+    {
+        rect.y += 2;
+
+        var item = PassiveSkills.GetArrayElementAtIndex(index);
+        string typeLabel = "Type", isEquippedLabel = "Equipped";
+        float marginX = 10;
+        float typeWidth = 120, isEquippedWidth = 100, lblTypeWidth, lblIsEquippedWidth;
+
+        lblTypeWidth = weaponLabelStyle.CalcSize(new GUIContent(typeLabel)).x;
+        lblIsEquippedWidth = weaponLabelStyle.CalcSize(new GUIContent(isEquippedLabel)).x;
+
+        float x = rect.x;
+
+        EditorGUI.LabelField(new Rect(x, rect.y, lblTypeWidth, EditorGUIUtility.singleLineHeight), typeLabel, weaponLabelStyle);
+
+        x += lblTypeWidth + marginX;
+
+        EditorGUI.PropertyField(
+            new Rect(x, rect.y, typeWidth, EditorGUIUtility.singleLineHeight),
+            item.FindPropertyRelative("Type"), GUIContent.none);
+
+        x += typeWidth + marginX * 2;
+
+        EditorGUI.LabelField(new Rect(x, rect.y, 0, EditorGUIUtility.singleLineHeight), isEquippedLabel, weaponLabelStyle);
+
+        x += lblIsEquippedWidth + marginX;
+
+        item.FindPropertyRelative("IsEquipped").boolValue = EditorGUI.Toggle(
+            new Rect(x, rect.y + 2, isEquippedWidth, EditorGUIUtility.singleLineHeight),
+            item.FindPropertyRelative("IsEquipped").boolValue, EditorStyles.radioButton);
+
+        if (item.FindPropertyRelative("IsEquipped").boolValue)
+        {
+            for (int i = 0; i < PassiveSkills.arraySize; i++)
+            {
+                PassiveSkills.GetArrayElementAtIndex(i).FindPropertyRelative("IsEquipped").boolValue = false;
             }
             item.FindPropertyRelative("IsEquipped").boolValue = true;
         }

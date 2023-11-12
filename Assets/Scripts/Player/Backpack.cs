@@ -87,6 +87,10 @@ public class Backpack
     /// O tipo da habilidade tática atualmente escolhida pelo jogador.
     /// </summary>
     public TacticalAbilityTypes EquippedTacticalAbilityType => Data.TacticalAbilitiesSelection?.FirstOrDefault(x => x.IsEquipped)?.Type ?? TacticalAbilityTypes.None;
+    /// <summary>
+    /// O tipo da habilidade tática atualmente escolhida pelo jogador.
+    /// </summary>
+    public PassiveSkillTypes EquippedPassiveSkillType => Data.PassiveSkillsSelection?.FirstOrDefault(x => x.IsEquipped)?.Type ?? PassiveSkillTypes.None;
 
     public bool HasPrimaryEquipped => EquippedPrimaryType != WeaponTypes.None;
     public bool HasSecondaryEquipped => EquippedSecondaryType != WeaponTypes.None;

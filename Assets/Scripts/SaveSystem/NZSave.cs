@@ -19,6 +19,7 @@ public class NZSave
     public List<InventoryData.WeaponSelection> SecondaryWeaponsSelection;
     public List<InventoryData.ThrowableSelection> ThrowableItemsSelection;
     public List<InventoryData.TacticalAbilitySelection> TacticalAbilitiesSelection;
+    public List<InventoryData.PassiveSkillSelection> PassiveSkillsSelection;
     #endregion
 
     #region PlayerStats

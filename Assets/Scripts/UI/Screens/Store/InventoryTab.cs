@@ -312,6 +312,11 @@ public class InventoryTab : MonoBehaviour
             prefabItem.Data = abilityData;
             column = skillsColumn;
         }
+        else if (data is StorePassiveSkillData skillData)
+        {
+            prefabItem.Data = skillData;
+            column = skillsColumn;
+        }
         else
         {
             column = itemsColumn;
@@ -353,6 +358,7 @@ public class InventoryTab : MonoBehaviour
         LoadWeapons();
         LoadThrowables();
         LoadTacticalAbilities();
+        LoadPassiveSkills();
         loaded = true;
     }
 
@@ -425,6 +431,24 @@ public class InventoryTab : MonoBehaviour
 
             if (equippedAbility != null && equippedAbility.Type == ability.Type)
                 AbilitySlot.DropItem(storeItem);
+        }
+    }
+
+    /// <summary>
+    /// Carrega as habilidades passivas do inventário.
+    /// </summary>
+    void LoadPassiveSkills()
+    {
+        var skillsDatas = Resources.LoadAll<StorePassiveSkillData>("ScriptableObjects/Store/PassiveSkills");
+        var equippedSkill = Inventory.PassiveSkillsSelection.FirstOrDefault(x => x.IsEquipped);
+
+        foreach (var skill in Inventory.PassiveSkillsSelection)
+        {
+            StorePassiveSkillData abilityData = skillsDatas.FirstOrDefault(x => x.SkillType == skill.Type);
+            var storeItem = CreateInventoryItem(abilityData);
+
+            if (equippedSkill != null && equippedSkill.Type == skill.Type)
+                SkillSlot.DropItem(storeItem);
         }
     }
 

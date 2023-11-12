@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BaseAppliedEffect : MonoBehaviour
@@ -15,6 +16,10 @@ public class BaseAppliedEffect : MonoBehaviour
     /// </summary>
     public float TickIntervalMs { get; protected set; }
     /// <summary>
+    /// O tempo de delay para o primeiro tick do efeito em milisegundos.
+    /// </summary>
+    public float StartDelayMs { get; set; }
+    /// <summary>
     /// O tempo em que o último tick ocorreu.
     /// </summary>
     public float LastTickTime { get; protected set; }
@@ -28,12 +33,35 @@ public class BaseAppliedEffect : MonoBehaviour
     /// </summary>
     protected float TimeLeft => (DurationMs / 1000) - TimeElasped;
 
+    /// <summary>
+    /// O alvo do efeito, se for um player/torreta etc.
+    /// </summary>
+    protected virtual IEnemyTarget EnemyTarget { get; set; }
+    /// <summary>
+    /// O alvo do efeito, se for um inimigo.
+    /// </summary>
+    protected virtual IPlayerTarget PlayerTarget { get; set; }
+
+    /// <summary>
+    /// O dono desse efeito, se for um inimigo.
+    /// </summary>
+    public IPlayerTarget EnemyOwner { get; set; }
+    /// <summary>
+    /// O dono desse efeito, se for um player.
+    /// </summary>
+    public IEnemyTarget PlayerOwner { get; set; }
+
     protected virtual void Start()
     {
+        EnemyTarget = GetComponentInParent<IEnemyTarget>();
+        PlayerTarget = GetComponentInParent<IPlayerTarget>();
     }
 
     protected virtual void Update()
     {
+        if (StartTime == 0)
+            return;
+
         var now = Time.time;
 
         if (LastTickTime + (TickIntervalMs / 1000) < now)
@@ -52,6 +80,20 @@ public class BaseAppliedEffect : MonoBehaviour
     {
         DurationMs = durationMs;
         TickIntervalMs = tickIntervalMs;
+
+        if (StartDelayMs == 0)
+            StartTime = Time.time;
+        else
+            StartCoroutine(StartEffectDelayed());
+    }
+
+    /// <summary>
+    /// Aguarda o StartDelayMs antes de iniciar o efeito.
+    /// </summary>
+    protected virtual IEnumerator StartEffectDelayed()
+    {
+        yield return new WaitForSeconds(StartDelayMs / 1000);
+
         StartTime = Time.time;
     }
 

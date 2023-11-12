@@ -68,17 +68,20 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             if (!IsInventoryItem)
                 PriceText.color = Data.CanAfford ? Constants.Colors.GreenMoney : Constants.Colors.RedMoney;
 
-            if (Data.IsAmmo)
+            if (Data is StoreAmmoData)
                 UpdateAmmo();
 
-            if (Data.IsWeapon)
+            if (Data is StoreWeaponData)
                 UpdateWeapon();
 
-            if (Data.IsThrowable)
+            if (Data is StoreThrowableData)
                 UpdateThrowable();
 
-            if (Data.IsTacticalAbility)
+            if (Data is StoreTacticalAbilityData)
                 UpdateTacticalAbility();
+
+            if (Data is StorePassiveSkillData)
+                UpdatePassiveSkill();
 
             UpdateSpecials();
         }
@@ -249,6 +252,29 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
 
         data.Purchased = storeScreen.PlayerData.InventoryData.TacticalAbilitiesSelection.Any(x => x.Type == data.AbilityType);
+    }
+
+    private void UpdatePassiveSkill()
+    {
+        var data = Data as StorePassiveSkillData;
+
+        if (IsInventoryItem)
+        {
+            var passiveSkill = storeScreen.PlayerData.InventoryData.PassiveSkillsSelection
+                .FirstOrDefault(x => x.Type == data.SkillType);
+            PriceText.text = passiveSkill.IsEquipped ? "Equipped" : "";
+        }
+        else
+        {
+            if (data.Purchased)
+            {
+                PriceText.text = "Purchased";
+                PriceText.color = Constants.Colors.GreenMoney;
+                return;
+            }
+        }
+
+        data.Purchased = storeScreen.PlayerData.InventoryData.PassiveSkillsSelection.Any(x => x.Type == data.SkillType);
     }
 
     private void UpdateAmmo()

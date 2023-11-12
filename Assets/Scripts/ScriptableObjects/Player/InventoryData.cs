@@ -26,6 +26,7 @@ public class InventoryData : AutoRevertSO
     public List<WeaponSelection> SecondaryWeaponsSelection;
     public List<ThrowableSelection> ThrowableItemsSelection;
     public List<TacticalAbilitySelection> TacticalAbilitiesSelection;
+    public List<PassiveSkillSelection> PassiveSkillsSelection;
 
     public bool HasWeapon(WeaponTypes weaponType)
             => PrimaryWeaponsSelection.Any(w => w.Type == weaponType)
@@ -54,13 +55,12 @@ public class InventoryData : AutoRevertSO
     /// <summary>
     /// Marca todos os items arremessáveis como não equipados.
     /// </summary>
-    public void UnequipAllThrowables()
-    {
-        foreach (var item in ThrowableItemsSelection)
-        {
-            item.IsEquipped = false;
-        }
-    }
+    public void UnequipAllThrowables() => ThrowableItemsSelection.ForEach(t => t.IsEquipped = false);
+
+    /// <summary>
+    /// Marca todas as habilidades passivas como não equipadas.
+    /// </summary>
+    public void UnequipAllPassiveSkills() => PassiveSkillsSelection.ForEach(t => t.IsEquipped = false);
 
     /// <summary>
     /// Retorna a quantidade de munições do tipo especificado restantes que o jogador possui.
@@ -182,6 +182,20 @@ public class InventoryData : AutoRevertSO
         public TacticalAbilitySelection(bool isEquipped)
         {
             IsEquipped = isEquipped;
+        }
+    }
+
+    [Serializable]
+    public class PassiveSkillSelection
+    {
+        public PassiveSkillTypes Type;
+        public bool IsEquipped;
+
+        public PassiveSkillSelection() { }
+        public PassiveSkillSelection(PassiveSkillTypes type, bool isEquipped)
+        {
+            IsEquipped = isEquipped;
+            Type = type;
         }
     }
 }

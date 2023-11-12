@@ -149,8 +149,14 @@ public class WavesManager : MonoBehaviour
         SummaryTitle.text = $"Survived {CurrentWave.Data.Title.ValueOrDefault($"Wave {WaveNumber}")}";
         P1WaveScoreValue.text = CurrentWave.Stats.Score.ToString("N0");
         P1EarnedMoneyValue.text = $"$ {CurrentWave.Stats.MoneyEarned:N2}";
-        P1TotalKillsValue.text = CurrentWave.Stats.EnemiesKilled.ToString();
-        P1HeadshotKillsValue.text = CurrentWave.Stats.HeadshotKills.ToString();
+        int enemiesKilled = CurrentWave.Stats.EnemiesKilled;
+        int headshotKills = CurrentWave.Stats.HeadshotKills;
+        int headshotPrecision = 0;
+        if (headshotKills + enemiesKilled > 0)
+            headshotPrecision = (int)((float)headshotKills / enemiesKilled * 100);
+        P1TotalKillsValue.text = enemiesKilled.ToString();
+        P1HeadshotKillsValue.text = $"{headshotKills} ({headshotPrecision:N0}%)";
+
         P1PrecisionValue.text = $"{CurrentWave.Stats.Precision:N1} %";
         Player.Data.CurrentWaveIndex = WaveNumber + 1;
         Player.Data.GetMoney(CurrentWave.Stats.MoneyEarned);

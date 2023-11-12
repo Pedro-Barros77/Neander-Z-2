@@ -18,11 +18,12 @@ MonoBehaviour:
     right in front of you, why not just stop in the middle of nowhere and... Crouch?
     While your're taking your breath, give your wounds a treat!<br><br> Heals the
     player health by 2 each 0.5 second.
-  Price: 0
+  Price: 800
   Discount: 0
   Amount: 1
-  IconScale: 1
+  IconScale: 0.85
   PreviewIconScale: 1
+  InventorySlotIconScale: 0.7
   IsSellable: 0
   Tags: 
-  SkillType: 5
+  SkillType: 1

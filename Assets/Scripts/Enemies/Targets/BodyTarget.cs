@@ -87,4 +87,6 @@ public class BodyTarget : MonoBehaviour, IPlayerTarget
             popupSystem.Init(text, hitPosition, 2000f, textColor);
         }
     }
+
+    public void GetHealth(float health) => throw new System.NotImplementedException();
 }

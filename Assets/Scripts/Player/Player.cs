@@ -158,6 +158,8 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     {
         StaminaBar.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
 
+        UpdatePassiveSkills();
+
         if (Constants.EnableDevKeybinds)
         {
             if (Constants.GetActionDown(InputActions.DEBUG_IncreaseHealth))
@@ -221,7 +223,8 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
             HealthBar.RemoveValue(value);
         ShowPopup(value.ToString("N1"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
-        WavesManager.Instance.CurrentWave.Stats.DamageTaken += value;
+        if (WavesManager.Instance.CurrentWave != null)
+            WavesManager.Instance.CurrentWave.Stats.DamageTaken += value;
 
         if (Health <= 0 && IsAlive)
             Die();
@@ -340,5 +343,31 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         //var mainBloodSystem = bloodParticles.main;
         //mainBloodSystem.startColor = new(BloodColor);
         //lastBloodSplatterTime = Time.time;
+    }
+
+    private void UpdatePassiveSkills()
+    {
+        if (Backpack.EquippedPassiveSkillType == PassiveSkillTypes.CrouchRecovery)
+        {
+            var oldFx = transform.Find("HealingEffect");
+            if (PlayerMovement.isCrouching && Health < MaxHealth)
+            {
+                if (oldFx == null)
+                {
+                    var healingEffectObj = new GameObject("HealingEffect");
+                    var healingEffect = healingEffectObj.AddComponent<HealingEffect>();
+                    healingEffect.TickHealAmount = 1f;
+                    healingEffect.StartDelayMs = 1000f;
+                    healingEffect.SetEffect(99000, 500);
+                    healingEffectObj.transform.SetParent(transform);
+                }
+            }
+            else
+            {
+                if (oldFx != null)
+                    Destroy(oldFx.gameObject);
+            }
+
+        }
     }
 }

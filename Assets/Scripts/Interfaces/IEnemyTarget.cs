@@ -11,5 +11,6 @@ public interface IEnemyTarget
     public SpriteRenderer SpriteRenderer { get; }
     public Rigidbody2D RigidBody { get; }
     public void TakeDamage(float damage, float headshotMultiplier, string bodyPartName, IPlayerTarget attacker, Vector3? hitPosition = null);
+    public void GetHealth(float health);
     void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName);
 }

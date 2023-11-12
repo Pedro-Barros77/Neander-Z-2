@@ -18,11 +18,12 @@ MonoBehaviour:
     Take reduced damage from your own toys, because sometimes the best offense is
     not blowing yourself up.  <br><br> Grants a 60% damage reduction from your own
     explosives, fire and other effects.
-  Price: 0
+  Price: 500
   Discount: 0
   Amount: 1
-  IconScale: 1
+  IconScale: 0.8
   PreviewIconScale: 1
+  InventorySlotIconScale: 0.55
   IsSellable: 0
   Tags: 
-  SkillType: 5
+  SkillType: 4
