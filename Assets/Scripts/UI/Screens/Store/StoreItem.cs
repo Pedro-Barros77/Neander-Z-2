@@ -176,8 +176,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         if (IsInventoryItem)
         {
-            var weapon = storeScreen.PlayerData.InventoryData.PrimaryWeaponsSelection
-                 .Concat(storeScreen.PlayerData.InventoryData.SecondaryWeaponsSelection)
+            var weapon = storeScreen.PlayerData.InventoryData.WeaponsSelection
                  .FirstOrDefault(x => x.Type == data.WeaponData.Type);
             PriceText.text = weapon.EquippedSlot switch
             {

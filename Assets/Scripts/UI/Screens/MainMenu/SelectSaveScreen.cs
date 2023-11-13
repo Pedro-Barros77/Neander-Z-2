@@ -73,7 +73,7 @@ public class SelectSaveScreen : MonoBehaviour
         TotalScoreText.text = save.WavesStats.Sum(x => x.Score).ToString("N0");
         MoneyText.text = $"$ {save.PlayerTotalMoney:N2}";
 
-        var weaponSelection = save.PrimaryWeaponsSelection.Concat(save.SecondaryWeaponsSelection);
+        var weaponSelection = save.WeaponsSelection;
         var primaryType = weaponSelection.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Primary)?.Type ?? WeaponTypes.None;
         var secondaryType = weaponSelection.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Secondary)?.Type ?? WeaponTypes.None;
 

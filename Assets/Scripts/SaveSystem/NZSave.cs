@@ -1,4 +1,6 @@
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 
 public class NZSave
 {
@@ -20,6 +22,11 @@ public class NZSave
     public List<InventoryData.ThrowableSelection> ThrowableItemsSelection;
     public List<InventoryData.TacticalAbilitySelection> TacticalAbilitiesSelection;
     public List<InventoryData.PassiveSkillSelection> PassiveSkillsSelection;
+
+    [JsonIgnore]
+    public IEnumerable<InventoryData.WeaponSelection> WeaponsSelection =>
+        (!PrimaryWeaponsSelection.IsNullOrEmpty() ? PrimaryWeaponsSelection : new())
+        .Concat(!SecondaryWeaponsSelection.IsNullOrEmpty() ? SecondaryWeaponsSelection : new());
     #endregion
 
     #region PlayerStats

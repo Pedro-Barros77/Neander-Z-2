@@ -66,6 +66,9 @@ public class Backpack
     /// Lista de armas secundárias adquiridas pelo jogador.
     /// </summary>
     public List<BaseWeapon> SecondaryWeaponsInstances { get; private set; }
+    public IEnumerable<BaseWeapon> WeaponsInstances =>
+        (!PrimaryWeaponsInstances.IsNullOrEmpty() ? PrimaryWeaponsInstances : new())
+        .Concat(!SecondaryWeaponsInstances.IsNullOrEmpty() ? SecondaryWeaponsInstances : new());
     /// <summary>
     /// Referência ao jogador portador dessa mochila.
     /// </summary>
@@ -74,11 +77,11 @@ public class Backpack
     /// <summary>
     /// O tipo da arma atualmente escolhida como primária pelo jogador.
     /// </summary>
-    public WeaponTypes EquippedPrimaryType => Data.PrimaryWeaponsSelection?.Concat(Data.SecondaryWeaponsSelection).FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Primary)?.Type ?? WeaponTypes.None;
+    public WeaponTypes EquippedPrimaryType => Data.WeaponsSelection.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Primary)?.Type ?? WeaponTypes.None;
     /// <summary>
     /// O tipo da arma atualmente escolhida como secundária pelo jogador.
     /// </summary>
-    public WeaponTypes EquippedSecondaryType => Data.SecondaryWeaponsSelection?.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Secondary)?.Type ?? WeaponTypes.None;
+    public WeaponTypes EquippedSecondaryType => Data.WeaponsSelection?.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Secondary)?.Type ?? WeaponTypes.None;
     /// <summary>
     /// O tipo do item arremessável atualmente escolhido pelo jogador.
     /// </summary>
@@ -98,11 +101,11 @@ public class Backpack
     /// <summary>
     /// Retorna a arma primária escolhida, caso exista no arsenal de primárias.
     /// </summary>
-    public BaseWeapon EquippedPrimaryWeapon => PrimaryWeaponsInstances.Concat(SecondaryWeaponsInstances).FirstOrDefault(w => w.Type == EquippedPrimaryType);
+    public BaseWeapon EquippedPrimaryWeapon => WeaponsInstances.FirstOrDefault(w => w.Type == EquippedPrimaryType);
     /// <summary>
     /// Retorna a arma secundária escolhida, caso exista no arsenal de secundárias.
     /// </summary>
-    public BaseWeapon EquippedSecondaryWeapon => SecondaryWeaponsInstances.FirstOrDefault(w => w.Type == EquippedSecondaryType);
+    public BaseWeapon EquippedSecondaryWeapon => WeaponsInstances.FirstOrDefault(w => w.Type == EquippedSecondaryType);
     /// <summary>
     /// Retorna a arma atualmente equipada nas mãos do jogador.
     /// </summary>
@@ -128,13 +131,13 @@ public class Backpack
 
         if (EquippedPrimaryType != WeaponTypes.None)
         {
-            var primWeapon = AddWeapon(EquippedPrimaryType, WeaponEquippedSlot.Primary);
+            var primWeapon = AddWeapon(EquippedPrimaryType, Data.WeaponsSelection.FirstOrDefault(x => x.Type == EquippedSecondaryType).EquippedSlot);
             EquippedPrimaryWeapon.IsActive = isEquippedPrimary;
         }
 
         if (EquippedSecondaryType != WeaponTypes.None)
         {
-            var secWeapon = AddWeapon(EquippedSecondaryType, Data.PrimaryWeaponsSelection.Concat(Data.SecondaryWeaponsSelection).FirstOrDefault(x => x.Type == EquippedSecondaryType).EquippedSlot);
+            var secWeapon = AddWeapon(EquippedSecondaryType, Data.WeaponsSelection.FirstOrDefault(x => x.Type == EquippedSecondaryType).EquippedSlot);
             EquippedSecondaryWeapon.IsActive = !isEquippedPrimary;
         }
     }
@@ -147,7 +150,7 @@ public class Backpack
     /// <returns>A instância da arma adicionada.</returns>
     public BaseWeapon AddWeapon(WeaponTypes weaponType, WeaponEquippedSlot slot = WeaponEquippedSlot.None)
     {
-        if (PrimaryWeaponsInstances.Any(x => x.Type == weaponType) || SecondaryWeaponsInstances.Any(x => x.Type == weaponType))
+        if (WeaponsInstances.Any(x => x.Type == weaponType))
         {
             Debug.LogWarning($"Tentativa de adicionar arma {weaponType} ao arsenal do jogador, mas ela já existe.");
             return null;
@@ -172,7 +175,7 @@ public class Backpack
 
         if (weapon.IsPrimary)
         {
-            if (slot == WeaponEquippedSlot.Primary && !Data.PrimaryWeaponsSelection.Any(x => x.Type == weaponType))
+            if (slot == WeaponEquippedSlot.Primary && !Data.WeaponsSelection.Any(x => x.Type == weaponType))
             {
                 Unequip();
                 Data.PrimaryWeaponsSelection.Add(new InventoryData.WeaponSelection(weaponType, slot, weapon.Data.WeaponClass));
@@ -182,7 +185,7 @@ public class Backpack
         }
         else
         {
-            if (slot != WeaponEquippedSlot.None && !Data.SecondaryWeaponsSelection.Any(x => x.Type == weaponType))
+            if (slot != WeaponEquippedSlot.None && !Data.WeaponsSelection.Any(x => x.Type == weaponType))
             {
                 Unequip();
                 Data.SecondaryWeaponsSelection.Add(new InventoryData.WeaponSelection(weaponType, slot, weapon.Data.WeaponClass));

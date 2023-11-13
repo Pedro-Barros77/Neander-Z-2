@@ -155,7 +155,7 @@ public class StoreScreen : MonoBehaviour
 
             }
 
-            if (PlayerData.InventoryData.PrimaryWeaponsSelection.Concat(PlayerData.InventoryData.SecondaryWeaponsSelection).Any(x => x.EquippedSlot != WeaponEquippedSlot.None))
+            if (PlayerData.InventoryData.WeaponsSelection.Any(x => x.EquippedSlot != WeaponEquippedSlot.None))
             {
                 BtnReady.interactable = true;
                 BtnReadyText.text = "Ready!";

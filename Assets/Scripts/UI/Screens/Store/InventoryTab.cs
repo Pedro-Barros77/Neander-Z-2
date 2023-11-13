@@ -255,7 +255,7 @@ public class InventoryTab : MonoBehaviour
             }
         }
 
-        BtnSwitchWeapons.interactable = PrimarySlot.Data == null || (PrimarySlot.Data is StoreWeaponData primSlotWeapon && !primSlotWeapon.WeaponData.IsPrimary);
+        BtnSwitchWeapons.interactable = PrimarySlot.Data == null || (PrimarySlot.Data is StoreWeaponData primSlotWeapon && (!primSlotWeapon.WeaponData.IsPrimary || Inventory.PassiveSkillsSelection.Any(x => x.Type == PassiveSkillTypes.DualFirepower && x.IsEquipped)));
 
         if (storeScreen.ActiveTab == StoreTabs.Inventory)
         {
@@ -276,7 +276,7 @@ public class InventoryTab : MonoBehaviour
     /// </summary>
     public void SwitchWeapons()
     {
-        if (PrimarySlot.Data is StoreWeaponData primSlotWeapon && primSlotWeapon.WeaponData.IsPrimary)
+        if (PrimarySlot.Data is StoreWeaponData primSlotWeapon && (primSlotWeapon.WeaponData.IsPrimary && !Inventory.PassiveSkillsSelection.Any(x => x.Type == PassiveSkillTypes.DualFirepower && x.IsEquipped)))
             return;
 
         StoreItem primary = PrimarySlot.Item, secondary = SecondarySlot.Item;
@@ -383,17 +383,17 @@ public class InventoryTab : MonoBehaviour
     void LoadWeapons()
     {
         var weaponDatas = Resources.LoadAll<StoreWeaponData>("ScriptableObjects/Store/Weapons");
-        var primaryWeapon = Inventory.PrimaryWeaponsSelection.Concat(Inventory.SecondaryWeaponsSelection).FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Primary);
-        var secondaryWeapon = Inventory.SecondaryWeaponsSelection.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Secondary);
+        var primaryWeapon = Inventory.WeaponsSelection.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Primary);
+        var secondaryWeapon = Inventory.WeaponsSelection.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Secondary);
 
-        foreach (var weapon in Inventory.PrimaryWeaponsSelection.Concat(Inventory.SecondaryWeaponsSelection))
+        foreach (var weaponType in Inventory.WeaponsSelection.Select(x => x.Type))
         {
-            StoreWeaponData weaponData = weaponDatas.FirstOrDefault(x => x.WeaponData.Type == weapon.Type);
+            StoreWeaponData weaponData = weaponDatas.FirstOrDefault(x => x.WeaponData.Type == weaponType);
             var storeItem = CreateInventoryItem(weaponData);
 
-            if (primaryWeapon != null && primaryWeapon.Type == weapon.Type)
+            if (primaryWeapon != null && primaryWeapon.Type == weaponType)
                 PrimarySlot.DropItem(storeItem);
-            else if (secondaryWeapon != null && secondaryWeapon.Type == weapon.Type)
+            else if (secondaryWeapon != null && secondaryWeapon.Type == weaponType)
                 SecondarySlot.DropItem(storeItem);
         }
     }
@@ -406,12 +406,12 @@ public class InventoryTab : MonoBehaviour
         var throwablesDatas = Resources.LoadAll<StoreThrowableData>("ScriptableObjects/Store/Throwables");
         var equippedThrowable = Inventory.ThrowableItemsSelection.FirstOrDefault(x => x.IsEquipped);
 
-        foreach (var throwable in Inventory.ThrowableItemsSelection)
+        foreach (var throwableType in Inventory.ThrowableItemsSelection.Select(x => x.Type))
         {
-            StoreThrowableData throwableData = throwablesDatas.FirstOrDefault(x => x.ThrowableData.Type == throwable.Type);
+            StoreThrowableData throwableData = throwablesDatas.FirstOrDefault(x => x.ThrowableData.Type == throwableType);
             var storeItem = CreateInventoryItem(throwableData);
 
-            if (equippedThrowable != null && equippedThrowable.Type == throwable.Type)
+            if (equippedThrowable != null && equippedThrowable.Type == throwableType)
                 GrenadeSlot.DropItem(storeItem);
         }
     }
@@ -424,12 +424,12 @@ public class InventoryTab : MonoBehaviour
         var abilitiesDatas = Resources.LoadAll<StoreTacticalAbilityData>("ScriptableObjects/Store/TacticalAbilities");
         var equippedAbility = Inventory.TacticalAbilitiesSelection.FirstOrDefault(x => x.IsEquipped);
 
-        foreach (var ability in Inventory.TacticalAbilitiesSelection)
+        foreach (var abilityType in Inventory.TacticalAbilitiesSelection.Select(x => x.Type))
         {
-            StoreTacticalAbilityData abilityData = abilitiesDatas.FirstOrDefault(x => x.AbilityType == ability.Type);
+            StoreTacticalAbilityData abilityData = abilitiesDatas.FirstOrDefault(x => x.AbilityType == abilityType);
             var storeItem = CreateInventoryItem(abilityData);
 
-            if (equippedAbility != null && equippedAbility.Type == ability.Type)
+            if (equippedAbility != null && equippedAbility.Type == abilityType)
                 AbilitySlot.DropItem(storeItem);
         }
     }
@@ -442,12 +442,12 @@ public class InventoryTab : MonoBehaviour
         var skillsDatas = Resources.LoadAll<StorePassiveSkillData>("ScriptableObjects/Store/PassiveSkills");
         var equippedSkill = Inventory.PassiveSkillsSelection.FirstOrDefault(x => x.IsEquipped);
 
-        foreach (var skill in Inventory.PassiveSkillsSelection)
+        foreach (var skillType in Inventory.PassiveSkillsSelection.Select(x => x.Type))
         {
-            StorePassiveSkillData abilityData = skillsDatas.FirstOrDefault(x => x.SkillType == skill.Type);
+            StorePassiveSkillData abilityData = skillsDatas.FirstOrDefault(x => x.SkillType == skillType);
             var storeItem = CreateInventoryItem(abilityData);
 
-            if (equippedSkill != null && equippedSkill.Type == skill.Type)
+            if (equippedSkill != null && equippedSkill.Type == skillType)
                 SkillSlot.DropItem(storeItem);
         }
     }
@@ -1185,7 +1185,7 @@ public class InventoryTab : MonoBehaviour
 
     private InventoryData.WeaponSelection GetWeaponSelection(BaseWeaponData weaponData)
     {
-        var weaponsSelection = storeScreen.PlayerData.InventoryData.PrimaryWeaponsSelection.Concat(storeScreen.PlayerData.InventoryData.SecondaryWeaponsSelection);
+        var weaponsSelection = storeScreen.PlayerData.InventoryData.WeaponsSelection;
         var weaponSelection = weaponsSelection.FirstOrDefault(x => x.Type == weaponData.Type);
 
         if (weaponSelection == null)
@@ -1283,8 +1283,7 @@ public class InventoryTab : MonoBehaviour
     /// <returns>Se a arma foi encontrada e removida.</returns>
     private bool SellWeapon(StoreWeaponData data)
     {
-        var weapon = Inventory.PrimaryWeaponsSelection
-                 .Concat(Inventory.SecondaryWeaponsSelection)
+        var weapon = Inventory.WeaponsSelection
                  .FirstOrDefault(x => x.Type == data.WeaponData.Type);
 
         if (weapon == null)

@@ -353,7 +353,7 @@ public static class SavesManager
         LoadBackpackUpgrades(save.BackpackUpgradeIndex, storeBackpackSO, inventory);
 
         //Weapons Upgrades
-        foreach (var weaponSelection in save.PrimaryWeaponsSelection.Concat(save.SecondaryWeaponsSelection))
+        foreach (var weaponSelection in save.WeaponsSelection)
         {
             var weaponData = GetWeaponDataSO(weaponSelection.Type, weaponSelection.WeaponClass);
             LoadWeaponUpgrades(weaponData, weaponSelection);

@@ -28,6 +28,10 @@ public class InventoryData : AutoRevertSO
     public List<TacticalAbilitySelection> TacticalAbilitiesSelection;
     public List<PassiveSkillSelection> PassiveSkillsSelection;
 
+    public IEnumerable<WeaponSelection> WeaponsSelection =>
+        (!PrimaryWeaponsSelection.IsNullOrEmpty() ? PrimaryWeaponsSelection : new())
+        .Concat(!SecondaryWeaponsSelection.IsNullOrEmpty() ? SecondaryWeaponsSelection : new());
+
     public bool HasWeapon(WeaponTypes weaponType)
             => PrimaryWeaponsSelection.Any(w => w.Type == weaponType)
             || SecondaryWeaponsSelection.Any(w => w.Type == weaponType);

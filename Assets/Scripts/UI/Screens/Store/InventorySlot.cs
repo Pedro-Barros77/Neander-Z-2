@@ -84,14 +84,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         switch (SlotType)
         {
             case InventorySlots.Primary:
-                var primWeapon = Inventory.PrimaryWeaponsSelection
+                var primWeapon = Inventory.WeaponsSelection
                     .FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Primary);
                 if (primWeapon != null)
                     primWeapon.EquippedSlot = WeaponEquippedSlot.None;
 
                 break;
             case InventorySlots.Secondary:
-                var secWeapon = Inventory.SecondaryWeaponsSelection
+                var secWeapon = Inventory.WeaponsSelection
                     .FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Secondary);
                 if (secWeapon != null)
                     secWeapon.EquippedSlot = WeaponEquippedSlot.None;
@@ -108,6 +108,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                         .IsEquipped = false;
                 break;
             case InventorySlots.PassiveSkill:
+                if (Inventory.PassiveSkillsSelection.FirstOrDefault(x => x.IsEquipped).Type == PassiveSkillTypes.DualFirepower && (Inventory.WeaponsSelection.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Secondary)?.IsPrimary ?? false))
+                    inventoryTab.SecondarySlot.ClearSlot();
+
                 Inventory.PassiveSkillsSelection
                     .FirstOrDefault(x => x.IsEquipped)
                         .IsEquipped = false;
@@ -158,8 +161,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             {
                 var oldWeapon = oldData as StoreWeaponData;
 
-                Inventory.PrimaryWeaponsSelection
-                    .Concat(Inventory.SecondaryWeaponsSelection)
+                Inventory.WeaponsSelection
                     .FirstOrDefault(x => x.Type == oldWeapon.WeaponData.Type)
                         .EquippedSlot = WeaponEquippedSlot.None;
             }
@@ -170,8 +172,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             else if (SlotType == InventorySlots.Secondary && inventoryTab.PrimarySlot.Data is StoreWeaponData primData && primData.WeaponData.Type == weaponData.WeaponData.Type)
                 inventoryTab.PrimarySlot.ClearSlot();
 
-            Inventory.PrimaryWeaponsSelection
-                .Concat(Inventory.SecondaryWeaponsSelection)
+            Inventory.WeaponsSelection
                 .FirstOrDefault(x => x.Type == weaponData.WeaponData.Type)
                     .EquippedSlot = SlotType switch
                     {
@@ -224,6 +225,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             if (oldData != null)
             {
                 var oldPassiveSkill = oldData as StorePassiveSkillData;
+
+                if (oldPassiveSkill.SkillType == PassiveSkillTypes.DualFirepower && (Inventory.WeaponsSelection.FirstOrDefault(x => x.EquippedSlot == WeaponEquippedSlot.Secondary)?.IsPrimary ?? false))
+                    inventoryTab.SecondarySlot.ClearSlot();
 
                 Inventory.PassiveSkillsSelection
                     .FirstOrDefault(x => x.Type == oldPassiveSkill.SkillType)
@@ -296,7 +300,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
         bool canDrop = false;
 
-        if (item.Data is StoreWeaponData weapondata && (SlotType == InventorySlots.Primary || (SlotType == InventorySlots.Secondary && !weapondata.WeaponData.IsPrimary)))
+        if (item.Data is StoreWeaponData weapondata && (SlotType == InventorySlots.Primary || (SlotType == InventorySlots.Secondary && (!weapondata.WeaponData.IsPrimary || Inventory.PassiveSkillsSelection.Any(x => x.Type == PassiveSkillTypes.DualFirepower && x.IsEquipped)))))
             canDrop = true;
 
         if (item.Data is StoreThrowableData && SlotType == InventorySlots.Grenade)

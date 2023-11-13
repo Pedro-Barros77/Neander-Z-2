@@ -190,7 +190,7 @@ public class PlayerInventoryEditor : Editor
         var availableTypes = Enum.GetValues(typeof(WeaponTypes)).Cast<WeaponTypes>()
             .Where(t => Constants.IsPrimary(t) == isPrimary || t == WeaponTypes.None)
             .ToList();
-        var availableSlots = Enum.GetValues(typeof(WeaponEquippedSlot)).Cast<WeaponEquippedSlot>().Where(t => !isPrimary || t != WeaponEquippedSlot.Secondary);
+        var availableSlots = Enum.GetValues(typeof(WeaponEquippedSlot)).Cast<WeaponEquippedSlot>().Where(t => !isPrimary || (t != WeaponEquippedSlot.Secondary || data.PassiveSkillsSelection.Any(x => x.Type == PassiveSkillTypes.DualFirepower && x.IsEquipped)));
 
         float x = rect.x;
 
