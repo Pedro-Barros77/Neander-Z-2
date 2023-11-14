@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Raven : BaseEnemy, IKnockBackable
 {
+    public float AttackChance { get; set; } = 0.50f;
+    public float AttackAttemptDelayMs { get; set; } = 3000f;
     private float Altitude = 8.57f;
     private float minAltitude = 6f;
     private float maxAltitude = 9f;
     private IEnemyTarget Target;
-    private float AttackChance = 0.50f;
-    private float AttackChanceDelayMs = 3000f;
     private bool isMovingLeft = true;
     private bool isDiving;
     private bool isRising;
@@ -123,7 +123,7 @@ public class Raven : BaseEnemy, IKnockBackable
             if ((isAttacking || isDiving || isRising) && !isHovering)
                 yield return null;
 
-            yield return new WaitForSeconds(AttackChanceDelayMs / 1000f);
+            yield return new WaitForSeconds(AttackAttemptDelayMs / 1000f);
             RollAttackDice();
         }
     }

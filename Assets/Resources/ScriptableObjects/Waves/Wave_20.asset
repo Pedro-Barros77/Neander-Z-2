@@ -28,6 +28,11 @@ MonoBehaviour:
     MaxKillScore: 55
     SpawnChanceMultiplier: 1.5
     IsInfinite: 1
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 80
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
   - EnemyType: 2
     Count: 10
     MinHealth: 20
@@ -40,6 +45,11 @@ MonoBehaviour:
     MaxKillScore: 60
     SpawnChanceMultiplier: 1
     IsInfinite: 1
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 0
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
   - EnemyType: 1
     Count: 10
     MinHealth: 15
@@ -52,6 +62,11 @@ MonoBehaviour:
     MaxKillScore: 70
     SpawnChanceMultiplier: 1
     IsInfinite: 1
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 0
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
   - EnemyType: 4
     Count: 10
     MinHealth: 1
@@ -64,6 +79,11 @@ MonoBehaviour:
     MaxKillScore: 20
     SpawnChanceMultiplier: 0.8
     IsInfinite: 1
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 0
+    RavenAttackChance: 0.6
+    RavenAttackAttemptDelayMs: 2300
   - EnemyType: 3
     Count: 2
     MinHealth: 1000
@@ -76,6 +96,11 @@ MonoBehaviour:
     MaxKillScore: 120
     SpawnChanceMultiplier: 100
     IsInfinite: 0
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 0
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
   MinEnemiesAlive: 10
   MaxEnemiesAlive: 15
   MinSpawnDelayMs: 4000

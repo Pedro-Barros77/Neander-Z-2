@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ronald : BaseEnemy, IKnockBackable
 {
-    private float spawnChance = 0.1f;
+    public float RonaldoSpawnChance { get; set; } = 0.1f;
     private bool SpawnRonaldo;
     private float MaxRonaldoSpawnDelayMs = 5000f;
     protected override void Start()
@@ -33,7 +33,7 @@ public class Ronald : BaseEnemy, IKnockBackable
             return;
 
         float randomValue = Random.Range(0f, 1f);
-        SpawnRonaldo = randomValue <= spawnChance;
+        SpawnRonaldo = randomValue <= RonaldoSpawnChance;
 
         IsAlive = false;
         isDying = true;

@@ -58,4 +58,16 @@ public class EnemyGroup
     /// Desativa o groupo para fins de teste.
     /// </summary>
     public bool IsDisabled;
+
+    #region Enemy-Specific Properties
+    //Ronald
+    public float RonaldSpawnChance;
+
+    //Raimundo
+    public float RaimundoHelmetHealth;
+
+    //Raven
+    public float RavenAttackChance;
+    public float RavenAttackAttemptDelayMs;
+    #endregion
 }

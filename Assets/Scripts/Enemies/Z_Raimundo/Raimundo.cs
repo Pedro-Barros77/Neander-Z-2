@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Raimundo : BaseEnemy, IKnockBackable
 {
+    public float HelmetHealth { get; set; } = 50f;
     public GameObject SparksPrefab;
     private int HelmetStage = 3;
-    private float HelmetHealth = 50f;
     private float HelmetMaxHealth;
     private int HelmetStageCount = 3;
     private Transform Helmet, Head;

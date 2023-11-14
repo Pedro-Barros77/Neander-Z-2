@@ -28,6 +28,11 @@ MonoBehaviour:
     MaxKillScore: 40
     SpawnChanceMultiplier: 1
     IsInfinite: 0
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 0
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
   - EnemyType: 4
     Count: 35
     MinHealth: 2
@@ -40,6 +45,11 @@ MonoBehaviour:
     MaxKillScore: 18
     SpawnChanceMultiplier: 1
     IsInfinite: 0
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 0
+    RavenAttackChance: 0.6
+    RavenAttackAttemptDelayMs: 2300
   MinEnemiesAlive: 10
   MaxEnemiesAlive: 15
   MinSpawnDelayMs: 4000

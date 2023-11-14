@@ -108,9 +108,9 @@ public class WaveEditor : Editor
     void RenderEnemyGroup(Rect rect, int index)
     {
         var item = EnemyGroups.GetArrayElementAtIndex(index);
-        string enemyName = ((EnemyTypes)item.FindPropertyRelative("EnemyType").enumValueIndex).ToString();
+        EnemyTypes enemyType = ((EnemyTypes)item.FindPropertyRelative("EnemyType").enumValueIndex);
 
-        item.isExpanded = EditorGUI.Foldout(new Rect(rect.x + 10, rect.y, 100, EditorGUIUtility.singleLineHeight), item.isExpanded, $" {enemyName} ({item.FindPropertyRelative("Count").intValue})", true);
+        item.isExpanded = EditorGUI.Foldout(new Rect(rect.x + 10, rect.y, 100, EditorGUIUtility.singleLineHeight), item.isExpanded, $" {enemyType} ({item.FindPropertyRelative("Count").intValue})", true);
 
         if (!item.isExpanded)
             return;
@@ -122,17 +122,32 @@ public class WaveEditor : Editor
                lblMaxSpeed = "Max Speed", lblMinSpeed = "Min Speed",
                lblMaxDamage = "Max Damage", lblMinDamage = "Min Damage",
                lblMaxKillScore = "Max KillScore", lblMinKillScore = "Min KillScore",
-               lblSpawnChance = "Spawn Chance", lblIsDisabled = "Disabled";
+               lblSpawnChance = "Spawn Chance", lblIsDisabled = "Disabled",
+               //Enemy-specific:
+               lblRonaldSpawnChance = "Ronald Spawn Chance",
+               lblRaimundoHelmetHealth = "Raimundo Helmet Health",
+               lblRavenAttackChance = "Raven Attack Chance",
+               lblRavenAttackAttemptDelayMs = "Raven Attack Attempt Delay Ms"
+               ;
 
         float typeWidth = 108, countWidth = 30, isInfiniteWidth = 100,
                 maxHealthWidth = 50, minHealthWidth = 50,
                 maxSpeedWidth = 50, minSpeedWidth = 50,
                 maxDamageWidth = 50, minDamageWidth = 50,
                 maxKillScoreWidth = 50, minKillScoreWidth = 50,
-                spawnChanceWidth = 50, isDisabledWidth = 100;
+                spawnChanceWidth = 50, isDisabledWidth = 100,
+                //Enemy-specific:
+                ronaldSpawnChanceWidth = 50,
+                raimundoHelmetHealthWidth = 50,
+                ravenAttackChanceWidth = 50,
+                ravenAttackAttemptDelayMsWidth = 50
+                ;
 
         float lblTypeWidth, lblCountWidth, lblIsInfiniteWidth, lblMaxHealthWidth, lblMinHealthWidth,
-              lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth, lblIsDisabledWidth;
+              lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth, lblIsDisabledWidth,
+              //Enemy-specific:
+              lblRonaldSpawnChanceWidth, lblRaimundoHelmetHealthWidth, lblRavenAttackChanceWidth, lblRavenAttackAttemptDelayMsWidth
+              ;
 
         lblTypeWidth = labelStyle.CalcSize(new GUIContent(lblType)).x;
         lblCountWidth = labelStyle.CalcSize(new GUIContent(lblCount)).x;
@@ -147,6 +162,11 @@ public class WaveEditor : Editor
         lblMinKillScoreWidth = labelStyle.CalcSize(new GUIContent(lblMinKillScore)).x;
         lblSpawnChanceWidth = labelStyle.CalcSize(new GUIContent(lblSpawnChance)).x;
         lblIsDisabledWidth = labelStyle.CalcSize(new GUIContent(lblIsDisabled)).x;
+        //Enemy-specific:
+        lblRonaldSpawnChanceWidth = labelStyle.CalcSize(new GUIContent(lblRonaldSpawnChance)).x;
+        lblRaimundoHelmetHealthWidth = labelStyle.CalcSize(new GUIContent(lblRaimundoHelmetHealth)).x;
+        lblRavenAttackChanceWidth = labelStyle.CalcSize(new GUIContent(lblRavenAttackChance)).x;
+        lblRavenAttackAttemptDelayMsWidth = labelStyle.CalcSize(new GUIContent(lblRavenAttackAttemptDelayMs)).x;
 
         float maxLabelWidth = Mathf.Max(lblTypeWidth, lblCountWidth, lblIsInfiniteWidth, lblMaxHealthWidth, lblMinHealthWidth,
                                                    lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth, lblIsDisabledWidth);
@@ -273,7 +293,56 @@ public class WaveEditor : Editor
         EditorGUI.PropertyField(
                        new Rect(x, y, isDisabledWidth, EditorGUIUtility.singleLineHeight),
                                   item.FindPropertyRelative("IsDisabled"), GUIContent.none);
-        x += isDisabledWidth + marginX * 2;
+        x = startX;
+
+        y += EditorGUIUtility.singleLineHeight + 2;
+
+        //Enemy-specific:
+
+        if (enemyType == EnemyTypes.Z_Ronald)
+        {
+            // Ronald Spawn Chance
+            EditorGUI.LabelField(new Rect(x, y, lblRonaldSpawnChanceWidth, EditorGUIUtility.singleLineHeight), lblRonaldSpawnChance, labelStyle);
+            x += lblRonaldSpawnChanceWidth + marginX;
+            EditorGUI.PropertyField(
+                           new Rect(x, y, ronaldSpawnChanceWidth, EditorGUIUtility.singleLineHeight),
+                                      item.FindPropertyRelative("RonaldSpawnChance"), GUIContent.none);
+
+            x += ronaldSpawnChanceWidth + marginX * 2;
+        }
+
+        if (enemyType == EnemyTypes.Z_Raimundo)
+        {
+            // Raimundo Helmet Health:
+            EditorGUI.LabelField(new Rect(x, y, lblRaimundoHelmetHealthWidth, EditorGUIUtility.singleLineHeight), lblRaimundoHelmetHealth, labelStyle);
+            x += lblRaimundoHelmetHealthWidth + marginX;
+            EditorGUI.PropertyField(
+                           new Rect(x, y, raimundoHelmetHealthWidth, EditorGUIUtility.singleLineHeight),
+                                      item.FindPropertyRelative("RaimundoHelmetHealth"), GUIContent.none);
+
+            x += raimundoHelmetHealthWidth + marginX * 2;
+        }
+
+        if (enemyType == EnemyTypes.Z_Raven)
+        {
+            // Raven Attack Chance:
+            EditorGUI.LabelField(new Rect(x, y, lblRavenAttackChanceWidth, EditorGUIUtility.singleLineHeight), lblRavenAttackChance, labelStyle);
+            x += lblRavenAttackChanceWidth + marginX;
+            EditorGUI.PropertyField(
+                           new Rect(x, y, ravenAttackChanceWidth, EditorGUIUtility.singleLineHeight),
+                                      item.FindPropertyRelative("RavenAttackChance"), GUIContent.none);
+
+            x += ravenAttackChanceWidth + marginX * 2;
+
+            // Raven Attack Attempt Delay Ms
+            EditorGUI.LabelField(new Rect(x, y, lblRavenAttackAttemptDelayMsWidth, EditorGUIUtility.singleLineHeight), lblRavenAttackAttemptDelayMs, labelStyle);
+            x += lblRavenAttackAttemptDelayMsWidth + marginX;
+            EditorGUI.PropertyField(
+                           new Rect(x, y, ravenAttackAttemptDelayMsWidth, EditorGUIUtility.singleLineHeight),
+                                      item.FindPropertyRelative("RavenAttackAttemptDelayMs"), GUIContent.none);
+
+            x += ravenAttackAttemptDelayMsWidth + marginX * 2;
+        }
 
         enemyGroupLineHeight = y - rect.y + EditorGUIUtility.singleLineHeight + 2;
     }

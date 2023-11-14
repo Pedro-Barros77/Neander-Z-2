@@ -277,6 +277,18 @@ public class Wave : MonoBehaviour
         else
             enemy = SpawnEnemy(group.EnemyType, new Vector3(GetRandomXPosition(), FloorHeight, 0), EnemiesContainer);
 
+        SetEnemyValuesAfterStartup(enemy, group);
+
+        return enemy;
+    }
+
+    /// <summary>
+    /// Atribui os valores aleatórios do grupo para o inimigo spawnado, além dos valores específicos de cada inimigo.
+    /// </summary>
+    /// <param name="enemy"></param>
+    /// <param name="group"></param>
+    private void SetEnemyValuesAfterStartup(BaseEnemy enemy, EnemyGroup group)
+    {
         float health = Random.Range(group.MinHealth, group.MaxHealth);
         float speed = Random.Range(group.MinSpeed, group.MaxSpeed);
         float damage = Random.Range(group.MinDamage, group.MaxDamage);
@@ -284,7 +296,21 @@ public class Wave : MonoBehaviour
 
         enemy.OnStartFinished += () => enemy.SetRandomValues(health, speed, damage, killscore, enemy, group == BossGroup);
 
-        return enemy;
+        if(enemy is Ronald ronald)
+        {
+            ronald.RonaldoSpawnChance = group.RonaldSpawnChance;
+        }
+
+        if(enemy is Raimundo raimundo)
+        {
+            raimundo.HelmetHealth = group.RaimundoHelmetHealth;
+        }
+
+        if(enemy is Raven raven)
+        {
+            raven.AttackChance = group.RavenAttackChance;
+            raven.AttackAttemptDelayMs = group.RavenAttackAttemptDelayMs;
+        }
     }
 
     /// <summary>
