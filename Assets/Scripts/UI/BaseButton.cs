@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public Button Button { get; private set; }
     public bool Pressed { get; private set; }
     public bool IsPressing { get; private set; }
     public bool Released { get; private set; }
@@ -14,19 +15,38 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     [SerializeField]
     public CustomAudio ClickSound, HoverSound;
     [SerializeField]
+    bool ChangesCursorOnHover = true;
+    [SerializeField]
+    bool IsClickable = true;
+    [SerializeField]
+    string TooltipText;
+    [SerializeField]
+    Tooltip Tooltip;
+
     public delegate void OnHover(BaseButton button, bool hovered);
     public event OnHover HoverEvent;
 
     private Animator animator;
-    public Button button;
     private AudioSource audioSource;
     private int touchId = -1;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        button = GetComponent<Button>();
+        Button = GetComponent<Button>();
         audioSource = GetComponent<AudioSource>();
+        if (Tooltip != null)
+        {
+            Tooltip.HoverDelayMs = 1000f;
+            if (TooltipText.IsNullOrEmpty())
+            {
+                var btnLabel = GetComponentInChildren<TextMeshProUGUI>();
+                if (btnLabel != null)
+                    Tooltip.SetText(btnLabel.text);
+            }
+            else
+                Tooltip.SetText(TooltipText);
+        }
     }
 
     void Update()
@@ -46,7 +66,10 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     /// </summary>
     public void OnClick()
     {
-        if (button != null && !button.interactable)
+        if (Button != null && !Button.interactable)
+            return;
+
+        if (!IsClickable)
             return;
 
         ClickSound.PlayIfNotNull(audioSource, AudioTypes.UI);
@@ -60,7 +83,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     /// </summary>
     public void OnHoverIn()
     {
-        if (button != null && !button.interactable)
+        if (Button != null && !Button.interactable)
             return;
 
         HoverSound.PlayIfNotNull(audioSource, AudioTypes.UI);
@@ -68,7 +91,8 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         IsHovering = true;
         HoverEvent?.Invoke(this, true);
 
-        MenuController.Instance.SetCursor(Cursors.Pointer);
+        if (ChangesCursorOnHover)
+            MenuController.Instance.SetCursor(Cursors.Pointer);
     }
 
     /// <summary>
@@ -76,13 +100,14 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     /// </summary>
     public void OnHoverOut()
     {
-        if (button != null && !button.interactable)
+        if (Button != null && !Button.interactable)
             return;
 
         IsHovering = false;
         HoverEvent?.Invoke(this, false);
 
-        MenuController.Instance.SetCursor(Cursors.Arrow);
+        if (ChangesCursorOnHover)
+            MenuController.Instance.SetCursor(Cursors.Arrow);
     }
 
     /// <summary>
@@ -91,11 +116,15 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     /// <param name="btnAnimator">Botão a ser reiniciado.</param>
     public void ResetButton()
     {
-        if (button == null)
+        if (Button == null)
             return;
 
         if (animator == null)
             return;
+
+        if (!IsClickable)
+            return;
+
         animator.ResetTrigger("Pressed");
         animator.ResetTrigger("Selected");
         animator.SetTrigger("Normal");
@@ -107,6 +136,9 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         var menuController = MenuController.Instance;
         if (menuController != null)
             menuController.SetCursor(Cursors.Arrow);
+
+        if (Tooltip != null)
+            Tooltip.SetVisible(false);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -144,6 +176,9 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (IsHovering)
             MenuController.Instance.SetCursor(Cursors.Arrow);
+
+        if (Tooltip != null)
+            Tooltip.SetVisible(false);
 
         IsHovering = false;
     }

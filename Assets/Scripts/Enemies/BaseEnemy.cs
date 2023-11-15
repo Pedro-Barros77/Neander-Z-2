@@ -350,7 +350,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
 
         WavesManager.Instance.CurrentWave.HandleScore(this, attacker, isHeadshot);
 
-        attacker.HandleEnemyKill(this, lastDamagedBodyPartName);
+        if (attacker != null)
+            attacker.HandleEnemyKill(this, lastDamagedBodyPartName);
 
         if (AudioSource != null)
             DeathSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);

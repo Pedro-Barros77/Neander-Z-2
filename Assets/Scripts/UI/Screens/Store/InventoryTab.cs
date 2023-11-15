@@ -160,19 +160,19 @@ public class InventoryTab : MonoBehaviour
                     if (upgradeStep == null)
                     {
                         priceText.text = "MAX";
-                        button.button.interactable = false;
+                        button.Button.interactable = false;
                         return;
                     }
 
                     if (upgradeStep.Price > storeScreen.PlayerData.Money)
                     {
                         priceText.color = Constants.Colors.RedMoney;
-                        button.button.interactable = false;
+                        button.Button.interactable = false;
                     }
                     else
                     {
                         priceText.color = Color.white;
-                        button.button.interactable = true;
+                        button.Button.interactable = true;
                     }
 
                     priceText.text = $"$ {upgradeStep.Price:N2}";
@@ -199,7 +199,7 @@ public class InventoryTab : MonoBehaviour
 
                 if (backpackUpgrade != null)
                 {
-                    BackpackBtnUpgrade.button.interactable = storeScreen.PlayerData.Money >= backpackUpgrade.Price;
+                    BackpackBtnUpgrade.Button.interactable = storeScreen.PlayerData.Money >= backpackUpgrade.Price;
 
                     BackpackBtnUpgradeText.text = $"Upgrade for ${backpackUpgrade.Price:N2}";
                     BackpackPistolAmmoUpgrade.text = $"+{backpackUpgrade.PistolAmmo}";
@@ -224,19 +224,19 @@ public class InventoryTab : MonoBehaviour
                     if (upgradeStep == null)
                     {
                         priceText.text = "MAX";
-                        button.button.interactable = false;
+                        button.Button.interactable = false;
                         return;
                     }
 
                     if (upgradeStep.Price > storeScreen.PlayerData.Money)
                     {
                         priceText.color = Constants.Colors.RedMoney;
-                        button.button.interactable = false;
+                        button.Button.interactable = false;
                     }
                     else
                     {
                         priceText.color = Color.white;
-                        button.button.interactable = true;
+                        button.Button.interactable = true;
                     }
 
                     priceText.text = $"$ {upgradeStep.Price:N2}";
@@ -1057,7 +1057,7 @@ public class InventoryTab : MonoBehaviour
 
         if (Inventory.UpgradeIndex >= data.AmmoUpgrades.Count)
         {
-            BackpackBtnUpgrade.button.interactable = false;
+            BackpackBtnUpgrade.Button.interactable = false;
 
             void setAmmo(TextMeshProUGUI txt)
             {
