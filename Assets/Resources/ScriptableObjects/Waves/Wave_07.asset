@@ -18,14 +18,14 @@ MonoBehaviour:
   EnemyGroups:
   - EnemyType: 0
     Count: 12
-    MinHealth: 28
-    MaxHealth: 32
-    MinSpeed: 0.4
-    MaxSpeed: 0.7
-    MinDamage: 15
-    MaxDamage: 20
-    MinKillScore: 46
-    MaxKillScore: 53
+    MinHealth: 30
+    MaxHealth: 35
+    MinSpeed: 0.43
+    MaxSpeed: 0.73
+    MinDamage: 17
+    MaxDamage: 22
+    MinKillScore: 42
+    MaxKillScore: 49
     SpawnChanceMultiplier: 1
     IsInfinite: 0
     IsDisabled: 0
@@ -35,14 +35,14 @@ MonoBehaviour:
     RavenAttackAttemptDelayMs: 0
   - EnemyType: 2
     Count: 12
-    MinHealth: 21
-    MaxHealth: 27
-    MinSpeed: 0.4
-    MaxSpeed: 0.62
-    MinDamage: 15
-    MaxDamage: 20
-    MinKillScore: 50
-    MaxKillScore: 56
+    MinHealth: 24
+    MaxHealth: 30
+    MinSpeed: 0.41
+    MaxSpeed: 0.6
+    MinDamage: 18
+    MaxDamage: 23
+    MinKillScore: 39
+    MaxKillScore: 45
     SpawnChanceMultiplier: 1
     IsInfinite: 0
     IsDisabled: 0
@@ -54,12 +54,12 @@ MonoBehaviour:
     Count: 15
     MinHealth: 1.5
     MaxHealth: 3
-    MinSpeed: 1.2
-    MaxSpeed: 2
+    MinSpeed: 1.23
+    MaxSpeed: 2.1
     MinDamage: 3
-    MaxDamage: 8
-    MinKillScore: 16
-    MaxKillScore: 22
+    MaxDamage: 8.5
+    MinKillScore: 15
+    MaxKillScore: 20
     SpawnChanceMultiplier: 1
     IsInfinite: 0
     IsDisabled: 0
@@ -67,10 +67,10 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0.5
     RavenAttackAttemptDelayMs: 3000
-  MinEnemiesAlive: 7
-  MaxEnemiesAlive: 18
-  MinSpawnDelayMs: 4000
-  MaxSpawnDelayMs: 8000
+  MinEnemiesAlive: 8
+  MaxEnemiesAlive: 14
+  MinSpawnDelayMs: 3000
+  MaxSpawnDelayMs: 6000
   MinSpawnCount: 6
   MaxSpawnCount: 10
   StartDelayMs: 2000

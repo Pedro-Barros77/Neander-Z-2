@@ -21,13 +21,18 @@ MonoBehaviour:
     MinHealth: 22
     MaxHealth: 26
     MinSpeed: 0.4
-    MaxSpeed: 0.7
-    MinDamage: 13
+    MaxSpeed: 0.65
+    MinDamage: 14
     MaxDamage: 18
     MinKillScore: 46
-    MaxKillScore: 53
+    MaxKillScore: 52
     SpawnChanceMultiplier: 1
     IsInfinite: 0
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 0
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
   MinEnemiesAlive: 3
   MaxEnemiesAlive: 8
   MinSpawnDelayMs: 4000

@@ -18,28 +18,38 @@ MonoBehaviour:
   EnemyGroups:
   - EnemyType: 0
     Count: 15
-    MinHealth: 28
-    MaxHealth: 32
-    MinSpeed: 0.4
-    MaxSpeed: 0.7
-    MinDamage: 14
-    MaxDamage: 20
-    MinKillScore: 46
-    MaxKillScore: 53
+    MinHealth: 30
+    MaxHealth: 34
+    MinSpeed: 0.42
+    MaxSpeed: 0.71
+    MinDamage: 16
+    MaxDamage: 21
+    MinKillScore: 44
+    MaxKillScore: 50
     SpawnChanceMultiplier: 1
     IsInfinite: 0
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 0
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
   - EnemyType: 2
     Count: 12
-    MinHealth: 21
-    MaxHealth: 26
-    MinSpeed: 0.4
-    MaxSpeed: 0.6
-    MinDamage: 15
-    MaxDamage: 20
-    MinKillScore: 50
-    MaxKillScore: 56
+    MinHealth: 22
+    MaxHealth: 27
+    MinSpeed: 0.41
+    MaxSpeed: 0.59
+    MinDamage: 18
+    MaxDamage: 22
+    MinKillScore: 40
+    MaxKillScore: 47
     SpawnChanceMultiplier: 1
     IsInfinite: 0
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 0
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
   - EnemyType: 1
     Count: 2
     MinHealth: 15
@@ -52,10 +62,15 @@ MonoBehaviour:
     MaxKillScore: 70
     SpawnChanceMultiplier: 1.5
     IsInfinite: 0
-  MinEnemiesAlive: 7
-  MaxEnemiesAlive: 12
-  MinSpawnDelayMs: 4000
-  MaxSpawnDelayMs: 8000
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 0
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
+  MinEnemiesAlive: 8
+  MaxEnemiesAlive: 13
+  MinSpawnDelayMs: 3200
+  MaxSpawnDelayMs: 6500
   MinSpawnCount: 6
   MaxSpawnCount: 10
   StartDelayMs: 2000

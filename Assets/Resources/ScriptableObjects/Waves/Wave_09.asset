@@ -18,14 +18,14 @@ MonoBehaviour:
   EnemyGroups:
   - EnemyType: 0
     Count: 12
-    MinHealth: 28
-    MaxHealth: 32
-    MinSpeed: 0.4
-    MaxSpeed: 0.7
-    MinDamage: 13
-    MaxDamage: 18
-    MinKillScore: 46
-    MaxKillScore: 53
+    MinHealth: 32
+    MaxHealth: 38
+    MinSpeed: 0.43
+    MaxSpeed: 0.75
+    MinDamage: 18
+    MaxDamage: 23
+    MinKillScore: 41
+    MaxKillScore: 48
     SpawnChanceMultiplier: 1
     IsInfinite: 0
     IsDisabled: 0
@@ -35,14 +35,14 @@ MonoBehaviour:
     RavenAttackAttemptDelayMs: 0
   - EnemyType: 2
     Count: 12
-    MinHealth: 20
-    MaxHealth: 24
-    MinSpeed: 0.4
-    MaxSpeed: 0.57
-    MinDamage: 15
-    MaxDamage: 20
-    MinKillScore: 55
-    MaxKillScore: 60
+    MinHealth: 26
+    MaxHealth: 32
+    MinSpeed: 0.42
+    MaxSpeed: 0.61
+    MinDamage: 20
+    MaxDamage: 25
+    MinKillScore: 36
+    MaxKillScore: 41
     SpawnChanceMultiplier: 1
     IsInfinite: 0
     IsDisabled: 0
@@ -52,14 +52,14 @@ MonoBehaviour:
     RavenAttackAttemptDelayMs: 0
   - EnemyType: 4
     Count: 15
-    MinHealth: 1.5
-    MaxHealth: 3
-    MinSpeed: 1.2
-    MaxSpeed: 2.5
-    MinDamage: 3
+    MinHealth: 2.5
+    MaxHealth: 5
+    MinSpeed: 1.26
+    MaxSpeed: 2.2
+    MinDamage: 3.5
     MaxDamage: 9
-    MinKillScore: 16
-    MaxKillScore: 22
+    MinKillScore: 14
+    MaxKillScore: 19
     SpawnChanceMultiplier: 1
     IsInfinite: 0
     IsDisabled: 0
@@ -69,14 +69,14 @@ MonoBehaviour:
     RavenAttackAttemptDelayMs: 2500
   - EnemyType: 1
     Count: 12
-    MinHealth: 15
-    MaxHealth: 18
-    MinSpeed: 3
-    MaxSpeed: 5.5
-    MinDamage: 20
-    MaxDamage: 25
-    MinKillScore: 65
-    MaxKillScore: 70
+    MinHealth: 17
+    MaxHealth: 21
+    MinSpeed: 3.1
+    MaxSpeed: 5.4
+    MinDamage: 22
+    MaxDamage: 26
+    MinKillScore: 52
+    MaxKillScore: 58
     SpawnChanceMultiplier: 1
     IsInfinite: 0
     IsDisabled: 0
@@ -84,12 +84,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
-  MinEnemiesAlive: 7
+  MinEnemiesAlive: 9
   MaxEnemiesAlive: 14
-  MinSpawnDelayMs: 4000
-  MaxSpawnDelayMs: 8000
-  MinSpawnCount: 6
-  MaxSpawnCount: 10
+  MinSpawnDelayMs: 2800
+  MaxSpawnDelayMs: 5500
+  MinSpawnCount: 7
+  MaxSpawnCount: 11
   StartDelayMs: 2000
   EndDelayMs: 2100
   MoneyMultiplier: 1
