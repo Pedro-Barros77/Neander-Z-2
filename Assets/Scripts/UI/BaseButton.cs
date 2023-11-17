@@ -53,6 +53,17 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (IsPressing)
             UpdateClickPosition();
+
+        if (Button != null && !Button.interactable)
+        {
+            if (Tooltip != null)
+                Tooltip.SetVisible(false);
+
+            if (IsHovering && ChangesCursorOnHover)
+                MenuController.Instance.SetCursor(Cursors.Arrow);
+
+            IsHovering = false;
+        }
     }
 
     private void LateUpdate()
@@ -73,6 +84,8 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             return;
 
         ClickSound.PlayIfNotNull(audioSource, AudioTypes.UI);
+        if (Tooltip != null)
+            Tooltip.SetVisible(false);
 
         IsPressing = true;
         Pressed = true;
@@ -100,14 +113,15 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     /// </summary>
     public void OnHoverOut()
     {
+        if (ChangesCursorOnHover)
+            MenuController.Instance.SetCursor(Cursors.Arrow);
+
         if (Button != null && !Button.interactable)
             return;
 
         IsHovering = false;
         HoverEvent?.Invoke(this, false);
 
-        if (ChangesCursorOnHover)
-            MenuController.Instance.SetCursor(Cursors.Arrow);
     }
 
     /// <summary>
