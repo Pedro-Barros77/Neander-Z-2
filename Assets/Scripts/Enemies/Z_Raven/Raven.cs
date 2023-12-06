@@ -90,7 +90,7 @@ public class Raven : BaseEnemy, IKnockBackable
         if (Mathf.Abs(RigidBody.velocity.y) < MovementSpeed && isRising)
             RigidBody.velocity += new Vector2(0, Mathf.Clamp(AccelerationSpeed, 0, MovementSpeed));
 
-        float targetHeight = Target.SpriteRenderer.bounds.size.y;
+        float targetHeight = Target.Bounds.size.y;
         if (isDiving && transform.position.y >= Target.transform.position.y + (targetHeight / 2))
         {
             Vector3 direction = Target.transform.position - transform.position;

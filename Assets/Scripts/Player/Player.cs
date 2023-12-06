@@ -101,6 +101,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     public float DeathTime { get; private set; }
     public float DeathTimeDelayMs { get; private set; } = 5000f;
     public bool IsSecondChanceActive { get; private set; }
+    public Bounds Bounds { get; private set; }
 
 
     /// <summary>
@@ -111,7 +112,6 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     /// A arma atualmente equipada nas mгos do jogador.
     /// </summary>
     public BaseWeapon CurrentWeapon => Backpack.EquippedWeapon;
-    public SpriteRenderer SpriteRenderer { get; private set; }
     private InGameScreen Screen;
     private Canvas WorldPosCanvas;
     private GameObject PopupPrefab;
@@ -132,8 +132,11 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     [SerializeField]
     GameObject AmmoDropPrefab;
 
+    SpriteRenderer HeadSpriteRenderer, BodySpriteRenderer, LegsSpriteRenderer;
+
     public PlayerMovement PlayerMovement { get; private set; }
     public Rigidbody2D RigidBody { get; private set; }
+
 
     void Start()
     {
@@ -148,7 +151,6 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
 
         WorldPosCanvas = GameObject.Find("WorldPositionCanvas").GetComponent<Canvas>();
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
-        SpriteRenderer = GetComponent<SpriteRenderer>();
 
         if (HealthBar != null)
         {
@@ -165,15 +167,30 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         StaminaBar.HideOnFull = true;
         StaminaBar.SetMaxValue(MaxStamina, MaxStamina);
         (StaminaBar.transform as RectTransform).pivot = new Vector2(0.5f, 0.5f);
+
+        var skin = transform.Find("Skin");
+        var head = skin.Find("Head");
+        var body = skin.Find("Torso");
+        var legs = skin.Find("Legs");
+
+        HeadSpriteRenderer = head.GetComponent<SpriteRenderer>();
+        BodySpriteRenderer = body.GetComponent<SpriteRenderer>();
+        LegsSpriteRenderer = legs.GetComponent<SpriteRenderer>();
+
+        Bounds = new Bounds(HeadSpriteRenderer.bounds.center, HeadSpriteRenderer.bounds.size);
+        Bounds.Encapsulate(BodySpriteRenderer.bounds);
+        Bounds.Encapsulate(LegsSpriteRenderer.bounds);
     }
 
     void Update()
     {
-        StaminaBar.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
+        StaminaBar.transform.position = transform.position + new Vector3(0, Bounds.size.y * 1.2f, 0);
         if (IsSecondChanceActive)
-            SecondChanceEffect.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
+            SecondChanceEffect.transform.position = transform.position + new Vector3(0, Bounds.size.y * 0.8f, 0);
         if (Backpack.EquippedPassiveSkillType == PassiveSkillTypes.Cautious)
-            CautiousEffect.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y, 0);
+            CautiousEffect.transform.position = transform.position + new Vector3(0, Bounds.size.y * 1.5f, 0);
+
+        Debug.DrawLine((transform.position - (Bounds.size)), (transform.position + (Bounds.size)), Color.red);
 
         UpdatePassiveSkills();
 
@@ -221,7 +238,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         Data.Health = Mathf.Clamp(Health + value, 0, MaxHealth);
         if (HealthBar != null)
             HealthBar.AddValue(value);
-        ShowPopup(value.ToString("N1"), Color.green, transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        ShowPopup(value.ToString("N1"), Color.green, transform.position + new Vector3(0, Bounds.size.y));
     }
 
     /// <summary>
@@ -262,7 +279,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         Data.Health = Mathf.Clamp(Health - value, 0, MaxHealth);
         if (HealthBar != null)
             HealthBar.RemoveValue(value);
-        ShowPopup(value.ToString("N1"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        ShowPopup(value.ToString("N1"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, Bounds.size.y));
 
         if (WavesManager.Instance != null && WavesManager.Instance.CurrentWave != null && WavesManager.Instance.CurrentWave.Stats != null)
             WavesManager.Instance.CurrentWave.Stats.DamageTaken += value;

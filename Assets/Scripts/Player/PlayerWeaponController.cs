@@ -39,7 +39,7 @@ public class PlayerWeaponController : MonoBehaviour
     Transform handTransform, throwingContainerTransform, throwableSpawnPointTransform;
     float? startSwitchTime;
     float startThrowingContainerScale;
-    SpriteRenderer playerSprite, handPalmSprite, fingersSprite;
+    SpriteRenderer handPalmSprite, fingersSprite;
     protected LineRenderer LineRenderer;
     Animator playerAnimator;
     Transform floor;
@@ -64,7 +64,6 @@ public class PlayerWeaponController : MonoBehaviour
     {
         floor = GameObject.Find("Floor")?.transform;
         Player = transform.parent.GetComponent<Player>();
-        playerSprite = Player.GetComponent<SpriteRenderer>();
         playerAnimator = Player.GetComponent<Animator>();
         LineRenderer = GetComponent<LineRenderer>();
         StartLocalPosition = transform.localPosition;
@@ -152,7 +151,7 @@ public class PlayerWeaponController : MonoBehaviour
         }
 
         blinkingReloadText.gameObject.SetActive(Player.CurrentWeapon.NeedsReload());
-        blinkingReloadText.transform.position = Player.transform.position + new Vector3(0, playerSprite.size.y * 0.7f);
+        blinkingReloadText.transform.position = Player.transform.position + new Vector3(0, Player.Bounds.size.y * 0.7f);
 
         throwingContainerTransform.localScale = new Vector3(Player.CurrentWeapon.PlayerFlipDir * startThrowingContainerScale, startThrowingContainerScale, startThrowingContainerScale);
 
