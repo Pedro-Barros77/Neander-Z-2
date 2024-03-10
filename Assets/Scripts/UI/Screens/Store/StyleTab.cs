@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,11 +11,16 @@ public class StyleTab : MonoBehaviour
     public SkinManager SkinManager;
     [SerializeField]
     TMP_Dropdown AnimationDropdown;
+    [SerializeField]
+    Slider SkinColorSlider;
+    [SerializeField]
+    Sprite SkinGradientSprite;
 
     [SerializeField]
     Button HatPrevBtn, HatNextBtn, HairPrevBtn, HairNextBtn, HeadPrevBtn, HeadNextBtn, TorsoPrevBtn, TorsoNextBtn, ShirtPrevBtn, ShirtNextBtn, LegsPrevBtn, LegsNextBtn, PantsPrevBtn, PantsNextBtn, ShoesPrevBtn, ShoesNextBtn;
 
     int currentHatIndex = 0, currentHairIndex = 0, currentHeadIndex = 0, currentTorsoIndex = 0, currentShirtIndex = 0, currentLegsIndex = 0, currentPantsIndex = 0, currentShoesIndex = 0;
+    Color32 CurrentSkinColor;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +38,9 @@ public class StyleTab : MonoBehaviour
         AnimationDropdown.AddOptions(new List<string>(Enum.GetNames(typeof(AnimationTypes))));
         AnimationDropdown.value = (int)AnimationTypes.Idle;
         AnimationDropdown.onValueChanged.AddListener(SetAnimationPreview);
+
+        GenerateSkinColorSliderGradient();
+        SkinColorSlider.onValueChanged.AddListener(SetSkinColor);
 
         SkinManager.IsPreviewAnimation = true;
     }
@@ -127,7 +136,30 @@ public class StyleTab : MonoBehaviour
 
     public void SetAnimationPreview(int animationTypeIndex)
     {
-        Debug.Log(animationTypeIndex);
         SkinManager.SetAnimation((AnimationTypes)animationTypeIndex);
+    }
+
+    void GenerateSkinColorSliderGradient()
+    {
+        const int WIDTH = 256;
+        Texture2D texture = new(WIDTH, 1);
+
+        Color32[] gradientColors = Enumerable.Range(0, WIDTH)
+           .Select(x => (Color32)Color.Lerp(Constants.Colors.SkinLightestColor, Constants.Colors.SkinDarkestColor, x / (float)WIDTH))
+           .ToArray();
+
+        texture.SetPixels32(gradientColors);
+        texture.wrapMode = TextureWrapMode.Clamp;
+        texture.Apply();
+
+        Image imageComponent = SkinColorSlider.transform.Find("Background").GetComponent<Image>();
+        Sprite gradientSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
+        imageComponent.sprite = gradientSprite;
+    }
+
+    void SetSkinColor(float value)
+    {
+        CurrentSkinColor = Color.Lerp(Constants.Colors.SkinLightestColor, Constants.Colors.SkinDarkestColor, value);
+        SkinManager.UpdateSkin(CurrentSkinColor);
     }
 }

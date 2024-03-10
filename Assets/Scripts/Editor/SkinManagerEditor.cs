@@ -183,6 +183,7 @@ public class SkinManagerEditor : Editor
         var pantsType = skinItem.FindPropertyRelative("PantsType");
         var shoesType = skinItem.FindPropertyRelative("ShoesType");
         var library = skinItem.FindPropertyRelative("Library");
+        var skinColorLibrary = skinItem.FindPropertyRelative("SkinColorLibrary");
 
         string hatLabel = "Hat",
             hairLabel = "Hair",
@@ -319,5 +320,14 @@ public class SkinManagerEditor : Editor
         EditorGUI.PropertyField(
             new Rect(x, rect.y, 150, EditorGUIUtility.singleLineHeight),
             library, GUIContent.none);
+
+        x += 150 + marginX;
+
+        if (itemType == SkinItemTypes.Head || itemType == SkinItemTypes.Torso || itemType == SkinItemTypes.Legs)
+        {
+            EditorGUI.PropertyField(
+                new Rect(x, rect.y, 150, EditorGUIUtility.singleLineHeight),
+                skinColorLibrary, GUIContent.none);
+        }
     }
 }
