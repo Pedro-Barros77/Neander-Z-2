@@ -69,6 +69,10 @@ public class SkinManagerEditor : Editor
     public override void OnInspectorGUI()
     {
         //base.OnInspectorGUI();
+        GetTarget.Update();
+
+        if (GUILayout.Button("Update Skin"))
+            data.UpdateSkin();
 
         EditorGUILayout.PropertyField(GetTarget.FindProperty("CurrentHat"));
         EditorGUILayout.PropertyField(GetTarget.FindProperty("CurrentHair"));
@@ -79,16 +83,14 @@ public class SkinManagerEditor : Editor
         EditorGUILayout.PropertyField(GetTarget.FindProperty("CurrentPants"));
         EditorGUILayout.PropertyField(GetTarget.FindProperty("CurrentShoes"));
 
-        EditorGUILayout.PropertyField(GetTarget.FindProperty("HatSpriteRenderer"));
-        EditorGUILayout.PropertyField(GetTarget.FindProperty("HairSpriteRenderer"));
-        EditorGUILayout.PropertyField(GetTarget.FindProperty("HeadSpriteRenderer"));
-        EditorGUILayout.PropertyField(GetTarget.FindProperty("TorsoSpriteRenderer"));
-        EditorGUILayout.PropertyField(GetTarget.FindProperty("ShirtSpriteRenderer"));
-        EditorGUILayout.PropertyField(GetTarget.FindProperty("LegsSpriteRenderer"));
-        EditorGUILayout.PropertyField(GetTarget.FindProperty("PantsSpriteRenderer"));
-        EditorGUILayout.PropertyField(GetTarget.FindProperty("ShoesSpriteRenderer"));
-
-        GetTarget.Update();
+        EditorGUILayout.PropertyField(GetTarget.FindProperty("HatSpriteLibrary"));
+        EditorGUILayout.PropertyField(GetTarget.FindProperty("HairSpriteLibrary"));
+        EditorGUILayout.PropertyField(GetTarget.FindProperty("HeadSpriteLibrary"));
+        EditorGUILayout.PropertyField(GetTarget.FindProperty("TorsoSpriteLibrary"));
+        EditorGUILayout.PropertyField(GetTarget.FindProperty("ShirtSpriteLibrary"));
+        EditorGUILayout.PropertyField(GetTarget.FindProperty("LegsSpriteLibrary"));
+        EditorGUILayout.PropertyField(GetTarget.FindProperty("PantsSpriteLibrary"));
+        EditorGUILayout.PropertyField(GetTarget.FindProperty("ShoesSpriteLibrary"));
 
         // Skin Hats
         HatItems.isExpanded = EditorGUILayout.BeginFoldoutHeaderGroup(HatItems.isExpanded, "Hats");
@@ -170,6 +172,8 @@ public class SkinManagerEditor : Editor
 
         var skinItem = property.GetArrayElementAtIndex(index);
 
+        var type = skinItem.FindPropertyRelative("Type");
+        type.enumValueIndex = (int)itemType;
         var hatType = skinItem.FindPropertyRelative("HatType");
         var hairType = skinItem.FindPropertyRelative("HairType");
         var headType = skinItem.FindPropertyRelative("HeadType");

@@ -3,6 +3,5 @@
 /// </summary>
 public enum SkinHeadOptions
 {
-    None = 0,
     CarlosHead = 1,
 }

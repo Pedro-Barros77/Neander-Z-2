@@ -30,7 +30,7 @@ public class StoreScreen : MonoBehaviour
     [SerializeField]
     Button BuyButton, TestItemButton, BtnReady, BtnSaveGame;
     [SerializeField]
-    GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab;
+    GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, StyleContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab, StyleTab;
     [SerializeField]
     SectionedBar DamageBar, FireRateBar, ReloadSpeedBar, RangeBar, BulletSpeedBar;
 
@@ -301,16 +301,19 @@ public class StoreScreen : MonoBehaviour
         ItemsContent.SetActive(tab == StoreTabs.Items);
         PerksContent.SetActive(tab == StoreTabs.Perks);
         InventoryContent.SetActive(tab == StoreTabs.Inventory);
+        StyleContent.SetActive(tab == StoreTabs.Style);
 
         WeaponsTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
         ItemsTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
         PerksTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
         InventoryTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
+        StyleTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
 
         SetTabActive(WeaponsTab, tab == StoreTabs.Weapons);
         SetTabActive(ItemsTab, tab == StoreTabs.Items);
         SetTabActive(PerksTab, tab == StoreTabs.Perks);
         SetTabActive(InventoryTab, tab == StoreTabs.Inventory);
+        SetTabActive(StyleTab, tab == StoreTabs.Style);
     }
 
     /// <summary>

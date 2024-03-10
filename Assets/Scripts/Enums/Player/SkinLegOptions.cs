@@ -3,7 +3,5 @@
 /// </summary>
 public enum SkinLegOptions
 {
-    None = 0,
     Common = 1,
-    Hairy = 2,
 }

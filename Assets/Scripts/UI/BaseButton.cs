@@ -30,6 +30,8 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private AudioSource audioSource;
     private int touchId = -1;
 
+    bool isInteractable;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -47,12 +49,21 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             else
                 Tooltip.SetText(TooltipText);
         }
+        if (Button != null)
+            isInteractable = Button.interactable;
     }
 
     void Update()
     {
         if (IsPressing)
             UpdateClickPosition();
+
+        if (Button != null)
+        {
+            if (Button.interactable != isInteractable && Tooltip != null)
+                HoverEvent?.Invoke(this, false);
+            isInteractable = Button.interactable;
+        }
     }
 
     private void LateUpdate()

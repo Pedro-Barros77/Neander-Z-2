@@ -7,9 +7,9 @@ public enum SkinItemTypes
     Hat = 1,
     Hair = 2,
     Head = 3,
-    Torso = 4,
-    Shirt = 5,
-    Legs = 6,
-    Pants = 7,
+    Shirt = 4,
+    Torso = 5,
+    Pants = 6,
+    Legs = 7,
     Shoes = 8,
 }

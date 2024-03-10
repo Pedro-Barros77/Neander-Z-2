@@ -1,11 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
+using UnityEngine.UI;
 
 public class SkinManager : MonoBehaviour
 {
+    public Animator Animator { get; private set; }
+    public bool IsPreviewAnimation { get; set; }
+
     public SkinHatOptions CurrentHat;
     public SkinHairOptions CurrentHair;
     public SkinHeadOptions CurrentHead;
@@ -16,18 +21,86 @@ public class SkinManager : MonoBehaviour
     public SkinShoesOptions CurrentShoes;
 
     [SerializeField]
-    SpriteRenderer HatSpriteRenderer, HairSpriteRenderer, HeadSpriteRenderer, TorsoSpriteRenderer, ShirtSpriteRenderer, LegsSpriteRenderer, PantsSpriteRenderer, ShoesSpriteRenderer;
+    SpriteLibrary HatSpriteLibrary, HairSpriteLibrary, HeadSpriteLibrary, TorsoSpriteLibrary, ShirtSpriteLibrary, LegsSpriteLibrary, PantsSpriteLibrary, ShoesSpriteLibrary;
 
     [SerializeField]
     List<SkinItem> HatItems, HairItems, HeadItems, TorsoItems, ShirtItems, LegsItems, PantsItems, ShoesItems;
+
+    SpriteRenderer HatSpriteRenderer, HairSpriteRenderer, HeadSpriteRenderer, TorsoSpriteRenderer, ShirtSpriteRenderer, LegsSpriteRenderer, PantsSpriteRenderer, ShoesSpriteRenderer;
+    Image HatImage, HairImage, HeadImage, TorsoImage, ShirtImage, LegsImage, PantsImage, ShoesImage;
+
+
     void Start()
     {
-        
+        HatSpriteRenderer = HatSpriteLibrary.GetComponent<SpriteRenderer>();
+        HairSpriteRenderer = HairSpriteLibrary.GetComponent<SpriteRenderer>();
+        HeadSpriteRenderer = HeadSpriteLibrary.GetComponent<SpriteRenderer>();
+        TorsoSpriteRenderer = TorsoSpriteLibrary.GetComponent<SpriteRenderer>();
+        ShirtSpriteRenderer = ShirtSpriteLibrary.GetComponent<SpriteRenderer>();
+        LegsSpriteRenderer = LegsSpriteLibrary.GetComponent<SpriteRenderer>();
+        PantsSpriteRenderer = PantsSpriteLibrary.GetComponent<SpriteRenderer>();
+        ShoesSpriteRenderer = ShoesSpriteLibrary.GetComponent<SpriteRenderer>();
+
+        Animator = GetComponentInParent<Animator>();
+
+        HatImage = HatSpriteLibrary.GetComponent<Image>();
+        HairImage = HairSpriteLibrary.GetComponent<Image>();
+        HeadImage = HeadSpriteLibrary.GetComponent<Image>();
+        TorsoImage = TorsoSpriteLibrary.GetComponent<Image>();
+        ShirtImage = ShirtSpriteLibrary.GetComponent<Image>();
+        LegsImage = LegsSpriteLibrary.GetComponent<Image>();
+        PantsImage = PantsSpriteLibrary.GetComponent<Image>();
+        ShoesImage = ShoesSpriteLibrary.GetComponent<Image>();
+
+        if (IsPreviewAnimation)
+        {
+            Animator.fireEvents = false;
+            Animator.SetBool("LoopCurrentAnimation", true);
+        }
+
+        UpdateSkin();
     }
 
     void Update()
     {
-        
+        if (HatImage != null) HatImage.sprite = HatSpriteRenderer.sprite;
+        if (HairImage != null) HairImage.sprite = HairSpriteRenderer.sprite;
+        if (HeadImage != null) HeadImage.sprite = HeadSpriteRenderer.sprite;
+        if (TorsoImage != null) TorsoImage.sprite = TorsoSpriteRenderer.sprite;
+        if (ShirtImage != null) ShirtImage.sprite = ShirtSpriteRenderer.sprite;
+        if (LegsImage != null) LegsImage.sprite = LegsSpriteRenderer.sprite;
+        if (PantsImage != null) PantsImage.sprite = PantsSpriteRenderer.sprite;
+        if (ShoesImage != null) ShoesImage.sprite = ShoesSpriteRenderer.sprite;
+    }
+
+    public void UpdateSkin()
+    {
+        HatSpriteRenderer.enabled = CurrentHat != SkinHatOptions.None;
+        HairSpriteRenderer.enabled = CurrentHair != SkinHairOptions.None;
+        ShirtSpriteRenderer.enabled = CurrentShirt != SkinShirtOptions.None;
+        PantsSpriteRenderer.enabled = CurrentPants != SkinPantsOptions.None;
+        ShoesSpriteRenderer.enabled = CurrentShoes != SkinShoesOptions.None;
+
+        if (HatImage != null) HatImage.enabled = CurrentHat != SkinHatOptions.None;
+        if (HairImage != null) HairImage.enabled = CurrentHair != SkinHairOptions.None;
+        if (ShirtImage != null) ShirtImage.enabled = CurrentShirt != SkinShirtOptions.None;
+        if (PantsImage != null) PantsImage.enabled = CurrentPants != SkinPantsOptions.None;
+        if (ShoesImage != null) ShoesImage.enabled = CurrentShoes != SkinShoesOptions.None;
+
+        HatSpriteLibrary.spriteLibraryAsset = HatItems.FirstOrDefault(x => x.Type == SkinItemTypes.Hat && x.HatType == CurrentHat)?.Library;
+        HairSpriteLibrary.spriteLibraryAsset = HairItems.FirstOrDefault(x => x.Type == SkinItemTypes.Hair && x.HairType == CurrentHair)?.Library;
+        HeadSpriteLibrary.spriteLibraryAsset = HeadItems.Find(x => x.Type == SkinItemTypes.Head && x.HeadType == CurrentHead).Library;
+        TorsoSpriteLibrary.spriteLibraryAsset = TorsoItems.Find(x => x.Type == SkinItemTypes.Torso && x.TorsoType == CurrentTorso).Library;
+        ShirtSpriteLibrary.spriteLibraryAsset = ShirtItems.FirstOrDefault(x => x.Type == SkinItemTypes.Shirt && x.ShirtType == CurrentShirt)?.Library;
+        LegsSpriteLibrary.spriteLibraryAsset = LegsItems.Find(x => x.Type == SkinItemTypes.Legs && x.LegsType == CurrentLegs).Library;
+        PantsSpriteLibrary.spriteLibraryAsset = PantsItems.FirstOrDefault(x => x.Type == SkinItemTypes.Pants && x.PantsType == CurrentPants)?.Library;
+        ShoesSpriteLibrary.spriteLibraryAsset = ShoesItems.FirstOrDefault(x => x.Type == SkinItemTypes.Shoes && x.ShoesType == CurrentShoes)?.Library;
+    }
+
+    public void SetAnimation(AnimationTypes animationType)
+    {
+        Animator.Play($"Carlos_{animationType}");
+        Animator.SetBool("isCrouching", animationType == AnimationTypes.Crouch);
     }
 
     [Serializable]
