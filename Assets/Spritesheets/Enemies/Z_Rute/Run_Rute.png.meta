@@ -1,0 +1,577 @@
+fileFormatVersion: 2
+guid: e788d28206370cc45a9942ceb5e5d4b6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8189902392755482729
+    second: Run_Rute_0
+  - first:
+      213: -3706943978088929947
+    second: Run_Rute_1
+  - first:
+      213: 6117557642103970721
+    second: Run_Rute_2
+  - first:
+      213: -8569097908133171367
+    second: Run_Rute_3
+  - first:
+      213: 6216850117644274928
+    second: Run_Rute_4
+  - first:
+      213: 4563899944051481820
+    second: Run_Rute_5
+  - first:
+      213: 3538808126478890588
+    second: Run_Rute_6
+  - first:
+      213: -5131925076955391481
+    second: Run_Rute_7
+  - first:
+      213: -8991750749758323033
+    second: Run_Rute_8
+  - first:
+      213: -1358129646786268962
+    second: Run_Rute_9
+  - first:
+      213: -4816902194730752043
+    second: Run_Rute_10
+  - first:
+      213: 1756496150466346632
+    second: Run_Rute_11
+  - first:
+      213: -4953278945807860456
+    second: Run_Rute_12
+  - first:
+      213: -1345193253248424198
+    second: Run_Rute_13
+  - first:
+      213: -6478403671414330821
+    second: Run_Rute_14
+  - first:
+      213: 8613053226840696174
+    second: Run_Rute_15
+  - first:
+      213: 5406575455363634591
+    second: Run_Rute_16
+  - first:
+      213: -8965543614310912961
+    second: Run_Rute_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 45
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Run_Rute_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79f00be6a2f975e80800000000000000
+      internalID: -8189902392755482729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 336
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5656cb7971a4e8cc0800000000000000
+      internalID: -3706943978088929947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_2
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 336
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ab5596634ee5e450800000000000000
+      internalID: 6117557642103970721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_3
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 336
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95fed248ad2741980800000000000000
+      internalID: -8569097908133171367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_4
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 336
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fc48046e30b64650800000000000000
+      internalID: 6216850117644274928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdc1d9b81da365f30800000000000000
+      internalID: 4563899944051481820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_6
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 224
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c563a0bdd3f5c1130800000000000000
+      internalID: 3538808126478890588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_7
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 224
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70a9726255db7c8b0800000000000000
+      internalID: -5131925076955391481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_8
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 224
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a68dcb5552e63380800000000000000
+      internalID: -8991750749758323033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_9
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 224
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed0b06c2844f62de0800000000000000
+      internalID: -1358129646786268962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 112
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d7264599fce62db0800000000000000
+      internalID: -4816902194730752043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_11
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 112
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88e33e941f3506810800000000000000
+      internalID: 1756496150466346632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_12
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 112
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81d73b9da0b624bb0800000000000000
+      internalID: -4953278945807860456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_13
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 112
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af620e10dd9e45de0800000000000000
+      internalID: -1345193253248424198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_14
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 112
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3a23c55f261816a0800000000000000
+      internalID: -6478403671414330821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e652f51a646b78770800000000000000
+      internalID: 8613053226840696174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_16
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 0
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f959b4c3bb3080b40800000000000000
+      internalID: 5406575455363634591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run_Rute_17
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 85
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3ce9b2959df39380800000000000000
+      internalID: -8965543614310912961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: feff5e5df1e7bf34ea9b690c8ac8cb00
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Run_Rute_0: -8189902392755482729
+      Run_Rute_1: -3706943978088929947
+      Run_Rute_10: -4816902194730752043
+      Run_Rute_11: 1756496150466346632
+      Run_Rute_12: -4953278945807860456
+      Run_Rute_13: -1345193253248424198
+      Run_Rute_14: -6478403671414330821
+      Run_Rute_15: 8613053226840696174
+      Run_Rute_16: 5406575455363634591
+      Run_Rute_17: -8965543614310912961
+      Run_Rute_2: 6117557642103970721
+      Run_Rute_3: -8569097908133171367
+      Run_Rute_4: 6216850117644274928
+      Run_Rute_5: 4563899944051481820
+      Run_Rute_6: 3538808126478890588
+      Run_Rute_7: -5131925076955391481
+      Run_Rute_8: -8991750749758323033
+      Run_Rute_9: -1358129646786268962
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
