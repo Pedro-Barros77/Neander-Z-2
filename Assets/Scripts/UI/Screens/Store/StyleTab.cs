@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class StyleTab : MonoBehaviour
 {
+    StoreScreen storeScreen;
+
+    public bool IsSkinDirty { get; private set; }
+
     [SerializeField]
     public SkinManager SkinManager;
     [SerializeField]
@@ -22,9 +26,12 @@ public class StyleTab : MonoBehaviour
     int currentHatIndex = 0, currentHairIndex = 0, currentHeadIndex = 0, currentTorsoIndex = 0, currentShirtIndex = 0, currentLegsIndex = 0, currentPantsIndex = 0, currentShoesIndex = 0;
     Color32 CurrentSkinColor;
 
-    // Start is called before the first frame update
     void Start()
     {
+        storeScreen = GetComponent<StoreScreen>();
+
+        SkinManager.LoadSkinData(storeScreen.PlayerData.SkinData);
+
         currentHatIndex = (int)SkinManager.CurrentHat;
         currentHairIndex = (int)SkinManager.CurrentHair;
         currentHeadIndex = (int)SkinManager.CurrentHead;
@@ -45,7 +52,6 @@ public class StyleTab : MonoBehaviour
         SkinManager.IsPreviewAnimation = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         HatPrevBtn.interactable = currentHatIndex > 0;
@@ -77,66 +83,88 @@ public class StyleTab : MonoBehaviour
             case SkinItemTypes.Hat:
                 if (!Enum.IsDefined(typeof(SkinHatOptions), currentHatIndex + indexDelta))
                     return;
-                currentHatIndex = incrementIndex ? currentHatIndex + 1 : currentHatIndex - 1;
+                currentHatIndex += indexDelta;
                 SkinManager.CurrentHat = (SkinHatOptions)currentHatIndex;
                 break;
 
             case SkinItemTypes.Hair:
                 if (!Enum.IsDefined(typeof(SkinHairOptions), currentHairIndex + indexDelta))
                     return;
-                currentHairIndex = incrementIndex ? currentHairIndex + 1 : currentHairIndex - 1;
+                currentHairIndex += indexDelta;
                 SkinManager.CurrentHair = (SkinHairOptions)currentHairIndex;
                 break;
 
             case SkinItemTypes.Head:
                 if (!Enum.IsDefined(typeof(SkinHeadOptions), currentHeadIndex + indexDelta))
                     return;
-                currentHeadIndex = incrementIndex ? currentHeadIndex + 1 : currentHeadIndex - 1;
+                currentHeadIndex += indexDelta;
                 SkinManager.CurrentHead = (SkinHeadOptions)currentHeadIndex;
                 break;
 
             case SkinItemTypes.Shirt:
                 if (!Enum.IsDefined(typeof(SkinShirtOptions), currentShirtIndex + indexDelta))
                     return;
-                currentShirtIndex = incrementIndex ? currentShirtIndex + 1 : currentShirtIndex - 1;
+                currentShirtIndex += indexDelta;
                 SkinManager.CurrentShirt = (SkinShirtOptions)currentShirtIndex;
                 break;
 
             case SkinItemTypes.Torso:
                 if (!Enum.IsDefined(typeof(SkinTorsoOptions), currentTorsoIndex + indexDelta))
                     return;
-                currentTorsoIndex = incrementIndex ? currentTorsoIndex + 1 : currentTorsoIndex - 1;
+                currentTorsoIndex += indexDelta;
                 SkinManager.CurrentTorso = (SkinTorsoOptions)currentTorsoIndex;
                 break;
 
             case SkinItemTypes.Pants:
                 if (!Enum.IsDefined(typeof(SkinPantsOptions), currentPantsIndex + indexDelta))
                     return;
-                currentPantsIndex = incrementIndex ? currentPantsIndex + 1 : currentPantsIndex - 1;
+                currentPantsIndex += indexDelta;
                 SkinManager.CurrentPants = (SkinPantsOptions)currentPantsIndex;
                 break;
 
             case SkinItemTypes.Legs:
                 if (!Enum.IsDefined(typeof(SkinLegOptions), currentLegsIndex + indexDelta))
                     return;
-                currentLegsIndex = incrementIndex ? currentLegsIndex + 1 : currentLegsIndex - 1;
+                currentLegsIndex += indexDelta;
                 SkinManager.CurrentLegs = (SkinLegOptions)currentLegsIndex;
                 break;
 
             case SkinItemTypes.Shoes:
                 if (!Enum.IsDefined(typeof(SkinShoesOptions), currentShoesIndex + indexDelta))
                     return;
-                currentShoesIndex = incrementIndex ? currentShoesIndex + 1 : currentShoesIndex - 1;
+                currentShoesIndex += indexDelta;
                 SkinManager.CurrentShoes = (SkinShoesOptions)currentShoesIndex;
                 break;
         }
 
         SkinManager.UpdateSkin();
+        IsSkinDirty = true;
     }
 
     public void SetAnimationPreview(int animationTypeIndex)
     {
         SkinManager.SetAnimation((AnimationTypes)animationTypeIndex);
+    }
+
+    public void SaveCurrentSkinData()
+    {
+        if (!IsSkinDirty)
+            return;
+
+        storeScreen.PlayerData.SkinData.SkinColor = CurrentSkinColor;
+        //storeScreen.PlayerData.SkinData.HairColor = SkinManager.CurrentHairColor;
+        //storeScreen.PlayerData.SkinData.EyeColor = SkinManager.CurrentEyeColor;
+
+        storeScreen.PlayerData.SkinData.Hair = SkinManager.CurrentHair;
+        storeScreen.PlayerData.SkinData.Hat = SkinManager.CurrentHat;
+        storeScreen.PlayerData.SkinData.Head = SkinManager.CurrentHead;
+        storeScreen.PlayerData.SkinData.Shirt = SkinManager.CurrentShirt;
+        storeScreen.PlayerData.SkinData.Torso = SkinManager.CurrentTorso;
+        storeScreen.PlayerData.SkinData.Pants = SkinManager.CurrentPants;
+        storeScreen.PlayerData.SkinData.Legs = SkinManager.CurrentLegs;
+        storeScreen.PlayerData.SkinData.Shoes = SkinManager.CurrentShoes;
+
+        IsSkinDirty = false;
     }
 
     void GenerateSkinColorSliderGradient()
@@ -160,6 +188,8 @@ public class StyleTab : MonoBehaviour
     void SetSkinColor(float value)
     {
         CurrentSkinColor = Color.Lerp(Constants.Colors.SkinLightestColor, Constants.Colors.SkinDarkestColor, value);
-        SkinManager.UpdateSkin(CurrentSkinColor);
+        SkinManager.CurrentSkinColor = CurrentSkinColor;
+        SkinManager.UpdateSkinColor();
+        IsSkinDirty = true;
     }
 }

@@ -79,7 +79,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     /// <summary>
     /// O tipo de personagem do jogador.
     /// </summary>
-    public CharacterTypes Character => Data.Character;
+    public CharacterTypes Character => Data.SkinData.Character;
     /// <summary>
     /// A pontuaзгo total do jogador.
     /// </summary>

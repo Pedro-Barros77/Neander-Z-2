@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49646fd663006b0498c0f9f03f954cb8, type: 3}
+  m_Name: CarlosSkinData
+  m_EditorClassIdentifier: 
+  CharacterName: Carlos
+  Character: 1
+  SkinColor:
+    serializedVersion: 2
+    rgba: 4290562521
+  HairColor:
+    serializedVersion: 2
+    rgba: 4279376425
+  EyeColor:
+    serializedVersion: 2
+    rgba: 4284499763
+  Hat: 1
+  Hair: 1
+  Head: 1
+  Shirt: 1
+  Torso: 1
+  Pants: 1
+  Legs: 1
+  Shoes: 1

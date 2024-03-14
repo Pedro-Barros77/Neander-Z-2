@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,6 +9,8 @@ public class SkinManager : MonoBehaviour
 {
     public Animator Animator { get; private set; }
     public bool IsPreviewAnimation { get; set; }
+
+    public Color32 CurrentSkinColor;
 
     public SkinHatOptions CurrentHat;
     public SkinHairOptions CurrentHair;
@@ -30,9 +31,15 @@ public class SkinManager : MonoBehaviour
     SpriteRenderer HatSpriteRenderer, HairSpriteRenderer, HeadSpriteRenderer, TorsoSpriteRenderer, ShirtSpriteRenderer, LegsSpriteRenderer, PantsSpriteRenderer, ShoesSpriteRenderer, HeadColorSpriteRenderer, TorsoColorSpriteRenderer, LegColorSpriteRenderer;
     Image HatImage, HairImage, HeadImage, TorsoImage, ShirtImage, LegsImage, PantsImage, ShoesImage;
 
+    Player Player;
 
     void Start()
     {
+        Player = GetComponentInParent<Player>();
+
+        if (Player != null)
+            LoadSkinData(Player.Data.SkinData);
+
         HatSpriteRenderer = HatSpriteLibrary.GetComponent<SpriteRenderer>();
         HairSpriteRenderer = HairSpriteLibrary.GetComponent<SpriteRenderer>();
         HeadSpriteRenderer = HeadSpriteLibrary.GetComponent<SpriteRenderer>();
@@ -82,7 +89,21 @@ public class SkinManager : MonoBehaviour
         }
     }
 
-    public void UpdateSkin(Color32? skinColor = null)
+    public void LoadSkinData(SkinData skinData)
+    {
+        CurrentSkinColor = skinData.SkinColor;
+
+        CurrentHat = skinData.Hat;
+        CurrentHair = skinData.Hair;
+        CurrentHead = skinData.Head;
+        CurrentShirt = skinData.Shirt;
+        CurrentTorso = skinData.Torso;
+        CurrentPants = skinData.Pants;
+        CurrentLegs = skinData.Legs;
+        CurrentShoes = skinData.Shoes;
+    }
+
+    public void UpdateSkin()
     {
         HatSpriteRenderer.enabled = CurrentHat != SkinHatOptions.None;
         HairSpriteRenderer.enabled = CurrentHair != SkinHairOptions.None;
@@ -108,13 +129,15 @@ public class SkinManager : MonoBehaviour
         HeadColorSpriteLibrary.spriteLibraryAsset = HeadItems.Find(x => x.Type == SkinItemTypes.Head && x.HeadType == CurrentHead).SkinColorLibrary;
         TorsoColorSpriteLibrary.spriteLibraryAsset = TorsoItems.Find(x => x.Type == SkinItemTypes.Torso && x.TorsoType == CurrentTorso).SkinColorLibrary;
         LegsColorSpriteLibrary.spriteLibraryAsset = LegsItems.Find(x => x.Type == SkinItemTypes.Legs && x.LegsType == CurrentLegs).SkinColorLibrary;
+        
+        UpdateSkinColor();
+    }
 
-        if (skinColor != null)
-        {
-            HeadColorSpriteRenderer.color = skinColor.Value;
-            TorsoColorSpriteRenderer.color = skinColor.Value;
-            LegColorSpriteRenderer.color = skinColor.Value;
-        }
+    public void UpdateSkinColor()
+    {
+        HeadColorSpriteRenderer.color = CurrentSkinColor;
+        TorsoColorSpriteRenderer.color = CurrentSkinColor;
+        LegColorSpriteRenderer.color = CurrentSkinColor;
     }
 
     public void SetAnimation(AnimationTypes animationType)

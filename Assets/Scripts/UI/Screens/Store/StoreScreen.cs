@@ -39,6 +39,7 @@ public class StoreScreen : MonoBehaviour
     GameObject PopupPrefab;
     Canvas WorldPosCanvas;
     InventoryTab inventoryTab;
+    StyleTab styleTab;
     float musicStartVolume;
 
     void Start()
@@ -53,6 +54,7 @@ public class StoreScreen : MonoBehaviour
         WorldPosCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         BtnReadyText = BtnReady.GetComponentInChildren<TextMeshProUGUI>();
         inventoryTab = GetComponent<InventoryTab>();
+        styleTab = GetComponent<StyleTab>();
         musicStartVolume = musicAudioSource.volume;
     }
 
@@ -342,6 +344,8 @@ public class StoreScreen : MonoBehaviour
     {
         storePanelAnimator.SetTrigger("Exit");
         StartCoroutine(ExitStoreAfterAnimation());
+        if (styleTab.IsSkinDirty)
+            styleTab.SaveCurrentSkinData();
     }
 
     /// <summary>

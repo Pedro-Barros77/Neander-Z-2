@@ -1,11 +1,11 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Player Data", menuName = "Neander Z/Player/Player Data", order = 2)]
+[CreateAssetMenu(fileName = "New Player Data", menuName = "Neander Z/Player/Player Data", order = 1)]
 public class PlayerData : AutoRevertSO
 {
     public InventoryData InventoryData;
 
-    public CharacterTypes Character;
+    public SkinData SkinData;
 
     public float MaxHealth;
     public float Health;
