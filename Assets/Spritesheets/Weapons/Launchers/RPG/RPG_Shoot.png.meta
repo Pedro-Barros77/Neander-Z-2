@@ -1,9 +1,36 @@
 fileFormatVersion: 2
-guid: 28bb6f49d3c2eb046ac2ceb16e26c972
+guid: ad11124f68df803438569fada2d67f59
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6656142150403026167
+    second: RPG_Shoot 1_0
+  - first:
+      213: 8996066345565580223
+    second: RPG_Shoot 1_1
+  - first:
+      213: 7745082170300387605
+    second: RPG_Shoot 1_2
+  - first:
+      213: 5914107316609013222
+    second: RPG_Shoot 1_3
+  - first:
+      213: -3938353382910849453
+    second: RPG_Shoot 1_4
+  - first:
+      213: 7231208405007601151
+    second: RPG_Shoot 1_5
+  - first:
+      213: -2999868904948962565
+    second: RPG_Shoot 1_6
+  - first:
+      213: -7382800997133251478
+    second: RPG_Shoot 1_7
+  - first:
+      213: 2492007335094018543
+    second: RPG_Shoot 1_8
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -94,7 +121,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +137,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RPG_Shoot_0
+      name: RPG_Shoot 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -122,16 +149,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 99b2274a24c2ae4459f764ea1bb38f13
-      internalID: -686849465
+      spriteID: 7fce641250e5f5c50800000000000000
+      internalID: 6656142150403026167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Shoot_1
+      name: RPG_Shoot 1_1
       rect:
         serializedVersion: 2
         x: 135
@@ -143,16 +170,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f3d3290997b38934a8d9a59d662af7c4
-      internalID: 1764144974
+      spriteID: fbb68479da278dc70800000000000000
+      internalID: 8996066345565580223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Shoot_2
+      name: RPG_Shoot 1_2
       rect:
         serializedVersion: 2
         x: 270
@@ -164,16 +191,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ad477a8af88a40f42a29c716d534ad68
-      internalID: 546439618
+      spriteID: 51157fcd23f0c7b60800000000000000
+      internalID: 7745082170300387605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Shoot_3
+      name: RPG_Shoot 1_3
       rect:
         serializedVersion: 2
         x: 405
@@ -185,16 +212,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3e5cb963caf46a448afd47f2e92794b9
-      internalID: -1132420155
+      spriteID: 6e5d40a2541231250800000000000000
+      internalID: 5914107316609013222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Shoot_4
+      name: RPG_Shoot 1_4
       rect:
         serializedVersion: 2
         x: 0
@@ -206,16 +233,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8f0ab23bf3940a247b48f7b9e6d1df52
-      internalID: -160583246
+      spriteID: 35e04abe6782859c0800000000000000
+      internalID: -3938353382910849453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Shoot_5
+      name: RPG_Shoot 1_5
       rect:
         serializedVersion: 2
         x: 135
@@ -227,16 +254,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 7caa4df658e3d5841959d8a322432ebd
-      internalID: -1884512631
+      spriteID: ffd0c455bb96a5460800000000000000
+      internalID: 7231208405007601151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Shoot_6
+      name: RPG_Shoot 1_6
       rect:
         serializedVersion: 2
         x: 270
@@ -248,16 +275,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b62a739028d6c2846ac030009972a43f
-      internalID: 1641047546
+      spriteID: bfae6cbff135e56d0800000000000000
+      internalID: -2999868904948962565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Shoot_7
+      name: RPG_Shoot 1_7
       rect:
         serializedVersion: 2
         x: 405
@@ -269,10 +296,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 65dd594a444d3d5409043187f8f4d23c
-      internalID: 1865785685
+      spriteID: a6c097edb950b8990800000000000000
+      internalID: -7382800997133251478
       vertices: []
       indices: 
       edges: []
@@ -280,7 +307,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: d66f4d082d358aa4e8c9e194152de1c0
     internalID: 0
     vertices: []
     indices: 
@@ -288,14 +315,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RPG_Shoot_0: -686849465
-      RPG_Shoot_1: 1764144974
-      RPG_Shoot_2: 546439618
-      RPG_Shoot_3: -1132420155
-      RPG_Shoot_4: -160583246
-      RPG_Shoot_5: -1884512631
-      RPG_Shoot_6: 1641047546
-      RPG_Shoot_7: 1865785685
+      RPG_Shoot 1_0: 6656142150403026167
+      RPG_Shoot 1_1: 8996066345565580223
+      RPG_Shoot 1_2: 7745082170300387605
+      RPG_Shoot 1_3: 5914107316609013222
+      RPG_Shoot 1_4: -3938353382910849453
+      RPG_Shoot 1_5: 7231208405007601151
+      RPG_Shoot 1_6: -2999868904948962565
+      RPG_Shoot 1_7: -7382800997133251478
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,9 +1,21 @@
 fileFormatVersion: 2
-guid: 902371b3cf6dd094b9934b2655cb096d
+guid: 087fef5e59b6fee4894d48145e4f275a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1059887239901576395
+    second: Deagle_Shoot 1_0
+  - first:
+      213: 5096694801120534995
+    second: Deagle_Shoot 1_1
+  - first:
+      213: -5970855419362744452
+    second: Deagle_Shoot 1_2
+  - first:
+      213: -6677775010705774751
+    second: Deagle_Shoot 1_3
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -81,19 +93,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -107,7 +106,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Deagle_Shoot_0
+      name: Deagle_Shoot 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,16 +134,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3802908ca303280469b169866b5ed069
-      internalID: -1994827371
+      spriteID: bcc7d4444d975be00800000000000000
+      internalID: 1059887239901576395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Shoot_1
+      name: Deagle_Shoot 1_1
       rect:
         serializedVersion: 2
         x: 100
@@ -156,16 +155,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: cf10833ce077b4b43af164d392641840
-      internalID: -323532660
+      spriteID: 3d1ae5d0be81bb640800000000000000
+      internalID: 5096694801120534995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Shoot_2
+      name: Deagle_Shoot 1_2
       rect:
         serializedVersion: 2
         x: 0
@@ -177,16 +176,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0ea8be2b177185947b915403e6407151
-      internalID: 794619788
+      spriteID: c77eaab81a2432da0800000000000000
+      internalID: -5970855419362744452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Shoot_3
+      name: Deagle_Shoot 1_3
       rect:
         serializedVersion: 2
         x: 100
@@ -198,10 +197,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b51ac93009247c1419b7199a91c2d04b
-      internalID: -438855373
+      spriteID: 167e6e41207c353a0800000000000000
+      internalID: -6677775010705774751
       vertices: []
       indices: 
       edges: []
@@ -209,7 +208,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: c041fe5d7f99d5a49951603fb8d75b73
     internalID: 0
     vertices: []
     indices: 
@@ -217,10 +216,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Deagle_Shoot_0: -1994827371
-      Deagle_Shoot_1: -323532660
-      Deagle_Shoot_2: 794619788
-      Deagle_Shoot_3: -438855373
+      Deagle_Shoot 1_0: 1059887239901576395
+      Deagle_Shoot 1_1: 5096694801120534995
+      Deagle_Shoot 1_2: -5970855419362744452
+      Deagle_Shoot 1_3: -6677775010705774751
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

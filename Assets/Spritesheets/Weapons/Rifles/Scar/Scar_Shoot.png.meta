@@ -1,9 +1,27 @@
 fileFormatVersion: 2
-guid: aa4688d73c87c814e9e9ad983541a92b
+guid: faf82d3e1fffe594a97ad81b42a61658
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7882339603820035460
+    second: Scar_Shoot 1_0
+  - first:
+      213: -3911961449188373992
+    second: Scar_Shoot 1_1
+  - first:
+      213: 4765311969439225447
+    second: Scar_Shoot 1_2
+  - first:
+      213: 6205006078951764720
+    second: Scar_Shoot 1_3
+  - first:
+      213: -3815458453116386965
+    second: Scar_Shoot 1_4
+  - first:
+      213: -8514854315630873867
+    second: Scar_Shoot 1_5
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -81,19 +99,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -107,7 +112,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scar_Shoot_0
+      name: Scar_Shoot 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,16 +140,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 90953227ee81fae48bb5cf9cc5829f96
-      internalID: -334436377
+      spriteID: 48dbfa47b12b36d60800000000000000
+      internalID: 7882339603820035460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Shoot_1
+      name: Scar_Shoot 1_1
       rect:
         serializedVersion: 2
         x: 100
@@ -156,16 +161,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0408b250f97612546b4f5083fb145321
-      internalID: 2132312094
+      spriteID: 81aca16d9cbe5b9c0800000000000000
+      internalID: -3911961449188373992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Shoot_2
+      name: Scar_Shoot 1_2
       rect:
         serializedVersion: 2
         x: 0
@@ -177,16 +182,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 453f58aa98309a24caf53afd622dd21e
-      internalID: 1003645223
+      spriteID: 766975e0df9c12240800000000000000
+      internalID: 4765311969439225447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Shoot_3
+      name: Scar_Shoot 1_3
       rect:
         serializedVersion: 2
         x: 100
@@ -198,10 +203,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 13a38884bd4b6db499d43541aeab3a4d
-      internalID: -1194489759
+      spriteID: 0f23f0d372c9c1650800000000000000
+      internalID: 6205006078951764720
       vertices: []
       indices: 
       edges: []
@@ -209,7 +214,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 87dd853f12a78d24f9bc6b83c8fa62c8
     internalID: 0
     vertices: []
     indices: 
@@ -217,10 +222,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Scar_Shoot_0: -334436377
-      Scar_Shoot_1: 2132312094
-      Scar_Shoot_2: 1003645223
-      Scar_Shoot_3: -1194489759
+      Scar_Shoot 1_0: 7882339603820035460
+      Scar_Shoot 1_1: -3911961449188373992
+      Scar_Shoot 1_2: 4765311969439225447
+      Scar_Shoot 1_3: 6205006078951764720
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

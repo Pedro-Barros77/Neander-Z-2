@@ -1,9 +1,45 @@
 fileFormatVersion: 2
-guid: 7f2dac8ed233cca498a7285cadafad3e
+guid: dea91c6360dc43c498d5d81167f0cd6b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5553572681761971348
+    second: SV98_BoltAction 1_0
+  - first:
+      213: -1099096051886815461
+    second: SV98_BoltAction 1_1
+  - first:
+      213: -4434692262662315205
+    second: SV98_BoltAction 1_2
+  - first:
+      213: -1193835074011563361
+    second: SV98_BoltAction 1_3
+  - first:
+      213: 3248883188922230480
+    second: SV98_BoltAction 1_4
+  - first:
+      213: 2087972100031360005
+    second: SV98_BoltAction 1_5
+  - first:
+      213: 4228522672487996693
+    second: SV98_BoltAction 1_6
+  - first:
+      213: -5282699531791170839
+    second: SV98_BoltAction 1_7
+  - first:
+      213: -1995473252066917054
+    second: SV98_BoltAction 1_8
+  - first:
+      213: 2190264522143649854
+    second: SV98_BoltAction 1_9
+  - first:
+      213: -5900099979485285523
+    second: SV98_BoltAction 1_10
+  - first:
+      213: -2379787747399057034
+    second: SV98_BoltAction 1_11
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -94,7 +130,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +146,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SV98_BoltAction_0
+      name: SV98_BoltAction 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -122,16 +158,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: fa9a400f62f33a148a86a4ba7cfdcbf7
-      internalID: 553721810
+      spriteID: c63a34de11fbde2b0800000000000000
+      internalID: -5553572681761971348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_BoltAction_1
+      name: SV98_BoltAction 1_1
       rect:
         serializedVersion: 2
         x: 117
@@ -143,16 +179,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 69549e924c0f69a4ca9bead616ac50f2
-      internalID: 387809095
+      spriteID: b17804dc6f93fb0f0800000000000000
+      internalID: -1099096051886815461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_BoltAction_2
+      name: SV98_BoltAction 1_2
       rect:
         serializedVersion: 2
         x: 234
@@ -164,16 +200,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9085a72da9439b744bd8b543187d1786
-      internalID: 1386080682
+      spriteID: b33e6d312eec472c0800000000000000
+      internalID: -4434692262662315205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_BoltAction_3
+      name: SV98_BoltAction 1_3
       rect:
         serializedVersion: 2
         x: 351
@@ -185,16 +221,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 82b90cce855b96d448c2f9bebe0d549e
-      internalID: -1158365841
+      spriteID: f9a732d4355ae6fe0800000000000000
+      internalID: -1193835074011563361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_BoltAction_4
+      name: SV98_BoltAction 1_4
       rect:
         serializedVersion: 2
         x: 468
@@ -206,16 +242,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6c791f708ce6ded45abdec3e26408e4c
-      internalID: -1430444723
+      spriteID: 0d6a2780c0a561d20800000000000000
+      internalID: 3248883188922230480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_BoltAction_5
+      name: SV98_BoltAction 1_5
       rect:
         serializedVersion: 2
         x: 585
@@ -227,16 +263,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a41d6896f001cfb45a9cb7000e6fe326
-      internalID: -1810117572
+      spriteID: 50cab4bff87f9fc10800000000000000
+      internalID: 2087972100031360005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_BoltAction_6
+      name: SV98_BoltAction 1_6
       rect:
         serializedVersion: 2
         x: 0
@@ -248,16 +284,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c2c4b3b88fcc2824f93b15356f83c906
-      internalID: -1803066087
+      spriteID: 51d155a87fabeaa30800000000000000
+      internalID: 4228522672487996693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_BoltAction_7
+      name: SV98_BoltAction 1_7
       rect:
         serializedVersion: 2
         x: 117
@@ -269,16 +305,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 886ce88adf540f04c9a40f1eec5afae7
-      internalID: -1853176089
+      spriteID: 9e20778c3c410b6b0800000000000000
+      internalID: -5282699531791170839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_BoltAction_8
+      name: SV98_BoltAction 1_8
       rect:
         serializedVersion: 2
         x: 234
@@ -290,16 +326,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e57616cbb7cc9554bbe65c869315b6f9
-      internalID: 1524275971
+      spriteID: 24502c356a7ae44e0800000000000000
+      internalID: -1995473252066917054
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_BoltAction_9
+      name: SV98_BoltAction 1_9
       rect:
         serializedVersion: 2
         x: 351
@@ -311,16 +347,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 2f0026913ebad024d93d7167fd978871
-      internalID: -296958409
+      spriteID: e3053867af1656e10800000000000000
+      internalID: 2190264522143649854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_BoltAction_10
+      name: SV98_BoltAction 1_10
       rect:
         serializedVersion: 2
         x: 468
@@ -332,16 +368,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: aeb98c02d00865c43b3759cc26d161f9
-      internalID: -1203846734
+      spriteID: d637d772452ae1ea0800000000000000
+      internalID: -5900099979485285523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_BoltAction_11
+      name: SV98_BoltAction 1_11
       rect:
         serializedVersion: 2
         x: 585
@@ -353,10 +389,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e363e8f503164e042a81448b463df209
-      internalID: -1106796568
+      spriteID: 671c37307ab49fed0800000000000000
+      internalID: -2379787747399057034
       vertices: []
       indices: 
       edges: []
@@ -364,7 +400,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: f4d12612454df0e4382f38278c96fedd
     internalID: 0
     vertices: []
     indices: 
@@ -372,18 +408,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SV98_BoltAction_0: 553721810
-      SV98_BoltAction_1: 387809095
-      SV98_BoltAction_10: -1203846734
-      SV98_BoltAction_11: -1106796568
-      SV98_BoltAction_2: 1386080682
-      SV98_BoltAction_3: -1158365841
-      SV98_BoltAction_4: -1430444723
-      SV98_BoltAction_5: -1810117572
-      SV98_BoltAction_6: -1803066087
-      SV98_BoltAction_7: -1853176089
-      SV98_BoltAction_8: 1524275971
-      SV98_BoltAction_9: -296958409
+      SV98_BoltAction 1_0: -5553572681761971348
+      SV98_BoltAction 1_1: -1099096051886815461
+      SV98_BoltAction 1_10: -5900099979485285523
+      SV98_BoltAction 1_11: -2379787747399057034
+      SV98_BoltAction 1_2: -4434692262662315205
+      SV98_BoltAction 1_3: -1193835074011563361
+      SV98_BoltAction 1_4: 3248883188922230480
+      SV98_BoltAction 1_5: 2087972100031360005
+      SV98_BoltAction 1_6: 4228522672487996693
+      SV98_BoltAction 1_7: -5282699531791170839
+      SV98_BoltAction 1_8: -1995473252066917054
+      SV98_BoltAction 1_9: 2190264522143649854
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

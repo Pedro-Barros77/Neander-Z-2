@@ -1,9 +1,18 @@
 fileFormatVersion: 2
-guid: 04b93a1ea0496cf4b9887a8037be36f5
+guid: a381966a0dab2db42854ad0e7b70d861
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5651573158908416614
+    second: Colt_1911_Shoot 1_0
+  - first:
+      213: -4264381247212088751
+    second: Colt_1911_Shoot 1_1
+  - first:
+      213: -8432684549999259929
+    second: Colt_1911_Shoot 1_2
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -94,7 +103,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +119,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shoot_0
+      name: Colt_1911_Shoot 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -122,16 +131,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ba62e6996afe3d046a5568af09090a56
-      internalID: 2050612391
+      spriteID: a9da121c7249191b0800000000000000
+      internalID: -5651573158908416614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shoot_1
+      name: Colt_1911_Shoot 1_1
       rect:
         serializedVersion: 2
         x: 42
@@ -143,16 +152,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e10af5f5c4a3d2346b53ac95565981d2
-      internalID: 1137448705
+      spriteID: 152161d69dfd1d4c0800000000000000
+      internalID: -4264381247212088751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shoot_2
+      name: Colt_1911_Shoot 1_2
       rect:
         serializedVersion: 2
         x: 84
@@ -164,10 +173,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 22a7ebc1ff4675c4abe63e4f90e30e90
-      internalID: -603869450
+      spriteID: 7ee8e5e741619fa80800000000000000
+      internalID: -8432684549999259929
       vertices: []
       indices: 
       edges: []
@@ -175,7 +184,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 47ed9a49c845c2d468d289df967b581e
     internalID: 0
     vertices: []
     indices: 
@@ -183,9 +192,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      shoot_0: 2050612391
-      shoot_1: 1137448705
-      shoot_2: -603869450
+      Colt_1911_Shoot 1_0: -5651573158908416614
+      Colt_1911_Shoot 1_1: -4264381247212088751
+      Colt_1911_Shoot 1_2: -8432684549999259929
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

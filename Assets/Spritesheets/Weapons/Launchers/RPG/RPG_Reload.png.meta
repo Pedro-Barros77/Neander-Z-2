@@ -1,9 +1,150 @@
 fileFormatVersion: 2
-guid: 16c55556809c60f4bbf9c71ff5eaabbe
+guid: 317175b60f6b25941b02162a4d901a7d
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2609569147013754768
+    second: RPG_Reload 1_0
+  - first:
+      213: 549959457858035780
+    second: RPG_Reload 1_1
+  - first:
+      213: -8567481622801703363
+    second: RPG_Reload 1_2
+  - first:
+      213: 4531406491392750278
+    second: RPG_Reload 1_3
+  - first:
+      213: 9079640717864896390
+    second: RPG_Reload 1_4
+  - first:
+      213: 1735778460935455569
+    second: RPG_Reload 1_5
+  - first:
+      213: 9069893632511253053
+    second: RPG_Reload 1_6
+  - first:
+      213: -8825064072572929150
+    second: RPG_Reload 1_7
+  - first:
+      213: -5892183426028746773
+    second: RPG_Reload 1_8
+  - first:
+      213: 5314265996063245021
+    second: RPG_Reload 1_9
+  - first:
+      213: 5169043066568267936
+    second: RPG_Reload 1_10
+  - first:
+      213: -3732441721171689274
+    second: RPG_Reload 1_11
+  - first:
+      213: -3743051471788555676
+    second: RPG_Reload 1_12
+  - first:
+      213: -8043569369851533676
+    second: RPG_Reload 1_13
+  - first:
+      213: 4480583700667064493
+    second: RPG_Reload 1_14
+  - first:
+      213: -1889311302669346822
+    second: RPG_Reload 1_15
+  - first:
+      213: 2910823722611884478
+    second: RPG_Reload 1_16
+  - first:
+      213: -8063931238160949425
+    second: RPG_Reload 1_17
+  - first:
+      213: 4512131582477344725
+    second: RPG_Reload 1_18
+  - first:
+      213: 5151462678436847755
+    second: RPG_Reload 1_19
+  - first:
+      213: 1578967588829853705
+    second: RPG_Reload 1_20
+  - first:
+      213: 3992708867908337494
+    second: RPG_Reload 1_21
+  - first:
+      213: -8233715067963901501
+    second: RPG_Reload 1_22
+  - first:
+      213: 4726006714920485685
+    second: RPG_Reload 1_23
+  - first:
+      213: 7291005241203492844
+    second: RPG_Reload 1_24
+  - first:
+      213: -6759643970887459218
+    second: RPG_Reload 1_25
+  - first:
+      213: -3685117304031008259
+    second: RPG_Reload 1_26
+  - first:
+      213: -3554358420017355146
+    second: RPG_Reload 1_27
+  - first:
+      213: 4144136168152261176
+    second: RPG_Reload 1_28
+  - first:
+      213: 247572150583552633
+    second: RPG_Reload 1_29
+  - first:
+      213: 361306760144513511
+    second: RPG_Reload 1_30
+  - first:
+      213: 6610557132230580440
+    second: RPG_Reload 1_31
+  - first:
+      213: 3923618958527694797
+    second: RPG_Reload 1_32
+  - first:
+      213: 8437271682099215094
+    second: RPG_Reload 1_33
+  - first:
+      213: 4726124992363934565
+    second: RPG_Reload 1_34
+  - first:
+      213: -2776049530317753270
+    second: RPG_Reload 1_35
+  - first:
+      213: 9183833311451572064
+    second: RPG_Reload 1_36
+  - first:
+      213: -7740675977425305405
+    second: RPG_Reload 1_37
+  - first:
+      213: 3508176053489064108
+    second: RPG_Reload 1_38
+  - first:
+      213: -5561604792293194205
+    second: RPG_Reload 1_39
+  - first:
+      213: 3843711203342605973
+    second: RPG_Reload 1_40
+  - first:
+      213: -479682505970216869
+    second: RPG_Reload 1_41
+  - first:
+      213: -4315212346538100492
+    second: RPG_Reload 1_42
+  - first:
+      213: 4694470203480955083
+    second: RPG_Reload 1_43
+  - first:
+      213: -8472411739879756968
+    second: RPG_Reload 1_44
+  - first:
+      213: 507211817938620356
+    second: RPG_Reload 1_45
+  - first:
+      213: 8626089901835478818
+    second: RPG_Reload 1_46
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -94,7 +235,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +251,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RPG_Reload_0
+      name: RPG_Reload 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -122,16 +263,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8c779832cb341c245b1c4477c663c3d5
-      internalID: 1804060561
+      spriteID: 0701d67dfa2f8cbd0800000000000000
+      internalID: -2609569147013754768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_1
+      name: RPG_Reload 1_1
       rect:
         serializedVersion: 2
         x: 103
@@ -143,16 +284,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: daed366832634224787ef97add5866c3
-      internalID: 906114044
+      spriteID: 440ae7e8639d1a700800000000000000
+      internalID: 549959457858035780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_2
+      name: RPG_Reload 1_2
       rect:
         serializedVersion: 2
         x: 206
@@ -164,16 +305,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 34f8cc9f9c0b2d54e9aca22ac57dcea7
-      internalID: -1154631052
+      spriteID: d3e97354bd03a1980800000000000000
+      internalID: -8567481622801703363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_3
+      name: RPG_Reload 1_3
       rect:
         serializedVersion: 2
         x: 309
@@ -185,16 +326,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6aab3610ee589e941be518cdc422d88f
-      internalID: 568836017
+      spriteID: 6c23d5c023ac2ee30800000000000000
+      internalID: 4531406491392750278
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_4
+      name: RPG_Reload 1_4
       rect:
         serializedVersion: 2
         x: 412
@@ -206,16 +347,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 904c330a0d883c44fb920c06ca7f4e80
-      internalID: -979483414
+      spriteID: 687828c702d510e70800000000000000
+      internalID: 9079640717864896390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_5
+      name: RPG_Reload 1_5
       rect:
         serializedVersion: 2
         x: 515
@@ -227,16 +368,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 300107ff267b6194394a2ece2943a33f
-      internalID: -1551912072
+      spriteID: 15305dc4059b61810800000000000000
+      internalID: 1735778460935455569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_6
+      name: RPG_Reload 1_6
       rect:
         serializedVersion: 2
         x: 0
@@ -248,16 +389,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b9ba770e90eaa3f4a88a5c872bcaedc5
-      internalID: 1749108342
+      spriteID: d3a1964543cbedd70800000000000000
+      internalID: 9069893632511253053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_7
+      name: RPG_Reload 1_7
       rect:
         serializedVersion: 2
         x: 103
@@ -269,16 +410,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 40bc74ba58abfa74091e9cddfe2e2ae8
-      internalID: 592105830
+      spriteID: 28b7a32bbf2178580800000000000000
+      internalID: -8825064072572929150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_8
+      name: RPG_Reload 1_8
       rect:
         serializedVersion: 2
         x: 206
@@ -290,16 +431,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ef207185c7e6124409f666a126411116
-      internalID: -568939976
+      spriteID: be7cc146462ca3ea0800000000000000
+      internalID: -5892183426028746773
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_9
+      name: RPG_Reload 1_9
       rect:
         serializedVersion: 2
         x: 309
@@ -311,16 +452,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 55249c485b10267469cec40084281b5b
-      internalID: 1009842898
+      spriteID: dd2894964c010c940800000000000000
+      internalID: 5314265996063245021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_10
+      name: RPG_Reload 1_10
       rect:
         serializedVersion: 2
         x: 412
@@ -332,16 +473,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 28e1a0131c4525e4da2ab6931f77b4af
-      internalID: 1234828795
+      spriteID: 0a85f7348412cb740800000000000000
+      internalID: 5169043066568267936
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_11
+      name: RPG_Reload 1_11
       rect:
         serializedVersion: 2
         x: 515
@@ -353,16 +494,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 56f06fd15397d394cafd490d0e3991ad
-      internalID: -1387869720
+      spriteID: 6c0c6b8a704b33cc0800000000000000
+      internalID: -3732441721171689274
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_12
+      name: RPG_Reload 1_12
       rect:
         serializedVersion: 2
         x: 0
@@ -374,16 +515,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3594a1ba535ec9548b1ec8f336ec43c7
-      internalID: -1106591015
+      spriteID: 4624a0894820e0cc0800000000000000
+      internalID: -3743051471788555676
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_13
+      name: RPG_Reload 1_13
       rect:
         serializedVersion: 2
         x: 103
@@ -395,16 +536,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5681412cc96185c4d9884f42f288c2e0
-      internalID: -113607141
+      spriteID: 49669c756408f5090800000000000000
+      internalID: -8043569369851533676
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_14
+      name: RPG_Reload 1_14
       rect:
         serializedVersion: 2
         x: 206
@@ -416,16 +557,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 83d43dab5c7338f4a91829685a91533f
-      internalID: -2086096094
+      spriteID: da06aa8f22b3e2e30800000000000000
+      internalID: 4480583700667064493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_15
+      name: RPG_Reload 1_15
       rect:
         serializedVersion: 2
         x: 309
@@ -437,16 +578,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5aa283fecc643884b88c0e48ddc1ea0a
-      internalID: -10907001
+      spriteID: af753465161d7c5e0800000000000000
+      internalID: -1889311302669346822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_16
+      name: RPG_Reload 1_16
       rect:
         serializedVersion: 2
         x: 412
@@ -458,16 +599,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 7a5fa8548580bf64db68d7b7517f3bb2
-      internalID: -601611993
+      spriteID: eb1cf06e0c2556820800000000000000
+      internalID: 2910823722611884478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_17
+      name: RPG_Reload 1_17
       rect:
         serializedVersion: 2
         x: 515
@@ -479,16 +620,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 75ea4b31b49b94c49af3c7a547f8cf94
-      internalID: 628247809
+      spriteID: f4f9d307349271090800000000000000
+      internalID: -8063931238160949425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_18
+      name: RPG_Reload 1_18
       rect:
         serializedVersion: 2
         x: 0
@@ -500,16 +641,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0ef3b0dbbeda3734da0d553cf6f3ec72
-      internalID: 2038568405
+      spriteID: 5df126994cf4e9e30800000000000000
+      internalID: 4512131582477344725
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_19
+      name: RPG_Reload 1_19
       rect:
         serializedVersion: 2
         x: 103
@@ -521,16 +662,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6aa8ffaf84bec43499d0738fa1713630
-      internalID: -1538790255
+      spriteID: b8029ed230cad7740800000000000000
+      internalID: 5151462678436847755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_20
+      name: RPG_Reload 1_20
       rect:
         serializedVersion: 2
         x: 206
@@ -542,16 +683,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 423797b54db054543b250ef553bbeb74
-      internalID: 640169890
+      spriteID: 908fe0408ae99e510800000000000000
+      internalID: 1578967588829853705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_21
+      name: RPG_Reload 1_21
       rect:
         serializedVersion: 2
         x: 309
@@ -563,16 +704,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c3eccca1f4472cb4598702e93a473d27
-      internalID: 1508013673
+      spriteID: 65f7a33af83f86730800000000000000
+      internalID: 3992708867908337494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_22
+      name: RPG_Reload 1_22
       rect:
         serializedVersion: 2
         x: 412
@@ -584,16 +725,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8b58f7c11f3e9524baf5be95aedfe0b1
-      internalID: 485792588
+      spriteID: 3c9fa3015c7fbbd80800000000000000
+      internalID: -8233715067963901501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_23
+      name: RPG_Reload 1_23
       rect:
         serializedVersion: 2
         x: 515
@@ -605,16 +746,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: cc3bd193f037ed748816c6a4ac445203
-      internalID: -1812600199
+      spriteID: 53342f85116269140800000000000000
+      internalID: 4726006714920485685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_24
+      name: RPG_Reload 1_24
       rect:
         serializedVersion: 2
         x: 0
@@ -626,16 +767,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 657653347e62d4d4e9491dd5a507c7cc
-      internalID: -677525787
+      spriteID: ce7027133aade2560800000000000000
+      internalID: 7291005241203492844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_25
+      name: RPG_Reload 1_25
       rect:
         serializedVersion: 2
         x: 103
@@ -647,16 +788,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4d45da3952f65be47b6e961be5b1c9f2
-      internalID: -127019060
+      spriteID: e6e54236f9be032a0800000000000000
+      internalID: -6759643970887459218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_26
+      name: RPG_Reload 1_26
       rect:
         serializedVersion: 2
         x: 206
@@ -668,16 +809,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8082fd613e1458b48ba2e5f1094e8e16
-      internalID: 1640958939
+      spriteID: df926992655dbdcc0800000000000000
+      internalID: -3685117304031008259
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_27
+      name: RPG_Reload 1_27
       rect:
         serializedVersion: 2
         x: 309
@@ -689,16 +830,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 56a7931d74f9f424cbf43f902129c288
-      internalID: -1156283400
+      spriteID: 676627a49d16caec0800000000000000
+      internalID: -3554358420017355146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_28
+      name: RPG_Reload 1_28
       rect:
         serializedVersion: 2
         x: 412
@@ -710,16 +851,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0a06b1585c3a6044a91378073c03b742
-      internalID: -1942181828
+      spriteID: 832609b63ede28930800000000000000
+      internalID: 4144136168152261176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RPG_Reload_29
+      name: RPG_Reload 1_29
       rect:
         serializedVersion: 2
         x: 515
@@ -731,10 +872,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 882a5b5ff5c981946ba9669058a7f75f
-      internalID: -2130836388
+      spriteID: 97aefcb2f8d8f6300800000000000000
+      internalID: 247572150583552633
       vertices: []
       indices: 
       edges: []
@@ -742,7 +883,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: c06fa9190521d2f4d93638f66755c7d8
     internalID: 0
     vertices: []
     indices: 
@@ -750,36 +891,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      RPG_Reload_0: 1804060561
-      RPG_Reload_1: 906114044
-      RPG_Reload_10: 1234828795
-      RPG_Reload_11: -1387869720
-      RPG_Reload_12: -1106591015
-      RPG_Reload_13: -113607141
-      RPG_Reload_14: -2086096094
-      RPG_Reload_15: -10907001
-      RPG_Reload_16: -601611993
-      RPG_Reload_17: 628247809
-      RPG_Reload_18: 2038568405
-      RPG_Reload_19: -1538790255
-      RPG_Reload_2: -1154631052
-      RPG_Reload_20: 640169890
-      RPG_Reload_21: 1508013673
-      RPG_Reload_22: 485792588
-      RPG_Reload_23: -1812600199
-      RPG_Reload_24: -677525787
-      RPG_Reload_25: -127019060
-      RPG_Reload_26: 1640958939
-      RPG_Reload_27: -1156283400
-      RPG_Reload_28: -1942181828
-      RPG_Reload_29: -2130836388
-      RPG_Reload_3: 568836017
-      RPG_Reload_4: -979483414
-      RPG_Reload_5: -1551912072
-      RPG_Reload_6: 1749108342
-      RPG_Reload_7: 592105830
-      RPG_Reload_8: -568939976
-      RPG_Reload_9: 1009842898
+      RPG_Reload 1_0: -2609569147013754768
+      RPG_Reload 1_1: 549959457858035780
+      RPG_Reload 1_10: 5169043066568267936
+      RPG_Reload 1_11: -3732441721171689274
+      RPG_Reload 1_12: -3743051471788555676
+      RPG_Reload 1_13: -8043569369851533676
+      RPG_Reload 1_14: 4480583700667064493
+      RPG_Reload 1_15: -1889311302669346822
+      RPG_Reload 1_16: 2910823722611884478
+      RPG_Reload 1_17: -8063931238160949425
+      RPG_Reload 1_18: 4512131582477344725
+      RPG_Reload 1_19: 5151462678436847755
+      RPG_Reload 1_2: -8567481622801703363
+      RPG_Reload 1_20: 1578967588829853705
+      RPG_Reload 1_21: 3992708867908337494
+      RPG_Reload 1_22: -8233715067963901501
+      RPG_Reload 1_23: 4726006714920485685
+      RPG_Reload 1_24: 7291005241203492844
+      RPG_Reload 1_25: -6759643970887459218
+      RPG_Reload 1_26: -3685117304031008259
+      RPG_Reload 1_27: -3554358420017355146
+      RPG_Reload 1_28: 4144136168152261176
+      RPG_Reload 1_29: 247572150583552633
+      RPG_Reload 1_3: 4531406491392750278
+      RPG_Reload 1_4: 9079640717864896390
+      RPG_Reload 1_5: 1735778460935455569
+      RPG_Reload 1_6: 9069893632511253053
+      RPG_Reload 1_7: -8825064072572929150
+      RPG_Reload 1_8: -5892183426028746773
+      RPG_Reload 1_9: 5314265996063245021
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
