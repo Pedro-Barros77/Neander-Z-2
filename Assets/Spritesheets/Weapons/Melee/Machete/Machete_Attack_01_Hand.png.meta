@@ -1,37 +1,46 @@
 fileFormatVersion: 2
-guid: df7bf6c897b7ef649b9a2a40a74771a1
+guid: 069d6a3ed101db1499014818250c5aed
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1448112490888829052
-    second: Hand_Throw 1_0
+      213: -5808103776228782481
+    second: Machete_Attack_01_Hand_0
   - first:
-      213: 2454319684821523788
-    second: Hand_Throw 1_1
+      213: 2201790579075119068
+    second: Machete_Attack_01_Hand_1
   - first:
-      213: -5165298480158441247
-    second: Hand_Throw 1_2
+      213: 2719263609920451992
+    second: Machete_Attack_01_Hand_2
   - first:
-      213: -5477678528212358059
-    second: Hand_Throw 1_3
+      213: 8031103290746463560
+    second: Machete_Attack_01_Hand_3
   - first:
-      213: 9175996059360381084
-    second: Hand_Throw 1_4
+      213: 4542136369365150730
+    second: Machete_Attack_01_Hand_4
   - first:
-      213: -5140439807718247171
-    second: Hand_Throw 1_5
+      213: 3319880589283120432
+    second: Machete_Attack_01_Hand_5
   - first:
-      213: -6677656582949090000
-    second: Hand_Throw 1_6
+      213: 7603390458786909190
+    second: Machete_Attack_01_Hand_6
   - first:
-      213: -4668059054652289748
-    second: Hand_Throw 1_7
+      213: 8958361218234633634
+    second: Machete_Attack_01_Hand_7
   - first:
-      213: 5819425651400471276
-    second: Hand_Throw 1_8
+      213: -4184848589563830577
+    second: Machete_Attack_01_Hand_8
   - first:
-      213: -9103188801538733300
-    second: Hand_Throw 1_9
+      213: 2273402079776303387
+    second: Machete_Attack_01_Hand_9
+  - first:
+      213: 687516901151656838
+    second: Machete_Attack_01_Hand_10
+  - first:
+      213: 31857373809066935
+    second: Machete_Attack_01_Hand_11
+  - first:
+      213: 1717745770406256270
+    second: Machete_Attack_01_Hand_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -78,7 +87,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,7 +108,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -140,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hand_Throw 1_0
+      name: Machete_Attack_01_Hand_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 90
-        width: 130
-        height: 90
+        y: 214
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c781c3653aab81410800000000000000
-      internalID: 1448112490888829052
+      spriteID: f6e474f5368756fa0800000000000000
+      internalID: -5808103776228782481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_1
+      name: Machete_Attack_01_Hand_1
       rect:
         serializedVersion: 2
-        x: 130
-        y: 90
-        width: 130
-        height: 90
+        x: 107
+        y: 214
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c4d1903ffbe7f0220800000000000000
-      internalID: 2454319684821523788
+      spriteID: cd7f297bdd45e8e10800000000000000
+      internalID: 2201790579075119068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_2
+      name: Machete_Attack_01_Hand_2
       rect:
         serializedVersion: 2
-        x: 260
-        y: 90
-        width: 130
-        height: 90
+        x: 214
+        y: 214
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e08a43366c2158b0800000000000000
-      internalID: -5165298480158441247
+      spriteID: 89574ff88d3ccb520800000000000000
+      internalID: 2719263609920451992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_3
+      name: Machete_Attack_01_Hand_3
       rect:
         serializedVersion: 2
-        x: 390
-        y: 90
-        width: 130
-        height: 90
+        x: 321
+        y: 214
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 55c2e1c86606bf3b0800000000000000
-      internalID: -5477678528212358059
+      spriteID: 845e96f64e5347f60800000000000000
+      internalID: 8031103290746463560
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_4
+      name: Machete_Attack_01_Hand_4
       rect:
         serializedVersion: 2
-        x: 520
-        y: 90
-        width: 130
-        height: 90
+        x: 0
+        y: 107
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,20 +247,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c984f8aaccfa75f70800000000000000
-      internalID: 9175996059360381084
+      spriteID: a0c646176f8e80f30800000000000000
+      internalID: 4542136369365150730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_5
+      name: Machete_Attack_01_Hand_5
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 107
+        width: 107
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0355fe47ec5921e20800000000000000
+      internalID: 3319880589283120432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Machete_Attack_01_Hand_6
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 107
+        width: 107
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60c8698765ba48960800000000000000
+      internalID: 7603390458786909190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Machete_Attack_01_Hand_7
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 107
+        width: 107
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2adc286801e725c70800000000000000
+      internalID: 8958361218234633634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Machete_Attack_01_Hand_8
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 130
-        height: 90
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,20 +331,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df43da7ea3d79a8b0800000000000000
-      internalID: -5140439807718247171
+      spriteID: fced04c416e6ce5c0800000000000000
+      internalID: -4184848589563830577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_6
+      name: Machete_Attack_01_Hand_9
       rect:
         serializedVersion: 2
-        x: 130
+        x: 107
         y: 0
-        width: 130
-        height: 90
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,20 +352,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 03d4541b7b23453a0800000000000000
-      internalID: -6677656582949090000
+      spriteID: b1963b4852fbc8f10800000000000000
+      internalID: 2273402079776303387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_7
+      name: Machete_Attack_01_Hand_10
       rect:
         serializedVersion: 2
-        x: 260
+        x: 214
         y: 0
-        width: 130
-        height: 90
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,50 +373,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c2d87e0b509b73fb0800000000000000
-      internalID: -4668059054652289748
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hand_Throw 1_8
-      rect:
-        serializedVersion: 2
-        x: 390
-        y: 0
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ce2758c1cc0c2c050800000000000000
-      internalID: 5819425651400471276
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hand_Throw 1_9
-      rect:
-        serializedVersion: 2
-        x: 520
-        y: 0
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c0b48f8040afaa180800000000000000
-      internalID: -9103188801538733300
+      spriteID: 68bc83e9afc8a8900800000000000000
+      internalID: 687516901151656838
       vertices: []
       indices: 
       edges: []
@@ -352,7 +382,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 542bc86174b5d5e49abec9cc4e3a8df3
+    spriteID: 3fe502295e5aa934a966225684db42f2
     internalID: 0
     vertices: []
     indices: 
@@ -360,16 +390,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hand_Throw 1_0: 1448112490888829052
-      Hand_Throw 1_1: 2454319684821523788
-      Hand_Throw 1_2: -5165298480158441247
-      Hand_Throw 1_3: -5477678528212358059
-      Hand_Throw 1_4: 9175996059360381084
-      Hand_Throw 1_5: -5140439807718247171
-      Hand_Throw 1_6: -6677656582949090000
-      Hand_Throw 1_7: -4668059054652289748
-      Hand_Throw 1_8: 5819425651400471276
-      Hand_Throw 1_9: -9103188801538733300
+      Machete_Attack_01_Hand_0: -5808103776228782481
+      Machete_Attack_01_Hand_1: 2201790579075119068
+      Machete_Attack_01_Hand_10: 687516901151656838
+      Machete_Attack_01_Hand_2: 2719263609920451992
+      Machete_Attack_01_Hand_3: 8031103290746463560
+      Machete_Attack_01_Hand_4: 4542136369365150730
+      Machete_Attack_01_Hand_5: 3319880589283120432
+      Machete_Attack_01_Hand_6: 7603390458786909190
+      Machete_Attack_01_Hand_7: 8958361218234633634
+      Machete_Attack_01_Hand_8: -4184848589563830577
+      Machete_Attack_01_Hand_9: 2273402079776303387
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

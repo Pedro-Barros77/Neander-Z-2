@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e3a148854904308489b209af34fb8f03
+guid: 625afe28a8527194693ddb28d33c92c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4221641613876689990
-    second: Machete_Idle 1_0
+      213: 7421367108632651218
+    second: Machete_Idle_Hand_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Machete_Idle 1_0
+      name: Machete_Idle_Hand_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 12
-        height: 72
+        x: 0
+        y: 3
+        width: 10
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ab38fd3c157b965c0800000000000000
-      internalID: -4221641613876689990
+      spriteID: 2d521d1b01efdf660800000000000000
+      internalID: 7421367108632651218
       vertices: []
       indices: 
       edges: []
@@ -144,7 +144,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Machete_Idle 1_0: -4221641613876689990
+      Machete_Idle_Hand_0: 7421367108632651218
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
