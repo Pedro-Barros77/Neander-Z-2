@@ -1,57 +1,9 @@
 fileFormatVersion: 2
-guid: a4b5be97ad3230246a5bccf52ff7d318
+guid: a8eb226de5f7344498a7d7d3028a4f37
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 5165606861966918066
-    second: Machete_Attack_01 1_0
-  - first:
-      213: 7707575871129670977
-    second: Machete_Attack_01 1_1
-  - first:
-      213: 4469202798600653447
-    second: Machete_Attack_01 1_2
-  - first:
-      213: 737639963780348590
-    second: Machete_Attack_01 1_3
-  - first:
-      213: 5597551572764736548
-    second: Machete_Attack_01 1_4
-  - first:
-      213: -3083639640425481904
-    second: Machete_Attack_01 1_5
-  - first:
-      213: 7878925068982000873
-    second: Machete_Attack_01 1_6
-  - first:
-      213: -1614072005446674471
-    second: Machete_Attack_01 1_7
-  - first:
-      213: 6319144178682603948
-    second: Machete_Attack_01 1_8
-  - first:
-      213: -2716718478102439139
-    second: Machete_Attack_01 1_9
-  - first:
-      213: 7365848648262386962
-    second: Machete_Attack_01 1_10
-  - first:
-      213: -4534022485343534527
-    second: Machete_Attack_01 1_11
-  - first:
-      213: -2169277536677327878
-    second: Machete_Attack_01 1_12
-  - first:
-      213: 2974043407040168088
-    second: Machete_Attack_01 1_13
-  - first:
-      213: -1868274352026899236
-    second: Machete_Attack_01 1_14
-  - first:
-      213: 4722021782936346433
-    second: Machete_Attack_01 1_15
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -142,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -158,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Machete_Attack_01 1_0
+      name: Machete_Attack_01_0
       rect:
         serializedVersion: 2
         x: 0
@@ -170,16 +122,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2b1cbd8821cefa740800000000000000
-      internalID: 5165606861966918066
+      spriteID: 8d9f6ea134a378249b50bc1adf5922e7
+      internalID: -1235044749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Machete_Attack_01 1_1
+      name: Machete_Attack_01_1
       rect:
         serializedVersion: 2
         x: 107
@@ -191,16 +143,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1455e061b6fc6fa60800000000000000
-      internalID: 7707575871129670977
+      spriteID: 3657db469a8b6d74390f9650385b23bf
+      internalID: 47737602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Machete_Attack_01 1_2
+      name: Machete_Attack_01_2
       rect:
         serializedVersion: 2
         x: 214
@@ -212,16 +164,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 78a06c7344cc50e30800000000000000
-      internalID: 4469202798600653447
+      spriteID: 1cdf4e1fc553c44479abc94c120012ed
+      internalID: 1937703523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Machete_Attack_01 1_3
+      name: Machete_Attack_01_3
       rect:
         serializedVersion: 2
         x: 321
@@ -233,16 +185,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: eaa724d83af9c3a00800000000000000
-      internalID: 737639963780348590
+      spriteID: a919f63470592b840a1ca91a46f84fcb
+      internalID: 207625689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Machete_Attack_01 1_4
+      name: Machete_Attack_01_4
       rect:
         serializedVersion: 2
         x: 0
@@ -254,16 +206,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 42c32929f7f7ead40800000000000000
-      internalID: 5597551572764736548
+      spriteID: 87a2ba1a94abcf1448c658501b3fa66c
+      internalID: -1987235212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Machete_Attack_01 1_5
+      name: Machete_Attack_01_5
       rect:
         serializedVersion: 2
         x: 107
@@ -275,16 +227,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0593029b516b435d0800000000000000
-      internalID: -3083639640425481904
+      spriteID: 3c2b6fbb180124f4f860a77e2b4a08a8
+      internalID: 1511141791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Machete_Attack_01 1_6
+      name: Machete_Attack_01_6
       rect:
         serializedVersion: 2
         x: 214
@@ -296,16 +248,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9ec979c1b90975d60800000000000000
-      internalID: 7878925068982000873
+      spriteID: 1d32de65de3783946ac011aab94cbca5
+      internalID: -1480315899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Machete_Attack_01 1_7
+      name: Machete_Attack_01_7
       rect:
         serializedVersion: 2
         x: 321
@@ -317,16 +269,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9d7d271101aa999e0800000000000000
-      internalID: -1614072005446674471
+      spriteID: b8ab3309e89139b428021220bc0b8317
+      internalID: 2037818504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Machete_Attack_01 1_8
+      name: Machete_Attack_01_8
       rect:
         serializedVersion: 2
         x: 0
@@ -338,16 +290,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ca9aad6762c12b750800000000000000
-      internalID: 6319144178682603948
+      spriteID: 7d84f0e0600697441b3b96474dd692d4
+      internalID: 1332117388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Machete_Attack_01 1_9
+      name: Machete_Attack_01_9
       rect:
         serializedVersion: 2
         x: 107
@@ -359,16 +311,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d1bd6fd10f64c4ad0800000000000000
-      internalID: -2716718478102439139
+      spriteID: 3c77233e74eac6544a78b711a3f9585c
+      internalID: -270288370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Machete_Attack_01 1_10
+      name: Machete_Attack_01_10
       rect:
         serializedVersion: 2
         x: 214
@@ -380,10 +332,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 21588f4d150c83660800000000000000
-      internalID: 7365848648262386962
+      spriteID: 399bca747335eb74dbe8223a93734019
+      internalID: -1258407712
       vertices: []
       indices: 
       edges: []
@@ -391,7 +343,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5a465ab50765c7a4fab39d792316f466
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -399,17 +351,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Machete_Attack_01 1_0: 5165606861966918066
-      Machete_Attack_01 1_1: 7707575871129670977
-      Machete_Attack_01 1_10: 7365848648262386962
-      Machete_Attack_01 1_2: 4469202798600653447
-      Machete_Attack_01 1_3: 737639963780348590
-      Machete_Attack_01 1_4: 5597551572764736548
-      Machete_Attack_01 1_5: -3083639640425481904
-      Machete_Attack_01 1_6: 7878925068982000873
-      Machete_Attack_01 1_7: -1614072005446674471
-      Machete_Attack_01 1_8: 6319144178682603948
-      Machete_Attack_01 1_9: -2716718478102439139
+      Machete_Attack_01_0: -1235044749
+      Machete_Attack_01_1: 47737602
+      Machete_Attack_01_10: -1258407712
+      Machete_Attack_01_2: 1937703523
+      Machete_Attack_01_3: 207625689
+      Machete_Attack_01_4: -1987235212
+      Machete_Attack_01_5: 1511141791
+      Machete_Attack_01_6: -1480315899
+      Machete_Attack_01_7: 2037818504
+      Machete_Attack_01_8: 1332117388
+      Machete_Attack_01_9: -270288370
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

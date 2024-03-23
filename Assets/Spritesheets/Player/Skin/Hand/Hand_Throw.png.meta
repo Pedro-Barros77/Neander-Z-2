@@ -1,39 +1,9 @@
 fileFormatVersion: 2
-guid: df7bf6c897b7ef649b9a2a40a74771a1
+guid: 03a6bb7f192e8a948804427baa8aa5c4
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 1448112490888829052
-    second: Hand_Throw 1_0
-  - first:
-      213: 2454319684821523788
-    second: Hand_Throw 1_1
-  - first:
-      213: -5165298480158441247
-    second: Hand_Throw 1_2
-  - first:
-      213: -5477678528212358059
-    second: Hand_Throw 1_3
-  - first:
-      213: 9175996059360381084
-    second: Hand_Throw 1_4
-  - first:
-      213: -5140439807718247171
-    second: Hand_Throw 1_5
-  - first:
-      213: -6677656582949090000
-    second: Hand_Throw 1_6
-  - first:
-      213: -4668059054652289748
-    second: Hand_Throw 1_7
-  - first:
-      213: 5819425651400471276
-    second: Hand_Throw 1_8
-  - first:
-      213: -9103188801538733300
-    second: Hand_Throw 1_9
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -124,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -140,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hand_Throw 1_0
+      name: Hand_Throw_0
       rect:
         serializedVersion: 2
         x: 0
@@ -152,16 +122,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c781c3653aab81410800000000000000
-      internalID: 1448112490888829052
+      spriteID: c0c572084a9059f469bf4defd002e01a
+      internalID: 477145851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_1
+      name: Hand_Throw_1
       rect:
         serializedVersion: 2
         x: 130
@@ -173,16 +143,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c4d1903ffbe7f0220800000000000000
-      internalID: 2454319684821523788
+      spriteID: 9c9e157205892534a87d3066d151f14b
+      internalID: -1706759118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_2
+      name: Hand_Throw_2
       rect:
         serializedVersion: 2
         x: 260
@@ -194,16 +164,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1e08a43366c2158b0800000000000000
-      internalID: -5165298480158441247
+      spriteID: 5447870e6d0223f48a55af29e141e9d9
+      internalID: -980313223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_3
+      name: Hand_Throw_3
       rect:
         serializedVersion: 2
         x: 390
@@ -215,16 +185,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 55c2e1c86606bf3b0800000000000000
-      internalID: -5477678528212358059
+      spriteID: c83658f82025cfa4491a58435192599f
+      internalID: -484783617
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_4
+      name: Hand_Throw_4
       rect:
         serializedVersion: 2
         x: 520
@@ -236,16 +206,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c984f8aaccfa75f70800000000000000
-      internalID: 9175996059360381084
+      spriteID: 57f1f61a7f1e88b4a93282015a080918
+      internalID: -907469343
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_5
+      name: Hand_Throw_5
       rect:
         serializedVersion: 2
         x: 0
@@ -257,16 +227,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: df43da7ea3d79a8b0800000000000000
-      internalID: -5140439807718247171
+      spriteID: 4527d7c0c007fa54da7ed22c9b5d2c4b
+      internalID: 1110058616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_6
+      name: Hand_Throw_6
       rect:
         serializedVersion: 2
         x: 130
@@ -278,16 +248,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 03d4541b7b23453a0800000000000000
-      internalID: -6677656582949090000
+      spriteID: b5e0176e8bdb8e445996d434e0db2859
+      internalID: -901903720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_7
+      name: Hand_Throw_7
       rect:
         serializedVersion: 2
         x: 260
@@ -299,16 +269,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c2d87e0b509b73fb0800000000000000
-      internalID: -4668059054652289748
+      spriteID: 707565e6312b389438bdfecad3c2726b
+      internalID: -696309998
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_8
+      name: Hand_Throw_8
       rect:
         serializedVersion: 2
         x: 390
@@ -320,16 +290,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ce2758c1cc0c2c050800000000000000
-      internalID: 5819425651400471276
+      spriteID: 7079a8535fccc8543a204cfe6b824117
+      internalID: 1678653767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw 1_9
+      name: Hand_Throw_9
       rect:
         serializedVersion: 2
         x: 520
@@ -341,10 +311,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c0b48f8040afaa180800000000000000
-      internalID: -9103188801538733300
+      spriteID: 4b6896fb84d4d7c419cebae949f51bec
+      internalID: 2000455965
       vertices: []
       indices: 
       edges: []
@@ -352,7 +322,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 542bc86174b5d5e49abec9cc4e3a8df3
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -360,16 +330,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hand_Throw 1_0: 1448112490888829052
-      Hand_Throw 1_1: 2454319684821523788
-      Hand_Throw 1_2: -5165298480158441247
-      Hand_Throw 1_3: -5477678528212358059
-      Hand_Throw 1_4: 9175996059360381084
-      Hand_Throw 1_5: -5140439807718247171
-      Hand_Throw 1_6: -6677656582949090000
-      Hand_Throw 1_7: -4668059054652289748
-      Hand_Throw 1_8: 5819425651400471276
-      Hand_Throw 1_9: -9103188801538733300
+      Hand_Throw_0: 477145851
+      Hand_Throw_1: -1706759118
+      Hand_Throw_2: -980313223
+      Hand_Throw_3: -484783617
+      Hand_Throw_4: -907469343
+      Hand_Throw_5: 1110058616
+      Hand_Throw_6: -901903720
+      Hand_Throw_7: -696309998
+      Hand_Throw_8: 1678653767
+      Hand_Throw_9: 2000455965
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
