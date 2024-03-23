@@ -1,39 +1,9 @@
 fileFormatVersion: 2
-guid: 710824222c45f2043bbfae4bec549b27
+guid: 0be2345ae6b403746a7aad56da8570a7
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 1560486839777493926
-    second: UZI_Shoot 1_0
-  - first:
-      213: 2830069119039826036
-    second: UZI_Shoot 1_1
-  - first:
-      213: -464040326912064361
-    second: UZI_Shoot 1_2
-  - first:
-      213: -545339320620027716
-    second: UZI_Shoot 1_3
-  - first:
-      213: -7140079375182831291
-    second: UZI_Shoot 1_4
-  - first:
-      213: 6487785819220664941
-    second: UZI_Shoot 1_5
-  - first:
-      213: 958047841622867385
-    second: UZI_Shoot 1_6
-  - first:
-      213: -8679485050547702864
-    second: UZI_Shoot 1_7
-  - first:
-      213: 7411682678291099153
-    second: UZI_Shoot 1_8
-  - first:
-      213: 1266158608373562308
-    second: UZI_Shoot 1_9
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -124,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -140,70 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UZI_Shoot 1_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 96
-        width: 44
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6a30c915386f7a510800000000000000
-      internalID: 1560486839777493926
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UZI_Shoot 1_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 44
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 478eb229edc664720800000000000000
-      internalID: 2830069119039826036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UZI_Shoot 1_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 44
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 79443f008c56f89f0800000000000000
-      internalID: -464040326912064361
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UZI_Shoot 1_3
+      name: UZI_Shoot_0
       rect:
         serializedVersion: 2
         x: 0
@@ -215,10 +122,73 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cb0f368f6c09e68f0800000000000000
-      internalID: -545339320620027716
+      spriteID: db905b1a625f4904dacd23fd83638426
+      internalID: -858255170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UZI_Shoot_1
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 0
+        width: 44
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5497e1dc80c954f48b6baebcdfa97f12
+      internalID: 172658836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UZI_Shoot_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 0
+        width: 44
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e95cc92293bce4a9b1c9c3d6567bde
+      internalID: 1257604810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UZI_Shoot_3
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 0
+        width: 44
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff4efa33dadc15d428b847246c2c107f
+      internalID: -1172150734
       vertices: []
       indices: 
       edges: []
@@ -226,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 74cd1384476b2124785de17b65a6a0a6
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -234,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UZI_Shoot 1_0: 1560486839777493926
-      UZI_Shoot 1_1: 2830069119039826036
-      UZI_Shoot 1_2: -464040326912064361
-      UZI_Shoot 1_3: -545339320620027716
+      UZI_Shoot_0: -858255170
+      UZI_Shoot_1: 172658836
+      UZI_Shoot_2: 1257604810
+      UZI_Shoot_3: -1172150734
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

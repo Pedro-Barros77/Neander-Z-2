@@ -1,42 +1,9 @@
 fileFormatVersion: 2
-guid: 686ef5bea0227c94a9ccfbb35b5af09a
+guid: e0e763774faaaa746a71ce81b7cc3624
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -7430220465166561302
-    second: M16_Reload 1_0
-  - first:
-      213: -8831129809770880516
-    second: M16_Reload 1_1
-  - first:
-      213: 5615939249794282376
-    second: M16_Reload 1_2
-  - first:
-      213: -3362253483635502547
-    second: M16_Reload 1_3
-  - first:
-      213: -164838873863482559
-    second: M16_Reload 1_4
-  - first:
-      213: 2704464963243921336
-    second: M16_Reload 1_5
-  - first:
-      213: 348900519628996544
-    second: M16_Reload 1_6
-  - first:
-      213: -7198367340095812798
-    second: M16_Reload 1_7
-  - first:
-      213: 487248639245816684
-    second: M16_Reload 1_8
-  - first:
-      213: -4114900984908374948
-    second: M16_Reload 1_9
-  - first:
-      213: -2861925318350947179
-    second: M16_Reload 1_10
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -127,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -143,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M16_Reload 1_0
+      name: M16_Reload_0
       rect:
         serializedVersion: 2
         x: 0
@@ -155,16 +122,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: aefc8ea9add82e890800000000000000
-      internalID: -7430220465166561302
+      spriteID: c948338721419d64997540b9dbd33f6b
+      internalID: 123755598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_1
+      name: M16_Reload_1
       rect:
         serializedVersion: 2
         x: 60
@@ -176,16 +143,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cf16e333a36817580800000000000000
-      internalID: -8831129809770880516
+      spriteID: a8d19a693a8620c48ba6093ffbb8fa8d
+      internalID: -1014780626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_2
+      name: M16_Reload_2
       rect:
         serializedVersion: 2
         x: 120
@@ -197,16 +164,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 88379204ef2dfed40800000000000000
-      internalID: 5615939249794282376
+      spriteID: 85a4904faeb8d5f49bc4d2261d583414
+      internalID: -1526117402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_3
+      name: M16_Reload_3
       rect:
         serializedVersion: 2
         x: 180
@@ -218,16 +185,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d2216174540e651d0800000000000000
-      internalID: -3362253483635502547
+      spriteID: 5c87e441089d89245b807d10f1767991
+      internalID: 1590049991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_4
+      name: M16_Reload_4
       rect:
         serializedVersion: 2
         x: 240
@@ -239,16 +206,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1431136eaef56bdf0800000000000000
-      internalID: -164838873863482559
+      spriteID: f23db1b0ccb2ca64fb08510ac7699317
+      internalID: 197770448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_5
+      name: M16_Reload_5
       rect:
         serializedVersion: 2
         x: 0
@@ -260,16 +227,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8bfc4a12e80388520800000000000000
-      internalID: 2704464963243921336
+      spriteID: 3a226f72dae96a745b92430a5770e969
+      internalID: -879720162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_6
+      name: M16_Reload_6
       rect:
         serializedVersion: 2
         x: 60
@@ -281,16 +248,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0cf7f6e8c2b87d400800000000000000
-      internalID: 348900519628996544
+      spriteID: 9f013c2aa87e0874b8beb4c868b57d4b
+      internalID: -266711730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_7
+      name: M16_Reload_7
       rect:
         serializedVersion: 2
         x: 120
@@ -302,16 +269,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 24bc0d2fa034a1c90800000000000000
-      internalID: -7198367340095812798
+      spriteID: 51edbff82d144b1479ffac971896a086
+      internalID: -999764175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_8
+      name: M16_Reload_8
       rect:
         serializedVersion: 2
         x: 180
@@ -323,16 +290,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c631a8b4e0e03c600800000000000000
-      internalID: 487248639245816684
+      spriteID: 70c690932349e344fa7d18af88c8d036
+      internalID: -1147028678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_9
+      name: M16_Reload_9
       rect:
         serializedVersion: 2
         x: 240
@@ -344,16 +311,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c5c91ac1b5fe4e6c0800000000000000
-      internalID: -4114900984908374948
+      spriteID: 85f3bf66a9a8ed340aca78c425540538
+      internalID: -1181312960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_10
+      name: M16_Reload_10
       rect:
         serializedVersion: 2
         x: 0
@@ -365,16 +332,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 59cbef906166848d0800000000000000
-      internalID: -2861925318350947179
+      spriteID: 1d438794af598274886371496ae2abe5
+      internalID: 684729393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_11
+      name: M16_Reload_11
       rect:
         serializedVersion: 2
         x: 60
@@ -388,14 +355,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1928766bb59c804b8c638abcb079a0d
-      internalID: 768483834
+      spriteID: 3f9a5afe0a303174dab906ae5379805e
+      internalID: 175914203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_12
+      name: M16_Reload_12
       rect:
         serializedVersion: 2
         x: 120
@@ -409,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6eb231ff081d8b439a80198b88d12d8
-      internalID: 2043161433
+      spriteID: 65d6ceef1ba85dd4fb51787844d5bb66
+      internalID: 1514053416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_13
+      name: M16_Reload_13
       rect:
         serializedVersion: 2
         x: 180
@@ -430,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54fbff376896edb408da18d6c129ac9b
-      internalID: -17366397
+      spriteID: 0b828f5d4d0a55347bd26d36ec5f2f7e
+      internalID: 1704601161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_14
+      name: M16_Reload_14
       rect:
         serializedVersion: 2
         x: 240
@@ -451,14 +418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb310af6cb8f6a74490e548ede0c2b0d
-      internalID: 19035513
+      spriteID: cfe1928c8aa94354bb24581f295db820
+      internalID: -2037572623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_15
+      name: M16_Reload_15
       rect:
         serializedVersion: 2
         x: 0
@@ -472,14 +439,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fed10d58e64c9940913a420953b8da4
-      internalID: 944358469
+      spriteID: bd70d35a8ac74b642a6ddbddcd3d7476
+      internalID: -164385399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_16
+      name: M16_Reload_16
       rect:
         serializedVersion: 2
         x: 60
@@ -493,14 +460,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fba1e0a063c97d4dbb8d591c1c4b6a4
-      internalID: -308571096
+      spriteID: 50229f6721fa6eb45ae36bb241b7c018
+      internalID: 1336185470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_17
+      name: M16_Reload_17
       rect:
         serializedVersion: 2
         x: 120
@@ -514,14 +481,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c9484b60126a9e45ac5cb84cb7e8b83
-      internalID: 2012605418
+      spriteID: 17aebd0f4e8e0f248b64867c1bebef84
+      internalID: 1251822376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_18
+      name: M16_Reload_18
       rect:
         serializedVersion: 2
         x: 180
@@ -535,14 +502,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f03fed447fce4947bf61ef8a946a70c
-      internalID: 1657316523
+      spriteID: d8ac08fca9900a94cacce3097833f70e
+      internalID: -1453429128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_19
+      name: M16_Reload_19
       rect:
         serializedVersion: 2
         x: 240
@@ -556,14 +523,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26111d49a4718764b8509a8753c1ff1a
-      internalID: -1921338230
+      spriteID: b22505da63736044880e4821432aad9c
+      internalID: -888103971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_20
+      name: M16_Reload_20
       rect:
         serializedVersion: 2
         x: 0
@@ -577,14 +544,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ff521b1474115849975b0069931aaff
-      internalID: -367104851
+      spriteID: 396026006b3b8ba46913501d952cc4d7
+      internalID: -316845498
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_21
+      name: M16_Reload_21
       rect:
         serializedVersion: 2
         x: 60
@@ -598,14 +565,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e498ea584a279e4f985d30f3f0a61c4
-      internalID: -1292642856
+      spriteID: 96ace941f623f4b4c8c43f746b747359
+      internalID: 24106064
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_22
+      name: M16_Reload_22
       rect:
         serializedVersion: 2
         x: 120
@@ -619,14 +586,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ff2122e2b72f2548b821e3f9321f182
-      internalID: -116701523
+      spriteID: c492b6b420af67b43bff22572a9a4ca1
+      internalID: -403263661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_23
+      name: M16_Reload_23
       rect:
         serializedVersion: 2
         x: 180
@@ -640,14 +607,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7737d9d79eb723548aa98ecfcc8b1125
-      internalID: -468265754
+      spriteID: 722a636ed41ee0144b573e4bd7b86419
+      internalID: -1054239233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Reload 1_24
+      name: M16_Reload_24
       rect:
         serializedVersion: 2
         x: 240
@@ -661,8 +628,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cff867ce8b003624c97a09f392c58d0a
-      internalID: -804363983
+      spriteID: aeec81d41f3a2514484fdfe40765e414
+      internalID: -1638990169
       vertices: []
       indices: 
       edges: []
@@ -670,7 +637,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4694280d42978254291fe69b403b2cfb
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -678,31 +645,31 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      M16_Reload 1_0: -7430220465166561302
-      M16_Reload 1_1: -8831129809770880516
-      M16_Reload 1_10: -2861925318350947179
-      M16_Reload 1_11: 768483834
-      M16_Reload 1_12: 2043161433
-      M16_Reload 1_13: -17366397
-      M16_Reload 1_14: 19035513
-      M16_Reload 1_15: 944358469
-      M16_Reload 1_16: -308571096
-      M16_Reload 1_17: 2012605418
-      M16_Reload 1_18: 1657316523
-      M16_Reload 1_19: -1921338230
-      M16_Reload 1_2: 5615939249794282376
-      M16_Reload 1_20: -367104851
-      M16_Reload 1_21: -1292642856
-      M16_Reload 1_22: -116701523
-      M16_Reload 1_23: -468265754
-      M16_Reload 1_24: -804363983
-      M16_Reload 1_3: -3362253483635502547
-      M16_Reload 1_4: -164838873863482559
-      M16_Reload 1_5: 2704464963243921336
-      M16_Reload 1_6: 348900519628996544
-      M16_Reload 1_7: -7198367340095812798
-      M16_Reload 1_8: 487248639245816684
-      M16_Reload 1_9: -4114900984908374948
+      M16_Reload_0: 123755598
+      M16_Reload_1: -1014780626
+      M16_Reload_10: 684729393
+      M16_Reload_11: 175914203
+      M16_Reload_12: 1514053416
+      M16_Reload_13: 1704601161
+      M16_Reload_14: -2037572623
+      M16_Reload_15: -164385399
+      M16_Reload_16: 1336185470
+      M16_Reload_17: 1251822376
+      M16_Reload_18: -1453429128
+      M16_Reload_19: -888103971
+      M16_Reload_2: -1526117402
+      M16_Reload_20: -316845498
+      M16_Reload_21: 24106064
+      M16_Reload_22: -403263661
+      M16_Reload_23: -1054239233
+      M16_Reload_24: -1638990169
+      M16_Reload_3: 1590049991
+      M16_Reload_4: 197770448
+      M16_Reload_5: -879720162
+      M16_Reload_6: -266711730
+      M16_Reload_7: -999764175
+      M16_Reload_8: -1147028678
+      M16_Reload_9: -1181312960
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

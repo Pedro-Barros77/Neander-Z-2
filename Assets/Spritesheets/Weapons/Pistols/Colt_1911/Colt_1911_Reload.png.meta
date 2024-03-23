@@ -1,84 +1,9 @@
 fileFormatVersion: 2
-guid: 51efac820ec2f9e4481763bcea264944
+guid: cbe3112d78dd6d44ba997c28fdd51428
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -7057257509800524091
-    second: Colt_1911_Reload 1_0
-  - first:
-      213: -1295499124344911146
-    second: Colt_1911_Reload 1_1
-  - first:
-      213: -7544786652648204253
-    second: Colt_1911_Reload 1_2
-  - first:
-      213: 8534492761799631921
-    second: Colt_1911_Reload 1_3
-  - first:
-      213: -1590799518245451098
-    second: Colt_1911_Reload 1_4
-  - first:
-      213: 6850386462488283131
-    second: Colt_1911_Reload 1_5
-  - first:
-      213: -147118784671208525
-    second: Colt_1911_Reload 1_6
-  - first:
-      213: 2206276009163454552
-    second: Colt_1911_Reload 1_7
-  - first:
-      213: -5656916580329347346
-    second: Colt_1911_Reload 1_8
-  - first:
-      213: -1675600442976416161
-    second: Colt_1911_Reload 1_9
-  - first:
-      213: -6270675453343582544
-    second: Colt_1911_Reload 1_10
-  - first:
-      213: 7510493775703277144
-    second: Colt_1911_Reload 1_11
-  - first:
-      213: 1963412457300959167
-    second: Colt_1911_Reload 1_12
-  - first:
-      213: 5241914388258844381
-    second: Colt_1911_Reload 1_13
-  - first:
-      213: -3270460643957183135
-    second: Colt_1911_Reload 1_14
-  - first:
-      213: -8820831011783292008
-    second: Colt_1911_Reload 1_15
-  - first:
-      213: 4818677488897425589
-    second: Colt_1911_Reload 1_16
-  - first:
-      213: -4663833325088120168
-    second: Colt_1911_Reload 1_17
-  - first:
-      213: -5750820430281198409
-    second: Colt_1911_Reload 1_18
-  - first:
-      213: 2360623781158982590
-    second: Colt_1911_Reload 1_19
-  - first:
-      213: -5660145031657394784
-    second: Colt_1911_Reload 1_20
-  - first:
-      213: 5914530298111583393
-    second: Colt_1911_Reload 1_21
-  - first:
-      213: -1957360577119321214
-    second: Colt_1911_Reload 1_22
-  - first:
-      213: 1724086220414391704
-    second: Colt_1911_Reload 1_23
-  - first:
-      213: -1914465834245102709
-    second: Colt_1911_Reload 1_24
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -169,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -185,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Colt_1911_Reload 1_0
+      name: reload_0
       rect:
         serializedVersion: 2
         x: 0
@@ -197,16 +122,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5c6c1ef8fa59f0e90800000000000000
-      internalID: -7057257509800524091
+      spriteID: a71301d05c947cb4f8cbc36186e98b5c
+      internalID: 594817244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colt_1911_Reload 1_1
+      name: reload_1
       rect:
         serializedVersion: 2
         x: 37
@@ -218,16 +143,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6da87960966750ee0800000000000000
-      internalID: -1295499124344911146
+      spriteID: 8c5548ef84055144aa013574dc648fb1
+      internalID: 1543820047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colt_1911_Reload 1_2
+      name: reload_2
       rect:
         serializedVersion: 2
         x: 74
@@ -239,16 +164,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3289bce63888b4790800000000000000
-      internalID: -7544786652648204253
+      spriteID: 738336a0db7a03142b8d4f2326b47e19
+      internalID: -1255244738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colt_1911_Reload 1_3
+      name: reload_3
       rect:
         serializedVersion: 2
         x: 111
@@ -260,16 +185,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 134a53df2fb907670800000000000000
-      internalID: 8534492761799631921
+      spriteID: 73bc4469d48145648b6876ea23adbc65
+      internalID: -2114998708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colt_1911_Reload 1_4
+      name: reload_4
       rect:
         serializedVersion: 2
         x: 148
@@ -281,16 +206,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6aa0e1e34485ce9e0800000000000000
-      internalID: -1590799518245451098
+      spriteID: 03698b9b10e0a4f429e43dd4b1a3cd18
+      internalID: 2082389112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colt_1911_Reload 1_5
+      name: reload_5
       rect:
         serializedVersion: 2
         x: 185
@@ -302,16 +227,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bf742c65136711f50800000000000000
-      internalID: 6850386462488283131
+      spriteID: d9f44aab1122cba43a9dd83ec4ab751a
+      internalID: 1022738979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colt_1911_Reload 1_6
+      name: reload_6
       rect:
         serializedVersion: 2
         x: 222
@@ -323,16 +248,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3bba2ebae3455fdf0800000000000000
-      internalID: -147118784671208525
+      spriteID: 4898c7c7858476b40bd3bebe4395038c
+      internalID: -593391128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colt_1911_Reload 1_7
+      name: reload_7
       rect:
         serializedVersion: 2
         x: 259
@@ -344,16 +269,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 85877aa47544e9e10800000000000000
-      internalID: 2206276009163454552
+      spriteID: e8332511552c66c4a85e7d540c5200a1
+      internalID: 1318735593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colt_1911_Reload 1_8
+      name: reload_8
       rect:
         serializedVersion: 2
         x: 296
@@ -365,16 +290,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ee6a37187589e71b0800000000000000
-      internalID: -5656916580329347346
+      spriteID: bbce89bd8ffbac94c8218d888ab4c038
+      internalID: -1220694205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colt_1911_Reload 1_9
+      name: reload_9
       rect:
         serializedVersion: 2
         x: 333
@@ -386,16 +311,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f5e47ea56421fb8e0800000000000000
-      internalID: -1675600442976416161
+      spriteID: 9611d66cfb0c9cb4ab1dd5fe4d1a2f32
+      internalID: 1013234988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Colt_1911_Reload 1_10
+      name: reload_10
       rect:
         serializedVersion: 2
         x: 370
@@ -407,10 +332,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0b6b1bd06e51af8a0800000000000000
-      internalID: -6270675453343582544
+      spriteID: 958fdc8784d3a8e43a4b849f11b0bc47
+      internalID: -1601022893
       vertices: []
       indices: 
       edges: []
@@ -418,7 +343,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ca78c554831125c4e8f83fc1f77b8d96
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -426,17 +351,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Colt_1911_Reload 1_0: -7057257509800524091
-      Colt_1911_Reload 1_1: -1295499124344911146
-      Colt_1911_Reload 1_10: -6270675453343582544
-      Colt_1911_Reload 1_2: -7544786652648204253
-      Colt_1911_Reload 1_3: 8534492761799631921
-      Colt_1911_Reload 1_4: -1590799518245451098
-      Colt_1911_Reload 1_5: 6850386462488283131
-      Colt_1911_Reload 1_6: -147118784671208525
-      Colt_1911_Reload 1_7: 2206276009163454552
-      Colt_1911_Reload 1_8: -5656916580329347346
-      Colt_1911_Reload 1_9: -1675600442976416161
+      reload_0: 594817244
+      reload_1: 1543820047
+      reload_10: -1601022893
+      reload_2: -1255244738
+      reload_3: -2114998708
+      reload_4: 2082389112
+      reload_5: 1022738979
+      reload_6: -593391128
+      reload_7: 1318735593
+      reload_8: -1220694205
+      reload_9: 1013234988
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

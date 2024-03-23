@@ -1,33 +1,9 @@
 fileFormatVersion: 2
-guid: 392e69e54b064ea4db3804f6fe6d0a7c
+guid: a8188281af5bd9b458af525b5a612bcd
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 8994003616542699771
-    second: SV98_Shoot 1_0
-  - first:
-      213: 8229762194038274909
-    second: SV98_Shoot 1_1
-  - first:
-      213: 1280190698417520610
-    second: SV98_Shoot 1_2
-  - first:
-      213: -6029213029431168728
-    second: SV98_Shoot 1_3
-  - first:
-      213: 7917928724584832951
-    second: SV98_Shoot 1_4
-  - first:
-      213: 7298914789694218468
-    second: SV98_Shoot 1_5
-  - first:
-      213: 6881372197919025818
-    second: SV98_Shoot 1_6
-  - first:
-      213: -6141271372272997051
-    second: SV98_Shoot 1_7
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -118,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -134,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SV98_Shoot 1_0
+      name: SV98_Shoot_0
       rect:
         serializedVersion: 2
         x: 0
@@ -146,16 +122,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bf03b9013ae11dc70800000000000000
-      internalID: 8994003616542699771
+      spriteID: 24f600651cd60cb41868646000ecceba
+      internalID: 894483526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Shoot 1_1
+      name: SV98_Shoot_1
       rect:
         serializedVersion: 2
         x: 117
@@ -167,16 +143,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d5b3791cc1df53270800000000000000
-      internalID: 8229762194038274909
+      spriteID: ffc51e93eaa21124cac7ede3e426fcb6
+      internalID: 318526943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Shoot 1_2
+      name: SV98_Shoot_2
       rect:
         serializedVersion: 2
         x: 234
@@ -188,16 +164,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2ef7fef48a624c110800000000000000
-      internalID: 1280190698417520610
+      spriteID: 6a9e84b64688f684da55cc268235f8b1
+      internalID: -2032788533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Shoot 1_3
+      name: SV98_Shoot_3
       rect:
         serializedVersion: 2
         x: 351
@@ -209,10 +185,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8213991a1bee35ca0800000000000000
-      internalID: -6029213029431168728
+      spriteID: 8ca19a33a51169045b7506e5b069c69f
+      internalID: -119510792
       vertices: []
       indices: 
       edges: []
@@ -220,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: beb6f97e3d9c09f45b97fce89565751b
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -228,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SV98_Shoot 1_0: 8994003616542699771
-      SV98_Shoot 1_1: 8229762194038274909
-      SV98_Shoot 1_2: 1280190698417520610
-      SV98_Shoot 1_3: -6029213029431168728
+      SV98_Shoot_0: 894483526
+      SV98_Shoot_1: 318526943
+      SV98_Shoot_2: -2032788533
+      SV98_Shoot_3: -119510792
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

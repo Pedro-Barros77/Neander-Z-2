@@ -1,39 +1,9 @@
 fileFormatVersion: 2
-guid: 3ed53a9e77db85a47b8ea0c2822f5667
+guid: 35922b94c9ff33b40ac4bfc2d7e8cb3d
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -453385805938012510
-    second: ShortBarrel_Shoot 1_0
-  - first:
-      213: -5309021364861325199
-    second: ShortBarrel_Shoot 1_1
-  - first:
-      213: 4761012671250645310
-    second: ShortBarrel_Shoot 1_2
-  - first:
-      213: 4477628862521756988
-    second: ShortBarrel_Shoot 1_3
-  - first:
-      213: -923089787639021897
-    second: ShortBarrel_Shoot 1_4
-  - first:
-      213: 1904130153760294389
-    second: ShortBarrel_Shoot 1_5
-  - first:
-      213: -1275889826814339883
-    second: ShortBarrel_Shoot 1_6
-  - first:
-      213: 4805942182345024287
-    second: ShortBarrel_Shoot 1_7
-  - first:
-      213: 310648365745122065
-    second: ShortBarrel_Shoot 1_8
-  - first:
-      213: -155212441830151150
-    second: ShortBarrel_Shoot 1_9
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -124,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -140,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ShortBarrel_Shoot 1_0
+      name: shoot_0
       rect:
         serializedVersion: 2
         x: 0
@@ -152,16 +122,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2ae4cdaf20045b9f0800000000000000
-      internalID: -453385805938012510
+      spriteID: b2b9d06c0ceca294aa8425880e810403
+      internalID: 1995388821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShortBarrel_Shoot 1_1
+      name: shoot_1
       rect:
         serializedVersion: 2
         x: 44
@@ -173,16 +143,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1703b7272319256b0800000000000000
-      internalID: -5309021364861325199
+      spriteID: fa47cee260e402f4591a86da694ec2bb
+      internalID: -1137397710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShortBarrel_Shoot 1_2
+      name: shoot_2
       rect:
         serializedVersion: 2
         x: 88
@@ -194,16 +164,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e314701bcc3821240800000000000000
-      internalID: 4761012671250645310
+      spriteID: 0742d83e6985b3b43b825c2a8d531b59
+      internalID: 2069139169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShortBarrel_Shoot 1_3
+      name: shoot_3
       rect:
         serializedVersion: 2
         x: 132
@@ -215,16 +185,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c3d45aa1abbb32e30800000000000000
-      internalID: 4477628862521756988
+      spriteID: 63a5254a669f63d47a4dca101a99b279
+      internalID: -1959415566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShortBarrel_Shoot 1_4
+      name: shoot_4
       rect:
         serializedVersion: 2
         x: 176
@@ -236,10 +206,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7be3cf79ab68033f0800000000000000
-      internalID: -923089787639021897
+      spriteID: baebfed509bf9a445b0fc9ceebcb18b2
+      internalID: 873531248
       vertices: []
       indices: 
       edges: []
@@ -247,7 +217,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8f497c9453281b4418fbd05bf6e0ee6e
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -255,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ShortBarrel_Shoot 1_0: -453385805938012510
-      ShortBarrel_Shoot 1_1: -5309021364861325199
-      ShortBarrel_Shoot 1_2: 4761012671250645310
-      ShortBarrel_Shoot 1_3: 4477628862521756988
-      ShortBarrel_Shoot 1_4: -923089787639021897
+      shoot_0: 1995388821
+      shoot_1: -1137397710
+      shoot_2: 2069139169
+      shoot_3: -1959415566
+      shoot_4: 873531248
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

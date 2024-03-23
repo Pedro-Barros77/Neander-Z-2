@@ -1,39 +1,9 @@
 fileFormatVersion: 2
-guid: 01a6bd8a1ed422943bddbcbeebe99b1d
+guid: 9347665d5e4979c48a722798f2024d1c
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -4271184299791379115
-    second: SV98_Reload 1_0
-  - first:
-      213: 4846548806170938876
-    second: SV98_Reload 1_1
-  - first:
-      213: -3847948204529764298
-    second: SV98_Reload 1_2
-  - first:
-      213: -6246772112985172102
-    second: SV98_Reload 1_3
-  - first:
-      213: -4402857235910523653
-    second: SV98_Reload 1_4
-  - first:
-      213: -8713998384974185385
-    second: SV98_Reload 1_5
-  - first:
-      213: 3257554026228203531
-    second: SV98_Reload 1_6
-  - first:
-      213: -8785333008370885339
-    second: SV98_Reload 1_7
-  - first:
-      213: -2936495161678210934
-    second: SV98_Reload 1_8
-  - first:
-      213: 51809031960880908
-    second: SV98_Reload 1_9
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -124,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -140,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SV98_Reload 1_0
+      name: SV98_Reload_0
       rect:
         serializedVersion: 2
         x: 0
@@ -152,16 +122,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 55595b05284b9b4c0800000000000000
-      internalID: -4271184299791379115
+      spriteID: 794f0bcf174cdc043a391da34f66b19c
+      internalID: -1205553399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_1
+      name: SV98_Reload_1
       rect:
         serializedVersion: 2
         x: 99
@@ -173,16 +143,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cfd896a0676624340800000000000000
-      internalID: 4846548806170938876
+      spriteID: 6d5d60ec39fe34d4d9b1f6116c2ee911
+      internalID: 1038363042
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_2
+      name: SV98_Reload_2
       rect:
         serializedVersion: 2
         x: 198
@@ -194,16 +164,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 638b6eace77599ac0800000000000000
-      internalID: -3847948204529764298
+      spriteID: e82bb9951c8720d4bbf13f7fa2b3fa7e
+      internalID: 1157683674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_3
+      name: SV98_Reload_3
       rect:
         serializedVersion: 2
         x: 297
@@ -215,16 +185,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a77d3bc2cd10f49a0800000000000000
-      internalID: -6246772112985172102
+      spriteID: c4c7414361e10c64ea2db44c1279f5bd
+      internalID: -1777195811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_4
+      name: SV98_Reload_4
       rect:
         serializedVersion: 2
         x: 396
@@ -236,16 +206,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: bf48bc8dba8e5e2c0800000000000000
-      internalID: -4402857235910523653
+      spriteID: ffeea613bad531240b807c662d1e78f3
+      internalID: -1372080006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_5
+      name: SV98_Reload_5
       rect:
         serializedVersion: 2
         x: 495
@@ -257,16 +227,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 75c394a33a8a11780800000000000000
-      internalID: -8713998384974185385
+      spriteID: 9cdad38eccd45204e816e0a998e1c4a2
+      internalID: -1972576986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_6
+      name: SV98_Reload_6
       rect:
         serializedVersion: 2
         x: 0
@@ -278,16 +248,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b00c9f9a028253d20800000000000000
-      internalID: 3257554026228203531
+      spriteID: 935903ee812abcb4eb7b23713426a36f
+      internalID: -856393480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_7
+      name: SV98_Reload_7
       rect:
         serializedVersion: 2
         x: 99
@@ -299,16 +269,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 52d1a82fc2a341680800000000000000
-      internalID: -8785333008370885339
+      spriteID: 4108c87a7401cde45bc6508941920fa8
+      internalID: -1173740482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_8
+      name: SV98_Reload_8
       rect:
         serializedVersion: 2
         x: 198
@@ -320,16 +290,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a88548b65397f37d0800000000000000
-      internalID: -2936495161678210934
+      spriteID: 5c3d659f54877a848af66bc73c1fad36
+      internalID: -1636487313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_9
+      name: SV98_Reload_9
       rect:
         serializedVersion: 2
         x: 297
@@ -341,16 +311,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c076f224a0018b000800000000000000
-      internalID: 51809031960880908
+      spriteID: 2adfff453fba20e49a4c9531426ca75c
+      internalID: 404948808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_10
+      name: SV98_Reload_10
       rect:
         serializedVersion: 2
         x: 396
@@ -364,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb86aca21987dde409a85b298ef6ae96
-      internalID: 1743198071
+      spriteID: 41c58f5d5efbe91419e5ccbeea86123b
+      internalID: -1570951454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_11
+      name: SV98_Reload_11
       rect:
         serializedVersion: 2
         x: 495
@@ -385,14 +355,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76571aceb10d48346a9f2cc827dfd0f2
-      internalID: -1469226564
+      spriteID: f05b7d2fef2ee634b9662e1a8439b3d5
+      internalID: -825902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_12
+      name: SV98_Reload_12
       rect:
         serializedVersion: 2
         x: 0
@@ -406,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59ad7d7306155e7439e197e78d152efe
-      internalID: 1821831950
+      spriteID: 22e005c300d18db41b63678a7a6c12fb
+      internalID: 951116224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_13
+      name: SV98_Reload_13
       rect:
         serializedVersion: 2
         x: 99
@@ -427,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5dd93d768e186d488a54b696f106053
-      internalID: 293728543
+      spriteID: b81b6542ff7fc8e478d50035a02f8a3a
+      internalID: 1748310081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_14
+      name: SV98_Reload_14
       rect:
         serializedVersion: 2
         x: 198
@@ -448,14 +418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61b8c04243e7400479059cb9847cd84b
-      internalID: 1584192505
+      spriteID: c6f7995dfbf44b04fa3dba10f92e58fd
+      internalID: -1273491273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_15
+      name: SV98_Reload_15
       rect:
         serializedVersion: 2
         x: 297
@@ -469,14 +439,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf670d320662b7c408740c29d3ee36ca
-      internalID: 257944113
+      spriteID: e77a0f88fb469d247baa2e735d8b9225
+      internalID: -1534538401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_16
+      name: SV98_Reload_16
       rect:
         serializedVersion: 2
         x: 396
@@ -490,14 +460,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1201ee7647210c042b79990eee2f3ae5
-      internalID: -1339999963
+      spriteID: 34676a708157a484e901ab1dfcb8f221
+      internalID: 1610560838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_17
+      name: SV98_Reload_17
       rect:
         serializedVersion: 2
         x: 495
@@ -511,14 +481,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3840ad3f36512a94da12a22a63bba034
-      internalID: 96078259
+      spriteID: c4cd0c058b6fa38488d53cb09cb0fec5
+      internalID: 1787206437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_18
+      name: SV98_Reload_18
       rect:
         serializedVersion: 2
         x: 0
@@ -532,14 +502,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 731cc18144631ab43ab6d7cdb88700b9
-      internalID: 1404826603
+      spriteID: 510ce802c399eed418a636bf25374b37
+      internalID: -682449286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_19
+      name: SV98_Reload_19
       rect:
         serializedVersion: 2
         x: 99
@@ -553,14 +523,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8eb7cb74caa1194594b8342b82edb1c
-      internalID: -460414055
+      spriteID: 52a3fe47c6d4b124d82af1053471baaf
+      internalID: 498616599
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_20
+      name: SV98_Reload_20
       rect:
         serializedVersion: 2
         x: 198
@@ -574,14 +544,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42fa917d3672d8740ad813fb0f41f3e7
-      internalID: -833708513
+      spriteID: 7bc4fba99721af34baf4f33e2901c85b
+      internalID: 1495153471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_21
+      name: SV98_Reload_21
       rect:
         serializedVersion: 2
         x: 297
@@ -595,14 +565,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6028af13002b04c4aa7a1a1898d56c2b
-      internalID: 1783563557
+      spriteID: adf79ebe4125c3649b05bbb24b5d2c95
+      internalID: -1761163585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SV98_Reload 1_22
+      name: SV98_Reload_22
       rect:
         serializedVersion: 2
         x: 396
@@ -616,8 +586,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e9d7c884d55d814fb307932e369a65b
-      internalID: -1291608524
+      spriteID: f60fd06eb17cf6445824c88cfe0ead25
+      internalID: -2121532458
       vertices: []
       indices: 
       edges: []
@@ -625,7 +595,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 61d21227d0073914da0970170ecad5c3
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -633,29 +603,29 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SV98_Reload 1_0: -4271184299791379115
-      SV98_Reload 1_1: 4846548806170938876
-      SV98_Reload 1_10: 1743198071
-      SV98_Reload 1_11: -1469226564
-      SV98_Reload 1_12: 1821831950
-      SV98_Reload 1_13: 293728543
-      SV98_Reload 1_14: 1584192505
-      SV98_Reload 1_15: 257944113
-      SV98_Reload 1_16: -1339999963
-      SV98_Reload 1_17: 96078259
-      SV98_Reload 1_18: 1404826603
-      SV98_Reload 1_19: -460414055
-      SV98_Reload 1_2: -3847948204529764298
-      SV98_Reload 1_20: -833708513
-      SV98_Reload 1_21: 1783563557
-      SV98_Reload 1_22: -1291608524
-      SV98_Reload 1_3: -6246772112985172102
-      SV98_Reload 1_4: -4402857235910523653
-      SV98_Reload 1_5: -8713998384974185385
-      SV98_Reload 1_6: 3257554026228203531
-      SV98_Reload 1_7: -8785333008370885339
-      SV98_Reload 1_8: -2936495161678210934
-      SV98_Reload 1_9: 51809031960880908
+      SV98_Reload_0: -1205553399
+      SV98_Reload_1: 1038363042
+      SV98_Reload_10: -1570951454
+      SV98_Reload_11: -825902
+      SV98_Reload_12: 951116224
+      SV98_Reload_13: 1748310081
+      SV98_Reload_14: -1273491273
+      SV98_Reload_15: -1534538401
+      SV98_Reload_16: 1610560838
+      SV98_Reload_17: 1787206437
+      SV98_Reload_18: -682449286
+      SV98_Reload_19: 498616599
+      SV98_Reload_2: 1157683674
+      SV98_Reload_20: 1495153471
+      SV98_Reload_21: -1761163585
+      SV98_Reload_22: -2121532458
+      SV98_Reload_3: -1777195811
+      SV98_Reload_4: -1372080006
+      SV98_Reload_5: -1972576986
+      SV98_Reload_6: -856393480
+      SV98_Reload_7: -1173740482
+      SV98_Reload_8: -1636487313
+      SV98_Reload_9: 404948808
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

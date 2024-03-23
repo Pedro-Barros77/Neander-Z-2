@@ -1,21 +1,9 @@
 fileFormatVersion: 2
-guid: 0b57dbfdf4db2534ba66268546df9a36
+guid: 6af3c6bb6b652af4793f0bcd7f5f927b
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -732213207216720383
-    second: M16_Shoot 1_0
-  - first:
-      213: -948769928368166712
-    second: M16_Shoot 1_1
-  - first:
-      213: 3669586654454764361
-    second: M16_Shoot 1_2
-  - first:
-      213: -5047515451192456884
-    second: M16_Shoot 1_3
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 13
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -106,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -122,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: M16_Shoot 1_0
+      name: M16_Shoot_0
       rect:
         serializedVersion: 2
         x: 0
@@ -134,16 +122,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1067ffba7f7a6d5f0800000000000000
-      internalID: -732213207216720383
+      spriteID: ab454912054236f4fa41eb1380cb49d7
+      internalID: 1272888473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Shoot 1_1
+      name: M16_Shoot_1
       rect:
         serializedVersion: 2
         x: 90
@@ -155,16 +143,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8c8ea06e6ca45d2f0800000000000000
-      internalID: -948769928368166712
+      spriteID: 34fb56d6a1a8fd34da020aa787d4ccf2
+      internalID: 2126503708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Shoot 1_2
+      name: M16_Shoot_2
       rect:
         serializedVersion: 2
         x: 180
@@ -176,16 +164,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9435a43be9dfce230800000000000000
-      internalID: 3669586654454764361
+      spriteID: cecba654e28ba7545a404f3683a6fb01
+      internalID: -1399890053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: M16_Shoot 1_3
+      name: M16_Shoot_3
       rect:
         serializedVersion: 2
         x: 270
@@ -197,10 +185,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c49c065a07f93f9b0800000000000000
-      internalID: -5047515451192456884
+      spriteID: 42f8c7db68ec0504e9c28fcc5a02671d
+      internalID: 867728001
       vertices: []
       indices: 
       edges: []
@@ -208,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1bac9041d053161429d151b04a2cf27b
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -216,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      M16_Shoot 1_0: -732213207216720383
-      M16_Shoot 1_1: -948769928368166712
-      M16_Shoot 1_2: 3669586654454764361
-      M16_Shoot 1_3: -5047515451192456884
+      M16_Shoot_0: 1272888473
+      M16_Shoot_1: 2126503708
+      M16_Shoot_2: -1399890053
+      M16_Shoot_3: 867728001
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
