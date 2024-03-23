@@ -1,7 +1,31 @@
 fileFormatVersion: 2
-guid: b45dc04e46c35c54baac0ce0dea9b538
+guid: 0e3ffdaec4534dd41b4436c4991ba02a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1070382618788906548
+    second: Beretta_93r_Shoot_Hand_0
+  - first:
+      213: 5477744264204061331
+    second: Beretta_93r_Shoot_Hand_1
+  - first:
+      213: -3122501045405453986
+    second: Beretta_93r_Shoot_Hand_2
+  - first:
+      213: 2776597583831412062
+    second: Beretta_93r_Shoot_Hand_3
+  - first:
+      213: 4947549639871742942
+    second: Beretta_93r_Shoot_Hand_4
+  - first:
+      213: -3735570039553291858
+    second: Beretta_93r_Shoot_Hand_5
+  - first:
+      213: -8664643030690039745
+    second: Beretta_93r_Shoot_Hand_6
+  - first:
+      213: 8997979271052761710
+    second: Beretta_93r_Shoot_Hand_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -34,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,10 +93,23 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,7 +131,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -107,37 +144,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 1024
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 1024
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Windows Store Apps
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -149,211 +160,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fingers_Throw_0
+      name: Beretta_93r_Shoot_Hand_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 90
-        width: 130
-        height: 90
+        x: 20
+        y: 139
+        width: 23
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9f609c66c2f5b2a48937f5297adfaac9
-      internalID: 478776750
+      spriteID: cc9b559edac3521f0800000000000000
+      internalID: -1070382618788906548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fingers_Throw_1
+      name: Beretta_93r_Shoot_Hand_1
       rect:
         serializedVersion: 2
-        x: 130
-        y: 90
-        width: 130
-        height: 90
+        x: 50
+        y: 139
+        width: 21
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 77e52bafe88e2ab4892370472ef727d9
-      internalID: -374486297
+      spriteID: 39a015ec26bd40c40800000000000000
+      internalID: 5477744264204061331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fingers_Throw_2
+      name: Beretta_93r_Shoot_Hand_2
       rect:
         serializedVersion: 2
-        x: 260
-        y: 90
-        width: 130
-        height: 90
+        x: 118
+        y: 138
+        width: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 02739f3e79ebad245b6dd2f97440136a
-      internalID: 659729057
+      spriteID: e5172d9c7d5aaa4d0800000000000000
+      internalID: -3122501045405453986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fingers_Throw_3
+      name: Beretta_93r_Shoot_Hand_3
       rect:
         serializedVersion: 2
-        x: 390
-        y: 90
-        width: 130
-        height: 90
+        x: 149
+        y: 139
+        width: 20
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 22294e1de000e524386cdbdb9bfa980a
-      internalID: 1806831170
+      spriteID: e5daa7c9ac4788620800000000000000
+      internalID: 2776597583831412062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fingers_Throw_4
+      name: Beretta_93r_Shoot_Hand_4
       rect:
         serializedVersion: 2
-        x: 520
-        y: 90
-        width: 130
-        height: 90
+        x: 17
+        y: 38
+        width: 23
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5950582f5dc23934f9ad7e83a80ba2fd
-      internalID: 1394326117
+      spriteID: ed3ca292f2a39a440800000000000000
+      internalID: 4947549639871742942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fingers_Throw_5
+      name: Beretta_93r_Shoot_Hand_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 130
-        height: 90
+        x: 48
+        y: 39
+        width: 20
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 001b45ef245315e4499e1b0cb369553e
-      internalID: -263394227
+      spriteID: ea985d647d6982cc0800000000000000
+      internalID: -3735570039553291858
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fingers_Throw_6
+      name: Beretta_93r_Shoot_Hand_6
       rect:
         serializedVersion: 2
-        x: 130
-        y: 0
-        width: 130
-        height: 90
+        x: 118
+        y: 38
+        width: 23
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b2a7ba35b4c49fe47ae02890aa5bf7c7
-      internalID: -2059718723
+      spriteID: f38f722221101c780800000000000000
+      internalID: -8664643030690039745
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fingers_Throw_7
+      name: Beretta_93r_Shoot_Hand_7
       rect:
         serializedVersion: 2
-        x: 260
-        y: 0
-        width: 130
-        height: 90
+        x: 149
+        y: 39
+        width: 20
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 96f11f8cf244a024aadbb8cc6191169d
-      internalID: 244082478
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fingers_Throw_8
-      rect:
-        serializedVersion: 2
-        x: 390
-        y: 0
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ab29201ce472bc49aa38f1a3580a543
-      internalID: 2093398178
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fingers_Throw_9
-      rect:
-        serializedVersion: 2
-        x: 520
-        y: 0
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90d3eb1a305ecf24e85d49de5177a32f
-      internalID: -1071741403
+      spriteID: e6a9d63497e3fdc70800000000000000
+      internalID: 8997979271052761710
       vertices: []
       indices: 
       edges: []
@@ -361,24 +330,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Fingers_Throw_0: 478776750
-      Fingers_Throw_1: -374486297
-      Fingers_Throw_2: 659729057
-      Fingers_Throw_3: 1806831170
-      Fingers_Throw_4: 1394326117
-      Fingers_Throw_5: -263394227
-      Fingers_Throw_6: -2059718723
-      Fingers_Throw_7: 244082478
-      Fingers_Throw_8: 2093398178
-      Fingers_Throw_9: -1071741403
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -28,7 +28,7 @@ public class SkinManager : MonoBehaviour
     [SerializeField]
     List<SkinItem> HatItems, HairItems, HeadItems, TorsoItems, ShirtItems, LegsItems, PantsItems, ShoesItems;
 
-    SpriteRenderer HatSpriteRenderer, HairSpriteRenderer, HeadSpriteRenderer, TorsoSpriteRenderer, ShirtSpriteRenderer, LegsSpriteRenderer, PantsSpriteRenderer, ShoesSpriteRenderer, HeadColorSpriteRenderer, EyesColorSpriteRenderer, TorsoColorSpriteRenderer, LegColorSpriteRenderer;
+    SpriteRenderer HatSpriteRenderer, HairSpriteRenderer, HeadSpriteRenderer, TorsoSpriteRenderer, ShirtSpriteRenderer, LegsSpriteRenderer, PantsSpriteRenderer, ShoesSpriteRenderer, HeadColorSpriteRenderer, EyesColorSpriteRenderer, TorsoColorSpriteRenderer, LegColorSpriteRenderer, HandPalmSpriteRenderer, HandFingersSpriteRenderer;
     Image HatImage, HairImage, HeadImage, TorsoImage, ShirtImage, LegsImage, PantsImage, ShoesImage;
 
     Player Player;
@@ -60,6 +60,14 @@ public class SkinManager : MonoBehaviour
         LegColorSpriteRenderer = LegsColorSpriteLibrary.GetComponent<SpriteRenderer>();
 
         Animator = GetComponentInParent<Animator>();
+
+        var weaponContainer = Animator.transform.Find("WeaponContainer");
+        if (weaponContainer != null)
+        {
+            var throwingContainer = weaponContainer.Find("Hand").Find("ThrowingContainer");
+            HandPalmSpriteRenderer = throwingContainer.Find("Palm").GetComponent<SpriteRenderer>();
+            HandFingersSpriteRenderer = throwingContainer.Find("Fingers").GetComponent<SpriteRenderer>();
+        }
 
         HatImage = HatSpriteLibrary.GetComponent<Image>();
         HairImage = HairSpriteLibrary.GetComponent<Image>();
@@ -145,7 +153,7 @@ public class SkinManager : MonoBehaviour
         EyesColorSpriteLibrary.spriteLibraryAsset = headItem.EyesColorLibrary;
         TorsoColorSpriteLibrary.spriteLibraryAsset = torsoItem.SkinColorLibrary;
         LegsColorSpriteLibrary.spriteLibraryAsset = legsItem.SkinColorLibrary;
-        
+
         UpdateSkinColor(CurrentSkinColor);
         UpdateHairColor(CurrentHairColor);
         UpdateEyesColor(CurrentEyeColor);
@@ -161,6 +169,11 @@ public class SkinManager : MonoBehaviour
         HeadColorSpriteRenderer.color = CurrentSkinColor;
         TorsoColorSpriteRenderer.color = CurrentSkinColor;
         LegColorSpriteRenderer.color = CurrentSkinColor;
+        if (HandPalmSpriteRenderer != null)
+        {
+            HandPalmSpriteRenderer.color = CurrentSkinColor;
+            HandFingersSpriteRenderer.color = CurrentSkinColor;
+        }
     }
 
     /// <summary>

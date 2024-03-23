@@ -1,7 +1,37 @@
 fileFormatVersion: 2
-guid: b45dc04e46c35c54baac0ce0dea9b538
+guid: 9e4a6c52117bcd64b8199bbeffdb5973
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -5415327117870393813
+    second: ShortBarrel_Shoot_Hand_0
+  - first:
+      213: 3526657284657796796
+    second: ShortBarrel_Shoot_Hand_1
+  - first:
+      213: 1768451831022632965
+    second: ShortBarrel_Shoot_Hand_2
+  - first:
+      213: 7288934052911477283
+    second: ShortBarrel_Shoot_Hand_3
+  - first:
+      213: -8654543756276654828
+    second: ShortBarrel_Shoot_Hand_4
+  - first:
+      213: 7607719831136180022
+    second: ShortBarrel_Shoot_Hand_5
+  - first:
+      213: 7809913010782487769
+    second: ShortBarrel_Shoot_Hand_6
+  - first:
+      213: -7159326321683587623
+    second: ShortBarrel_Shoot_Hand_7
+  - first:
+      213: 3481629571647208046
+    second: ShortBarrel_Shoot_Hand_8
+  - first:
+      213: 7224486166916057079
+    second: ShortBarrel_Shoot_Hand_9
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -34,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,10 +99,23 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,7 +137,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -107,37 +150,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 1024
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 1024
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Windows Store Apps
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -149,211 +166,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fingers_Throw_0
+      name: ShortBarrel_Shoot_Hand_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 90
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f609c66c2f5b2a48937f5297adfaac9
-      internalID: 478776750
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fingers_Throw_1
-      rect:
-        serializedVersion: 2
-        x: 130
-        y: 90
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 77e52bafe88e2ab4892370472ef727d9
-      internalID: -374486297
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fingers_Throw_2
-      rect:
-        serializedVersion: 2
-        x: 260
-        y: 90
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02739f3e79ebad245b6dd2f97440136a
-      internalID: 659729057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fingers_Throw_3
-      rect:
-        serializedVersion: 2
-        x: 390
-        y: 90
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 22294e1de000e524386cdbdb9bfa980a
-      internalID: 1806831170
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fingers_Throw_4
-      rect:
-        serializedVersion: 2
-        x: 520
-        y: 90
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5950582f5dc23934f9ad7e83a80ba2fd
-      internalID: 1394326117
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Fingers_Throw_5
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 4
         y: 0
-        width: 130
-        height: 90
+        width: 12
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 001b45ef245315e4499e1b0cb369553e
-      internalID: -263394227
+      spriteID: b269bcc8da4e8d4b0800000000000000
+      internalID: -5415327117870393813
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fingers_Throw_6
+      name: ShortBarrel_Shoot_Hand_1
       rect:
         serializedVersion: 2
-        x: 130
+        x: 23
         y: 0
-        width: 130
-        height: 90
+        width: 8
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b2a7ba35b4c49fe47ae02890aa5bf7c7
-      internalID: -2059718723
+      spriteID: cb652988d1431f030800000000000000
+      internalID: 3526657284657796796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fingers_Throw_7
+      name: ShortBarrel_Shoot_Hand_2
       rect:
         serializedVersion: 2
-        x: 260
+        x: 48
         y: 0
-        width: 130
-        height: 90
+        width: 12
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 96f11f8cf244a024aadbb8cc6191169d
-      internalID: 244082478
+      spriteID: 5004e76129dca8810800000000000000
+      internalID: 1768451831022632965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fingers_Throw_8
+      name: ShortBarrel_Shoot_Hand_3
       rect:
         serializedVersion: 2
-        x: 390
-        y: 0
-        width: 130
-        height: 90
+        x: 67
+        y: 2
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0ab29201ce472bc49aa38f1a3580a543
-      internalID: 2093398178
+      spriteID: 322790717ee772560800000000000000
+      internalID: 7288934052911477283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fingers_Throw_9
+      name: ShortBarrel_Shoot_Hand_4
       rect:
         serializedVersion: 2
-        x: 520
+        x: 92
         y: 0
-        width: 130
-        height: 90
+        width: 12
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 90d3eb1a305ecf24e85d49de5177a32f
-      internalID: -1071741403
+      spriteID: 41d1e02be42e4e780800000000000000
+      internalID: -8654543756276654828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShortBarrel_Shoot_Hand_5
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 2
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 637119501ec049960800000000000000
+      internalID: 7607719831136180022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShortBarrel_Shoot_Hand_6
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 0
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d4446e2182626c60800000000000000
+      internalID: 7809913010782487769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShortBarrel_Shoot_Hand_7
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dd12f464a6f4ac90800000000000000
+      internalID: -7159326321683587623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShortBarrel_Shoot_Hand_8
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 0
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6af68126ab315030800000000000000
+      internalID: 3481629571647208046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShortBarrel_Shoot_Hand_9
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f741cf44e7824460800000000000000
+      internalID: 7224486166916057079
       vertices: []
       indices: 
       edges: []
@@ -361,24 +378,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Fingers_Throw_0: 478776750
-      Fingers_Throw_1: -374486297
-      Fingers_Throw_2: 659729057
-      Fingers_Throw_3: 1806831170
-      Fingers_Throw_4: 1394326117
-      Fingers_Throw_5: -263394227
-      Fingers_Throw_6: -2059718723
-      Fingers_Throw_7: 244082478
-      Fingers_Throw_8: 2093398178
-      Fingers_Throw_9: -1071741403
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

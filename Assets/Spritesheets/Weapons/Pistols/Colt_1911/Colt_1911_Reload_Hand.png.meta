@@ -1,37 +1,52 @@
 fileFormatVersion: 2
-guid: 03a6bb7f192e8a948804427baa8aa5c4
+guid: 096d0d8342341cd4ba0661ca329080c7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8443775353507330053
-    second: Hand_Throw_0
+      213: -1541735890778936629
+    second: Colt_1911_Reload_Hand_0
   - first:
-      213: -2672590778034315369
-    second: Hand_Throw_1
+      213: 4915062955735155418
+    second: Colt_1911_Reload_Hand_1
   - first:
-      213: 5890045762745019604
-    second: Hand_Throw_2
+      213: -5421525186383299212
+    second: Colt_1911_Reload_Hand_2
   - first:
-      213: -340537865440995034
-    second: Hand_Throw_3
+      213: 4413163707983348955
+    second: Colt_1911_Reload_Hand_3
   - first:
-      213: -9169060823807668301
-    second: Hand_Throw_4
+      213: 3820151770125041901
+    second: Colt_1911_Reload_Hand_4
   - first:
-      213: -3132811826237471584
-    second: Hand_Throw_5
+      213: 3584211029607579321
+    second: Colt_1911_Reload_Hand_5
   - first:
-      213: 7664345296299419341
-    second: Hand_Throw_6
+      213: 930502573214029321
+    second: Colt_1911_Reload_Hand_6
   - first:
-      213: 9085429098909949779
-    second: Hand_Throw_7
+      213: -6962734470536679539
+    second: Colt_1911_Reload_Hand_7
   - first:
-      213: 5578491662724660989
-    second: Hand_Throw_8
+      213: -5109248926492514299
+    second: Colt_1911_Reload_Hand_8
   - first:
-      213: 857680273686977665
-    second: Hand_Throw_9
+      213: -1120551610030504716
+    second: Colt_1911_Reload_Hand_9
+  - first:
+      213: 1216606618840968082
+    second: Colt_1911_Reload_Hand_10
+  - first:
+      213: 6217506807775624461
+    second: Colt_1911_Reload_Hand_11
+  - first:
+      213: -352734979053021930
+    second: Colt_1911_Reload_Hand_12
+  - first:
+      213: 6870292121351123491
+    second: Colt_1911_Reload_Hand_13
+  - first:
+      213: -7206231250113922376
+    second: Colt_1911_Reload_Hand_14
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,10 +114,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -166,211 +181,316 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hand_Throw_0
+      name: Colt_1911_Reload_Hand_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 90
-        width: 130
-        height: 90
+        x: 7
+        y: 16
+        width: 17
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5cf950868479b90409df45d63e872b08
-      internalID: 1639696514
+      spriteID: bcaa6a43067aa9ae0800000000000000
+      internalID: -1541735890778936629
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_1
+      name: Colt_1911_Reload_Hand_1
       rect:
         serializedVersion: 2
-        x: 130
-        y: 90
-        width: 130
-        height: 90
+        x: 44
+        y: 16
+        width: 17
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: aefdebd976ee470449b6508af8a1865c
-      internalID: -161482018
+      spriteID: ad2864597bfc53440800000000000000
+      internalID: 4915062955735155418
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_2
+      name: Colt_1911_Reload_Hand_2
       rect:
         serializedVersion: 2
-        x: 260
-        y: 90
-        width: 130
-        height: 90
+        x: 81
+        y: 16
+        width: 17
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 52e02384e7d1bcd428bbdea1f8fe9ace
-      internalID: 1059308114
+      spriteID: 47d3ac4419fd2c4b0800000000000000
+      internalID: -5421525186383299212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_3
+      name: Colt_1911_Reload_Hand_3
       rect:
         serializedVersion: 2
-        x: 390
-        y: 90
-        width: 130
-        height: 90
+        x: 118
+        y: 16
+        width: 17
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 96c8eb53353bb3b49ad5feecebfca11f
-      internalID: 128012037
+      spriteID: bd44efda205be3d30800000000000000
+      internalID: 4413163707983348955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_4
+      name: Colt_1911_Reload_Hand_4
       rect:
         serializedVersion: 2
-        x: 520
-        y: 90
-        width: 130
-        height: 90
+        x: 155
+        y: 16
+        width: 17
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b05c8454497a674448e0132e6bf42656
-      internalID: 1858566441
+      spriteID: de0026e7bc7e30530800000000000000
+      internalID: 3820151770125041901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_5
+      name: Colt_1911_Reload_Hand_5
       rect:
         serializedVersion: 2
-        x: 0
+        x: 192
+        y: 16
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9befbc301fcadb130800000000000000
+      internalID: 3584211029607579321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colt_1911_Reload_Hand_6
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 16
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 906520b092fc9ec00800000000000000
+      internalID: 930502573214029321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colt_1911_Reload_Hand_7
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 5
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8f2b42a3e56f5f90800000000000000
+      internalID: -6962734470536679539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colt_1911_Reload_Hand_8
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 16
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5082e5bdb2d4819b0800000000000000
+      internalID: -5109248926492514299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colt_1911_Reload_Hand_9
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 9
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f4c3a36f300370f0800000000000000
+      internalID: -1120551610030504716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colt_1911_Reload_Hand_10
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 11
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29ba763264142e010800000000000000
+      internalID: 1216606618840968082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colt_1911_Reload_Hand_11
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 14
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0df90aff75094650800000000000000
+      internalID: 6217506807775624461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colt_1911_Reload_Hand_12
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 16
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61590b9c765da1bf0800000000000000
+      internalID: -352734979053021930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colt_1911_Reload_Hand_13
+      rect:
+        serializedVersion: 2
+        x: 147
         y: 0
-        width: 130
-        height: 90
+        width: 7
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 28bcaab1b0075724d986ac1e408e158b
-      internalID: -1907504316
+      spriteID: 3227c44b84e285f50800000000000000
+      internalID: 6870292121351123491
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_6
+      name: Colt_1911_Reload_Hand_14
       rect:
         serializedVersion: 2
-        x: 130
-        y: 0
-        width: 130
-        height: 90
+        x: 189
+        y: 2
+        width: 10
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 72611fdf8384e0a419cc7e9ced0b3650
-      internalID: 1398382368
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hand_Throw_7
-      rect:
-        serializedVersion: 2
-        x: 260
-        y: 0
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b73d2fc7f5db239468d56f95c0ccba72
-      internalID: -1801263454
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hand_Throw_8
-      rect:
-        serializedVersion: 2
-        x: 390
-        y: 0
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b1697b8cb3963944af2a617abc7d0a2
-      internalID: 627158511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hand_Throw_9
-      rect:
-        serializedVersion: 2
-        x: 520
-        y: 0
-        width: 130
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b475fe85a6d817c4892e53e6bdc4564f
-      internalID: 1287996414
+      spriteID: 8baf3a7bbd25efb90800000000000000
+      internalID: -7206231250113922376
       vertices: []
       indices: 
       edges: []
@@ -378,24 +498,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0daeec82a764c2740acf31f03b21f6f8
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Hand_Throw_0: 1639696514
-      Hand_Throw_1: -161482018
-      Hand_Throw_2: 1059308114
-      Hand_Throw_3: 128012037
-      Hand_Throw_4: 1858566441
-      Hand_Throw_5: -1907504316
-      Hand_Throw_6: 1398382368
-      Hand_Throw_7: -1801263454
-      Hand_Throw_8: 627158511
-      Hand_Throw_9: 1287996414
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

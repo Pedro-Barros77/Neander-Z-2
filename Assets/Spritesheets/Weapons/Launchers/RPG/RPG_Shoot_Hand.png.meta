@@ -1,37 +1,55 @@
 fileFormatVersion: 2
-guid: 03a6bb7f192e8a948804427baa8aa5c4
+guid: 2a1f653dbddc7884491b46454c84282a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8443775353507330053
-    second: Hand_Throw_0
+      213: 2604816875852690462
+    second: RPG_Shoot_Hand_0
   - first:
-      213: -2672590778034315369
-    second: Hand_Throw_1
+      213: -1135731956129018168
+    second: RPG_Shoot_Hand_1
   - first:
-      213: 5890045762745019604
-    second: Hand_Throw_2
+      213: -8228526471807666612
+    second: RPG_Shoot_Hand_2
   - first:
-      213: -340537865440995034
-    second: Hand_Throw_3
+      213: -3286122840872869072
+    second: RPG_Shoot_Hand_3
   - first:
-      213: -9169060823807668301
-    second: Hand_Throw_4
+      213: -2096417411196310561
+    second: RPG_Shoot_Hand_4
   - first:
-      213: -3132811826237471584
-    second: Hand_Throw_5
+      213: -8047460029095789837
+    second: RPG_Shoot_Hand_5
   - first:
-      213: 7664345296299419341
-    second: Hand_Throw_6
+      213: -2979330652675520970
+    second: RPG_Shoot_Hand_6
   - first:
-      213: 9085429098909949779
-    second: Hand_Throw_7
+      213: -3794166054866500741
+    second: RPG_Shoot_Hand_7
   - first:
-      213: 5578491662724660989
-    second: Hand_Throw_8
+      213: -4075342052579297052
+    second: RPG_Shoot_Hand_8
   - first:
-      213: 857680273686977665
-    second: Hand_Throw_9
+      213: -8657014144940846223
+    second: RPG_Shoot_Hand_9
+  - first:
+      213: -3348292040913401324
+    second: RPG_Shoot_Hand_10
+  - first:
+      213: -2118899255555978252
+    second: RPG_Shoot_Hand_11
+  - first:
+      213: 7710702296463987667
+    second: RPG_Shoot_Hand_12
+  - first:
+      213: 1463003009595976127
+    second: RPG_Shoot_Hand_13
+  - first:
+      213: 6703645850592184150
+    second: RPG_Shoot_Hand_14
+  - first:
+      213: -3952733395106610344
+    second: RPG_Shoot_Hand_15
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -64,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +96,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,10 +117,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -166,211 +184,337 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hand_Throw_0
+      name: RPG_Shoot_Hand_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 90
-        width: 130
-        height: 90
+        x: 70
+        y: 28
+        width: 10
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5cf950868479b90409df45d63e872b08
-      internalID: 1639696514
+      spriteID: e14742ec52b262420800000000000000
+      internalID: 2604816875852690462
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_1
+      name: RPG_Shoot_Hand_1
       rect:
         serializedVersion: 2
-        x: 130
-        y: 90
-        width: 130
-        height: 90
+        x: 88
+        y: 31
+        width: 13
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: aefdebd976ee470449b6508af8a1865c
-      internalID: -161482018
+      spriteID: 8ceced2adc11d30f0800000000000000
+      internalID: -1135731956129018168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_2
+      name: RPG_Shoot_Hand_2
       rect:
         serializedVersion: 2
-        x: 260
-        y: 90
-        width: 130
-        height: 90
+        x: 193
+        y: 31
+        width: 10
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 52e02384e7d1bcd428bbdea1f8fe9ace
-      internalID: 1059308114
+      spriteID: c46710f35c66ecd80800000000000000
+      internalID: -8228526471807666612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_3
+      name: RPG_Shoot_Hand_3
       rect:
         serializedVersion: 2
-        x: 390
-        y: 90
-        width: 130
-        height: 90
+        x: 209
+        y: 34
+        width: 11
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 96c8eb53353bb3b49ad5feecebfca11f
-      internalID: 128012037
+      spriteID: 033a975dfa85562d0800000000000000
+      internalID: -3286122840872869072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_4
+      name: RPG_Shoot_Hand_4
       rect:
         serializedVersion: 2
-        x: 520
-        y: 90
-        width: 130
-        height: 90
+        x: 330
+        y: 30
+        width: 10
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b05c8454497a674448e0132e6bf42656
-      internalID: 1858566441
+      spriteID: fdb23b8c87708e2e0800000000000000
+      internalID: -2096417411196310561
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_5
+      name: RPG_Shoot_Hand_5
       rect:
         serializedVersion: 2
-        x: 0
+        x: 346
+        y: 33
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa3795adbda15090800000000000000
+      internalID: -8047460029095789837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG_Shoot_Hand_6
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 27
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 636c7da7e8a47a6d0800000000000000
+      internalID: -2979330652675520970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG_Shoot_Hand_7
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 30
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7346d0531a685bc0800000000000000
+      internalID: -3794166054866500741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG_Shoot_Hand_8
+      rect:
+        serializedVersion: 2
+        x: 60
         y: 0
-        width: 130
-        height: 90
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 28bcaab1b0075724d986ac1e408e158b
-      internalID: -1907504316
+      spriteID: 4e8bcc9cef97177c0800000000000000
+      internalID: -4075342052579297052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_6
+      name: RPG_Shoot_Hand_9
       rect:
         serializedVersion: 2
-        x: 130
-        y: 0
-        width: 130
-        height: 90
+        x: 78
+        y: 2
+        width: 12
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 72611fdf8384e0a419cc7e9ced0b3650
-      internalID: 1398382368
+      spriteID: 173d443808b1cd780800000000000000
+      internalID: -8657014144940846223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_7
+      name: RPG_Shoot_Hand_10
       rect:
         serializedVersion: 2
-        x: 260
+        x: 195
         y: 0
-        width: 130
-        height: 90
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b73d2fc7f5db239468d56f95c0ccba72
-      internalID: -1801263454
+      spriteID: 41ac619f02a7881d0800000000000000
+      internalID: -3348292040913401324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_8
+      name: RPG_Shoot_Hand_11
       rect:
         serializedVersion: 2
-        x: 390
-        y: 0
-        width: 130
-        height: 90
+        x: 213
+        y: 2
+        width: 13
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1b1697b8cb3963944af2a617abc7d0a2
-      internalID: 627158511
+      spriteID: 4fb0fbd7a582892e0800000000000000
+      internalID: -2118899255555978252
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hand_Throw_9
+      name: RPG_Shoot_Hand_12
       rect:
         serializedVersion: 2
-        x: 520
+        x: 335
         y: 0
-        width: 130
-        height: 90
+        width: 10
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b475fe85a6d817c4892e53e6bdc4564f
-      internalID: 1287996414
+      spriteID: 3d35685b2eae10b60800000000000000
+      internalID: 7710702296463987667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG_Shoot_Hand_13
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 3
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb9ab446c71ad4410800000000000000
+      internalID: 1463003009595976127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG_Shoot_Hand_14
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 0
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65781983262280d50800000000000000
+      internalID: 6703645850592184150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG_Shoot_Hand_15
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 3
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 853c8dc6be11529c0800000000000000
+      internalID: -3952733395106610344
       vertices: []
       indices: 
       edges: []
@@ -378,24 +522,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0daeec82a764c2740acf31f03b21f6f8
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Hand_Throw_0: 1639696514
-      Hand_Throw_1: -161482018
-      Hand_Throw_2: 1059308114
-      Hand_Throw_3: 128012037
-      Hand_Throw_4: 1858566441
-      Hand_Throw_5: -1907504316
-      Hand_Throw_6: 1398382368
-      Hand_Throw_7: -1801263454
-      Hand_Throw_8: 627158511
-      Hand_Throw_9: 1287996414
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
