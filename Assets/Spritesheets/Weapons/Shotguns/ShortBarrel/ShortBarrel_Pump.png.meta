@@ -1,9 +1,21 @@
 fileFormatVersion: 2
-guid: b2bef0bb9f58e40459dc82e16f5c11bd
+guid: 850d1bc474263a84daf8227f0552f5a9
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 963203836168063065
+    second: ShortBarrel_Pump 1_0
+  - first:
+      213: -2016037312873098373
+    second: ShortBarrel_Pump 1_1
+  - first:
+      213: -5470275026160184934
+    second: ShortBarrel_Pump 1_2
+  - first:
+      213: -8697570446637264288
+    second: ShortBarrel_Pump 1_3
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -94,7 +106,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pump_0
+      name: ShortBarrel_Pump 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -122,16 +134,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 41f73c5d4ad6a874595fbac94a46a22e
-      internalID: -1697777131
+      spriteID: 958471529ccfd5d00800000000000000
+      internalID: 963203836168063065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pump_1
+      name: ShortBarrel_Pump 1_1
       rect:
         serializedVersion: 2
         x: 34
@@ -143,16 +155,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 883595ffb81993b4fb531a0ad8a7090e
-      internalID: 1897304149
+      spriteID: b731440deb89504e0800000000000000
+      internalID: -2016037312873098373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pump_2
+      name: ShortBarrel_Pump 1_2
       rect:
         serializedVersion: 2
         x: 68
@@ -164,10 +176,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 867e824240385724692d4afeec8a6745
-      internalID: 7367692
+      spriteID: a911802b8dda514b0800000000000000
+      internalID: -5470275026160184934
       vertices: []
       indices: 
       edges: []
@@ -175,7 +187,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 64d4b18f7088daa4f9c1b153a1670c1a
     internalID: 0
     vertices: []
     indices: 
@@ -183,9 +195,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pump_0: -1697777131
-      pump_1: 1897304149
-      pump_2: 7367692
+      ShortBarrel_Pump 1_0: 963203836168063065
+      ShortBarrel_Pump 1_1: -2016037312873098373
+      ShortBarrel_Pump 1_2: -5470275026160184934
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,9 +1,78 @@
 fileFormatVersion: 2
-guid: d94226a89faa47144a2f74bf8ec965c0
+guid: f8cc71ae92ed3dd48bc1c8228c2cee44
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 185393994118706612
+    second: UZI_Reload 2_0
+  - first:
+      213: -1216523028505887686
+    second: UZI_Reload 2_1
+  - first:
+      213: -4297740151927616642
+    second: UZI_Reload 2_2
+  - first:
+      213: 4077534325307026037
+    second: UZI_Reload 2_3
+  - first:
+      213: 4825829542737644433
+    second: UZI_Reload 2_4
+  - first:
+      213: 5112850983401299364
+    second: UZI_Reload 2_5
+  - first:
+      213: -936193231766764158
+    second: UZI_Reload 2_6
+  - first:
+      213: 5898167916533266419
+    second: UZI_Reload 2_7
+  - first:
+      213: 8386275145924332699
+    second: UZI_Reload 2_8
+  - first:
+      213: 1948105900622325633
+    second: UZI_Reload 2_9
+  - first:
+      213: -1959117764511568577
+    second: UZI_Reload 2_10
+  - first:
+      213: 6899650737914239849
+    second: UZI_Reload 2_11
+  - first:
+      213: 1002088420306061532
+    second: UZI_Reload 2_12
+  - first:
+      213: -4443075058981742162
+    second: UZI_Reload 2_13
+  - first:
+      213: -5329051277743945477
+    second: UZI_Reload 2_14
+  - first:
+      213: 8805070719301509817
+    second: UZI_Reload 2_15
+  - first:
+      213: 1538867965426408894
+    second: UZI_Reload 2_16
+  - first:
+      213: -5784399541487378836
+    second: UZI_Reload 2_17
+  - first:
+      213: 2199593912822833603
+    second: UZI_Reload 2_18
+  - first:
+      213: 2212839575823036978
+    second: UZI_Reload 2_19
+  - first:
+      213: 8022027809763587552
+    second: UZI_Reload 2_20
+  - first:
+      213: 6158369280057241354
+    second: UZI_Reload 2_21
+  - first:
+      213: 1339751469504075591
+    second: UZI_Reload 2_22
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -94,7 +163,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +179,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UZI_Reload_0
+      name: UZI_Reload 2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -122,16 +191,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 60c58983890aef04cb6927321a116d69
-      internalID: -850114469
+      spriteID: 4b5bfeafad6a29200800000000000000
+      internalID: 185393994118706612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_1
+      name: UZI_Reload 2_1
       rect:
         serializedVersion: 2
         x: 41
@@ -143,16 +212,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 003ee85265d97444e94be9e2e0d350ee
-      internalID: 114167246
+      spriteID: a3cf2d040ca0e1fe0800000000000000
+      internalID: -1216523028505887686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_2
+      name: UZI_Reload 2_2
       rect:
         serializedVersion: 2
         x: 82
@@ -164,16 +233,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 61ebf230fe03e61438664647a74d5115
-      internalID: -88171684
+      spriteID: e7bcb6b2a1c5b54c0800000000000000
+      internalID: -4297740151927616642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_3
+      name: UZI_Reload 2_3
       rect:
         serializedVersion: 2
         x: 123
@@ -185,16 +254,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4684ee92e68d21643857aeee29f4d4ed
-      internalID: -1048860433
+      spriteID: 57a236b7ddf469830800000000000000
+      internalID: 4077534325307026037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_4
+      name: UZI_Reload 2_4
       rect:
         serializedVersion: 2
         x: 164
@@ -206,16 +275,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5c565781cfadd3e47b3b158018d6b3ad
-      internalID: -1420095209
+      spriteID: 19b8679966ac8f240800000000000000
+      internalID: 4825829542737644433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_5
+      name: UZI_Reload 2_5
       rect:
         serializedVersion: 2
         x: 0
@@ -227,16 +296,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d1f25b7788e5eb9438bc3778de355b97
-      internalID: 1567281739
+      spriteID: 4ad142f51ee74f640800000000000000
+      internalID: 5112850983401299364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_6
+      name: UZI_Reload 2_6
       rect:
         serializedVersion: 2
         x: 41
@@ -248,16 +317,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5791f3cf2a9acf84aa32359a6c331b0c
-      internalID: 1099112383
+      spriteID: 285ca634739f103f0800000000000000
+      internalID: -936193231766764158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_7
+      name: UZI_Reload 2_7
       rect:
         serializedVersion: 2
         x: 82
@@ -269,16 +338,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ed8aa0ec352659840a800ab64e1a8a57
-      internalID: 908325913
+      spriteID: 3f7329268708ad150800000000000000
+      internalID: 5898167916533266419
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_8
+      name: UZI_Reload 2_8
       rect:
         serializedVersion: 2
         x: 123
@@ -290,16 +359,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9b61d9fc57c63fc43afdc333205082c4
-      internalID: -1975849515
+      spriteID: b9cc18510d8026470800000000000000
+      internalID: 8386275145924332699
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_9
+      name: UZI_Reload 2_9
       rect:
         serializedVersion: 2
         x: 164
@@ -311,16 +380,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4eea37dce0cb17647b979b28dc3969f0
-      internalID: 1919828844
+      spriteID: 187af6fbeff090b10800000000000000
+      internalID: 1948105900622325633
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_10
+      name: UZI_Reload 2_10
       rect:
         serializedVersion: 2
         x: 0
@@ -332,16 +401,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 38b4fcbaedefcc540a62ee41ef842af4
-      internalID: -1820166465
+      spriteID: f3d6125e5c0dfc4e0800000000000000
+      internalID: -1959117764511568577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_11
+      name: UZI_Reload 2_11
       rect:
         serializedVersion: 2
         x: 41
@@ -353,16 +422,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f80938d3e0ca06f4ca79119606009883
-      internalID: 803284065
+      spriteID: 96bd3ab4acb70cf50800000000000000
+      internalID: 6899650737914239849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_12
+      name: UZI_Reload 2_12
       rect:
         serializedVersion: 2
         x: 82
@@ -374,16 +443,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 69a893cdaeccff1438c038cb160e10df
-      internalID: 1053362394
+      spriteID: cd800e5eb1228ed00800000000000000
+      internalID: 1002088420306061532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_13
+      name: UZI_Reload 2_13
       rect:
         serializedVersion: 2
         x: 123
@@ -395,16 +464,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 06400bff301675944bd1460a78fc9a47
-      internalID: 1536922128
+      spriteID: ea9def636c60752c0800000000000000
+      internalID: -4443075058981742162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_14
+      name: UZI_Reload 2_14
       rect:
         serializedVersion: 2
         x: 164
@@ -416,16 +485,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a41c5bf8530936044905fd6d2f5a6a48
-      internalID: 1361978721
+      spriteID: bf80b30f8186b06b0800000000000000
+      internalID: -5329051277743945477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_15
+      name: UZI_Reload 2_15
       rect:
         serializedVersion: 2
         x: 0
@@ -437,16 +506,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0b9c7ac2d99911f4f8cdfd6cc0ac411b
-      internalID: 1046974146
+      spriteID: 9b2e82efa25e13a70800000000000000
+      internalID: 8805070719301509817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_16
+      name: UZI_Reload 2_16
       rect:
         serializedVersion: 2
         x: 41
@@ -458,16 +527,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f82ec0a1535a2fa4890bfc1d97e962dc
-      internalID: -1881837097
+      spriteID: ebd1873e2482b5510800000000000000
+      internalID: 1538867965426408894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_17
+      name: UZI_Reload 2_17
       rect:
         serializedVersion: 2
         x: 82
@@ -479,16 +548,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3b27dc0895ff41543aa5192379980707
-      internalID: 1736704710
+      spriteID: c6e56ba934fa9bfa0800000000000000
+      internalID: -5784399541487378836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UZI_Reload_18
+      name: UZI_Reload 2_18
       rect:
         serializedVersion: 2
         x: 123
@@ -500,10 +569,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 51fa1b816a75fc3479815c9c61f82e5a
-      internalID: 370240826
+      spriteID: 3c1aaef7207868e10800000000000000
+      internalID: 2199593912822833603
       vertices: []
       indices: 
       edges: []
@@ -511,7 +580,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 992c21e7d826ac24f83b83ef0bd3ba0d
     internalID: 0
     vertices: []
     indices: 
@@ -519,25 +588,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UZI_Reload_0: -850114469
-      UZI_Reload_1: 114167246
-      UZI_Reload_10: -1820166465
-      UZI_Reload_11: 803284065
-      UZI_Reload_12: 1053362394
-      UZI_Reload_13: 1536922128
-      UZI_Reload_14: 1361978721
-      UZI_Reload_15: 1046974146
-      UZI_Reload_16: -1881837097
-      UZI_Reload_17: 1736704710
-      UZI_Reload_18: 370240826
-      UZI_Reload_2: -88171684
-      UZI_Reload_3: -1048860433
-      UZI_Reload_4: -1420095209
-      UZI_Reload_5: 1567281739
-      UZI_Reload_6: 1099112383
-      UZI_Reload_7: 908325913
-      UZI_Reload_8: -1975849515
-      UZI_Reload_9: 1919828844
+      UZI_Reload 2_0: 185393994118706612
+      UZI_Reload 2_1: -1216523028505887686
+      UZI_Reload 2_10: -1959117764511568577
+      UZI_Reload 2_11: 6899650737914239849
+      UZI_Reload 2_12: 1002088420306061532
+      UZI_Reload 2_13: -4443075058981742162
+      UZI_Reload 2_14: -5329051277743945477
+      UZI_Reload 2_15: 8805070719301509817
+      UZI_Reload 2_16: 1538867965426408894
+      UZI_Reload 2_17: -5784399541487378836
+      UZI_Reload 2_18: 2199593912822833603
+      UZI_Reload 2_2: -4297740151927616642
+      UZI_Reload 2_3: 4077534325307026037
+      UZI_Reload 2_4: 4825829542737644433
+      UZI_Reload 2_5: 5112850983401299364
+      UZI_Reload 2_6: -936193231766764158
+      UZI_Reload 2_7: 5898167916533266419
+      UZI_Reload 2_8: 8386275145924332699
+      UZI_Reload 2_9: 1948105900622325633
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

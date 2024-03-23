@@ -1,9 +1,48 @@
 fileFormatVersion: 2
-guid: 5bb7e6467f58d8c48aec6a5526fdb5db
+guid: 1f8b34b6926426945b7b6451f7d38086
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2589431796788849472
+    second: ShortBarrel_Reload 1_0
+  - first:
+      213: -7531866044716012476
+    second: ShortBarrel_Reload 1_1
+  - first:
+      213: 4140582768883056580
+    second: ShortBarrel_Reload 1_2
+  - first:
+      213: -798327967630562571
+    second: ShortBarrel_Reload 1_3
+  - first:
+      213: 1407760902452137231
+    second: ShortBarrel_Reload 1_4
+  - first:
+      213: 5380902612692398360
+    second: ShortBarrel_Reload 1_5
+  - first:
+      213: -577758045476433957
+    second: ShortBarrel_Reload 1_6
+  - first:
+      213: -3320037655042127986
+    second: ShortBarrel_Reload 1_7
+  - first:
+      213: -8678172679206818408
+    second: ShortBarrel_Reload 1_8
+  - first:
+      213: -4608173995313901900
+    second: ShortBarrel_Reload 1_9
+  - first:
+      213: 2608898123520126186
+    second: ShortBarrel_Reload 1_10
+  - first:
+      213: -1011685978369293699
+    second: ShortBarrel_Reload 1_11
+  - first:
+      213: 6727843291542393201
+    second: ShortBarrel_Reload 1_12
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -94,7 +133,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: reload_0
+      name: ShortBarrel_Reload 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -122,16 +161,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8d79b19e55683f9499744f11449fb538
-      internalID: -717036588
+      spriteID: 04b63b1ff728fe320800000000000000
+      internalID: 2589431796788849472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reload_1
+      name: ShortBarrel_Reload 1_1
       rect:
         serializedVersion: 2
         x: 35
@@ -143,16 +182,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d65b4df2814d294478520ee40cebb104
-      internalID: -1846379054
+      spriteID: 44c20e4ecbf697790800000000000000
+      internalID: -7531866044716012476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reload_2
+      name: ShortBarrel_Reload 1_2
       rect:
         serializedVersion: 2
         x: 70
@@ -164,16 +203,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 35313f852b5b62e448f98d000396f28c
-      internalID: -73582543
+      spriteID: 4cfb06e271e467930800000000000000
+      internalID: 4140582768883056580
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reload_3
+      name: ShortBarrel_Reload 1_3
       rect:
         serializedVersion: 2
         x: 105
@@ -185,16 +224,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 19cf170b1a1c390468ac76aa488f8f25
-      internalID: -1289479994
+      spriteID: 5faee1371f4cbe4f0800000000000000
+      internalID: -798327967630562571
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reload_4
+      name: ShortBarrel_Reload 1_4
       rect:
         serializedVersion: 2
         x: 140
@@ -206,16 +245,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d30d4b59e2503b44991b191c25e89c6c
-      internalID: -1661505416
+      spriteID: f0dc757051f598310800000000000000
+      internalID: 1407760902452137231
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reload_5
+      name: ShortBarrel_Reload 1_5
       rect:
         serializedVersion: 2
         x: 175
@@ -227,16 +266,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 97c292390049e2a4aa4e07956a8cd832
-      internalID: -1755011351
+      spriteID: 8117080ca6eccaa40800000000000000
+      internalID: 5380902612692398360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reload_6
+      name: ShortBarrel_Reload 1_6
       rect:
         serializedVersion: 2
         x: 210
@@ -248,16 +287,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6ec8f0dd646049048b2ce99450f5b1f2
-      internalID: -1603475531
+      spriteID: bdfc0456e146bf7f0800000000000000
+      internalID: -577758045476433957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reload_7
+      name: ShortBarrel_Reload 1_7
       rect:
         serializedVersion: 2
         x: 245
@@ -269,16 +308,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ac87c0743b2cdcb49af86dfa4159809a
-      internalID: -473582832
+      spriteID: e870b42d75bdce1d0800000000000000
+      internalID: -3320037655042127986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reload_8
+      name: ShortBarrel_Reload 1_8
       rect:
         serializedVersion: 2
         x: 280
@@ -290,16 +329,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c1d70d23c4a8656438f884ff5a5ee072
-      internalID: 2043747298
+      spriteID: 89da06c5defe09780800000000000000
+      internalID: -8678172679206818408
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reload_9
+      name: ShortBarrel_Reload 1_9
       rect:
         serializedVersion: 2
         x: 315
@@ -311,16 +350,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3640cf2af04f4594a919191ccee66e04
-      internalID: -1884917722
+      spriteID: 4be4f1a9a2a7c00c0800000000000000
+      internalID: -4608173995313901900
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reload_10
+      name: ShortBarrel_Reload 1_10
       rect:
         serializedVersion: 2
         x: 350
@@ -332,16 +371,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: df377e70173952647892e6c469f662ac
-      internalID: 517512021
+      spriteID: aeca993550ba43420800000000000000
+      internalID: 2608898123520126186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: reload_11
+      name: ShortBarrel_Reload 1_11
       rect:
         serializedVersion: 2
         x: 385
@@ -353,10 +392,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: cf5485f15351fb546b86dc04881a1a5a
-      internalID: 1618032255
+      spriteID: d720e0b76f4c5f1f0800000000000000
+      internalID: -1011685978369293699
       vertices: []
       indices: 
       edges: []
@@ -364,7 +403,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 62433629bc012894e9102c1630e68577
     internalID: 0
     vertices: []
     indices: 
@@ -372,18 +411,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      reload_0: -717036588
-      reload_1: -1846379054
-      reload_10: 517512021
-      reload_11: 1618032255
-      reload_2: -73582543
-      reload_3: -1289479994
-      reload_4: -1661505416
-      reload_5: -1755011351
-      reload_6: -1603475531
-      reload_7: -473582832
-      reload_8: 2043747298
-      reload_9: -1884917722
+      ShortBarrel_Reload 1_0: 2589431796788849472
+      ShortBarrel_Reload 1_1: -7531866044716012476
+      ShortBarrel_Reload 1_10: 2608898123520126186
+      ShortBarrel_Reload 1_11: -1011685978369293699
+      ShortBarrel_Reload 1_2: 4140582768883056580
+      ShortBarrel_Reload 1_3: -798327967630562571
+      ShortBarrel_Reload 1_4: 1407760902452137231
+      ShortBarrel_Reload 1_5: 5380902612692398360
+      ShortBarrel_Reload 1_6: -577758045476433957
+      ShortBarrel_Reload 1_7: -3320037655042127986
+      ShortBarrel_Reload 1_8: -8678172679206818408
+      ShortBarrel_Reload 1_9: -4608173995313901900
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

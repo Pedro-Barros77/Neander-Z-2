@@ -1,9 +1,60 @@
 fileFormatVersion: 2
-guid: f23500d16edba3040ba41f19def264cd
+guid: 2a29407584ec54f40a43bb03445869ab
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3905530183322638164
+    second: Deagle_Reload 1_0
+  - first:
+      213: -3575457748735717468
+    second: Deagle_Reload 1_1
+  - first:
+      213: 8106018125868836488
+    second: Deagle_Reload 1_2
+  - first:
+      213: 9140923194357418245
+    second: Deagle_Reload 1_3
+  - first:
+      213: 6041574442717450401
+    second: Deagle_Reload 1_4
+  - first:
+      213: 401801668161308348
+    second: Deagle_Reload 1_5
+  - first:
+      213: 8056601064679534047
+    second: Deagle_Reload 1_6
+  - first:
+      213: -850405935025464509
+    second: Deagle_Reload 1_7
+  - first:
+      213: -8717484935954445968
+    second: Deagle_Reload 1_8
+  - first:
+      213: 1304450866594552518
+    second: Deagle_Reload 1_9
+  - first:
+      213: -5764412200249365949
+    second: Deagle_Reload 1_10
+  - first:
+      213: 8598155050104423121
+    second: Deagle_Reload 1_11
+  - first:
+      213: -3533796042774590277
+    second: Deagle_Reload 1_12
+  - first:
+      213: 4072443328383263685
+    second: Deagle_Reload 1_13
+  - first:
+      213: -782719768651968647
+    second: Deagle_Reload 1_14
+  - first:
+      213: 7734529854954494884
+    second: Deagle_Reload 1_15
+  - first:
+      213: -5607963106992960358
+    second: Deagle_Reload 1_16
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -81,19 +132,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -107,7 +145,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,7 +161,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Deagle_Reload_0
+      name: Deagle_Reload 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,16 +173,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 115f6323f2aa26d4a8a3b2f0ad70443e
-      internalID: -1243539046
+      spriteID: ca8ec7b9df4ccc9c0800000000000000
+      internalID: -3905530183322638164
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_1
+      name: Deagle_Reload 1_1
       rect:
         serializedVersion: 2
         x: 100
@@ -156,16 +194,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 09cf934bc1383c943a82bac8ae95582f
-      internalID: -1325151207
+      spriteID: 4af80310f1c616ec0800000000000000
+      internalID: -3575457748735717468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_2
+      name: Deagle_Reload 1_2
       rect:
         serializedVersion: 2
         x: 200
@@ -177,16 +215,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: bdb5fa043bdae694ba7f21e4c6dd602e
-      internalID: 2043254599
+      spriteID: 8862a47b98c5e7070800000000000000
+      internalID: 8106018125868836488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_3
+      name: Deagle_Reload 1_3
       rect:
         serializedVersion: 2
         x: 300
@@ -198,16 +236,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c85b7783b4731f74395726707c27166b
-      internalID: 831450847
+      spriteID: 5098dcee6351bde70800000000000000
+      internalID: 9140923194357418245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_4
+      name: Deagle_Reload 1_4
       rect:
         serializedVersion: 2
         x: 0
@@ -219,16 +257,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5b6abcb67ae8b5947a2bb13ade29187d
-      internalID: -781622264
+      spriteID: 1a0904e22fbf7d350800000000000000
+      internalID: 6041574442717450401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_5
+      name: Deagle_Reload 1_5
       rect:
         serializedVersion: 2
         x: 100
@@ -240,16 +278,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 44968f321ee801d4b9a49915d5d6c50d
-      internalID: 195371615
+      spriteID: cb60ae40d7c739500800000000000000
+      internalID: 401801668161308348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_6
+      name: Deagle_Reload 1_6
       rect:
         serializedVersion: 2
         x: 200
@@ -261,16 +299,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 85b1f3150e6f0f94cafd5faccc1188da
-      internalID: -1610687544
+      spriteID: fdde14d8bfbcecf60800000000000000
+      internalID: 8056601064679534047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_7
+      name: Deagle_Reload 1_7
       rect:
         serializedVersion: 2
         x: 300
@@ -282,16 +320,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 30373dea2d3eebd45a9da3fe5b851168
-      internalID: 1567642737
+      spriteID: 34b5ce7ce40c234f0800000000000000
+      internalID: -850405935025464509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_8
+      name: Deagle_Reload 1_8
       rect:
         serializedVersion: 2
         x: 0
@@ -303,16 +341,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 54a612aab7cbd024c965f1e3a201e25a
-      internalID: 1943132668
+      spriteID: 079cd9153a5450780800000000000000
+      internalID: -8717484935954445968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_9
+      name: Deagle_Reload 1_9
       rect:
         serializedVersion: 2
         x: 100
@@ -324,16 +362,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9cd018e0dc2216c46baec0847094c5d5
-      internalID: -2068268335
+      spriteID: 6ca9152e6275a1210800000000000000
+      internalID: 1304450866594552518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_10
+      name: Deagle_Reload 1_10
       rect:
         serializedVersion: 2
         x: 200
@@ -345,16 +383,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9a0fbde014a182c4eba46fffb9a1b986
-      internalID: 896728361
+      spriteID: 34a653125a1b000b0800000000000000
+      internalID: -5764412200249365949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_11
+      name: Deagle_Reload 1_11
       rect:
         serializedVersion: 2
         x: 300
@@ -366,16 +404,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a87ecad1f7ae9624a8ff65c90d45bd22
-      internalID: -2050316441
+      spriteID: 1d2843d8678c25770800000000000000
+      internalID: 8598155050104423121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Deagle_Reload_12
+      name: Deagle_Reload 1_12
       rect:
         serializedVersion: 2
         x: 0
@@ -387,10 +425,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 04b9cf395f9bb5b41ae781721546dffb
-      internalID: -260224639
+      spriteID: bbc4db1d83f65fec0800000000000000
+      internalID: -3533796042774590277
       vertices: []
       indices: 
       edges: []
@@ -398,7 +436,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 4447ef38f49391d46b6a7d50d74f0cc1
     internalID: 0
     vertices: []
     indices: 
@@ -406,19 +444,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Deagle_Reload_0: -1243539046
-      Deagle_Reload_1: -1325151207
-      Deagle_Reload_10: 896728361
-      Deagle_Reload_11: -2050316441
-      Deagle_Reload_12: -260224639
-      Deagle_Reload_2: 2043254599
-      Deagle_Reload_3: 831450847
-      Deagle_Reload_4: -781622264
-      Deagle_Reload_5: 195371615
-      Deagle_Reload_6: -1610687544
-      Deagle_Reload_7: 1567642737
-      Deagle_Reload_8: 1943132668
-      Deagle_Reload_9: -2068268335
+      Deagle_Reload 1_0: -3905530183322638164
+      Deagle_Reload 1_1: -3575457748735717468
+      Deagle_Reload 1_10: -5764412200249365949
+      Deagle_Reload 1_11: 8598155050104423121
+      Deagle_Reload 1_12: -3533796042774590277
+      Deagle_Reload 1_2: 8106018125868836488
+      Deagle_Reload 1_3: 9140923194357418245
+      Deagle_Reload 1_4: 6041574442717450401
+      Deagle_Reload 1_5: 401801668161308348
+      Deagle_Reload 1_6: 8056601064679534047
+      Deagle_Reload 1_7: -850405935025464509
+      Deagle_Reload 1_8: -8717484935954445968
+      Deagle_Reload 1_9: 1304450866594552518
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

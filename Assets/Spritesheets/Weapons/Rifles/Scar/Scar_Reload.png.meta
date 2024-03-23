@@ -1,9 +1,78 @@
 fileFormatVersion: 2
-guid: 8735da8f8495d7543a2c12ecaeaca904
+guid: 78bc9c8a4a9890d4f8cf67cf61aea29e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1859198734596976867
+    second: Scar_Reload 1_0
+  - first:
+      213: -5680260840514387635
+    second: Scar_Reload 1_1
+  - first:
+      213: 1137519367131457361
+    second: Scar_Reload 1_2
+  - first:
+      213: 939190311981309113
+    second: Scar_Reload 1_3
+  - first:
+      213: 6843867553944895767
+    second: Scar_Reload 1_4
+  - first:
+      213: -2786740555906326360
+    second: Scar_Reload 1_5
+  - first:
+      213: 3633977393325525342
+    second: Scar_Reload 1_6
+  - first:
+      213: 7762403785137258127
+    second: Scar_Reload 1_7
+  - first:
+      213: -2429163727084311929
+    second: Scar_Reload 1_8
+  - first:
+      213: 4000301044441079114
+    second: Scar_Reload 1_9
+  - first:
+      213: 5661446885015933853
+    second: Scar_Reload 1_10
+  - first:
+      213: -2380001252963974592
+    second: Scar_Reload 1_11
+  - first:
+      213: -4838660064759674553
+    second: Scar_Reload 1_12
+  - first:
+      213: 9046475742116420793
+    second: Scar_Reload 1_13
+  - first:
+      213: 849317673592175355
+    second: Scar_Reload 1_14
+  - first:
+      213: 7923447660927005939
+    second: Scar_Reload 1_15
+  - first:
+      213: 316721926422187291
+    second: Scar_Reload 1_16
+  - first:
+      213: 1583591920694640964
+    second: Scar_Reload 1_17
+  - first:
+      213: -1733333916678311325
+    second: Scar_Reload 1_18
+  - first:
+      213: -4186801005185309865
+    second: Scar_Reload 1_19
+  - first:
+      213: -4900619789042227075
+    second: Scar_Reload 1_20
+  - first:
+      213: -1023423970355774335
+    second: Scar_Reload 1_21
+  - first:
+      213: 671847357101067481
+    second: Scar_Reload 1_22
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -81,19 +150,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -107,7 +163,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -123,7 +179,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scar_Reload_0
+      name: Scar_Reload 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,16 +191,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1fe8833d3a04cdf4a968a8ef80697cae
-      internalID: -1757504412
+      spriteID: 3e0328e06633dc910800000000000000
+      internalID: 1859198734596976867
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_1
+      name: Scar_Reload 1_1
       rect:
         serializedVersion: 2
         x: 100
@@ -156,16 +212,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: bc4895feff5e81d428db9be5448ce705
-      internalID: -683949298
+      spriteID: d4104916cd8ab21b0800000000000000
+      internalID: -5680260840514387635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_2
+      name: Scar_Reload 1_2
       rect:
         serializedVersion: 2
         x: 200
@@ -177,16 +233,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9634c95b62a6abb4bb39d757103ce2ba
-      internalID: 954097789
+      spriteID: 1576ffa66d749cf00800000000000000
+      internalID: 1137519367131457361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_3
+      name: Scar_Reload 1_3
       rect:
         serializedVersion: 2
         x: 0
@@ -198,16 +254,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 973a7b9444f724b4dbd1174c4b006411
-      internalID: 485557412
+      spriteID: 9bc522adc9ca80d00800000000000000
+      internalID: 939190311981309113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_4
+      name: Scar_Reload 1_4
       rect:
         serializedVersion: 2
         x: 100
@@ -219,16 +275,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a79475a0b9d312f4a96ef5033d7b1891
-      internalID: -832162032
+      spriteID: 71105baa74d4afe50800000000000000
+      internalID: 6843867553944895767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_5
+      name: Scar_Reload 1_5
       rect:
         serializedVersion: 2
         x: 200
@@ -240,16 +296,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 84b0891c91ee142408705d9e6dd892a7
-      internalID: 1405002895
+      spriteID: 8a0670caa328359d0800000000000000
+      internalID: -2786740555906326360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_6
+      name: Scar_Reload 1_6
       rect:
         serializedVersion: 2
         x: 0
@@ -261,16 +317,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 519e52517dd5f134d838b7760ac773af
-      internalID: -1227590905
+      spriteID: e59c7f28f2b7e6230800000000000000
+      internalID: 3633977393325525342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_7
+      name: Scar_Reload 1_7
       rect:
         serializedVersion: 2
         x: 100
@@ -282,16 +338,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 08e3eaf20d89c2748b7edf4519a110f6
-      internalID: -233814759
+      spriteID: f8ef0489d1999bb60800000000000000
+      internalID: 7762403785137258127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_8
+      name: Scar_Reload 1_8
       rect:
         serializedVersion: 2
         x: 200
@@ -303,16 +359,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d6c117608aacbcd48830fd24db6ae5b0
-      internalID: 1087281884
+      spriteID: 78a20e1e570e94ed0800000000000000
+      internalID: -2429163727084311929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_9
+      name: Scar_Reload 1_9
       rect:
         serializedVersion: 2
         x: 0
@@ -324,16 +380,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a96425b358161a8458e5cb2dbb7e5593
-      internalID: 1464545325
+      spriteID: a4dd88cfa9ce38730800000000000000
+      internalID: 4000301044441079114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_10
+      name: Scar_Reload 1_10
       rect:
         serializedVersion: 2
         x: 100
@@ -345,16 +401,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d4463c86a54c0a6499a54cfb7424fccb
-      internalID: 1967949425
+      spriteID: d93dd1042ff719e40800000000000000
+      internalID: 5661446885015933853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_11
+      name: Scar_Reload 1_11
       rect:
         serializedVersion: 2
         x: 200
@@ -366,16 +422,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a9d619d24744b7d4e94d9560e084ac2c
-      internalID: -318826434
+      spriteID: 0420910687988fed0800000000000000
+      internalID: -2380001252963974592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_12
+      name: Scar_Reload 1_12
       rect:
         serializedVersion: 2
         x: 0
@@ -387,16 +443,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0a08cf4dfdb331246924c306de68538d
-      internalID: 833181132
+      spriteID: 7498123be40a9dcb0800000000000000
+      internalID: -4838660064759674553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_13
+      name: Scar_Reload 1_13
       rect:
         serializedVersion: 2
         x: 100
@@ -408,16 +464,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 92ca72b2c124d2943a1a0a095c463ab6
-      internalID: 1654843163
+      spriteID: 9bc9906d1c98b8d70800000000000000
+      internalID: 9046475742116420793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_14
+      name: Scar_Reload 1_14
       rect:
         serializedVersion: 2
         x: 200
@@ -429,16 +485,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6aa612f0ae0ec8949b96250dbd50c660
-      internalID: 1178199026
+      spriteID: bfa3ceb9ce169cb00800000000000000
+      internalID: 849317673592175355
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_15
+      name: Scar_Reload 1_15
       rect:
         serializedVersion: 2
         x: 0
@@ -450,16 +506,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 38c064123ccd6c44ebc535cec46b0d2e
-      internalID: 1859582830
+      spriteID: 3f434f9daadb5fd60800000000000000
+      internalID: 7923447660927005939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_16
+      name: Scar_Reload 1_16
       rect:
         serializedVersion: 2
         x: 100
@@ -471,16 +527,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b3aed6ffe50198743976f5db74e86b3c
-      internalID: -460846111
+      spriteID: b1dc8fcf9e8356400800000000000000
+      internalID: 316721926422187291
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_17
+      name: Scar_Reload 1_17
       rect:
         serializedVersion: 2
         x: 200
@@ -492,16 +548,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 752dc8a1ab7632d44ab83af50ec4c118
-      internalID: -1468591227
+      spriteID: 441ce2e267c0af510800000000000000
+      internalID: 1583591920694640964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_18
+      name: Scar_Reload 1_18
       rect:
         serializedVersion: 2
         x: 0
@@ -513,16 +569,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b411f4ae2950f0d4483fc73db82be217
-      internalID: 1606353170
+      spriteID: 362b0438cf5f1f7e0800000000000000
+      internalID: -1733333916678311325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scar_Reload_19
+      name: Scar_Reload 1_19
       rect:
         serializedVersion: 2
         x: 100
@@ -534,10 +590,10 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d77a826a5465f094db18bc659fe485bf
-      internalID: -1868830364
+      spriteID: 7536eac1bae75e5c0800000000000000
+      internalID: -4186801005185309865
       vertices: []
       indices: 
       edges: []
@@ -545,7 +601,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: bb5bc91a440dd89429ccbeda86bf89a0
     internalID: 0
     vertices: []
     indices: 
@@ -553,26 +609,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Scar_Reload_0: -1757504412
-      Scar_Reload_1: -683949298
-      Scar_Reload_10: 1967949425
-      Scar_Reload_11: -318826434
-      Scar_Reload_12: 833181132
-      Scar_Reload_13: 1654843163
-      Scar_Reload_14: 1178199026
-      Scar_Reload_15: 1859582830
-      Scar_Reload_16: -460846111
-      Scar_Reload_17: -1468591227
-      Scar_Reload_18: 1606353170
-      Scar_Reload_19: -1868830364
-      Scar_Reload_2: 954097789
-      Scar_Reload_3: 485557412
-      Scar_Reload_4: -832162032
-      Scar_Reload_5: 1405002895
-      Scar_Reload_6: -1227590905
-      Scar_Reload_7: -233814759
-      Scar_Reload_8: 1087281884
-      Scar_Reload_9: 1464545325
+      Scar_Reload 1_0: 1859198734596976867
+      Scar_Reload 1_1: -5680260840514387635
+      Scar_Reload 1_10: 5661446885015933853
+      Scar_Reload 1_11: -2380001252963974592
+      Scar_Reload 1_12: -4838660064759674553
+      Scar_Reload 1_13: 9046475742116420793
+      Scar_Reload 1_14: 849317673592175355
+      Scar_Reload 1_15: 7923447660927005939
+      Scar_Reload 1_16: 316721926422187291
+      Scar_Reload 1_17: 1583591920694640964
+      Scar_Reload 1_18: -1733333916678311325
+      Scar_Reload 1_19: -4186801005185309865
+      Scar_Reload 1_2: 1137519367131457361
+      Scar_Reload 1_3: 939190311981309113
+      Scar_Reload 1_4: 6843867553944895767
+      Scar_Reload 1_5: -2786740555906326360
+      Scar_Reload 1_6: 3633977393325525342
+      Scar_Reload 1_7: 7762403785137258127
+      Scar_Reload 1_8: -2429163727084311929
+      Scar_Reload 1_9: 4000301044441079114
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
