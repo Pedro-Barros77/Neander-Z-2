@@ -109,7 +109,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -123,7 +123,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -147,7 +147,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -214,10 +214,10 @@ TextureImporter:
       name: UZI_Reload_Hand_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 114
-        width: 14
-        height: 13
+        x: 0
+        y: 99
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,10 +235,10 @@ TextureImporter:
       name: UZI_Reload_Hand_1
       rect:
         serializedVersion: 2
-        x: 58
-        y: 114
-        width: 14
-        height: 13
+        x: 41
+        y: 99
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +256,10 @@ TextureImporter:
       name: UZI_Reload_Hand_2
       rect:
         serializedVersion: 2
-        x: 99
-        y: 114
-        width: 14
-        height: 13
+        x: 82
+        y: 99
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,10 +277,10 @@ TextureImporter:
       name: UZI_Reload_Hand_3
       rect:
         serializedVersion: 2
-        x: 140
-        y: 114
-        width: 14
-        height: 13
+        x: 123
+        y: 99
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -298,10 +298,10 @@ TextureImporter:
       name: UZI_Reload_Hand_4
       rect:
         serializedVersion: 2
-        x: 179
-        y: 110
-        width: 16
-        height: 17
+        x: 164
+        y: 99
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,10 +319,10 @@ TextureImporter:
       name: UZI_Reload_Hand_5
       rect:
         serializedVersion: 2
-        x: 4
-        y: 72
-        width: 11
-        height: 12
+        x: 0
+        y: 66
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,10 +340,10 @@ TextureImporter:
       name: UZI_Reload_Hand_6
       rect:
         serializedVersion: 2
-        x: 17
-        y: 70
-        width: 28
-        height: 24
+        x: 41
+        y: 66
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -361,10 +361,10 @@ TextureImporter:
       name: UZI_Reload_Hand_7
       rect:
         serializedVersion: 2
-        x: 58
-        y: 81
-        width: 14
-        height: 13
+        x: 82
+        y: 66
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -382,10 +382,10 @@ TextureImporter:
       name: UZI_Reload_Hand_8
       rect:
         serializedVersion: 2
-        x: 99
-        y: 68
-        width: 28
-        height: 26
+        x: 123
+        y: 66
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -403,10 +403,10 @@ TextureImporter:
       name: UZI_Reload_Hand_9
       rect:
         serializedVersion: 2
-        x: 140
-        y: 81
-        width: 14
-        height: 13
+        x: 164
+        y: 66
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -424,10 +424,10 @@ TextureImporter:
       name: UZI_Reload_Hand_10
       rect:
         serializedVersion: 2
-        x: 181
-        y: 81
-        width: 14
-        height: 13
+        x: 0
+        y: 33
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -445,10 +445,10 @@ TextureImporter:
       name: UZI_Reload_Hand_11
       rect:
         serializedVersion: 2
-        x: 172
-        y: 68
-        width: 9
-        height: 11
+        x: 41
+        y: 33
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -466,10 +466,10 @@ TextureImporter:
       name: UZI_Reload_Hand_12
       rect:
         serializedVersion: 2
-        x: 17
-        y: 48
-        width: 14
-        height: 13
+        x: 82
+        y: 33
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -487,10 +487,10 @@ TextureImporter:
       name: UZI_Reload_Hand_13
       rect:
         serializedVersion: 2
-        x: 58
-        y: 48
-        width: 14
-        height: 13
+        x: 123
+        y: 33
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -508,10 +508,10 @@ TextureImporter:
       name: UZI_Reload_Hand_14
       rect:
         serializedVersion: 2
-        x: 62
-        y: 37
-        width: 9
-        height: 11
+        x: 164
+        y: 33
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -529,10 +529,10 @@ TextureImporter:
       name: UZI_Reload_Hand_15
       rect:
         serializedVersion: 2
-        x: 99
-        y: 48
-        width: 14
-        height: 13
+        x: 0
+        y: 0
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -550,10 +550,10 @@ TextureImporter:
       name: UZI_Reload_Hand_16
       rect:
         serializedVersion: 2
-        x: 140
-        y: 48
-        width: 14
-        height: 13
+        x: 41
+        y: 0
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -571,10 +571,10 @@ TextureImporter:
       name: UZI_Reload_Hand_17
       rect:
         serializedVersion: 2
-        x: 180
-        y: 41
-        width: 15
-        height: 20
+        x: 82
+        y: 0
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -592,10 +592,10 @@ TextureImporter:
       name: UZI_Reload_Hand_18
       rect:
         serializedVersion: 2
-        x: 21
-        y: 35
-        width: 9
-        height: 11
+        x: 123
+        y: 0
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -609,143 +609,36 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: UZI_Reload_Hand_19
-      rect:
-        serializedVersion: 2
-        x: 101
-        y: 32
-        width: 9
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d4b4391be849a4d20800000000000000
-      internalID: 3263584220568832845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UZI_Reload_Hand_20
-      rect:
-        serializedVersion: 2
-        x: 142
-        y: 37
-        width: 9
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b934c277e353449a0800000000000000
-      internalID: -6249811840479771749
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UZI_Reload_Hand_21
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 14
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 533d4007ee87f7aa0800000000000000
-      internalID: -6161072799742635211
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UZI_Reload_Hand_22
-      rect:
-        serializedVersion: 2
-        x: 58
-        y: 14
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 782423ac24fbcde90800000000000000
-      internalID: -6999509427259555193
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UZI_Reload_Hand_23
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 14
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b0cb82314337f7980800000000000000
-      internalID: -8538979700974240757
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UZI_Reload_Hand_24
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 14
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8dd630ffd5f49aea0800000000000000
-      internalID: -5861066174917022248
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8275e7b91c84e1d4e8e38db4a70b25b9
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UZI_Reload_Hand_0: 5273216566147499345
+      UZI_Reload_Hand_1: -195469611634653287
+      UZI_Reload_Hand_10: -8187845778817441012
+      UZI_Reload_Hand_11: -2894595235959378026
+      UZI_Reload_Hand_12: 7344763064757828878
+      UZI_Reload_Hand_13: -2786737350744164722
+      UZI_Reload_Hand_14: 3411156255943465744
+      UZI_Reload_Hand_15: 4986831059898322582
+      UZI_Reload_Hand_16: -3762038486086483208
+      UZI_Reload_Hand_17: -3919600656541262424
+      UZI_Reload_Hand_18: -1367040869812286037
+      UZI_Reload_Hand_2: 5937398407374994908
+      UZI_Reload_Hand_3: 7806805528529578094
+      UZI_Reload_Hand_4: 7331621508980618913
+      UZI_Reload_Hand_5: -7394383585130329270
+      UZI_Reload_Hand_6: -1280258707816537388
+      UZI_Reload_Hand_7: 5828195321832601666
+      UZI_Reload_Hand_8: 5295112419757511038
+      UZI_Reload_Hand_9: -3748885377407954897
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

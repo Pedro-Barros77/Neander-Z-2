@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -163,10 +163,10 @@ TextureImporter:
       name: Scar_Shoot_Hand_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 52
-        width: 11
-        height: 9
+        x: 0
+        y: 38
+        width: 100
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: Scar_Shoot_Hand_1
       rect:
         serializedVersion: 2
-        x: 46
-        y: 59
-        width: 11
-        height: 8
+        x: 100
+        y: 38
+        width: 100
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +205,10 @@ TextureImporter:
       name: Scar_Shoot_Hand_2
       rect:
         serializedVersion: 2
-        x: 124
-        y: 53
-        width: 11
-        height: 7
+        x: 0
+        y: 0
+        width: 100
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,10 +226,10 @@ TextureImporter:
       name: Scar_Shoot_Hand_3
       rect:
         serializedVersion: 2
-        x: 144
-        y: 60
-        width: 12
-        height: 8
+        x: 100
+        y: 0
+        width: 100
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,101 +243,21 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Scar_Shoot_Hand_4
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 15
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1ea0a3ddcb4f4d930800000000000000
-      internalID: 4167224647227149025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Scar_Shoot_Hand_5
-      rect:
-        serializedVersion: 2
-        x: 43
-        y: 22
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e6eff134afbd55650800000000000000
-      internalID: 6221120328196685422
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Scar_Shoot_Hand_6
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 14
-        width: 11
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9455aa64a7b995ee0800000000000000
-      internalID: -1271814470281570999
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Scar_Shoot_Hand_7
-      rect:
-        serializedVersion: 2
-        x: 145
-        y: 21
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4e89969c6dcc8dc80800000000000000
-      internalID: -8297657090555930396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1032dcc65d5c96d4fb81aa75eca3fbbe
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scar_Shoot_Hand_0: -3788434733097821799
+      Scar_Shoot_Hand_1: -2900062209765345399
+      Scar_Shoot_Hand_2: 7178028733367881087
+      Scar_Shoot_Hand_3: 1116905722721301715
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

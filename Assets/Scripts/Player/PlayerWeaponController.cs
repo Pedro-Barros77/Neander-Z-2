@@ -410,8 +410,10 @@ public class PlayerWeaponController : MonoBehaviour
     {
         var weaponPrefab = Resources.Load<GameObject>($"Prefabs/Weapons/{weaponType}");
         GameObject weaponObj = Instantiate(weaponPrefab, handTransform);
-        weaponObj.GetComponent<BaseWeapon>().PlayerWeaponController = this;
         weaponObj.name = weaponType.ToString();
+        var weaponScript = weaponObj.GetComponent<BaseWeapon>();
+        weaponScript.PlayerWeaponController = this;
+        weaponScript.SetHandSkinColor(Player.Data.SkinData.SkinColor);
         return weaponObj;
     }
 

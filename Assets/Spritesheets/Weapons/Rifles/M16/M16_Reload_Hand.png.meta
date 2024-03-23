@@ -172,7 +172,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -186,7 +186,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -210,7 +210,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -277,10 +277,10 @@ TextureImporter:
       name: M16_Reload_Hand_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 196
-        width: 11
-        height: 11
+        x: 0
+        y: 184
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -298,10 +298,10 @@ TextureImporter:
       name: M16_Reload_Hand_1
       rect:
         serializedVersion: 2
-        x: 30
-        y: 203
-        width: 11
-        height: 8
+        x: 60
+        y: 184
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,10 +319,10 @@ TextureImporter:
       name: M16_Reload_Hand_2
       rect:
         serializedVersion: 2
-        x: 71
-        y: 196
-        width: 11
-        height: 11
+        x: 120
+        y: 184
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,10 +340,10 @@ TextureImporter:
       name: M16_Reload_Hand_3
       rect:
         serializedVersion: 2
-        x: 88
-        y: 200
-        width: 11
-        height: 8
+        x: 180
+        y: 184
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -361,10 +361,10 @@ TextureImporter:
       name: M16_Reload_Hand_4
       rect:
         serializedVersion: 2
-        x: 131
-        y: 196
-        width: 11
-        height: 11
+        x: 240
+        y: 184
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -382,10 +382,10 @@ TextureImporter:
       name: M16_Reload_Hand_5
       rect:
         serializedVersion: 2
-        x: 146
-        y: 196
-        width: 9
-        height: 11
+        x: 0
+        y: 138
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -403,10 +403,10 @@ TextureImporter:
       name: M16_Reload_Hand_6
       rect:
         serializedVersion: 2
-        x: 191
-        y: 196
-        width: 11
-        height: 11
+        x: 60
+        y: 138
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -424,10 +424,10 @@ TextureImporter:
       name: M16_Reload_Hand_7
       rect:
         serializedVersion: 2
-        x: 203
-        y: 194
-        width: 8
-        height: 10
+        x: 120
+        y: 138
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -445,10 +445,10 @@ TextureImporter:
       name: M16_Reload_Hand_8
       rect:
         serializedVersion: 2
-        x: 251
-        y: 196
-        width: 11
-        height: 11
+        x: 180
+        y: 138
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -466,10 +466,10 @@ TextureImporter:
       name: M16_Reload_Hand_9
       rect:
         serializedVersion: 2
-        x: 265
-        y: 190
-        width: 8
-        height: 10
+        x: 240
+        y: 138
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -487,10 +487,10 @@ TextureImporter:
       name: M16_Reload_Hand_10
       rect:
         serializedVersion: 2
-        x: 11
-        y: 150
-        width: 11
-        height: 11
+        x: 0
+        y: 92
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -508,10 +508,10 @@ TextureImporter:
       name: M16_Reload_Hand_11
       rect:
         serializedVersion: 2
-        x: 21
-        y: 140
-        width: 7
-        height: 11
+        x: 60
+        y: 92
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -529,10 +529,10 @@ TextureImporter:
       name: M16_Reload_Hand_12
       rect:
         serializedVersion: 2
-        x: 71
-        y: 150
-        width: 11
-        height: 11
+        x: 120
+        y: 92
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -550,10 +550,10 @@ TextureImporter:
       name: M16_Reload_Hand_13
       rect:
         serializedVersion: 2
-        x: 131
-        y: 150
-        width: 11
-        height: 11
+        x: 180
+        y: 92
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -571,10 +571,10 @@ TextureImporter:
       name: M16_Reload_Hand_14
       rect:
         serializedVersion: 2
-        x: 191
-        y: 150
-        width: 11
-        height: 11
+        x: 240
+        y: 92
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -592,10 +592,10 @@ TextureImporter:
       name: M16_Reload_Hand_15
       rect:
         serializedVersion: 2
-        x: 251
-        y: 150
-        width: 11
-        height: 11
+        x: 0
+        y: 46
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -613,10 +613,10 @@ TextureImporter:
       name: M16_Reload_Hand_16
       rect:
         serializedVersion: 2
-        x: 261
-        y: 140
-        width: 7
-        height: 11
+        x: 60
+        y: 46
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -634,10 +634,10 @@ TextureImporter:
       name: M16_Reload_Hand_17
       rect:
         serializedVersion: 2
-        x: 71
-        y: 137
-        width: 7
-        height: 11
+        x: 120
+        y: 46
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -655,10 +655,10 @@ TextureImporter:
       name: M16_Reload_Hand_18
       rect:
         serializedVersion: 2
-        x: 191
-        y: 137
-        width: 7
-        height: 11
+        x: 180
+        y: 46
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -676,10 +676,10 @@ TextureImporter:
       name: M16_Reload_Hand_19
       rect:
         serializedVersion: 2
-        x: 11
-        y: 104
-        width: 11
-        height: 11
+        x: 240
+        y: 46
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -697,10 +697,10 @@ TextureImporter:
       name: M16_Reload_Hand_20
       rect:
         serializedVersion: 2
-        x: 25
-        y: 98
-        width: 8
-        height: 10
+        x: 0
+        y: 0
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -718,10 +718,10 @@ TextureImporter:
       name: M16_Reload_Hand_21
       rect:
         serializedVersion: 2
-        x: 71
-        y: 104
-        width: 11
-        height: 11
+        x: 60
+        y: 0
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -739,10 +739,10 @@ TextureImporter:
       name: M16_Reload_Hand_22
       rect:
         serializedVersion: 2
-        x: 83
-        y: 102
-        width: 8
-        height: 10
+        x: 120
+        y: 0
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -760,10 +760,10 @@ TextureImporter:
       name: M16_Reload_Hand_23
       rect:
         serializedVersion: 2
-        x: 131
-        y: 104
-        width: 11
-        height: 11
+        x: 180
+        y: 0
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -781,10 +781,10 @@ TextureImporter:
       name: M16_Reload_Hand_24
       rect:
         serializedVersion: 2
-        x: 142
-        y: 101
-        width: 10
-        height: 8
+        x: 240
+        y: 0
+        width: 60
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -798,458 +798,42 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_25
-      rect:
-        serializedVersion: 2
-        x: 191
-        y: 104
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2ffee453f3aab7370800000000000000
-      internalID: 8321431924951150578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_26
-      rect:
-        serializedVersion: 2
-        x: 202
-        y: 98
-        width: 10
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bb7ff25921900cca0800000000000000
-      internalID: -5998784728240490565
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_27
-      rect:
-        serializedVersion: 2
-        x: 251
-        y: 104
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f6f48aabb81c3aa60800000000000000
-      internalID: 7684198195100405615
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_28
-      rect:
-        serializedVersion: 2
-        x: 262
-        y: 97
-        width: 10
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 08547f6df0072f610800000000000000
-      internalID: 1653507226531743104
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_29
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 58
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5e93cb5bea731e540800000000000000
-      internalID: 5035367081889774053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_30
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 55
-        width: 10
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 09117fed6dcfed6e0800000000000000
-      internalID: -1810732000362425968
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_31
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 58
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d5cac8ee10c62b200800000000000000
-      internalID: 194336489483316317
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_32
-      rect:
-        serializedVersion: 2
-        x: 82
-        y: 55
-        width: 10
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7b02226bb22c539e0800000000000000
-      internalID: -1642192996111605577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_33
-      rect:
-        serializedVersion: 2
-        x: 131
-        y: 58
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c8833c77722838220800000000000000
-      internalID: 2486974525263263884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_34
-      rect:
-        serializedVersion: 2
-        x: 142
-        y: 60
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3714b2f70939957d0800000000000000
-      internalID: -2929147833809682061
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_35
-      rect:
-        serializedVersion: 2
-        x: 191
-        y: 58
-        width: 16
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e949a6b735b84cdb0800000000000000
-      internalID: -4772536514436754274
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_36
-      rect:
-        serializedVersion: 2
-        x: 251
-        y: 58
-        width: 13
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0dfb574af85b12250800000000000000
-      internalID: 5918211013885673424
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_37
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 12
-        width: 12
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 95b969a82493b1090800000000000000
-      internalID: -8062787749920990375
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_38
-      rect:
-        serializedVersion: 2
-        x: 71
-        y: 12
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b1953c9504b1c7630800000000000000
-      internalID: 3926042938358061339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_39
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 16
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b53fb9b46a651ce60800000000000000
-      internalID: 7980755286910301019
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_40
-      rect:
-        serializedVersion: 2
-        x: 131
-        y: 12
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 536ba870c12c94c70800000000000000
-      internalID: 8955902759644345909
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_41
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 18
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fa507dd0a416e59a0800000000000000
-      internalID: -6242445062801259089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_42
-      rect:
-        serializedVersion: 2
-        x: 191
-        y: 12
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ce7bb8c3c51408270800000000000000
-      internalID: 8250666381751334892
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_43
-      rect:
-        serializedVersion: 2
-        x: 206
-        y: 18
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 69ff885f250d0a4b0800000000000000
-      internalID: -5431112095883526250
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_44
-      rect:
-        serializedVersion: 2
-        x: 251
-        y: 12
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a90448df7158214c0800000000000000
-      internalID: -4318242754610839398
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: M16_Reload_Hand_45
-      rect:
-        serializedVersion: 2
-        x: 269
-        y: 18
-        width: 11
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e3e86a23cb34e4b30800000000000000
-      internalID: 4273427572003868222
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0a1ceb8b11c387844876d5f336396bb7
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      M16_Reload_Hand_0: -7632634707972157249
+      M16_Reload_Hand_1: -2540091288050470565
+      M16_Reload_Hand_10: 2716088219879502353
+      M16_Reload_Hand_11: 5993161538173241546
+      M16_Reload_Hand_12: 7023438585709430499
+      M16_Reload_Hand_13: -4827848304727971695
+      M16_Reload_Hand_14: -8750192507726689995
+      M16_Reload_Hand_15: -3246785335276978111
+      M16_Reload_Hand_16: -8454348109140092945
+      M16_Reload_Hand_17: -4219978033088078828
+      M16_Reload_Hand_18: 881786893308295974
+      M16_Reload_Hand_19: 6900524986037545099
+      M16_Reload_Hand_2: -8810434338138866990
+      M16_Reload_Hand_20: 2877996029562218406
+      M16_Reload_Hand_21: -8687108691316634940
+      M16_Reload_Hand_22: 1027330318084038110
+      M16_Reload_Hand_23: -7541452657613611673
+      M16_Reload_Hand_24: 6128088035292670618
+      M16_Reload_Hand_3: 6942259412462054291
+      M16_Reload_Hand_4: 7883995721305042609
+      M16_Reload_Hand_5: -7369109050038973001
+      M16_Reload_Hand_6: -5318617940814948346
+      M16_Reload_Hand_7: -4814536814977330368
+      M16_Reload_Hand_8: 1958551137736405837
+      M16_Reload_Hand_9: -1585164760570863529
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

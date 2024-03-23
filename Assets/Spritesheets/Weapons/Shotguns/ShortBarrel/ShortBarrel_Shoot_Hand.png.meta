@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 15
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -169,10 +169,10 @@ TextureImporter:
       name: ShortBarrel_Shoot_Hand_0
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 0
-        width: 12
-        height: 8
+        width: 44
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +190,10 @@ TextureImporter:
       name: ShortBarrel_Shoot_Hand_1
       rect:
         serializedVersion: 2
-        x: 23
+        x: 44
         y: 0
-        width: 8
-        height: 7
+        width: 44
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,10 +211,10 @@ TextureImporter:
       name: ShortBarrel_Shoot_Hand_2
       rect:
         serializedVersion: 2
-        x: 48
+        x: 88
         y: 0
-        width: 12
-        height: 10
+        width: 44
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,10 +232,10 @@ TextureImporter:
       name: ShortBarrel_Shoot_Hand_3
       rect:
         serializedVersion: 2
-        x: 67
-        y: 2
-        width: 8
-        height: 8
+        x: 132
+        y: 0
+        width: 44
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,10 +253,10 @@ TextureImporter:
       name: ShortBarrel_Shoot_Hand_4
       rect:
         serializedVersion: 2
-        x: 92
+        x: 176
         y: 0
-        width: 12
-        height: 10
+        width: 44
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,122 +270,22 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: ShortBarrel_Shoot_Hand_5
-      rect:
-        serializedVersion: 2
-        x: 111
-        y: 2
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 637119501ec049960800000000000000
-      internalID: 7607719831136180022
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShortBarrel_Shoot_Hand_6
-      rect:
-        serializedVersion: 2
-        x: 137
-        y: 0
-        width: 12
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9d4446e2182626c60800000000000000
-      internalID: 7809913010782487769
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShortBarrel_Shoot_Hand_7
-      rect:
-        serializedVersion: 2
-        x: 156
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9dd12f464a6f4ac90800000000000000
-      internalID: -7159326321683587623
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShortBarrel_Shoot_Hand_8
-      rect:
-        serializedVersion: 2
-        x: 181
-        y: 0
-        width: 12
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e6af68126ab315030800000000000000
-      internalID: 3481629571647208046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShortBarrel_Shoot_Hand_9
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7f741cf44e7824460800000000000000
-      internalID: 7224486166916057079
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 89e4a1f227893714d99ec46f60703345
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ShortBarrel_Shoot_Hand_0: -5415327117870393813
+      ShortBarrel_Shoot_Hand_1: 3526657284657796796
+      ShortBarrel_Shoot_Hand_2: 1768451831022632965
+      ShortBarrel_Shoot_Hand_3: 7288934052911477283
+      ShortBarrel_Shoot_Hand_4: -8654543756276654828
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

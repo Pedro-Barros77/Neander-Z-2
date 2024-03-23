@@ -67,7 +67,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -81,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -172,10 +172,10 @@ TextureImporter:
       name: Machete_Attack_02_Hand_0
       rect:
         serializedVersion: 2
-        x: 34
-        y: 241
-        width: 11
-        height: 20
+        x: 0
+        y: 214
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,10 +193,10 @@ TextureImporter:
       name: Machete_Attack_02_Hand_1
       rect:
         serializedVersion: 2
-        x: 136
-        y: 242
-        width: 16
-        height: 20
+        x: 107
+        y: 214
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,10 +214,10 @@ TextureImporter:
       name: Machete_Attack_02_Hand_2
       rect:
         serializedVersion: 2
-        x: 233
-        y: 244
-        width: 20
-        height: 11
+        x: 214
+        y: 214
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,10 +235,10 @@ TextureImporter:
       name: Machete_Attack_02_Hand_3
       rect:
         serializedVersion: 2
-        x: 328
-        y: 244
-        width: 20
-        height: 11
+        x: 321
+        y: 214
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,10 +256,10 @@ TextureImporter:
       name: Machete_Attack_02_Hand_4
       rect:
         serializedVersion: 2
-        x: 4
-        y: 137
-        width: 21
-        height: 11
+        x: 0
+        y: 107
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,10 +277,10 @@ TextureImporter:
       name: Machete_Attack_02_Hand_5
       rect:
         serializedVersion: 2
-        x: 110
-        y: 137
-        width: 21
-        height: 11
+        x: 107
+        y: 107
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -298,10 +298,10 @@ TextureImporter:
       name: Machete_Attack_02_Hand_6
       rect:
         serializedVersion: 2
-        x: 247
-        y: 137
-        width: 20
-        height: 11
+        x: 214
+        y: 107
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,10 +319,10 @@ TextureImporter:
       name: Machete_Attack_02_Hand_7
       rect:
         serializedVersion: 2
-        x: 358
-        y: 137
-        width: 20
-        height: 11
+        x: 321
+        y: 107
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,10 +340,10 @@ TextureImporter:
       name: Machete_Attack_02_Hand_8
       rect:
         serializedVersion: 2
-        x: 37
-        y: 30
-        width: 20
-        height: 11
+        x: 0
+        y: 0
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -361,10 +361,10 @@ TextureImporter:
       name: Machete_Attack_02_Hand_9
       rect:
         serializedVersion: 2
-        x: 140
-        y: 30
-        width: 20
-        height: 11
+        x: 107
+        y: 0
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -382,10 +382,10 @@ TextureImporter:
       name: Machete_Attack_02_Hand_10
       rect:
         serializedVersion: 2
-        x: 249
-        y: 28
-        width: 17
-        height: 20
+        x: 214
+        y: 0
+        width: 107
+        height: 107
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -402,14 +402,25 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 1848444f983b9194e801092d8f7a4c2a
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Machete_Attack_02_Hand_0: -5201276408699864191
+      Machete_Attack_02_Hand_1: 3425656808118478570
+      Machete_Attack_02_Hand_10: -158303589834936402
+      Machete_Attack_02_Hand_2: 3129547591188442527
+      Machete_Attack_02_Hand_3: -6621787384301768797
+      Machete_Attack_02_Hand_4: -6110680192380970914
+      Machete_Attack_02_Hand_5: -2070635597467636368
+      Machete_Attack_02_Hand_6: -2031464051770498626
+      Machete_Attack_02_Hand_7: -8450124901651826722
+      Machete_Attack_02_Hand_8: -7212948123441815490
+      Machete_Attack_02_Hand_9: 5570320874005207936
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -175,7 +175,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -189,7 +189,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -213,7 +213,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -280,10 +280,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 539
-        width: 26
-        height: 19
+        x: 0
+        y: 500
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,10 +301,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_1
       rect:
         serializedVersion: 2
-        x: 50
-        y: 539
-        width: 21
-        height: 17
+        x: 100
+        y: 500
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,10 +322,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_2
       rect:
         serializedVersion: 2
-        x: 120
-        y: 539
-        width: 26
-        height: 19
+        x: 200
+        y: 500
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,10 +343,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_3
       rect:
         serializedVersion: 2
-        x: 150
-        y: 538
-        width: 21
-        height: 17
+        x: 300
+        y: 500
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -364,10 +364,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_4
       rect:
         serializedVersion: 2
-        x: 220
-        y: 538
-        width: 26
-        height: 19
+        x: 0
+        y: 400
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -385,10 +385,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_5
       rect:
         serializedVersion: 2
-        x: 250
-        y: 536
-        width: 21
-        height: 17
+        x: 100
+        y: 400
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -406,10 +406,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_6
       rect:
         serializedVersion: 2
-        x: 320
-        y: 538
-        width: 26
-        height: 19
+        x: 200
+        y: 400
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -427,10 +427,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_7
       rect:
         serializedVersion: 2
-        x: 345
-        y: 528
-        width: 21
-        height: 17
+        x: 300
+        y: 400
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -448,10 +448,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_8
       rect:
         serializedVersion: 2
-        x: 20
-        y: 438
-        width: 26
-        height: 19
+        x: 0
+        y: 300
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -469,10 +469,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_9
       rect:
         serializedVersion: 2
-        x: 120
-        y: 438
-        width: 26
-        height: 19
+        x: 100
+        y: 300
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -490,10 +490,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_10
       rect:
         serializedVersion: 2
-        x: 220
-        y: 438
-        width: 26
-        height: 19
+        x: 200
+        y: 300
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -511,10 +511,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_11
       rect:
         serializedVersion: 2
-        x: 320
-        y: 438
-        width: 26
-        height: 19
+        x: 300
+        y: 300
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -532,10 +532,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_12
       rect:
         serializedVersion: 2
-        x: 33
-        y: 411
-        width: 21
-        height: 17
+        x: 0
+        y: 200
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -553,10 +553,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_13
       rect:
         serializedVersion: 2
-        x: 114
-        y: 401
-        width: 21
-        height: 16
+        x: 100
+        y: 200
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -574,10 +574,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_14
       rect:
         serializedVersion: 2
-        x: 199
-        y: 399
-        width: 20
-        height: 16
+        x: 200
+        y: 200
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -595,10 +595,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_15
       rect:
         serializedVersion: 2
-        x: 20
-        y: 338
-        width: 26
-        height: 19
+        x: 300
+        y: 200
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -616,10 +616,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_16
       rect:
         serializedVersion: 2
-        x: 120
-        y: 338
-        width: 26
-        height: 19
+        x: 0
+        y: 100
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -637,10 +637,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_17
       rect:
         serializedVersion: 2
-        x: 220
-        y: 338
-        width: 26
-        height: 19
+        x: 100
+        y: 100
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -658,10 +658,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_18
       rect:
         serializedVersion: 2
-        x: 320
-        y: 338
-        width: 26
-        height: 19
+        x: 200
+        y: 100
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -679,10 +679,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_19
       rect:
         serializedVersion: 2
-        x: 111
-        y: 302
-        width: 10
-        height: 15
+        x: 300
+        y: 100
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -700,10 +700,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_20
       rect:
         serializedVersion: 2
-        x: 219
-        y: 308
-        width: 8
-        height: 13
+        x: 0
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -721,10 +721,10 @@ TextureImporter:
       name: Beretta_93r_Reload_Hand_21
       rect:
         serializedVersion: 2
-        x: 229
-        y: 309
-        width: 10
-        height: 15
+        x: 100
+        y: 0
+        width: 100
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -738,542 +738,39 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_22
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 317
-        width: 11
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0e831bab6a15aa7a0800000000000000
-      internalID: -6365185346796177184
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_23
-      rect:
-        serializedVersion: 2
-        x: 327
-        y: 310
-        width: 11
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 87d332259b6eb0b70800000000000000
-      internalID: 8866433975030332792
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_24
-      rect:
-        serializedVersion: 2
-        x: 101
-        y: 301
-        width: 8
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f3b0184dcef865a30800000000000000
-      internalID: 4203705549537217343
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_25
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 238
-        width: 26
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6bfc87b54a30e5e20800000000000000
-      internalID: 3341111977999650742
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_26
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 239
-        width: 26
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ecd75b02bfb1dc6c0800000000000000
-      internalID: -4121607318574629426
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_27
-      rect:
-        serializedVersion: 2
-        x: 220
-        y: 241
-        width: 26
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b0a7a288b1a867650800000000000000
-      internalID: 6230318985366895115
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_28
-      rect:
-        serializedVersion: 2
-        x: 221
-        y: 222
-        width: 17
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 87f07fda6148d3160800000000000000
-      internalID: 7006901828201156472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_29
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 242
-        width: 26
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c15435b58f59fc930800000000000000
-      internalID: 4165713074257610012
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_30
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 224
-        width: 19
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a4d4a4478e05f3560800000000000000
-      internalID: 7295638880677154122
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_31
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 224
-        width: 11
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 811fc8c72bbf63d70800000000000000
-      internalID: 9022675647495729432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_32
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 213
-        width: 11
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f9c7211e150f0f340800000000000000
-      internalID: 4895677029410831519
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_33
-      rect:
-        serializedVersion: 2
-        x: 121
-        y: 222
-        width: 11
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 927d9a631be3503f0800000000000000
-      internalID: -935272416762276055
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_34
-      rect:
-        serializedVersion: 2
-        x: 125
-        y: 215
-        width: 14
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02fa963c67b1ea680800000000000000
-      internalID: -8742019629780979936
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_35
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 142
-        width: 26
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8803cb20286df71c0800000000000000
-      internalID: -4503645248467226488
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_36
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 140
-        width: 26
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 37adbfa5192e38c00800000000000000
-      internalID: 901813464328821363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_37
-      rect:
-        serializedVersion: 2
-        x: 220
-        y: 139
-        width: 26
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: db1b2897904f482f0800000000000000
-      internalID: -971383298074693187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_38
-      rect:
-        serializedVersion: 2
-        x: 248
-        y: 126
-        width: 18
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9d576caba3d5dd0e0800000000000000
-      internalID: -2243534532537584167
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_39
-      rect:
-        serializedVersion: 2
-        x: 319
-        y: 139
-        width: 26
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2653d55a37137d1c0800000000000000
-      internalID: -4479056931631319710
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_40
-      rect:
-        serializedVersion: 2
-        x: 349
-        y: 137
-        width: 21
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 302b4899560f39ce0800000000000000
-      internalID: -1399510740024118781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_41
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 121
-        width: 19
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 98dfde7b1cd521570800000000000000
-      internalID: 8435908138614259081
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_42
-      rect:
-        serializedVersion: 2
-        x: 138
-        y: 119
-        width: 17
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b5d59ec980499dcf0800000000000000
-      internalID: -226987541492310693
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_43
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 39
-        width: 26
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f0884b078aaa21660800000000000000
-      internalID: 7355128781871548431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_44
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 38
-        width: 21
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02a3978bbd8728b10800000000000000
-      internalID: 1982279671084562976
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_45
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 39
-        width: 26
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: df34d15b7f83aed40800000000000000
-      internalID: 5614362522017416189
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Beretta_93r_Reload_Hand_46
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 39
-        width: 21
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4c431790760b70270800000000000000
-      internalID: 8216730001747293380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b7e210969efe2094d8a0f45adee3af25
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Beretta_93r_Reload_Hand_0: 4945839927178993184
+      Beretta_93r_Reload_Hand_1: 7975535720448995923
+      Beretta_93r_Reload_Hand_10: 1554450102711046670
+      Beretta_93r_Reload_Hand_11: 5583137302986034955
+      Beretta_93r_Reload_Hand_12: -3196961669638892625
+      Beretta_93r_Reload_Hand_13: -7233988452210686670
+      Beretta_93r_Reload_Hand_14: -5720617579766089444
+      Beretta_93r_Reload_Hand_15: -5826386469795809816
+      Beretta_93r_Reload_Hand_16: 7490294707327237883
+      Beretta_93r_Reload_Hand_17: 4168913269121704438
+      Beretta_93r_Reload_Hand_18: 2928059347897483975
+      Beretta_93r_Reload_Hand_19: -5609182612693030892
+      Beretta_93r_Reload_Hand_2: 7871412827752877904
+      Beretta_93r_Reload_Hand_20: -3211419935219056865
+      Beretta_93r_Reload_Hand_21: 5359979131737675270
+      Beretta_93r_Reload_Hand_3: 3982231101046452221
+      Beretta_93r_Reload_Hand_4: 2762130219792316042
+      Beretta_93r_Reload_Hand_5: -3047571070572168874
+      Beretta_93r_Reload_Hand_6: -591155370044489828
+      Beretta_93r_Reload_Hand_7: 6849134729988533105
+      Beretta_93r_Reload_Hand_8: -6473688732949424997
+      Beretta_93r_Reload_Hand_9: -6292874962720851041
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

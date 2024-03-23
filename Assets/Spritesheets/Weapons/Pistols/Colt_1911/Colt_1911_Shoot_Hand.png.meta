@@ -43,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -81,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -148,10 +148,10 @@ TextureImporter:
       name: Colt_1911_Shoot_Hand_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 1
-        width: 17
-        height: 13
+        x: 0
+        y: 0
+        width: 42
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,10 +169,10 @@ TextureImporter:
       name: Colt_1911_Shoot_Hand_1
       rect:
         serializedVersion: 2
-        x: 44
-        y: 1
-        width: 16
-        height: 13
+        x: 42
+        y: 0
+        width: 42
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,10 +190,10 @@ TextureImporter:
       name: Colt_1911_Shoot_Hand_2
       rect:
         serializedVersion: 2
-        x: 87
-        y: 1
-        width: 15
-        height: 13
+        x: 84
+        y: 0
+        width: 42
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,14 +210,17 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f5c74c32d035f64418abe485fa8ff6ea
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Colt_1911_Shoot_Hand_0: -1918045527597360598
+      Colt_1911_Shoot_Hand_1: 2865378159207335354
+      Colt_1911_Shoot_Hand_2: 1712252263837078808
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

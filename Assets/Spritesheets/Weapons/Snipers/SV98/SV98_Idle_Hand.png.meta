@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 091709a95763111488c0c04cf46b7326
+guid: f81bb3c6a72d2ed478f8057b2b756ffd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7420008216748316329
-    second: Scar_Idle_Hand_0
+      213: 1178729123641777361
+    second: SV98_Idle_Hand_0
   - first:
-      213: 4233020789241959542
-    second: Scar_Idle_Hand_1
+      213: 3417194072670476426
+    second: SV98_Idle_Hand_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -142,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scar_Idle_Hand_0
+      name: SV98_Idle_Hand_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 100
-        height: 38
+        width: 117
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9a653c5092a29f660800000000000000
-      internalID: 7420008216748316329
+      spriteID: 1dc531d84efab5010800000000000000
+      internalID: 1178729123641777361
       vertices: []
       indices: 
       edges: []
@@ -165,7 +165,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 92fabadb29b2c97438323d9591ff2518
+    spriteID: c2d5ee7022cd00147acd9a6a459dcd5b
     internalID: 0
     vertices: []
     indices: 
@@ -173,7 +173,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Scar_Idle_Hand_0: 7420008216748316329
+      SV98_Idle_Hand_0: 1178729123641777361
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

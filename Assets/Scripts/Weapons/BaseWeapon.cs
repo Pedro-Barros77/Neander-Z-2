@@ -147,6 +147,11 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     protected SpriteRenderer SpriteRenderer;
     /// <summary>
+    /// Referência ao componente SpriteRenderer da mão dessa arma.
+    /// </summary>
+    protected SpriteRenderer HandSpriteRenderer;
+
+    /// <summary>
     /// Referência ao componente ShadowCaster2D da arma.
     /// </summary>
     protected ShadowCaster2D ShadowCaster;
@@ -192,6 +197,7 @@ public abstract class BaseWeapon : MonoBehaviour
     {
         var sprite = transform.Find("Sprite");
         SpriteRenderer = sprite.GetComponent<SpriteRenderer>();
+        HandSpriteRenderer = sprite.transform.Find("Hand").GetComponent<SpriteRenderer>();
         ShadowCaster = sprite.GetComponent<ShadowCaster2D>();
         Animator = sprite.GetComponent<Animator>();
 
@@ -354,6 +360,8 @@ public abstract class BaseWeapon : MonoBehaviour
     protected virtual void ToggleVisible(bool visible)
     {
         SpriteRenderer.enabled = visible;
+        if (HandSpriteRenderer != null)
+            HandSpriteRenderer.enabled = visible;
         if (ShadowCaster != null)
             ShadowCaster.enabled = visible;
         IsActive = visible;
@@ -483,6 +491,16 @@ public abstract class BaseWeapon : MonoBehaviour
     public virtual void SetWeaponOffsets()
     {
         PlayerWeaponController.SetWeaponOffset(WeaponContainerOffset);
+    }
+
+    /// <summary>
+    /// Define a cor de pele da mão do jogador nesta arma.
+    /// </summary>
+    /// <param name="color">A cor de pele a ser definida na mão.</param>
+    public virtual void SetHandSkinColor(Color32 color)
+    {
+        if (HandSpriteRenderer != null)
+            HandSpriteRenderer.color = color;
     }
 
     /// <summary>

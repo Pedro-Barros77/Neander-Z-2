@@ -94,7 +94,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,7 +132,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -199,10 +199,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 267
-        width: 21
-        height: 17
+        x: 0
+        y: 228
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -220,10 +220,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_1
       rect:
         serializedVersion: 2
-        x: 120
-        y: 260
-        width: 30
-        height: 24
+        x: 100
+        y: 228
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,10 +241,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_2
       rect:
         serializedVersion: 2
-        x: 207
-        y: 252
-        width: 16
-        height: 16
+        x: 200
+        y: 228
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -262,10 +262,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_3
       rect:
         serializedVersion: 2
-        x: 229
-        y: 267
-        width: 21
-        height: 17
+        x: 300
+        y: 228
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -283,10 +283,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_4
       rect:
         serializedVersion: 2
-        x: 329
-        y: 267
-        width: 21
-        height: 17
+        x: 0
+        y: 152
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,10 +304,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_5
       rect:
         serializedVersion: 2
-        x: 299
-        y: 244
-        width: 16
-        height: 16
+        x: 100
+        y: 152
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -325,10 +325,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_6
       rect:
         serializedVersion: 2
-        x: 29
-        y: 191
-        width: 21
-        height: 17
+        x: 200
+        y: 152
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -346,10 +346,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_7
       rect:
         serializedVersion: 2
-        x: 129
-        y: 191
-        width: 21
-        height: 17
+        x: 300
+        y: 152
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,10 +367,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_8
       rect:
         serializedVersion: 2
-        x: 229
-        y: 191
-        width: 21
-        height: 17
+        x: 0
+        y: 76
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -388,10 +388,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_9
       rect:
         serializedVersion: 2
-        x: 329
-        y: 191
-        width: 21
-        height: 17
+        x: 100
+        y: 76
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,10 +409,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_10
       rect:
         serializedVersion: 2
-        x: 199
-        y: 159
-        width: 16
-        height: 16
+        x: 200
+        y: 76
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -430,10 +430,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_11
       rect:
         serializedVersion: 2
-        x: 319
-        y: 165
-        width: 16
-        height: 16
+        x: 300
+        y: 76
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -451,10 +451,10 @@ TextureImporter:
       name: Deagle_Reload_Hand_12
       rect:
         serializedVersion: 2
-        x: 29
-        y: 115
-        width: 21
-        height: 17
+        x: 0
+        y: 0
+        width: 100
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,164 +468,30 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Deagle_Reload_Hand_13
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 116
-        width: 21
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5cba87f7ad4265b10800000000000000
-      internalID: 1969802407881255877
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Deagle_Reload_Hand_14
-      rect:
-        serializedVersion: 2
-        x: 227
-        y: 108
-        width: 20
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7dd76c55681f0de40800000000000000
-      internalID: 5679304689381178839
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Deagle_Reload_Hand_15
-      rect:
-        serializedVersion: 2
-        x: 229
-        y: 118
-        width: 21
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1cc24168628d29f80800000000000000
-      internalID: -8101175119716275007
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Deagle_Reload_Hand_16
-      rect:
-        serializedVersion: 2
-        x: 328
-        y: 110
-        width: 22
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7cb21c290df635120800000000000000
-      internalID: 2401385967924620231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Deagle_Reload_Hand_17
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 92
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d483fa7c4e9c85fd0800000000000000
-      internalID: -2352908820861208499
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Deagle_Reload_Hand_18
-      rect:
-        serializedVersion: 2
-        x: 127
-        y: 100
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ed8db5493cd5e1440800000000000000
-      internalID: 4908463738469472478
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Deagle_Reload_Hand_19
-      rect:
-        serializedVersion: 2
-        x: 29
-        y: 39
-        width: 21
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e6d026be25c284c30800000000000000
-      internalID: 4343770575246855534
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: adf50fa39eba53c4c9840eee88a99a04
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Deagle_Reload_Hand_0: -7171247084470389363
+      Deagle_Reload_Hand_1: 1634671854968904452
+      Deagle_Reload_Hand_10: 5715131030998795
+      Deagle_Reload_Hand_11: 5452990167665086197
+      Deagle_Reload_Hand_12: -7596487947002078808
+      Deagle_Reload_Hand_2: -5998935117570806335
+      Deagle_Reload_Hand_3: -7147120509935204558
+      Deagle_Reload_Hand_4: 6095484249425794825
+      Deagle_Reload_Hand_5: -7691926057139278651
+      Deagle_Reload_Hand_6: -1208926826066843669
+      Deagle_Reload_Hand_7: -717890830592419940
+      Deagle_Reload_Hand_8: 557611804842822762
+      Deagle_Reload_Hand_9: -5359588586268960429
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

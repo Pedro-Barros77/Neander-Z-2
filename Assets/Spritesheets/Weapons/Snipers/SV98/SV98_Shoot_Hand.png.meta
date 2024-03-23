@@ -1,13 +1,31 @@
 fileFormatVersion: 2
-guid: 091709a95763111488c0c04cf46b7326
+guid: 3c44fd41e6250654087452860dbb0257
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7420008216748316329
-    second: Scar_Idle_Hand_0
+      213: -4390642829024391031
+    second: SV98_Shoot_Hand_0
   - first:
-      213: 4233020789241959542
-    second: Scar_Idle_Hand_1
+      213: 216119524794996813
+    second: SV98_Shoot_Hand_1
+  - first:
+      213: -3729805489811439712
+    second: SV98_Shoot_Hand_2
+  - first:
+      213: -4903114095238000800
+    second: SV98_Shoot_Hand_3
+  - first:
+      213: 5368347373465349623
+    second: SV98_Shoot_Hand_4
+  - first:
+      213: -4210874554020332750
+    second: SV98_Shoot_Hand_5
+  - first:
+      213: -1631824383055766907
+    second: SV98_Shoot_Hand_6
+  - first:
+      213: 2928551979940162399
+    second: SV98_Shoot_Hand_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,13 +160,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scar_Idle_Hand_0
+      name: SV98_Shoot_Hand_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 100
-        height: 38
+        width: 117
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +174,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9a653c5092a29f660800000000000000
-      internalID: 7420008216748316329
+      spriteID: 98092601c9d4113c0800000000000000
+      internalID: -4390642829024391031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_Shoot_Hand_1
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 0
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d489e60109fcff200800000000000000
+      internalID: 216119524794996813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_Shoot_Hand_2
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 0
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0afbc7a1ba11d3cc0800000000000000
+      internalID: -3729805489811439712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_Shoot_Hand_3
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 0
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06fc02c45b3a4fbb0800000000000000
+      internalID: -4903114095238000800
       vertices: []
       indices: 
       edges: []
@@ -165,7 +246,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 92fabadb29b2c97438323d9591ff2518
+    spriteID: a3e1dd51feebe7247ba5f77055c360cd
     internalID: 0
     vertices: []
     indices: 
@@ -173,7 +254,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Scar_Idle_Hand_0: 7420008216748316329
+      SV98_Shoot_Hand_0: -4390642829024391031
+      SV98_Shoot_Hand_1: 216119524794996813
+      SV98_Shoot_Hand_2: -3729805489811439712
+      SV98_Shoot_Hand_3: -4903114095238000800
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
