@@ -1,3 +1,4 @@
+using HSVPicker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,16 +22,27 @@ public class StyleTab : MonoBehaviour
     Sprite SkinGradientSprite;
 
     [SerializeField]
+    ColorPicker ColorPicker;
+
+    [SerializeField]
     Button HatPrevBtn, HatNextBtn, HairPrevBtn, HairNextBtn, HeadPrevBtn, HeadNextBtn, TorsoPrevBtn, TorsoNextBtn, ShirtPrevBtn, ShirtNextBtn, LegsPrevBtn, LegsNextBtn, PantsPrevBtn, PantsNextBtn, ShoesPrevBtn, ShoesNextBtn;
 
+    [SerializeField]
+    Image HairColorPreview, EyeColorPreview;
+
     int currentHatIndex = 0, currentHairIndex = 0, currentHeadIndex = 0, currentTorsoIndex = 0, currentShirtIndex = 0, currentLegsIndex = 0, currentPantsIndex = 0, currentShoesIndex = 0;
-    Color32 CurrentSkinColor;
+    Color32 CurrentSkinColor, CurrentHairColor, CurrentEyeColor, ColorBeforeEdit;
+
+    SkinColoringTypes CurrentSettingColor;
 
     void Start()
     {
         storeScreen = GetComponent<StoreScreen>();
 
         SkinManager.LoadSkinData(storeScreen.PlayerData.SkinData);
+        CurrentSkinColor = SkinManager.CurrentSkinColor;
+        CurrentHairColor = SkinManager.CurrentHairColor;
+        CurrentEyeColor = SkinManager.CurrentEyeColor;
 
         currentHatIndex = (int)SkinManager.CurrentHat;
         currentHairIndex = (int)SkinManager.CurrentHair;
@@ -70,11 +82,27 @@ public class StyleTab : MonoBehaviour
         PantsNextBtn.interactable = currentPantsIndex < Enum.GetNames(typeof(SkinPantsOptions)).Length - 1;
         ShoesPrevBtn.interactable = currentShoesIndex > 0;
         ShoesNextBtn.interactable = currentShoesIndex < Enum.GetNames(typeof(SkinShoesOptions)).Length - 1;
+
+        HairColorPreview.color = CurrentHairColor;
+        EyeColorPreview.color = CurrentEyeColor;
     }
 
+    /// <summary>
+    /// Avança um item da skin para o próximo disponível.
+    /// </summary>
+    /// <param name="itemTypeIndex">O index do item a ser trocado (enum SkinItemTypes)</param>
     public void NextSkinItem(int itemTypeIndex) => ChangeSkinItem((SkinItemTypes)itemTypeIndex, true);
+    /// <summary>
+    /// Retrocede um item da skin para o anterior disponível.
+    /// </summary>
+    /// <param name="itemTypeIndex">O index do item a ser trocado (enum SkinItemTypes)</param>
     public void PreviousSkinItem(int itemTypeIndex) => ChangeSkinItem((SkinItemTypes)itemTypeIndex, false);
 
+    /// <summary>
+    /// Troca um item da skin para o próximo/anterior disponível.
+    /// </summary>
+    /// <param name="itemType">O tipo de item da skin a ser trocado.</param>
+    /// <param name="incrementIndex">True para avançar um item, false para retroceder.</param>
     public void ChangeSkinItem(SkinItemTypes itemType, bool incrementIndex = true)
     {
         int indexDelta = incrementIndex ? 1 : -1;
@@ -141,19 +169,26 @@ public class StyleTab : MonoBehaviour
         IsSkinDirty = true;
     }
 
+    /// <summary>
+    /// Define a pré-visualização da animação do personagem.
+    /// </summary>
+    /// <param name="animationTypeIndex">O index da animação a ser reproduzida (enum AnimationTypes).</param>
     public void SetAnimationPreview(int animationTypeIndex)
     {
         SkinManager.SetAnimation((AnimationTypes)animationTypeIndex);
     }
 
+    /// <summary>
+    /// Salva os dados da skin atual no ScriptableObject SkinData.
+    /// </summary>
     public void SaveCurrentSkinData()
     {
         if (!IsSkinDirty)
             return;
 
         storeScreen.PlayerData.SkinData.SkinColor = CurrentSkinColor;
-        //storeScreen.PlayerData.SkinData.HairColor = SkinManager.CurrentHairColor;
-        //storeScreen.PlayerData.SkinData.EyeColor = SkinManager.CurrentEyeColor;
+        storeScreen.PlayerData.SkinData.HairColor = CurrentHairColor;
+        storeScreen.PlayerData.SkinData.EyeColor = CurrentEyeColor;
 
         storeScreen.PlayerData.SkinData.Hair = SkinManager.CurrentHair;
         storeScreen.PlayerData.SkinData.Hat = SkinManager.CurrentHat;
@@ -167,6 +202,77 @@ public class StyleTab : MonoBehaviour
         IsSkinDirty = false;
     }
 
+    /// <summary>
+    /// Cancela a edição de cor e reverte para o valor anterior.
+    /// </summary>
+    public void CancelColorSet()
+    {
+        switch (CurrentSettingColor)
+        {
+            case SkinColoringTypes.Hair:
+                SetHairColor(ColorBeforeEdit);
+                break;
+            case SkinColoringTypes.Eyes:
+                SetEyesColor(ColorBeforeEdit);
+                break;
+        }
+
+        SetColorPickerOpened(SkinColoringTypes.None);
+    }
+
+    /// <summary>
+    /// Abre o seletor de cor para a cor alvo especificada.
+    /// </summary>
+    /// <param name="colorTarget">O index do tipo de cor a ser modificado (enum SkinColoringTypes).</param>
+    public void SetColorPickerOpened(int colorTarget) => SetColorPickerOpened((SkinColoringTypes)colorTarget);
+    /// <summary>
+    /// Abre o seletor de cor para a cor alvo especificada.
+    /// </summary>
+    /// <param name="colorTarget">A cor a ser modificada (enum SkinColoringTypes).</param>
+    void SetColorPickerOpened(SkinColoringTypes colorTarget)
+    {
+        CurrentSettingColor = colorTarget;
+
+        ColorPicker.onValueChanged.RemoveListener(HandleColorPickerChange);
+        if (CurrentSettingColor == SkinColoringTypes.None)
+        {
+            ColorPicker.gameObject.SetActive(false);
+            return;
+        }
+
+        ColorBeforeEdit = CurrentSettingColor switch
+        {
+            SkinColoringTypes.Hair => CurrentHairColor,
+            SkinColoringTypes.Eyes => CurrentEyeColor,
+            _ => Color.white
+        };
+
+        ColorPicker.gameObject.SetActive(true);
+        ColorPicker.CurrentColor = ColorBeforeEdit;
+        ColorPicker.onValueChanged.AddListener(HandleColorPickerChange);
+    }
+
+    /// <summary>
+    /// Função chamada quando o valor do seletor de cor é alterado.
+    /// </summary>
+    /// <param name="color">A nova cor selecionada.</param>
+    void HandleColorPickerChange(Color color)
+    {
+        switch (CurrentSettingColor)
+        {
+            case SkinColoringTypes.Hair:
+                SetHairColor(color);
+                break;
+            case SkinColoringTypes.Eyes:
+                SetEyesColor(color);
+                break;
+        }
+        ColorPicker.CurrentColor = color;
+    }
+
+    /// <summary>
+    /// Define o gradiente do seletor de cor de pele, com base nas cores SkinLightestColor e SkinDarkestColor do Constants.
+    /// </summary>
     void GenerateSkinColorSliderGradient()
     {
         const int WIDTH = 256;
@@ -185,11 +291,36 @@ public class StyleTab : MonoBehaviour
         imageComponent.sprite = gradientSprite;
     }
 
+    /// <summary>
+    /// Define a cor da pele com base no valor do slider.
+    /// </summary>
+    /// <param name="value">O valor do slider do seletor de cor da pele.</param>
     void SetSkinColor(float value)
     {
         CurrentSkinColor = Color.Lerp(Constants.Colors.SkinLightestColor, Constants.Colors.SkinDarkestColor, value);
-        SkinManager.CurrentSkinColor = CurrentSkinColor;
-        SkinManager.UpdateSkinColor();
+        SkinManager.UpdateSkinColor(CurrentSkinColor);
+        IsSkinDirty = true;
+    }
+
+    /// <summary>
+    /// Define a cor do cabelo.
+    /// </summary>
+    /// <param name="color">A cor a ser definida para o cabelo.</param>
+    void SetHairColor(Color color)
+    {
+        CurrentHairColor = color;
+        SkinManager.UpdateHairColor(CurrentHairColor);
+        IsSkinDirty = true;
+    }
+
+    /// <summary>
+    /// Define a cor dos olhos.
+    /// </summary>
+    /// <param name="color">A cor a ser definida para os olhos.</param>
+    void SetEyesColor(Color color)
+    {
+        CurrentEyeColor = color;
+        SkinManager.UpdateEyesColor(CurrentEyeColor);
         IsSkinDirty = true;
     }
 }
