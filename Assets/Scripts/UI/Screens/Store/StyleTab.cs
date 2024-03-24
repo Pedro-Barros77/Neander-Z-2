@@ -15,7 +15,11 @@ public class StyleTab : MonoBehaviour
     [SerializeField]
     public SkinManager SkinManager;
     [SerializeField]
-    TMP_Dropdown AnimationDropdown;
+    TMP_Dropdown CharactersDropdown, AnimationDropdown;
+    [SerializeField]
+    GameObject NewCharacterModal;
+    [SerializeField]
+    InputField InputNewCharacterName;
     [SerializeField]
     Slider SkinColorSlider;
     [SerializeField]
@@ -26,12 +30,16 @@ public class StyleTab : MonoBehaviour
 
     [SerializeField]
     Button HatPrevBtn, HatNextBtn, HairPrevBtn, HairNextBtn, HeadPrevBtn, HeadNextBtn, TorsoPrevBtn, TorsoNextBtn, ShirtPrevBtn, ShirtNextBtn, LegsPrevBtn, LegsNextBtn, PantsPrevBtn, PantsNextBtn, ShoesPrevBtn, ShoesNextBtn;
+    [SerializeField]
+    Button BtnDeleteCharacter;
 
     [SerializeField]
     Image HairColorPreview, EyeColorPreview;
 
     int currentHatIndex = 0, currentHairIndex = 0, currentHeadIndex = 0, currentTorsoIndex = 0, currentShirtIndex = 0, currentLegsIndex = 0, currentPantsIndex = 0, currentShoesIndex = 0;
     Color32 CurrentSkinColor, CurrentHairColor, CurrentEyeColor, ColorBeforeEdit;
+
+    List<SkinData.Data> CharactersOptions;
 
     SkinColoringTypes CurrentSettingColor;
 
@@ -40,23 +48,26 @@ public class StyleTab : MonoBehaviour
         storeScreen = GetComponent<StoreScreen>();
 
         SkinManager.LoadSkinData(storeScreen.PlayerData.SkinData);
-        CurrentSkinColor = SkinManager.CurrentSkinColor;
-        CurrentHairColor = SkinManager.CurrentHairColor;
-        CurrentEyeColor = SkinManager.CurrentEyeColor;
+        LoadSkin();
 
-        currentHatIndex = (int)SkinManager.CurrentHat;
-        currentHairIndex = (int)SkinManager.CurrentHair;
-        currentHeadIndex = (int)SkinManager.CurrentHead;
-        currentTorsoIndex = (int)SkinManager.CurrentTorso;
-        currentShirtIndex = (int)SkinManager.CurrentShirt;
-        currentLegsIndex = (int)SkinManager.CurrentLegs;
-        currentPantsIndex = (int)SkinManager.CurrentPants;
-        currentShoesIndex = (int)SkinManager.CurrentShoes;
+        CharactersOptions = Resources.LoadAll<SkinData>($"ScriptableObjects/Player/Characters").Select(x => x.Encode()).ToList();
+        var globalSave = SavesManager.GetGlobalSave();
+        if (globalSave.SavedCharacters.Any())
+            CharactersOptions.AddRange(globalSave.SavedCharacters);
+        CharactersDropdown.options.Clear();
+        CharactersDropdown.options = CharactersOptions.Select(c => new TMP_Dropdown.OptionData(c.CharacterName)).ToList();
+        CharactersDropdown.value = 0;
+        CharactersDropdown.onValueChanged.AddListener(SelectCharacter);
+        var selectedCharacter = CharactersOptions.FirstOrDefault(x => x.CharacterName == storeScreen.PlayerData.SkinData.CharacterName);
+        if (selectedCharacter != null)
+            CharactersDropdown.value = CharactersOptions.IndexOf(selectedCharacter);
 
         AnimationDropdown.options.Clear();
         AnimationDropdown.AddOptions(new List<string>(Enum.GetNames(typeof(AnimationTypes))));
         AnimationDropdown.value = (int)AnimationTypes.Idle;
         AnimationDropdown.onValueChanged.AddListener(SetAnimationPreview);
+
+
 
         GenerateSkinColorSliderGradient();
         SkinColorSlider.onValueChanged.AddListener(SetSkinColor);
@@ -85,6 +96,94 @@ public class StyleTab : MonoBehaviour
 
         HairColorPreview.color = CurrentHairColor;
         EyeColorPreview.color = CurrentEyeColor;
+
+        BtnDeleteCharacter.interactable = CharactersOptions.ElementAtOrDefault(CharactersDropdown.value)?.Character == CharacterTypes.None;
+    }
+
+    /// <summary>
+    /// Abre o modal para criar um novo personagem.
+    /// </summary>
+    public void OpenNewCharacterModal()
+    {
+        NewCharacterModal.SetActive(true);
+        InputNewCharacterName.text = $"Character {CharactersOptions.Where(x => x.Character != CharacterTypes.Custom).Count() + 1:D2}";
+    }
+
+    /// <summary>
+    /// Fecha o modal de criar um novo personagem.
+    /// </summary>
+    public void CloseNewCharacterModal()
+    {
+        NewCharacterModal.SetActive(false);
+    }
+
+    /// <summary>
+    /// Cria um novo personagem com o nome definido pelo input do modal.
+    /// </summary>
+    public void CreateNewCharacter()
+    {
+        string characterName = InputNewCharacterName.text;
+        if (string.IsNullOrWhiteSpace(characterName) || characterName.Length > 20)
+        {
+            ShowPopupMessage(characterName.Length > 20 ? "Character name is too long! (Max 20)" : "Character name cannot be empty!", Constants.Colors.YellowAmmo);
+            return;
+        }
+        if(characterName == "Custom")
+        {
+            ShowPopupMessage("Character name cannot be 'Custom'!", Constants.Colors.YellowAmmo);
+            return;
+        }
+        if(CharactersOptions.Any(x => x.CharacterName == characterName))
+        {
+            ShowPopupMessage("Character name already exists! Delete it or choose another name.", Constants.Colors.YellowAmmo);
+            return;
+        }
+
+        SaveCurrentSkinData();
+
+        var newSkinData = storeScreen.PlayerData.SkinData.Encode();
+        newSkinData.CharacterName = characterName;
+        newSkinData.Character = CharacterTypes.None;
+
+        if (SavesManager.SaveCharacter(newSkinData))
+        {
+            ShowPopupMessage("New Character Created!", Constants.Colors.GreenMoney);
+            RemoveCustomSkin();
+
+            var newSkin = ScriptableObject.CreateInstance<SkinData>();
+            newSkinData.Seed(newSkin);
+            storeScreen.PlayerData.SkinData = newSkin;
+
+            CharactersOptions.Add(newSkinData);
+            CharactersDropdown.options.Add(new TMP_Dropdown.OptionData(newSkinData.CharacterName));
+            CharactersDropdown.value = CharactersDropdown.options.Count - 1;
+            CharactersDropdown.RefreshShownValue();
+            CloseNewCharacterModal();
+            IsSkinDirty = true;
+        }
+        else
+        {
+            ShowPopupMessage("Failed to create new character!", Color.red);
+        }
+    }
+
+    /// <summary>
+    /// Exclui o personagem selecionado do save global.
+    /// </summary>
+    public void DeleteCharacter()
+    {
+        var skinData = CharactersOptions[CharactersDropdown.value];
+        if (SavesManager.DeleteCharacter(skinData.CharacterName))
+        {
+            ShowPopupMessage("Character Deleted!", Constants.Colors.GreenMoney);
+            CharactersOptions.Remove(skinData);
+            CharactersDropdown.options.RemoveAt(CharactersDropdown.value);
+            CharactersDropdown.value = 0;
+        }
+        else
+        {
+            ShowPopupMessage("Failed to delete character!", Color.red);
+        }
     }
 
     /// <summary>
@@ -105,6 +204,7 @@ public class StyleTab : MonoBehaviour
     /// <param name="incrementIndex">True para avançar um item, false para retroceder.</param>
     public void ChangeSkinItem(SkinItemTypes itemType, bool incrementIndex = true)
     {
+        CreateCustomSkinOnEdit();
         int indexDelta = incrementIndex ? 1 : -1;
         switch (itemType)
         {
@@ -166,6 +266,23 @@ public class StyleTab : MonoBehaviour
         }
 
         SkinManager.UpdateSkin();
+        IsSkinDirty = true;
+    }
+
+    /// <summary>
+    /// Seleciona um personagem da lista de personagens disponíveis.
+    /// </summary>
+    /// <param name="characterIndex">O index do personagem na lista para selecionar.</param>
+    public void SelectCharacter(int characterIndex)
+    {
+        var newSkin = ScriptableObject.CreateInstance<SkinData>();
+        var skinData = CharactersOptions[characterIndex];
+        skinData.Seed(newSkin);
+        storeScreen.PlayerData.SkinData = newSkin;
+        SkinManager.LoadSkinData(storeScreen.PlayerData.SkinData);
+        SkinManager.UpdateSkin();
+        LoadSkin();
+        RemoveCustomSkin();
         IsSkinDirty = true;
     }
 
@@ -258,6 +375,7 @@ public class StyleTab : MonoBehaviour
     /// <param name="color">A nova cor selecionada.</param>
     void HandleColorPickerChange(Color color)
     {
+        CreateCustomSkinOnEdit();
         switch (CurrentSettingColor)
         {
             case SkinColoringTypes.Hair:
@@ -297,6 +415,7 @@ public class StyleTab : MonoBehaviour
     /// <param name="value">O valor do slider do seletor de cor da pele.</param>
     void SetSkinColor(float value)
     {
+        CreateCustomSkinOnEdit();
         CurrentSkinColor = Color.Lerp(Constants.Colors.SkinLightestColor, Constants.Colors.SkinDarkestColor, value);
         SkinManager.UpdateSkinColor(CurrentSkinColor);
         IsSkinDirty = true;
@@ -308,6 +427,7 @@ public class StyleTab : MonoBehaviour
     /// <param name="color">A cor a ser definida para o cabelo.</param>
     void SetHairColor(Color color)
     {
+        CreateCustomSkinOnEdit();
         CurrentHairColor = color;
         SkinManager.UpdateHairColor(CurrentHairColor);
         IsSkinDirty = true;
@@ -319,8 +439,79 @@ public class StyleTab : MonoBehaviour
     /// <param name="color">A cor a ser definida para os olhos.</param>
     void SetEyesColor(Color color)
     {
+        CreateCustomSkinOnEdit();
         CurrentEyeColor = color;
         SkinManager.UpdateEyesColor(CurrentEyeColor);
         IsSkinDirty = true;
+    }
+
+    /// <summary>
+    /// Carrega a skin atual do jogador para a aba de estilo.
+    /// </summary>
+    void LoadSkin()
+    {
+        SkinColorSlider.SetValueWithoutNotify(SkinManager.CurrentSkinColor.GetRatioFromRange(Constants.Colors.SkinLightestColor, Constants.Colors.SkinDarkestColor));
+        HairColorPreview.color = SkinManager.CurrentHairColor;
+        EyeColorPreview.color = SkinManager.CurrentEyeColor;
+        
+        CurrentSkinColor = SkinManager.CurrentSkinColor;
+        CurrentHairColor = SkinManager.CurrentHairColor;
+        CurrentEyeColor = SkinManager.CurrentEyeColor;
+        
+        currentHatIndex = (int)SkinManager.CurrentHat;
+        currentHairIndex = (int)SkinManager.CurrentHair;
+        currentHeadIndex = (int)SkinManager.CurrentHead;
+        currentTorsoIndex = (int)SkinManager.CurrentTorso;
+        currentShirtIndex = (int)SkinManager.CurrentShirt;
+        currentLegsIndex = (int)SkinManager.CurrentLegs;
+        currentPantsIndex = (int)SkinManager.CurrentPants;
+        currentShoesIndex = (int)SkinManager.CurrentShoes;
+    }
+
+    /// <summary>
+    /// Cria uma skin temporária para armazenar as alterações feitas na aba de estilo.
+    /// </summary>
+    void CreateCustomSkinOnEdit()
+    {
+        if (CharactersOptions.Any(c => c.CharacterName == "Custom"))
+        {
+            CharactersDropdown.value = CharactersOptions.FindIndex(c => c.CharacterName == "Custom");
+            return;
+        }
+
+        var newSkinData = storeScreen.PlayerData.SkinData.Encode();
+        newSkinData.CharacterName = "Custom";
+        newSkinData.Character = CharacterTypes.Custom;
+
+        var newSkin = ScriptableObject.CreateInstance<SkinData>();
+        newSkinData.Seed(newSkin);
+        storeScreen.PlayerData.SkinData = newSkin;
+
+        CharactersOptions.Add(newSkinData);
+        CharactersDropdown.options.Add(new TMP_Dropdown.OptionData(newSkinData.CharacterName));
+        CharactersDropdown.value = CharactersOptions.Count - 1;
+    }
+
+    /// <summary>
+    /// Remove a skin temporária criada na aba de estilo.
+    /// </summary>
+    void RemoveCustomSkin()
+    {
+        var customSkin = CharactersOptions.FirstOrDefault(x => x.Character == CharacterTypes.Custom);
+        if (customSkin != null)
+        {
+            CharactersDropdown.options.RemoveAt(CharactersDropdown.options.FindIndex(x => x.text == customSkin.CharacterName));
+            CharactersOptions.Remove(customSkin);
+        }
+    }
+
+    /// <summary>
+    /// Exibe uma mensagem pop-up na tela.
+    /// </summary>
+    /// <param name="message">O texto da mensagem.</param>
+    /// <param name="color">A cor do texto.</param>
+    void ShowPopupMessage(string message, Color32 color)
+    {
+        storeScreen.ShowPopup(message, color, CharactersDropdown.transform.position + new Vector3(4, 0), 2000f, 30);
     }
 }

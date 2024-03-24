@@ -89,12 +89,30 @@ public static class SavesManager
     /// </summary>
     /// <param name="skin">A skin do novo personagem a salvar.</param>
     /// <returns>True se o arquivo foi salvo com sucesso.</returns>
-    public static bool SaveCharacter(SkinData skin)
+    public static bool SaveCharacter(SkinData.Data skinData)
     {
         var globalSave = GetGlobalSave();
-        globalSave.SavedCharacters.Add(skin);
+        globalSave.SavedCharacters.Add(skinData);
 
         return SaveGlobal(globalSave);
+    }
+
+    /// <summary>
+    /// Remove um personagem customizado da lista do save global.
+    /// </summary>
+    /// <param name="characterName">O nome do personagem a ser removido.</param>
+    /// <returns>True se o arquivo foi salvo com sucesso.</returns>
+    public static bool DeleteCharacter(string characterName)
+    {
+        var globalSave = GetGlobalSave();
+        var skinData = globalSave.SavedCharacters.FirstOrDefault(x => x.CharacterName == characterName);
+        if (skinData != null)
+        {
+            globalSave.SavedCharacters.Remove(skinData);
+            return SaveGlobal(globalSave);
+        }
+
+        return false;
     }
 
     /// <summary>

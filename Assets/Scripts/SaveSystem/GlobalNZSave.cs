@@ -5,5 +5,5 @@ public class GlobalNZSave : BaseNZSave
 {
     public PrefsSave Preferences = new();
 
-    public List<SkinData> SavedCharacters = new();
+    public List<SkinData.Data> SavedCharacters = new();
 }
