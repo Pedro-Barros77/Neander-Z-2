@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
-public class NZSave
+public class NZSave : BaseNZSave
 {
     #region MainInfo
     public int CurrentWave;
@@ -29,6 +29,8 @@ public class NZSave
         .Concat(!SecondaryWeaponsSelection.IsNullOrEmpty() ? SecondaryWeaponsSelection : new());
     #endregion
 
+    public SkinData.Data CurrentSkin;
+
     #region PlayerStats
     public int MaxHealthUpgradeIndex;
     public int MovementSpeedUpgradeIndex;
@@ -45,7 +47,4 @@ public class NZSave
     #region WavesStats
     public List<WaveStats.Data> WavesStats;
     #endregion
-
-    public string FolderPath;
-    public string FileName;
 }

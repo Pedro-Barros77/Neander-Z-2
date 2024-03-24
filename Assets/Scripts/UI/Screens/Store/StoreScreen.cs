@@ -68,7 +68,7 @@ public class StoreScreen : MonoBehaviour
         PreviewPanelContent.transform.parent.gameObject.SetActive(ActiveTab != StoreTabs.Inventory);
         InventoryPreviewPanel.transform.parent.gameObject.SetActive(ActiveTab == StoreTabs.Inventory);
         InventorySlotsPanel.SetActive(ActiveTab == StoreTabs.Inventory);
-        BtnSaveGame.interactable = IsSaveDirty;
+        BtnSaveGame.interactable = IsSaveDirty || styleTab.IsSkinDirty;
 
         if (PlayerData != null)
         {
@@ -484,8 +484,10 @@ public class StoreScreen : MonoBehaviour
     /// </summary>
     public void SaveGame()
     {
-        if (!IsSaveDirty)
+        if (!IsSaveDirty && !styleTab.IsSkinDirty)
             return;
+
+        styleTab.SaveCurrentSkinData();
 
         if (SavesManager.SaveGame(GameModes.WaveMastery, SavesManager.SelectedSaveName))
         {

@@ -47,27 +47,54 @@ public static class SavesManager
     }
 
     /// <summary>
-    /// Salva as preferências do jogador.
+    /// Salva as configurações globais do jogo.
+    /// </summary>
+    /// <param name="globalSave">A configuração global a ser salva.</param>
+    /// <returns>True se o arquivo foi salvo com sucesso.</returns>
+    public static bool SaveGlobal(GlobalNZSave globalSave)
+    {
+        JsonSaveService jsonService = new();
+
+        globalSave.FileName = "GlobalSave";
+        globalSave.FolderPath = jsonService.ROOT_FOLDER;
+        globalSave.Preferences.FileName = globalSave.FileName;
+        globalSave.Preferences.FolderPath = globalSave.FolderPath;
+
+        return jsonService.SaveData("", globalSave.FileName, globalSave, false, "json");
+    }
+
+    /// <summary>
+    /// Salva as preferências do jogador no arquivo de saves global.
     /// </summary>
     /// <returns>True se o arquivo foi salvo com sucesso.</returns>
     public static bool SavePrefs()
     {
-        JsonSaveService jsonService = new();
-        PrefsSave prefs = new()
+        var globalSave = GetGlobalSave();
+
+        globalSave.Preferences = new PrefsSave()
         {
             //Options
             MusicVolume = MenuController.Instance.MusicVolume,
             InterfaceVolume = MenuController.Instance.UIVolume,
             PlayerVolume = MenuController.Instance.PlayerVolume,
             EnemiesVolume = MenuController.Instance.EnemiesVolume,
-            InputMode = MenuController.Instance.IsMobileInput ? 1 : 0,
-            FileName = "Preferences",
-            FolderPath = jsonService.ROOT_FOLDER
+            InputMode = MenuController.Instance.IsMobileInput ? 1 : 0
         };
 
-        if (jsonService.SaveData("", "Preferences", prefs, false, "json"))
-            return true;
-        return false;
+        return SaveGlobal(globalSave);
+    }
+
+    /// <summary>
+    /// Adiciona um novo personagem customizado ä lista do save global.
+    /// </summary>
+    /// <param name="skin">A skin do novo personagem a salvar.</param>
+    /// <returns>True se o arquivo foi salvo com sucesso.</returns>
+    public static bool SaveCharacter(SkinData skin)
+    {
+        var globalSave = GetGlobalSave();
+        globalSave.SavedCharacters.Add(skin);
+
+        return SaveGlobal(globalSave);
     }
 
     /// <summary>
@@ -177,21 +204,32 @@ public static class SavesManager
     }
 
     /// <summary>
+    /// Recupera o save global do jogo. Cria um caso não exista.
+    /// </summary>
+    /// <returns>O save global do jogo.</returns>
+    public static GlobalNZSave GetGlobalSave()
+    {
+        JsonSaveService jsonService = new();
+        string folderPath = jsonService.ROOT_FOLDER;
+        var globalSave = jsonService.LoadData<GlobalNZSave>(folderPath, "GlobalSave", false, "json");
+        if (globalSave == null)
+        {
+            globalSave = new();
+            SaveGlobal(globalSave);
+            return GetGlobalSave();
+        }
+
+        return globalSave;
+    }
+
+    /// <summary>
     /// Carrega as preferências do jogador para dentro do jogo.
     /// </summary>
     public static void LoadSavedPrefs()
     {
-        JsonSaveService jsonService = new();
-        string folderPath = jsonService.ROOT_FOLDER;
-        var prefs = jsonService.LoadData<PrefsSave>(folderPath, "Preferences", false, "json");
-        if (prefs == null)
-        {
-            Debug.LogError($"Preferences Save file not found!");
-            return;
-        }
+        var globalSave = GetGlobalSave();
 
-        prefs.FileName = "Preferences";
-        prefs.FolderPath = folderPath;
+        var prefs = globalSave.Preferences;
 
         //Options
         MenuController.Instance.MusicVolume = prefs.MusicVolume;
@@ -279,9 +317,10 @@ public static class SavesManager
         save.TacticalAbilitiesSelection = inventory.TacticalAbilitiesSelection;
         save.PassiveSkillsSelection = inventory.PassiveSkillsSelection;
 
+        save.CurrentSkin = player.SkinData.Encode();
 
         //Waves
-        save.WavesStats = GetWaveStats().Where(x => x.Started).Select(x => x.GetData()).ToList();
+        save.WavesStats = GetWaveStats().Where(x => x.Started).Select(x => x.Encode()).ToList();
 
         //Missing:
         //save.TotalInStoreTime;
@@ -312,6 +351,8 @@ public static class SavesManager
         player.JumpStaminaUpgradeIndex = save.JumpStaminaUpgradeIndex;
         player.SprintStaminaUpgradeIndex = save.SprintStaminaUpgradeIndex;
         player.AttackStaminaUpgradeIndex = save.AttackStaminaUpgradeIndex;
+
+        save.CurrentSkin.Seed(player.SkinData);
 
         //Inventory
         inventory.UpgradeIndex = save.BackpackUpgradeIndex;
