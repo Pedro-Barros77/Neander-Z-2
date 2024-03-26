@@ -168,7 +168,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         var healthbarImage = HealthBar.transform.GetChild(0).GetComponent<Image>();
         float healthBarWidth = healthbarImage.preferredWidth * healthbarImage.transform.localScale.x;
         float scaleFactor = (enemyWidth / healthBarWidth) * 0.7f;
-        HealthBar.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        HealthBar.transform.localScale = new Vector3(scaleFactor, Mathf.Clamp(scaleFactor, 0, 0.012f), scaleFactor);
         (HealthBar.transform as RectTransform).pivot = new Vector2(0.5f, 0.5f);
 
         var env = GameObject.Find("Environment").GetComponent<LevelData>();

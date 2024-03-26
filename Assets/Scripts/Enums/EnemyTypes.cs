@@ -30,5 +30,9 @@ public enum EnemyTypes
     /// <summary>
     /// Foi mordido enquanto jogava futebol. É um zumbi comum, exceto pelo fato de que ele se recusa a morrer às vezes.
     /// </summary>
-    Z_Ronald
+    Z_Ronald,
+    /// <summary>
+    /// Infectda em chamas. Rápida, fraca e muito perigosa. Não se aproxime! Morre com tempo.
+    /// </sumary>
+    Z_Rute,
 }

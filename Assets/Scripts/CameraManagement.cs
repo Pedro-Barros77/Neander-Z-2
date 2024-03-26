@@ -67,10 +67,10 @@ public class CameraManagement : MonoBehaviour
                 break;
         }
 
-        Vector3 result = new Vector3(
+        Vector3 result = new(
             Mathf.Clamp(basePosition != null ? basePosition.Value.x : camX, boundaryLeft + halfCamWidth, boundaryRight - halfCamWidth),
             basePosition != null ? basePosition.Value.y : startCameraY,
-            gameObject.transform.position.z);
+            Camera.main.transform.position.z);
 
         if (isFocusing)
         {
@@ -81,7 +81,7 @@ public class CameraManagement : MonoBehaviour
                 cam.orthographicSize = Mathf.Lerp(startZoom, zoomLevel, percentage);
                 return Vector3.Lerp(focusStartPosition, result, percentage);
             }
-            else if(cameraMovementDurationMs == 0)
+            else if (cameraMovementDurationMs == 0)
                 cam.orthographicSize = zoomLevel;
         }
         return result;
@@ -93,7 +93,7 @@ public class CameraManagement : MonoBehaviour
     /// <param name="durationMs">Duração em milessegundos</param>
     /// <param name="strenght">Mutiplicador do efeito de tremor</param>
     /// <returns></returns>
-    public IEnumerator ShakeCameraEffect(float durationMs, float strenght = 1)
+    public IEnumerator ShakeCameraEffect(float durationMs, float strenght = 1, bool useFadeOut = true)
     {
         float elapsedTime = 0f;
         isShaking = true;
@@ -103,9 +103,10 @@ public class CameraManagement : MonoBehaviour
             if (MenuController.Instance.IsGamePaused)
                 break;
             elapsedTime += Time.unscaledDeltaTime;
-            float curveValue = ScreenShakeCurve.Evaluate(elapsedTime / durationMs);
+            float curveValue = useFadeOut ? ScreenShakeCurve.Evaluate(elapsedTime / (durationMs / 1000)) : 0.3f;
             Vector3 defaultPosition = isFocusing ? GetCameraPosition(focusPosition) : GetCameraPosition();
-            Camera.main.transform.position = defaultPosition + Random.insideUnitSphere * strenght * curveValue;
+            Vector3 resultPos = defaultPosition + Random.insideUnitSphere * strenght * curveValue;
+            Camera.main.transform.position = new(resultPos.x, resultPos.y, Camera.main.transform.position.z);
             yield return null;
         }
         isShaking = false;
