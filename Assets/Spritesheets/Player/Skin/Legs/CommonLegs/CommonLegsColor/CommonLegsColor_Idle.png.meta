@@ -1,0 +1,853 @@
+fileFormatVersion: 2
+guid: 461ecbe34f7893144add9702a39cf322
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5227221746526100067
+    second: CommonLegsColor_Idle_0
+  - first:
+      213: 8506486453366895235
+    second: CommonLegsColor_Idle_1
+  - first:
+      213: 5486233671110918821
+    second: CommonLegsColor_Idle_2
+  - first:
+      213: -5598862106953137362
+    second: CommonLegsColor_Idle_3
+  - first:
+      213: -312974748200794391
+    second: CommonLegsColor_Idle_4
+  - first:
+      213: -6349407481357879297
+    second: CommonLegsColor_Idle_5
+  - first:
+      213: -8575665187193344711
+    second: CommonLegsColor_Idle_6
+  - first:
+      213: -6168643194139678948
+    second: CommonLegsColor_Idle_7
+  - first:
+      213: -394253746892348700
+    second: CommonLegsColor_Idle_8
+  - first:
+      213: -3055889995754763008
+    second: CommonLegsColor_Idle_9
+  - first:
+      213: -909779173614285157
+    second: CommonLegsColor_Idle_10
+  - first:
+      213: -2565093960737017941
+    second: CommonLegsColor_Idle_11
+  - first:
+      213: -4656695880064707129
+    second: CommonLegsColor_Idle_12
+  - first:
+      213: 2311225285508267393
+    second: CommonLegsColor_Idle_13
+  - first:
+      213: 4744235143102530512
+    second: CommonLegsColor_Idle_14
+  - first:
+      213: -7805431697604379287
+    second: CommonLegsColor_Idle_15
+  - first:
+      213: 7365035106615261568
+    second: CommonLegsColor_Idle_16
+  - first:
+      213: -4606992848566591330
+    second: CommonLegsColor_Idle_17
+  - first:
+      213: 2634813517228887376
+    second: CommonLegsColor_Idle_18
+  - first:
+      213: -2613425738974161924
+    second: CommonLegsColor_Idle_19
+  - first:
+      213: 5701075683290622185
+    second: CommonLegsColor_Idle_20
+  - first:
+      213: 3691715452620310059
+    second: CommonLegsColor_Idle_21
+  - first:
+      213: -8216322920540126277
+    second: CommonLegsColor_Idle_22
+  - first:
+      213: -2708623695721800968
+    second: CommonLegsColor_Idle_23
+  - first:
+      213: 5803670767003190026
+    second: CommonLegsColor_Idle_24
+  - first:
+      213: 2431868039170987865
+    second: CommonLegsColor_Idle_25
+  - first:
+      213: -5750736083127334322
+    second: CommonLegsColor_Idle_26
+  - first:
+      213: 9193314567489819257
+    second: CommonLegsColor_Idle_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 96
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36a92e3cb72da8840800000000000000
+      internalID: 5227221746526100067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 96
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3823b9b2c5c1d0670800000000000000
+      internalID: 8506486453366895235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 96
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a28a51e474032c40800000000000000
+      internalID: 5486233671110918821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 96
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e23c9a8e398dc42b0800000000000000
+      internalID: -5598862106953137362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_4
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 96
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e603ddef1718abf0800000000000000
+      internalID: -312974748200794391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_5
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 96
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff7b47b498f52e7a0800000000000000
+      internalID: -6349407481357879297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 72
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93d28a4b2fd1df880800000000000000
+      internalID: -8575665187193344711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_7
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 72
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c176c23a2b3946aa0800000000000000
+      internalID: -6168643194139678948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_8
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 72
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e26d195e44578af0800000000000000
+      internalID: -394253746892348700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_9
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 72
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00d0e5a5d3c4795d0800000000000000
+      internalID: -3055889995754763008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_10
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 72
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9e0cac69a0df53f0800000000000000
+      internalID: -909779173614285157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_11
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 72
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: baf25c612a4f66cd0800000000000000
+      internalID: -2565093960737017941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_12
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 48
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c5d7b1f4c7106fb0800000000000000
+      internalID: -4656695880064707129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_13
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 48
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18dfe9ad62f131020800000000000000
+      internalID: 2311225285508267393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_14
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 48
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d30d830ab8e6d140800000000000000
+      internalID: 4744235143102530512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_15
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 48
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96d77b9d9398da390800000000000000
+      internalID: -7805431697604379287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_16
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 48
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0897518686cd53660800000000000000
+      internalID: 7365035106615261568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_17
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 48
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e906c62c96ca010c0800000000000000
+      internalID: -4606992848566591330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_18
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 24
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05d43df1fecb09420800000000000000
+      internalID: 2634813517228887376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_19
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 24
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf3159d032f3bbbd0800000000000000
+      internalID: -2613425738974161924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_20
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 24
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e8a72cd02a4e1f40800000000000000
+      internalID: 5701075683290622185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_21
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 24
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b26014505ab9b3330800000000000000
+      internalID: 3691715452620310059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_22
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 24
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb34e41f5d1c9fd80800000000000000
+      internalID: -8216322920540126277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_23
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 24
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fadb428919096ad0800000000000000
+      internalID: -2708623695721800968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_24
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a034b8c30d7ca8050800000000000000
+      internalID: 5803670767003190026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_25
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 0
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9579967d81bbfb120800000000000000
+      internalID: 2431868039170987865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_26
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 0
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4a8c2840084130b0800000000000000
+      internalID: -5750736083127334322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CommonLegsColor_Idle_27
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97297af04e6359f70800000000000000
+      internalID: 9193314567489819257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      CommonLegsColor_Idle_0: 5227221746526100067
+      CommonLegsColor_Idle_1: 8506486453366895235
+      CommonLegsColor_Idle_10: -909779173614285157
+      CommonLegsColor_Idle_11: -2565093960737017941
+      CommonLegsColor_Idle_12: -4656695880064707129
+      CommonLegsColor_Idle_13: 2311225285508267393
+      CommonLegsColor_Idle_14: 4744235143102530512
+      CommonLegsColor_Idle_15: -7805431697604379287
+      CommonLegsColor_Idle_16: 7365035106615261568
+      CommonLegsColor_Idle_17: -4606992848566591330
+      CommonLegsColor_Idle_18: 2634813517228887376
+      CommonLegsColor_Idle_19: -2613425738974161924
+      CommonLegsColor_Idle_2: 5486233671110918821
+      CommonLegsColor_Idle_20: 5701075683290622185
+      CommonLegsColor_Idle_21: 3691715452620310059
+      CommonLegsColor_Idle_22: -8216322920540126277
+      CommonLegsColor_Idle_23: -2708623695721800968
+      CommonLegsColor_Idle_24: 5803670767003190026
+      CommonLegsColor_Idle_25: 2431868039170987865
+      CommonLegsColor_Idle_26: -5750736083127334322
+      CommonLegsColor_Idle_27: 9193314567489819257
+      CommonLegsColor_Idle_3: -5598862106953137362
+      CommonLegsColor_Idle_4: -312974748200794391
+      CommonLegsColor_Idle_5: -6349407481357879297
+      CommonLegsColor_Idle_6: -8575665187193344711
+      CommonLegsColor_Idle_7: -6168643194139678948
+      CommonLegsColor_Idle_8: -394253746892348700
+      CommonLegsColor_Idle_9: -3055889995754763008
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

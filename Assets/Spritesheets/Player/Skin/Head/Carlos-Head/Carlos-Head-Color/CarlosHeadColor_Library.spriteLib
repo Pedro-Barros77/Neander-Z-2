@@ -1,0 +1,566 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CarlosHead_Idle_0
+      m_Hash: 321770885
+      m_Sprite: {fileID: 2035838809, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3519762533090292399, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_1
+      m_Hash: 606790931
+      m_Sprite: {fileID: 846723920, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3274146223786502032, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_2
+      m_Hash: 1025750185
+      m_Sprite: {fileID: -1140901689, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 7369521151055222628, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_3
+      m_Hash: 170165311
+      m_Sprite: {fileID: 1745977249, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2449998189404266376, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_4
+      m_Hash: 339743132
+      m_Sprite: {fileID: -2030870034, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -550688673744463868, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_5
+      m_Hash: 591864074
+      m_Sprite: {fileID: -1290100023, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -351161735464808825, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_6
+      m_Hash: 978219184
+      m_Sprite: {fileID: -1158738599, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1194858462020061028, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_7
+      m_Hash: 222904358
+      m_Sprite: {fileID: -256253188, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5706010125551669667, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_8
+      m_Hash: 502685111
+      m_Sprite: {fileID: -929013149, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -7780498063566657953, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_9
+      m_Hash: 720465185
+      m_Sprite: {fileID: 2024730888, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8541408663415824591, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_10
+      m_Hash: 818000922
+      m_Sprite: {fileID: -1205973173, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5686573231252999929, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_11
+      m_Hash: 130450572
+      m_Sprite: {fileID: 1665554589, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2513355858964178979, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_12
+      m_Hash: 516937014
+      m_Sprite: {fileID: 1121402432, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -9157056273887815627, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_13
+      m_Hash: 701031840
+      m_Sprite: {fileID: 2028115525, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 6547750036617822298, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_14
+      m_Hash: 934047747
+      m_Sprite: {fileID: -951318660, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -7210784300084207893, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_15
+      m_Hash: 11223189
+      m_Sprite: {fileID: 1382550751, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 3336533562072211544, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_16
+      m_Hash: 430051631
+      m_Sprite: {fileID: 857164002, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 5045761414626538785, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_17
+      m_Hash: 782574009
+      m_Sprite: {fileID: 1648861891, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8634774968979859513, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_18
+      m_Hash: 1041906728
+      m_Sprite: {fileID: -388334875, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1007742075219172946, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_19
+      m_Hash: 152898750
+      m_Sprite: {fileID: -55810398, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2630178538887096056, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_20
+      m_Hash: 468510681
+      m_Sprite: {fileID: 1084804937, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5734675166918463545, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_21
+      m_Hash: 753653583
+      m_Sprite: {fileID: -2129090334, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5366934609628621935, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_22
+      m_Hash: 904038133
+      m_Sprite: {fileID: 1601543877, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -7120261640573013417, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_23
+      m_Hash: 48608867
+      m_Sprite: {fileID: 1460671428, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 4688898179854555484, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_24
+      m_Hash: 478225344
+      m_Sprite: {fileID: 1640634158, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4102834163864390747, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_25
+      m_Hash: 730207062
+      m_Sprite: {fileID: -822404345, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 5453084023161576309, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_26
+      m_Hash: 848249580
+      m_Sprite: {fileID: -57081864, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2285110020662491885, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    - m_Name: CarlosHead_Idle_27
+      m_Hash: 92828282
+      m_Sprite: {fileID: 112011965, guid: 49d422205fd03754e80df2c8d3984629, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3399343039418317122, guid: c0d0d322113b2ea49bea787145e317b2, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 28
+  - m_Name: Run
+    m_Hash: 675013152
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CarlosHead_Run_0
+      m_Hash: 822013638
+      m_Sprite: {fileID: 316959144, guid: d0fe8765a0390ca428c3b27f8957f939, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 9085403758376397569, guid: bd4681cbe62ba234badf8c29ee48eb85, type: 3}
+    - m_Name: CarlosHead_Run_1
+      m_Hash: 133815888
+      m_Sprite: {fileID: 704905018, guid: d0fe8765a0390ca428c3b27f8957f939, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2719727576640260580, guid: bd4681cbe62ba234badf8c29ee48eb85, type: 3}
+    - m_Name: CarlosHead_Run_2
+      m_Hash: 519081962
+      m_Sprite: {fileID: 1953709584, guid: d0fe8765a0390ca428c3b27f8957f939, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2567374387184492311, guid: bd4681cbe62ba234badf8c29ee48eb85, type: 3}
+    - m_Name: CarlosHead_Run_3
+      m_Hash: 704102268
+      m_Sprite: {fileID: -1589593769, guid: d0fe8765a0390ca428c3b27f8957f939, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -9204635920538386583, guid: bd4681cbe62ba234badf8c29ee48eb85, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: Jump
+    m_Hash: 125937960
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CarlosHead_Jump
+      m_Hash: 726066028
+      m_Sprite: {fileID: 21300000, guid: 305e65007906bec48878ec34ea2bc019, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2029861427591876520, guid: 072b49810290abf4d92f085aef7605c1, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 1
+  - m_Name: Turn
+    m_Hash: 1227385
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CarlosHead_Turn_0
+      m_Hash: 225883583
+      m_Sprite: {fileID: 1927232494, guid: 79e9351e75d6f924f8f0279b14275470, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4217671766959757848, guid: ee9de878a34461043bca34b3af2c4649, type: 3}
+    - m_Name: CarlosHead_Turn_1
+      m_Hash: 980518185
+      m_Sprite: {fileID: 124513147, guid: 79e9351e75d6f924f8f0279b14275470, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -654056106985503115, guid: ee9de878a34461043bca34b3af2c4649, type: 3}
+    - m_Name: CarlosHead_Turn_2
+      m_Hash: 595121299
+      m_Sprite: {fileID: 598828305, guid: 79e9351e75d6f924f8f0279b14275470, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1788037545121425634, guid: ee9de878a34461043bca34b3af2c4649, type: 3}
+    - m_Name: CarlosHead_Turn_3
+      m_Hash: 343925765
+      m_Sprite: {fileID: -538661274, guid: 79e9351e75d6f924f8f0279b14275470, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -930888426338635944, guid: ee9de878a34461043bca34b3af2c4649, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 4
+  - m_Name: FallGround
+    m_Hash: 569720558
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CarlosHead_FallGround_0
+      m_Hash: 937075462
+      m_Sprite: {fileID: -396301902, guid: ac507a935ef5fcd438e2163da052efa7, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -738053428253682801, guid: 89383bea14c58fa4ab5391e8c469fe00, type: 3}
+    - m_Name: CarlosHead_FallGround_1
+      m_Hash: 14521232
+      m_Sprite: {fileID: -1676362269, guid: ac507a935ef5fcd438e2163da052efa7, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5173527101658353482, guid: 89383bea14c58fa4ab5391e8c469fe00, type: 3}
+    - m_Name: CarlosHead_FallGround_2
+      m_Hash: 433373738
+      m_Sprite: {fileID: -1740497021, guid: ac507a935ef5fcd438e2163da052efa7, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4599558612999491875, guid: 89383bea14c58fa4ab5391e8c469fe00, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 3
+  - m_Name: Crouch
+    m_Hash: 131790382
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CarlosHead_Crouch_0
+      m_Hash: 25596593
+      m_Sprite: {fileID: -191383458, guid: 9c0d42c0f4fab47469fcddaac7998a45, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 5321541280745871192, guid: f902cf1ebe6eb8c4a94d8006a1766158, type: 3}
+    - m_Name: CarlosHead_Crouch_1
+      m_Hash: 914465319
+      m_Sprite: {fileID: 748690919, guid: 9c0d42c0f4fab47469fcddaac7998a45, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -8685690375508378439, guid: f902cf1ebe6eb8c4a94d8006a1766158, type: 3}
+    - m_Name: CarlosHead_Crouch_2
+      m_Hash: 797504413
+      m_Sprite: {fileID: 933268704, guid: 9c0d42c0f4fab47469fcddaac7998a45, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4595856162130276065, guid: f902cf1ebe6eb8c4a94d8006a1766158, type: 3}
+    - m_Name: CarlosHead_Crouch_3
+      m_Hash: 412074763
+      m_Sprite: {fileID: -1315405540, guid: 9c0d42c0f4fab47469fcddaac7998a45, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 2468548580972345259, guid: f902cf1ebe6eb8c4a94d8006a1766158, type: 3}
+    - m_Name: CarlosHead_Crouch_4
+      m_Hash: 116086440
+      m_Sprite: {fileID: 630856141, guid: 9c0d42c0f4fab47469fcddaac7998a45, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4727456165979735635, guid: f902cf1ebe6eb8c4a94d8006a1766158, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 5
+  - m_Name: Roll
+    m_Hash: 243768816
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CarlosHead_Roll_0
+      m_Hash: 37563715
+      m_Sprite: {fileID: -1626662702, guid: ae32e2ba3685fc14a86b90cf9520a63d, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1821260799835940068, guid: 643276468b881f741882451d1e60d0e6, type: 3}
+    - m_Name: CarlosHead_Roll_1
+      m_Hash: 893001173
+      m_Sprite: {fileID: 238527955, guid: ae32e2ba3685fc14a86b90cf9520a63d, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -7468433901186899635, guid: 643276468b881f741882451d1e60d0e6, type: 3}
+    - m_Name: CarlosHead_Roll_2
+      m_Hash: 741559407
+      m_Sprite: {fileID: 1189029012, guid: ae32e2ba3685fc14a86b90cf9520a63d, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 7471326784857314841, guid: 643276468b881f741882451d1e60d0e6, type: 3}
+    - m_Name: CarlosHead_Roll_3
+      m_Hash: 456424697
+      m_Sprite: {fileID: 1498994984, guid: ae32e2ba3685fc14a86b90cf9520a63d, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 6424901741009656281, guid: 643276468b881f741882451d1e60d0e6, type: 3}
+    - m_Name: CarlosHead_Roll_4
+      m_Hash: 89188698
+      m_Sprite: {fileID: -687334255, guid: ae32e2ba3685fc14a86b90cf9520a63d, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -8914015729631904286, guid: 643276468b881f741882451d1e60d0e6, type: 3}
+    - m_Name: CarlosHead_Roll_5
+      m_Hash: 844618188
+      m_Sprite: {fileID: 1736442766, guid: ae32e2ba3685fc14a86b90cf9520a63d, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -8430554754635240778, guid: 643276468b881f741882451d1e60d0e6, type: 3}
+    - m_Name: CarlosHead_Roll_6
+      m_Hash: 727615606
+      m_Sprite: {fileID: -1485420322, guid: ae32e2ba3685fc14a86b90cf9520a63d, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3214147266056961109, guid: 643276468b881f741882451d1e60d0e6, type: 3}
+    - m_Name: CarlosHead_Roll_7
+      m_Hash: 475642080
+      m_Sprite: {fileID: -1899743515, guid: ae32e2ba3685fc14a86b90cf9520a63d, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 625953264807976961, guid: 643276468b881f741882451d1e60d0e6, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 8
+  - m_Name: Death
+    m_Hash: 646380074
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: CarlosHead_Death_0
+      m_Hash: 270878472
+      m_Sprite: {fileID: -1641131905, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 7035814783574653729, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_1
+      m_Hash: 656570270
+      m_Sprite: {fileID: -1384699782, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -8968352407239673001, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_2
+      m_Hash: 1043015204
+      m_Sprite: {fileID: -2033983564, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2300875592056224487, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_3
+      m_Hash: 153884338
+      m_Sprite: {fileID: 907189355, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5639339627319325746, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_4
+      m_Hash: 390628113
+      m_Sprite: {fileID: 29177209, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5041853877025832725, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_5
+      m_Hash: 542094215
+      m_Sprite: {fileID: -1290124469, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 4624117012077880407, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_6
+      m_Hash: 960946749
+      m_Sprite: {fileID: 838267106, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -7097959910363250250, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_7
+      m_Hash: 239194795
+      m_Sprite: {fileID: 1112656737, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -7502231128770397035, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_8
+      m_Hash: 520015674
+      m_Sprite: {fileID: -1815215808, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 24813154151943797, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_9
+      m_Hash: 704249772
+      m_Sprite: {fileID: 1865499790, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8754384237108609086, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_10
+      m_Hash: 587940629
+      m_Sprite: {fileID: 1537006871, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 5522470577377484419, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_11
+      m_Hash: 336360323
+      m_Sprite: {fileID: -1595986648, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -32078166160991298, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_12
+      m_Hash: 218440249
+      m_Sprite: {fileID: -715461310, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8844210426124293864, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_13
+      m_Hash: 973214383
+      m_Sprite: {fileID: -1114050225, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 6453282272518476796, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_14
+      m_Hash: 610699020
+      m_Sprite: {fileID: -1629683805, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 793740213163686715, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_15
+      m_Hash: 325171098
+      m_Sprite: {fileID: -471876421, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8983241735719286385, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_16
+      m_Hash: 174646816
+      m_Sprite: {fileID: 1257610981, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2223654934521152834, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_17
+      m_Hash: 1030739638
+      m_Sprite: {fileID: 124019649, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1105649296212403439, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_18
+      m_Hash: 768658215
+      m_Sprite: {fileID: -1618645633, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 7373979813426037548, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_19
+      m_Hash: 450362289
+      m_Sprite: {fileID: 1473334571, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 5729590312518746111, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_20
+      m_Hash: 136712406
+      m_Sprite: {fileID: -99454730, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -7433933393620795741, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_21
+      m_Hash: 1059135552
+      m_Sprite: {fileID: 1194215991, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2586962145268937291, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_22
+      m_Hash: 640184826
+      m_Sprite: {fileID: 1564239005, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -6155301137299051585, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_23
+      m_Hash: 288309612
+      m_Sprite: {fileID: 750443648, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5971376620496810606, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_24
+      m_Hash: 256627919
+      m_Sprite: {fileID: -604905114, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1785907667840820812, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_25
+      m_Hash: 944563289
+      m_Sprite: {fileID: 2017754477, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 7911721865337329327, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_26
+      m_Hash: 558216675
+      m_Sprite: {fileID: 270590336, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 6203848523639006639, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_27
+      m_Hash: 373458293
+      m_Sprite: {fileID: 468003029, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2347968769439577657, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_28
+      m_Hash: 117283044
+      m_Sprite: {fileID: 1186154947, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4793953176163009232, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_29
+      m_Hash: 838510706
+      m_Sprite: {fileID: -2113155662, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1823411184808005147, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_30
+      m_Hash: 289218967
+      m_Sprite: {fileID: -1133687885, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8274267866364495205, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_31
+      m_Hash: 641339649
+      m_Sprite: {fileID: 96825451, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -7433909528511457292, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_32
+      m_Hash: 1060323515
+      m_Sprite: {fileID: 1728667597, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5564644677091587055, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_33
+      m_Hash: 137654317
+      m_Sprite: {fileID: 884172318, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -3776770280638353685, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_34
+      m_Hash: 374400398
+      m_Sprite: {fileID: 1266861285, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 6673777795100289464, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_35
+      m_Hash: 559404312
+      m_Sprite: {fileID: -1290047884, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -4747346606989873076, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_36
+      m_Hash: 945718434
+      m_Sprite: {fileID: -185985751, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -1678218621818863555, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_37
+      m_Hash: 257537076
+      m_Sprite: {fileID: -1226356325, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1935724508690075538, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_38
+      m_Hash: 535210405
+      m_Sprite: {fileID: -609486453, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5886171633658528263, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_39
+      m_Hash: 685873459
+      m_Sprite: {fileID: -637638516, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8850217604595237728, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_40
+      m_Hash: 511489872
+      m_Sprite: {fileID: 1661218787, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -5190663050265148560, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_41
+      m_Hash: 695961542
+      m_Sprite: {fileID: 1671632326, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -2546533657972255119, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_42
+      m_Hash: 812832380
+      m_Sprite: {fileID: -60591771, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -9191430779136288586, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_43
+      m_Hash: 125167338
+      m_Sprite: {fileID: 1753505833, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -6210340769263181202, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_44
+      m_Hash: 420574025
+      m_Sprite: {fileID: -529813319, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 7748841050055814289, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_45
+      m_Hash: 773211103
+      m_Sprite: {fileID: -1881489360, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8000522634813595493, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    - m_Name: CarlosHead_Death_46
+      m_Hash: 924783205
+      m_Sprite: {fileID: -96929382, guid: 3f0573774a87c5444bec4650d43f4ea2, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 8357185669205966248, guid: 76b4d43b7bb8f7546b219fd152bbd558, type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 47
+  m_PrimaryLibraryGUID: de6522be14e44d3438a67cb3e8957d77
+  m_ModificationHash: 638459407631501779
+  m_Version: 1

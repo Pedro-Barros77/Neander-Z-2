@@ -39,7 +39,7 @@ public class PlayerWeaponController : MonoBehaviour
     Transform handTransform, throwingContainerTransform, throwableSpawnPointTransform;
     float? startSwitchTime;
     float startThrowingContainerScale;
-    SpriteRenderer playerSprite, handPalmSprite, fingersSprite;
+    SpriteRenderer handPalmSprite, fingersSprite;
     protected LineRenderer LineRenderer;
     Animator playerAnimator;
     Transform floor;
@@ -64,7 +64,6 @@ public class PlayerWeaponController : MonoBehaviour
     {
         floor = GameObject.Find("Floor")?.transform;
         Player = transform.parent.GetComponent<Player>();
-        playerSprite = Player.GetComponent<SpriteRenderer>();
         playerAnimator = Player.GetComponent<Animator>();
         LineRenderer = GetComponent<LineRenderer>();
         StartLocalPosition = transform.localPosition;
@@ -152,12 +151,15 @@ public class PlayerWeaponController : MonoBehaviour
         }
 
         blinkingReloadText.gameObject.SetActive(Player.CurrentWeapon.NeedsReload());
-        blinkingReloadText.transform.position = Player.transform.position + new Vector3(0, playerSprite.size.y * 0.7f);
+        blinkingReloadText.transform.position = Player.transform.position + new Vector3(0, Player.Bounds.size.y * 0.7f);
 
         throwingContainerTransform.localScale = new Vector3(Player.CurrentWeapon.PlayerFlipDir * startThrowingContainerScale, startThrowingContainerScale, startThrowingContainerScale);
 
         handPalmSprite.flipY = IsAimingLeft;
         fingersSprite.flipY = IsAimingLeft;
+
+        if (Player?.Data?.SkinData != null)
+            Player.CurrentWeapon.SetHandSkinColor(Player.Data.SkinData.SkinColor);
     }
 
     /// <summary>
@@ -411,8 +413,9 @@ public class PlayerWeaponController : MonoBehaviour
     {
         var weaponPrefab = Resources.Load<GameObject>($"Prefabs/Weapons/{weaponType}");
         GameObject weaponObj = Instantiate(weaponPrefab, handTransform);
-        weaponObj.GetComponent<BaseWeapon>().PlayerWeaponController = this;
         weaponObj.name = weaponType.ToString();
+        var weaponScript = weaponObj.GetComponent<BaseWeapon>();
+        weaponScript.PlayerWeaponController = this;
         return weaponObj;
     }
 

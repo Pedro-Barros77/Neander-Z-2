@@ -1,13 +1,8 @@
-public class PrefsSave
+public class PrefsSave : BaseNZSave
 {
-    #region Options
-    public float MusicVolume;
-    public float InterfaceVolume;
-    public float PlayerVolume;
-    public float EnemiesVolume;
+    public float MusicVolume = 1;
+    public float InterfaceVolume = 1;
+    public float PlayerVolume = 1;
+    public float EnemiesVolume = 1;
     public int InputMode;
-    #endregion
-
-    public string FolderPath;
-    public string FileName;
 }

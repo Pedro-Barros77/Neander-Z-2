@@ -351,7 +351,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (!IsInventoryItem)
             return;
 
-        DragClone.transform.position = Input.mousePosition;
+        DragClone.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition).WithZ(0);
     }
 
     /// <summary>

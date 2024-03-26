@@ -30,6 +30,8 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private AudioSource audioSource;
     private int touchId = -1;
 
+    bool isInteractable;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -47,6 +49,8 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             else
                 Tooltip.SetText(TooltipText);
         }
+        if (Button != null)
+            isInteractable = Button.interactable;
     }
 
     void Update()
@@ -54,16 +58,25 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (IsPressing)
             UpdateClickPosition();
 
-        if (Button != null && !Button.interactable)
+        if (Button != null)
         {
-            if (Tooltip != null)
-                Tooltip.SetVisible(false);
+            if (Button.interactable != isInteractable && Tooltip != null)
+                HoverEvent?.Invoke(this, false);
+            isInteractable = Button.interactable;
 
-            if (IsHovering && ChangesCursorOnHover)
-                MenuController.Instance.SetCursor(Cursors.Arrow);
+            if (!Button.interactable)
+            {
+                if (Tooltip != null)
+                    Tooltip.SetVisible(false);
 
-            IsHovering = false;
+                if (IsHovering && ChangesCursorOnHover)
+                    MenuController.Instance.SetCursor(Cursors.Arrow);
+
+                IsHovering = false;
+            }
         }
+
+        
     }
 
     private void LateUpdate()
@@ -73,7 +86,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     /// <summary>
-    /// Função chamada quando o botão é clicado.
+    /// Funï¿½ï¿½o chamada quando o botï¿½o ï¿½ clicado.
     /// </summary>
     public void OnClick()
     {
@@ -92,7 +105,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     /// <summary>
-    /// Função chamada quando o mouse passa por cima do botão.
+    /// Funï¿½ï¿½o chamada quando o mouse passa por cima do botï¿½o.
     /// </summary>
     public void OnHoverIn()
     {
@@ -109,7 +122,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     /// <summary>
-    /// Função chamada quando o mouse sai de cima do botão.
+    /// Funï¿½ï¿½o chamada quando o mouse sai de cima do botï¿½o.
     /// </summary>
     public void OnHoverOut()
     {
@@ -125,9 +138,9 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     /// <summary>
-    /// Reinicia o estado e animação do botão.
+    /// Reinicia o estado e animaï¿½ï¿½o do botï¿½o.
     /// </summary>
-    /// <param name="btnAnimator">Botão a ser reiniciado.</param>
+    /// <param name="btnAnimator">Botï¿½o a ser reiniciado.</param>
     public void ResetButton()
     {
         if (Button == null)

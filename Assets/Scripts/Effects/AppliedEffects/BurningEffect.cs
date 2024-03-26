@@ -4,26 +4,7 @@ using UnityEngine;
 public class BurningEffect : BaseAppliedEffect
 {
     public float TickDamage { get; set; }
-
-    SpriteRenderer targetSprite;
-    Color32 targetStartColor;
-
-    protected override void Start()
-    {
-        base.Start();
-
-        if (EnemyTarget != null)
-        {
-            targetSprite = EnemyTarget.gameObject.GetComponent<SpriteRenderer>();
-            targetStartColor = targetSprite.color;
-        }
-
-        if (PlayerTarget != null)
-        {
-            targetSprite = PlayerTarget.gameObject.GetComponent<SpriteRenderer>();
-            targetStartColor = targetSprite.color;
-        }
-    }
+    private readonly Color32 RedTickColor = new(255, 150, 150, 255);
 
     protected override void OnTickEffect()
     {
@@ -35,36 +16,35 @@ public class BurningEffect : BaseAppliedEffect
         EnemyTarget?.TakeDamage(TickDamage, 1, "", null, selfDamage: SelfAppliedEffect);
         PlayerTarget?.TakeDamage(TickDamage, 1, "", PlayerOwner);
 
-        SetSpriteRed(targetSprite);
+        SetSpriteRed();
     }
 
     /// <summary>
     /// Define a cor do sprite para vermelho.
     /// </summary>
-    /// <param name="sprite">O sprite do alvo a ser alterado.</param>
-    private void SetSpriteRed(SpriteRenderer sprite)
+    private void SetSpriteRed()
     {
-        if (sprite == null) return;
+        EnemyTarget?.HandleSpriteColorChange(RedTickColor);
+        PlayerTarget?.HandleSpriteColorChange(RedTickColor);
 
-        sprite.color = new Color32(255, 200, 200, 255);
-
-        StartCoroutine(ResetSpriteColor(sprite));
+        StartCoroutine(ResetSpriteColor());
     }
 
     /// <summary>
     /// Define a cor do sprite de volta para a original, após um tempo.
     /// </summary>
     /// <param name="sprite">O sprite do alvo a ser alterado.</param>
-    IEnumerator ResetSpriteColor(SpriteRenderer sprite)
+    IEnumerator ResetSpriteColor()
     {
         yield return new WaitForSeconds(Mathf.Min(TickIntervalMs / 2000, 500));
 
-        sprite.color = targetStartColor;
+        EnemyTarget?.HandleSpriteColorChange(Color.white);
+        PlayerTarget?.HandleSpriteColorChange(Color.white);
     }
 
     private void OnDestroy()
     {
-        if (targetSprite != null)
-            targetSprite.color = targetStartColor;
+        EnemyTarget?.HandleSpriteColorChange(Color.white);
+        PlayerTarget?.HandleSpriteColorChange(Color.white);
     }
 }

@@ -17,7 +17,11 @@ public class WaveStats : AutoRevertSO
     public bool Started;
     public int InputMode;
 
-    public WaveStats.Data GetData() => new()
+    /// <summary>
+    /// Converte os dados da wave para um objeto salvável.
+    /// </summary>
+    /// <returns>O objeto preparado para ser salvo.</returns>
+    public Data Encode() => new()
     {
         WaveNumber = WaveNumber,
         Score = Score,

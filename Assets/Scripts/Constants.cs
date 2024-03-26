@@ -270,5 +270,7 @@ public static class Constants
         public static readonly Color32 YellowAmmo = new(230, 220, 80, 255);
         public static readonly Color32 SelectedOptionColor = new(70, 230, 130, 255);
         public static readonly Color32 UnselectedOptionColor = new(230, 230, 230, 255);
+        public static readonly Color32 SkinLightestColor = new(251, 237, 223, 255);
+        public static readonly Color32 SkinDarkestColor = new(35, 13, 0, 255);
     }
 }
