@@ -157,6 +157,9 @@ public class PlayerWeaponController : MonoBehaviour
 
         handPalmSprite.flipY = IsAimingLeft;
         fingersSprite.flipY = IsAimingLeft;
+
+        if (Player?.Data?.SkinData != null)
+            Player.CurrentWeapon.SetHandSkinColor(Player.Data.SkinData.SkinColor);
     }
 
     /// <summary>
@@ -413,7 +416,6 @@ public class PlayerWeaponController : MonoBehaviour
         weaponObj.name = weaponType.ToString();
         var weaponScript = weaponObj.GetComponent<BaseWeapon>();
         weaponScript.PlayerWeaponController = this;
-        weaponScript.SetHandSkinColor(Player.Data.SkinData.SkinColor);
         return weaponObj;
     }
 

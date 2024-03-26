@@ -190,6 +190,7 @@ public abstract class BaseWeapon : MonoBehaviour
     protected const float FIRE_RATE_RATIO = 1000;
 
     protected bool isShooting;
+    protected bool isHandColorSet;
 
     #endregion
 
@@ -499,8 +500,14 @@ public abstract class BaseWeapon : MonoBehaviour
     /// <param name="color">A cor de pele a ser definida na mão.</param>
     public virtual void SetHandSkinColor(Color32 color)
     {
+        if (isHandColorSet)
+            return;
+
         if (HandSpriteRenderer != null)
+        {
             HandSpriteRenderer.color = color;
+            isHandColorSet = true;
+        }
     }
 
     /// <summary>
