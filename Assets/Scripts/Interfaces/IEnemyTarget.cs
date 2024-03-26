@@ -14,4 +14,9 @@ public interface IEnemyTarget
     public void TakeDamage(float damage, float headshotMultiplier, string bodyPartName, IPlayerTarget attacker, Vector3? hitPosition = null, bool selfDamage = false);
     public void GetHealth(float value);
     void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName);
+    /// <summary>
+    /// Muda a cor do material desse player.
+    /// </summary>
+    /// <param name="color">A cor destino.</param>
+    void HandleSpriteColorChange(Color32 color);
 }

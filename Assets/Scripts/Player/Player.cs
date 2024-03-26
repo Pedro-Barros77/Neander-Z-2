@@ -137,7 +137,6 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     public PlayerMovement PlayerMovement { get; private set; }
     public Rigidbody2D RigidBody { get; private set; }
 
-
     void Start()
     {
         IsAlive = true;
@@ -420,6 +419,14 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         bool isHeadshot = lastDamagedBodyPartName == "Head";
         if (isHeadshot && Backpack.EquippedPassiveSkillType == PassiveSkillTypes.PrecisionBounty)
             CheckAmmoDrop(enemy.transform.position);
+    }
+
+    public void HandleSpriteColorChange(Color32 color)
+    {
+        var playerSprites = transform.Find("Skin").GetComponentsInChildren<SpriteRenderer>();
+
+        foreach (var spriteRenderer in playerSprites)
+            spriteRenderer.material.SetColor("_Color", color);
     }
 
     /// <summary>
