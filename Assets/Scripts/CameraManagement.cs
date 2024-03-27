@@ -22,14 +22,14 @@ public class CameraManagement : MonoBehaviour
     private Vector3 focusPosition, focusStartPosition;
 
     Camera cam;
-    SpriteRenderer playerSprite;
+    Player playerScript;
 
     void Start()
     {
         cam = gameObject.GetComponent<Camera>();
-        playerSprite = player.GetComponent<SpriteRenderer>();
         startCameraY = transform.position.y;
         startZoom = cam.orthographicSize;
+        playerScript = player.GetComponent<Player>();
     }
 
     void Update()
@@ -51,7 +51,7 @@ public class CameraManagement : MonoBehaviour
         float halfCamHeight = cam.orthographicSize;
         float halfCamWidth = cam.aspect * halfCamHeight;
 
-        float playerWidth = playerSprite.bounds.size.x;
+        float playerWidth = playerScript.Bounds.size.x;
 
         float camX;
         switch (CameraAlignment)

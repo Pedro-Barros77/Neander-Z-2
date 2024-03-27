@@ -1,0 +1,566 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryPants_Idle_0
+      m_Hash: 248592610
+      m_Sprite: {fileID: -1616630190, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1616630190, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_1
+      m_Hash: 970328180
+      m_Sprite: {fileID: -1259629554, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1259629554, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_2
+      m_Hash: 551508430
+      m_Sprite: {fileID: 1558166993, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1558166993, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_3
+      m_Hash: 400058712
+      m_Sprite: {fileID: -1514854088, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1514854088, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_4
+      m_Hash: 163380475
+      m_Sprite: {fileID: 376434764, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 376434764, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_5
+      m_Hash: 1052494957
+      m_Sprite: {fileID: -1261566964, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1261566964, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_6
+      m_Hash: 666017239
+      m_Sprite: {fileID: -373477760, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -373477760, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_7
+      m_Hash: 280341825
+      m_Sprite: {fileID: -1228838992, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1228838992, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_8
+      m_Hash: 700624
+      m_Sprite: {fileID: -1181607624, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1181607624, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_9
+      m_Hash: 923631686
+      m_Sprite: {fileID: 2052991360, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2052991360, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_10
+      m_Hash: 596294668
+      m_Sprite: {fileID: -1756394187, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1756394187, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_11
+      m_Hash: 344820890
+      m_Sprite: {fileID: 419385439, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 419385439, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_12
+      m_Hash: 226811168
+      m_Sprite: {fileID: 2136183137, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2136183137, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_13
+      m_Hash: 981724598
+      m_Sprite: {fileID: 850629956, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 850629956, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_14
+      m_Hash: 619149333
+      m_Sprite: {fileID: 1064414780, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1064414780, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_15
+      m_Hash: 333465731
+      m_Sprite: {fileID: -1661537996, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1661537996, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_16
+      m_Hash: 183048505
+      m_Sprite: {fileID: -991145498, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -991145498, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_17
+      m_Hash: 1039018415
+      m_Sprite: {fileID: 907852406, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 907852406, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_18
+      m_Hash: 760296510
+      m_Sprite: {fileID: -417155219, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -417155219, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_19
+      m_Hash: 441844904
+      m_Sprite: {fileID: -498841287, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -498841287, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_20
+      m_Hash: 145223631
+      m_Sprite: {fileID: 2026107351, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2026107351, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_21
+      m_Hash: 1067507545
+      m_Sprite: {fileID: 1651389281, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1651389281, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_22
+      m_Hash: 648646371
+      m_Sprite: {fileID: -1944046806, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1944046806, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_23
+      m_Hash: 296664693
+      m_Sprite: {fileID: 1045309868, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1045309868, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_24
+      m_Hash: 264907734
+      m_Sprite: {fileID: -1752072575, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1752072575, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_25
+      m_Hash: 952965952
+      m_Sprite: {fileID: 1476509376, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1476509376, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_26
+      m_Hash: 566512378
+      m_Sprite: {fileID: 1467808396, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1467808396, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    - m_Name: MilitaryPants_Idle_27
+      m_Hash: 381909612
+      m_Sprite: {fileID: 225677266, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 225677266, guid: 559ebde73fe07b143a3015d13f0d8199, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 28
+  - m_Name: Run
+    m_Hash: 675013152
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryPants_Run_0
+      m_Hash: 509879875
+      m_Sprite: {fileID: 1363758002, guid: 07e18c9d70eecd447978aad62fc8bd53, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1363758002, guid: 07e18c9d70eecd447978aad62fc8bd53, type: 3}
+    - m_Name: MilitaryPants_Run_1
+      m_Hash: 694359765
+      m_Sprite: {fileID: -638338983, guid: 07e18c9d70eecd447978aad62fc8bd53, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -638338983, guid: 07e18c9d70eecd447978aad62fc8bd53, type: 3}
+    - m_Name: MilitaryPants_Run_2
+      m_Hash: 812271471
+      m_Sprite: {fileID: 1148135364, guid: 07e18c9d70eecd447978aad62fc8bd53, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1148135364, guid: 07e18c9d70eecd447978aad62fc8bd53, type: 3}
+    - m_Name: MilitaryPants_Run_3
+      m_Hash: 124614649
+      m_Sprite: {fileID: 828783377, guid: 07e18c9d70eecd447978aad62fc8bd53, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 828783377, guid: 07e18c9d70eecd447978aad62fc8bd53, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: Jump
+    m_Hash: 125937960
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryPants_Jump
+      m_Hash: 92530449
+      m_Sprite: {fileID: 21300000, guid: a142fefb7809c29448c7e91fdecc11f6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: a142fefb7809c29448c7e91fdecc11f6, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 1
+  - m_Name: Turn
+    m_Hash: 1227385
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryPants_Turn_0
+      m_Hash: 277502168
+      m_Sprite: {fileID: 677493738, guid: 754589fce7c55904999821a48116f1bb, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 677493738, guid: 754589fce7c55904999821a48116f1bb, type: 3}
+    - m_Name: MilitaryPants_Turn_1
+      m_Hash: 663578702
+      m_Sprite: {fileID: -83082641, guid: 754589fce7c55904999821a48116f1bb, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -83082641, guid: 754589fce7c55904999821a48116f1bb, type: 3}
+    - m_Name: MilitaryPants_Turn_2
+      m_Hash: 1048852980
+      m_Sprite: {fileID: -1831905679, guid: 754589fce7c55904999821a48116f1bb, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1831905679, guid: 754589fce7c55904999821a48116f1bb, type: 3}
+    - m_Name: MilitaryPants_Turn_3
+      m_Hash: 159582562
+      m_Sprite: {fileID: 1198582333, guid: 754589fce7c55904999821a48116f1bb, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1198582333, guid: 754589fce7c55904999821a48116f1bb, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: FallGround
+    m_Hash: 569720558
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryPants_FallGround_0
+      m_Hash: 185867574
+      m_Sprite: {fileID: 1280780949, guid: dd0a4c02f36a8de44ab9d587dbe21459, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1280780949, guid: dd0a4c02f36a8de44ab9d587dbe21459, type: 3}
+    - m_Name: MilitaryPants_FallGround_1
+      m_Hash: 1007889824
+      m_Sprite: {fileID: -726812987, guid: dd0a4c02f36a8de44ab9d587dbe21459, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -726812987, guid: dd0a4c02f36a8de44ab9d587dbe21459, type: 3}
+    - m_Name: MilitaryPants_FallGround_2
+      m_Hash: 622492698
+      m_Sprite: {fileID: -680793122, guid: dd0a4c02f36a8de44ab9d587dbe21459, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -680793122, guid: dd0a4c02f36a8de44ab9d587dbe21459, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 3
+  - m_Name: Crouch
+    m_Hash: 131790382
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryPants_Crouch_0
+      m_Hash: 897674472
+      m_Sprite: {fileID: 1074824007, guid: e8a2cc87a1473ea47b4fe54a4064edeb, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1074824007, guid: e8a2cc87a1473ea47b4fe54a4064edeb, type: 3}
+    - m_Name: MilitaryPants_Crouch_1
+      m_Hash: 42359934
+      m_Sprite: {fileID: 1460205533, guid: e8a2cc87a1473ea47b4fe54a4064edeb, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1460205533, guid: e8a2cc87a1473ea47b4fe54a4064edeb, type: 3}
+    - m_Name: MilitaryPants_Crouch_2
+      m_Hash: 462360004
+      m_Sprite: {fileID: 960187896, guid: e8a2cc87a1473ea47b4fe54a4064edeb, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 960187896, guid: e8a2cc87a1473ea47b4fe54a4064edeb, type: 3}
+    - m_Name: MilitaryPants_Crouch_3
+      m_Hash: 747126098
+      m_Sprite: {fileID: -842912725, guid: e8a2cc87a1473ea47b4fe54a4064edeb, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -842912725, guid: e8a2cc87a1473ea47b4fe54a4064edeb, type: 3}
+    - m_Name: MilitaryPants_Crouch_4
+      m_Hash: 854370545
+      m_Sprite: {fileID: 863907228, guid: e8a2cc87a1473ea47b4fe54a4064edeb, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 863907228, guid: e8a2cc87a1473ea47b4fe54a4064edeb, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 5
+  - m_Name: Roll
+    m_Hash: 243768816
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryPants_Roll_0
+      m_Hash: 532791332
+      m_Sprite: {fileID: 1577807580, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1577807580, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+    - m_Name: MilitaryPants_Roll_1
+      m_Hash: 684126386
+      m_Sprite: {fileID: 512398593, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 512398593, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+    - m_Name: MilitaryPants_Roll_2
+      m_Hash: 835690760
+      m_Sprite: {fileID: -1195175936, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1195175936, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+    - m_Name: MilitaryPants_Roll_3
+      m_Hash: 113807774
+      m_Sprite: {fileID: 949829163, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 949829163, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+    - m_Name: MilitaryPants_Roll_4
+      m_Hash: 413926461
+      m_Sprite: {fileID: -1517771923, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1517771923, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+    - m_Name: MilitaryPants_Roll_5
+      m_Hash: 799749291
+      m_Sprite: {fileID: 776800360, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 776800360, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+    - m_Name: MilitaryPants_Roll_6
+      m_Hash: 916612369
+      m_Sprite: {fileID: 794918898, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 794918898, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+    - m_Name: MilitaryPants_Roll_7
+      m_Hash: 27612551
+      m_Sprite: {fileID: 567162555, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 567162555, guid: 560cf0b81da7b6948a465e81ce188d0c, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 8
+  - m_Name: Death
+    m_Hash: 646380074
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryPants_Death_0
+      m_Hash: 57560862
+      m_Sprite: {fileID: -1267392109, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1267392109, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_1
+      m_Hash: 879329160
+      m_Sprite: {fileID: -1889102505, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1889102505, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_2
+      m_Hash: 761278002
+      m_Sprite: {fileID: 245000160, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 245000160, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_3
+      m_Hash: 442965668
+      m_Sprite: {fileID: 582528703, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 582528703, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_4
+      m_Hash: 67341063
+      m_Sprite: {fileID: -77180260, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -77180260, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_5
+      m_Hash: 855948177
+      m_Sprite: {fileID: 296130104, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 296130104, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_6
+      m_Hash: 705554987
+      m_Sprite: {fileID: 182637729, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 182637729, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_7
+      m_Hash: 487250621
+      m_Sprite: {fileID: -1612701124, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1612701124, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_8
+      m_Hash: 230016812
+      m_Sprite: {fileID: -284143081, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -284143081, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_9
+      m_Hash: 984807354
+      m_Sprite: {fileID: 1993138498, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1993138498, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_10
+      m_Hash: 386710860
+      m_Sprite: {fileID: -903767600, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -903767600, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_11
+      m_Hash: 537628122
+      m_Sprite: {fileID: -898392309, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -898392309, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_12
+      m_Hash: 956488800
+      m_Sprite: {fileID: -2041299347, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2041299347, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_13
+      m_Hash: 235269366
+      m_Sprite: {fileID: -228583273, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -228583273, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_14
+      m_Hash: 274823509
+      m_Sprite: {fileID: 2104204662, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2104204662, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_15
+      m_Hash: 661014979
+      m_Sprite: {fileID: -1360018571, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1360018571, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_16
+      m_Hash: 1047468153
+      m_Sprite: {fileID: -1876747139, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1876747139, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_17
+      m_Hash: 157821167
+      m_Sprite: {fileID: -1190197309, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1190197309, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_18
+      m_Hash: 433534334
+      m_Sprite: {fileID: 1443648406, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1443648406, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_19
+      m_Hash: 785384936
+      m_Sprite: {fileID: 1749500168, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1749500168, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_20
+      m_Hash: 1008856719
+      m_Sprite: {fileID: -1497782754, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1497782754, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_21
+      m_Hash: 187096601
+      m_Sprite: {fileID: 1066030506, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1066030506, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_22
+      m_Hash: 305106851
+      m_Sprite: {fileID: -1005163955, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1005163955, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_23
+      m_Hash: 623427381
+      m_Sprite: {fileID: 1676363665, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1676363665, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_24
+      m_Hash: 994847382
+      m_Sprite: {fileID: 424910283, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 424910283, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_25
+      m_Hash: 206248448
+      m_Sprite: {fileID: -2138884495, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2138884495, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_26
+      m_Hash: 356666298
+      m_Sprite: {fileID: -1307438475, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1307438475, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_27
+      m_Hash: 574978860
+      m_Sprite: {fileID: -789311414, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -789311414, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_28
+      m_Hash: 855271101
+      m_Sprite: {fileID: -1159378525, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1159378525, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_29
+      m_Hash: 100488747
+      m_Sprite: {fileID: -633007422, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -633007422, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_30
+      m_Hash: 624615374
+      m_Sprite: {fileID: 1618028532, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1618028532, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_31
+      m_Hash: 306048856
+      m_Sprite: {fileID: -1004230792, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1004230792, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_32
+      m_Hash: 188006114
+      m_Sprite: {fileID: 158362268, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 158362268, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_33
+      m_Hash: 1010011764
+      m_Sprite: {fileID: 1096793470, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1096793470, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_34
+      m_Hash: 576134103
+      m_Sprite: {fileID: -897278021, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -897278021, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_35
+      m_Hash: 357575489
+      m_Sprite: {fileID: -786785640, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -786785640, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_36
+      m_Hash: 207190779
+      m_Sprite: {fileID: -1796234411, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1796234411, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_37
+      m_Hash: 996035181
+      m_Sprite: {fileID: -1553659036, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1553659036, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_38
+      m_Hash: 736188412
+      m_Sprite: {fileID: 278827553, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 278827553, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_39
+      m_Hash: 484861802
+      m_Sprite: {fileID: 977249047, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 977249047, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_40
+      m_Hash: 712722697
+      m_Sprite: {fileID: 1536936476, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1536936476, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_41
+      m_Hash: 494696863
+      m_Sprite: {fileID: -1307392643, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1307392643, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_42
+      m_Hash: 74786853
+      m_Sprite: {fileID: -1260912893, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1260912893, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_43
+      m_Hash: 863115443
+      m_Sprite: {fileID: -1582231853, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1582231853, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_44
+      m_Hash: 756452624
+      m_Sprite: {fileID: -1681407941, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1681407941, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_45
+      m_Hash: 437370246
+      m_Sprite: {fileID: 1341965144, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1341965144, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    - m_Name: MilitaryPants_Death_46
+      m_Hash: 51964988
+      m_Sprite: {fileID: 573509524, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 573509524, guid: 7b32802869783cd4bba7b65b1af955af, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 47
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638371242565701450
+  m_Version: 1

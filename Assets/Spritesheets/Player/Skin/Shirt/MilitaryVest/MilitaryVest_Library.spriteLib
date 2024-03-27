@@ -1,0 +1,566 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryVest_Idle_0
+      m_Hash: 805495264
+      m_Sprite: {fileID: 210132778, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 210132778, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_1
+      m_Hash: 117821814
+      m_Sprite: {fileID: -248711090, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -248711090, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_2
+      m_Hash: 504135884
+      m_Sprite: {fileID: -597445633, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -597445633, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_3
+      m_Hash: 688631898
+      m_Sprite: {fileID: 2130709440, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2130709440, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_4
+      m_Hash: 930031097
+      m_Sprite: {fileID: -2106749710, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2106749710, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_5
+      m_Hash: 6821231
+      m_Sprite: {fileID: 1350770447, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1350770447, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_6
+      m_Hash: 425805013
+      m_Sprite: {fileID: -158921843, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -158921843, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_7
+      m_Hash: 778466371
+      m_Sprite: {fileID: 913712333, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 913712333, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_8
+      m_Hash: 1054435794
+      m_Sprite: {fileID: 404704501, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 404704501, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_9
+      m_Hash: 165566788
+      m_Sprite: {fileID: -271387007, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -271387007, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_10
+      m_Hash: 226103033
+      m_Sprite: {fileID: 2136449183, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2136449183, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_11
+      m_Hash: 981286511
+      m_Sprite: {fileID: -2020709163, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2020709163, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_12
+      m_Hash: 594833365
+      m_Sprite: {fileID: 1932099498, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1932099498, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_13
+      m_Hash: 343105347
+      m_Sprite: {fileID: 849346173, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 849346173, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_14
+      m_Hash: 169331424
+      m_Sprite: {fileID: -261763727, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -261763727, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_15
+      m_Hash: 1024522870
+      m_Sprite: {fileID: 2047703215, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2047703215, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_16
+      m_Hash: 605662156
+      m_Sprite: {fileID: -328131346, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -328131346, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_17
+      m_Hash: 320772954
+      m_Sprite: {fileID: 56906079, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 56906079, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_18
+      m_Hash: 60917451
+      m_Sprite: {fileID: -160028372, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -160028372, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_19
+      m_Hash: 883340893
+      m_Sprite: {fileID: -1926664814, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1926664814, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_20
+      m_Hash: 643259706
+      m_Sprite: {fileID: 930874931, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 930874931, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_21
+      m_Hash: 290483628
+      m_Sprite: {fileID: 1239619061, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1239619061, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_22
+      m_Hash: 140065814
+      m_Sprite: {fileID: -1527936340, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1527936340, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_23
+      m_Hash: 1063128192
+      m_Sprite: {fileID: 552321067, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 552321067, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_24
+      m_Hash: 557488419
+      m_Sprite: {fileID: -1707868731, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1707868731, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_25
+      m_Hash: 373139893
+      m_Sprite: {fileID: 1360728909, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1360728909, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_26
+      m_Hash: 255129615
+      m_Sprite: {fileID: 1641800621, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1641800621, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    - m_Name: MilitaryVest_Idle_27
+      m_Hash: 942917785
+      m_Sprite: {fileID: 2076190685, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2076190685, guid: 7bf2ceeff9ade90409160d210aac1a96, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 28
+  - m_Name: Run
+    m_Hash: 675013152
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryVest_Run_0
+      m_Hash: 430330587
+      m_Sprite: {fileID: 35552328, guid: 0279a9b42c6c09d46a8e2690522a3a66, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 35552328, guid: 0279a9b42c6c09d46a8e2690522a3a66, type: 3}
+    - m_Name: MilitaryVest_Run_1
+      m_Hash: 782328397
+      m_Sprite: {fileID: -1262965543, guid: 0279a9b42c6c09d46a8e2690522a3a66, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1262965543, guid: 0279a9b42c6c09d46a8e2690522a3a66, type: 3}
+    - m_Name: MilitaryVest_Run_2
+      m_Hash: 933770231
+      m_Sprite: {fileID: -688885175, guid: 0279a9b42c6c09d46a8e2690522a3a66, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -688885175, guid: 0279a9b42c6c09d46a8e2690522a3a66, type: 3}
+    - m_Name: MilitaryVest_Run_3
+      m_Hash: 11469665
+      m_Sprite: {fileID: -1841659815, guid: 0279a9b42c6c09d46a8e2690522a3a66, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1841659815, guid: 0279a9b42c6c09d46a8e2690522a3a66, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: Jump
+    m_Hash: 125937960
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryVest_Jump
+      m_Hash: 708011541
+      m_Sprite: {fileID: 21300000, guid: 52eab21168d3d264a971e285a2b15573, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 52eab21168d3d264a971e285a2b15573, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 1
+  - m_Name: Turn
+    m_Hash: 1227385
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryVest_Turn_0
+      m_Hash: 777617882
+      m_Sprite: {fileID: 60940297, guid: 51741b3c92727a046bf1a75c7cef7caf, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 60940297, guid: 51741b3c92727a046bf1a75c7cef7caf, type: 3}
+    - m_Name: MilitaryVest_Turn_1
+      m_Hash: 425636172
+      m_Sprite: {fileID: 656159830, guid: 51741b3c92727a046bf1a75c7cef7caf, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 656159830, guid: 51741b3c92727a046bf1a75c7cef7caf, type: 3}
+    - m_Name: MilitaryVest_Turn_2
+      m_Hash: 5759222
+      m_Sprite: {fileID: 1016871394, guid: 51741b3c92727a046bf1a75c7cef7caf, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1016871394, guid: 51741b3c92727a046bf1a75c7cef7caf, type: 3}
+    - m_Name: MilitaryVest_Turn_3
+      m_Hash: 928043104
+      m_Sprite: {fileID: -1943748886, guid: 51741b3c92727a046bf1a75c7cef7caf, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1943748886, guid: 51741b3c92727a046bf1a75c7cef7caf, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: FallGround
+    m_Hash: 569720558
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryVest_FallGround_0
+      m_Hash: 159574456
+      m_Sprite: {fileID: -1885585602, guid: 76d583bdbac815243bd4fa40962612e2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1885585602, guid: 76d583bdbac815243bd4fa40962612e2, type: 3}
+    - m_Name: MilitaryVest_FallGround_1
+      m_Hash: 1048959278
+      m_Sprite: {fileID: -753819142, guid: 76d583bdbac815243bd4fa40962612e2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -753819142, guid: 76d583bdbac815243bd4fa40962612e2, type: 3}
+    - m_Name: MilitaryVest_FallGround_2
+      m_Hash: 663521428
+      m_Sprite: {fileID: -64910124, guid: 76d583bdbac815243bd4fa40962612e2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -64910124, guid: 76d583bdbac815243bd4fa40962612e2, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 3
+  - m_Name: Crouch
+    m_Hash: 131790382
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryVest_Crouch_0
+      m_Hash: 951622345
+      m_Sprite: {fileID: 139310828, guid: 30bb9cf4e18fe9a40b76c920e4582b6a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 139310828, guid: 30bb9cf4e18fe9a40b76c920e4582b6a, type: 3}
+    - m_Name: MilitaryVest_Crouch_1
+      m_Hash: 264219231
+      m_Sprite: {fileID: -738108289, guid: 30bb9cf4e18fe9a40b76c920e4582b6a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -738108289, guid: 30bb9cf4e18fe9a40b76c920e4582b6a, type: 3}
+    - m_Name: MilitaryVest_Crouch_2
+      m_Hash: 381090789
+      m_Sprite: {fileID: 1016536340, guid: 30bb9cf4e18fe9a40b76c920e4582b6a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1016536340, guid: 30bb9cf4e18fe9a40b76c920e4582b6a, type: 3}
+    - m_Name: MilitaryVest_Crouch_3
+      m_Hash: 565300083
+      m_Sprite: {fileID: -823571973, guid: 30bb9cf4e18fe9a40b76c920e4582b6a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -823571973, guid: 30bb9cf4e18fe9a40b76c920e4582b6a, type: 3}
+    - m_Name: MilitaryVest_Crouch_4
+      m_Hash: 1070948048
+      m_Sprite: {fileID: 1524090852, guid: 30bb9cf4e18fe9a40b76c920e4582b6a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1524090852, guid: 30bb9cf4e18fe9a40b76c920e4582b6a, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 5
+  - m_Name: Roll
+    m_Hash: 243768816
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryVest_Roll_0
+      m_Hash: 554834214
+      m_Sprite: {fileID: -1147707112, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1147707112, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+    - m_Name: MilitaryVest_Roll_1
+      m_Hash: 370485680
+      m_Sprite: {fileID: 2045624290, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2045624290, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+    - m_Name: MilitaryVest_Roll_2
+      m_Hash: 253523978
+      m_Sprite: {fileID: 245057860, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 245057860, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+    - m_Name: MilitaryVest_Roll_3
+      m_Hash: 941312156
+      m_Sprite: {fileID: -1940552932, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1940552932, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+    - m_Name: MilitaryVest_Roll_4
+      m_Hash: 645913919
+      m_Sprite: {fileID: 761635736, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 761635736, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+    - m_Name: MilitaryVest_Roll_5
+      m_Hash: 293137833
+      m_Sprite: {fileID: 1027212743, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1027212743, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+    - m_Name: MilitaryVest_Roll_6
+      m_Hash: 141671443
+      m_Sprite: {fileID: -1041480194, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1041480194, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+    - m_Name: MilitaryVest_Roll_7
+      m_Hash: 1064733829
+      m_Sprite: {fileID: -324045551, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -324045551, guid: 09cb9f3537ebc774c977e6f462b7a550, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 8
+  - m_Name: Death
+    m_Hash: 646380074
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryVest_Death_0
+      m_Hash: 765394411
+      m_Sprite: {fileID: -1233393016, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1233393016, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_1
+      m_Hash: 446287229
+      m_Sprite: {fileID: -950572014, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -950572014, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_2
+      m_Hash: 59808967
+      m_Sprite: {fileID: -1271652362, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1271652362, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_3
+      m_Hash: 882355281
+      m_Sprite: {fileID: 618295617, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 618295617, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_4
+      m_Hash: 720583154
+      m_Sprite: {fileID: 1258156867, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1258156867, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_5
+      m_Hash: 502532452
+      m_Sprite: {fileID: -1139926625, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1139926625, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_6
+      m_Hash: 83712222
+      m_Sprite: {fileID: -1162912185, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1162912185, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_7
+      m_Hash: 872048712
+      m_Sprite: {fileID: 338269800, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 338269800, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_8
+      m_Hash: 591754713
+      m_Sprite: {fileID: -754557798, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -754557798, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_9
+      m_Hash: 339887439
+      m_Sprite: {fileID: 1601618639, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1601618639, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_10
+      m_Hash: 439700333
+      m_Sprite: {fileID: -2062162143, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2062162143, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_11
+      m_Hash: 758283259
+      m_Sprite: {fileID: 31347873, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 31347873, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_12
+      m_Hash: 876292673
+      m_Sprite: {fileID: -2054965293, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2054965293, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_13
+      m_Hash: 54270679
+      m_Sprite: {fileID: 1095002770, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1095002770, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_14
+      m_Hash: 492343156
+      m_Sprite: {fileID: 1082909113, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1082909113, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_15
+      m_Hash: 710918114
+      m_Sprite: {fileID: 83498977, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 83498977, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_16
+      m_Hash: 861335128
+      m_Sprite: {fileID: 983812762, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 983812762, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_17
+      m_Hash: 72474318
+      m_Sprite: {fileID: 843783014, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 843783014, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_18
+      m_Hash: 351191903
+      m_Sprite: {fileID: 1372595839, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1372595839, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_19
+      m_Hash: 602534857
+      m_Sprite: {fileID: -335269970, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -335269970, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_20
+      m_Hash: 823662766
+      m_Sprite: {fileID: 1634470723, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1634470723, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_21
+      m_Hash: 102705208
+      m_Sprite: {fileID: -2064933749, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2064933749, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_22
+      m_Hash: 521566594
+      m_Sprite: {fileID: -905316777, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -905316777, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_23
+      m_Hash: 672221460
+      m_Sprite: {fileID: -829567078, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -829567078, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_24
+      m_Hash: 913693879
+      m_Sprite: {fileID: -1822925405, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1822925405, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_25
+      m_Hash: 24308769
+      m_Sprite: {fileID: 1458654157, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1458654157, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_26
+      m_Hash: 410762651
+      m_Sprite: {fileID: -14867161, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -14867161, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_27
+      m_Hash: 796691725
+      m_Sprite: {fileID: -1339900240, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1339900240, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_28
+      m_Hash: 1069781148
+      m_Sprite: {fileID: -1191419566, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1191419566, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_29
+      m_Hash: 147103754
+      m_Sprite: {fileID: -1627594988, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1627594988, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_30
+      m_Hash: 671295983
+      m_Sprite: {fileID: 921470508, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 921470508, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_31
+      m_Hash: 520362361
+      m_Sprite: {fileID: 288685288, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 288685288, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_32
+      m_Hash: 101533891
+      m_Sprite: {fileID: 1515353654, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1515353654, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_33
+      m_Hash: 822769749
+      m_Sprite: {fileID: 1798813078, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1798813078, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_34
+      m_Hash: 795799030
+      m_Sprite: {fileID: 301768257, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 301768257, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_35
+      m_Hash: 409591136
+      m_Sprite: {fileID: 1650954422, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1650954422, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_36
+      m_Hash: 23104730
+      m_Sprite: {fileID: -1419444165, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1419444165, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_37
+      m_Hash: 912768076
+      m_Sprite: {fileID: -1678330342, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1678330342, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_38
+      m_Hash: 651731421
+      m_Sprite: {fileID: -193528248, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -193528248, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_39
+      m_Hash: 299864395
+      m_Sprite: {fileID: 304640162, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 304640162, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_40
+      m_Hash: 658685736
+      m_Sprite: {fileID: 1877404587, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1877404587, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_41
+      m_Hash: 272994238
+      m_Sprite: {fileID: 328712969, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 328712969, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_42
+      m_Hash: 156032516
+      m_Sprite: {fileID: 2060863359, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2060863359, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_43
+      m_Hash: 1045163666
+      m_Sprite: {fileID: 1866875427, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1866875427, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_44
+      m_Hash: 539982641
+      m_Sprite: {fileID: -632897292, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -632897292, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_45
+      m_Hash: 388516775
+      m_Sprite: {fileID: -418536344, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -418536344, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    - m_Name: MilitaryVest_Death_46
+      m_Hash: 237050397
+      m_Sprite: {fileID: -726504150, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -726504150, guid: 74a8270628c455a439490ccdf75e7fa4, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 47
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638370397608470105
+  m_Version: 1

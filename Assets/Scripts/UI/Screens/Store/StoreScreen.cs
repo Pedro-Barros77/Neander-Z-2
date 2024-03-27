@@ -30,7 +30,7 @@ public class StoreScreen : MonoBehaviour
     [SerializeField]
     Button BuyButton, TestItemButton, BtnReady, BtnSaveGame;
     [SerializeField]
-    GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab;
+    GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, StyleContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab, StyleTab;
     [SerializeField]
     SectionedBar DamageBar, FireRateBar, ReloadSpeedBar, RangeBar, BulletSpeedBar;
 
@@ -39,6 +39,7 @@ public class StoreScreen : MonoBehaviour
     GameObject PopupPrefab;
     Canvas WorldPosCanvas;
     InventoryTab inventoryTab;
+    StyleTab styleTab;
     float musicStartVolume;
 
     void Start()
@@ -53,6 +54,7 @@ public class StoreScreen : MonoBehaviour
         WorldPosCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         BtnReadyText = BtnReady.GetComponentInChildren<TextMeshProUGUI>();
         inventoryTab = GetComponent<InventoryTab>();
+        styleTab = GetComponent<StyleTab>();
         musicStartVolume = musicAudioSource.volume;
     }
 
@@ -66,7 +68,7 @@ public class StoreScreen : MonoBehaviour
         PreviewPanelContent.transform.parent.gameObject.SetActive(ActiveTab != StoreTabs.Inventory);
         InventoryPreviewPanel.transform.parent.gameObject.SetActive(ActiveTab == StoreTabs.Inventory);
         InventorySlotsPanel.SetActive(ActiveTab == StoreTabs.Inventory);
-        BtnSaveGame.interactable = IsSaveDirty;
+        BtnSaveGame.interactable = IsSaveDirty || styleTab.IsSkinDirty;
 
         if (PlayerData != null)
         {
@@ -301,16 +303,19 @@ public class StoreScreen : MonoBehaviour
         ItemsContent.SetActive(tab == StoreTabs.Items);
         PerksContent.SetActive(tab == StoreTabs.Perks);
         InventoryContent.SetActive(tab == StoreTabs.Inventory);
+        StyleContent.SetActive(tab == StoreTabs.Style);
 
         WeaponsTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
         ItemsTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
         PerksTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
         InventoryTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
+        StyleTab.transform.SetSiblingIndex((int)StoreTabs.Weapons);
 
         SetTabActive(WeaponsTab, tab == StoreTabs.Weapons);
         SetTabActive(ItemsTab, tab == StoreTabs.Items);
         SetTabActive(PerksTab, tab == StoreTabs.Perks);
         SetTabActive(InventoryTab, tab == StoreTabs.Inventory);
+        SetTabActive(StyleTab, tab == StoreTabs.Style);
     }
 
     /// <summary>
@@ -339,6 +344,8 @@ public class StoreScreen : MonoBehaviour
     {
         storePanelAnimator.SetTrigger("Exit");
         StartCoroutine(ExitStoreAfterAnimation());
+        if (styleTab.IsSkinDirty)
+            styleTab.SaveCurrentSkinData();
     }
 
     /// <summary>
@@ -477,8 +484,10 @@ public class StoreScreen : MonoBehaviour
     /// </summary>
     public void SaveGame()
     {
-        if (!IsSaveDirty)
+        if (!IsSaveDirty && !styleTab.IsSkinDirty)
             return;
+
+        styleTab.SaveCurrentSkinData();
 
         if (SavesManager.SaveGame(GameModes.WaveMastery, SavesManager.SelectedSaveName))
         {

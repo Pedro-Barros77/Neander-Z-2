@@ -365,6 +365,11 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
             Destroy(HealthBar.gameObject);
     }
 
+    public virtual void HandleSpriteColorChange(Color32 color)
+    {
+        SpriteRenderer.material.SetColor("_Color", color);
+    }
+
     protected virtual void OnDeathEnd()
     {
 

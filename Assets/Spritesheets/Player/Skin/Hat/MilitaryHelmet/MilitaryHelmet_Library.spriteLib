@@ -1,0 +1,566 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryHelmet_Idle_0
+      m_Hash: 375339492
+      m_Sprite: {fileID: -101860595, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -101860595, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_1
+      m_Hash: 559417714
+      m_Sprite: {fileID: -171881775, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -171881775, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_2
+      m_Hash: 944855240
+      m_Sprite: {fileID: 588704127, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 588704127, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_3
+      m_Hash: 257321054
+      m_Sprite: {fileID: 807619707, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 807619707, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_4
+      m_Hash: 288554493
+      m_Sprite: {fileID: -1579029078, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1579029078, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_5
+      m_Hash: 641060203
+      m_Sprite: {fileID: -1952172732, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1952172732, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_6
+      m_Hash: 1060936913
+      m_Sprite: {fileID: -809073008, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -809073008, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_7
+      m_Hash: 138128455
+      m_Sprite: {fileID: -1084434686, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1084434686, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_8
+      m_Hash: 411349462
+      m_Sprite: {fileID: 241809109, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 241809109, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_9
+      m_Hash: 797147456
+      m_Sprite: {fileID: 211844969, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 211844969, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_10
+      m_Hash: 171022136
+      m_Sprite: {fileID: -1745251738, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1745251738, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_11
+      m_Hash: 1026992046
+      m_Sprite: {fileID: -1734997665, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1734997665, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_12
+      m_Hash: 608171540
+      m_Sprite: {fileID: 1709968869, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1709968869, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_13
+      m_Hash: 322487938
+      m_Sprite: {fileID: -1591264198, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1591264198, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_14
+      m_Hash: 224154401
+      m_Sprite: {fileID: -1641791780, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1641791780, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_15
+      m_Hash: 979067831
+      m_Sprite: {fileID: 726155995, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 726155995, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_16
+      m_Hash: 592589325
+      m_Sprite: {fileID: -144216574, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -144216574, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_17
+      m_Hash: 341115547
+      m_Sprite: {fileID: 626248606, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 626248606, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_18
+      m_Hash: 82452234
+      m_Sprite: {fileID: 2114361982, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2114361982, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_19
+      m_Hash: 871182236
+      m_Sprite: {fileID: -2035325715, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2035325715, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_20
+      m_Hash: 555533563
+      m_Sprite: {fileID: -1130592722, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1130592722, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_21
+      m_Hash: 370930797
+      m_Sprite: {fileID: -444654402, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -444654402, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_22
+      m_Hash: 252880343
+      m_Sprite: {fileID: 1324890691, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1324890691, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_23
+      m_Hash: 940938561
+      m_Sprite: {fileID: -1074641814, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1074641814, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_24
+      m_Hash: 644940002
+      m_Sprite: {fileID: 1564737708, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1564737708, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_25
+      m_Hash: 292958324
+      m_Sprite: {fileID: 514919893, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 514919893, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_26
+      m_Hash: 142565838
+      m_Sprite: {fileID: -186752114, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -186752114, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    - m_Name: MilitaryHelmet_Idle_27
+      m_Hash: 1064849752
+      m_Sprite: {fileID: 195962168, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 195962168, guid: 7d0f2b93c5ab7ab4e98ce5e6b6cd311c, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 28
+  - m_Name: Run
+    m_Hash: 675013152
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryHelmet_Run_0
+      m_Hash: 491715307
+      m_Sprite: {fileID: -987692122, guid: 3cb54b6bea6f40142844fdc496130884, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -987692122, guid: 3cb54b6bea6f40142844fdc496130884, type: 3}
+    - m_Name: MilitaryHelmet_Run_1
+      m_Hash: 709479037
+      m_Sprite: {fileID: 703599172, guid: 3cb54b6bea6f40142844fdc496130884, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 703599172, guid: 3cb54b6bea6f40142844fdc496130884, type: 3}
+    - m_Name: MilitaryHelmet_Run_2
+      m_Hash: 859872199
+      m_Sprite: {fileID: 997277516, guid: 3cb54b6bea6f40142844fdc496130884, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 997277516, guid: 3cb54b6bea6f40142844fdc496130884, type: 3}
+    - m_Name: MilitaryHelmet_Run_3
+      m_Hash: 71805777
+      m_Sprite: {fileID: 891753693, guid: 3cb54b6bea6f40142844fdc496130884, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 891753693, guid: 3cb54b6bea6f40142844fdc496130884, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: Jump
+    m_Hash: 125937960
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryHelmet_Jump
+      m_Hash: 1020954630
+      m_Sprite: {fileID: 21300000, guid: 607429ccb4e80d04d8c12960d8cf1a7d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 607429ccb4e80d04d8c12960d8cf1a7d, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 1
+  - m_Name: Turn
+    m_Hash: 1227385
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryHelmet_Turn_0
+      m_Hash: 134502878
+      m_Sprite: {fileID: -1270486494, guid: 412b6d21de99a78498c44863b5d73398, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1270486494, guid: 412b6d21de99a78498c44863b5d73398, type: 3}
+    - m_Name: MilitaryHelmet_Turn_1
+      m_Hash: 1057188168
+      m_Sprite: {fileID: 180665788, guid: 412b6d21de99a78498c44863b5d73398, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 180665788, guid: 412b6d21de99a78498c44863b5d73398, type: 3}
+    - m_Name: MilitaryHelmet_Turn_2
+      m_Hash: 638204146
+      m_Sprite: {fileID: 1686770620, guid: 412b6d21de99a78498c44863b5d73398, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1686770620, guid: 412b6d21de99a78498c44863b5d73398, type: 3}
+    - m_Name: MilitaryHelmet_Turn_3
+      m_Hash: 286066788
+      m_Sprite: {fileID: -124207473, guid: 412b6d21de99a78498c44863b5d73398, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -124207473, guid: 412b6d21de99a78498c44863b5d73398, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  - m_Name: FallGround
+    m_Hash: 569720558
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryHelmet_FallGround_0
+      m_Hash: 774992411
+      m_Sprite: {fileID: 623200004, guid: fb2dd67bf661f18498905af9485a2d73, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 623200004, guid: fb2dd67bf661f18498905af9485a2d73, type: 3}
+    - m_Name: MilitaryHelmet_FallGround_1
+      m_Hash: 422986381
+      m_Sprite: {fileID: -843098131, guid: fb2dd67bf661f18498905af9485a2d73, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -843098131, guid: fb2dd67bf661f18498905af9485a2d73, type: 3}
+    - m_Name: MilitaryHelmet_FallGround_2
+      m_Hash: 4133687
+      m_Sprite: {fileID: -867136707, guid: fb2dd67bf661f18498905af9485a2d73, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -867136707, guid: fb2dd67bf661f18498905af9485a2d73, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 3
+  - m_Name: Crouch
+    m_Hash: 131790382
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryHelmet_Crouch_0
+      m_Hash: 349971318
+      m_Sprite: {fileID: 201600364, guid: 8b09c378f94ec56439922bb6c3487ff3, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 201600364, guid: 8b09c378f94ec56439922bb6c3487ff3, type: 3}
+    - m_Name: MilitaryHelmet_Crouch_1
+      m_Hash: 601560032
+      m_Sprite: {fileID: 1586638421, guid: 8b09c378f94ec56439922bb6c3487ff3, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1586638421, guid: 8b09c378f94ec56439922bb6c3487ff3, type: 3}
+    - m_Name: MilitaryHelmet_Crouch_2
+      m_Hash: 986858074
+      m_Sprite: {fileID: -921052179, guid: 8b09c378f94ec56439922bb6c3487ff3, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -921052179, guid: 8b09c378f94ec56439922bb6c3487ff3, type: 3}
+    - m_Name: MilitaryHelmet_Crouch_3
+      m_Hash: 232092364
+      m_Sprite: {fileID: -573669251, guid: 8b09c378f94ec56439922bb6c3487ff3, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -573669251, guid: 8b09c378f94ec56439922bb6c3487ff3, type: 3}
+    - m_Name: MilitaryHelmet_Crouch_4
+      m_Hash: 330426223
+      m_Sprite: {fileID: 19683858, guid: 8b09c378f94ec56439922bb6c3487ff3, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 19683858, guid: 8b09c378f94ec56439922bb6c3487ff3, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 5
+  - m_Name: Roll
+    m_Hash: 243768816
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryHelmet_Roll_0
+      m_Hash: 122667298
+      m_Sprite: {fileID: -1384092948, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1384092948, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+    - m_Name: MilitaryHelmet_Roll_1
+      m_Hash: 810086836
+      m_Sprite: {fileID: -416210126, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -416210126, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+    - m_Name: MilitaryHelmet_Roll_2
+      m_Hash: 692166670
+      m_Sprite: {fileID: 418666573, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 418666573, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+    - m_Name: MilitaryHelmet_Roll_3
+      m_Hash: 507941016
+      m_Sprite: {fileID: 1191330534, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1191330534, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+    - m_Name: MilitaryHelmet_Roll_4
+      m_Hash: 2229563
+      m_Sprite: {fileID: -1386296706, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1386296706, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+    - m_Name: MilitaryHelmet_Roll_5
+      m_Hash: 925185453
+      m_Sprite: {fileID: -747594021, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -747594021, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+    - m_Name: MilitaryHelmet_Roll_6
+      m_Hash: 774661143
+      m_Sprite: {fileID: -2080653180, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2080653180, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+    - m_Name: MilitaryHelmet_Roll_7
+      m_Hash: 422270081
+      m_Sprite: {fileID: -1885396779, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1885396779, guid: 685009350ea1dc74ba27d28e2c10c29c, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 8
+  - m_Name: Death
+    m_Hash: 646380074
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: MilitaryHelmet_Death_0
+      m_Hash: 718627882
+      m_Sprite: {fileID: 1036195269, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1036195269, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_1
+      m_Hash: 500323516
+      m_Sprite: {fileID: -394451227, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -394451227, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_2
+      m_Hash: 81462534
+      m_Sprite: {fileID: -2114268569, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2114268569, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_3
+      m_Hash: 870069648
+      m_Sprite: {fileID: -784675105, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -784675105, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_4
+      m_Hash: 767074355
+      m_Sprite: {fileID: 684218758, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 684218758, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_5
+      m_Hash: 448762021
+      m_Sprite: {fileID: -737622316, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -737622316, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_6
+      m_Hash: 62308639
+      m_Sprite: {fileID: 2113280664, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2113280664, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_7
+      m_Hash: 884076937
+      m_Sprite: {fileID: -506136104, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -506136104, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_8
+      m_Hash: 604957720
+      m_Sprite: {fileID: -297696024, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -297696024, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_9
+      m_Hash: 319413390
+      m_Sprite: {fileID: 643502225, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 643502225, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_10
+      m_Hash: 911340242
+      m_Sprite: {fileID: -482484506, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -482484506, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_11
+      m_Hash: 22463044
+      m_Sprite: {fileID: -1615702880, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1615702880, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_12
+      m_Hash: 408916990
+      m_Sprite: {fileID: -1926257363, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1926257363, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_13
+      m_Hash: 794338152
+      m_Sprite: {fileID: 922931026, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 922931026, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_14
+      m_Hash: 826029771
+      m_Sprite: {fileID: -1280223651, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1280223651, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_15
+      m_Hash: 104531549
+      m_Sprite: {fileID: -106278006, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -106278006, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_16
+      m_Hash: 523392999
+      m_Sprite: {fileID: 558170563, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 558170563, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_17
+      m_Hash: 674588529
+      m_Sprite: {fileID: -2124110563, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2124110563, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_18
+      m_Hash: 948599520
+      m_Sprite: {fileID: 1401023200, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1401023200, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_19
+      m_Hash: 260917878
+      m_Sprite: {fileID: -443262479, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -443262479, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_20
+      m_Hash: 494706961
+      m_Sprite: {fileID: 70958828, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 70958828, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_21
+      m_Hash: 712741255
+      m_Sprite: {fileID: -119869315, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -119869315, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_22
+      m_Hash: 863158333
+      m_Sprite: {fileID: 1132318129, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1132318129, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_23
+      m_Hash: 74838187
+      m_Sprite: {fileID: -732022061, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -732022061, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_24
+      m_Hash: 437347592
+      m_Sprite: {fileID: 1730068620, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1730068620, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_25
+      m_Hash: 756438430
+      m_Sprite: {fileID: -1521352233, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1521352233, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_26
+      m_Hash: 874447908
+      m_Sprite: {fileID: -278744735, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -278744735, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_27
+      m_Hash: 51918002
+      m_Sprite: {fileID: -316303478, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -316303478, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_28
+      m_Hash: 329722147
+      m_Sprite: {fileID: 1969142205, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1969142205, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_29
+      m_Hash: 614472117
+      m_Sprite: {fileID: -514990260, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -514990260, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_30
+      m_Hash: 73896016
+      m_Sprite: {fileID: -930043773, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -930043773, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_31
+      m_Hash: 861970630
+      m_Sprite: {fileID: -111185600, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -111185600, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_32
+      m_Hash: 711586172
+      m_Sprite: {fileID: -576937605, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -576937605, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_33
+      m_Hash: 493797866
+      m_Sprite: {fileID: -1508976533, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1508976533, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_34
+      m_Hash: 51008585
+      m_Sprite: {fileID: -1348810994, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1348810994, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_35
+      m_Hash: 873293023
+      m_Sprite: {fileID: 1572095416, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1572095416, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_36
+      m_Hash: 755250533
+      m_Sprite: {fileID: -1207734548, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1207734548, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_37
+      m_Hash: 436405747
+      m_Sprite: {fileID: 1282362890, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1282362890, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_38
+      m_Hash: 180099170
+      m_Sprite: {fileID: 1714567433, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1714567433, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_39
+      m_Hash: 1035675892
+      m_Sprite: {fileID: 1120033922, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1120033922, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_40
+      m_Hash: 187041431
+      m_Sprite: {fileID: -1229407136, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1229407136, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_41
+      m_Hash: 1008809473
+      m_Sprite: {fileID: 1951074804, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1951074804, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_42
+      m_Hash: 623404987
+      m_Sprite: {fileID: -266819137, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -266819137, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_43
+      m_Hash: 305092397
+      m_Sprite: {fileID: -221093785, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -221093785, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_44
+      m_Hash: 206291598
+      m_Sprite: {fileID: -1807764664, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1807764664, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_45
+      m_Hash: 994898456
+      m_Sprite: {fileID: 2045021092, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2045021092, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    - m_Name: MilitaryHelmet_Death_46
+      m_Hash: 574989218
+      m_Sprite: {fileID: -162542548, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -162542548, guid: 501fb42f62dc4f74e9587e011c8d108d, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 47
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638368734801800649
+  m_Version: 1

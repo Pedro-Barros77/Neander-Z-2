@@ -1,0 +1,489 @@
+fileFormatVersion: 2
+guid: 29b4cb47808a7704ea151ab87b5e48db
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5480784549687084065
+    second: SV98_BoltAction_Hand_0
+  - first:
+      213: -8413651441864560110
+    second: SV98_BoltAction_Hand_1
+  - first:
+      213: 3349522004723503547
+    second: SV98_BoltAction_Hand_2
+  - first:
+      213: -3274255508507949616
+    second: SV98_BoltAction_Hand_3
+  - first:
+      213: 4700116784910404178
+    second: SV98_BoltAction_Hand_4
+  - first:
+      213: 4080563310428294054
+    second: SV98_BoltAction_Hand_5
+  - first:
+      213: 2176663409593410636
+    second: SV98_BoltAction_Hand_6
+  - first:
+      213: 3522653390692995512
+    second: SV98_BoltAction_Hand_7
+  - first:
+      213: -7651831716316515077
+    second: SV98_BoltAction_Hand_8
+  - first:
+      213: 2822093924329404263
+    second: SV98_BoltAction_Hand_9
+  - first:
+      213: -5406322060005608910
+    second: SV98_BoltAction_Hand_10
+  - first:
+      213: 2543268168419693668
+    second: SV98_BoltAction_Hand_11
+  - first:
+      213: 8781843613214349420
+    second: SV98_BoltAction_Hand_12
+  - first:
+      213: 467697006287860906
+    second: SV98_BoltAction_Hand_13
+  - first:
+      213: 9052420776604572736
+    second: SV98_BoltAction_Hand_14
+  - first:
+      213: 7327557063548713073
+    second: SV98_BoltAction_Hand_15
+  - first:
+      213: 4754441560295982032
+    second: SV98_BoltAction_Hand_16
+  - first:
+      213: -8099764747556515645
+    second: SV98_BoltAction_Hand_17
+  - first:
+      213: -4434165386648688525
+    second: SV98_BoltAction_Hand_18
+  - first:
+      213: -487493612287658352
+    second: SV98_BoltAction_Hand_19
+  - first:
+      213: -4123311378158770984
+    second: SV98_BoltAction_Hand_20
+  - first:
+      213: 7226846991263218001
+    second: SV98_BoltAction_Hand_21
+  - first:
+      213: 4180109784797604480
+    second: SV98_BoltAction_Hand_22
+  - first:
+      213: 1830636062335594710
+    second: SV98_BoltAction_Hand_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 34
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdbb3719d7750f3b0800000000000000
+      internalID: -5480784549687084065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_1
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 34
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 212b5bf4794bc3b80800000000000000
+      internalID: -8413651441864560110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_2
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 34
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb116ea4484eb7e20800000000000000
+      internalID: 3349522004723503547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_3
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 34
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d5848776f18f82d0800000000000000
+      internalID: -3274255508507949616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_4
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 34
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25a8f67405b2a3140800000000000000
+      internalID: 4700116784910404178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_5
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 34
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ab029906b211a830800000000000000
+      internalID: 4080563310428294054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c44e76ca6df053e10800000000000000
+      internalID: 2176663409593410636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_7
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 0
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b1d413589af2e030800000000000000
+      internalID: 3522653390692995512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_8
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 0
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf4f2eb589b3fc590800000000000000
+      internalID: -7651831716316515077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_9
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 0
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 767317ad8771a2720800000000000000
+      internalID: 2822093924329404263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_10
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 0
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 232f108fab2e8f4b0800000000000000
+      internalID: -5406322060005608910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SV98_BoltAction_Hand_11
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 0
+        width: 117
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 464d633ace08b4320800000000000000
+      internalID: 2543268168419693668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 4b6f596372fbe7a46b87797c783f5ba2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      SV98_BoltAction_Hand_0: -5480784549687084065
+      SV98_BoltAction_Hand_1: -8413651441864560110
+      SV98_BoltAction_Hand_10: -5406322060005608910
+      SV98_BoltAction_Hand_11: 2543268168419693668
+      SV98_BoltAction_Hand_2: 3349522004723503547
+      SV98_BoltAction_Hand_3: -3274255508507949616
+      SV98_BoltAction_Hand_4: 4700116784910404178
+      SV98_BoltAction_Hand_5: 4080563310428294054
+      SV98_BoltAction_Hand_6: 2176663409593410636
+      SV98_BoltAction_Hand_7: 3522653390692995512
+      SV98_BoltAction_Hand_8: -7651831716316515077
+      SV98_BoltAction_Hand_9: 2822093924329404263
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

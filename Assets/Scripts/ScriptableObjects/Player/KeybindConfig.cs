@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Keybind Config Data", menuName = "Neander Z/Player/Keybind Config Data", order = 4)]
+[CreateAssetMenu(fileName = "New Keybind Config Data", menuName = "Neander Z/Player/Keybind Config Data", order = 3)]
 public class KeybindConfig : AutoRevertSO
 {
     public List<List<KeybindItem>> Inputs;

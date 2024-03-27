@@ -72,6 +72,11 @@ public class BodyTarget : MonoBehaviour, IPlayerTarget
         HitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
     }
 
+    public virtual void HandleSpriteColorChange(Color32 color)
+    {
+        SpriteRenderer.material.SetColor("_Color", color);
+    }
+
     /// <summary>
     /// Função para exibir o popup com devidos parâmetros.
     /// </summary>
