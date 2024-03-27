@@ -57,26 +57,6 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (IsPressing)
             UpdateClickPosition();
-
-        if (Button != null)
-        {
-            if (Button.interactable != isInteractable && Tooltip != null)
-                HoverEvent?.Invoke(this, false);
-            isInteractable = Button.interactable;
-
-            if (!Button.interactable)
-            {
-                if (Tooltip != null)
-                    Tooltip.SetVisible(false);
-
-                if (IsHovering && ChangesCursorOnHover)
-                    MenuController.Instance.SetCursor(Cursors.Arrow);
-
-                IsHovering = false;
-            }
-        }
-
-        
     }
 
     private void LateUpdate()
@@ -86,7 +66,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     /// <summary>
-    /// Funï¿½ï¿½o chamada quando o botï¿½o ï¿½ clicado.
+    /// Função chamada quando o botão é clicado.
     /// </summary>
     public void OnClick()
     {
@@ -105,7 +85,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     /// <summary>
-    /// Funï¿½ï¿½o chamada quando o mouse passa por cima do botï¿½o.
+    /// Função chamada quando o mouse passa por cima do botão.
     /// </summary>
     public void OnHoverIn()
     {
@@ -122,7 +102,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     /// <summary>
-    /// Funï¿½ï¿½o chamada quando o mouse sai de cima do botï¿½o.
+    /// Função chamada quando o mouse sai de cima do botão.
     /// </summary>
     public void OnHoverOut()
     {
@@ -138,9 +118,9 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
     /// <summary>
-    /// Reinicia o estado e animaï¿½ï¿½o do botï¿½o.
+    /// Reinicia o estado e animação do botão.
     /// </summary>
-    /// <param name="btnAnimator">Botï¿½o a ser reiniciado.</param>
+    /// <param name="btnAnimator">Botão a ser reiniciado.</param>
     public void ResetButton()
     {
         if (Button == null)
