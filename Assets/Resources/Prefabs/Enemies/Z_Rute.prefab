@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 5579682174834183307}
   - component: {fileID: 2255918080273023164}
   - component: {fileID: 3150938358613940793}
+  - component: {fileID: 3598600184641646002}
   m_Layer: 7
   m_Name: Z_Rute
   m_TagString: Enemy
@@ -465,7 +466,7 @@ MonoBehaviour:
     m_TrimEdge: 0.09
     m_FlipX: 0
     m_FlipY: 0
-    m_InitialTrim: 0.09
+    m_InitialTrim: 0
   m_CastingOption: 1
   m_PreviousTrimEdge: 0.09
   m_PreviousEdgeProcessing: 1
@@ -596,6 +597,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3598600184641646002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8226922062237190284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c2d4d7a24b27747a6978c4d87e047d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthBarPrefab: {fileID: 5826301193245720848, guid: b772a17772a316c458ab20c5a7ac87fe, type: 3}
+  BloodSplatterPrefab: {fileID: 7444960458494065295, guid: 1f360cc0117f0d14db021d5b0edac523, type: 3}
+  DamageSounds: []
+  AttackStartSounds: []
+  AttackHitSounds: []
+  SpawnSounds: []
+  DeathSounds: []
 --- !u!1001 &8514751714962993159
 PrefabInstance:
   m_ObjectHideFlags: 0

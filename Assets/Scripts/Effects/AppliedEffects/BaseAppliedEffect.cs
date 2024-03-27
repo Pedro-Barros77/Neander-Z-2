@@ -4,6 +4,10 @@ using UnityEngine;
 public class BaseAppliedEffect : MonoBehaviour
 {
     /// <summary>
+    /// Se o efeito é infinito.
+    /// </summary>
+    public bool IsInfinite { get; protected set; }
+    /// <summary>
     /// A duração total do efeito em milisegundos.
     /// </summary>
     public float DurationMs { get; protected set; }
@@ -71,7 +75,7 @@ public class BaseAppliedEffect : MonoBehaviour
         if (LastTickTime + (TickIntervalMs / 1000) < now)
             OnTickEffect();
 
-        if (TimeElasped >= DurationMs / 1000)
+        if (!IsInfinite && TimeElasped >= DurationMs / 1000)
             OnTimeOut();
     }
 
@@ -80,10 +84,11 @@ public class BaseAppliedEffect : MonoBehaviour
     /// </summary>
     /// <param name="durationMs"></param>
     /// <param name="tickIntervalMs"></param>
-    public virtual void SetEffect(float durationMs, float tickIntervalMs)
+    public virtual void SetEffect(float durationMs, float tickIntervalMs, bool isInfinite = false)
     {
         DurationMs = durationMs;
         TickIntervalMs = tickIntervalMs;
+        IsInfinite = isInfinite;
 
         if (StartDelayMs == 0)
             StartTime = Time.time;
