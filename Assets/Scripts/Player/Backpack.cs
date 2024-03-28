@@ -131,7 +131,7 @@ public class Backpack
 
         if (EquippedPrimaryType != WeaponTypes.None)
         {
-            var primWeapon = AddWeapon(EquippedPrimaryType, Data.WeaponsSelection.FirstOrDefault(x => x.Type == EquippedSecondaryType).EquippedSlot);
+            var primWeapon = AddWeapon(EquippedPrimaryType, Data.WeaponsSelection.FirstOrDefault(x => x.Type == EquippedPrimaryType).EquippedSlot);
             EquippedPrimaryWeapon.IsActive = isEquippedPrimary;
         }
 
