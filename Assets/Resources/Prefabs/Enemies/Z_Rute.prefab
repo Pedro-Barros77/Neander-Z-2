@@ -27,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 1254320005679333104}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.239, y: 0.346, z: 0}
-  m_LocalScale: {x: 0.44676396, y: 0.5334495, z: 0.5334495}
+  m_LocalPosition: {x: -0.297, y: 0.4075, z: 0}
+  m_LocalScale: {x: 0.49842316, y: 0.59149086, z: 0.5334495}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4077862521516333061}
@@ -151,8 +151,8 @@ Transform:
   m_GameObject: {fileID: 5027147727566918604}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: -0.02, z: 0}
-  m_LocalScale: {x: 1.012994, y: 1.7152348, z: 1.0265}
+  m_LocalPosition: {x: -0.059, y: -0.2325, z: 0}
+  m_LocalScale: {x: 1.0412565, y: 1.8143021, z: 1.0265}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4077862521516333061}
@@ -245,7 +245,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.073450536, y: 0}
+  m_Offset: {x: 0.0012803078, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -255,7 +255,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0791006, y: 1}
+  m_Size: {x: 1.0111632, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &8226922062237190284
 GameObject:
@@ -413,7 +413,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0020314455, y: -0.4227115}
+  m_Offset: {x: -0.0020314455, y: -0.28143382}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -423,7 +423,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.97910285, y: 1.2389052}
+  m_Size: {x: 0.97910285, y: 1.9806218}
   m_EdgeRadius: 0
 --- !u!114 &5579682174834183307
 MonoBehaviour:
@@ -499,7 +499,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1.0667529
+  MinDistance: 1.1285915
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -626,7 +626,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1390895029989475255, guid: f61ebd75d14a43a41b9a469efdee565d, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2331018046538525628, guid: f61ebd75d14a43a41b9a469efdee565d, type: 3}
       propertyPath: m_Name

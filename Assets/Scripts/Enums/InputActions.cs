@@ -33,5 +33,6 @@ public enum InputActions
     DEBUG_KillAllEnemiesAlive = 111,
     DEBUG_EndWave = 112,
     DEBUG_CenterEnemies = 113,
-    DEBUG_RefillAllAmmo = 114
+    DEBUG_RefillAllAmmo = 114,
+    DEBUG_SpawnRute = 115,
 }

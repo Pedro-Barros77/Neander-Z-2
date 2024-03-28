@@ -75,6 +75,8 @@ public class WavesManager : MonoBehaviour
                 CurrentWave.KillAllWave();
             if (Constants.GetActionDown(InputActions.DEBUG_CenterEnemies))
                 CurrentWave.CenterEnemies();
+            if (Constants.GetActionDown(InputActions.DEBUG_SpawnRute))
+                SpawnEnemyTest(EnemyTypes.Z_Rute);
         }
 
         WaveEnemiesCountText.text = $"{Mathf.Clamp(CurrentWave.SpawnCount - CurrentWave.InfiniteEnemiesKilled - CurrentWave.EnemiesAlive.Count, 0, int.MaxValue)}/{(CurrentWave.Data.IsBossWave ? "∞" : CurrentWave.TotalEnemiesCount)}";

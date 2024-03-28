@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Rute : BaseEnemy, IKnockBackable
 {
-    private IEnemyTarget Target;
     private bool isMovingLeft = true;
     private float maxDistanceRunning = 5f;
     private bool isRunningAround = true;
+    private float BurningEffectDurationMs = 3000f;
+    private float SelfBurningEffectDurationMs = 3000f;
+    private float BurningEffectTickIntervalMs = 500f;
+    private float SelfBurningEffectTickIntervalMs = 1000f;
+    private float SelfDamage = 3f;
+    public IPlayerTarget EnemyOwner { get; set; }
+    private IEnemyTarget Target;
     protected override void Start()
     {
         Type = EnemyTypes.Z_Rute;
@@ -33,29 +39,9 @@ public class Rute : BaseEnemy, IKnockBackable
         if (Target == null)
             UpdateDirection();
 
-        if (!IsAlive || isDying)
-        {
-            if (DeathTime + (DeathFadeOutDelayMs / 1000) + 3 < Time.time)
-            {
-                DeathFadeOutDelayMs = 0;
-                StartCoroutine(StartDeathFadeOutCountDown());
-            }
-            Animation();
-            return;
-        }
+        base.Update();
 
-        var closestTarget = GetClosestTarget();
-        if (closestTarget != null && IsInAttackRange)
-            StartAttack(closestTarget);
-
-        if (HealthBar != null)
-            HealthBar.transform.position = transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 1.7f, 0);
-
-        //if (isAttacking && closestTarget != null)
-        //{
-        //    var targetDirection = closestTarget.transform.position.x - transform.position.x;
-        //    FlipEnemy(Mathf.Sign(targetDirection));
-        //}
+        ApplyBurningEffectToSelf();
 
         Animation();
     }
@@ -67,6 +53,9 @@ public class Rute : BaseEnemy, IKnockBackable
         {
             isMovingLeft = !isMovingLeft;
         }
+        if (!isDying)
+            AttackTrigger.gameObject.SetActive(true);
+            StartCoroutine(DeactivateAttackTrigger(0.1f));
     }
 
     protected override void Movement(IEnemyTarget target)
@@ -95,32 +84,63 @@ public class Rute : BaseEnemy, IKnockBackable
 
     protected override void StartAttack(IEnemyTarget target)
     {
-        if (isAttacking)
-            return;
-
-        if (target == null)
-            return;
-
-        isAttacking = true;
-        HitTargetsIds.Clear();
-
-        AttackStartSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
     }
+
+    /// <summary>
+    /// Cria o efeito de queimadura no alvo.
+    /// </summary>
+    /// <param name="parent">O pai do efeito (alvo).</param>
+    /// <returns>O objeto criado.</returns>
+    private GameObject CreateBurningEffect(Transform parent, bool selfDamage = false)
+    {
+        var burnEffectObj = new GameObject("BurningEffect");
+        var burningEffect = burnEffectObj.AddComponent<BurningEffect>();
+        if (selfDamage)
+            burningEffect.TickDamage = SelfDamage;
+        else
+            burningEffect.TickDamage = Damage;
+        burnEffectObj.transform.SetParent(parent);
+
+        return burnEffectObj;
+    }
+
     protected override void OnTargetHit(Collider2D targetCollider)
     {
-        base.OnTargetHit(targetCollider);
+        IEnemyTarget target = targetCollider.GetComponent<IEnemyTarget>();
+
+        if (target == null || isDying)
+            return;
+
+        var burnFX = target.transform.GetComponentInChildren<BurningEffect>();
+        if (burnFX == null)
+        {
+            var burnEffectObj = CreateBurningEffect(target.transform, false);
+            burnFX = burnEffectObj.GetComponent<BurningEffect>();
+        }
+
+        if (target != null)
+            burnFX.PlayerOwner = target;
+      
+        AttackHitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
+        burnFX.SetEffect(BurningEffectDurationMs, BurningEffectTickIntervalMs);
     }
 
-    protected override void OnAttackHit()
+    private void ApplyBurningEffectToSelf()
     {
-        base.OnAttackHit();
-    }
+        if (!isDying)
+        {
+            var burnFX = GetComponentInChildren<BurningEffect>();
 
-    protected override void SyncAnimationStates()
-    {
-        isAttacking = false;
-        base.SyncAnimationStates();
+            if (burnFX == null)
+            {
+                var burnEffectObj = CreateBurningEffect(transform, true);
+                burnFX = burnEffectObj.GetComponent<BurningEffect>();
+            }
+
+            burnFX.EnemyOwner = EnemyOwner;
+            burnFX.SetEffect(SelfBurningEffectDurationMs, SelfBurningEffectTickIntervalMs);
+        }
     }
 
 }
