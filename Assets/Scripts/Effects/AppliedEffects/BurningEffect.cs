@@ -33,7 +33,6 @@ public class BurningEffect : BaseAppliedEffect
     /// <summary>
     /// Define a cor do sprite de volta para a original, após um tempo.
     /// </summary>
-    /// <param name="sprite">O sprite do alvo a ser alterado.</param>
     IEnumerator ResetSpriteColor()
     {
         yield return new WaitForSeconds(Mathf.Min(TickIntervalMs / 2000, 500));
