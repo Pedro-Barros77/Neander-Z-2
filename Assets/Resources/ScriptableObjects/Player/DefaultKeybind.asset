@@ -149,7 +149,7 @@ MonoBehaviour:
     Key: 263
     IsListening: 0
   DEBUG_SpawnRat:
-  - Action: 111
+  - Action: 112
     Key: 265
     IsListening: 0
   DEBUG_KillAllEnemiesAlive:
@@ -167,4 +167,8 @@ MonoBehaviour:
   DEBUG_RefillAllAmmo:
   - Action: 203
     Key: 280
+    IsListening: 0
+  DEBUG_SpawnRute:
+  - Action: 111
+    Key: 264
     IsListening: 0

@@ -1,5 +1,5 @@
 /// <summary>
-/// Tipos de ações realizadas pelas entradas do jogador.
+/// Tipos de aï¿½ï¿½es realizadas pelas entradas do jogador.
 /// </summary>
 public enum InputActions
 {
@@ -30,7 +30,8 @@ public enum InputActions
     DEBUG_SpawnRobert = 108,
     DEBUG_SpawnRaimundo = 109,
     DEBUG_SpawnRUI = 110,
-    DEBUG_SpawnRat = 111,
+    DEBUG_SpawnRute = 111,
+    DEBUG_SpawnRat = 112,
 
 
     DEBUG_KillAllEnemiesAlive = 200,

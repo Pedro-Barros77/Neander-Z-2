@@ -50,6 +50,7 @@ public class KeybindConfigEditor : Editor
     SerializedProperty DEBUG_SpawnRobert;
     SerializedProperty DEBUG_SpawnRaimundo;
     SerializedProperty DEBUG_SpawnRUI;
+    SerializedProperty DEBUG_SpawnRute;
     SerializedProperty DEBUG_SpawnRat;
     SerializedProperty DEBUG_KillAllEnemiesAlive;
     SerializedProperty DEBUG_EndWave;
@@ -66,6 +67,7 @@ public class KeybindConfigEditor : Editor
     ReorderableList DEBUG_SpawnRobertList;
     ReorderableList DEBUG_SpawnRaimundoList;
     ReorderableList DEBUG_SpawnRUIList;
+    ReorderableList DEBUG_SpawnRuteList;
     ReorderableList DEBUG_SpawnRatList;
     ReorderableList DEBUG_KillAllEnemiesAliveList;
     ReorderableList DEBUG_EndWaveList;
@@ -105,6 +107,7 @@ public class KeybindConfigEditor : Editor
         DEBUG_SpawnRobert = GetTarget.FindProperty("DEBUG_SpawnRobert");
         DEBUG_SpawnRaimundo = GetTarget.FindProperty("DEBUG_SpawnRaimundo");
         DEBUG_SpawnRUI = GetTarget.FindProperty("DEBUG_SpawnRUI");
+        DEBUG_SpawnRute = GetTarget.FindProperty("DEBUG_SpawnRute");
         DEBUG_SpawnRat = GetTarget.FindProperty("DEBUG_SpawnRat");
         DEBUG_KillAllEnemiesAlive = GetTarget.FindProperty("DEBUG_KillAllEnemiesAlive");
         DEBUG_EndWave = GetTarget.FindProperty("DEBUG_EndWave");
@@ -155,6 +158,7 @@ public class KeybindConfigEditor : Editor
         DEBUG_SpawnRobertList = KeyItem(DEBUG_SpawnRobert);
         DEBUG_SpawnRaimundoList = KeyItem(DEBUG_SpawnRaimundo);
         DEBUG_SpawnRUIList = KeyItem(DEBUG_SpawnRUI);
+        DEBUG_SpawnRuteList = KeyItem(DEBUG_SpawnRute);
         DEBUG_SpawnRatList = KeyItem(DEBUG_SpawnRat);
         DEBUG_KillAllEnemiesAliveList = KeyItem(DEBUG_KillAllEnemiesAlive);
         DEBUG_EndWaveList = KeyItem(DEBUG_EndWave);
@@ -202,6 +206,7 @@ public class KeybindConfigEditor : Editor
         FoldoutKeybind(DEBUG_SpawnRobert, DEBUG_SpawnRobertList);
         FoldoutKeybind(DEBUG_SpawnRaimundo, DEBUG_SpawnRaimundoList);
         FoldoutKeybind(DEBUG_SpawnRUI, DEBUG_SpawnRUIList);
+        FoldoutKeybind(DEBUG_SpawnRute, DEBUG_SpawnRuteList);
         FoldoutKeybind(DEBUG_SpawnRat, DEBUG_SpawnRatList);
         FoldoutKeybind(DEBUG_KillAllEnemiesAlive, DEBUG_KillAllEnemiesAliveList);
         FoldoutKeybind(DEBUG_EndWave, DEBUG_EndWaveList);
