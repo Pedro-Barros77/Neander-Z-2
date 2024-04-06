@@ -13,7 +13,7 @@ public class InventoryTab : MonoBehaviour
     GameObject StoreItemPrefab;
 
     [SerializeField]
-    TextMeshProUGUI PistolAmmo, PistolMaxAmmo, ShotgunAmmo, ShotgunMaxAmmo, RifleAmmo, RifleMaxAmmo, SniperAmmo, SniperMaxAmmo, RocketAmmo, RocketMaxAmmo;
+    TextMeshProUGUI PistolAmmo, PistolMaxAmmo, ShotgunAmmo, ShotgunMaxAmmo, RifleAmmo, RifleMaxAmmo, SniperAmmo, SniperMaxAmmo, RocketAmmo, RocketMaxAmmo, FuelAmmo, FuelMaxAmmo;
     [SerializeField]
     TextMeshProUGUI PreviewTitleText, PreviewHeadshotMultiplierText, PreviewMagazineBulletsText, PreviewPelletsCountText, PreviewDispersionText, PreviewBtnSellText;
     [SerializeField]
@@ -39,7 +39,7 @@ public class InventoryTab : MonoBehaviour
     [SerializeField]
     public InventorySlot PrimarySlot, SecondarySlot, GrenadeSlot, DeployableSlot, SupportSlot, AbilitySlot, SkillSlot;
 
-    CanvasGroup PistolAmmoGroup, ShotgunAmmoGroup, RifleAmmoGroup, SniperAmmoGroup, RocketAmmoGroup;
+    CanvasGroup PistolAmmoGroup, ShotgunAmmoGroup, RifleAmmoGroup, SniperAmmoGroup, RocketAmmoGroup, FuelAmmoGroup;
 
     InventoryData Inventory => storeScreen.PlayerData.InventoryData;
     bool columnsLayoutDirty, loaded;
@@ -51,6 +51,7 @@ public class InventoryTab : MonoBehaviour
         RifleAmmoGroup = RifleAmmo.transform.parent.GetComponent<CanvasGroup>();
         SniperAmmoGroup = SniperAmmo.transform.parent.GetComponent<CanvasGroup>();
         RocketAmmoGroup = RocketAmmo.transform.parent.GetComponent<CanvasGroup>();
+        FuelAmmoGroup = FuelAmmo.transform.parent.GetComponent<CanvasGroup>();
 
         storeScreen = GetComponent<StoreScreen>();
         if (storeScreen.ActiveTab == StoreTabs.Inventory)
@@ -146,6 +147,10 @@ public class InventoryTab : MonoBehaviour
             RocketAmmo.text = Inventory.RocketAmmo.ToString();
             RocketMaxAmmo.text = $"/{Inventory.MaxRocketAmmo}";
             RocketAmmo.color = Constants.GetAlertColor(Inventory.RocketAmmo, Inventory.MaxSniperAmmo, 0.2f);
+
+            FuelAmmo.text = Inventory.FuelAmmo.ToString();
+            FuelMaxAmmo.text = $"/{Inventory.MaxFuelAmmo}";
+            FuelAmmo.color = Constants.GetAlertColor(Inventory.FuelAmmo, Inventory.MaxFuelAmmo, 0.2f);
 
             if (storeScreen.hasItem && storeScreen.SelectedItem.Data is StoreWeaponData storeWeapon && UpgradeDamagePrice != null)
             {
@@ -347,6 +352,7 @@ public class InventoryTab : MonoBehaviour
         RifleAmmoGroup.alpha = primaryWeapon?.WeaponData.BulletType == BulletTypes.AssaultRifle || secondaryWeapon?.WeaponData.BulletType == BulletTypes.AssaultRifle ? 1 : 0.1f;
         SniperAmmoGroup.alpha = primaryWeapon?.WeaponData.BulletType == BulletTypes.Sniper || secondaryWeapon?.WeaponData.BulletType == BulletTypes.Sniper ? 1 : 0.1f;
         RocketAmmoGroup.alpha = primaryWeapon?.WeaponData.BulletType == BulletTypes.Rocket || secondaryWeapon?.WeaponData.BulletType == BulletTypes.Rocket ? 1 : 0.1f;
+        FuelAmmoGroup.alpha = primaryWeapon?.WeaponData.BulletType == BulletTypes.Fuel || secondaryWeapon?.WeaponData.BulletType == BulletTypes.Fuel ? 1 : 0.1f;
     }
 
     /// <summary>
@@ -568,6 +574,7 @@ public class InventoryTab : MonoBehaviour
             BulletTypes.Sniper => storeScreen.SniperAmmoIcon,
             BulletTypes.Rocket => storeScreen.RocketAmmoIcon,
             BulletTypes.Melee => storeScreen.MeleeAmmoIcon,
+            BulletTypes.Fuel => storeScreen.FuelAmmoIcon,
             _ => null,
         };
 

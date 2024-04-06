@@ -41,11 +41,13 @@ public static class Constants
     public static float PrecisionBountyAssaultRifleChance { get; private set; } = 0.15f;
     public static float PrecisionBountySniperChance { get; private set; } = 0.12f;
     public static float PrecisionBountyRocketChance { get; private set; } = 0.10f;
+    public static float PrecisionBountyFuelChance { get; private set; } = 0.10f;
     public static int PrecisionBountyPistolCount { get; private set; } = 6;
     public static int PrecisionBountyShotgunCount { get; private set; } = 3;
     public static int PrecisionBountyAssaultRifleCount { get; private set; } = 5;
     public static int PrecisionBountySniperCount { get; private set; } = 3;
     public static int PrecisionBountyRocketCount { get; private set; } = 1;
+    public static int PrecisionBountyFuelCount { get; private set; } = 5;
 
     static float ReloadSpeedRatio = 5000;
     static float JoystickHorizontalDeadzone = 0.2f;

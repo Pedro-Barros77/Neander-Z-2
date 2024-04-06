@@ -111,6 +111,7 @@ public class PlayerInventoryEditor : Editor
         AddAmmo("RifleAmmo");
         AddAmmo("SniperAmmo");
         AddAmmo("RocketAmmo");
+        AddAmmo("FuelAmmo");
 
         EditorGUILayout.Space();
         EditorGUILayout.Space();

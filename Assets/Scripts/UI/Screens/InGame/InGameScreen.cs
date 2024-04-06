@@ -14,7 +14,7 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText, PlayerMoneyText, WaveScoreText, PauseTitle;
     [SerializeField]
-    Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon;
+    Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, FuelAmmoIcon;
     [SerializeField]
     Sprite Colt_1911Sprite, ShortBarrelSprite, UZISprite, SV98Sprite, M16Sprite, RPGSprite, MacheteSprite, DeagleSprite, Beretta_93RSprite, ScarSprite, ScarDebugSprite;
     [SerializeField]
@@ -94,6 +94,7 @@ public class InGameScreen : MonoBehaviour
                 Player.Data.InventoryData.SetAmmo(BulletTypes.AssaultRifle, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.AssaultRifle));
                 Player.Data.InventoryData.SetAmmo(BulletTypes.Sniper, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.Sniper));
                 Player.Data.InventoryData.SetAmmo(BulletTypes.Rocket, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.Rocket));
+                Player.Data.InventoryData.SetAmmo(BulletTypes.Fuel, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.Fuel));
                 if (Player.Backpack.EquippedThrowableType != ThrowableTypes.None)
                     Player.Backpack.EquippedThrowable.Count = Player.Backpack.EquippedThrowable.MaxCount;
             }
@@ -129,6 +130,7 @@ public class InGameScreen : MonoBehaviour
             BulletTypes.Sniper => SniperAmmoIcon,
             BulletTypes.Rocket => RocketAmmoIcon,
             BulletTypes.Melee => MeleeAmmoIcon,
+            BulletTypes.Fuel => FuelAmmoIcon,
             _ => null,
         };
 

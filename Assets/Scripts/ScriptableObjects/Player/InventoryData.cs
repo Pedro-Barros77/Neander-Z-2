@@ -13,12 +13,14 @@ public class InventoryData : AutoRevertSO
     public int RifleAmmo;
     public int SniperAmmo;
     public int RocketAmmo;
+    public int FuelAmmo;
 
     public int MaxPistolAmmo;
     public int MaxShotgunAmmo;
     public int MaxRifleAmmo;
     public int MaxSniperAmmo;
     public int MaxRocketAmmo;
+    public int MaxFuelAmmo;
 
     public int CurrentWeaponIndex;
 
@@ -78,6 +80,7 @@ public class InventoryData : AutoRevertSO
         BulletTypes.AssaultRifle => RifleAmmo,
         BulletTypes.Sniper => SniperAmmo,
         BulletTypes.Rocket => RocketAmmo,
+        BulletTypes.Fuel => FuelAmmo,
         _ => 0
     };
 
@@ -93,6 +96,7 @@ public class InventoryData : AutoRevertSO
         BulletTypes.AssaultRifle => MaxRifleAmmo,
         BulletTypes.Sniper => MaxSniperAmmo,
         BulletTypes.Rocket => MaxRocketAmmo,
+        BulletTypes.Fuel => MaxFuelAmmo,
         _ => 0
     };
 
@@ -119,6 +123,9 @@ public class InventoryData : AutoRevertSO
                 break;
             case BulletTypes.Rocket:
                 RocketAmmo = Mathf.Clamp(count, 0, GetMaxAmmo(type));
+                break;
+            case BulletTypes.Fuel:
+                FuelAmmo = Mathf.Clamp(count, 0, GetMaxAmmo(type));
                 break;
             default:
                 break;

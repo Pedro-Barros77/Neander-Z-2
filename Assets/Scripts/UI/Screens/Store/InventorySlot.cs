@@ -154,6 +154,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 BulletTypes.Sniper => storeScreen.SniperAmmoIcon,
                 BulletTypes.Rocket => storeScreen.RocketAmmoIcon,
                 BulletTypes.Melee => storeScreen.MeleeAmmoIcon,
+                BulletTypes.Fuel => storeScreen.FuelAmmoIcon,
                 _ => null,
             };
 

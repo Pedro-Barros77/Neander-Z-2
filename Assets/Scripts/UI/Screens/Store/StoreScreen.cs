@@ -18,7 +18,7 @@ public class StoreScreen : MonoBehaviour
     public OnStartDragCallback OnStartDrag;
 
     public PlayerData PlayerData;
-    public Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, ActiveTabImage, InactiveTabImage;
+    public Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, FuelAmmoIcon, ActiveTabImage, InactiveTabImage;
     public CustomAudio PurchaseSound;
     public AudioSource audioSource, musicAudioSource;
     public TextMeshProUGUI PlayerMoneyText;
@@ -412,6 +412,7 @@ public class StoreScreen : MonoBehaviour
             BulletTypes.Sniper => SniperAmmoIcon,
             BulletTypes.Rocket => RocketAmmoIcon,
             BulletTypes.Melee => MeleeAmmoIcon,
+            BulletTypes.Fuel => FuelAmmoIcon,
             _ => null,
         };
 

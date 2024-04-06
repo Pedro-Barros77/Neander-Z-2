@@ -19,7 +19,7 @@ public class AmmoDrop : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI CountText;
     [SerializeField]
-    Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon;
+    Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, FuelAmmoIcon;
 
     Animator Animator;
     AudioSource AudioSource;
@@ -58,6 +58,7 @@ public class AmmoDrop : MonoBehaviour
             BulletTypes.AssaultRifle => RifleAmmoIcon,
             BulletTypes.Sniper => SniperAmmoIcon,
             BulletTypes.Rocket => RocketAmmoIcon,
+            BulletTypes.Fuel => FuelAmmoIcon,
             _ => null,
         };
 

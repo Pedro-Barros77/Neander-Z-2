@@ -478,6 +478,10 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
                 dropCount = Constants.PrecisionBountyRocketCount;
                 dropChance = Constants.PrecisionBountyRocketChance;
                 break;
+            case BulletTypes.Fuel:
+                dropCount = Constants.PrecisionBountyFuelCount;
+                dropChance = Constants.PrecisionBountyFuelChance;
+                break;
         }
 
         if (Random.Range(0f, 1f) > dropChance)
