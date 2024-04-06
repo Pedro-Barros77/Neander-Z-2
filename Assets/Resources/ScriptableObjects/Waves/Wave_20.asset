@@ -101,6 +101,23 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+  - EnemyType: 8
+    Count: 10
+    MinHealth: 1.1
+    MaxHealth: 1.8
+    MinSpeed: 5.6
+    MaxSpeed: 8.6
+    MinDamage: 7.6
+    MaxDamage: 11.5
+    MinKillScore: 10
+    MaxKillScore: 20
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 0
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
   MinEnemiesAlive: 10
   MaxEnemiesAlive: 15
   MinSpawnDelayMs: 4000

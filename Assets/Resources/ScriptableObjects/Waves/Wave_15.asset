@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 15
   Title: 
-  Description: 
+  Description: Rodents!
   EnemyGroups:
   - EnemyType: 2
     Count: 18
@@ -77,6 +77,23 @@ MonoBehaviour:
     MaxDamage: 19
     MinKillScore: 70
     MaxKillScore: 80
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 55
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
+  - EnemyType: 8
+    Count: 5
+    MinHealth: 0.8
+    MaxHealth: 1.5
+    MinSpeed: 5
+    MaxSpeed: 8
+    MinDamage: 7
+    MaxDamage: 10
+    MinKillScore: 10
+    MaxKillScore: 20
     SpawnChanceMultiplier: 1
     IsInfinite: 0
     IsDisabled: 0

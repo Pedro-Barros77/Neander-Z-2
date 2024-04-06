@@ -35,4 +35,8 @@ public enum EnemyTypes
     /// Infectda em chamas. Rápida, fraca e muito perigosa. Não se aproxime! Morre com tempo.
     /// </sumary>
     Z_Rute,
+    /// <summary>
+    /// Um rato infectado. Pequeno e fraco, mas muito rápido e irritante.
+    /// </sumary>
+    Z_Rat,
 }

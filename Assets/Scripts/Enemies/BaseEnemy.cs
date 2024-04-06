@@ -346,6 +346,8 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         isRunning = false;
         isAttacking = false;
 
+        AttackTrigger.OnTagTriggered -= OnTargetHit;
+
         bool isHeadshot = lastDamagedBodyPartName == "Head";
 
         WavesManager.Instance.CurrentWave.HandleScore(this, attacker, isHeadshot);

@@ -30,8 +30,11 @@ public enum InputActions
     DEBUG_SpawnRobert = 108,
     DEBUG_SpawnRaimundo = 109,
     DEBUG_SpawnRUI = 110,
-    DEBUG_KillAllEnemiesAlive = 111,
-    DEBUG_EndWave = 112,
-    DEBUG_CenterEnemies = 113,
-    DEBUG_RefillAllAmmo = 114
+    DEBUG_SpawnRat = 111,
+
+
+    DEBUG_KillAllEnemiesAlive = 200,
+    DEBUG_EndWave = 201,
+    DEBUG_CenterEnemies = 202,
+    DEBUG_RefillAllAmmo = 203
 }

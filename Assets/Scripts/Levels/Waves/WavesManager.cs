@@ -69,6 +69,8 @@ public class WavesManager : MonoBehaviour
                 SpawnEnemyTest(EnemyTypes.Z_Raimundo);
             if (Constants.GetActionDown(InputActions.DEBUG_SpawnRUI))
                 SpawnEnemyTest(EnemyTypes.Z_Rui);
+            if (Constants.GetActionDown(InputActions.DEBUG_SpawnRat))
+                SpawnEnemyTest(EnemyTypes.Z_Rat);
             if (Constants.GetActionDown(InputActions.DEBUG_KillAllEnemiesAlive))
                 CurrentWave.KillAllAlive();
             if (Constants.GetActionDown(InputActions.DEBUG_EndWave))
