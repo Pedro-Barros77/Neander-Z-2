@@ -18,20 +18,26 @@ MonoBehaviour:
   RifleAmmo: 0
   SniperAmmo: 0
   RocketAmmo: 0
+  FuelAmmo: 0
   MaxPistolAmmo: 99
   MaxShotgunAmmo: 99
   MaxRifleAmmo: 60
   MaxSniperAmmo: 20
   MaxRocketAmmo: 5
+  MaxFuelAmmo: 200
   CurrentWeaponIndex: 1
   PrimaryWeaponsSelection:
   - Type: 4
+    WeaponClass: 0
     EquippedSlot: 1
     UpgradesMap: []
+    MagazineBullets: 0
   SecondaryWeaponsSelection:
   - Type: 1
+    WeaponClass: 0
     EquippedSlot: 2
     UpgradesMap: []
+    MagazineBullets: 0
   ThrowableItemsSelection:
   - Type: 1
     Count: 99
@@ -40,3 +46,4 @@ MonoBehaviour:
   TacticalAbilitiesSelection:
   - Type: 1
     IsEquipped: 1
+  PassiveSkillsSelection: []

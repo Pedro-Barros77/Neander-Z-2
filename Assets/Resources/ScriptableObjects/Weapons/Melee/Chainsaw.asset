@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce303ec638649fc49a44745568d0ee08, type: 3}
+  m_Name: Chainsaw
+  m_EditorClassIdentifier: 
+  IsPrimary: 1
+  WeaponClass: 1
+  Type: 11
+  BulletType: 7
+  FireMode: 3
+  ReloadType: 1
+  Damage: 2.5
+  MinDamage: 0
+  HeadshotMultiplier: 1.5
+  FireRate: 10
+  BulletSpeed: 0
+  MaxDamageRange: 0
+  MinDamageRange: 0
+  BulletMaxRange: 0
+  MagazineSize: 100
+  MagazineBullets: 100
+  ReloadTimeMs: 4000
+  SwitchTimeMs: 450
+  Upgrades:
+  - Attribute: 0
+    UpgradeSteps:
+    - Price: 250
+      Value: 3
+    - Price: 310
+      Value: 2.5
+    - Price: 395
+      Value: 2.5
+  - Attribute: 1
+    UpgradeSteps:
+    - Price: 310
+      Value: 0.25
+    - Price: 380
+      Value: 0.75
+  - Attribute: 6
+    UpgradeSteps:
+    - Price: 245
+      Value: 0.1
+    - Price: 300
+      Value: 0.1
+    - Price: 370
+      Value: 0.1
+  AttackAnimationsCount: 1
+  AttackStaminaCost: 0

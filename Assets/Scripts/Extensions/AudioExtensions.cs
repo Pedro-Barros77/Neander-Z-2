@@ -60,7 +60,7 @@ public static class AudioExtensions
     /// <param name="audioSource">O AudioSource para tocar o som.</param>
     /// <param name="audioType">O tipo de audio a tocar, para ajustar o volume.</param>
     /// <returns>O audio selecionado.</returns>
-    public static CustomAudio PlayIfNotNull(this CustomAudio audio, AudioSource audioSource, AudioTypes audioType)
+    public static CustomAudio PlayIfNotNull(this CustomAudio audio, AudioSource audioSource, AudioTypes audioType, bool oneShot = true)
     {
         if (audio == null)
             return null;
@@ -74,8 +74,15 @@ public static class AudioExtensions
             _ => 1
         };
 
+        audioSource.volume = audio.Volume * volumeMultiplier;
         audioSource.pitch = audio.Pitch;
-        audioSource.PlayOneShot(audio.Audio, audio.Volume * volumeMultiplier);
+        if (oneShot)
+            audioSource.PlayOneShot(audio.Audio, audio.Volume * volumeMultiplier);
+        else
+        {
+            audioSource.clip = audio.Audio;
+            audioSource.Play();
+        }
 
         return audio;
     }
