@@ -24,7 +24,7 @@ public class StoreScreen : MonoBehaviour
     public TextMeshProUGUI PlayerMoneyText;
 
     [SerializeField]
-    TextMeshProUGUI PreviewTitleText, PreviewPriceText, PreviewDescriptionText, PreviewIsPrimaryText, PreviewTagsText, PreviewHeadshotMultiplierText, PreviewMagazineBulletsText, PreviewPelletsCountText, PreviewDispersionText, PreviewCountText, PreviewTotalCountText;
+    TextMeshProUGUI PreviewTitleText, PreviewPriceText, PreviewShiftFillText, PreviewDescriptionText, PreviewIsPrimaryText, PreviewTagsText, PreviewHeadshotMultiplierText, PreviewMagazineBulletsText, PreviewPelletsCountText, PreviewDispersionText, PreviewCountText, PreviewTotalCountText;
     [SerializeField]
     Image PreviewIcon, PreviewBulletIcon;
     [SerializeField]
@@ -203,6 +203,8 @@ public class StoreScreen : MonoBehaviour
 
         bool isTestable = SelectedItem.Data is StoreWeaponData || SelectedItem.Data is StoreThrowableData;
         TestItemButton.gameObject.SetActive(isTestable);
+
+        PreviewShiftFillText.gameObject.SetActive(SelectedItem.Data is StoreAmmoData);
 
         PreviewIcon.sprite = item.Data.Icon;
         PreviewIcon.transform.localScale = Vector3.one * item.Data.PreviewIconScale;
