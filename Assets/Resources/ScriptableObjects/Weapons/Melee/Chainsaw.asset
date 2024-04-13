@@ -34,7 +34,7 @@ MonoBehaviour:
   - Attribute: 0
     UpgradeSteps:
     - Price: 250
-      Value: 3
+      Value: 2.5
     - Price: 310
       Value: 2.5
     - Price: 395
@@ -42,7 +42,7 @@ MonoBehaviour:
   - Attribute: 1
     UpgradeSteps:
     - Price: 310
-      Value: 0.25
+      Value: 0.5
     - Price: 380
       Value: 0.75
   - Attribute: 6
@@ -53,5 +53,13 @@ MonoBehaviour:
       Value: 0.1
     - Price: 370
       Value: 0.1
+  - Attribute: 2
+    UpgradeSteps:
+    - Price: 75
+      Value: 0.25
+    - Price: 90
+      Value: 0.5
+    - Price: 120
+      Value: 1
   AttackAnimationsCount: 1
   AttackStaminaCost: 0
