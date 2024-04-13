@@ -126,7 +126,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     [SerializeField]
     GameObject SecondChanceEffect, CautiousEffect;
     [SerializeField]
-    CustomAudio SecondChanceActivationSound;
+    CustomAudio DeathSound, SecondChanceActivationSound;
     [SerializeField]
     List<CustomAudio> CautiousHitSounds;
     [SerializeField]
@@ -334,6 +334,10 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         StaminaBar.gameObject.SetActive(false);
         Destroy(Backpack.EquippedPrimaryWeapon?.gameObject);
         Destroy(Backpack.EquippedSecondaryWeapon?.gameObject);
+        DeathSound.PlayIfNotNull(AudioSource, AudioTypes.Player);
+        var musicAudio = GameObject.Find("Screen").GetComponent<AudioSource>();
+        StartCoroutine(musicAudio.Fade(0, 1500f));
+        Camera.main.GetComponent<CameraManagement>().FocusOnPosition(transform.position, 2f, 2000f);
     }
 
     /// <summary>

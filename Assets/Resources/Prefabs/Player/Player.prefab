@@ -381,6 +381,7 @@ MonoBehaviour:
     Library: {fileID: 7108339969198208228, guid: 55b66b5305ed34a458b58fc4dca57df7, type: 3}
     SkinColorLibrary: {fileID: 0}
     EyesColorLibrary: {fileID: 0}
+  isHeadOnly: 0
 --- !u!1 &1410405874538136001
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,6 +848,10 @@ MonoBehaviour:
   StaminaBar: {fileID: 0}
   SecondChanceEffect: {fileID: 0}
   CautiousEffect: {fileID: 0}
+  DeathSound:
+    Audio: {fileID: 8300000, guid: ea4b211660da36142a9fedbed4c5cbbe, type: 3}
+    Volume: 1
+    Pitch: 1
   SecondChanceActivationSound:
     Audio: {fileID: 8300000, guid: 91b1b95836e4d694b8df219fa365d3c8, type: 3}
     Volume: 0.9
