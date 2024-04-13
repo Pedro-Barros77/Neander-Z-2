@@ -20,6 +20,7 @@ MonoBehaviour:
   Amount: 1
   IconScale: 0.9
   PreviewIconScale: 1
+  InventorySlotIconScale: 1
   IsSellable: 0
   Tags: 
   AmmoUpgrades:
@@ -29,27 +30,32 @@ MonoBehaviour:
     RifleAmmo: 10
     SniperAmmo: 2
     RocketAmmo: 1
+    FuelAmmo: 20
   - Price: 350
     PistolAmmo: 10
     ShotgunAmmo: 10
     RifleAmmo: 10
     SniperAmmo: 3
     RocketAmmo: 1
+    FuelAmmo: 30
   - Price: 500
     PistolAmmo: 20
     ShotgunAmmo: 10
     RifleAmmo: 20
     SniperAmmo: 5
     RocketAmmo: 1
+    FuelAmmo: 50
   - Price: 850
     PistolAmmo: 20
     ShotgunAmmo: 10
     RifleAmmo: 20
     SniperAmmo: 5
     RocketAmmo: 1
+    FuelAmmo: 50
   - Price: 1200
     PistolAmmo: 20
     ShotgunAmmo: 10
     RifleAmmo: 20
     SniperAmmo: 5
     RocketAmmo: 1
+    FuelAmmo: 50

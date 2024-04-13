@@ -16,5 +16,6 @@ public class StoreBackpackData : StoreItemData
         public int RifleAmmo;
         public int SniperAmmo;
         public int RocketAmmo;
+        public int FuelAmmo;
     }
 }

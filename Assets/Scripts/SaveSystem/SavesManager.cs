@@ -329,6 +329,7 @@ public static class SavesManager
         save.RifleAmmo = inventory.RifleAmmo;
         save.SniperAmmo = inventory.SniperAmmo;
         save.RocketAmmo = inventory.RocketAmmo;
+        save.FuelAmmo = inventory.FuelAmmo;
         save.PrimaryWeaponsSelection = inventory.PrimaryWeaponsSelection.Select(UpdateWeaponMagazine).Where(x => x != null).ToList();
         save.SecondaryWeaponsSelection = inventory.SecondaryWeaponsSelection.Select(UpdateWeaponMagazine).Where(x => x != null).ToList();
         save.ThrowableItemsSelection = inventory.ThrowableItemsSelection;
@@ -379,6 +380,7 @@ public static class SavesManager
         inventory.RifleAmmo = save.RifleAmmo;
         inventory.SniperAmmo = save.SniperAmmo;
         inventory.RocketAmmo = save.RocketAmmo;
+        inventory.FuelAmmo = save.FuelAmmo;
         inventory.PrimaryWeaponsSelection = save.PrimaryWeaponsSelection;
         inventory.SecondaryWeaponsSelection = save.SecondaryWeaponsSelection;
         inventory.ThrowableItemsSelection = save.ThrowableItemsSelection;
@@ -638,5 +640,6 @@ public static class SavesManager
         inventoryData.MaxRifleAmmo += backpackUpgrades.Sum(x => x.RifleAmmo);
         inventoryData.MaxSniperAmmo += backpackUpgrades.Sum(x => x.SniperAmmo);
         inventoryData.MaxRocketAmmo += backpackUpgrades.Sum(x => x.RocketAmmo);
+        inventoryData.MaxFuelAmmo += backpackUpgrades.Sum(x => x.FuelAmmo);
     }
 }

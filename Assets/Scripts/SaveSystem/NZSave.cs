@@ -16,6 +16,7 @@ public class NZSave : BaseNZSave
     public int RifleAmmo;
     public int SniperAmmo;
     public int RocketAmmo;
+    public int FuelAmmo;
     public int BackpackUpgradeIndex;
     public List<InventoryData.WeaponSelection> PrimaryWeaponsSelection;
     public List<InventoryData.WeaponSelection> SecondaryWeaponsSelection;

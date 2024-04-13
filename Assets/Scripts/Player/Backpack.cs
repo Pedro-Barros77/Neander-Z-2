@@ -10,52 +10,10 @@ public class Backpack
     public InventoryData Data;
 
     #region Data Properties forwarding
-
-    /// <summary>
-    /// Número de munições de pistola restantes.
-    /// </summary>
-    public int PistolAmmo => Data.PistolAmmo;
-    /// <summary>
-    /// Número de munições de escopeta restantes.
-    /// </summary>
-    public int ShotgunAmmo => Data.ShotgunAmmo;
-    /// <summary>
-    /// Número de munições de fuzil restantes.
-    /// </summary>
-    public int RifleAmmo => Data.RifleAmmo;
-    /// <summary>
-    /// Número de munições de sniper restantes.
-    /// </summary>
-    public int SniperAmmo => Data.SniperAmmo;
-    /// <summary>
-    /// Número de munições de foguete restantes.
-    /// </summary>
-    public int RocketAmmo => Data.RocketAmmo;
-    /// <summary>
-    /// Número máximo de munições de pistola que o jogador pode carregar, neste nível de upgrade da mochila.
-    /// </summary>
-    public int MaxPistolAmmo => Data.MaxPistolAmmo;
-    /// <summary>
-    /// Número máximo de munições de escopeta que o jogador pode carregar, neste nível de upgrade da mochila.
-    /// </summary>
-    public int MaxShotgunAmmo => Data.MaxShotgunAmmo;
-    /// <summary>
-    /// Número máximo de munições de fuzil que o jogador pode carregar, neste nível de upgrade da mochila.
-    /// </summary>
-    public int MaxRifleAmmo => Data.MaxRifleAmmo;
-    /// <summary>
-    /// Número máximo de munições de sniper que o jogador pode carregar, neste nível de upgrade da mochila.
-    /// </summary>
-    public int MaxSniperAmmo => Data.MaxSniperAmmo;
-    /// <summary>
-    /// Número máximo de munições de foguete que o jogador pode carregar, neste nível de upgrade da mochila.
-    /// </summary>
-    public int MaxRocketAmmo => Data.MaxRocketAmmo;
     /// <summary>
     /// Índice da arma atualmente equipada nas mãos do jogador (0= Primária, 1= Secundária).
     /// </summary>
     public int CurrentWeaponIndex => Data.CurrentWeaponIndex;
-
     #endregion
 
     /// <summary>

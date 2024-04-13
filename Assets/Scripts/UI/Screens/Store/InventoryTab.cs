@@ -29,9 +29,9 @@ public class InventoryTab : MonoBehaviour
     BaseButton BtnUpgradeDamage, BtnUpgradeFireRate, BtnUpgradeReloadSpeed, BtnUpgradeRange, BtnUpgradeBulletSpeed, BtnUpgradeHeadshotMultiplier, BtnUpgradeMagazineCapacity, BtnUpgradeBallinsDispersion, BackpackBtnUpgrade,
         BtnUpgradePlayerMaxHealth, BtnUpgradePlayerMovementSpeed, BtnUpgradePlayerSprintSpeed, BtnUpgradePlayerJumpForce, BtnUpgradePlayerMaxStamina, BtnUpgradePlayerStaminaRegen, BtnUpgradePlayerStaminaHaste, BtnUpgradePlayerJumpStamina, BtnUpgradePlayerSprintStamina, BtnUpgradePlayerAttackStamina;
     [SerializeField]
-    TextMeshProUGUI BackpackPistolAmmo, BackpackShotgunAmmo, BackpackRifleAmmo, BackpackSniperAmmo, BackpackRocketAmmo;
+    TextMeshProUGUI BackpackPistolAmmo, BackpackShotgunAmmo, BackpackRifleAmmo, BackpackSniperAmmo, BackpackRocketAmmo, BackpackFuelAmmo;
 
-    TextMeshProUGUI BackpackPistolAmmoUpgrade, BackpackShotgunAmmoUpgrade, BackpackRifleAmmoUpgrade, BackpackSniperAmmoUpgrade, BackpackRocketAmmoUpgrade, BackpackBtnUpgradeText;
+    TextMeshProUGUI BackpackPistolAmmoUpgrade, BackpackShotgunAmmoUpgrade, BackpackRifleAmmoUpgrade, BackpackSniperAmmoUpgrade, BackpackRocketAmmoUpgrade, BackpackFuelAmmoUpgrade, BackpackBtnUpgradeText;
     TextMeshProUGUI UpgradeDamagePrice, UpgradeFireRatePrice, UpgradeReloadSpeedPrice, UpgradeRangePrice, UpgradeBulletSpeedPrice, UpgradeHeadshotMultiplierPrice, UpgradeMagazineCapacityPrice, UpgradeBallinsDispersionPrice,
         UpgradePlayerMaxHealthPrice, UpgradePlayerMovementSpeedPrice, UpgradePlayerSprintSpeedPrice, UpgradePlayerJumpForcePrice, UpgradePlayerMaxStaminaPrice, UpgradePlayerStaminaRegenPrice, UpgradePlayerStaminaHastePrice, UpgradePlayerJumpStaminaPrice, UpgradePlayerSprintStaminaPrice, UpgradePlayerAttackStaminaPrice;
     GameObject IconStatsContainer, StatsContainer, ButtonsContainer;
@@ -73,6 +73,7 @@ public class InventoryTab : MonoBehaviour
             BackpackRifleAmmoUpgrade.GetComponent<BlinkingText>().enabled = hovered;
             BackpackSniperAmmoUpgrade.GetComponent<BlinkingText>().enabled = hovered;
             BackpackRocketAmmoUpgrade.GetComponent<BlinkingText>().enabled = hovered;
+            BackpackFuelAmmoUpgrade.GetComponent<BlinkingText>().enabled = hovered;
             if (!hovered)
             {
                 BackpackPistolAmmoUpgrade.color = new Color(0, 0, 0, 0);
@@ -80,6 +81,7 @@ public class InventoryTab : MonoBehaviour
                 BackpackRifleAmmoUpgrade.color = new Color(0, 0, 0, 0);
                 BackpackSniperAmmoUpgrade.color = new Color(0, 0, 0, 0);
                 BackpackRocketAmmoUpgrade.color = new Color(0, 0, 0, 0);
+                BackpackFuelAmmoUpgrade.color = new Color(0, 0, 0, 0);
             }
         };
         BtnUpgradePlayerMaxHealth.HoverEvent += (BaseButton button, bool hovered) => OnHoverPlayerUpgrade(PlayerAttributes.MaxHealth, button, hovered);
@@ -118,6 +120,7 @@ public class InventoryTab : MonoBehaviour
         BackpackRifleAmmoUpgrade = BackpackRifleAmmo.transform.parent.Find("UpgradeValue").GetComponent<TextMeshProUGUI>();
         BackpackSniperAmmoUpgrade = BackpackSniperAmmo.transform.parent.Find("UpgradeValue").GetComponent<TextMeshProUGUI>();
         BackpackRocketAmmoUpgrade = BackpackRocketAmmo.transform.parent.Find("UpgradeValue").GetComponent<TextMeshProUGUI>();
+        BackpackFuelAmmoUpgrade = BackpackFuelAmmo.transform.parent.Find("UpgradeValue").GetComponent<TextMeshProUGUI>();
 
         IconStatsContainer = PreviewMagazineBulletsText.transform.parent.parent.gameObject;
         StatsContainer = DamageBar.transform.parent.parent.gameObject;
@@ -201,6 +204,7 @@ public class InventoryTab : MonoBehaviour
                 BackpackRifleAmmo.text = Inventory.MaxRifleAmmo.ToString();
                 BackpackSniperAmmo.text = Inventory.MaxSniperAmmo.ToString();
                 BackpackRocketAmmo.text = Inventory.MaxRocketAmmo.ToString();
+                BackpackFuelAmmo.text = Inventory.MaxFuelAmmo.ToString();
 
                 if (backpackUpgrade != null)
                 {
@@ -212,6 +216,7 @@ public class InventoryTab : MonoBehaviour
                     BackpackRifleAmmoUpgrade.text = $"+{backpackUpgrade.RifleAmmo}";
                     BackpackSniperAmmoUpgrade.text = $"+{backpackUpgrade.SniperAmmo}";
                     BackpackRocketAmmoUpgrade.text = $"+{backpackUpgrade.RocketAmmo}";
+                    BackpackFuelAmmoUpgrade.text = $"+{backpackUpgrade.FuelAmmo}";
                 }
                 else
                 {
@@ -1055,6 +1060,7 @@ public class InventoryTab : MonoBehaviour
         Inventory.MaxShotgunAmmo += upgradeItem.ShotgunAmmo;
         Inventory.MaxSniperAmmo += upgradeItem.SniperAmmo;
         Inventory.MaxRocketAmmo += upgradeItem.RocketAmmo;
+        Inventory.MaxFuelAmmo += upgradeItem.FuelAmmo;
 
         storeScreen.PlayerData.TakeMoney(upgradeItem.Price);
         storeScreen.audioSource.PlayOneShot(storeScreen.PurchaseSound.Audio, storeScreen.PurchaseSound.Volume);
@@ -1078,6 +1084,7 @@ public class InventoryTab : MonoBehaviour
             setAmmo(BackpackRifleAmmoUpgrade);
             setAmmo(BackpackSniperAmmoUpgrade);
             setAmmo(BackpackRocketAmmoUpgrade);
+            setAmmo(BackpackFuelAmmoUpgrade);
         }
 
         storeScreen.IsSaveDirty = true;
