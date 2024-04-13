@@ -124,6 +124,9 @@ public class SkinManager : MonoBehaviour
     /// </summary>
     public void UpdateSkin()
     {
+        if (HatSpriteRenderer == null)
+            return;
+
         HatSpriteRenderer.enabled = CurrentHat != SkinHatOptions.None;
         HairSpriteRenderer.enabled = CurrentHair != SkinHairOptions.None;
         ShirtSpriteRenderer.enabled = CurrentShirt != SkinShirtOptions.None;

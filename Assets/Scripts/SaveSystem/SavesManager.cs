@@ -371,7 +371,9 @@ public static class SavesManager
         player.SprintStaminaUpgradeIndex = save.SprintStaminaUpgradeIndex;
         player.AttackStaminaUpgradeIndex = save.AttackStaminaUpgradeIndex;
 
-        save.CurrentSkin.Seed(player.SkinData);
+        var newSkinData = ScriptableObject.CreateInstance<SkinData>();
+        save.CurrentSkin.Seed(newSkinData);
+        player.SkinData = newSkinData;
 
         //Inventory
         inventory.UpgradeIndex = save.BackpackUpgradeIndex;

@@ -128,12 +128,12 @@ public class StyleTab : MonoBehaviour
             ShowPopupMessage(characterName.Length > 20 ? "Character name is too long! (Max 20)" : "Character name cannot be empty!", Constants.Colors.YellowAmmo);
             return;
         }
-        if(characterName == "Custom")
+        if (characterName == "Custom")
         {
             ShowPopupMessage("Character name cannot be 'Custom'!", Constants.Colors.YellowAmmo);
             return;
         }
-        if(CharactersOptions.Any(x => x.CharacterName == characterName))
+        if (CharactersOptions.Any(x => x.CharacterName == characterName))
         {
             ShowPopupMessage("Character name already exists! Delete it or choose another name.", Constants.Colors.YellowAmmo);
             return;
@@ -453,11 +453,11 @@ public class StyleTab : MonoBehaviour
         SkinColorSlider.SetValueWithoutNotify(SkinManager.CurrentSkinColor.GetRatioFromRange(Constants.Colors.SkinLightestColor, Constants.Colors.SkinDarkestColor));
         HairColorPreview.color = SkinManager.CurrentHairColor;
         EyeColorPreview.color = SkinManager.CurrentEyeColor;
-        
+
         CurrentSkinColor = SkinManager.CurrentSkinColor;
         CurrentHairColor = SkinManager.CurrentHairColor;
         CurrentEyeColor = SkinManager.CurrentEyeColor;
-        
+
         currentHatIndex = (int)SkinManager.CurrentHat;
         currentHairIndex = (int)SkinManager.CurrentHair;
         currentHeadIndex = (int)SkinManager.CurrentHead;
