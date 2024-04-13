@@ -33,6 +33,8 @@ public class StoreScreen : MonoBehaviour
     GameObject StorePanel, PreviewPanelContent, EmptyPreviewPanel, InventorySlotsPanel, InventoryPreviewPanel, InventoryPreviewEmptyPanel, WeaponsContent, ItemsContent, PerksContent, InventoryContent, StyleContent, WeaponsTab, ItemsTab, PerksTab, InventoryTab, StyleTab;
     [SerializeField]
     SectionedBar DamageBar, FireRateBar, ReloadSpeedBar, RangeBar, BulletSpeedBar;
+    [SerializeField]
+    public SkinManager HeaderPlayerSkinManager;
 
     TextMeshProUGUI PreviewBtnBuyText, BtnReadyText;
     Animator storePanelAnimator;

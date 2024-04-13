@@ -71,6 +71,8 @@ public class SkinManagerEditor : Editor
         //base.OnInspectorGUI();
         GetTarget.Update();
 
+        EditorGUILayout.PropertyField(GetTarget.FindProperty("isHeadOnly"));
+
         if (GUILayout.Button("Update Skin"))
             data.UpdateSkin();
 

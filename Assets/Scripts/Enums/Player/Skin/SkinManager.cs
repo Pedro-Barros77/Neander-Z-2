@@ -28,8 +28,11 @@ public class SkinManager : MonoBehaviour
     [SerializeField]
     List<SkinItem> HatItems, HairItems, HeadItems, TorsoItems, ShirtItems, LegsItems, PantsItems, ShoesItems;
 
+    [SerializeField]
+    bool isHeadOnly;
+
     SpriteRenderer HatSpriteRenderer, HairSpriteRenderer, HeadSpriteRenderer, TorsoSpriteRenderer, ShirtSpriteRenderer, LegsSpriteRenderer, PantsSpriteRenderer, ShoesSpriteRenderer, HeadColorSpriteRenderer, EyesColorSpriteRenderer, TorsoColorSpriteRenderer, LegColorSpriteRenderer, HandPalmSpriteRenderer, HandFingersSpriteRenderer;
-    Image HatImage, HairImage, HeadImage, TorsoImage, ShirtImage, LegsImage, PantsImage, ShoesImage;
+    Image HatImage, HairImage, HeadImage, HeadColorImage, EyeImage, TorsoImage, ShirtImage, LegsImage, PantsImage, ShoesImage;
 
     Player Player;
 
@@ -43,40 +46,54 @@ public class SkinManager : MonoBehaviour
         HatSpriteRenderer = HatSpriteLibrary.GetComponent<SpriteRenderer>();
         HairSpriteRenderer = HairSpriteLibrary.GetComponent<SpriteRenderer>();
         HeadSpriteRenderer = HeadSpriteLibrary.GetComponent<SpriteRenderer>();
-        TorsoSpriteRenderer = TorsoSpriteLibrary.GetComponent<SpriteRenderer>();
-        ShirtSpriteRenderer = ShirtSpriteLibrary.GetComponent<SpriteRenderer>();
-        LegsSpriteRenderer = LegsSpriteLibrary.GetComponent<SpriteRenderer>();
-        PantsSpriteRenderer = PantsSpriteLibrary.GetComponent<SpriteRenderer>();
-        ShoesSpriteRenderer = ShoesSpriteLibrary.GetComponent<SpriteRenderer>();
+        if (!isHeadOnly)
+        {
+            TorsoSpriteRenderer = TorsoSpriteLibrary.GetComponent<SpriteRenderer>();
+            ShirtSpriteRenderer = ShirtSpriteLibrary.GetComponent<SpriteRenderer>();
+            LegsSpriteRenderer = LegsSpriteLibrary.GetComponent<SpriteRenderer>();
+            PantsSpriteRenderer = PantsSpriteLibrary.GetComponent<SpriteRenderer>();
+            ShoesSpriteRenderer = ShoesSpriteLibrary.GetComponent<SpriteRenderer>();
+
+            TorsoColorSpriteLibrary = TorsoSpriteLibrary.transform.Find("TorsoColor").GetComponent<SpriteLibrary>();
+            LegsColorSpriteLibrary = LegsSpriteLibrary.transform.Find("LegsColor").GetComponent<SpriteLibrary>();
+
+            TorsoColorSpriteRenderer = TorsoColorSpriteLibrary.GetComponent<SpriteRenderer>();
+            LegColorSpriteRenderer = LegsColorSpriteLibrary.GetComponent<SpriteRenderer>();
+        }
 
         HeadColorSpriteLibrary = HeadSpriteLibrary.transform.Find("HeadColor").GetComponent<SpriteLibrary>();
         EyesColorSpriteLibrary = HeadSpriteLibrary.transform.Find("EyesColor").GetComponent<SpriteLibrary>();
-        TorsoColorSpriteLibrary = TorsoSpriteLibrary.transform.Find("TorsoColor").GetComponent<SpriteLibrary>();
-        LegsColorSpriteLibrary = LegsSpriteLibrary.transform.Find("LegsColor").GetComponent<SpriteLibrary>();
 
         HeadColorSpriteRenderer = HeadColorSpriteLibrary.GetComponent<SpriteRenderer>();
         EyesColorSpriteRenderer = EyesColorSpriteLibrary.GetComponent<SpriteRenderer>();
-        TorsoColorSpriteRenderer = TorsoColorSpriteLibrary.GetComponent<SpriteRenderer>();
-        LegColorSpriteRenderer = LegsColorSpriteLibrary.GetComponent<SpriteRenderer>();
 
         Animator = GetComponentInParent<Animator>();
 
-        var weaponContainer = Animator.transform.Find("WeaponContainer");
-        if (weaponContainer != null)
+        if (!isHeadOnly)
         {
-            var throwingContainer = weaponContainer.Find("Hand").Find("ThrowingContainer");
-            HandPalmSpriteRenderer = throwingContainer.Find("Palm").GetComponent<SpriteRenderer>();
-            HandFingersSpriteRenderer = throwingContainer.Find("Fingers").GetComponent<SpriteRenderer>();
+            var weaponContainer = Animator.transform.Find("WeaponContainer");
+            if (weaponContainer != null)
+            {
+                var throwingContainer = weaponContainer.Find("Hand").Find("ThrowingContainer");
+                HandPalmSpriteRenderer = throwingContainer.Find("Palm").GetComponent<SpriteRenderer>();
+                HandFingersSpriteRenderer = throwingContainer.Find("Fingers").GetComponent<SpriteRenderer>();
+            }
         }
 
         HatImage = HatSpriteLibrary.GetComponent<Image>();
         HairImage = HairSpriteLibrary.GetComponent<Image>();
         HeadImage = HeadSpriteLibrary.GetComponent<Image>();
-        TorsoImage = TorsoSpriteLibrary.GetComponent<Image>();
-        ShirtImage = ShirtSpriteLibrary.GetComponent<Image>();
-        LegsImage = LegsSpriteLibrary.GetComponent<Image>();
-        PantsImage = PantsSpriteLibrary.GetComponent<Image>();
-        ShoesImage = ShoesSpriteLibrary.GetComponent<Image>();
+        HeadColorImage = HeadColorSpriteLibrary.GetComponent<Image>();
+        EyeImage = EyesColorSpriteLibrary.GetComponent<Image>();
+
+        if (!isHeadOnly)
+        {
+            TorsoImage = TorsoSpriteLibrary.GetComponent<Image>();
+            ShirtImage = ShirtSpriteLibrary.GetComponent<Image>();
+            LegsImage = LegsSpriteLibrary.GetComponent<Image>();
+            PantsImage = PantsSpriteLibrary.GetComponent<Image>();
+            ShoesImage = ShoesSpriteLibrary.GetComponent<Image>();
+        }
 
         UpdateSkin();
     }
@@ -129,9 +146,12 @@ public class SkinManager : MonoBehaviour
 
         HatSpriteRenderer.enabled = CurrentHat != SkinHatOptions.None;
         HairSpriteRenderer.enabled = CurrentHair != SkinHairOptions.None;
-        ShirtSpriteRenderer.enabled = CurrentShirt != SkinShirtOptions.None;
-        PantsSpriteRenderer.enabled = CurrentPants != SkinPantsOptions.None;
-        ShoesSpriteRenderer.enabled = CurrentShoes != SkinShoesOptions.None;
+        if (!isHeadOnly)
+        {
+            ShirtSpriteRenderer.enabled = CurrentShirt != SkinShirtOptions.None;
+            PantsSpriteRenderer.enabled = CurrentPants != SkinPantsOptions.None;
+            ShoesSpriteRenderer.enabled = CurrentShoes != SkinShoesOptions.None;
+        }
 
         if (HatImage != null) HatImage.enabled = CurrentHat != SkinHatOptions.None;
         if (HairImage != null) HairImage.enabled = CurrentHair != SkinHairOptions.None;
@@ -146,16 +166,21 @@ public class SkinManager : MonoBehaviour
         HatSpriteLibrary.spriteLibraryAsset = HatItems.FirstOrDefault(x => x.Type == SkinItemTypes.Hat && x.HatType == CurrentHat)?.Library;
         HairSpriteLibrary.spriteLibraryAsset = HairItems.FirstOrDefault(x => x.Type == SkinItemTypes.Hair && x.HairType == CurrentHair)?.Library;
         HeadSpriteLibrary.spriteLibraryAsset = headItem.Library;
-        TorsoSpriteLibrary.spriteLibraryAsset = torsoItem.Library;
-        ShirtSpriteLibrary.spriteLibraryAsset = ShirtItems.FirstOrDefault(x => x.Type == SkinItemTypes.Shirt && x.ShirtType == CurrentShirt)?.Library;
-        LegsSpriteLibrary.spriteLibraryAsset = legsItem.Library;
-        PantsSpriteLibrary.spriteLibraryAsset = PantsItems.FirstOrDefault(x => x.Type == SkinItemTypes.Pants && x.PantsType == CurrentPants)?.Library;
-        ShoesSpriteLibrary.spriteLibraryAsset = ShoesItems.FirstOrDefault(x => x.Type == SkinItemTypes.Shoes && x.ShoesType == CurrentShoes)?.Library;
+
+        if (!isHeadOnly)
+        {
+            TorsoSpriteLibrary.spriteLibraryAsset = torsoItem.Library;
+            ShirtSpriteLibrary.spriteLibraryAsset = ShirtItems.FirstOrDefault(x => x.Type == SkinItemTypes.Shirt && x.ShirtType == CurrentShirt)?.Library;
+            LegsSpriteLibrary.spriteLibraryAsset = legsItem.Library;
+            PantsSpriteLibrary.spriteLibraryAsset = PantsItems.FirstOrDefault(x => x.Type == SkinItemTypes.Pants && x.PantsType == CurrentPants)?.Library;
+            ShoesSpriteLibrary.spriteLibraryAsset = ShoesItems.FirstOrDefault(x => x.Type == SkinItemTypes.Shoes && x.ShoesType == CurrentShoes)?.Library;
+
+            TorsoColorSpriteLibrary.spriteLibraryAsset = torsoItem.SkinColorLibrary;
+            LegsColorSpriteLibrary.spriteLibraryAsset = legsItem.SkinColorLibrary;
+        }
 
         HeadColorSpriteLibrary.spriteLibraryAsset = headItem.SkinColorLibrary;
         EyesColorSpriteLibrary.spriteLibraryAsset = headItem.EyesColorLibrary;
-        TorsoColorSpriteLibrary.spriteLibraryAsset = torsoItem.SkinColorLibrary;
-        LegsColorSpriteLibrary.spriteLibraryAsset = legsItem.SkinColorLibrary;
 
         UpdateSkinColor(CurrentSkinColor);
         UpdateHairColor(CurrentHairColor);
@@ -170,12 +195,17 @@ public class SkinManager : MonoBehaviour
     {
         CurrentSkinColor = color;
         HeadColorSpriteRenderer.color = CurrentSkinColor;
-        TorsoColorSpriteRenderer.color = CurrentSkinColor;
-        LegColorSpriteRenderer.color = CurrentSkinColor;
-        if (HandPalmSpriteRenderer != null)
+        if (HeadColorImage != null)
+            HeadColorImage.color = CurrentSkinColor;
+        if (!isHeadOnly)
         {
-            HandPalmSpriteRenderer.color = CurrentSkinColor;
-            HandFingersSpriteRenderer.color = CurrentSkinColor;
+            TorsoColorSpriteRenderer.color = CurrentSkinColor;
+            LegColorSpriteRenderer.color = CurrentSkinColor;
+            if (HandPalmSpriteRenderer != null)
+            {
+                HandPalmSpriteRenderer.color = CurrentSkinColor;
+                HandFingersSpriteRenderer.color = CurrentSkinColor;
+            }
         }
     }
 
@@ -187,6 +217,8 @@ public class SkinManager : MonoBehaviour
     {
         CurrentHairColor = color;
         HairSpriteRenderer.color = CurrentHairColor;
+        if (HairImage != null)
+            HairImage.color = CurrentHairColor;
     }
 
     /// <summary>
@@ -197,6 +229,8 @@ public class SkinManager : MonoBehaviour
     {
         CurrentEyeColor = color;
         EyesColorSpriteRenderer.color = CurrentEyeColor;
+        if (EyeImage != null)
+            EyeImage.color = CurrentEyeColor;
     }
 
     /// <summary>

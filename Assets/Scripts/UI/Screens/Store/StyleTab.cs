@@ -48,6 +48,7 @@ public class StyleTab : MonoBehaviour
         storeScreen = GetComponent<StoreScreen>();
 
         SkinManager.LoadSkinData(storeScreen.PlayerData.SkinData);
+        storeScreen.HeaderPlayerSkinManager.LoadSkinData(storeScreen.PlayerData.SkinData);
         LoadSkin();
 
         CharactersOptions = Resources.LoadAll<SkinData>($"ScriptableObjects/Player/Characters").Select(x => x.Encode()).ToList();
@@ -66,8 +67,6 @@ public class StyleTab : MonoBehaviour
         AnimationDropdown.AddOptions(new List<string>(Enum.GetNames(typeof(AnimationTypes))));
         AnimationDropdown.value = (int)AnimationTypes.Idle;
         AnimationDropdown.onValueChanged.AddListener(SetAnimationPreview);
-
-
 
         GenerateSkinColorSliderGradient();
         SkinColorSlider.onValueChanged.AddListener(SetSkinColor);
@@ -213,6 +212,7 @@ public class StyleTab : MonoBehaviour
                     return;
                 currentHatIndex += indexDelta;
                 SkinManager.CurrentHat = (SkinHatOptions)currentHatIndex;
+                storeScreen.HeaderPlayerSkinManager.CurrentHat = SkinManager.CurrentHat;
                 break;
 
             case SkinItemTypes.Hair:
@@ -220,6 +220,7 @@ public class StyleTab : MonoBehaviour
                     return;
                 currentHairIndex += indexDelta;
                 SkinManager.CurrentHair = (SkinHairOptions)currentHairIndex;
+                storeScreen.HeaderPlayerSkinManager.CurrentHair = SkinManager.CurrentHair;
                 break;
 
             case SkinItemTypes.Head:
@@ -227,6 +228,7 @@ public class StyleTab : MonoBehaviour
                     return;
                 currentHeadIndex += indexDelta;
                 SkinManager.CurrentHead = (SkinHeadOptions)currentHeadIndex;
+                storeScreen.HeaderPlayerSkinManager.CurrentHead = SkinManager.CurrentHead;
                 break;
 
             case SkinItemTypes.Shirt:
@@ -266,6 +268,7 @@ public class StyleTab : MonoBehaviour
         }
 
         SkinManager.UpdateSkin();
+        storeScreen.HeaderPlayerSkinManager.UpdateSkin();
         IsSkinDirty = true;
     }
 
@@ -280,7 +283,9 @@ public class StyleTab : MonoBehaviour
         skinData.Seed(newSkin);
         storeScreen.PlayerData.SkinData = newSkin;
         SkinManager.LoadSkinData(storeScreen.PlayerData.SkinData);
+        storeScreen.HeaderPlayerSkinManager.LoadSkinData(storeScreen.PlayerData.SkinData);
         SkinManager.UpdateSkin();
+        storeScreen.HeaderPlayerSkinManager.UpdateSkin();
         LoadSkin();
         RemoveCustomSkin();
         IsSkinDirty = true;
@@ -418,6 +423,7 @@ public class StyleTab : MonoBehaviour
         CreateCustomSkinOnEdit();
         CurrentSkinColor = Color.Lerp(Constants.Colors.SkinLightestColor, Constants.Colors.SkinDarkestColor, value);
         SkinManager.UpdateSkinColor(CurrentSkinColor);
+        storeScreen.HeaderPlayerSkinManager.UpdateSkinColor(CurrentSkinColor);
         IsSkinDirty = true;
     }
 
@@ -430,6 +436,7 @@ public class StyleTab : MonoBehaviour
         CreateCustomSkinOnEdit();
         CurrentHairColor = color;
         SkinManager.UpdateHairColor(CurrentHairColor);
+        storeScreen.HeaderPlayerSkinManager.UpdateHairColor(CurrentHairColor);
         IsSkinDirty = true;
     }
 
@@ -442,6 +449,7 @@ public class StyleTab : MonoBehaviour
         CreateCustomSkinOnEdit();
         CurrentEyeColor = color;
         SkinManager.UpdateEyesColor(CurrentEyeColor);
+        storeScreen.HeaderPlayerSkinManager.UpdateEyesColor(CurrentEyeColor);
         IsSkinDirty = true;
     }
 

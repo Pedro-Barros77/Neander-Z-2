@@ -10,9 +10,9 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     GameObject PausePanel, GameOverPanel, PopupPrefab;
     [SerializeField]
-    Image ActiveWeaponImage, ActiveAmmoImage, ActiveThrowableImage, SwitchWeaponImage;
+    Image ActiveWeaponImage, ActiveAmmoImage, ActiveThrowableImage, SwitchWeaponImage, PlayerHeadImage;
     [SerializeField]
-    TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText, PlayerMoneyText, WaveScoreText, PauseTitle;
+    TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText, PlayerMoneyText, WaveScoreText, PauseTitle, WaveSummaryCharacterNameText;
     [SerializeField]
     Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, FuelAmmoIcon;
     [SerializeField]
@@ -28,6 +28,8 @@ public class InGameScreen : MonoBehaviour
     Joystick MobileMovementJoystick, MobileGrenadeJoystick;
     [SerializeField]
     BaseButton MobileReloadButton, MobileTacticalAbilityButton, MobileSwitchWeaponsButton, MobileTouchBackgroundFire;
+    [SerializeField]
+    SkinManager PlayerHeadSkinManager, WaveSummaryPlayerHeadSkinManager;
 
     Image SprintThreshold;
     Color32 NotSprintingJoystickColor = new(212, 210, 159, 15), SprintingJoystickColor = new(255, 243, 73, 50);
@@ -50,6 +52,10 @@ public class InGameScreen : MonoBehaviour
             PauseContent.SetActive(true);
             PauseTitle.text = "Game Paused";
         };
+
+        PlayerHeadSkinManager.LoadSkinData(Player.Data.SkinData);
+        WaveSummaryPlayerHeadSkinManager.LoadSkinData(Player.Data.SkinData);
+        WaveSummaryCharacterNameText.text = Player.Data.SkinData.CharacterName;
 
         OptionsPanel.VolumeChangeFunction += HandleVolumeChange;
         AudioSource.volume = MenuController.Instance.MusicVolume;
