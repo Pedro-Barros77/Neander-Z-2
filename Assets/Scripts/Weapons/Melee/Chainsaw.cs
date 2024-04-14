@@ -99,7 +99,7 @@ public class Chainsaw : MeleeWeapon
         if (IsSwitchingWeapon)
             return false;
 
-        if (reloadStartTime != null && Time.time - ReloadTimeMs <= reloadStartTime)
+        if (ReloadStartTime != null && Time.time - ReloadTimeMs <= ReloadStartTime)
             return false;
 
         var delayMs = FIRE_RATE_RATIO / FireRate;

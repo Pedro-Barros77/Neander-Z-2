@@ -93,6 +93,10 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     public bool IsReloading { get; protected set; }
     /// <summary>
+    /// Tempo em que a arma come�ou a ser recarregada.
+    /// </summary>
+    public float? ReloadStartTime { get; protected set; }
+    /// <summary>
     /// Se a arma está sendo trocada atualmente.
     /// </summary>
     public bool IsSwitchingWeapon { get; set; }
@@ -176,10 +180,6 @@ public abstract class BaseWeapon : MonoBehaviour
     /// �ltima vez em que a arma foi disparada.
     /// </summary>
     protected float? lastShotTime;
-    /// <summary>
-    /// Tempo em que a arma come�ou a ser recarregada.
-    /// </summary>
-    protected float? reloadStartTime;
     /// <summary>
     /// Diferen�a entre a quantidade de muni��es necess�rias para completar o carregador e a quantidade de muni��es dispon�veis na mochila.
     /// </summary>
@@ -342,11 +342,11 @@ public abstract class BaseWeapon : MonoBehaviour
         if (IsReloading)
             return false;
 
-        if (reloadStartTime != null && Time.time - ReloadTimeMs <= reloadStartTime)
+        if (ReloadStartTime != null && Time.time - ReloadTimeMs <= ReloadStartTime)
             return false;
 
         IsReloading = true;
-        reloadStartTime = Time.time;
+        ReloadStartTime = Time.time;
 
         int toLoad = MagazineSize - MagazineBullets;
         reloadBackpackMagDiff = Player.Backpack.GetAmmo(BulletType) - toLoad;
@@ -404,7 +404,7 @@ public abstract class BaseWeapon : MonoBehaviour
     public virtual void OnReloadEnd()
     {
         IsReloading = false;
-        reloadStartTime = null;
+        ReloadStartTime = null;
     }
 
     /// <summary>
@@ -474,7 +474,7 @@ public abstract class BaseWeapon : MonoBehaviour
         if (IsSwitchingWeapon)
             return false;
 
-        if (reloadStartTime != null && Time.time - ReloadTimeMs <= reloadStartTime)
+        if (ReloadStartTime != null && Time.time - ReloadTimeMs <= ReloadStartTime)
             return false;
 
         var delayMs = FIRE_RATE_RATIO / FireRate;

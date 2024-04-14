@@ -30,6 +30,8 @@ public class InGameScreen : MonoBehaviour
     BaseButton MobileReloadButton, MobileTacticalAbilityButton, MobileSwitchWeaponsButton, MobileTouchBackgroundFire;
     [SerializeField]
     SkinManager PlayerHeadSkinManager, WaveSummaryPlayerHeadSkinManager;
+    [SerializeField]
+    ProgressBar ReloadProgressBar, TacticalAbilityCooldownBar, TacticalAbilityCooldownBarMobile;
 
     Image SprintThreshold;
     Color32 NotSprintingJoystickColor = new(212, 210, 159, 15), SprintingJoystickColor = new(255, 243, 73, 50);
@@ -53,6 +55,17 @@ public class InGameScreen : MonoBehaviour
             PauseTitle.text = "Game Paused";
         };
 
+        TacticalAbilityCooldownBar.SetMaxValue(1, 1);
+        TacticalAbilityCooldownBar.UseShadows = false;
+        TacticalAbilityCooldownBar.UseOutline = false;
+        TacticalAbilityCooldownBar.UseAnimation = false;
+
+        ReloadProgressBar.SetMaxValue(1, 1);
+        ReloadProgressBar.UseShadows = false;
+        ReloadProgressBar.UseOutline = false;
+        ReloadProgressBar.UseAnimation = false;
+        ReloadProgressBar.HideOnFull = true;
+
         PlayerHeadSkinManager.LoadSkinData(Player.Data.SkinData);
         WaveSummaryPlayerHeadSkinManager.LoadSkinData(Player.Data.SkinData);
         WaveSummaryCharacterNameText.text = Player.Data.SkinData.CharacterName;
@@ -75,6 +88,12 @@ public class InGameScreen : MonoBehaviour
             MenuController.Instance.MobileTouchBackgroundFire = MobileTouchBackgroundFire;
 
             SprintThreshold = MobileMovementJoystick.transform.Find("SprintThresholdMask").GetChild(0).GetComponent<Image>();
+
+            TacticalAbilityCooldownBar.gameObject.SetActive(false);
+            TacticalAbilityCooldownBarMobile.SetMaxValue(1, 1);
+            TacticalAbilityCooldownBarMobile.UseShadows = false;
+            TacticalAbilityCooldownBarMobile.UseOutline = false;
+            TacticalAbilityCooldownBarMobile.UseAnimation = false;
         }
     }
 
@@ -170,6 +189,25 @@ public class InGameScreen : MonoBehaviour
         var switchType = Player.Backpack.CurrentWeaponIndex == 0 ? Player.Backpack.EquippedSecondaryType : Player.Backpack.EquippedPrimaryType;
         SwitchWeaponImage.transform.parent.gameObject.SetActive(switchType != WeaponTypes.None);
         SwitchWeaponImage.sprite = GetWeaponSprite(switchType);
+
+        float reloadProgress = ((Player.CurrentWeapon.ReloadStartTime ?? 0) + (Player.CurrentWeapon.ReloadTimeMs / 1000) - Time.time)
+            .MapRange(0, Player.CurrentWeapon.ReloadTimeMs / 1000, 0, 1);
+
+        ReloadProgressBar.RemoveValue(999);
+        ReloadProgressBar.AddValue(1 - reloadProgress);
+
+        float rollCooldownProgress = (Player.PlayerMovement.LastRollTime + (Player.RollCooldownMs / 1000) - Time.time)
+            .MapRange(0, Player.RollCooldownMs / 1000, 0, 1);
+        if (MenuController.Instance.IsMobileInput)
+        {
+            TacticalAbilityCooldownBarMobile.RemoveValue(999);
+            TacticalAbilityCooldownBarMobile.AddValue(1 - rollCooldownProgress);
+        }
+        else
+        {
+            TacticalAbilityCooldownBar.RemoveValue(999);
+            TacticalAbilityCooldownBar.AddValue(1 - rollCooldownProgress);
+        }
     }
 
     /// <summary>

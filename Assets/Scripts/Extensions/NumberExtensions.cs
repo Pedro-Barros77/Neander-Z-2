@@ -16,4 +16,12 @@ public static class NumberExtensions
 
     public static bool LessOrAproxEqual(this float input, float value) =>
         input <= value || Mathf.Approximately(input, value);
+
+    public static float MapRange(this float input, float inputMin, float inputMax, float outputMin, float outputMax, bool clamp = true)
+    {
+        float result = (input - inputMin) * (outputMax - outputMin) / (inputMax - inputMin) + outputMin;
+        if(clamp)
+            return Mathf.Clamp(result, outputMin, outputMax);
+        return result;
+    }
 }

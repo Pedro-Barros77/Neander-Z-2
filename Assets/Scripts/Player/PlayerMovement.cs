@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool isCrouching { get; private set; }
+    public bool IsCrouching { get; private set; }
+    public float LastRollTime { get; private set; }
     public Animator PlayerAnimator => animator;
-    float LastRollTime;
     float dirInput;
     bool isGrounded;
     bool isRolling;
@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     bool isFalling;
     bool isSprinting;
 
-    bool isIdle => !isRolling && !isJumpingSideways && !isTurning && !isTurningBack && !isRunning && !isFalling && !isCrouching && !Player.IsDying;
+    bool isIdle => !isRolling && !isJumpingSideways && !isTurning && !isTurningBack && !isRunning && !isFalling && !IsCrouching && !Player.IsDying;
 
     bool isPressingRight;
     bool isPressingLeft;
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             isTurningBack = false;
             isRunning = false;
             isFalling = false;
-            isCrouching = false;
+            IsCrouching = false;
             isSprinting = false;
             SyncAnimationStates();
             return;
@@ -67,16 +67,16 @@ public class PlayerMovement : MonoBehaviour
                 Roll(true);
         }
 
-        if (Constants.GetActionDown(InputActions.Jump) && isGrounded && !isRolling && !isCrouching)
+        if (Constants.GetActionDown(InputActions.Jump) && isGrounded && !isRolling && !IsCrouching)
             Jump();
 
         isPressingCrouch = Constants.GetAction(InputActions.Crouch);
         if (isPressingCrouch && isGrounded && !isJumpingSideways && !isRolling)
             Crouch();
         else
-            isCrouching = false;
+            IsCrouching = false;
 
-        if (Constants.GetAction(InputActions.Sprint) && !isCrouching && !isJumpingSideways && !isRolling && Player.Stamina >= Player.SprintStaminaDrain)
+        if (Constants.GetAction(InputActions.Sprint) && !IsCrouching && !isJumpingSideways && !isRolling && Player.Stamina >= Player.SprintStaminaDrain)
         {
             isSprinting = true;
         }
@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Movement()
     {
-        if ((isPressingLeft && isPressingRight) || isCrouching)
+        if ((isPressingLeft && isPressingRight) || IsCrouching)
             return;
 
         if (Mathf.Abs(Player.RigidBody.velocity.x) < Player.MovementSpeed && !isSprinting)
@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
         isTurningBack = false;
         isFalling = false;
         Player.RigidBody.velocity = new Vector2(0, Player.RigidBody.velocity.y);
-        isCrouching = true;
+        IsCrouching = true;
     }
 
     /// <summary>
@@ -238,7 +238,7 @@ public class PlayerMovement : MonoBehaviour
 
         Player.CurrentWeapon.PlayerFlipDir = transform.parent.localScale.x;
 
-        if (isCrouching)
+        if (IsCrouching)
         {
             if (Player.WeaponController.IsAimingLeft)
                 FlipPlayer(true);
@@ -253,14 +253,14 @@ public class PlayerMovement : MonoBehaviour
                 FlipPlayer(false);
         }
 
-        if ((isPressingRight ^ isPressingLeft) && !isTurning && !isRunning && !isRolling && !isJumpingSideways && !isCrouching)
+        if ((isPressingRight ^ isPressingLeft) && !isTurning && !isRunning && !isRolling && !isJumpingSideways && !IsCrouching)
         {
             isTurning = true;
             isTurningBack = false;
             isFalling = false;
         }
 
-        if (((wasPressingRight || wasPressingLeft) || (isPressingLeft && isPressingRight)) && !isTurningBack && (isTurning || isRunning) && isGrounded && !isJumpingSideways && !isCrouching)
+        if (((wasPressingRight || wasPressingLeft) || (isPressingLeft && isPressingRight)) && !isTurningBack && (isTurning || isRunning) && isGrounded && !isJumpingSideways && !IsCrouching)
         {
             isTurningBack = true;
             isTurning = false;
@@ -315,7 +315,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("isIdle", isIdle);
         animator.SetBool("isRunning", isRunning);
         animator.SetBool("isJumpingSideways", isJumpingSideways);
-        animator.SetBool("isCrouching", isCrouching);
+        animator.SetBool("isCrouching", IsCrouching);
 
         if (Player.IsDying)
             animator.SetTrigger("Die");

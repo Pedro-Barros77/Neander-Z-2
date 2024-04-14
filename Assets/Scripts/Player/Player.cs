@@ -507,7 +507,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         if (Backpack.EquippedPassiveSkillType == PassiveSkillTypes.CrouchRecovery)
         {
             var oldFx = transform.Find("HealingEffect");
-            if (PlayerMovement.isCrouching && Health < MaxHealth)
+            if (PlayerMovement.IsCrouching && Health < MaxHealth)
             {
                 if (oldFx == null)
                 {
