@@ -17,7 +17,7 @@ public class Chainsaw : MeleeWeapon
     protected override void Awake()
     {
         base.Awake();
-        WeaponContainerOffset = new Vector3(0f, 0f, 0f);
+        WeaponContainerOffset = new Vector3(0f, -0.18f, 0f);
     }
 
     protected override void Start()
