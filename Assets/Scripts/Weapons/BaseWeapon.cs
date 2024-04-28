@@ -246,6 +246,11 @@ public abstract class BaseWeapon : MonoBehaviour
         //Debug.DrawLine(BulletSpawnPoint.position, BulletSpawnPoint.position + BulletSpawnPoint.right * 100f, Color.red);
     }
 
+    protected virtual void FixedUpdate()
+    {
+
+    }
+
     /// <summary>
     /// Executa o comportamento padr�o de tiro de todas as armas, como verificação de munição e firerate, audio, etc.
     /// </summary>
