@@ -12,7 +12,7 @@ public class WaveEditor : Editor
 
     GUIStyle labelStyle;
     ReorderableList EnemyGroupsList;
-    float enemyGroupLineHeight;
+    float[] enemyGroupLineHeights;
 
     private void OnEnable()
     {
@@ -31,17 +31,22 @@ public class WaveEditor : Editor
             }
         };
 
+        enemyGroupLineHeights = new float[EnemyGroups.arraySize];
+
         EnemyGroupsList = new ReorderableList(serializedObject, EnemyGroups, true, true, true, true)
         {
             drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => RenderEnemyGroup(rect, index),
             headerHeight = 0,
-            elementHeightCallback = (int index) => EnemyGroups.GetArrayElementAtIndex(index).isExpanded ? enemyGroupLineHeight : EditorGUIUtility.singleLineHeight + 2,
+            elementHeightCallback = (int index) => EnemyGroups.GetArrayElementAtIndex(index).isExpanded ? enemyGroupLineHeights[index] : EditorGUIUtility.singleLineHeight + 2,
         };
     }
 
     public override void OnInspectorGUI()
     {
         GetTarget.Update();
+
+        if (EnemyGroups.arraySize > enemyGroupLineHeights.Length)
+            System.Array.Resize(ref enemyGroupLineHeights, EnemyGroups.arraySize);
 
         void DrawProp(string prop1Name, string? prop2Name = null)
         {
@@ -127,7 +132,10 @@ public class WaveEditor : Editor
                lblRonaldSpawnChance = "Ronald Spawn Chance",
                lblRaimundoHelmetHealth = "Raimundo Helmet Health",
                lblRavenAttackChance = "Raven Attack Chance",
-               lblRavenAttackAttemptDelayMs = "Raven Attack Attempt Delay Ms"
+               lblRavenAttackAttemptDelayMs = "Raven Attack Attempt Delay Ms",
+               lblRuteBurningEffectDurationMs = "Rute Burning Effect Duration Ms", lblRuteBurningEffectTickIntervalMs = "Rute Burning Effect TickInterval Ms",
+               lblRuteSelfBurningEffectDurationMs = "Rute Self Burning Effect Duration Ms", lblRuteSelfBurningEffectTickIntervalMs = "Rute Self Burning Effect TickInterval Ms",
+               lblRuteSelfDamage = "Rute Self Damage", lblRuteFloorFlameDamage = "Rute Floor Flame Damage"
                ;
 
         float typeWidth = 108, countWidth = 30, isInfiniteWidth = 100,
@@ -140,13 +148,19 @@ public class WaveEditor : Editor
                 ronaldSpawnChanceWidth = 50,
                 raimundoHelmetHealthWidth = 50,
                 ravenAttackChanceWidth = 50,
-                ravenAttackAttemptDelayMsWidth = 50
+                ravenAttackAttemptDelayMsWidth = 50,
+                ruteBurningEffectDurationMsWidth = 50, ruteBurningEffectTickIntervalMsWidth = 50,
+                ruteSelfBurningEffectDurationMsWidth = 50, ruteSelfBurningEffectTickIntervalMsWidth = 50,
+                ruteSelfDamageWidth = 50, ruteFloorFlameDamageWidth = 50
                 ;
 
         float lblTypeWidth, lblCountWidth, lblIsInfiniteWidth, lblMaxHealthWidth, lblMinHealthWidth,
               lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth, lblIsDisabledWidth,
               //Enemy-specific:
-              lblRonaldSpawnChanceWidth, lblRaimundoHelmetHealthWidth, lblRavenAttackChanceWidth, lblRavenAttackAttemptDelayMsWidth
+              lblRonaldSpawnChanceWidth, lblRaimundoHelmetHealthWidth, lblRavenAttackChanceWidth, lblRavenAttackAttemptDelayMsWidth, 
+              lblRuteBurningEffectDurationMsWidth, lblRuteBurningEffectTickIntervalMsWidth, 
+              lblRuteSelfBurningEffectDurationMsWidth, lblRuteSelfBurningEffectTickIntervalMsWidth,
+              lblRuteSelfDamageWidth, lblRuteFloorFlameDamageWidth
               ;
 
         lblTypeWidth = labelStyle.CalcSize(new GUIContent(lblType)).x;
@@ -167,9 +181,22 @@ public class WaveEditor : Editor
         lblRaimundoHelmetHealthWidth = labelStyle.CalcSize(new GUIContent(lblRaimundoHelmetHealth)).x;
         lblRavenAttackChanceWidth = labelStyle.CalcSize(new GUIContent(lblRavenAttackChance)).x;
         lblRavenAttackAttemptDelayMsWidth = labelStyle.CalcSize(new GUIContent(lblRavenAttackAttemptDelayMs)).x;
+        lblRuteBurningEffectDurationMsWidth = labelStyle.CalcSize(new GUIContent(lblRuteBurningEffectDurationMs)).x;
+        lblRuteBurningEffectTickIntervalMsWidth = labelStyle.CalcSize(new GUIContent(lblRuteBurningEffectTickIntervalMs)).x;
+        lblRuteSelfBurningEffectDurationMsWidth = labelStyle.CalcSize(new GUIContent(lblRuteSelfBurningEffectDurationMs)).x;
+        lblRuteSelfBurningEffectTickIntervalMsWidth = labelStyle.CalcSize(new GUIContent(lblRuteSelfBurningEffectTickIntervalMs)).x;
+        lblRuteSelfDamageWidth = labelStyle.CalcSize(new GUIContent(lblRuteSelfDamage)).x;
+        lblRuteFloorFlameDamageWidth = labelStyle.CalcSize(new GUIContent(lblRuteFloorFlameDamage)).x;
 
         float maxLabelWidth = Mathf.Max(lblTypeWidth, lblCountWidth, lblIsInfiniteWidth, lblMaxHealthWidth, lblMinHealthWidth,
-                                                   lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth, lblIsDisabledWidth);
+                                                   lblMaxSpeedWidth, lblMinSpeedWidth, lblMaxDamageWidth, lblMinDamageWidth, lblMaxKillScoreWidth, lblMinKillScoreWidth, lblSpawnChanceWidth, lblIsDisabledWidth,
+                                                   //Enemy-specific:
+                                                   lblRonaldSpawnChanceWidth, lblRaimundoHelmetHealthWidth,
+                                                   lblRavenAttackChanceWidth, lblRavenAttackAttemptDelayMsWidth, 
+                                                   lblRuteBurningEffectDurationMsWidth, lblRuteBurningEffectTickIntervalMsWidth, 
+                                                   lblRuteSelfBurningEffectDurationMsWidth, lblRuteSelfBurningEffectTickIntervalMsWidth,
+                                                   lblRuteSelfDamageWidth, lblRuteFloorFlameDamageWidth
+                                                   );
 
         float marginX = 10;
         float x = rect.x;
@@ -302,32 +329,34 @@ public class WaveEditor : Editor
         if (enemyType == EnemyTypes.Z_Ronald)
         {
             // Ronald Spawn Chance
-            EditorGUI.LabelField(new Rect(x, y, lblRonaldSpawnChanceWidth, EditorGUIUtility.singleLineHeight), lblRonaldSpawnChance, labelStyle);
-            x += lblRonaldSpawnChanceWidth + marginX;
+            EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblRonaldSpawnChance, labelStyle);
+            x += maxLabelWidth + marginX;
             EditorGUI.PropertyField(
                            new Rect(x, y, ronaldSpawnChanceWidth, EditorGUIUtility.singleLineHeight),
                                       item.FindPropertyRelative("RonaldSpawnChance"), GUIContent.none);
 
             x += ronaldSpawnChanceWidth + marginX * 2;
+            y += EditorGUIUtility.singleLineHeight + 2;
         }
 
         if (enemyType == EnemyTypes.Z_Raimundo)
         {
             // Raimundo Helmet Health:
-            EditorGUI.LabelField(new Rect(x, y, lblRaimundoHelmetHealthWidth, EditorGUIUtility.singleLineHeight), lblRaimundoHelmetHealth, labelStyle);
-            x += lblRaimundoHelmetHealthWidth + marginX;
+            EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblRaimundoHelmetHealth, labelStyle);
+            x += maxLabelWidth + marginX;
             EditorGUI.PropertyField(
                            new Rect(x, y, raimundoHelmetHealthWidth, EditorGUIUtility.singleLineHeight),
                                       item.FindPropertyRelative("RaimundoHelmetHealth"), GUIContent.none);
 
             x += raimundoHelmetHealthWidth + marginX * 2;
+            y += EditorGUIUtility.singleLineHeight + 2;
         }
 
         if (enemyType == EnemyTypes.Z_Raven)
         {
             // Raven Attack Chance:
-            EditorGUI.LabelField(new Rect(x, y, lblRavenAttackChanceWidth, EditorGUIUtility.singleLineHeight), lblRavenAttackChance, labelStyle);
-            x += lblRavenAttackChanceWidth + marginX;
+            EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblRavenAttackChance, labelStyle);
+            x += maxLabelWidth + marginX;
             EditorGUI.PropertyField(
                            new Rect(x, y, ravenAttackChanceWidth, EditorGUIUtility.singleLineHeight),
                                       item.FindPropertyRelative("RavenAttackChance"), GUIContent.none);
@@ -335,15 +364,75 @@ public class WaveEditor : Editor
             x += ravenAttackChanceWidth + marginX * 2;
 
             // Raven Attack Attempt Delay Ms
-            EditorGUI.LabelField(new Rect(x, y, lblRavenAttackAttemptDelayMsWidth, EditorGUIUtility.singleLineHeight), lblRavenAttackAttemptDelayMs, labelStyle);
-            x += lblRavenAttackAttemptDelayMsWidth + marginX;
+            EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblRavenAttackAttemptDelayMs, labelStyle);
+            x += maxLabelWidth + marginX;
             EditorGUI.PropertyField(
                            new Rect(x, y, ravenAttackAttemptDelayMsWidth, EditorGUIUtility.singleLineHeight),
                                       item.FindPropertyRelative("RavenAttackAttemptDelayMs"), GUIContent.none);
 
             x += ravenAttackAttemptDelayMsWidth + marginX * 2;
+            y += EditorGUIUtility.singleLineHeight + 2;
+
         }
 
-        enemyGroupLineHeight = y - rect.y + EditorGUIUtility.singleLineHeight + 2;
+        if (enemyType == EnemyTypes.Z_Rute)
+        {
+            //Rute Burning Effect Duration Ms
+            EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblRuteBurningEffectDurationMs, labelStyle);
+            x += maxLabelWidth + marginX;
+            EditorGUI.PropertyField(
+                            new Rect(x, y, ruteBurningEffectDurationMsWidth, EditorGUIUtility.singleLineHeight),
+                                      item.FindPropertyRelative("RuteBurningEffectDurationMs"), GUIContent.none);
+            x += ruteBurningEffectDurationMsWidth + marginX * 2;
+
+            //Rute Burning Effect TickInterval Ms
+            EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblRuteBurningEffectTickIntervalMs, labelStyle);
+            x += maxLabelWidth + marginX;
+            EditorGUI.PropertyField(
+                            new Rect(x, y, ruteBurningEffectTickIntervalMsWidth, EditorGUIUtility.singleLineHeight),
+                                      item.FindPropertyRelative("RuteBurningEffectTickIntervalMs"), GUIContent.none);
+
+            y += EditorGUIUtility.singleLineHeight + 2;
+            x = startX;
+
+            //Rute Self Burning Effect Duration Ms
+            EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblRuteSelfBurningEffectDurationMs, labelStyle);
+            x += maxLabelWidth + marginX;
+            EditorGUI.PropertyField(
+                            new Rect(x, y, ruteSelfBurningEffectDurationMsWidth, EditorGUIUtility.singleLineHeight),
+                                      item.FindPropertyRelative("RuteSelfBurningEffectDurationMs"), GUIContent.none);
+            x += ruteSelfBurningEffectDurationMsWidth + marginX * 2;
+
+            //Rute Self Burning Effect TickInterval Ms
+            EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblRuteSelfBurningEffectTickIntervalMs, labelStyle);
+            x += maxLabelWidth + marginX;
+            EditorGUI.PropertyField(
+                            new Rect(x, y, ruteSelfBurningEffectTickIntervalMsWidth, EditorGUIUtility.singleLineHeight),
+                                      item.FindPropertyRelative("RuteSelfBurningEffectTickIntervalMs"), GUIContent.none);
+
+            y += EditorGUIUtility.singleLineHeight + 2;
+            x = startX;
+
+            //Rute Self Damage
+            EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblRuteSelfDamage, labelStyle);
+            x += maxLabelWidth + marginX;
+            EditorGUI.PropertyField(
+                            new Rect(x, y, ruteSelfDamageWidth, EditorGUIUtility.singleLineHeight),
+                                      item.FindPropertyRelative("RuteSelfDamage"), GUIContent.none);
+            x += ruteSelfDamageWidth + marginX * 2;
+
+            //Rute Floor Flame Damage
+            EditorGUI.LabelField(new Rect(x, y, maxLabelWidth, EditorGUIUtility.singleLineHeight), lblRuteFloorFlameDamage, labelStyle);
+            x += maxLabelWidth + marginX;
+            EditorGUI.PropertyField(
+                            new Rect(x, y, ruteFloorFlameDamageWidth, EditorGUIUtility.singleLineHeight),
+                                      item.FindPropertyRelative("RuteFloorFlameDamage"), GUIContent.none);
+
+            x = startX;
+            x = ruteFloorFlameDamageWidth + marginX * 2;
+            y += EditorGUIUtility.singleLineHeight + 2;
+        }
+
+        enemyGroupLineHeights[index] = y - rect.y + EditorGUIUtility.singleLineHeight + 2;
     }
 }

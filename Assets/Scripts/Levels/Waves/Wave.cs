@@ -310,6 +310,16 @@ public class Wave : MonoBehaviour
         {
             raven.AttackChance = group.RavenAttackChance;
             raven.AttackAttemptDelayMs = group.RavenAttackAttemptDelayMs;
+        } 
+
+        if(enemy is Rute rute)
+        {
+            rute.BurningEffectDurationMs = group.RuteBurningEffectDurationMs;
+            rute.BurningEffectTickIntervalMs = group.RuteBurningEffectTickIntervalMs;
+            rute.SelfBurningEffectDurationMs = group.RuteSelfBurningEffectDurationMs;
+            rute.SelfBurningEffectTickIntervalMs = group.RuteSelfBurningEffectTickIntervalMs;
+            rute.SelfDamage = group.RuteSelfDamage;
+            rute.FloorFlameDamage = group.RuteFloorFlameDamage;
         }
     }
 

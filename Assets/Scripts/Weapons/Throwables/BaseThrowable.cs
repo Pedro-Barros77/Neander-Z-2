@@ -123,7 +123,7 @@ public abstract class BaseThrowable : MonoBehaviour
     #endregion
 
     [SerializeField]
-    protected List<CustomAudio> StartSounds, ThrowSounds, HitSounds, DetonateSounds;
+    public List<CustomAudio> StartSounds, ThrowSounds, HitSounds, DetonateSounds;
 
     #region Gameobject Components
 
@@ -179,7 +179,7 @@ public abstract class BaseThrowable : MonoBehaviour
     protected virtual void Start()
     {
         TotalDamage = Damage;
-        Player = PlayerWeaponController.transform.parent.GetComponent<Player>();
+        Player = PlayerWeaponController?.transform.parent.GetComponent<Player>();
         IsCooking = true;
         if (StartFuseOnCook)
             CookStartTime = Time.time;
@@ -357,7 +357,7 @@ public abstract class BaseThrowable : MonoBehaviour
     {
         if (!IsThrown)
         {
-            bool aimingLeft = PlayerWeaponController.IsAimingLeft;
+            bool aimingLeft = PlayerWeaponController?.IsAimingLeft??false;
             float absoluteYPosition = Mathf.Abs(transform.localPosition.y);
             if (aimingLeft)
             {

@@ -69,5 +69,13 @@ public class EnemyGroup
     //Raven
     public float RavenAttackChance;
     public float RavenAttackAttemptDelayMs;
+
+    //Rute
+    public float RuteBurningEffectDurationMs;
+    public float RuteBurningEffectTickIntervalMs;
+    public float RuteSelfBurningEffectDurationMs;
+    public float RuteSelfBurningEffectTickIntervalMs;
+    public float RuteSelfDamage;
+    public float RuteFloorFlameDamage;
     #endregion
 }

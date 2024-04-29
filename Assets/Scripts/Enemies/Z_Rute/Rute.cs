@@ -6,12 +6,14 @@ public class Rute : BaseEnemy, IKnockBackable
 {
     private bool isMovingLeft = true;
     private float maxDistanceRunning = 5f;
-    private bool isRunningAround = true;
-    private float BurningEffectDurationMs = 3000f;
-    private float SelfBurningEffectDurationMs = 3000f;
-    private float BurningEffectTickIntervalMs = 500f;
-    private float SelfBurningEffectTickIntervalMs = 1000f;
-    private float SelfDamage = 3f;
+    public float BurningEffectDurationMs { get; set; } = 3000f;
+    public float BurningEffectTickIntervalMs { get; set; } = 500f;
+    public float SelfBurningEffectDurationMs { get; set; } = 3000f;
+    public float SelfBurningEffectTickIntervalMs { get; set; } = 500f;
+    public float SelfDamage { get; set; } = 3f;
+    public float FloorFlameDamage { get; set; } = 3f;
+    [SerializeField]
+    public GameObject FireFlamesPrefab;
     public IPlayerTarget EnemyOwner { get; set; }
     private IEnemyTarget Target;
     protected override void Start()
@@ -19,7 +21,7 @@ public class Rute : BaseEnemy, IKnockBackable
         Type = EnemyTypes.Z_Rute;
         MovementSpeed = 2.2f;
         AccelerationSpeed = 1f;
-        Health = 30f;
+        Health = 40f;
         Damage = 6f;
         KillScore = 53;
         HeadshotScoreMultiplier = 1.5f;
@@ -55,7 +57,7 @@ public class Rute : BaseEnemy, IKnockBackable
         }
         if (!isDying)
             AttackTrigger.gameObject.SetActive(true);
-            StartCoroutine(DeactivateAttackTrigger(0.1f));
+        StartCoroutine(DeactivateAttackTrigger(0.1f));
     }
 
     protected override void Movement(IEnemyTarget target)
@@ -121,7 +123,7 @@ public class Rute : BaseEnemy, IKnockBackable
 
         if (target != null)
             burnFX.PlayerOwner = target;
-      
+
         AttackHitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
         burnFX.SetEffect(BurningEffectDurationMs, BurningEffectTickIntervalMs);
     }
@@ -141,6 +143,32 @@ public class Rute : BaseEnemy, IKnockBackable
             burnFX.EnemyOwner = EnemyOwner;
             burnFX.SetEffect(SelfBurningEffectDurationMs, SelfBurningEffectTickIntervalMs);
         }
+    }
+
+    public GameObject InstantiateMolotovPrefab()
+    {
+        var molotovPrefab = Resources.Load<GameObject>($"Prefabs/Weapons/Throwables/{ThrowableTypes.Molotov}");
+        GameObject molotovObj = Instantiate(molotovPrefab, transform.parent);
+        molotovObj.transform.position = transform.position;
+        molotovObj.name = ThrowableTypes.Molotov.ToString();
+        molotovObj.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+        var molotov = molotovObj.GetComponent<Molotov>();
+        molotov.HitSounds.Clear();
+        molotov.StartSounds.Clear();
+        molotov.EnemyOwner = this;
+        molotov.Data = Instantiate(molotov.Data);
+        molotov.Data.EffectDurationMs = 8000f;
+        molotov.Data.Damage = FloorFlameDamage;
+        var rb = molotovObj.GetComponent<Rigidbody2D>();
+        var collider = molotovObj.GetComponent<Collider2D>();
+        rb.isKinematic = false;
+        collider.enabled = true;
+        return molotovObj;
+    }
+
+    public void OnDieHitGround()
+    {
+        InstantiateMolotovPrefab();
     }
 
 }

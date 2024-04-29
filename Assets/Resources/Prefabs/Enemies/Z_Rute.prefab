@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1254320005679333104}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.297, y: 0.4075, z: 0}
+  m_LocalPosition: {x: -0.556, y: 0.302, z: 0}
   m_LocalScale: {x: 0.49842316, y: 0.59149086, z: 0.5334495}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -346,7 +346,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.59, y: 1.13}
+  m_Size: {x: 0.12, y: 0.13}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -413,17 +413,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0020314455, y: -0.28143382}
+  m_Offset: {x: -0.058600694, y: -0.6912222}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.8888888, y: 2.488889}
-    newSize: {x: 0.59, y: 1.13}
+    oldSize: {x: 2.75, y: 3.125}
+    newSize: {x: 0.12, y: 0.13}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.97910285, y: 1.9806218}
+  m_Size: {x: 1.0922415, y: 1.7172999}
   m_EdgeRadius: 0
 --- !u!114 &5579682174834183307
 MonoBehaviour:
@@ -447,37 +447,37 @@ MonoBehaviour:
   m_AlphaCutoff: 0.1
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
-  - {x: -0.9444444, y: -1.2444445, z: 0}
-  - {x: -0.9444444, y: 1.2444446, z: 0}
-  - {x: 0.9444442, y: 1.2444446, z: 0}
-  - {x: 0.9444442, y: -1.2444445, z: 0}
-  m_ShapePathHash: 0
+  - {x: -1.375, y: -1.5625, z: 0}
+  - {x: -0.8873086, y: 1.0845623, z: 0}
+  - {x: -0.10758184, y: 1.2406235, z: 0}
+  - {x: -0.16418056, y: -0.11257529, z: 0}
+  - {x: 0.5946937, y: -1.4942232, z: 0}
+  m_ShapePathHash: 2102729226
   m_InstanceId: 0
-  m_ShadowShape2DComponent: {fileID: 3524856602229886046}
+  m_ShadowShape2DComponent: {fileID: 0}
   m_ShadowShape2DProvider:
-    rid: 417020814460190790
-  m_ShadowCastingSource: 2
+    rid: -2
+  m_ShadowCastingSource: 1
   m_ShadowMesh:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
-      m_Center: {x: 0.022224426, y: 0, z: 0}
-      m_Extent: {x: 0.5877762, y: 1.1544342, z: 0}
+      m_Center: {x: -0.39015317, y: -0.16093826, z: 0}
+      m_Extent: {x: 0.98484683, y: 1.4015617, z: 0}
     m_EdgeProcessing: 1
-    m_TrimEdge: 0.09
+    m_TrimEdge: 0.1
     m_FlipX: 0
     m_FlipY: 0
     m_InitialTrim: 0
   m_CastingOption: 1
-  m_PreviousTrimEdge: 0.09
+  m_PreviousTrimEdge: 0.1
   m_PreviousEdgeProcessing: 1
-  m_PreviousShadowCastingSource: 2
+  m_PreviousShadowCastingSource: 1
   m_PreviousShadowShape2DSource: {fileID: 3524856602229886046}
   references:
     version: 2
     RefIds:
-    - rid: 417020814460190790
-      type: {class: ShadowShape2DProvider_SpriteRenderer, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.2D.Runtime}
-      data: 
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!82 &2255918080273023164
 AudioSource:
   m_ObjectHideFlags: 0
@@ -611,11 +611,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBarPrefab: {fileID: 5826301193245720848, guid: b772a17772a316c458ab20c5a7ac87fe, type: 3}
   BloodSplatterPrefab: {fileID: 7444960458494065295, guid: 1f360cc0117f0d14db021d5b0edac523, type: 3}
-  DamageSounds: []
+  DamageSounds:
+  - Audio: {fileID: 8300000, guid: 32cefcefcd67f5646ad7806ce8460984, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 3a1812fe1619f06418e573f4bd56fcae, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 2df3e32df9abd6749bf15ea2159c5c6d, type: 3}
+    Volume: 1
+    Pitch: 1
   AttackStartSounds: []
-  AttackHitSounds: []
+  AttackHitSounds:
+  - Audio: {fileID: 8300000, guid: 04ef307e145ea2148a860d4937772043, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: ded8ff14d972f10489037d2fde30e79a, type: 3}
+    Volume: 1
+    Pitch: 1
   SpawnSounds: []
-  DeathSounds: []
+  DeathSounds:
+  - Audio: {fileID: 8300000, guid: 3c3977bce20f36b4c8af0f78b1eab9ec, type: 3}
+    Volume: 1
+    Pitch: 1
+  FireFlamesPrefab: {fileID: 8881136829020695311, guid: 1e7b3d7c8ea83f648b28bc88ec629f77, type: 3}
 --- !u!1001 &8514751714962993159
 PrefabInstance:
   m_ObjectHideFlags: 0
