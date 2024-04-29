@@ -4,9 +4,11 @@ public class PlayerMovement : MonoBehaviour
 {
     public bool IsCrouching { get; private set; }
     public float LastRollTime { get; private set; }
+    public bool IsGrounded { get; private set; }
+    public bool DoubleJumped { get; private set; }
     public Animator PlayerAnimator => animator;
+    public Animator DoubleJumpEffectAnimator;
     float dirInput;
-    bool isGrounded;
     bool isRolling;
     bool isJumpingSideways;
     bool isTurning;
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         Player = GetComponentInParent<Player>();
         animator = GetComponentInParent<Animator>();
         spriteRenderer = GetComponentInParent<SpriteRenderer>();
+        DoubleJumpEffectAnimator = Player.transform.Find("DoubleJumpSwiftEffect").GetComponent<Animator>();
     }
 
     void Update()
@@ -58,20 +61,38 @@ public class PlayerMovement : MonoBehaviour
 
         var rollCooledDown = LastRollTime + (Player.RollCooldownMs / 1000) <= Time.time;
 
-        if (Constants.GetAction(InputActions.TacticalAbility) && isGrounded && !isJumpingSideways && Player.Backpack.EquippedTacticalAbilityType == TacticalAbilityTypes.TacticalRoll)
+        if (Constants.GetAction(InputActions.TacticalAbility))
         {
-            if (isPressingRight && !isPressingLeft && rollCooledDown)
-                Roll(false);
+            switch (Player.Backpack.EquippedTacticalAbilityType)
+            {
+                case TacticalAbilityTypes.TacticalRoll:
+                    if (IsGrounded && !isJumpingSideways && rollCooledDown)
+                    {
+                        if (isPressingRight && !isPressingLeft)
+                            Roll(false);
 
-            if (isPressingLeft && !isPressingRight && rollCooledDown)
-                Roll(true);
+                        if (isPressingLeft && !isPressingRight)
+                            Roll(true);
+                    }
+                    break;
+
+                case TacticalAbilityTypes.DoubleJump:
+                    if (!DoubleJumped && !IsGrounded)
+                        Jump(isDoubleJump: true);
+                    break;
+            }
         }
 
-        if (Constants.GetActionDown(InputActions.Jump) && isGrounded && !isRolling && !IsCrouching)
-            Jump();
+        if (Constants.GetActionDown(InputActions.Jump) && !isRolling && !IsCrouching)
+        {
+            if (IsGrounded)
+                Jump();
+            else if (Player.Backpack.EquippedTacticalAbilityType == TacticalAbilityTypes.DoubleJump && !DoubleJumped)
+                Jump(isDoubleJump: true);
+        }
 
         isPressingCrouch = Constants.GetAction(InputActions.Crouch);
-        if (isPressingCrouch && isGrounded && !isJumpingSideways && !isRolling)
+        if (isPressingCrouch && IsGrounded && !isJumpingSideways && !isRolling)
             Crouch();
         else
             IsCrouching = false;
@@ -101,7 +122,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Environment"))
         {
-            isGrounded = true;
+            IsGrounded = true;
+            DoubleJumped = false;
 
             if (!isTurning && !isRunning && !isRolling && !isTurningBack && !isJumpingSideways)
                 isFalling = true;
@@ -118,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Environment"))
         {
-            isGrounded = false;
+            IsGrounded = false;
             isFalling = false;
         }
     }
@@ -145,11 +167,19 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Faz o jogador pular.
     /// </summary>
-    private void Jump()
+    private void Jump(bool isDoubleJump = false)
     {
         if (Player.Stamina < Player.JumpStaminaDrain)
             return;
-        isGrounded = false;
+
+        if (isDoubleJump)
+        {
+            DoubleJumped = true;
+            Player.RigidBody.velocity = new Vector2(Player.RigidBody.velocity.x, 0f);
+            DoubleJumpEffectAnimator.Play("WindSwift");
+        }
+
+        IsGrounded = false;
         Player.LoseStamina(Player.JumpStaminaDrain);
         Player.RigidBody.AddForce(new Vector2(0f, Player.JumpForce));
     }
@@ -260,14 +290,14 @@ public class PlayerMovement : MonoBehaviour
             isFalling = false;
         }
 
-        if (((wasPressingRight || wasPressingLeft) || (isPressingLeft && isPressingRight)) && !isTurningBack && (isTurning || isRunning) && isGrounded && !isJumpingSideways && !IsCrouching)
+        if (((wasPressingRight || wasPressingLeft) || (isPressingLeft && isPressingRight)) && !isTurningBack && (isTurning || isRunning) && IsGrounded && !isJumpingSideways && !IsCrouching)
         {
             isTurningBack = true;
             isTurning = false;
             isFalling = false;
         }
 
-        if (isGrounded)
+        if (IsGrounded)
         {
             isJumpingSideways = false;
             if (!isMoving && !isPressingRight && !isPressingLeft)

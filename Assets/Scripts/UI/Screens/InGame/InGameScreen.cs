@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,7 +15,7 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText, PlayerMoneyText, WaveScoreText, PauseTitle, WaveSummaryCharacterNameText;
     [SerializeField]
-    Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, FuelAmmoIcon;
+    Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, FuelAmmoIcon, TacticalRollIcon, DoubleJumpIcon;
     [SerializeField]
     Sprite Colt_1911Sprite, ShortBarrelSprite, UZISprite, SV98Sprite, M16Sprite, RPGSprite, MacheteSprite, DeagleSprite, Beretta_93RSprite, ScarSprite, ChainsawSprite, ScarDebugSprite;
     [SerializeField]
@@ -78,6 +79,13 @@ public class InGameScreen : MonoBehaviour
 
         MobileInputPanel.SetActive(MenuController.Instance.IsMobileInput);
 
+        Sprite tacticalAbilitySprite = Player.Data.InventoryData.TacticalAbilitiesSelection?.FirstOrDefault(x => x.IsEquipped)?.Type switch
+        {
+            TacticalAbilityTypes.TacticalRoll => TacticalRollIcon,
+            TacticalAbilityTypes.DoubleJump => DoubleJumpIcon,
+            _ => null,
+        };
+
         if (MenuController.Instance.IsMobileInput)
         {
             MenuController.Instance.MobileMovementJoystick = MobileMovementJoystick;
@@ -94,7 +102,11 @@ public class InGameScreen : MonoBehaviour
             TacticalAbilityCooldownBarMobile.UseShadows = false;
             TacticalAbilityCooldownBarMobile.UseOutline = false;
             TacticalAbilityCooldownBarMobile.UseAnimation = false;
+
+            MobileTacticalAbilityButton.transform.Find("Icon").GetComponent<Image>().sprite = tacticalAbilitySprite;
         }
+
+        TacticalAbilityCooldownBar.transform.Find("Icon").GetComponent<Image>().sprite = tacticalAbilitySprite;
     }
 
     void Update()
@@ -193,20 +205,32 @@ public class InGameScreen : MonoBehaviour
         float reloadProgress = ((Player.CurrentWeapon.ReloadStartTime ?? 0) + (Player.CurrentWeapon.ReloadTimeMs / 1000) - Time.time)
             .MapRange(0, Player.CurrentWeapon.ReloadTimeMs / 1000, 0, 1);
 
-        ReloadProgressBar.RemoveValue(999);
+        ReloadProgressBar.RemoveValue(1);
         ReloadProgressBar.AddValue(1 - reloadProgress);
 
-        float rollCooldownProgress = (Player.PlayerMovement.LastRollTime + (Player.RollCooldownMs / 1000) - Time.time)
-            .MapRange(0, Player.RollCooldownMs / 1000, 0, 1);
-        if (MenuController.Instance.IsMobileInput)
+        switch (Player.Backpack.EquippedTacticalAbilityType)
         {
-            TacticalAbilityCooldownBarMobile.RemoveValue(999);
-            TacticalAbilityCooldownBarMobile.AddValue(1 - rollCooldownProgress);
-        }
-        else
-        {
-            TacticalAbilityCooldownBar.RemoveValue(999);
-            TacticalAbilityCooldownBar.AddValue(1 - rollCooldownProgress);
+            case TacticalAbilityTypes.TacticalRoll:
+                float rollCooldownProgress = (Player.PlayerMovement.LastRollTime + (Player.RollCooldownMs / 1000) - Time.time)
+                    .MapRange(0, Player.RollCooldownMs / 1000, 0, 1);
+                if (MenuController.Instance.IsMobileInput)
+                {
+                    TacticalAbilityCooldownBarMobile.RemoveValue(1);
+                    TacticalAbilityCooldownBarMobile.AddValue(1 - rollCooldownProgress);
+                }
+                else
+                {
+                    TacticalAbilityCooldownBar.RemoveValue(1);
+                    TacticalAbilityCooldownBar.AddValue(1 - rollCooldownProgress);
+                }
+                break;
+
+            case TacticalAbilityTypes.DoubleJump:
+                if (Player.PlayerMovement.IsGrounded || Player.PlayerMovement.DoubleJumped)
+                    TacticalAbilityCooldownBar.RemoveValue(1);
+                else
+                    TacticalAbilityCooldownBar.AddValue(1);
+                break;
         }
     }
 
