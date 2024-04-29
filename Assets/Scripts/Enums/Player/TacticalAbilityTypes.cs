@@ -4,5 +4,6 @@
 public enum TacticalAbilityTypes
 {
     None,
-    TacticalRoll
+    TacticalRoll = 1,
+    DoubleJump = 2,
 }

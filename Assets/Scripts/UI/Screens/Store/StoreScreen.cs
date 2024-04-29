@@ -526,6 +526,9 @@ public class StoreScreen : MonoBehaviour
         if (SelectedItem.Data is StoreThrowableData)
             purchased = BuyThrowable();
 
+        if(SelectedItem.Data is StoreTacticalAbilityData)
+            purchased = BuyTacticalAbility();
+
         if (SelectedItem.Data is StorePassiveSkillData)
             purchased = BuyPassiveSkill();
 
@@ -670,7 +673,28 @@ public class StoreScreen : MonoBehaviour
     }
 
     /// <summary>
-    /// Compra a habilidade passive selecionada.
+    /// Compra a habilidade tática selecionada.
+    /// </summary>
+    /// <returns>Se o item foi comprado com sucesso.</returns>
+    private bool BuyTacticalAbility()
+    {
+        var data = SelectedItem.Data as StoreTacticalAbilityData;
+
+        var abilities = PlayerData.InventoryData.TacticalAbilitiesSelection;
+
+        if (abilities.Any(x => x.Type == data.AbilityType))
+            return false;
+
+        PlayerData.InventoryData.UnequipAllTacticalAbilities();
+        PlayerData.InventoryData.TacticalAbilitiesSelection.Add(new(data.AbilityType, true));
+        var item = inventoryTab.CreateInventoryItem(data, true);
+        inventoryTab.AbilitySlot.DropItem(item);
+
+        return true;
+    }
+
+    /// <summary>
+    /// Compra a habilidade passiva selecionada.
     /// </summary>
     /// <returns>Se o item foi comprado com sucesso.</returns>
     private bool BuyPassiveSkill()

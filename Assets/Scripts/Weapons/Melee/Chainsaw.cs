@@ -1,30 +1,52 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Chainsaw : MeleeWeapon
 {
     [SerializeField]
-    private AudioSource SecondaryAudioSource, HitAudioSource;
+    private AudioSource StartupAudioSource, IdleAudioSource, RunAudioSource, TransitionAudioSource, HitAudioSource;
 
     [SerializeField]
-    private CustomAudio StartupSound, IdleLoopSound, RevStartSound, RevLoopSound, CutStartSound, CutLoopSound, CutToRevSound, RevToIdleSound, TurnOffSound;
+    private CustomAudio StartupSound, IdleLoopSound, RunStartSound, RunLoopSound, TurnOffSound;
 
-    bool isCutting, isOn;
-    int attackEndMissCounter = 2, attackHitCounter = 5;
+    private float currentEngineAcceleration, accelerationSpeed = 4, runToIdleDeaccSpeed = 1;
+
+    float idleRange, runRange;
+
+    int attackHitCounter = 5; // 5 hits before playing a hit sound
+    EngineStates engineState = EngineStates.Off;
+
+    private enum EngineStates
+    {
+        Off,
+        TurningOn,
+        Idle,
+        IdleToRun,
+        Running,
+        RunToIdle,
+        TurningOff
+    }
 
     protected override void Awake()
     {
         base.Awake();
-        WeaponContainerOffset = new Vector3(0f, 0f, 0f);
+        WeaponContainerOffset = new Vector3(0f, -0.18f, 0f);
+        IdleAudioSource.volume = 0;
+        RunAudioSource.volume = 0;
     }
 
     protected override void Start()
     {
+        idleRange = StartupSound.Audio.length;
+        runRange = idleRange + RunStartSound.Audio.length;
+
         base.Start();
-        AudioSource.clip = null;
-        SecondaryAudioSource.clip = null;
         TurnOn();
     }
 
@@ -32,30 +54,13 @@ public class Chainsaw : MeleeWeapon
     {
         base.Update();
 
-        if (!isOn)
+        HandleEngineAcceleration();
+
+        if (IsOff)
             return;
 
         if (MagazineBullets <= 0)
             TurnOff();
-
-        if (Constants.GetActionDown(InputActions.Shoot))
-            StartRevving();
-
-        if (Constants.GetActionUp(InputActions.Shoot))
-        {
-            isCutting = false;
-            attackEndMissCounter = 3;
-            RevLoopSound.PlayIfNotNull(SecondaryAudioSource, AudioTypes.Player, false);
-            FadeSounds(RevLoopSound, IdleLoopSound, 0.2f, RevLoopSound.Audio.length * 0.9f, true);
-        }
-
-        if (attackEndMissCounter <= 0 && isCutting)
-        {
-            isCutting = false;
-            attackEndMissCounter = 3;
-            CutLoopSound.PlayIfNotNull(SecondaryAudioSource, AudioTypes.Player);
-            FadeSounds(CutLoopSound, RevLoopSound, 0.4f, CutLoopSound.Audio.length * 0.4f, true);
-        }
     }
 
     public override IEnumerable<GameObject> Shoot()
@@ -125,8 +130,8 @@ public class Chainsaw : MeleeWeapon
         base.OnReloadEnd();
         if (Constants.GetAction(InputActions.Shoot))
         {
-            isOn = true;
-            StartRevving();
+            engineState = EngineStates.Idle;
+            StartRunning();
         }
         else
             TurnOn();
@@ -172,7 +177,6 @@ public class Chainsaw : MeleeWeapon
     {
         base.OnShootEnd();
         AttackTrigger.gameObject.SetActive(false);
-        attackEndMissCounter--;
     }
 
     protected override void OnTargetHit(Collider2D targetCollider)
@@ -185,13 +189,6 @@ public class Chainsaw : MeleeWeapon
 
         if (HitTargetsIds.Contains(targetInstanceId))
             return;
-
-        if (attackHitCounter <= 0)
-        {
-            attackHitCounter = 5;
-            HitSounds.PlayRandomIfAny(HitAudioSource, AudioTypes.Player);
-            return;
-        }
 
         Vector2 hitPosition = targetCollider.ClosestPoint(AttackTrigger.transform.position);
         target.TakeDamage(Damage, HeadshotMultiplier, targetCollider.name, Player, hitPosition);
@@ -206,69 +203,123 @@ public class Chainsaw : MeleeWeapon
 
         HitTargetsIds.Add(targetInstanceId);
 
-        if (!isCutting && isOn)
-        {
-            CutStartSound.PlayIfNotNull(SecondaryAudioSource, AudioTypes.Player);
-            FadeSounds(CutStartSound, CutLoopSound, 0.3f, CutStartSound.Audio.length * 0.9f, true);
-            isCutting = true;
-        }
         attackHitCounter--;
-        attackEndMissCounter = 3;
+
+        if (attackHitCounter <= 0)
+        {
+            attackHitCounter = 5;
+            HitSounds.PlayRandomIfAny(HitAudioSource, AudioTypes.Player);
+            return;
+        }
     }
+
+    bool IsOff => engineState == EngineStates.Off || engineState == EngineStates.TurningOff;
 
     void TurnOn()
     {
-        if (isOn)
+        if (!IsOff)
             return;
 
-        isOn = true;
-        StartupSound.PlayIfNotNull(SecondaryAudioSource, AudioTypes.Player);
-        FadeSounds(StartupSound, IdleLoopSound, 0.1f, StartupSound.Audio.length, true);
+        StartupSound.PlayIfNotNull(StartupAudioSource, AudioTypes.Player);
+        engineState = EngineStates.TurningOn;
     }
 
     void TurnOff()
     {
-        if (!isOn)
+        if (IsOff)
             return;
 
-        isCutting = false;
-        isOn = false;
-        IdleLoopSound.PlayIfNotNull(SecondaryAudioSource, AudioTypes.Player);
-        FadeSounds(IdleLoopSound, TurnOffSound, 0, 0);
+        TurnOffSound.PlayIfNotNull(StartupAudioSource, AudioTypes.Player);
+        engineState = EngineStates.TurningOff;
     }
 
-    void StartRevving()
+    void StartRunning()
     {
-        RevStartSound.PlayIfNotNull(SecondaryAudioSource, AudioTypes.Player, false);
-        FadeSounds(RevStartSound, RevLoopSound, 0.3f, RevStartSound.Audio.length * 0.97f, true);
+        if (IsOff)
+            return;
+
+        engineState = EngineStates.IdleToRun;
     }
 
-    void FadeSounds(CustomAudio oldSound, CustomAudio newSound, float fadeDuration, float delayMs, bool loop = false)
+    void ReleaseAccelerator()
     {
-        StopAllCoroutines();
-        AudioSource.volume = 0;
-        SecondaryAudioSource.volume = 0;
-        StartCoroutine(FadeSounds(SecondaryAudioSource, AudioSource, oldSound, newSound, fadeDuration, delayMs, loop));
+        if (IsOff)
+            return;
+
+        engineState = EngineStates.RunToIdle;
     }
 
-    System.Collections.IEnumerator FadeSounds(AudioSource from, AudioSource to, CustomAudio oldSound, CustomAudio newSound, float fadeDuration, float delayMs, bool loop = false)
+    void HandleEngineAcceleration()
     {
-        yield return new WaitForSeconds(delayMs / 1000);
+        if (engineState == EngineStates.Off)
+            return;
 
-        float timeElapsed = 0;
+        if (Constants.GetActionDown(InputActions.Shoot))
+            StartRunning();
 
-        to.clip = newSound.Audio;
-        to.loop = loop;
-        newSound.PlayIfNotNull(to, AudioTypes.Player, false);
+        if (Constants.GetActionUp(InputActions.Shoot))
+            ReleaseAccelerator();
 
-        while (timeElapsed < fadeDuration)
+        IdleAudioSource.volume = 0;
+        RunAudioSource.volume = 0;
+        IdleAudioSource.pitch = 1;
+        RunAudioSource.pitch = 1;
+
+        switch (engineState)
         {
-            float t = timeElapsed / fadeDuration;
-            to.volume = Mathf.Lerp(0, newSound.Volume, t);
-            from.volume = Mathf.Lerp(oldSound.Volume, 0, t);
-            timeElapsed += Time.deltaTime;
-            yield return null;
+            case EngineStates.TurningOn:
+                currentEngineAcceleration += accelerationSpeed * Time.deltaTime;
+                if (currentEngineAcceleration >= idleRange)
+                {
+                    currentEngineAcceleration = idleRange;
+                    engineState = EngineStates.Idle;
+                }
+                break;
+
+            case EngineStates.TurningOff:
+                currentEngineAcceleration -= accelerationSpeed * Time.deltaTime;
+                if (currentEngineAcceleration <= 0)
+                {
+                    currentEngineAcceleration = 0;
+                    engineState = EngineStates.Off;
+                }
+                break;
+
+            case EngineStates.Idle:
+                currentEngineAcceleration = idleRange;
+                IdleAudioSource.volume = 1;
+                break;
+
+            case EngineStates.IdleToRun:
+                currentEngineAcceleration += accelerationSpeed * Time.deltaTime;
+                IdleAudioSource.volume = runRange * 1.26f - currentEngineAcceleration;
+                IdleAudioSource.pitch = Mathf.Lerp(1, 1.5f, 1 - (runRange - currentEngineAcceleration));
+                RunAudioSource.volume = Mathf.Clamp(1f - (runRange - currentEngineAcceleration), 0.3f, 1);
+                RunAudioSource.pitch = Mathf.Lerp(0.6f, 1, 1 - (runRange - currentEngineAcceleration));
+                if (currentEngineAcceleration >= runRange)
+                {
+                    currentEngineAcceleration = runRange;
+                    engineState = EngineStates.Running;
+                }
+                break;
+
+            case EngineStates.Running:
+                currentEngineAcceleration = runRange;
+                RunAudioSource.volume = 1;
+                break;
+
+            case EngineStates.RunToIdle:
+                currentEngineAcceleration -= runToIdleDeaccSpeed * Time.deltaTime;
+                IdleAudioSource.volume = runRange * 1.26f - currentEngineAcceleration;
+                IdleAudioSource.pitch = Mathf.Lerp(1, 1.5f, 1 - (runRange - currentEngineAcceleration));
+                RunAudioSource.volume = 1 - (runRange - currentEngineAcceleration);
+                RunAudioSource.pitch = Mathf.Lerp(0.6f, 1, 1 - (runRange - currentEngineAcceleration));
+                if (currentEngineAcceleration <= idleRange)
+                {
+                    currentEngineAcceleration = idleRange;
+                    engineState = EngineStates.Idle;
+                }
+                break;
         }
-        from.Stop();
     }
 }

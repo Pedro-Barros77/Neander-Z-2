@@ -69,6 +69,11 @@ public class InventoryData : AutoRevertSO
     public void UnequipAllPassiveSkills() => PassiveSkillsSelection.ForEach(t => t.IsEquipped = false);
 
     /// <summary>
+    /// Marca todas as habilidades táticas como não equipadas.
+    /// </summary>
+    public void UnequipAllTacticalAbilities() => TacticalAbilitiesSelection.ForEach(t => t.IsEquipped = false);
+
+    /// <summary>
     /// Retorna a quantidade de munições do tipo especificado restantes que o jogador possui.
     /// </summary>
     /// <param name="type">O tipo de munição a ser avaliado.</param>
@@ -190,9 +195,10 @@ public class InventoryData : AutoRevertSO
         public bool IsEquipped;
 
         public TacticalAbilitySelection() { }
-        public TacticalAbilitySelection(bool isEquipped)
+        public TacticalAbilitySelection(TacticalAbilityTypes type, bool isEquipped)
         {
             IsEquipped = isEquipped;
+            Type = type;
         }
     }
 

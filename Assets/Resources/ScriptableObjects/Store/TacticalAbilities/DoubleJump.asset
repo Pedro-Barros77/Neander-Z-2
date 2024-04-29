@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f864c8edb21313479ca5857d3c5ddfb, type: 3}
+  m_Name: DoubleJump
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: c3616456c16cbc34f9e2c7c03ab56d24, type: 3}
+  Title: Double Jump
+  Description: Master the art of aerial evasion with the Double Jump ability. Propel
+    yourself into the air with a single leap, then defy physics with a second burst
+    of momentum. Evade the undead horde, reaching heights unreachable by mere mortals.
+  Price: 250
+  Discount: 0
+  Amount: 1
+  IconScale: 1
+  PreviewIconScale: 1.7
+  InventorySlotIconScale: 0.7
+  IsSellable: 0
+  Tags: 
+  AbilityType: 2
