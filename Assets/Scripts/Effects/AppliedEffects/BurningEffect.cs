@@ -5,6 +5,13 @@ public class BurningEffect : BaseAppliedEffect
 {
     public float TickDamage { get; set; }
     private readonly Color32 RedTickColor = new(255, 150, 150, 255);
+    private IBurnable burnableTarget;
+
+    protected override void Start()
+    {
+        base.Start();
+        burnableTarget = transform.parent.GetComponent<IBurnable>();
+    }
 
     protected override void OnTickEffect()
     {
@@ -17,6 +24,13 @@ public class BurningEffect : BaseAppliedEffect
         PlayerTarget?.TakeDamage(TickDamage, 1, "", PlayerOwner);
 
         SetSpriteRed();
+        burnableTarget?.ActiveBurningParticles();
+    }
+
+    protected override void OnTimeOut()
+    {
+        base.OnTimeOut();
+        burnableTarget?.DeactivateFireParticles();
     }
 
     /// <summary>

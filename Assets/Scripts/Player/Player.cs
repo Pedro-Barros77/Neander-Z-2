@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
+public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable, IBurnable
 {
     public PlayerData Data;
 
@@ -102,8 +102,8 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     public float DeathTimeDelayMs { get; private set; } = 5000f;
     public bool IsSecondChanceActive { get; private set; }
     public Bounds Bounds { get; private set; }
-
-
+    public float FireParticlesFadeOutDelayMs { get; private set; } = 1000f;
+    protected float CurrentSpriteAlpha { get; set; } = 1;
     /// <summary>
     /// A mochila do jogador, carrega suas armas e acessуrios.
     /// </summary>
@@ -130,9 +130,9 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
     [SerializeField]
     List<CustomAudio> CautiousHitSounds;
     [SerializeField]
-    GameObject AmmoDropPrefab;
-
+    GameObject AmmoDropPrefab, FireParticles;
     SpriteRenderer HeadSpriteRenderer, BodySpriteRenderer, LegsSpriteRenderer;
+    ParticleSystem[] FireParticleSystem;
 
     public PlayerMovement PlayerMovement { get; private set; }
     public Rigidbody2D RigidBody { get; private set; }
@@ -147,10 +147,10 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         PlayerMovement = GetComponentInChildren<PlayerMovement>();
         Data.MovementSpeed = Data.MaxMovementSpeed;
         Data.Stamina = Data.MaxStamina;
-
         WorldPosCanvas = GameObject.Find("WorldPositionCanvas").GetComponent<Canvas>();
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
-
+        FireParticleSystem = FireParticles.GetComponentsInChildren<ParticleSystem>();
+        
         if (HealthBar != null)
         {
             HealthBar.SetMaxValue(MaxHealth, Health);
@@ -192,7 +192,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
         Debug.DrawLine((transform.position - (Bounds.size)), (transform.position + (Bounds.size)), Color.red);
 
         UpdatePassiveSkills();
-
+        FireParticles.transform.position = transform.position + new Vector3(0, Bounds.size.y * 0.5f, 0);
         if (Constants.EnableDevKeybinds)
         {
             if (Constants.GetActionDown(InputActions.DEBUG_IncreaseHealth))
@@ -216,6 +216,16 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
 
         if (staminaCooledDown)
             GetStamina(StaminaRegenRate * Time.deltaTime);
+
+        //if (RigidBody.velocity.magnitude > 0)
+        //{
+        //    ApplyForceToFireParticles();
+        //}
+        //else
+        //{
+        //    DisableForceOnFireParticles();
+        //}
+
     }
 
     /// <summary>
@@ -526,5 +536,58 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable
             }
 
         }
+    }
+
+    public void ActiveBurningParticles()
+    {
+        FireParticles.SetActive(true);
+    }
+
+    public void DeactivateFireParticles()
+    {
+        if (FireParticlesFadeOutDelayMs > 0)
+            StartCoroutine(FireParticlesFadeOut());
+    }
+
+    protected virtual IEnumerator FireParticlesFadeOut()
+    {
+        yield return new WaitForSeconds(FireParticlesFadeOutDelayMs / 1000f);
+
+        foreach (var fps in FireParticleSystem)
+        {
+            Material[] materials = fps.GetComponent<Renderer>().materials;
+
+            foreach (var material in materials)
+            {
+                float fadeDuration = 1f;
+                float elapsedTime = 0f;
+                Color color = material.color;
+
+                while (elapsedTime < fadeDuration)
+                {
+                    elapsedTime += Time.deltaTime;
+                    float newAlpha = Mathf.Lerp(color.a, 0f, elapsedTime / fadeDuration);
+                    color.a = newAlpha;
+                    material.color = color;
+
+                    yield return null;
+                }
+            }
+        }
+
+        FireParticles.SetActive(false);
+
+        foreach (var fps in FireParticleSystem)
+        {
+            Material[] materials = fps.GetComponent<Renderer>().materials;
+
+            foreach (var material in materials)
+            {
+                Color color = material.color;
+                color.a = 1f; 
+                material.color = color;
+            }
+        }
+
     }
 }
