@@ -1,4 +1,4 @@
-public class Roger : BaseEnemy, IKnockBackable
+public class Roger : BaseEnemy, IKnockBackable, IBurnable
 {
     protected override void Start()
     {
@@ -18,5 +18,15 @@ public class Roger : BaseEnemy, IKnockBackable
         base.Start();
 
         HealthBar.AnimationSpeed = 5f;
+    }
+
+    public void ActiveBurningParticles(BurningEffect burnFx)
+    {
+        BodyFlames.StartFire(burnFx, true);
+    }
+
+    public void DeactivateFireParticles()
+    {
+        BodyFlames.StopFire();
     }
 }

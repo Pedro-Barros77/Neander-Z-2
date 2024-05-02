@@ -119,6 +119,10 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// Emissor de audio do inimigo.
     /// </summary>
     protected AudioSource AudioSource;
+    /// <summary>
+    /// Particle System Pai de fogo do inimigo.
+    /// </summary>
+    protected BodyFlames BodyFlames;
 
     protected Canvas WorldPosCanvas;
     [SerializeField]
@@ -156,6 +160,7 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         AttackTrigger.OnTagTriggered += OnTargetHit;
         EffectsContainer = GameObject.Find("EffectsContainer").transform;
         PopupPrefab = Resources.Load<GameObject>("Prefabs/UI/Popup");
+        BodyFlames = GetComponentInChildren<BodyFlames>();
 
         HealthBar = Instantiate(HealthBarPrefab, WorldPosCanvas.transform).GetComponent<ProgressBar>();
         HealthBar.gameObject.name = $"{Type}-HealthBar";

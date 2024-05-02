@@ -27,15 +27,15 @@ public class BaseAppliedEffect : MonoBehaviour
     /// O tempo em que o último tick ocorreu.
     /// </summary>
     public float LastTickTime { get; protected set; }
+    /// <summary>
+    /// O tempo restante para o efeito expirar.
+    /// </summary>
+    public float TimeLeft => (DurationMs / 1000) - TimeElasped;
 
     /// <summary>
     /// O tempo decorrido desde o início do efeito.
     /// </summary>
     protected float TimeElasped => Time.time - StartTime;
-    /// <summary>
-    /// O tempo restante para o efeito expirar.
-    /// </summary>
-    protected float TimeLeft => (DurationMs / 1000) - TimeElasped;
     /// <summary>
     /// Se o efeito foi aplicado pelo próprio alvo.
     /// </summary>

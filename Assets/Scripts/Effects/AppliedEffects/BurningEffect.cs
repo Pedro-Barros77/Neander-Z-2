@@ -11,6 +11,7 @@ public class BurningEffect : BaseAppliedEffect
     {
         base.Start();
         burnableTarget = transform.parent.GetComponent<IBurnable>();
+        burnableTarget?.ActiveBurningParticles(this);
     }
 
     protected override void OnTickEffect()
@@ -24,7 +25,6 @@ public class BurningEffect : BaseAppliedEffect
         PlayerTarget?.TakeDamage(TickDamage, 1, "", PlayerOwner);
 
         SetSpriteRed();
-        burnableTarget?.ActiveBurningParticles();
     }
 
     protected override void OnTimeOut()

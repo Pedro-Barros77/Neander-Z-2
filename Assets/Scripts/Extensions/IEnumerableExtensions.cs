@@ -49,4 +49,18 @@ public static class IEnumerableExtensions
     {
         return string.Join(separator, source);
     }
+
+    /// <summary>
+    /// Retorna um elemento aleatório da lista.
+    /// </summary>
+    /// <typeparam name="T">O tipo do elemento na lista.</typeparam>
+    /// <param name="source">A lista fonte.</param>
+    /// <returns>Um elemento aleatório da lista.</returns>
+    public static T RandomElement<T>(this IEnumerable<T> source)
+    {
+        if (source == null || !source.Any())
+            return default;
+
+        return source.ElementAt(Random.Range(0, source.Count()));
+    }
 }
