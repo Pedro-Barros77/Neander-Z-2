@@ -2,7 +2,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-public class Ronald : BaseEnemy, IKnockBackable
+public class Ronald : BaseEnemy, IKnockBackable, IBurnable
 {
     public float RonaldoSpawnChance { get; set; } = 0.1f;
     private bool SpawnRonaldo;
@@ -82,5 +82,13 @@ public class Ronald : BaseEnemy, IKnockBackable
         WavesManager.Instance.CurrentWave.TotalEnemiesCount++;
         Destroy(gameObject);
     }
+    public void ActiveBurningParticles(BurningEffect burnFx)
+    {
+        BodyFlames.StartFire(burnFx, true);
+    }
 
+    public void DeactivateFireParticles()
+    {
+        BodyFlames.StopFire();
+    }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rui : BaseEnemy
+public class Rui : BaseEnemy, IBurnable
 {
     private float knockBackForce = 1500f;
     private float bumpDamage = 10f;
@@ -508,5 +508,14 @@ public class Rui : BaseEnemy
 
         if (isDying) Animator.SetTrigger("Die");
         else Animator.ResetTrigger("Die");
+    }
+    public void ActiveBurningParticles(BurningEffect burnFx)
+    {
+        BodyFlames.StartFire(burnFx, true);
+    }
+
+    public void DeactivateFireParticles()
+    {
+        BodyFlames.StopFire();
     }
 }

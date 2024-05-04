@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rute : BaseEnemy, IKnockBackable
+public class Rute : BaseEnemy, IKnockBackable, IBurnable
 {
     private bool isMovingLeft = true;
     private float maxDistanceRunning = 5f;
@@ -169,6 +169,15 @@ public class Rute : BaseEnemy, IKnockBackable
     public void OnDieHitGround()
     {
         InstantiateMolotovPrefab();
+    }
+    public void ActiveBurningParticles(BurningEffect burnFx)
+    {
+        BodyFlames.StartFire(burnFx, true);
+    }
+
+    public void DeactivateFireParticles()
+    {
+        BodyFlames.StopFire();
     }
 
 }
