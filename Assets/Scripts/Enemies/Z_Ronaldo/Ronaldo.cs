@@ -1,4 +1,4 @@
-public class Ronaldo : BaseEnemy, IKnockBackable
+public class Ronaldo : BaseEnemy, IKnockBackable, IBurnable
 {
     protected override void Start()
     {
@@ -18,5 +18,14 @@ public class Ronaldo : BaseEnemy, IKnockBackable
         base.Start();
 
         HealthBar.AnimationSpeed = 5f;
+    }
+    public void ActiveBurningParticles(BurningEffect burnFx)
+    {
+        BodyFlames.StartFire(burnFx, true);
+    }
+
+    public void DeactivateFireParticles()
+    {
+        BodyFlames.StopFire();
     }
 }

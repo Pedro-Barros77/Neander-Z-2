@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Robert : BaseEnemy, IKnockBackable
+public class Robert : BaseEnemy, IKnockBackable, IBurnable
 {
     protected override void Start()
     {
@@ -33,5 +33,14 @@ public class Robert : BaseEnemy, IKnockBackable
         RigidBody.velocity = new Vector2(RigidBody.velocity.x / 2, RigidBody.velocity.y);
 
         base.StartAttack(target);
+    }
+    public void ActiveBurningParticles(BurningEffect burnFx)
+    {
+        BodyFlames.StartFire(burnFx, true);
+    }
+
+    public void DeactivateFireParticles()
+    {
+        BodyFlames.StopFire();
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Rat : BaseEnemy, IKnockBackable
+public class Rat : BaseEnemy, IKnockBackable, IBurnable
 {
     private int AttackCounter;
     private int ZigZagCounter;
@@ -135,5 +135,14 @@ public class Rat : BaseEnemy, IKnockBackable
     {
         base.OnAttackEnd();
         AttackCounter--;
+    }
+    public void ActiveBurningParticles(BurningEffect burnFx)
+    {
+        BodyFlames.StartFire(burnFx, true);
+    }
+
+    public void DeactivateFireParticles()
+    {
+        BodyFlames.StopFire();
     }
 }

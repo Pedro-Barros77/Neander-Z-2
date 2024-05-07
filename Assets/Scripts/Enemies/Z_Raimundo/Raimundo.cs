@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Raimundo : BaseEnemy, IKnockBackable
+public class Raimundo : BaseEnemy, IKnockBackable, IBurnable
 {
     public float HelmetHealth { get; set; } = 50f;
     public GameObject SparksPrefab;
@@ -208,5 +208,14 @@ public class Raimundo : BaseEnemy, IKnockBackable
         base.SetRandomValues(health, speed, damage, killscore, enemy, isBoss);
 
         HelmetSprite.sortingOrder = SpriteRenderer.sortingOrder + 1;
+    }
+    public void ActiveBurningParticles(BurningEffect burnFx)
+    {
+        BodyFlames.StartFire(burnFx, true);
+    }
+
+    public void DeactivateFireParticles()
+    {
+        BodyFlames.StopFire();
     }
 }

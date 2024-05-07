@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Raven : BaseEnemy, IKnockBackable
+public class Raven : BaseEnemy, IKnockBackable, IBurnable
 {
     public float AttackChance { get; set; } = 0.50f;
     public float AttackAttemptDelayMs { get; set; } = 3000f;
@@ -200,5 +200,14 @@ public class Raven : BaseEnemy, IKnockBackable
             RigidBody.AddTorque(Random.Range(-2f, 2f) * 15);
         }
         base.Die(lastDamagedBodyPartName, attacker);
+    }
+    public void ActiveBurningParticles(BurningEffect burnFx)
+    {
+        BodyFlames.StartFire(burnFx, true);
+    }
+
+    public void DeactivateFireParticles()
+    {
+        BodyFlames.StopFire();
     }
 }
