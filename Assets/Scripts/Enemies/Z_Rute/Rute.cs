@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Rute : BaseEnemy, IKnockBackable, IBurnable
 {
+    private readonly float MAX_RUN_DISTANCE = 5f;
     private bool isMovingLeft = true;
-    private float maxDistanceRunning = 5f;
     public float BurningEffectDurationMs { get; set; } = 3000f;
     public float BurningEffectTickIntervalMs { get; set; } = 500f;
     public float SelfBurningEffectDurationMs { get; set; } = 3000f;
@@ -68,7 +66,7 @@ public class Rute : BaseEnemy, IKnockBackable, IBurnable
         if (!IsAlive || isDying)
             return;
         float distanceX = Vector3.Distance(new Vector3(transform.position.x, 0), new Vector3(Target.transform.position.x, 0));
-        if (distanceX > maxDistanceRunning)
+        if (distanceX > MAX_RUN_DISTANCE)
             UpdateDirection();
 
         if (Mathf.Abs(RigidBody.velocity.x) < MovementSpeed)

@@ -40,6 +40,9 @@ public class Molotov : BaseThrowable
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.CompareTag("Enemy") && !collision.CompareTag("Player"))
+            return;
+
         var ememyTarget = collision.GetComponentInParent<IEnemyTarget>();
         var playerTarget = collision.GetComponentInParent<IPlayerTarget>();
 

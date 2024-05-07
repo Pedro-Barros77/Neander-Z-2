@@ -47,7 +47,8 @@ public class Chainsaw : MeleeWeapon
         runRange = idleRange + RunStartSound.Audio.length;
 
         base.Start();
-        TurnOn();
+        if (IsActive)
+            TurnOn();
     }
 
     protected override void Update()
@@ -287,14 +288,14 @@ public class Chainsaw : MeleeWeapon
 
             case EngineStates.Idle:
                 currentEngineAcceleration = idleRange;
-                IdleAudioSource.volume = 1;
+                IdleAudioSource.volume = IdleLoopSound.Volume * 1.08f;
                 break;
 
             case EngineStates.IdleToRun:
                 currentEngineAcceleration += accelerationSpeed * Time.deltaTime;
-                IdleAudioSource.volume = runRange * 1.26f - currentEngineAcceleration;
+                IdleAudioSource.volume = (runRange * 1.26f - currentEngineAcceleration) * IdleLoopSound.Volume;
                 IdleAudioSource.pitch = Mathf.Lerp(1, 1.5f, 1 - (runRange - currentEngineAcceleration));
-                RunAudioSource.volume = Mathf.Clamp(1f - (runRange - currentEngineAcceleration), 0.3f, 1);
+                RunAudioSource.volume = (Mathf.Clamp(1f - (runRange - currentEngineAcceleration), 0.3f, 1)) * RunLoopSound.Volume;
                 RunAudioSource.pitch = Mathf.Lerp(0.6f, 1, 1 - (runRange - currentEngineAcceleration));
                 if (currentEngineAcceleration >= runRange)
                 {
@@ -305,14 +306,14 @@ public class Chainsaw : MeleeWeapon
 
             case EngineStates.Running:
                 currentEngineAcceleration = runRange;
-                RunAudioSource.volume = 1;
+                RunAudioSource.volume = RunLoopSound.Volume;
                 break;
 
             case EngineStates.RunToIdle:
                 currentEngineAcceleration -= runToIdleDeaccSpeed * Time.deltaTime;
-                IdleAudioSource.volume = runRange * 1.26f - currentEngineAcceleration;
+                IdleAudioSource.volume = (runRange * 1.26f - currentEngineAcceleration) * IdleLoopSound.Volume;
                 IdleAudioSource.pitch = Mathf.Lerp(1, 1.5f, 1 - (runRange - currentEngineAcceleration));
-                RunAudioSource.volume = 1 - (runRange - currentEngineAcceleration);
+                RunAudioSource.volume = (1 - (runRange - currentEngineAcceleration)) * IdleLoopSound.Volume;
                 RunAudioSource.pitch = Mathf.Lerp(0.6f, 1, 1 - (runRange - currentEngineAcceleration));
                 if (currentEngineAcceleration <= idleRange)
                 {

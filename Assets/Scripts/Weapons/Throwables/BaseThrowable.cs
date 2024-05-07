@@ -322,6 +322,13 @@ public abstract class BaseThrowable : MonoBehaviour
         transform.parent = ProjectilesContainer;
         transform.localScale = currentScale;
 
+        if (transform.localScale.y < 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
+            Sprite.flipX = true;
+            Sprite.flipY = true;
+        }
+
         ThrowSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
 
         Rigidbody.AddForce(transform.right * ThrowForce, ForceMode2D.Impulse);

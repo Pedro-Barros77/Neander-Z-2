@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Number: 16
   Title: 
-  Description: Hope you've saved money so far
+  Description: Burning undead!
   EnemyGroups:
   - EnemyType: 2
     Count: 5
@@ -33,6 +33,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 6
     Count: 3
     MinHealth: 20
@@ -50,6 +56,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 1
     Count: 2
     MinHealth: 15
@@ -67,8 +79,14 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 5
-    Count: 18
+    Count: 12
     MinHealth: 70
     MaxHealth: 80
     MinSpeed: 0.4
@@ -84,6 +102,35 @@ MonoBehaviour:
     RaimundoHelmetHealth: 60
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
+  - EnemyType: 7
+    Count: 5
+    MinHealth: 35
+    MaxHealth: 45
+    MinSpeed: 1.9
+    MaxSpeed: 2.3
+    MinDamage: 5
+    MaxDamage: 7
+    MinKillScore: 35
+    MaxKillScore: 45
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 60
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 3000
+    RuteBurningEffectTickIntervalMs: 500
+    RuteSelfBurningEffectDurationMs: 3000
+    RuteSelfBurningEffectTickIntervalMs: 500
+    RuteSelfDamage: 3
+    RuteFloorFlameDamage: 3
   MinEnemiesAlive: 10
   MaxEnemiesAlive: 15
   MinSpawnDelayMs: 4000

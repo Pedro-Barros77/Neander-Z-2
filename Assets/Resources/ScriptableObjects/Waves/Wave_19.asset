@@ -33,6 +33,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 5
     Count: 25
     MinHealth: 70
@@ -50,6 +56,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 70
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 8
     Count: 10
     MinHealth: 1
@@ -67,6 +79,35 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
+  - EnemyType: 7
+    Count: 10
+    MinHealth: 35
+    MaxHealth: 45
+    MinSpeed: 1.9
+    MaxSpeed: 2.3
+    MinDamage: 5
+    MaxDamage: 7
+    MinKillScore: 35
+    MaxKillScore: 45
+    SpawnChanceMultiplier: 1
+    IsInfinite: 0
+    IsDisabled: 0
+    RonaldSpawnChance: 0
+    RaimundoHelmetHealth: 60
+    RavenAttackChance: 0
+    RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 3000
+    RuteBurningEffectTickIntervalMs: 500
+    RuteSelfBurningEffectDurationMs: 3000
+    RuteSelfBurningEffectTickIntervalMs: 500
+    RuteSelfDamage: 3
+    RuteFloorFlameDamage: 3
   MinEnemiesAlive: 10
   MaxEnemiesAlive: 15
   MinSpawnDelayMs: 4000
