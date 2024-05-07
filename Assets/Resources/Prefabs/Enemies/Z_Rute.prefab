@@ -612,24 +612,39 @@ MonoBehaviour:
   HealthBarPrefab: {fileID: 5826301193245720848, guid: b772a17772a316c458ab20c5a7ac87fe, type: 3}
   BloodSplatterPrefab: {fileID: 7444960458494065295, guid: 1f360cc0117f0d14db021d5b0edac523, type: 3}
   DamageSounds:
-  - Audio: {fileID: 8300000, guid: 32cefcefcd67f5646ad7806ce8460984, type: 3}
+  - Audio: {fileID: 8300000, guid: a07a0c0521dcd5e438193d4caf9c8968, type: 3}
     Volume: 1
     Pitch: 1
-  - Audio: {fileID: 8300000, guid: 3a1812fe1619f06418e573f4bd56fcae, type: 3}
+  - Audio: {fileID: 8300000, guid: 156620c88b0240242b90994918c22e35, type: 3}
     Volume: 1
     Pitch: 1
-  - Audio: {fileID: 8300000, guid: 2df3e32df9abd6749bf15ea2159c5c6d, type: 3}
+  - Audio: {fileID: 8300000, guid: 0d87be13fd74cd54980576a28b77f2f3, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 17e01693c66fdb949af9025963dfbe37, type: 3}
     Volume: 1
     Pitch: 1
   AttackStartSounds: []
   AttackHitSounds:
-  - Audio: {fileID: 8300000, guid: 04ef307e145ea2148a860d4937772043, type: 3}
+  - Audio: {fileID: 8300000, guid: f383cc81ec25a4b4993ca53a76ee974f, type: 3}
     Volume: 1
     Pitch: 1
-  - Audio: {fileID: 8300000, guid: ded8ff14d972f10489037d2fde30e79a, type: 3}
+  - Audio: {fileID: 8300000, guid: 7d44bc78eb0fb864ab99bbfd4a61471b, type: 3}
     Volume: 1
     Pitch: 1
-  SpawnSounds: []
+  - Audio: {fileID: 8300000, guid: dc24cd01c3a31694fb2e5f8b03dbb1c0, type: 3}
+    Volume: 1
+    Pitch: 1
+  SpawnSounds:
+  - Audio: {fileID: 8300000, guid: ecd16508be0e4aa408ffb7603091ddc0, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: 6a0e3e0bae9b86e4a814769a4703f717, type: 3}
+    Volume: 1
+    Pitch: 1
+  - Audio: {fileID: 8300000, guid: bccb39a271d5a1f46948f5c5c8128935, type: 3}
+    Volume: 1
+    Pitch: 1
   DeathSounds:
   - Audio: {fileID: 8300000, guid: 3c3977bce20f36b4c8af0f78b1eab9ec, type: 3}
     Volume: 1
