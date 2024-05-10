@@ -1457,7 +1457,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_text
-      value: $ 1.300,00
+      value: $ 650,00
       objectReference: {fileID: 0}
     - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -1465,15 +1465,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1633642839158143088, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Pivot.x
@@ -1558,10 +1558,10 @@ PrefabInstance:
     - target: {fileID: 2418290609602172642, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 5d3aaadd98d17b148bc888f89e0fa935, type: 3}
+      objectReference: {fileID: 21300000, guid: 355a8a99cf9b9394fb83284a5641f9c4, type: 3}
     - target: {fileID: 3082090958430973502, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_text
-      value: SV98
+      value: Karabiner 98k
       objectReference: {fileID: 0}
     - target: {fileID: 3082090958430973502, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -1569,12 +1569,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7962752121420682399, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Name
-      value: SV98
+      value: Kar98
       objectReference: {fileID: 0}
     - target: {fileID: 7977929826255435187, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: Data
       value: 
-      objectReference: {fileID: 11400000, guid: 0e0422e9c263e02488ef5add44e23e02, type: 2}
+      objectReference: {fileID: 11400000, guid: ce41e7fad4d1dac46a0bc4a5172fc355, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19738,7 +19738,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_text
-      value: $ 650,00
+      value: $ 500,00
       objectReference: {fileID: 0}
     - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -30074,7 +30074,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_text
-      value: $ 0,00
+      value: $ 1.300,00
       objectReference: {fileID: 0}
     - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -30175,10 +30175,10 @@ PrefabInstance:
     - target: {fileID: 2418290609602172642, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 942e1c765edc1bf4a8d316309c035b50, type: 3}
+      objectReference: {fileID: 21300000, guid: 5d3aaadd98d17b148bc888f89e0fa935, type: 3}
     - target: {fileID: 3082090958430973502, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_text
-      value: Locked
+      value: SV98
       objectReference: {fileID: 0}
     - target: {fileID: 3082090958430973502, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -30186,12 +30186,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7962752121420682399, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Name
-      value: Locked
+      value: SV98
       objectReference: {fileID: 0}
     - target: {fileID: 7977929826255435187, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: Data
       value: 
-      objectReference: {fileID: 11400000, guid: 1a9b9a00a07430747a7dc914c327b6a9, type: 2}
+      objectReference: {fileID: 11400000, guid: 0e0422e9c263e02488ef5add44e23e02, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -53891,7 +53891,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_text
-      value: $ 500,00
+      value: $ 250,00
       objectReference: {fileID: 0}
     - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -68195,6 +68195,9 @@ PrefabInstance:
       addedObject: {fileID: 326576251}
     - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 117080753}
+    - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1350313564}
     - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
       insertIndex: -1
@@ -68204,16 +68207,13 @@ PrefabInstance:
       addedObject: {fileID: 1690665749}
     - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 117080753}
+      addedObject: {fileID: 1422143197}
     - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2089227048}
     - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 206530096}
-    - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1422143197}
     - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1886919649}

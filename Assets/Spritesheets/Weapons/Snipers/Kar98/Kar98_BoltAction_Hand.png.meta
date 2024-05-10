@@ -1,0 +1,517 @@
+fileFormatVersion: 2
+guid: b574587487364a24a9d9975eb9348e33
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -271157025962786371
+    second: Kar98_BoltAction_Hand_0
+  - first:
+      213: -3027334773814879347
+    second: Kar98_BoltAction_Hand_1
+  - first:
+      213: -6298129281086331749
+    second: Kar98_BoltAction_Hand_2
+  - first:
+      213: 8970719962377624324
+    second: Kar98_BoltAction_Hand_3
+  - first:
+      213: 3845577776692052500
+    second: Kar98_BoltAction_Hand_4
+  - first:
+      213: 70887858388889012
+    second: Kar98_BoltAction_Hand_5
+  - first:
+      213: 5458442260095469638
+    second: Kar98_BoltAction_Hand_6
+  - first:
+      213: 9046732199456935744
+    second: Kar98_BoltAction_Hand_7
+  - first:
+      213: 6880708203722349466
+    second: Kar98_BoltAction_Hand_8
+  - first:
+      213: 7195947973444234108
+    second: Kar98_BoltAction_Hand_9
+  - first:
+      213: -8804233924253534281
+    second: Kar98_BoltAction_Hand_10
+  - first:
+      213: -6588340345474700792
+    second: Kar98_BoltAction_Hand_11
+  - first:
+      213: -5974353372916573811
+    second: Kar98_BoltAction_Hand_12
+  - first:
+      213: 8685768923054429604
+    second: Kar98_BoltAction_Hand_13
+  - first:
+      213: 3066461490352637848
+    second: Kar98_BoltAction_Hand_14
+  - first:
+      213: -321402308966485502
+    second: Kar98_BoltAction_Hand_15
+  - first:
+      213: 1216673982232305145
+    second: Kar98_BoltAction_Hand_16
+  - first:
+      213: 5435731713625706459
+    second: Kar98_BoltAction_Hand_17
+  - first:
+      213: -3137718713853769738
+    second: Kar98_BoltAction_Hand_18
+  - first:
+      213: 8403943415721428325
+    second: Kar98_BoltAction_Hand_19
+  - first:
+      213: 634282642518437234
+    second: Kar98_BoltAction_Hand_20
+  - first:
+      213: -3217355813838733120
+    second: Kar98_BoltAction_Hand_21
+  - first:
+      213: -373137646471043154
+    second: Kar98_BoltAction_Hand_22
+  - first:
+      213: 5035749349008682446
+    second: Kar98_BoltAction_Hand_23
+  - first:
+      213: 642633283195098339
+    second: Kar98_BoltAction_Hand_24
+  - first:
+      213: 8801610742817200079
+    second: Kar98_BoltAction_Hand_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db1032d1f18ac3cf0800000000000000
+      internalID: -271157025962786371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 192
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8b939e001fbcf5d0800000000000000
+      internalID: -3027334773814879347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b94ec5ba9cc8898a0800000000000000
+      internalID: -6298129281086331749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 160
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40b1601e6466e7c70800000000000000
+      internalID: 8970719962377624324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 412cdd7fc9c3e5530800000000000000
+      internalID: 3845577776692052500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_5
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 128
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bd6822b128dbf000800000000000000
+      internalID: 70887858388889012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64888f3c05840cb40800000000000000
+      internalID: 5458442260095469638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_7
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 96
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04f08b6f0037c8d70800000000000000
+      internalID: 9046732199456935744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9b9cfdd7af2d7f50800000000000000
+      internalID: 6880708203722349466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_9
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 64
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7be55b5e842dd360800000000000000
+      internalID: 7195947973444234108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b7bc6984e311d580800000000000000
+      internalID: -8804233924253534281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_11
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 32
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80a2b90cc538194a0800000000000000
+      internalID: -6588340345474700792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kar98_BoltAction_Hand_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 120
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8996a4c245d61da0800000000000000
+      internalID: -5974353372916573811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 3506ae556cf4fc84ab490708adb965dd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Kar98_BoltAction_Hand_0: -271157025962786371
+      Kar98_BoltAction_Hand_1: -3027334773814879347
+      Kar98_BoltAction_Hand_10: -8804233924253534281
+      Kar98_BoltAction_Hand_11: -6588340345474700792
+      Kar98_BoltAction_Hand_12: -5974353372916573811
+      Kar98_BoltAction_Hand_2: -6298129281086331749
+      Kar98_BoltAction_Hand_3: 8970719962377624324
+      Kar98_BoltAction_Hand_4: 3845577776692052500
+      Kar98_BoltAction_Hand_5: 70887858388889012
+      Kar98_BoltAction_Hand_6: 5458442260095469638
+      Kar98_BoltAction_Hand_7: 9046732199456935744
+      Kar98_BoltAction_Hand_8: 6880708203722349466
+      Kar98_BoltAction_Hand_9: 7195947973444234108
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
