@@ -232,8 +232,8 @@ public abstract class BaseWeapon : MonoBehaviour
             return;
 
         // Debug Reload Time
-        //if (reloadStartTime != null)
-        //    Debug.Log("Reload time: " + (Time.time - reloadStartTime.Value));
+        //if (ReloadStartTime != null)
+        //    Debug.Log("Reload time: " + (Time.time - ReloadStartTime.Value));
 
         Animation();
 

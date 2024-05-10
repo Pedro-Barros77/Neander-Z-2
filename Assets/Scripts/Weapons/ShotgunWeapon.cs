@@ -20,6 +20,8 @@ public class ShotgunWeapon : BaseWeapon
     /// Se a arma utiliza cartucho/pente para o carregamento.
     /// </summary>
     public bool UseMagazine => (Data as ShotgunData).UseMagazine;
+    public int MaxPierceCount => (Data as ShotgunData).MaxPierceCount;
+    public float PierceDamageMultiplier => (Data as ShotgunData).PierceDamageMultiplier;
     /// <summary>
     /// Se está pendente o bombeamento da arma (não pode atirar antes até bombear).
     /// </summary>
@@ -92,6 +94,8 @@ public class ShotgunWeapon : BaseWeapon
             bullet.HeadshotMultiplier = HeadshotMultiplier;
             bullet.OnBulletKill += OnBulletKill;
             bullet.ShotTime = shotTime;
+            bullet.MaxPierceCount = MaxPierceCount;
+            bullet.PierceDamageMultiplier = PierceDamageMultiplier;
             bullet.Init();
         }
 

@@ -6,4 +6,6 @@ public class ShotgunData : BaseWeaponData
     public int ShellPelletsCount;
     public float PelletsDispersion;
     public bool UseMagazine;
+    public int MaxPierceCount;
+    public float PierceDamageMultiplier;
 }

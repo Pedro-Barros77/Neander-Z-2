@@ -17,7 +17,7 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, FuelAmmoIcon, TacticalRollIcon, DoubleJumpIcon;
     [SerializeField]
-    Sprite Colt_1911Sprite, ShortBarrelSprite, UZISprite, SV98Sprite, M16Sprite, RPGSprite, MacheteSprite, DeagleSprite, Beretta_93RSprite, ScarSprite, ChainsawSprite, ScarDebugSprite;
+    Sprite Colt_1911Sprite, ShortBarrelSprite, UZISprite, SV98Sprite, M16Sprite, RPGSprite, MacheteSprite, DeagleSprite, Beretta_93RSprite, ScarSprite, ChainsawSprite, Spas12Sprite, ScarDebugSprite;
     [SerializeField]
     Sprite FragGrenadeSprite, MolotovSprite;
     [SerializeField]
@@ -192,6 +192,7 @@ public class InGameScreen : MonoBehaviour
             WeaponTypes.Beretta_93R => Beretta_93RSprite,
             WeaponTypes.Scar => ScarSprite,
             WeaponTypes.Chainsaw => ChainsawSprite,
+            WeaponTypes.Spas12 => Spas12Sprite,
             WeaponTypes.ScarDebug => ScarDebugSprite,
             _ => null,
         };
