@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03c53dfd46003c499a93e15649ed695, type: 3}
+  m_Name: Kar98
+  m_EditorClassIdentifier: 
+  IsPrimary: 1
+  WeaponClass: 6
+  Type: 13
+  BulletType: 4
+  FireMode: 4
+  ReloadType: 1
+  Damage: 18
+  MinDamage: 15
+  HeadshotMultiplier: 2.5
+  FireRate: 1.5
+  BulletSpeed: 40
+  MaxDamageRange: 10
+  MinDamageRange: 14
+  BulletMaxRange: 24
+  MagazineSize: 5
+  MagazineBullets: 5
+  ReloadTimeMs: 2000
+  SwitchTimeMs: 200
+  Upgrades:
+  - Attribute: 0
+    UpgradeSteps:
+    - Price: 245
+      Value: 3.5
+    - Price: 270
+      Value: 2.5
+    - Price: 300
+      Value: 2.5
+  - Attribute: 1
+    UpgradeSteps:
+    - Price: 165
+      Value: 0.75
+    - Price: 230
+      Value: 0.75
+  - Attribute: 2
+    UpgradeSteps:
+    - Price: 150
+      Value: 0.6
+    - Price: 180
+      Value: 0.5
+    - Price: 210
+      Value: 0.5
+    - Price: 235
+      Value: 0.5
+  - Attribute: 3
+    UpgradeSteps:
+    - Price: 60
+      Value: 1
+    - Price: 95
+      Value: 1
+    - Price: 130
+      Value: 1
+    - Price: 150
+      Value: 1
+  - Attribute: 4
+    UpgradeSteps:
+    - Price: 110
+      Value: 2.5
+    - Price: 135
+      Value: 2.5
+    - Price: 150
+      Value: 5
+    - Price: 175
+      Value: 5
+  - Attribute: 6
+    UpgradeSteps:
+    - Price: 250
+      Value: 0.1
+    - Price: 295
+      Value: 0.1
+    - Price: 340
+      Value: 0.1
+  - Attribute: 5
+    UpgradeSteps: []
+  MaxPierceCount: 3
+  PierceDamageMultiplier: 0.7

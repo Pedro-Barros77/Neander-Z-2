@@ -17,11 +17,12 @@ MonoBehaviour:
   Description: This little shotgun packs a big punch! Don't let its compact size
     fool you, it may be small enough to fit in your pocket, but it can kill an elephant
     with a single shot!
-  Price: 500
+  Price: 250
   Discount: 0
   Amount: 1
   IconScale: 1
   PreviewIconScale: 0.8
+  InventorySlotIconScale: 1
   IsSellable: 1
-  Tags: 03000000070000000d000000
+  Tags: 03000000070000000c000000
   WeaponData: {fileID: 11400000, guid: eaf31b039c56dea4f96b499cc98b1cc3, type: 2}

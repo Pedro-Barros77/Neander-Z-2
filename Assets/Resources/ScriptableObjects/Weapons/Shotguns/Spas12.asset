@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c690c4948376248aa9babab222c86c, type: 3}
+  m_Name: Spas12
+  m_EditorClassIdentifier: 
+  IsPrimary: 1
+  WeaponClass: 4
+  Type: 12
+  BulletType: 3
+  FireMode: 5
+  ReloadType: 2
+  Damage: 4.75
+  MinDamage: 1
+  HeadshotMultiplier: 2
+  FireRate: 1.2
+  BulletSpeed: 25
+  MaxDamageRange: 4
+  MinDamageRange: 8
+  BulletMaxRange: 10
+  MagazineSize: 7
+  MagazineBullets: 7
+  ReloadTimeMs: 600
+  SwitchTimeMs: 450
+  Upgrades:
+  - Attribute: 0
+    UpgradeSteps:
+    - Price: 300
+      Value: 2.5
+    - Price: 320
+      Value: 2.5
+  - Attribute: 1
+    UpgradeSteps:
+    - Price: 120
+      Value: 0.3
+    - Price: 160
+      Value: 0.75
+  - Attribute: 2
+    UpgradeSteps:
+    - Price: 110
+      Value: 0.66
+    - Price: 155
+      Value: 0.5
+    - Price: 200
+      Value: 0.5
+    - Price: 230
+      Value: 0.5
+  - Attribute: 3
+    UpgradeSteps:
+    - Price: 100
+      Value: 0.67
+    - Price: 150
+      Value: 1
+    - Price: 200
+      Value: 2
+  - Attribute: 4
+    UpgradeSteps:
+    - Price: 100
+      Value: 3.96
+    - Price: 145
+      Value: 2.5
+    - Price: 190
+      Value: 2.5
+    - Price: 250
+      Value: 5
+  - Attribute: 5
+    UpgradeSteps:
+    - Price: 90
+      Value: 1
+    - Price: 115
+      Value: 1
+  - Attribute: 6
+    UpgradeSteps:
+    - Price: 250
+      Value: 0.1
+    - Price: 300
+      Value: 0.1
+    - Price: 365
+      Value: 0.1
+  - Attribute: 8
+    UpgradeSteps:
+    - Price: 100
+      Value: 2
+    - Price: 125
+      Value: 3
+    - Price: 140
+      Value: 3
+  ShellPelletsCount: 12
+  PelletsDispersion: 20
+  UseMagazine: 0
+  MaxPierceCount: 3
+  PierceDamageMultiplier: 0.5

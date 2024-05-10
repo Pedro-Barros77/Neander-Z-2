@@ -19,7 +19,7 @@ public class SniperWeapon : BaseWeapon
     /// <summary>
     /// Se está pendente o manuseio do ferrolho (não pode atirar antes até terminar).
     /// </summary>
-    private bool IsBoltActionPending;
+    protected bool IsBoltActionPending;
 
     protected override void Start()
     {
