@@ -463,6 +463,7 @@ public abstract class BaseWeapon : MonoBehaviour
     {
         if (!IsActive)
             return false;
+
         if (MagazineBullets <= 0)
         {
             if (!IsReloading)

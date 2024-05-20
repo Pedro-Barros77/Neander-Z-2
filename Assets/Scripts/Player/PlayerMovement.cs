@@ -267,6 +267,8 @@ public class PlayerMovement : MonoBehaviour
         isMoving = Mathf.Abs(movementDir) > 0.1;
 
         Player.CurrentWeapon.PlayerFlipDir = transform.parent.localScale.x;
+        if (Player.Backpack.EquippedSupportEquipment != null)
+            Player.Backpack.SupportEquipmentInstance.PlayerFlipDir = transform.parent.localScale.x;
 
         if (IsCrouching)
         {

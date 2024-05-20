@@ -60,7 +60,7 @@ public static class AudioExtensions
     /// <param name="audioSource">O AudioSource para tocar o som.</param>
     /// <param name="audioType">O tipo de audio a tocar, para ajustar o volume.</param>
     /// <returns>O audio selecionado.</returns>
-    public static CustomAudio PlayIfNotNull(this CustomAudio audio, AudioSource audioSource, AudioTypes audioType, bool oneShot = true)
+    public static CustomAudio PlayIfNotNull(this CustomAudio audio, AudioSource audioSource, AudioTypes audioType, bool oneShot = true, Vector3? point = null)
     {
         if (audio == null)
             return null;
@@ -73,6 +73,12 @@ public static class AudioExtensions
             AudioTypes.Enemies => MenuController.Instance.EnemiesVolume,
             _ => 1
         };
+
+        if (point.HasValue)
+        {
+            AudioSource.PlayClipAtPoint(audio.Audio, point.Value, audio.Volume * volumeMultiplier);
+            return audio;
+        }
 
         audioSource.volume = audio.Volume * volumeMultiplier;
         audioSource.pitch = audio.Pitch;

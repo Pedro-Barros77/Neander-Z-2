@@ -28,6 +28,10 @@ public class Backpack
         (!PrimaryWeaponsInstances.IsNullOrEmpty() ? PrimaryWeaponsInstances : new())
         .Concat(!SecondaryWeaponsInstances.IsNullOrEmpty() ? SecondaryWeaponsInstances : new());
     /// <summary>
+    /// Instância do equipamento de suporte equipado pelo jogador.
+    /// </summary>
+    public BaseSupportEquipment SupportEquipmentInstance { get; private set; }
+    /// <summary>
     /// Referência ao jogador portador dessa mochila.
     /// </summary>
     public Player Player { get; private set; }
@@ -44,6 +48,7 @@ public class Backpack
     /// O tipo do item arremessável atualmente escolhido pelo jogador.
     /// </summary>
     public ThrowableTypes EquippedThrowableType => Data.ThrowableItemsSelection?.FirstOrDefault(x => x.IsEquipped)?.Type ?? ThrowableTypes.None;
+    public SupportEquipmentTypes EquippedSupportEquipmentType => Data.SupportEquipmentsSelection?.FirstOrDefault(x => x.IsEquipped)?.Type ?? SupportEquipmentTypes.None;
     /// <summary>
     /// O tipo da habilidade tática atualmente escolhida pelo jogador.
     /// </summary>
@@ -73,6 +78,10 @@ public class Backpack
     /// </summary>
     public InventoryData.ThrowableSelection EquippedThrowable => Data.ThrowableItemsSelection.FirstOrDefault(x => x.Type == EquippedThrowableType);
     /// <summary>
+    /// Equipamento de suporte atualmente equipado pelo jogador.
+    /// </summary>
+    public InventoryData.SupportEquipmentSelection EquippedSupportEquipment => Data.SupportEquipmentsSelection.FirstOrDefault(x => x.Type == EquippedSupportEquipmentType);
+    /// <summary>
     /// O item atualmente sendo arremessado pelo jogador.
     /// </summary>
     public BaseThrowable ThrowingThrowable;
@@ -98,6 +107,9 @@ public class Backpack
             var secWeapon = AddWeapon(EquippedSecondaryType, Data.WeaponsSelection.FirstOrDefault(x => x.Type == EquippedSecondaryType).EquippedSlot);
             EquippedSecondaryWeapon.IsActive = !isEquippedPrimary;
         }
+
+        if (EquippedSupportEquipmentType != SupportEquipmentTypes.None)
+            AddSupportEquipment(EquippedSupportEquipmentType);
     }
 
     /// <summary>
@@ -154,6 +166,25 @@ public class Backpack
 
         return weapon;
     }
+
+    /// <summary>
+    /// Adiciona um novo equipamento de suporte ao arsenal do jogador.
+    /// </summary>
+    /// <param name="type">O tipo do equipamento de suporte.</param>
+    /// <returns>A instância do equipamento adicionado.</returns>
+    public BaseSupportEquipment AddSupportEquipment(SupportEquipmentTypes type)
+    {
+        if ((SupportEquipmentInstance?.Type ?? SupportEquipmentTypes.None) == type)
+        {
+            Debug.LogWarning($"Tentativa de adicionar equipamento de suporte {type} ao arsenal do jogador, mas ele já existe.");
+            return null;
+        }
+        GameObject supportEquipmentObj = Player.WeaponController.InstantiateSupportEquipmentPrefab(type);
+        SupportEquipmentInstance = supportEquipmentObj.GetComponent<BaseSupportEquipment>();
+
+        return SupportEquipmentInstance;
+    }
+
 
     /// <summary>
     /// Alternar entre as armas primária e secundária equipadas.

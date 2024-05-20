@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68a95d75b1dd2845ada421e3234549a, type: 3}
+  m_Name: HealthSupply
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 609be2ef3f9b1964facc763f90bc3299, type: 3}
+  Title: Health Supply
+  Description: When you're knee-deep in zombies and your health is in the red, fire
+    off your flare gun and call for salvation from the skies. Within moments, a roaring
+    cargo plane swoops in, dropping a life-saving crate. Pop it open and bask in
+    the glory of a full health restore.
+  Price: 350
+  Discount: 0
+  Amount: 1
+  IconScale: 1.15
+  PreviewIconScale: 1.4
+  InventorySlotIconScale: 1
+  IsSellable: 0
+  Tags: 0f000000
+  SupportData: {fileID: 11400000, guid: 0936dbb5d7866b945863e10700575111, type: 2}

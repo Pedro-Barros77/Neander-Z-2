@@ -532,6 +532,9 @@ public class StoreScreen : MonoBehaviour
         if (SelectedItem.Data is StorePassiveSkillData)
             purchased = BuyPassiveSkill();
 
+        if(SelectedItem.Data is StoreSupportEquipmentData)
+            purchased = BuySupportEquipment();
+
         switch (SelectedItem.Data.name)
         {
             case "FirstAidKit":
@@ -710,6 +713,27 @@ public class StoreScreen : MonoBehaviour
         PlayerData.InventoryData.PassiveSkillsSelection.Add(new(data.SkillType, true));
         var item = inventoryTab.CreateInventoryItem(data, true);
         inventoryTab.SkillSlot.DropItem(item);
+
+        return true;
+    }
+
+    /// <summary>
+    /// Compra o equipamento de suporte selecionado.
+    /// </summary>
+    /// <returns>Se o item foi comprado com sucesso.</returns>
+    private bool BuySupportEquipment()
+    {
+        var data = SelectedItem.Data as StoreSupportEquipmentData;
+
+        var supports = PlayerData.InventoryData.SupportEquipmentsSelection;
+
+        if (supports.Any(x => x.Type == data.SupportData.Type))
+            return false;
+
+        PlayerData.InventoryData.UnequipAllSupportEquipments();
+        PlayerData.InventoryData.SupportEquipmentsSelection.Add(new(data.SupportData.Type, 1, 1, true));
+        var item = inventoryTab.CreateInventoryItem(data, true);
+        inventoryTab.SupportSlot.DropItem(item);
 
         return true;
     }

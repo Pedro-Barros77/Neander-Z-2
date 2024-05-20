@@ -35,6 +35,8 @@ public class MenuController : MonoBehaviour
     public BaseButton MobileTacticalAbilityButton { get; set; }
     public BaseButton MobileSwitchWeaponsButton { get; set; }
     public BaseButton MobileTouchBackgroundFire { get; set; }
+    public BaseButton MobileSupportEquipmentButton { get; set; }
+    public BaseButton MobileInteractButton { get; set; }
 
     [SerializeField]
     Sprite ArrowCursor, PointerCursor;

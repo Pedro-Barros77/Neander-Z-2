@@ -115,6 +115,11 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                     .FirstOrDefault(x => x.IsEquipped)
                         .IsEquipped = false;
                 break;
+            case InventorySlots.Support:
+                Inventory.SupportEquipmentsSelection
+                    .FirstOrDefault(x => x.IsEquipped)
+                        .IsEquipped = false;
+                break;
         }
 
         storeScreen.IsSaveDirty = true;
@@ -140,6 +145,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         bool isThrowable = SlotType == InventorySlots.Grenade;
         bool isTacticalAbility = SlotType == InventorySlots.TacticalAbility;
         bool isPassiveSkill = SlotType == InventorySlots.PassiveSkill;
+        bool isSupportEquipment = SlotType == InventorySlots.Support;
 
         if (isWeapon && Data is StoreWeaponData weaponData)
         {
@@ -239,6 +245,24 @@ public class InventorySlot : MonoBehaviour, IDropHandler
                 .FirstOrDefault(x => x.Type == passiveSkillData.SkillType)
                     .IsEquipped = true;
         }
+        else if (isSupportEquipment && Data is StoreSupportEquipmentData supportEquipmentData)
+        {
+            item.CountText.gameObject.SetActive(true);
+            AmmoText.transform.parent.gameObject.SetActive(true);
+
+            if (oldData != null)
+            {
+                var oldSupport = oldData as StoreSupportEquipmentData;
+
+                Inventory.SupportEquipmentsSelection
+                    .FirstOrDefault(x => x.Type == oldSupport.SupportData.Type)
+                        .IsEquipped = false;
+            }
+
+            Inventory.SupportEquipmentsSelection
+                .FirstOrDefault(x => x.Type == supportEquipmentData.SupportData.Type)
+                    .IsEquipped = true;
+        }
 
         inventoryTab.OnSlotChanged();
     }
@@ -264,6 +288,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             AmmoText.color = Constants.GetAlertColor(throwable.Count, throwable.MaxCount, 0.2f);
             AmmoText.text = throwable.Count.ToString();
             MaxAmmoText.text = $"/{throwable.MaxCount}";
+        }
+        else if (Data is StoreSupportEquipmentData supportData)
+        {
+            var support = Inventory.SupportEquipmentsSelection.FirstOrDefault(x => x.Type == supportData.SupportData.Type);
+
+            AmmoText.color = Constants.GetAlertColor(support.Count, support.MaxCount, 0.2f);
+            AmmoText.text = support.Count.ToString();
+            MaxAmmoText.text = $"/{support.MaxCount}";
         }
     }
 
@@ -313,9 +345,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (item.Data is StorePassiveSkillData && SlotType == InventorySlots.PassiveSkill)
             canDrop = true;
 
-        // todo support
-        // if(item.Data is StoreSupportData supportData && SlotType == InventorySlots.Support)
-        //     canDrop = true;
+        if (item.Data is StoreSupportEquipmentData supportData && SlotType == InventorySlots.Support)
+            canDrop = true;
 
         // todo deployable
         // if(item.Data is StoreDeployableData deployableData && SlotType == InventorySlots.Deployable)

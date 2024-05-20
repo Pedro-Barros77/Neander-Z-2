@@ -11,11 +11,11 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     GameObject PausePanel, GameOverPanel, PopupPrefab;
     [SerializeField]
-    Image ActiveWeaponImage, ActiveAmmoImage, ActiveThrowableImage, SwitchWeaponImage, PlayerHeadImage;
+    Image ActiveWeaponImage, ActiveAmmoImage, ActiveThrowableImage, ActiveSupportEquipmentImage, SwitchWeaponImage, PlayerHeadImage;
     [SerializeField]
-    TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText, PlayerMoneyText, WaveScoreText, PauseTitle, WaveSummaryCharacterNameText;
+    TextMeshProUGUI MagazineBulletsText, TotalBulletsText, ThrowablesCountText, SupportEquipmentsCountText, PlayerMoneyText, WaveScoreText, PauseTitle, WaveSummaryCharacterNameText;
     [SerializeField]
-    Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, FuelAmmoIcon, TacticalRollIcon, DoubleJumpIcon;
+    Sprite PistolBulletIcon, ShotgunBulletIcon, RifleAmmoIcon, SniperAmmoIcon, RocketAmmoIcon, MeleeAmmoIcon, FuelAmmoIcon, TacticalRollIcon, DoubleJumpIcon, HealthSupplyIcon, AmmoSupplyIcon;
     [SerializeField]
     Sprite Colt_1911Sprite, ShortBarrelSprite, UZISprite, SV98Sprite, M16Sprite, RPGSprite, MacheteSprite, DeagleSprite, Beretta_93RSprite, ScarSprite, ChainsawSprite, Spas12Sprite, Kar98Sprite, ScarDebugSprite;
     [SerializeField]
@@ -28,7 +28,7 @@ public class InGameScreen : MonoBehaviour
     [SerializeField]
     Joystick MobileMovementJoystick, MobileGrenadeJoystick;
     [SerializeField]
-    BaseButton MobileReloadButton, MobileTacticalAbilityButton, MobileSwitchWeaponsButton, MobileTouchBackgroundFire;
+    BaseButton MobileReloadButton, MobileTacticalAbilityButton, MobileSwitchWeaponsButton, MobileTouchBackgroundFire, MobileSupportEquipmentButton, MobileInteractButton;
     [SerializeField]
     SkinManager PlayerHeadSkinManager, WaveSummaryPlayerHeadSkinManager;
     [SerializeField]
@@ -94,6 +94,8 @@ public class InGameScreen : MonoBehaviour
             MenuController.Instance.MobileTacticalAbilityButton = MobileTacticalAbilityButton;
             MenuController.Instance.MobileSwitchWeaponsButton = MobileSwitchWeaponsButton;
             MenuController.Instance.MobileTouchBackgroundFire = MobileTouchBackgroundFire;
+            MenuController.Instance.MobileSupportEquipmentButton = MobileSupportEquipmentButton;
+            MenuController.Instance.MobileInteractButton = MobileInteractButton;
 
             SprintThreshold = MobileMovementJoystick.transform.Find("SprintThresholdMask").GetChild(0).GetComponent<Image>();
 
@@ -134,6 +136,8 @@ public class InGameScreen : MonoBehaviour
                 Player.Data.InventoryData.SetAmmo(BulletTypes.Fuel, Player.Data.InventoryData.GetMaxAmmo(BulletTypes.Fuel));
                 if (Player.Backpack.EquippedThrowableType != ThrowableTypes.None)
                     Player.Backpack.EquippedThrowable.Count = Player.Backpack.EquippedThrowable.MaxCount;
+                if(Player.Backpack.EquippedSupportEquipmentType != SupportEquipmentTypes.None)
+                    Player.Backpack.EquippedSupportEquipment.Count = Player.Backpack.EquippedSupportEquipment.MaxCount;
             }
         }
 
@@ -158,6 +162,8 @@ public class InGameScreen : MonoBehaviour
         TotalBulletsText.text = Player.Backpack.GetAmmo(Player.CurrentWeapon.BulletType).ToString();
         if (Player.Backpack.EquippedThrowableType != ThrowableTypes.None)
             ThrowablesCountText.text = Player.Backpack.EquippedThrowable?.Count.ToString();
+        if (Player.Backpack.EquippedSupportEquipmentType != SupportEquipmentTypes.None)
+            SupportEquipmentsCountText.text = Player.Backpack.EquippedSupportEquipment?.Count.ToString();
 
         ActiveAmmoImage.sprite = Player.CurrentWeapon.BulletType switch
         {
@@ -176,6 +182,14 @@ public class InGameScreen : MonoBehaviour
             {
                 ThrowableTypes.FragGrenade => FragGrenadeSprite,
                 ThrowableTypes.Molotov => MolotovSprite,
+                _ => null,
+            };
+
+        if (Player.Backpack.EquippedSupportEquipmentType != SupportEquipmentTypes.None)
+            ActiveSupportEquipmentImage.sprite = Player.Backpack.EquippedSupportEquipmentType switch
+            {
+                SupportEquipmentTypes.AmmoSupply => AmmoSupplyIcon,
+                SupportEquipmentTypes.HealthSupply => HealthSupplyIcon,
                 _ => null,
             };
 

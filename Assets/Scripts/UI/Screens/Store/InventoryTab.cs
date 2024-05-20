@@ -327,6 +327,11 @@ public class InventoryTab : MonoBehaviour
             prefabItem.Data = skillData;
             column = skillsColumn;
         }
+        else if (data is StoreSupportEquipmentData supportData)
+        {
+            prefabItem.Data = supportData;
+            column = skillsColumn;
+        }
         else
         {
             column = itemsColumn;
@@ -370,6 +375,7 @@ public class InventoryTab : MonoBehaviour
         LoadThrowables();
         LoadTacticalAbilities();
         LoadPassiveSkills();
+        LoadSupportEquipments();
         loaded = true;
     }
 
@@ -460,6 +466,24 @@ public class InventoryTab : MonoBehaviour
 
             if (equippedSkill != null && equippedSkill.Type == skillType)
                 SkillSlot.DropItem(storeItem);
+        }
+    }
+
+    /// <summary>
+    /// Carraga os itens arremessáveis do inventário.
+    /// </summary>
+    void LoadSupportEquipments()
+    {
+        var supportsDatas = Resources.LoadAll<StoreSupportEquipmentData>("ScriptableObjects/Store/SupportEquipments");
+        var equippedSupport = Inventory.SupportEquipmentsSelection.FirstOrDefault(x => x.IsEquipped);
+
+        foreach (var supportType in Inventory.SupportEquipmentsSelection.Select(x => x.Type))
+        {
+            StoreSupportEquipmentData supportData = supportsDatas.FirstOrDefault(x => x.SupportData.Type == supportType);
+            var storeItem = CreateInventoryItem(supportData);
+
+            if (equippedSupport != null && equippedSupport.Type == supportType)
+                SupportSlot.DropItem(storeItem);
         }
     }
 

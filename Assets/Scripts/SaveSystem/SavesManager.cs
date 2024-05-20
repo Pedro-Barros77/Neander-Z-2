@@ -335,6 +335,7 @@ public static class SavesManager
         save.ThrowableItemsSelection = inventory.ThrowableItemsSelection;
         save.TacticalAbilitiesSelection = inventory.TacticalAbilitiesSelection;
         save.PassiveSkillsSelection = inventory.PassiveSkillsSelection;
+        save.SupportEquipmentsSelection = inventory.SupportEquipmentsSelection;
 
         save.CurrentSkin = player.SkinData.Encode();
 
@@ -388,6 +389,7 @@ public static class SavesManager
         inventory.ThrowableItemsSelection = save.ThrowableItemsSelection;
         inventory.TacticalAbilitiesSelection = save.TacticalAbilitiesSelection;
         inventory.PassiveSkillsSelection = save.PassiveSkillsSelection;
+        inventory.SupportEquipmentsSelection = save.SupportEquipmentsSelection;
 
         //Waves
         WaveStats[] waveStats = GetWaveStats().OrderBy(x => x.WaveNumber).ToArray();

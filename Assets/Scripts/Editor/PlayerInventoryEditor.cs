@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Security.Cryptography;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -9,10 +10,10 @@ public class PlayerInventoryEditor : Editor
 {
     InventoryData data;
     SerializedObject GetTarget;
-    SerializedProperty PrimaryWeapons, SecondaryWeapons, ThrowableItems, TacticalAbilities, PassiveSkills;
+    SerializedProperty PrimaryWeapons, SecondaryWeapons, ThrowableItems, TacticalAbilities, PassiveSkills, SupportEquipments;
 
     GUIStyle ammoLabelStyle, maxAmmoLabelStyle, weaponLabelStyle;
-    ReorderableList PrimaryWeaponsList, SecondaryWeaponsList, ThrowableItemsList, TacticalAbilitiesList, PassiveSkillsList;
+    ReorderableList PrimaryWeaponsList, SecondaryWeaponsList, ThrowableItemsList, TacticalAbilitiesList, PassiveSkillsList, SupportEquipmentsList;
 
     void OnEnable()
     {
@@ -23,6 +24,7 @@ public class PlayerInventoryEditor : Editor
         ThrowableItems = GetTarget.FindProperty("ThrowableItemsSelection");
         TacticalAbilities = GetTarget.FindProperty("TacticalAbilitiesSelection");
         PassiveSkills = GetTarget.FindProperty("PassiveSkillsSelection");
+        SupportEquipments = GetTarget.FindProperty("SupportEquipmentsSelection");
 
         weaponLabelStyle = new()
         {
@@ -73,6 +75,12 @@ public class PlayerInventoryEditor : Editor
         PassiveSkillsList = new ReorderableList(serializedObject, PassiveSkills, true, true, true, true)
         {
             drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => RenderPassiveSkill(rect, index),
+            headerHeight = 0
+        };
+
+        SupportEquipmentsList = new ReorderableList(serializedObject, SupportEquipments, true, true, true, true)
+        {
+            drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) => RenderSupportEquipment(rect, index),
             headerHeight = 0
         };
     }
@@ -164,6 +172,14 @@ public class PlayerInventoryEditor : Editor
         PassiveSkills.isExpanded = EditorGUILayout.BeginFoldoutHeaderGroup(PassiveSkills.isExpanded, "Passive Skills");
         if (PassiveSkills.isExpanded)
             PassiveSkillsList.DoLayoutList();
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        EditorGUILayout.Space();
+
+        // Support Equipments
+        SupportEquipments.isExpanded = EditorGUILayout.BeginFoldoutHeaderGroup(SupportEquipments.isExpanded, "Support Equipments");
+        if (SupportEquipments.isExpanded)
+            SupportEquipmentsList.DoLayoutList();
         EditorGUILayout.EndFoldoutHeaderGroup();
 
         GetTarget.ApplyModifiedProperties();
@@ -411,6 +427,73 @@ public class PlayerInventoryEditor : Editor
             for (int i = 0; i < PassiveSkills.arraySize; i++)
             {
                 PassiveSkills.GetArrayElementAtIndex(i).FindPropertyRelative("IsEquipped").boolValue = false;
+            }
+            item.FindPropertyRelative("IsEquipped").boolValue = true;
+        }
+    }
+
+    void RenderSupportEquipment(Rect rect, int index)
+    {
+        rect.y += 2;
+
+        var item = SupportEquipments.GetArrayElementAtIndex(index);
+        string typeLabel = "Type", countLabel = "Count", maxLabel = "Max", isEquippedLabel = "Equipped";
+        float marginX = 10;
+        float typeWidth = 120, countWidth = 30, maxWidth = 30, isEquippedWidth = 100, lblTypeWidth, lblCountWidth, lblMaxWidth, lblIsEquippedWidth;
+
+        lblTypeWidth = weaponLabelStyle.CalcSize(new GUIContent(typeLabel)).x;
+        lblCountWidth = weaponLabelStyle.CalcSize(new GUIContent(countLabel)).x;
+        lblMaxWidth = weaponLabelStyle.CalcSize(new GUIContent(maxLabel)).x;
+        lblIsEquippedWidth = weaponLabelStyle.CalcSize(new GUIContent(isEquippedLabel)).x;
+
+        var countProp = item.FindPropertyRelative("Count");
+        var maxProp = item.FindPropertyRelative("MaxCount");
+
+        float x = rect.x;
+
+        EditorGUI.LabelField(new Rect(x, rect.y, lblTypeWidth, EditorGUIUtility.singleLineHeight), typeLabel, weaponLabelStyle);
+
+        x += lblTypeWidth + marginX;
+
+        EditorGUI.PropertyField(
+            new Rect(x, rect.y, typeWidth, EditorGUIUtility.singleLineHeight),
+            item.FindPropertyRelative("Type"), GUIContent.none);
+
+        x += typeWidth + marginX * 2;
+
+        EditorGUI.LabelField(new Rect(x, rect.y, 0, EditorGUIUtility.singleLineHeight), countLabel, weaponLabelStyle);
+
+        x += lblCountWidth + marginX;
+
+        EditorGUI.PropertyField(
+            new Rect(x, rect.y, countWidth, EditorGUIUtility.singleLineHeight),
+            countProp, GUIContent.none);
+
+        x += countWidth + marginX * 2;
+
+        EditorGUI.LabelField(new Rect(x, rect.y, 0, EditorGUIUtility.singleLineHeight), maxLabel, weaponLabelStyle);
+
+        x += lblMaxWidth + marginX;
+
+        EditorGUI.PropertyField(
+            new Rect(x, rect.y, maxWidth, EditorGUIUtility.singleLineHeight),
+            maxProp, GUIContent.none);
+
+        x += maxWidth + marginX * 2;
+
+        EditorGUI.LabelField(new Rect(x, rect.y, 0, EditorGUIUtility.singleLineHeight), isEquippedLabel, weaponLabelStyle);
+
+        x += lblIsEquippedWidth + marginX;
+
+        item.FindPropertyRelative("IsEquipped").boolValue = EditorGUI.Toggle(
+            new Rect(x, rect.y + 2, isEquippedWidth, EditorGUIUtility.singleLineHeight),
+            item.FindPropertyRelative("IsEquipped").boolValue, EditorStyles.radioButton);
+
+        if (item.FindPropertyRelative("IsEquipped").boolValue)
+        {
+            for (int i = 0; i < SupportEquipments.arraySize; i++)
+            {
+                SupportEquipments.GetArrayElementAtIndex(i).FindPropertyRelative("IsEquipped").boolValue = false;
             }
             item.FindPropertyRelative("IsEquipped").boolValue = true;
         }

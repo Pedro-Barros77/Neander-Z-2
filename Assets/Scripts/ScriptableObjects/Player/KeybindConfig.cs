@@ -12,7 +12,7 @@ public class KeybindConfig : AutoRevertSO
     {
         Inputs = new()
         {
-            MoveLeft, MoveRight, Jump, Crouch, Sprint, Shoot, ThrowGrenade, TacticalAbility, Reload, PauseContinueGame, SwitchWeapon, EquipPrimaryWeapon, EquipSecondaryWeapon, BuyMaxStoreItems,
+            MoveLeft, MoveRight, Jump, Crouch, Sprint, Shoot, ThrowGrenade, TacticalAbility, Reload, PauseContinueGame, SwitchWeapon, EquipPrimaryWeapon, EquipSecondaryWeapon, BuyMaxStoreItems, SelectSupportEquipment, SelectDeployableEquipment, Interact,
             DEBUG_IncreaseHealth, DEBUG_DecreaseHealth, DEBUG_IncreaseMoney, DEBUG_DecreaseMoney, DEBUG_SpawnRoger, DEBUG_SpawnRonald, DEBUG_SpawnRonaldo, DEBUG_SpawnRaven, DEBUG_SpawnRobert, DEBUG_SpawnRaimundo, DEBUG_SpawnRUI, DEBUG_SpawnRute, DEBUG_SpawnRat, DEBUG_KillAllEnemiesAlive, DEBUG_EndWave, DEBUG_CenterEnemies, DEBUG_RefillAllAmmo
         };
     }
@@ -31,6 +31,9 @@ public class KeybindConfig : AutoRevertSO
     public List<KeybindItem> EquipPrimaryWeapon;
     public List<KeybindItem> EquipSecondaryWeapon;
     public List<KeybindItem> BuyMaxStoreItems;
+    public List<KeybindItem> SelectSupportEquipment;
+    public List<KeybindItem> SelectDeployableEquipment;
+    public List<KeybindItem> Interact;
 
     #region DEBUG (Constants.EnableDevKeybinds == true)
     public List<KeybindItem> DEBUG_IncreaseHealth;

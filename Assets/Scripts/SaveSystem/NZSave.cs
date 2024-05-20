@@ -23,6 +23,7 @@ public class NZSave : BaseNZSave
     public List<InventoryData.ThrowableSelection> ThrowableItemsSelection;
     public List<InventoryData.TacticalAbilitySelection> TacticalAbilitiesSelection;
     public List<InventoryData.PassiveSkillSelection> PassiveSkillsSelection;
+    public List<InventoryData.SupportEquipmentSelection> SupportEquipmentsSelection;
 
     [JsonIgnore]
     public IEnumerable<InventoryData.WeaponSelection> WeaponsSelection =>

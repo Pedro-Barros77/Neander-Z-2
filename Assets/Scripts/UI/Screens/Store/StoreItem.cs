@@ -83,6 +83,9 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             if (Data is StorePassiveSkillData)
                 UpdatePassiveSkill();
 
+            if (Data is StoreSupportEquipmentData)
+                UpdateSupportEquipment();
+
             UpdateSpecials();
         }
     }
@@ -304,6 +307,37 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         float percentage = (diff * 100 / Data.Amount) / 100;
 
         Data.Discount = Data.Price * (1 - percentage);
+    }
+
+    private void UpdateSupportEquipment()
+    {
+        var data = Data as StoreSupportEquipmentData;
+        var support = storeScreen.PlayerData.InventoryData.SupportEquipmentsSelection
+            .FirstOrDefault(x => x.Type == data.SupportData.Type);
+
+        int diff = 0;
+
+        if (support == null)
+            diff = data.SupportData.MaxCount;
+        else
+            diff = support.MaxCount - support.Count;
+
+        if (Constants.GetAction(InputActions.BuyMaxStoreItems))
+            data.Discount = -(Data.Price * ((diff - Data.Amount) / Data.Amount));
+        else
+            data.Discount = 0;
+
+        if (support == null)
+            return;
+
+        Data.MaxedUp = diff <= 0;
+
+
+        if (IsInventoryItem)
+        {
+            PriceText.text = support.IsEquipped ? "Equipped" : "";
+            CountText.text = $"{support.Count}/{support.MaxCount}";
+        }
     }
 
     private void UpdateSpecials()

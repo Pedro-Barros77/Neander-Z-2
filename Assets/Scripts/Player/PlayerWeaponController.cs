@@ -17,6 +17,10 @@ public class PlayerWeaponController : MonoBehaviour
     /// </summary>
     public bool IsThrowingItem { get; set; }
     /// <summary>
+    /// Se o jogador está usando um equipamento de suporte.
+    /// </summary>
+    public bool IsUsingSupportEquipment { get; set; }
+    /// <summary>
     /// O jogador pai deste controlador.
     /// </summary>
     public Player Player { get; set; }
@@ -44,7 +48,7 @@ public class PlayerWeaponController : MonoBehaviour
     Animator playerAnimator;
     Transform floor;
     Vector2 lastThrowTrajectoryForce, lastThrowStartPoint;
-    bool itemThrown;
+    bool itemThrown, wasWeaponEquippedBeforeSupport;
     Gradient ThrowableLineRendererColor;
 
     readonly FireModes[] HoldTriggerFireModes = { FireModes.FullAuto, FireModes.Melee };
@@ -58,12 +62,12 @@ public class PlayerWeaponController : MonoBehaviour
         throwableSpawnPointTransform = palm.Find("ThrowableSpawnPoint");
         handPalmSprite = palm.GetComponent<SpriteRenderer>();
         fingersSprite = fingers.GetComponent<SpriteRenderer>();
+        Player = transform.parent.GetComponent<Player>();
     }
 
     void Start()
     {
         floor = GameObject.Find("Floor")?.transform;
-        Player = transform.parent.GetComponent<Player>();
         playerAnimator = Player.GetComponent<Animator>();
         LineRenderer = GetComponent<LineRenderer>();
         StartLocalPosition = transform.localPosition;
@@ -107,6 +111,9 @@ public class PlayerWeaponController : MonoBehaviour
 
         if (Constants.GetActionDown(InputActions.EquipSecondaryWeapon))
             SwitchWeapon(1);
+
+        if (Constants.GetActionDown(InputActions.SelectSupportEquipment))
+            UseSupportEquipment();
 
         if (IsSwitchingWeapon)
             WeaponSwitchAnimation();
@@ -159,7 +166,10 @@ public class PlayerWeaponController : MonoBehaviour
         fingersSprite.flipY = IsAimingLeft;
 
         if (Player?.Data?.SkinData != null)
+        {
             Player.CurrentWeapon.SetHandSkinColor(Player.Data.SkinData.SkinColor);
+            Player?.Backpack.SupportEquipmentInstance?.SetHandSkinColor(Player.Data.SkinData.SkinColor);
+        }
     }
 
     /// <summary>
@@ -167,7 +177,7 @@ public class PlayerWeaponController : MonoBehaviour
     /// </summary>
     private void StartThrowingItem()
     {
-        if (IsThrowingItem || IsSwitchingWeapon || Player.Backpack.EquippedThrowableType == ThrowableTypes.None)
+        if (IsThrowingItem || IsSwitchingWeapon || IsUsingSupportEquipment || Player.Backpack.EquippedThrowableType == ThrowableTypes.None)
             return;
 
         if (Player.Backpack.EquippedThrowable.Count <= 0)
@@ -318,7 +328,7 @@ public class PlayerWeaponController : MonoBehaviour
     /// <param name="index">O índice da arma a ser equipada. 0 = primária, 1 = secundária. Null = inverter.</param>
     public void SwitchWeapon(int? index = null)
     {
-        if (IsSwitchingWeapon || IsThrowingItem)
+        if (IsSwitchingWeapon || IsThrowingItem || IsUsingSupportEquipment)
             return;
 
         if ((index == null || index != Player.Backpack.CurrentWeaponIndex) && Player.Backpack.HasPrimaryEquipped && Player.Backpack.HasSecondaryEquipped)
@@ -340,6 +350,39 @@ public class PlayerWeaponController : MonoBehaviour
             Player.Backpack.EquippedPrimaryWeapon.IsActive = equippedPrimary;
         if (Player.Backpack.HasSecondaryEquipped)
             Player.Backpack.EquippedSecondaryWeapon.IsActive = !equippedPrimary;
+    }
+
+    /// <summary>
+    /// Inicia o uso do equipamento de suporte.
+    /// </summary>
+    public void UseSupportEquipment()
+    {
+        if (IsSwitchingWeapon || IsThrowingItem || IsUsingSupportEquipment)
+            return;
+
+        if (Player.Backpack.SupportEquipmentInstance == null)
+            return;
+
+        bool canSwitch = Player.CurrentWeapon.BeforeSwitchWeapon();
+        if (!canSwitch)
+            return;
+
+        if (Player.Backpack.EquippedSupportEquipment.Count <= 0)
+            return;
+
+        IsUsingSupportEquipment = true;
+
+        wasWeaponEquippedBeforeSupport = Player.Backpack.EquippedWeapon.IsActive;
+        Player.Backpack.EquippedWeapon.IsActive = false;
+        Player.Backpack.SupportEquipmentInstance.gameObject.SetActive(true);
+        Player.Backpack.EquippedSupportEquipment.Count--;
+        Player.Backpack.SupportEquipmentInstance.Use(() =>
+        {
+            if (wasWeaponEquippedBeforeSupport)
+                Player.Backpack.EquippedWeapon.IsActive = true;
+            Player.CurrentWeapon.IsSwitchingWeapon = false;
+            IsUsingSupportEquipment = false;
+        });
     }
 
     /// <summary>
@@ -417,6 +460,31 @@ public class PlayerWeaponController : MonoBehaviour
         var weaponScript = weaponObj.GetComponent<BaseWeapon>();
         weaponScript.PlayerWeaponController = this;
         return weaponObj;
+    }
+
+    /// <summary>
+    /// Carrega o Prefab do equipamento de suporte do tipo especificado e o instancia na m�o do jogador.
+    /// </summary>
+    /// <param name="supType">O tipo do equipamento de suporte a ser instanciado.</param>
+    /// <returns>O gameobject do equipamento instanciado.</returns>
+    public GameObject InstantiateSupportEquipmentPrefab(SupportEquipmentTypes supType)
+    {
+        string resourceName = supType switch
+        {
+            SupportEquipmentTypes.AmmoSupply => "Equipments/SupportEquipments/FlareGun_AmmoVariant",
+            SupportEquipmentTypes.HealthSupply => "Equipments/SupportEquipments/FlareGun_HealthVariant",
+            _ => throw new ArgumentOutOfRangeException(nameof(supType), supType, null),
+        };
+
+        var supPrefab = Resources.Load<GameObject>($"Prefabs/{resourceName}");
+        GameObject supObj = Instantiate(supPrefab, handTransform);
+        supObj.transform.SetParent(transform.parent);
+        supObj.name = supType.ToString();
+        var supScript = supObj.GetComponent<BaseSupportEquipment>();
+        supScript.Player = Player;
+        supObj.SetActive(false);
+
+        return supObj;
     }
 
     /// <summary>
