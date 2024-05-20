@@ -1294,8 +1294,19 @@ public class InventoryTab : MonoBehaviour
 
         if (item.Data is StoreWeaponData storeWeapon)
         {
-            value = GetWeaponSellPrice(storeWeapon);
-            sold = SellWeapon(storeWeapon);
+            CustomDialog.Open(new()
+            {
+                BtnConfirmText = "Yes",
+                PromptText = $"Are you sure you want to sell '{storeWeapon.Title}' for half of it's value?",
+                OnConfirm = (_) =>
+                {
+                    value = GetWeaponSellPrice(storeWeapon);
+                    sold = SellWeapon(storeWeapon);
+
+                    if (sold)
+                        AfterSell(item, value);
+                },
+            });
         }
 
         if (item.Data is StoreThrowableData storeThrowable)
@@ -1304,6 +1315,16 @@ public class InventoryTab : MonoBehaviour
         if (!sold)
             return;
 
+        AfterSell(item, value);
+    }
+
+    /// <summary>
+    /// Executa as ações após a venda de um item, como efeito sonoro e dinheiro.
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="value"></param>
+    void AfterSell(StoreItem item, float value)
+    {
         if (value == 0)
             value = (item.Data.Price - item.Data.Discount) / 2;
 

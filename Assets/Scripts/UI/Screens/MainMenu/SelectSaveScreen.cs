@@ -11,13 +11,14 @@ public class SelectSaveScreen : MonoBehaviour
     [SerializeField]
     Transform SavesContent;
     [SerializeField]
-    GameObject SaveFilePrefab, NewSaveModal, PreviewContent, EmptyPreview;
-    [SerializeField]
-    InputField InputNewSaveName;
+    GameObject SaveFilePrefab, PreviewContent, EmptyPreview;
 
     [SerializeField]
     TextMeshProUGUI SaveTitleText, CurrentWaveText, TotalScoreText, MoneyText, PrimaryWeaponText, SecondaryWeaponText, HealthText,
         TotalTimeText, TotalInStoreTimeText, WavesRestartedText, TotalDeathsText, TotalEnemiesKilledText, TotalHeadshotKillsText, TotalPrecisionText;
+
+    [SerializeField]
+    BaseButton BtnDeleteAll, BtnImportSave, BtnExportSave;
 
     List<Animator> SavesAnimators = new();
     NZSave[] Saves;
@@ -38,6 +39,8 @@ public class SelectSaveScreen : MonoBehaviour
 
         PreviewContent.SetActive(SelectedSave != null);
         EmptyPreview.SetActive(SelectedSave == null);
+        if (BtnDeleteAll?.Button != null)
+            BtnDeleteAll.Button.interactable = Saves.Any();
 
         if (SelectedSave != null)
             SavesAnimators[Array.IndexOf(Saves, SelectedSave)].SetTrigger("Selected");
@@ -124,24 +127,26 @@ public class SelectSaveScreen : MonoBehaviour
     /// </summary>
     public void OpenNewSaveModal()
     {
-        NewSaveModal.SetActive(true);
-        InputNewSaveName.text = $"Save {Saves.Length + 1:D2}";
-    }
-
-    /// <summary>
-    /// Fecha o modal de preenchimento do nome do novo save.
-    /// </summary>
-    public void CloseNewSaveModal()
-    {
-        NewSaveModal.SetActive(false);
+        CustomDialog.Open(new()
+        {
+            BtnConfirmText = "Create",
+            UseCancelButton = false,
+            PromptText = "Enter a save name.",
+            UseInputField = true,
+            InputFieldPlaceholderText = "Save name",
+            InputFieldText = $"Save {Saves.Length + 1:D2}",
+            OnConfirm = (text) =>
+            {
+                CreateNewSave(text);
+            },
+        });
     }
 
     /// <summary>
     /// Cria um novo arquivo de save.
     /// </summary>
-    public void CreateNewSave()
+    public void CreateNewSave(string saveName)
     {
-        string saveName = InputNewSaveName.text;
         if (string.IsNullOrWhiteSpace(saveName) || saveName.Length > 40)
             return;
 
@@ -158,9 +163,38 @@ public class SelectSaveScreen : MonoBehaviour
     /// </summary>
     public void DeleteSave()
     {
-        SavesManager.DeleteSave(SelectedSave);
-        SelectedSave = null;
-        LoadSaves();
+        CustomDialog.Open(new()
+        {
+            BtnConfirmText = "Yes",
+            PromptText = "Are you sure you want to delete this game save?",
+            OnConfirm = (_) =>
+            {
+                SavesManager.DeleteSave(SelectedSave);
+                SelectedSave = null;
+                LoadSaves();
+            },
+        });
+
+    }
+
+    /// <summary>
+    /// Exclui todos os arquivos de save.
+    /// </summary>
+    public void DeleteAllSaves()
+    {
+        CustomDialog.Open(new()
+        {
+            BtnConfirmText = "Yes",
+            PromptText = "Are you sure you want to delete all game saves?",
+            OnConfirm = (_) =>
+            {
+                foreach (NZSave save in Saves)
+                    SavesManager.DeleteSave(save);
+
+                SelectedSave = null;
+                LoadSaves();
+            },
+        });
     }
 
     /// <summary>
