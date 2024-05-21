@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -200,12 +201,57 @@ public class SelectSaveScreen : MonoBehaviour
     }
 
     /// <summary>
+    /// Importa um arquivo de save a partir do caminho especificado.
+    /// </summary>
+    public void ImportSave()
+    {
+        CustomDialog.Open(new()
+        {
+            UseCancelButton = false,
+            DialogSize = new Vector2(400, 150),
+            BtnConfirmText = "Import",
+            BtnConfirmTooltipText = "Import a save file from your computer to the game.",
+            PromptText = "Copy the file path and paste it here:",
+            UseInputField = true,
+            InputFieldPlaceholderText = "Ex: C:\\Users\\YourName\\Downloads\\Save 01.nzsave",
+            OnConfirm = (text) =>
+            {
+                if (!text.EndsWith(".nzsave"))
+                {
+                    ShowPopup("Invalid file format!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+                    return;
+                }
+
+                NZSave importedSave = SavesManager.ImportNzSave(text);
+
+                if (importedSave == null)
+                {
+                    ShowPopup("Failed to import the file!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+                    return;
+                }
+
+                bool saved = SavesManager.SaveNzSave(importedSave, GameModes.WaveMastery, Path.GetFileNameWithoutExtension(Path.GetFileName(text)));
+
+                if (!saved)
+                {
+                    ShowPopup("Failed to save the file!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+                    return;
+                }
+
+                SelectedSave = null;
+                LoadSaves();
+                ShowPopup("Save file successfully imported!", Constants.Colors.GreenMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+            },
+        });
+    }
+
+    /// <summary>
     /// Exporta o arquivo de save selecionado para a pasta downloads.
     /// </summary>
     public void ExportSave()
     {
         bool exported = SavesManager.ExportNzSave(SelectedSave);
-        if(exported)
+        if (exported)
             ShowPopup("Save file successfully saved in Downloads folder!", Constants.Colors.GreenMoney, BtnExportSave.transform.position + new Vector3(-70, 50));
         else
             ShowPopup("Failed to save the file!", Constants.Colors.RedMoney, BtnExportSave.transform.position + new Vector3(-70, 50));

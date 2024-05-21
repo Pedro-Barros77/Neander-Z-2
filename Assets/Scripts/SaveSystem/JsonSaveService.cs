@@ -15,7 +15,7 @@ public class JsonSaveService
     /// </summary>
     /// <typeparam name="T">O Tipo do objeto a ser salvo.</typeparam>
     /// <param name="relativePath">O caminho relativo da pasta onde o arquivo será salvo.</param>
-    /// <param name="fileName">O nome do arquivo a ser salvo, sem a extensãi.</param>
+    /// <param name="fileName">O nome do arquivo a ser salvo, sem a extensão.</param>
     /// <param name="data">O objeto a ser salvo.</param>
     /// <param name="encrypted">Se o arquivo deve ser criptografado para proteger seu conteúdo</param>
     /// <returns>True se o arquivo foi salvo com sucesso.</returns>
@@ -80,23 +80,35 @@ public class JsonSaveService
     /// Carrega o arquivo JSON contendo o objeto especificado.
     /// </summary>
     /// <typeparam name="T">O Tipo do objeto a ser carregado.</typeparam>
-    /// <param name="relativePath">O caminho relativo da pasta onde o arquivo será salvo.</param>
-    /// <param name="fileName">O nome do arquivo a ser salvo, sem a extensãi.</param>
+    /// <param name="relativePath">O caminho relativo da pasta de onde o arquivo será carregado.</param>
+    /// <param name="fileName">O nome do arquivo a ser carregado, sem a extensão.</param>
     /// <param name="encrypted">Se o arquivo foi criptografado quando salvo.</param>
     /// <returns>O objeto do tipo especificado, carregado do arquivo JSON.</returns>
     public T LoadData<T>(string relativePath, string fileName, bool encrypted, string extension = save_extension)
     {
         string path = CombinePaths(ROOT_FOLDER, relativePath, $"{fileName}.{extension}");
 
-        if (!File.Exists(path))
+        return LoadData<T>(path, encrypted);
+    }
+
+    /// <summary>
+    /// Carrega o arquivo JSON contendo o objeto especificado.
+    /// </summary>
+    /// <typeparam name="T">O Tipo do objeto a ser carregado.</typeparam>
+    /// <param name="fullPath">O caminho completo do arquivo.</param>
+    /// <param name="encrypted">Se o arquivo foi criptografado quando salvo.</param>
+    /// <returns>O objeto do tipo especificado, carregado do arquivo JSON.</returns>
+    public T LoadData<T>(string fullPath, bool encrypted)
+    {
+        if (!File.Exists(fullPath))
         {
-            Debug.LogError("File does not exist at path: " + path);
+            Debug.LogError("File does not exist at path: " + fullPath);
             return default;
         }
 
         try
         {
-            string jsonData = File.ReadAllText(path);
+            string jsonData = File.ReadAllText(fullPath);
             T data = JsonConvert.DeserializeObject<T>(jsonData);
             return data;
         }

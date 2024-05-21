@@ -85,6 +85,28 @@ public static class SavesManager
     }
 
     /// <summary>
+    /// Importa um save a partir de um caminho específico.
+    /// </summary>
+    /// <param name="fullPath">O caminho completo do arquivo.</param>
+    /// <param name="encrypted">Se ele está criptografado.</param>
+    /// <returns>O arquivo carregado.</returns>
+    public static NZSave ImportNzSave(string fullPath, bool encrypted = false)
+    {
+        JsonSaveService jsonService = new();
+        if (!File.Exists(fullPath))
+            return null;
+
+        var save = jsonService.LoadData<NZSave>(fullPath, encrypted);
+        if (save == null)
+        {
+            Debug.LogError($"Save file {fullPath} not found!");
+            return null;
+        }
+
+        return save;
+    }
+
+    /// <summary>
     /// Exporta o save especificado para a pasta downloads.
     /// </summary>
     /// <param name="save">O save a ser baixado.</param>
