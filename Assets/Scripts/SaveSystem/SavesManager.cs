@@ -85,6 +85,20 @@ public static class SavesManager
     }
 
     /// <summary>
+    /// Exporta o save especificado para a pasta downloads.
+    /// </summary>
+    /// <param name="save">O save a ser baixado.</param>
+    /// <returns>True se exportado com sucesso.</returns>
+    public static bool ExportNzSave(NZSave save)
+    {
+        JsonSaveService jsonService = new();
+
+        if (jsonService.DownloadData(save.FolderPath, save.FileName))
+            return true;
+        return false;
+    }
+
+    /// <summary>
     /// Adiciona um novo personagem customizado ä lista do save global.
     /// </summary>
     /// <param name="skin">A skin do novo personagem a salvar.</param>

@@ -44,6 +44,39 @@ public class JsonSaveService
     }
 
     /// <summary>
+    /// Baixa o arquivo no caminho especificado para a pasta downloads.
+    /// </summary>
+    /// <param name="fullFolderPath">O caminho completo da pasta.</param>
+    /// <param name="fileName">O nome do arquivo.</param>
+    /// <param name="extension">A extensão do arquivo.</param>
+    /// <returns>True se foi baixado com sucesso.</returns>
+    public bool DownloadData(string fullFolderPath, string fileName, string extension = save_extension)
+    {
+        string sourcePath = CombinePaths(fullFolderPath, $"{fileName}.{extension}");
+
+        string downloadsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+        string destinationPath = Path.Combine(downloadsFolder, $"{fileName}.{extension}");
+
+        try
+        {
+            if (!File.Exists(sourcePath))
+                return false;
+
+            if (!Directory.Exists(downloadsFolder))
+                Directory.CreateDirectory(downloadsFolder);
+
+            File.Copy(sourcePath, destinationPath, true);
+
+            return true;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error downloading file: {e.Message}/n/n/n{e.StackTrace}");
+            return false;
+        }
+    }
+
+    /// <summary>
     /// Carrega o arquivo JSON contendo o objeto especificado.
     /// </summary>
     /// <typeparam name="T">O Tipo do objeto a ser carregado.</typeparam>

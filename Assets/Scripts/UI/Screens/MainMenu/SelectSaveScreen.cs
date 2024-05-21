@@ -11,7 +11,9 @@ public class SelectSaveScreen : MonoBehaviour
     [SerializeField]
     Transform SavesContent;
     [SerializeField]
-    GameObject SaveFilePrefab, PreviewContent, EmptyPreview;
+    GameObject SaveFilePrefab, PreviewContent, EmptyPreview, PopupPrefab;
+    [SerializeField]
+    Canvas Canvas;
 
     [SerializeField]
     TextMeshProUGUI SaveTitleText, CurrentWaveText, TotalScoreText, MoneyText, PrimaryWeaponText, SecondaryWeaponText, HealthText,
@@ -198,6 +200,18 @@ public class SelectSaveScreen : MonoBehaviour
     }
 
     /// <summary>
+    /// Exporta o arquivo de save selecionado para a pasta downloads.
+    /// </summary>
+    public void ExportSave()
+    {
+        bool exported = SavesManager.ExportNzSave(SelectedSave);
+        if(exported)
+            ShowPopup("Save file successfully saved in Downloads folder!", Constants.Colors.GreenMoney, BtnExportSave.transform.position + new Vector3(-70, 50));
+        else
+            ShowPopup("Failed to save the file!", Constants.Colors.RedMoney, BtnExportSave.transform.position + new Vector3(-70, 50));
+    }
+
+    /// <summary>
     /// Função chamada quando a tela é trocada.
     /// </summary>
     /// <param name="newScreen">A nova tela sendo aberta.</param>
@@ -235,6 +249,22 @@ public class SelectSaveScreen : MonoBehaviour
             saveNameText.text = save.FileName;
             waveNumberText.text = save.CurrentWave.ToString("D2");
             SavesAnimators.Add(saveObject.GetComponentInChildren<Animator>());
+        }
+    }
+
+    /// <summary>
+    /// Exibe um Popup na tela.
+    /// </summary>
+    /// <param name="text">O texto a ser exibido.</param>
+    /// <param name="textColor">A cor do texto a ser exibido.</param>
+    /// <param name="position">A posição do texto a ser exibido.</param>
+    private void ShowPopup(string text, Color32 textColor, Vector3 position, float durationMs = 4000, float scale = 40)
+    {
+        var popup = Instantiate(PopupPrefab, position, Quaternion.identity, Canvas.transform);
+        var popupSystem = popup.GetComponent<PopupSystem>();
+        if (popupSystem != null)
+        {
+            popupSystem.Init(text, position, durationMs, textColor, scale);
         }
     }
 }
