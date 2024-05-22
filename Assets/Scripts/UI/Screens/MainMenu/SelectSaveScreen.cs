@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -205,50 +206,105 @@ public class SelectSaveScreen : MonoBehaviour
     /// </summary>
     public void ImportSave()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        ImportSaveWebGL();
+#else
+        ImportSaveOthers();
+#endif
+    }
+
+    /// <summary>
+    /// Executa a importação caso a plataforma seja WebGL.
+    /// </summary>
+    void ImportSaveWebGL()
+    {
+        FileDialogManager.RequestFileFromUser((jsonSave) =>
+        {
+            NZSave save = JsonConvert.DeserializeObject<NZSave>(jsonSave);
+            SaveSelectedImport(save);
+        });
+    }
+
+    /// <summary>
+    /// Executa a importação caso a plataforma não seja WebGL.
+    /// </summary>
+    void ImportSaveOthers()
+    {
         CustomDialog.Open(new()
         {
-            UseCancelButton = false,
-            DialogSize = new Vector2(400, 150),
             BtnConfirmText = "Import",
-            BtnConfirmTooltipText = "Import a save file from your computer to the game.",
-            PromptText = "Copy the file path and paste it here:",
+            BtnConfirmTooltipText = "Import a save file from your computer into the game.",
+            UseCancelButton = false,
             UseInputField = true,
-            InputFieldPlaceholderText = "Ex: C:\\Users\\YourName\\Downloads\\Save 01.nzsave",
-            OnConfirm = (text) =>
+            InputFieldPlaceholderText = "Ex: C:\\Users\\YoutName\\Downloads\\Save 01.nzsave",
+            PromptText = "Copy the file path and paste it here:",
+            DialogSize = new Vector2(400, 150),
+            OnConfirm = (path) =>
             {
-                if (!text.EndsWith(".nzsave"))
+                if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
                 {
-                    ShowPopup("Invalid file format!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+                    ShowPopup("Invalid file path!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
                     return;
                 }
 
-                NZSave importedSave = SavesManager.ImportNzSave(text);
-
-                if (importedSave == null)
-                {
-                    ShowPopup("Failed to import the file!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
-                    return;
-                }
-
-                bool saved = SavesManager.SaveNzSave(importedSave, GameModes.WaveMastery, Path.GetFileNameWithoutExtension(Path.GetFileName(text)));
-
-                if (!saved)
-                {
-                    ShowPopup("Failed to save the file!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
-                    return;
-                }
-
-                SelectedSave = null;
-                LoadSaves();
-                ShowPopup("Save file successfully imported!", Constants.Colors.GreenMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+                NZSave save = SavesManager.ImportNzSave(path);
+                SaveSelectedImport(save);
             },
         });
+    }
+
+    /// <summary>
+    /// Salva o arquivo de save importado.
+    /// </summary>
+    /// <param name="save"></param>
+    void SaveSelectedImport(NZSave save)
+    {
+        if (save == null)
+        {
+            ShowPopup("Invalid file format!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+            return;
+        }
+
+        bool saved = SavesManager.SaveNzSave(save, GameModes.WaveMastery, save.FileName);
+
+        if (!saved)
+        {
+            ShowPopup("Failed to save the file!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+            return;
+        }
+
+        SelectedSave = null;
+        LoadSaves();
+        ShowPopup("Save file successfully imported!", Constants.Colors.GreenMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
     }
 
     /// <summary>
     /// Exporta o arquivo de save selecionado para a pasta downloads.
     /// </summary>
     public void ExportSave()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        ExportSaveWebGL();
+#else
+        ExportSaveOthers();
+#endif
+    }
+
+    /// <summary>
+    /// Executa a exportação caso a plataforma seja WebGL.
+    /// </summary>
+    void ExportSaveWebGL()
+    {
+        string jsonData = JsonConvert.SerializeObject(SelectedSave, Formatting.None);
+
+        FileDialogManager.DownloadFile(SelectedSave.FileName + ".nzsave", jsonData);
+        ShowPopup("Save file successfully saved in Downloads folder!", Constants.Colors.GreenMoney, BtnExportSave.transform.position + new Vector3(-70, 50));
+    }
+
+    /// <summary>
+    /// Executa a exportação caso a plataforma não seja WebGL.
+    /// </summary>
+    void ExportSaveOthers()
     {
         bool exported = SavesManager.ExportNzSave(SelectedSave);
         if (exported)

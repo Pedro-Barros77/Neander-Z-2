@@ -1,14 +1,28 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public static class SavesManager
 {
+    [DllImport("__Internal")]
+    private static extern void SyncFileSystem();
+
     /// <summary>
     /// O nome do arquivo de save selecionado, que o jogador está jogando atualmente.
     /// </summary>
     public static string SelectedSaveName { get; set; }
+
+    /// <summary>
+    /// Sincroniza os saves em memória com o IndexedDB do WebGL.
+    /// </summary>
+    public static void SyncIndexedDB()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        SyncFileSystem();
+#endif
+    }
 
     /// <summary>
     /// Salva o progresso do jogo atual.
@@ -42,7 +56,10 @@ public static class SavesManager
         save.FolderPath = jsonService.CombinePaths(jsonService.ROOT_FOLDER, gameMode.ToString());
 
         if (jsonService.SaveData(gameMode.ToString(), fileName, save, encrypted))
+        {
+            SyncIndexedDB();
             return true;
+        }
         return false;
     }
 
@@ -60,7 +77,11 @@ public static class SavesManager
         globalSave.Preferences.FileName = globalSave.FileName;
         globalSave.Preferences.FolderPath = globalSave.FolderPath;
 
-        return jsonService.SaveData("", globalSave.FileName, globalSave, false, "json");
+        bool saved = jsonService.SaveData("", globalSave.FileName, globalSave, false, "json");
+        if(saved)
+            SyncIndexedDB();
+
+        return saved;
     }
 
     /// <summary>
@@ -102,6 +123,8 @@ public static class SavesManager
             Debug.LogError($"Save file {fullPath} not found!");
             return null;
         }
+
+        SyncIndexedDB();
 
         return save;
     }
@@ -308,6 +331,7 @@ public static class SavesManager
             return;
         }
         File.Delete(path);
+        SyncIndexedDB();
     }
 
     /// <summary>
@@ -324,6 +348,7 @@ public static class SavesManager
             return;
         }
         File.Delete(path);
+        SyncIndexedDB();
     }
 
     /// <summary>
