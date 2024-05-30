@@ -1,14 +1,28 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public static class SavesManager
 {
+    [DllImport("__Internal")]
+    private static extern void SyncFileSystem();
+
     /// <summary>
     /// O nome do arquivo de save selecionado, que o jogador está jogando atualmente.
     /// </summary>
     public static string SelectedSaveName { get; set; }
+
+    /// <summary>
+    /// Sincroniza os saves em memória com o IndexedDB do WebGL.
+    /// </summary>
+    public static void SyncIndexedDB()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        SyncFileSystem();
+#endif
+    }
 
     /// <summary>
     /// Salva o progresso do jogo atual.
@@ -42,7 +56,10 @@ public static class SavesManager
         save.FolderPath = jsonService.CombinePaths(jsonService.ROOT_FOLDER, gameMode.ToString());
 
         if (jsonService.SaveData(gameMode.ToString(), fileName, save, encrypted))
+        {
+            SyncIndexedDB();
             return true;
+        }
         return false;
     }
 
@@ -60,7 +77,11 @@ public static class SavesManager
         globalSave.Preferences.FileName = globalSave.FileName;
         globalSave.Preferences.FolderPath = globalSave.FolderPath;
 
-        return jsonService.SaveData("", globalSave.FileName, globalSave, false, "json");
+        bool saved = jsonService.SaveData("", globalSave.FileName, globalSave, false, "json");
+        if(saved)
+            SyncIndexedDB();
+
+        return saved;
     }
 
     /// <summary>
@@ -82,6 +103,44 @@ public static class SavesManager
         };
 
         return SaveGlobal(globalSave);
+    }
+
+    /// <summary>
+    /// Importa um save a partir de um caminho específico.
+    /// </summary>
+    /// <param name="fullPath">O caminho completo do arquivo.</param>
+    /// <param name="encrypted">Se ele está criptografado.</param>
+    /// <returns>O arquivo carregado.</returns>
+    public static NZSave ImportNzSave(string fullPath, bool encrypted = false)
+    {
+        JsonSaveService jsonService = new();
+        if (!File.Exists(fullPath))
+            return null;
+
+        var save = jsonService.LoadData<NZSave>(fullPath, encrypted);
+        if (save == null)
+        {
+            Debug.LogError($"Save file {fullPath} not found!");
+            return null;
+        }
+
+        SyncIndexedDB();
+
+        return save;
+    }
+
+    /// <summary>
+    /// Exporta o save especificado para a pasta downloads.
+    /// </summary>
+    /// <param name="save">O save a ser baixado.</param>
+    /// <returns>True se exportado com sucesso.</returns>
+    public static bool ExportNzSave(NZSave save)
+    {
+        JsonSaveService jsonService = new();
+
+        if (jsonService.DownloadData(save.FolderPath, save.FileName))
+            return true;
+        return false;
     }
 
     /// <summary>
@@ -272,6 +331,7 @@ public static class SavesManager
             return;
         }
         File.Delete(path);
+        SyncIndexedDB();
     }
 
     /// <summary>
@@ -288,6 +348,7 @@ public static class SavesManager
             return;
         }
         File.Delete(path);
+        SyncIndexedDB();
     }
 
     /// <summary>
@@ -335,6 +396,7 @@ public static class SavesManager
         save.ThrowableItemsSelection = inventory.ThrowableItemsSelection;
         save.TacticalAbilitiesSelection = inventory.TacticalAbilitiesSelection;
         save.PassiveSkillsSelection = inventory.PassiveSkillsSelection;
+        save.SupportEquipmentsSelection = inventory.SupportEquipmentsSelection;
 
         save.CurrentSkin = player.SkinData.Encode();
 
@@ -388,6 +450,7 @@ public static class SavesManager
         inventory.ThrowableItemsSelection = save.ThrowableItemsSelection;
         inventory.TacticalAbilitiesSelection = save.TacticalAbilitiesSelection;
         inventory.PassiveSkillsSelection = save.PassiveSkillsSelection;
+        inventory.SupportEquipmentsSelection = save.SupportEquipmentsSelection;
 
         //Waves
         WaveStats[] waveStats = GetWaveStats().OrderBy(x => x.WaveNumber).ToArray();

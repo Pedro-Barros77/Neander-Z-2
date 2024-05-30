@@ -18,6 +18,9 @@ public enum InputActions
     EquipPrimaryWeapon = 12,
     EquipSecondaryWeapon = 13,
     BuyMaxStoreItems = 14,
+    SelectSupportEquipment = 15,
+    SelectDeployableEquipment = 16,
+    Interact = 17,
 
     DEBUG_IncreaseHealth = 100,
     DEBUG_DecreaseHealth = 101,

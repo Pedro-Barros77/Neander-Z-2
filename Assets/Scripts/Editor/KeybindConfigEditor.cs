@@ -23,6 +23,9 @@ public class KeybindConfigEditor : Editor
     SerializedProperty EquipPrimaryWeapon;
     SerializedProperty EquipSecondaryWeapon;
     SerializedProperty BuyMaxStoreItems;
+    SerializedProperty SelectSupportEquipment;
+    SerializedProperty SelectDeployableEquipment;
+    SerializedProperty Interact;
     ReorderableList MoveLeftList;
     ReorderableList MoveRightList;
     ReorderableList JumpList;
@@ -37,6 +40,9 @@ public class KeybindConfigEditor : Editor
     ReorderableList EquipPrimaryWeaponList;
     ReorderableList EquipSecondaryWeaponList;
     ReorderableList BuyMaxStoreItemsList;
+    ReorderableList SelectSupportEquipmentList;
+    ReorderableList SelectDeployableEquipmentList;
+    ReorderableList InteractList;
 
 
     SerializedProperty DEBUG_IncreaseHealth;
@@ -95,6 +101,9 @@ public class KeybindConfigEditor : Editor
         EquipPrimaryWeapon = GetTarget.FindProperty("EquipPrimaryWeapon");
         EquipSecondaryWeapon = GetTarget.FindProperty("EquipSecondaryWeapon");
         BuyMaxStoreItems = GetTarget.FindProperty("BuyMaxStoreItems");
+        SelectSupportEquipment = GetTarget.FindProperty("SelectSupportEquipment");
+        SelectDeployableEquipment = GetTarget.FindProperty("SelectDeployableEquipment");
+        Interact = GetTarget.FindProperty("Interact");
 
         DEBUG_IncreaseHealth = GetTarget.FindProperty("DEBUG_IncreaseHealth");
         DEBUG_DecreaseHealth = GetTarget.FindProperty("DEBUG_DecreaseHealth");
@@ -146,6 +155,9 @@ public class KeybindConfigEditor : Editor
         EquipPrimaryWeaponList = KeyItem(EquipPrimaryWeapon);
         EquipSecondaryWeaponList = KeyItem(EquipSecondaryWeapon);
         BuyMaxStoreItemsList = KeyItem(BuyMaxStoreItems);
+        SelectSupportEquipmentList = KeyItem(SelectSupportEquipment);
+        SelectDeployableEquipmentList = KeyItem(SelectDeployableEquipment);
+        InteractList = KeyItem(Interact);
 
         DEBUG_IncreaseHealthList = KeyItem(DEBUG_IncreaseHealth);
         DEBUG_DecreaseHealthList = KeyItem(DEBUG_DecreaseHealth);
@@ -192,6 +204,9 @@ public class KeybindConfigEditor : Editor
         FoldoutKeybind(EquipPrimaryWeapon, EquipPrimaryWeaponList);
         FoldoutKeybind(EquipSecondaryWeapon, EquipSecondaryWeaponList);
         FoldoutKeybind(BuyMaxStoreItems, BuyMaxStoreItemsList);
+        FoldoutKeybind(SelectSupportEquipment, SelectSupportEquipmentList);
+        FoldoutKeybind(SelectDeployableEquipment, SelectDeployableEquipmentList);
+        FoldoutKeybind(Interact, InteractList);
 
         EditorGUILayout.Space(40);
 

@@ -22,6 +22,7 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     string TooltipText;
     [SerializeField]
     Tooltip Tooltip;
+    TextMeshProUGUI BtnLabel;
 
     public delegate void OnHover(BaseButton button, bool hovered);
     public event OnHover HoverEvent;
@@ -35,14 +36,14 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         animator = GetComponent<Animator>();
         Button = GetComponent<Button>();
         audioSource = GetComponent<AudioSource>();
+        BtnLabel = GetComponentInChildren<TextMeshProUGUI>();
         if (Tooltip != null)
         {
             Tooltip.HoverDelayMs = 1000f;
             if (TooltipText.IsNullOrEmpty())
             {
-                var btnLabel = GetComponentInChildren<TextMeshProUGUI>();
-                if (btnLabel != null)
-                    Tooltip.SetText(btnLabel.text);
+                if (BtnLabel != null)
+                    Tooltip.SetText(BtnLabel.text);
             }
             else
                 Tooltip.SetText(TooltipText);
@@ -62,6 +63,26 @@ public class BaseButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         Pressed = false;
         Released = false;
+    }
+
+    /// <summary>
+    /// Define o texto da tooltip do botão.
+    /// </summary>
+    /// <param name="text">O texto a ser definido.</param>
+    public void SetToolTip(string text)
+    {
+        if (Tooltip != null)
+            Tooltip.SetText(text);
+    }
+
+    /// <summary>
+    /// Define o texto do botão.
+    /// </summary>
+    /// <param name="text">O texto a ser definido.</param>
+    public void SetLabelText(string text)
+    {
+        if (BtnLabel != null)
+            BtnLabel.text = text;
     }
 
     /// <summary>

@@ -327,6 +327,11 @@ public class InventoryTab : MonoBehaviour
             prefabItem.Data = skillData;
             column = skillsColumn;
         }
+        else if (data is StoreSupportEquipmentData supportData)
+        {
+            prefabItem.Data = supportData;
+            column = skillsColumn;
+        }
         else
         {
             column = itemsColumn;
@@ -370,6 +375,7 @@ public class InventoryTab : MonoBehaviour
         LoadThrowables();
         LoadTacticalAbilities();
         LoadPassiveSkills();
+        LoadSupportEquipments();
         loaded = true;
     }
 
@@ -460,6 +466,24 @@ public class InventoryTab : MonoBehaviour
 
             if (equippedSkill != null && equippedSkill.Type == skillType)
                 SkillSlot.DropItem(storeItem);
+        }
+    }
+
+    /// <summary>
+    /// Carraga os itens arremessáveis do inventário.
+    /// </summary>
+    void LoadSupportEquipments()
+    {
+        var supportsDatas = Resources.LoadAll<StoreSupportEquipmentData>("ScriptableObjects/Store/SupportEquipments");
+        var equippedSupport = Inventory.SupportEquipmentsSelection.FirstOrDefault(x => x.IsEquipped);
+
+        foreach (var supportType in Inventory.SupportEquipmentsSelection.Select(x => x.Type))
+        {
+            StoreSupportEquipmentData supportData = supportsDatas.FirstOrDefault(x => x.SupportData.Type == supportType);
+            var storeItem = CreateInventoryItem(supportData);
+
+            if (equippedSupport != null && equippedSupport.Type == supportType)
+                SupportSlot.DropItem(storeItem);
         }
     }
 
@@ -1270,8 +1294,19 @@ public class InventoryTab : MonoBehaviour
 
         if (item.Data is StoreWeaponData storeWeapon)
         {
-            value = GetWeaponSellPrice(storeWeapon);
-            sold = SellWeapon(storeWeapon);
+            CustomDialog.Open(new()
+            {
+                BtnConfirmText = "Yes",
+                PromptText = $"Are you sure you want to sell '{storeWeapon.Title}' for half of it's value?",
+                OnConfirm = (_) =>
+                {
+                    value = GetWeaponSellPrice(storeWeapon);
+                    sold = SellWeapon(storeWeapon);
+
+                    if (sold)
+                        AfterSell(item, value);
+                },
+            });
         }
 
         if (item.Data is StoreThrowableData storeThrowable)
@@ -1280,6 +1315,16 @@ public class InventoryTab : MonoBehaviour
         if (!sold)
             return;
 
+        AfterSell(item, value);
+    }
+
+    /// <summary>
+    /// Executa as ações após a venda de um item, como efeito sonoro e dinheiro.
+    /// </summary>
+    /// <param name="item"></param>
+    /// <param name="value"></param>
+    void AfterSell(StoreItem item, float value)
+    {
         if (value == 0)
             value = (item.Data.Price - item.Data.Discount) / 2;
 

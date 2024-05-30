@@ -92,6 +92,15 @@ MonoBehaviour:
   - Action: 14
     Key: 303
     IsListening: 0
+  SelectSupportEquipment:
+  - Action: 15
+    Key: 113
+    IsListening: 0
+  SelectDeployableEquipment: []
+  Interact:
+  - Action: 17
+    Key: 102
+    IsListening: 0
   DEBUG_IncreaseHealth:
   - Action: 100
     Key: 270

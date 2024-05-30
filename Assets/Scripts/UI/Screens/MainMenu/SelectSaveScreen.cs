@@ -1,5 +1,7 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -11,13 +13,16 @@ public class SelectSaveScreen : MonoBehaviour
     [SerializeField]
     Transform SavesContent;
     [SerializeField]
-    GameObject SaveFilePrefab, NewSaveModal, PreviewContent, EmptyPreview;
+    GameObject SaveFilePrefab, PreviewContent, EmptyPreview, PopupPrefab;
     [SerializeField]
-    InputField InputNewSaveName;
+    Canvas Canvas;
 
     [SerializeField]
     TextMeshProUGUI SaveTitleText, CurrentWaveText, TotalScoreText, MoneyText, PrimaryWeaponText, SecondaryWeaponText, HealthText,
         TotalTimeText, TotalInStoreTimeText, WavesRestartedText, TotalDeathsText, TotalEnemiesKilledText, TotalHeadshotKillsText, TotalPrecisionText;
+
+    [SerializeField]
+    BaseButton BtnDeleteAll, BtnImportSave, BtnExportSave;
 
     List<Animator> SavesAnimators = new();
     NZSave[] Saves;
@@ -38,6 +43,8 @@ public class SelectSaveScreen : MonoBehaviour
 
         PreviewContent.SetActive(SelectedSave != null);
         EmptyPreview.SetActive(SelectedSave == null);
+        if (BtnDeleteAll?.Button != null)
+            BtnDeleteAll.Button.interactable = Saves.Any();
 
         if (SelectedSave != null)
             SavesAnimators[Array.IndexOf(Saves, SelectedSave)].SetTrigger("Selected");
@@ -124,24 +131,26 @@ public class SelectSaveScreen : MonoBehaviour
     /// </summary>
     public void OpenNewSaveModal()
     {
-        NewSaveModal.SetActive(true);
-        InputNewSaveName.text = $"Save {Saves.Length + 1:D2}";
-    }
-
-    /// <summary>
-    /// Fecha o modal de preenchimento do nome do novo save.
-    /// </summary>
-    public void CloseNewSaveModal()
-    {
-        NewSaveModal.SetActive(false);
+        CustomDialog.Open(new()
+        {
+            BtnConfirmText = "Create",
+            UseCancelButton = false,
+            PromptText = "Enter a save name.",
+            UseInputField = true,
+            InputFieldPlaceholderText = "Save name",
+            InputFieldText = $"Save {Saves.Length + 1:D2}",
+            OnConfirm = (text) =>
+            {
+                CreateNewSave(text);
+            },
+        });
     }
 
     /// <summary>
     /// Cria um novo arquivo de save.
     /// </summary>
-    public void CreateNewSave()
+    public void CreateNewSave(string saveName)
     {
-        string saveName = InputNewSaveName.text;
         if (string.IsNullOrWhiteSpace(saveName) || saveName.Length > 40)
             return;
 
@@ -158,9 +167,150 @@ public class SelectSaveScreen : MonoBehaviour
     /// </summary>
     public void DeleteSave()
     {
-        SavesManager.DeleteSave(SelectedSave);
+        CustomDialog.Open(new()
+        {
+            BtnConfirmText = "Yes",
+            PromptText = "Are you sure you want to delete this game save?",
+            OnConfirm = (_) =>
+            {
+                SavesManager.DeleteSave(SelectedSave);
+                SelectedSave = null;
+                LoadSaves();
+            },
+        });
+
+    }
+
+    /// <summary>
+    /// Exclui todos os arquivos de save.
+    /// </summary>
+    public void DeleteAllSaves()
+    {
+        CustomDialog.Open(new()
+        {
+            BtnConfirmText = "Yes",
+            PromptText = "Are you sure you want to delete all game saves?",
+            OnConfirm = (_) =>
+            {
+                foreach (NZSave save in Saves)
+                    SavesManager.DeleteSave(save);
+
+                SelectedSave = null;
+                LoadSaves();
+            },
+        });
+    }
+
+    /// <summary>
+    /// Importa um arquivo de save a partir do caminho especificado.
+    /// </summary>
+    public void ImportSave()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        ImportSaveWebGL();
+#else
+        ImportSaveOthers();
+#endif
+    }
+
+    /// <summary>
+    /// Executa a importação caso a plataforma seja WebGL.
+    /// </summary>
+    void ImportSaveWebGL()
+    {
+        FileDialogManager.RequestFileFromUser((jsonSave) =>
+        {
+            NZSave save = JsonConvert.DeserializeObject<NZSave>(jsonSave);
+            SaveSelectedImport(save);
+        });
+    }
+
+    /// <summary>
+    /// Executa a importação caso a plataforma não seja WebGL.
+    /// </summary>
+    void ImportSaveOthers()
+    {
+        CustomDialog.Open(new()
+        {
+            BtnConfirmText = "Import",
+            BtnConfirmTooltipText = "Import a save file from your computer into the game.",
+            UseCancelButton = false,
+            UseInputField = true,
+            InputFieldPlaceholderText = "Ex: C:\\Users\\YoutName\\Downloads\\Save 01.nzsave",
+            PromptText = "Copy the file path and paste it here:",
+            DialogSize = new Vector2(400, 150),
+            OnConfirm = (path) =>
+            {
+                if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
+                {
+                    ShowPopup("Invalid file path!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+                    return;
+                }
+
+                NZSave save = SavesManager.ImportNzSave(path);
+                SaveSelectedImport(save);
+            },
+        });
+    }
+
+    /// <summary>
+    /// Salva o arquivo de save importado.
+    /// </summary>
+    /// <param name="save"></param>
+    void SaveSelectedImport(NZSave save)
+    {
+        if (save == null)
+        {
+            ShowPopup("Invalid file format!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+            return;
+        }
+
+        bool saved = SavesManager.SaveNzSave(save, GameModes.WaveMastery, save.FileName);
+
+        if (!saved)
+        {
+            ShowPopup("Failed to save the file!", Constants.Colors.RedMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+            return;
+        }
+
         SelectedSave = null;
         LoadSaves();
+        ShowPopup("Save file successfully imported!", Constants.Colors.GreenMoney, BtnImportSave.transform.position + new Vector3(-70, 60));
+    }
+
+    /// <summary>
+    /// Exporta o arquivo de save selecionado para a pasta downloads.
+    /// </summary>
+    public void ExportSave()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        ExportSaveWebGL();
+#else
+        ExportSaveOthers();
+#endif
+    }
+
+    /// <summary>
+    /// Executa a exportação caso a plataforma seja WebGL.
+    /// </summary>
+    void ExportSaveWebGL()
+    {
+        string jsonData = JsonConvert.SerializeObject(SelectedSave, Formatting.None);
+
+        FileDialogManager.DownloadFile(SelectedSave.FileName + ".nzsave", jsonData);
+        ShowPopup("Save file successfully saved in Downloads folder!", Constants.Colors.GreenMoney, BtnExportSave.transform.position + new Vector3(-70, 50));
+    }
+
+    /// <summary>
+    /// Executa a exportação caso a plataforma não seja WebGL.
+    /// </summary>
+    void ExportSaveOthers()
+    {
+        bool exported = SavesManager.ExportNzSave(SelectedSave);
+        if (exported)
+            ShowPopup("Save file successfully saved in Downloads folder!", Constants.Colors.GreenMoney, BtnExportSave.transform.position + new Vector3(-70, 50));
+        else
+            ShowPopup("Failed to save the file!", Constants.Colors.RedMoney, BtnExportSave.transform.position + new Vector3(-70, 50));
     }
 
     /// <summary>
@@ -201,6 +351,22 @@ public class SelectSaveScreen : MonoBehaviour
             saveNameText.text = save.FileName;
             waveNumberText.text = save.CurrentWave.ToString("D2");
             SavesAnimators.Add(saveObject.GetComponentInChildren<Animator>());
+        }
+    }
+
+    /// <summary>
+    /// Exibe um Popup na tela.
+    /// </summary>
+    /// <param name="text">O texto a ser exibido.</param>
+    /// <param name="textColor">A cor do texto a ser exibido.</param>
+    /// <param name="position">A posição do texto a ser exibido.</param>
+    private void ShowPopup(string text, Color32 textColor, Vector3 position, float durationMs = 4000, float scale = 40)
+    {
+        var popup = Instantiate(PopupPrefab, position, Quaternion.identity, Canvas.transform);
+        var popupSystem = popup.GetComponent<PopupSystem>();
+        if (popupSystem != null)
+        {
+            popupSystem.Init(text, position, durationMs, textColor, scale);
         }
     }
 }

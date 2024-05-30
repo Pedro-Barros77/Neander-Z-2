@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Backpack Data", menuName = "Neander Z/Store/Backpack Data", order = 7)]
+[CreateAssetMenu(fileName = "New Backpack Data", menuName = "Neander Z/Store/Backpack Data", order = 8)]
 public class StoreBackpackData : StoreItemData
 {
     public List<AmmoUpgrade> AmmoUpgrades;

@@ -118,6 +118,12 @@ public static class Constants
             case InputActions.TacticalAbility:
                 return ButtonState(MenuController.Instance.MobileTacticalAbilityButton);
 
+            case InputActions.SelectSupportEquipment:
+                return ButtonState(MenuController.Instance.MobileSupportEquipmentButton);
+
+            case InputActions.Interact:
+                return ButtonState(MenuController.Instance.MobileInteractButton);
+
             case InputActions.Shoot:
                 return ButtonState(MenuController.Instance.MobileTouchBackgroundFire);
 

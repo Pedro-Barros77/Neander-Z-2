@@ -29,6 +29,7 @@ public class InventoryData : AutoRevertSO
     public List<ThrowableSelection> ThrowableItemsSelection;
     public List<TacticalAbilitySelection> TacticalAbilitiesSelection;
     public List<PassiveSkillSelection> PassiveSkillsSelection;
+    public List<SupportEquipmentSelection> SupportEquipmentsSelection;
 
     public IEnumerable<WeaponSelection> WeaponsSelection =>
         (!PrimaryWeaponsSelection.IsNullOrEmpty() ? PrimaryWeaponsSelection : new())
@@ -72,6 +73,11 @@ public class InventoryData : AutoRevertSO
     /// Marca todas as habilidades táticas como não equipadas.
     /// </summary>
     public void UnequipAllTacticalAbilities() => TacticalAbilitiesSelection.ForEach(t => t.IsEquipped = false);
+
+    /// <summary>
+    /// Marca todos os equipamentos de suporte como não equipados.
+    /// </summary>
+    public void UnequipAllSupportEquipments() => SupportEquipmentsSelection.ForEach(t => t.IsEquipped = false);
 
     /// <summary>
     /// Retorna a quantidade de munições do tipo especificado restantes que o jogador possui.
@@ -186,6 +192,8 @@ public class InventoryData : AutoRevertSO
             MaxCount = maxCount;
             IsEquipped = isEquipped;
         }
+
+        public void SetCount(int count) => Count = Mathf.Clamp(count, 0, MaxCount);
     }
 
     [Serializable]
@@ -212,6 +220,24 @@ public class InventoryData : AutoRevertSO
         public PassiveSkillSelection(PassiveSkillTypes type, bool isEquipped)
         {
             IsEquipped = isEquipped;
+            Type = type;
+        }
+    }
+
+    [Serializable]
+    public class SupportEquipmentSelection
+    {
+        public SupportEquipmentTypes Type;
+        public int Count;
+        public int MaxCount;
+        public bool IsEquipped;
+
+        public SupportEquipmentSelection() { }
+        public SupportEquipmentSelection(SupportEquipmentTypes type, int count, int maxCount, bool isEquipped)
+        {
+            IsEquipped = isEquipped;
+            Count = count;
+            MaxCount = maxCount;
             Type = type;
         }
     }
