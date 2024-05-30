@@ -17,6 +17,7 @@ public enum WeaponTypes
     Chainsaw = 11,
     Spas12 = 12,
     Kar98 = 13,
+    FlameThrower = 14,
 
     ScarDebug = 100,
 }

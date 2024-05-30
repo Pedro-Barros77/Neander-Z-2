@@ -153,6 +153,9 @@ public static class Constants
             WeaponTypes.M16 => true,
             WeaponTypes.Scar => true,
             WeaponTypes.Chainsaw => true,
+            WeaponTypes.Spas12 => true,
+            WeaponTypes.Kar98 => true,
+            WeaponTypes.FlameThrower => true,
             WeaponTypes.ScarDebug => true,
 
             _ => false,

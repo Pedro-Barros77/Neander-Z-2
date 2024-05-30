@@ -21,10 +21,14 @@ public class BurningEffect : BaseAppliedEffect
         if (transform.parent == null)
             return;
 
-        EnemyTarget?.TakeDamage(TickDamage, 1, "", null, selfDamage: SelfAppliedEffect);
-        PlayerTarget?.TakeDamage(TickDamage, 1, "", PlayerOwner);
+        if (EnemyTarget is IBurnable)
+            EnemyTarget?.TakeDamage(TickDamage, 1, "", null, selfDamage: SelfAppliedEffect);
 
-        SetSpriteRed();
+        if (PlayerTarget is IBurnable)
+            PlayerTarget?.TakeDamage(TickDamage, 1, "", PlayerOwner);
+
+        if (burnableTarget != null)
+            SetSpriteRed();
     }
 
     protected override void OnTimeOut()
@@ -38,8 +42,7 @@ public class BurningEffect : BaseAppliedEffect
     /// </summary>
     private void SetSpriteRed()
     {
-        EnemyTarget?.HandleSpriteColorChange(RedTickColor);
-        PlayerTarget?.HandleSpriteColorChange(RedTickColor);
+        burnableTarget?.HandleSpriteColorChange(RedTickColor);
 
         StartCoroutine(ResetSpriteColor());
     }
@@ -51,13 +54,11 @@ public class BurningEffect : BaseAppliedEffect
     {
         yield return new WaitForSeconds(Mathf.Min(TickIntervalMs / 2000, 500));
 
-        EnemyTarget?.HandleSpriteColorChange(Color.white);
-        PlayerTarget?.HandleSpriteColorChange(Color.white);
+        burnableTarget?.HandleSpriteColorChange(Color.white);
     }
 
     private void OnDestroy()
     {
-        EnemyTarget?.HandleSpriteColorChange(Color.white);
-        PlayerTarget?.HandleSpriteColorChange(Color.white);
+        burnableTarget?.HandleSpriteColorChange(Color.white);
     }
 }

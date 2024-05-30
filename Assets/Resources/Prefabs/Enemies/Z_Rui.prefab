@@ -1278,6 +1278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 6110458580439300105, guid: 806d8f6edd0c4c845b64e5d9860a2b4d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8860595282571230624, guid: 806d8f6edd0c4c845b64e5d9860a2b4d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2

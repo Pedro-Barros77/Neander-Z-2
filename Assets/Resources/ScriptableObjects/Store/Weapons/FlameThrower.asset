@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf494669ee90f8499ee8ac327d6783e, type: 3}
+  m_Name: FlameThrower
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 27204f45fea188a4a9a54bc0657f00fe, type: 3}
+  Title: FlameThrower
+  Description: A fearsome weapon that blasts fire over a wide area. Equipped with
+    a high-pressure fuel injection system, it delivers an unstoppable stream of flames
+    capable of reducing the undead to ashes. Perfect for large groups of zombies
+    with ease; for those who prefer to fight fire with fire.
+  Price: 1200
+  Discount: 0
+  Amount: 1
+  IconScale: 1.2
+  PreviewIconScale: 1
+  InventorySlotIconScale: 1.2
+  IsSellable: 1
+  Tags: 06000000080000000c000000
+  WeaponData: {fileID: 11400000, guid: e70c5c7d70c4dcc4e9d64a754b54607d, type: 2}
