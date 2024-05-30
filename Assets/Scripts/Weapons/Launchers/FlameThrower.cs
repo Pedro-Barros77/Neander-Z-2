@@ -85,6 +85,11 @@ public class FlameThrower : LauncherWeapon
         HitTargetsIds.Clear();
         particles = new ParticleSystem.Particle[FlameThrowerFlames.main.maxParticles];
         int particlesCount = FlameThrowerFlames.GetParticles(particles);
+        if (particlesCount > 0)
+            WavesManager.Instance.CurrentWave.HandlePlayerAttack(1, 0);
+        
+        bool hitAnyEnemy = false;
+
         for (int i = 0; i < particlesCount; i++)
         {
             ParticleSystem.Particle particle = particles[i];
@@ -94,6 +99,10 @@ public class FlameThrower : LauncherWeapon
             Vector3 particlePosition = particle.position;
             float radius = 0.5f;
             Collider2D[] colliders = Physics2D.OverlapCircleAll(particlePosition, radius, enemyLayer);
+
+            if (colliders.Any())
+                hitAnyEnemy = true;
+
             //Debug.DrawLine(particlePosition, particlePosition + new Vector3(radius, 0), Color.blue, 1f);
             //Debug.DrawLine(particlePosition, particlePosition + new Vector3(0, radius), Color.blue, 1f);
             //Debug.DrawLine(particlePosition, particlePosition + new Vector3(-radius, 0), Color.blue, 1f);
@@ -130,6 +139,9 @@ public class FlameThrower : LauncherWeapon
                 }
             }
         }
+
+        if (hitAnyEnemy)
+            WavesManager.Instance.CurrentWave.HandlePlayerAttack(0, 1);
     }
 
     public override IEnumerable<GameObject> Shoot()
@@ -172,7 +184,7 @@ public class FlameThrower : LauncherWeapon
     public override void OnShootEnd()
     {
         base.OnShootEnd();
-        if(Constants.GetAction(InputActions.Shoot))
+        if (Constants.GetAction(InputActions.Shoot))
             isLoopingShoot = true;
     }
 
@@ -180,7 +192,7 @@ public class FlameThrower : LauncherWeapon
     {
         if (Constants.GetAction(InputActions.Shoot))
             StopShooting();
-        SmallFire.Stop();        
+        SmallFire.Stop();
         FlameThrowerFlames.Stop(true);
         return base.BeforeSwitchWeapon();
     }
@@ -195,7 +207,7 @@ public class FlameThrower : LauncherWeapon
     {
         if (NeedsReload())
         {
-            if(isShooting)
+            if (isShooting)
                 StopShooting();
             return;
         }
@@ -212,7 +224,7 @@ public class FlameThrower : LauncherWeapon
 
     private void StopShooting()
     {
-        if(!NeedsReload())
+        if (!NeedsReload())
             ShootEnd.PlayIfNotNull(AudioSource, AudioTypes.Player);
         isLoopingShoot = false;
         LoopAudioSource.volume = 0;
