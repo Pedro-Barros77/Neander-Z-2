@@ -14,6 +14,8 @@ public class FlameThrower : LauncherWeapon
     public LayerMask enemyLayer;
     private ParticleSystem.Particle[] particles;
     protected List<int> HitTargetsIds = new();
+    protected Dictionary<int, int> TargetsHitCount = new();
+    const int HIT_MIN_COUNT_TO_BURN = 5;
     private int FrameCounter = 20;
     public float BurningEffectDurationMs { get; set; } = 7000f;
     public float BurningEffectTickIntervalMs { get; set; } = 500f;
@@ -87,7 +89,7 @@ public class FlameThrower : LauncherWeapon
         int particlesCount = FlameThrowerFlames.GetParticles(particles);
         if (particlesCount > 0)
             WavesManager.Instance.CurrentWave.HandlePlayerAttack(1, 0);
-        
+
         bool hitAnyEnemy = false;
 
         for (int i = 0; i < particlesCount; i++)
@@ -102,43 +104,51 @@ public class FlameThrower : LauncherWeapon
 
             if (colliders.Any())
                 hitAnyEnemy = true;
-
             //Debug.DrawLine(particlePosition, particlePosition + new Vector3(radius, 0), Color.blue, 1f);
             //Debug.DrawLine(particlePosition, particlePosition + new Vector3(0, radius), Color.blue, 1f);
             //Debug.DrawLine(particlePosition, particlePosition + new Vector3(-radius, 0), Color.blue, 1f);
             //Debug.DrawLine(particlePosition, particlePosition + new Vector3(0, -radius), Color.blue, 1f);
             foreach (Collider2D collider in colliders)
             {
-                if (collider.CompareTag("Enemy"))
+                if (!collider.CompareTag("Enemy"))
+                    continue;
+
+                var target = collider.GetComponentInParent<IPlayerTarget>();
+
+                if (target == null)
+                    continue;
+
+                int targetInstanceId = target.gameObject.GetInstanceID();
+
+                if (!TargetsHitCount.ContainsKey(targetInstanceId))
+                    TargetsHitCount.Add(targetInstanceId, 0);
+
+                TargetsHitCount[targetInstanceId]++;
+                if (TargetsHitCount[targetInstanceId] > HIT_MIN_COUNT_TO_BURN)
                 {
-                    var target = collider.GetComponentInParent<IPlayerTarget>();
+                    var burnFX = target.transform.GetComponentInChildren<BurningEffect>();
+
+                    if (burnFX == null)
+                    {
+                        var burnEffectObj = CreateBurningEffect(target.transform, false);
+                        burnFX = burnEffectObj.GetComponent<BurningEffect>();
+                    }
 
                     if (target != null)
-                    {
-                        int targetInstanceId = target.gameObject.GetInstanceID();
+                        burnFX.EnemyOwner = target;
 
-                        if (HitTargetsIds.Contains(targetInstanceId))
-                            continue;
+                    burnFX.SetEffect(BurningEffectDurationMs, BurningEffectTickIntervalMs);
+                }
 
-                        target.TakeDamage(Damage, HeadshotMultiplier, collider.name, Player);
+                if (!HitTargetsIds.Contains(targetInstanceId))
+                {
+                    target.TakeDamage(Damage, HeadshotMultiplier, collider.name, Player);
 
-                        var burnFX = target.transform.GetComponentInChildren<BurningEffect>();
-
-                        if (burnFX == null)
-                        {
-                            var burnEffectObj = CreateBurningEffect(target.transform, false);
-                            burnFX = burnEffectObj.GetComponent<BurningEffect>();
-                        }
-
-                        if (target != null)
-                            burnFX.EnemyOwner = target;
-
-                        burnFX.SetEffect(BurningEffectDurationMs, BurningEffectTickIntervalMs);
-                        HitTargetsIds.Add(targetInstanceId);
-                    }
+                    HitTargetsIds.Add(targetInstanceId);
                 }
             }
         }
+        TargetsHitCount = TargetsHitCount.Where(x => HitTargetsIds.Contains(x.Key)).ToDictionary(x => x.Key, x => x.Value);
 
         if (hitAnyEnemy)
             WavesManager.Instance.CurrentWave.HandlePlayerAttack(0, 1);
