@@ -266,7 +266,7 @@ public class Rui : BaseEnemy, IBurnable
         float maxHeigth = 50f;
         float floorHeigth = LevelData.BottomRightSpawnLimit.y;
         float percentege = 1 - (transform.position.y / maxHeigth);
-        CircleShadowPreview.color = Color.Lerp(new(0.1f, 0.1f, 0.1f, 0), new(0.1f, 0.1f, 0.1f, 1), percentege);
+        CircleShadowPreview.color = Color.Lerp(new(0.1f, 0.1f, 0.1f, 0), new(0.1f, 0.1f, 0.1f, 0.7f), percentege);
         CircleShadowPreview.transform.localScale = new Vector3(1, 1, 1) * (percentege + 0.3f);
         CircleShadowPreview.transform.position = new Vector3(CircleShadowPreview.transform.position.x, floorHeigth - 1);
     }
