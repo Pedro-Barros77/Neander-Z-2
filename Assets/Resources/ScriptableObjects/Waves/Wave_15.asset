@@ -33,6 +33,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 6
     Count: 12
     MinHealth: 20
@@ -50,6 +56,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 1
     Count: 5
     MinHealth: 15
@@ -67,6 +79,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 5
     Count: 4
     MinHealth: 70
@@ -84,14 +102,20 @@ MonoBehaviour:
     RaimundoHelmetHealth: 55
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 8
     Count: 5
     MinHealth: 0.8
     MaxHealth: 1.5
     MinSpeed: 5
     MaxSpeed: 8
-    MinDamage: 7
-    MaxDamage: 10
+    MinDamage: 3
+    MaxDamage: 6
     MinKillScore: 10
     MaxKillScore: 20
     SpawnChanceMultiplier: 1
@@ -101,6 +125,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 55
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   MinEnemiesAlive: 10
   MaxEnemiesAlive: 15
   MinSpawnDelayMs: 4000

@@ -26,7 +26,7 @@ public class Rat : BaseEnemy, IKnockBackable, IBurnable
         MovementSpeed = 6f;
         AccelerationSpeed = 1.5f;
         Health = 1f;
-        Damage = 8f;
+        Damage = 4f;
         KillScore = 53;
         HeadshotScoreMultiplier = 1.5f;
         DeathFadeOutDelayMs = 5000f;

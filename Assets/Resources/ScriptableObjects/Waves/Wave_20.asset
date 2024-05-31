@@ -33,6 +33,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 80
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 2
     Count: 10
     MinHealth: 20
@@ -50,6 +56,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 1
     Count: 10
     MinHealth: 15
@@ -67,6 +79,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 4
     Count: 10
     MinHealth: 1
@@ -84,6 +102,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0.6
     RavenAttackAttemptDelayMs: 2300
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 3
     Count: 2
     MinHealth: 2000
@@ -101,14 +125,20 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 8
     Count: 10
     MinHealth: 1.1
     MaxHealth: 1.8
     MinSpeed: 5.6
     MaxSpeed: 8.6
-    MinDamage: 7.6
-    MaxDamage: 11.5
+    MinDamage: 3.5
+    MaxDamage: 6.5
     MinKillScore: 10
     MaxKillScore: 20
     SpawnChanceMultiplier: 1
@@ -118,6 +148,12 @@ MonoBehaviour:
     RaimundoHelmetHealth: 0
     RavenAttackChance: 0
     RavenAttackAttemptDelayMs: 0
+    RuteBurningEffectDurationMs: 0
+    RuteBurningEffectTickIntervalMs: 0
+    RuteSelfBurningEffectDurationMs: 0
+    RuteSelfBurningEffectTickIntervalMs: 0
+    RuteSelfDamage: 0
+    RuteFloorFlameDamage: 0
   - EnemyType: 7
     Count: 5
     MinHealth: 35
