@@ -837,23 +837,23 @@ MonoBehaviour:
   HitAudioSource: {fileID: 5225491328450106989}
   StartupSound:
     Audio: {fileID: 8300000, guid: 7d486ec1e69f5214c84c41d5691aacd2, type: 3}
-    Volume: 0.9
+    Volume: 0.6
     Pitch: 1
   IdleLoopSound:
     Audio: {fileID: 8300000, guid: cd58344fa634d2245a38fae7f900cd5c, type: 3}
-    Volume: 0.2
+    Volume: 0.5
     Pitch: 1
   RunStartSound:
     Audio: {fileID: 8300000, guid: 51f8469ae59a4d54e9d617b2faeb8795, type: 3}
-    Volume: 0.2
+    Volume: 0.4
     Pitch: 1
   RunLoopSound:
     Audio: {fileID: 8300000, guid: 48fb80387e082d0488cb28d819027441, type: 3}
-    Volume: 0.2
+    Volume: 0.4
     Pitch: 1
   TurnOffSound:
     Audio: {fileID: 8300000, guid: 1deb929944400924d8939c405ab5f3c7, type: 3}
-    Volume: 0.9
+    Volume: 0.7
     Pitch: 1
 --- !u!1 &6482935792276421089
 GameObject:

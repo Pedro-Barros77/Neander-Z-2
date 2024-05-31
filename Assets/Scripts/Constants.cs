@@ -49,10 +49,13 @@ public static class Constants
     public static int PrecisionBountyRocketCount { get; private set; } = 1;
     public static int PrecisionBountyFuelCount { get; private set; } = 5;
 
+    public static float LoopSoundVolumeMultiplier { get; private set; } = 0.3f;
+
     static float ReloadSpeedRatio = 5000;
     static float JoystickHorizontalDeadzone = 0.2f;
     static float JoystickSprintDeadzone = 0.9f;
     static float JoystickVerticalDeadzone = 0.5f;
+
 
     public static bool GetActionDown(InputActions action) => GetActionPerformed(action, 0);
     public static bool GetAction(InputActions action) => GetActionPerformed(action, 1);

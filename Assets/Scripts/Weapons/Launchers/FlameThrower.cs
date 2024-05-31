@@ -22,17 +22,20 @@ public class FlameThrower : LauncherWeapon
     public const float AttackingCounterMs = 200f;
     public float TickDamageMultiplier = 0.25f;
     bool isLoopingShoot;
-    protected override void Start()
-    {
-        base.Start();
-        FlameThrowerFlames = GetComponentInChildren<ParticleSystem>();
-        particles = new ParticleSystem.Particle[FlameThrowerFlames.main.maxParticles];
-    }
 
     protected override void Awake()
     {
         base.Awake();
         WeaponContainerOffset = new Vector3(0f, -0.08f, 0f);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        FlameThrowerFlames = GetComponentInChildren<ParticleSystem>();
+        particles = new ParticleSystem.Particle[FlameThrowerFlames.main.maxParticles];
+        if (IsActive)
+            SmallFire.Play();
     }
 
     protected override void Update()
@@ -180,7 +183,12 @@ public class FlameThrower : LauncherWeapon
     {
         bool reloaded = base.Reload();
         if (reloaded)
+        {
             isLoopingShoot = false;
+            if (isShooting || Constants.GetAction(InputActions.Shoot))
+                StopShooting();
+        }
+
 
         return reloaded;
     }
@@ -189,6 +197,11 @@ public class FlameThrower : LauncherWeapon
     {
         base.OnReloadEnd();
         SmallFire.Play();
+        if (isShooting || Constants.GetAction(InputActions.Shoot))
+        {
+            isLoopingShoot = true;
+            StartShooting();
+        }
     }
 
     public override void OnShootEnd()
@@ -215,7 +228,7 @@ public class FlameThrower : LauncherWeapon
 
     private void HandleSoundEffect()
     {
-        if (NeedsReload())
+        if (NeedsReload() || IsReloading)
         {
             if (isShooting)
                 StopShooting();
@@ -223,19 +236,21 @@ public class FlameThrower : LauncherWeapon
         }
 
         if (Constants.GetActionDown(InputActions.Shoot))
-        {
-            ShootStart.PlayIfNotNull(AudioSource, AudioTypes.Player);
-            LoopAudioSource.volume = ShootLoop.Volume;
-        }
+            StartShooting();
 
         if (Constants.GetActionUp(InputActions.Shoot))
             StopShooting();
     }
 
+    private void StartShooting()
+    {
+        ShootStart.PlayIfNotNull(AudioSource, AudioTypes.Player);
+        LoopAudioSource.volume = ShootLoop.Volume * MenuController.Instance.PlayerVolume * Constants.LoopSoundVolumeMultiplier;
+    }
+
     private void StopShooting()
     {
-        if (!NeedsReload())
-            ShootEnd.PlayIfNotNull(AudioSource, AudioTypes.Player);
+        ShootEnd.PlayIfNotNull(AudioSource, AudioTypes.Player);
         isLoopingShoot = false;
         LoopAudioSource.volume = 0;
     }
@@ -245,5 +260,4 @@ public class FlameThrower : LauncherWeapon
         Animator.SetBool("isLoopingShoot", isLoopingShoot);
         base.SyncAnimationStates();
     }
-
 }

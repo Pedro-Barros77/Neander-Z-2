@@ -392,15 +392,15 @@ MonoBehaviour:
   SmallFire: {fileID: 8902219941123729948}
   ShootStart:
     Audio: {fileID: 8300000, guid: c98a9162cc86eab4c975536e988239ca, type: 3}
-    Volume: 1
+    Volume: 0.5
     Pitch: 1
   ShootLoop:
     Audio: {fileID: 8300000, guid: 0b0246bee3f6ad04a83984ef980204e0, type: 3}
-    Volume: 1
+    Volume: 0.5
     Pitch: 1
   ShootEnd:
     Audio: {fileID: 8300000, guid: ad234caa14665c641a3836b6e20d4c4c, type: 3}
-    Volume: 1
+    Volume: 0.5
     Pitch: 1
   LoopAudioSource: {fileID: 6307441308764678149}
   enemyLayer:
@@ -869,7 +869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8396001865248437620, guid: e6280590d3042d3448176dcb6a7ed565, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8396001865248437620, guid: e6280590d3042d3448176dcb6a7ed565, type: 3}
       propertyPath: InitialModule.size3D
