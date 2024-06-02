@@ -58,7 +58,7 @@ public class Molotov : BaseThrowable
                 PlayerTargets.Add(playerTarget);
 
             if (playerTarget.IsAlive)
-                IsTargetHit = true;
+                SetTargetHit();
         }
     }
 
@@ -174,5 +174,16 @@ public class Molotov : BaseThrowable
 
             burnFX.SetEffect(EffectDecoupledDurationMs, EffectTickIntervalMs);
         }
+    }
+
+    public override void Throw()
+    {
+        if (transform.localScale.y < 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
+            Sprite.flipX = true;
+            Sprite.flipY = true;
+        }
+        base.Throw();
     }
 }

@@ -148,8 +148,10 @@ public class Raimundo : BaseEnemy, IKnockBackable, IBurnable
 
         isHelmetBroken = true;
         Helmet.AddComponent<Rigidbody2D>();
-        Helmet.parent = null;
+        Helmet.parent = EffectsContainer;
         Helmet.GetComponent<Animator>().enabled = true;
+        for (int i = 0; i < Helmet.childCount; i++)
+            Destroy(Helmet.GetChild(i).gameObject);
         StartCoroutine(StartHelmetFadeOutCountDown());
     }
 

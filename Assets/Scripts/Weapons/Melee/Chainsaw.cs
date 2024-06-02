@@ -55,6 +55,17 @@ public class Chainsaw : MeleeWeapon
     {
         base.Update();
 
+        if (!IsActive)
+        {
+            engineState = EngineStates.Off;
+            AudioSource.volume = 0;
+            HitAudioSource.volume = 0;
+            IdleAudioSource.volume = 0;
+            RunAudioSource.volume = 0;
+            StartupAudioSource.volume = 0;
+            TransitionAudioSource.volume = 0;
+        }
+
         HandleEngineAcceleration();
 
         if (IsOff)

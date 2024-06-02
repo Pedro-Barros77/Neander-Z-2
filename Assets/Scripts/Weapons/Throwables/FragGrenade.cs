@@ -61,7 +61,7 @@ public class FragGrenade : BaseThrowable
             if (!target.IsAlive)
                 continue;
 
-            IsTargetHit = true;
+            SetTargetHit();
             int targetId = target.transform.GetInstanceID();
 
             if (PiercedTargetsIds.Contains(targetId))
@@ -99,7 +99,7 @@ public class FragGrenade : BaseThrowable
             if (!target.IsAlive)
                 continue;
 
-            IsTargetHit = true;
+            SetTargetHit();
             int targetId = target.gameObject.GetInstanceID();
 
             if (PiercedTargetsIds.Contains(targetId))

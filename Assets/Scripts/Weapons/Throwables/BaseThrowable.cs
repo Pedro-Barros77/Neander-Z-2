@@ -42,6 +42,10 @@ public abstract class BaseThrowable : MonoBehaviour
     /// </summary>
     public bool StartFuseOnCook => Data.StartFuseOnCook;
     /// <summary>
+    /// Se o item deve rotacionar para a direção da velocidade.
+    /// </summary>
+    public bool RotateToFaceVelocity => Data.RotateToFaceVelocity;
+    /// <summary>
     /// A distância em que o efeito do item tem efetividade máxima.
     /// </summary>
     public float EffectMaxRange => Data.EffectMaxRange;
@@ -97,7 +101,7 @@ public abstract class BaseThrowable : MonoBehaviour
     /// <summary>
     /// Se ao menos um alvo foi atingido pelo item ou seu efeito.
     /// </summary>
-    public bool IsTargetHit { get; set; }
+    public bool IsTargetHit { get; private set; }
     /// <summary>
     /// O tempo em que o cozimento foi iniciado.
     /// </summary>
@@ -151,6 +155,8 @@ public abstract class BaseThrowable : MonoBehaviour
     /// As camadas em que o item pode colidir.
     /// </summary>
     protected LayerMask TargetLayerMask;
+    protected bool Collided => lastHitTime != 0;
+    protected float DistanceTraveled => Vector3.Distance(ThrowPosition, transform.position);
 
     #endregion
 
@@ -161,6 +167,7 @@ public abstract class BaseThrowable : MonoBehaviour
     protected List<int> PiercedTargetsIds = new();
     protected float lastHitTime;
     protected float hitSoundIntervalMs = 100;
+    protected Vector3 ThrowPosition;
 
     #endregion
 
@@ -196,6 +203,9 @@ public abstract class BaseThrowable : MonoBehaviour
 
         CheckFuse();
 
+        if (RotateToFaceVelocity && !Collided)
+            ApplyRotationToVelocity();
+
         Animation();
     }
 
@@ -228,14 +238,6 @@ public abstract class BaseThrowable : MonoBehaviour
         if (!gameObject.activeSelf)
             return;
 
-        var now = Time.time;
-
-        if (lastHitTime == 0 || lastHitTime + (hitSoundIntervalMs / 1000) < now)
-        {
-            HitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
-            lastHitTime = now;
-        }
-
         if (collision.gameObject.CompareTag("Enemy"))
         {
             var target = collision.GetComponentInParent<IPlayerTarget>();
@@ -252,6 +254,13 @@ public abstract class BaseThrowable : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Environment"))
             OnObjectHit(collision);
+
+        var now = Time.time;
+        if (lastHitTime == 0 || lastHitTime + (hitSoundIntervalMs / 1000) < now)
+        {
+            HitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
+            lastHitTime = now;
+        }
     }
 
     /// <summary>
@@ -317,17 +326,11 @@ public abstract class BaseThrowable : MonoBehaviour
     {
         IsThrown = true;
         throwTime = Time.time;
+        ThrowPosition = transform.position;
         IsCooking = false;
         var currentScale = transform.lossyScale;
         transform.parent = ProjectilesContainer;
         transform.localScale = currentScale;
-
-        if (transform.localScale.y < 0)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y), transform.localScale.z);
-            Sprite.flipX = true;
-            Sprite.flipY = true;
-        }
 
         ThrowSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
 
@@ -339,11 +342,18 @@ public abstract class BaseThrowable : MonoBehaviour
     /// </summary>
     protected virtual void KillSelf()
     {
-        if (IsTargetHit && PlayerOwner != null)
-            WavesManager.Instance.CurrentWave.HandlePlayerAttack(0, 1);
-
         gameObject.SetActive(false);
         Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// Marca como alvo atingido e processa a pontuação do jogador.
+    /// </summary>
+    protected virtual void SetTargetHit()
+    {
+        if (!IsTargetHit && PlayerOwner != null)
+            WavesManager.Instance.CurrentWave.HandlePlayerAttack(0, 1);
+        IsTargetHit = true;
     }
 
     /// <summary>
@@ -364,7 +374,7 @@ public abstract class BaseThrowable : MonoBehaviour
     {
         if (!IsThrown)
         {
-            bool aimingLeft = PlayerWeaponController?.IsAimingLeft??false;
+            bool aimingLeft = PlayerWeaponController?.IsAimingLeft ?? false;
             float absoluteYPosition = Mathf.Abs(transform.localPosition.y);
             if (aimingLeft)
             {
@@ -381,6 +391,20 @@ public abstract class BaseThrowable : MonoBehaviour
         if (Animator != null)
         {
             SyncAnimationStates();
+        }
+    }
+
+    /// <summary>
+    /// Rotaciona o item de acordo com a direção do movimento.
+    /// </summary>
+    protected virtual void ApplyRotationToVelocity()
+    {
+        Vector2 velocity = Rigidbody.velocity;
+
+        if (velocity.sqrMagnitude > 0.01f) // Ensure there's enough velocity to calculate direction
+        {
+            float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 

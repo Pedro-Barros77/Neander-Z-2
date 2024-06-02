@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe904436d21aa747bbad0080d06ae06, type: 3}
+  m_Name: Kunai
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 3380799106138427043, guid: 99d7478150f76524a85b02e384f64926, type: 3}
+  Title: Kunai
+  Description: The Kunai is a masterwork of stealth and precision, perfect for silent
+    assassins who can rely on their aim. It might be weak on body hits but deals
+    critical damage on headshots!
+  Price: 10
+  Discount: 0
+  Amount: 1
+  IconScale: 0.5
+  PreviewIconScale: 0.8
+  InventorySlotIconScale: 0.5
+  IsSellable: 1
+  Tags: 0c0000000f000000
+  ThrowableData: {fileID: 11400000, guid: fe56fa8e4cb66b14ebb7d9d3aa80ea68, type: 2}

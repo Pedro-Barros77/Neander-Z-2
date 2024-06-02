@@ -46,7 +46,10 @@ public class FlameThrower : LauncherWeapon
             return;
 
         if (!IsActive)
+        {
+            SmallFire.Stop();
             return;
+        }
 
         if (lastShotTime + (AttackingCounterMs / 1000) < Time.time)
         {

@@ -267,6 +267,8 @@ public class PlayerWeaponController : MonoBehaviour
         playerAnimator.Play($"{Player.Character}_Idle", 1);
         playerAnimator.SetFloat("ThrowSpeedMultiplier", 1);
         Player.CurrentWeapon.IsActive = true;
+        Player.CurrentWeapon.AfterSwitchWeaponBack();
+        Player.Backpack.EquippedPrimaryWeapon.IsSwitchingWeapon = false;
         IsThrowingItem = false;
         Player.Backpack.ThrowingThrowable = null;
         LineRenderer.enabled = false;

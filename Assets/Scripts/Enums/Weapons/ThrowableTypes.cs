@@ -3,7 +3,8 @@
 /// </summary>
 public enum ThrowableTypes
 {
-    None,
-    FragGrenade,
-    Molotov
+    None = 0,
+    FragGrenade = 1,
+    Molotov = 2,
+    Kunai = 3
 }

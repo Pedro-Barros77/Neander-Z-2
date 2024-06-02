@@ -14,6 +14,7 @@ public class BaseThrowableData : AutoRevertSO
     public float FuseTimeoutMs;
     public bool DetonateOnImpact;
     public bool StartFuseOnCook;
+    public bool RotateToFaceVelocity;
     public float EffectMaxRange;
     public float EffectMinRange;
     public float EffectDurationMs;
