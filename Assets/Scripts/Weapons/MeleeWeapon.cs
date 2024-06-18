@@ -100,8 +100,13 @@ public class MeleeWeapon : BaseWeapon
         HitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
 
         Vector2 hitPosition = targetCollider.ClosestPoint(AttackTrigger.transform.position);
-        target.TakeDamage(Damage, HeadshotMultiplier, targetCollider.name, Player, hitPosition);
-        target.OnPointHit(hitPosition, -transform.right, targetCollider.name);
+
+        var damageProps = new TakeDamageProps(DamageTypes.Cutting, Damage, Player, HeadshotMultiplier)
+            .WithBodyPart(targetCollider.name)
+            .WithHitPosition(hitPosition)
+            .WithHitEffectDirection(-transform.right);
+
+        target.TakeDamage(damageProps);
 
         if (target.IsAlive)
         {

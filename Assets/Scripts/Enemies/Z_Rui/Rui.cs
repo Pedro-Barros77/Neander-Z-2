@@ -235,12 +235,16 @@ public class Rui : BaseEnemy, IBurnable
         if (isBumping)
         {
             float _damageMultiplier = isHalfHealth ? BumpDamageMultiplier : 1f;
-            Target.TakeDamage(bumpDamage * _damageMultiplier, 1, "Body", this);
+            var damageProps = new TakeDamageProps(DamageTypes.Impact, bumpDamage * _damageMultiplier, this)
+                .WithBodyPart("Body");
+            Target.TakeDamage(damageProps);
         }
         else if (isJumping)
         {
             _pushForce *= 2;
-            Target.TakeDamage(Damage * JumpDamageMultiplier, 1, "Body", this);
+            var damageProps = new TakeDamageProps(DamageTypes.Impact, bumpDamage * JumpDamageMultiplier, this)
+                .WithBodyPart("Body");
+            Target.TakeDamage(damageProps);
         }
         else if (isAttacking)
         {

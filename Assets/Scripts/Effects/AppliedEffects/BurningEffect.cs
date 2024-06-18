@@ -22,10 +22,20 @@ public class BurningEffect : BaseAppliedEffect
             return;
 
         if (EnemyTarget is IBurnable)
-            EnemyTarget?.TakeDamage(TickDamage, 1, "", null, selfDamage: SelfAppliedEffect);
+        {
+            if (PlayerOwner != null)
+                EnemyTarget?.TakeDamage(new TakeDamageProps(DamageTypes.Fire, TickDamage, PlayerOwner));
+            else if (EnemyOwner != null)
+                EnemyTarget?.TakeDamage(new TakeDamageProps(DamageTypes.Fire, TickDamage, EnemyOwner));
+        }
 
         if (PlayerTarget is IBurnable)
-            PlayerTarget?.TakeDamage(TickDamage, 1, "", PlayerOwner);
+        {
+            if (PlayerOwner != null)
+                PlayerTarget?.TakeDamage(new TakeDamageProps(DamageTypes.Fire, TickDamage, PlayerOwner));
+            else if (EnemyOwner != null)
+                PlayerTarget?.TakeDamage(new TakeDamageProps(DamageTypes.Fire, TickDamage, EnemyOwner));
+        }
 
         if (burnableTarget != null)
             SetSpriteRed();

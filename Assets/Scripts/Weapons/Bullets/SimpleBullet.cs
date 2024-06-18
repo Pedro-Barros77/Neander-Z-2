@@ -22,8 +22,13 @@ public class SimpleBullet : Projectile
             }
 
             var hitPosition = collision.ClosestPoint(transform.position);
-            target.TakeDamage(Damage, HeadshotMultiplier, collision.name, PlayerOwner, hitPosition);
-            target.OnPointHit(hitPosition, -transform.right, collision.name);
+
+            var damageProps = new TakeDamageProps(DamageTypes.Impact, Damage, PlayerOwner, HeadshotMultiplier)
+                .WithBodyPart(collision.name)
+                .WithHitPosition(hitPosition)
+                .WithHitEffectDirection(-transform.right);
+
+            target.TakeDamage(damageProps);
         }
     }
 }

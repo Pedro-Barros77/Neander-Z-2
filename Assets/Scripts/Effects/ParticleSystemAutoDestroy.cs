@@ -23,13 +23,13 @@ public class ParticleSystemAutoDestroy : MonoBehaviour
         if (StopDelayMs > 0)
             stopTimeoutMs -= Time.deltaTime * 1000;
 
-        if (stopTimeoutMs <= 0)
+        if (stopTimeoutMs <= 0 && StopDelayMs > 0)
             Particles.Stop();
 
         if (DestroyDelayMs > 0)
             destroyTimeoutMs -= Time.deltaTime * 1000;
 
-        if (destroyTimeoutMs <= 0)
+        if (destroyTimeoutMs <= 0 && DestroyDelayMs > 0)
             Destroy(gameObject);
     }
 }

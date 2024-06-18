@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class BaseThrowable : MonoBehaviour
@@ -65,6 +66,10 @@ public abstract class BaseThrowable : MonoBehaviour
     /// Intervalo de tempo em que o efeito do item é causado.
     /// </summary>
     public float EffectTickIntervalMs => Data.EffectTickIntervalMs;
+    /// <summary>
+    /// O quanto de dano irá ignorar a armadura do alvo. Ex: 100 de dano e 0.5 de ArmorPiercingPercentage, 50 de dano irá direto para o alvo.
+    /// </summary>
+    public float ArmorPiercingPercentage => Data.ArmorPiercingPercentage;
 
     #endregion
 
@@ -156,6 +161,7 @@ public abstract class BaseThrowable : MonoBehaviour
     /// </summary>
     protected LayerMask TargetLayerMask;
     protected bool Collided => lastHitTime != 0;
+    protected bool CollidedWithEnemy => Collided && PiercedTargetsIds.Any();
     protected float DistanceTraveled => Vector3.Distance(ThrowPosition, transform.position);
 
     #endregion
@@ -247,10 +253,7 @@ public abstract class BaseThrowable : MonoBehaviour
             int targetId = target.transform.GetInstanceID();
 
             if (!PiercedTargetsIds.Contains(targetId))
-            {
-                PiercedTargetsIds.Add(targetId);
                 OnEnemyHit(collision);
-            }
         }
         else if (collision.gameObject.CompareTag("Environment"))
             OnObjectHit(collision);
@@ -282,7 +285,8 @@ public abstract class BaseThrowable : MonoBehaviour
         var target = collision.GetComponentInParent<IPlayerTarget>();
         if (target != null)
         {
-            // implementar nos filhos
+            int targetId = target.transform.GetInstanceID();
+            PiercedTargetsIds.Add(targetId);
         }
 
         if (DetonateOnImpact)

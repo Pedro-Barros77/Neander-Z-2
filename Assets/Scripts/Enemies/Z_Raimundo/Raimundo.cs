@@ -81,47 +81,51 @@ public class Raimundo : BaseEnemy, IKnockBackable, IBurnable
                 break;
         }
     }
-    public override void TakeDamage(float value, float headshotMultiplier, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null)
+    public override void TakeDamage(TakeDamageProps props)
     {
-        if (value < 0 || Health <= 0) return;
+        if (props.Damage < 0 || Health <= 0) return;
 
         Color32 color;
+        float damage = props.Damage;
 
-        switch (bodyPartName)
+        switch (props.BodyPartName)
         {
             case "Helmet":
-                HelmetHealth = Mathf.Clamp(HelmetHealth - value, 0, HelmetMaxHealth);
+                HelmetHealth = Mathf.Clamp(HelmetHealth - damage, 0, HelmetMaxHealth);
                 color = Color.white;
                 break;
             case "Head":
-                value *= headshotMultiplier;
+                damage *= props.HeadshotMultiplier;
                 color = Color.red;
                 break;
             default:
-                value *= BodyDamageMultiplier;
+                damage *= BodyDamageMultiplier;
                 color = Color.yellow;
                 break;
         }
 
-        ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        ShowPopup(damage.ToString("N1"), color, props.HitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
-        if (bodyPartName != "Helmet")
+        if (props.BodyPartName != "Helmet")
         {
             if (!AudioSource.isPlaying)
                 DamageSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
-            Health = Mathf.Clamp(Health - value, 0, MaxHealth);
-            HealthBar.RemoveValue(value);
+            Health = Mathf.Clamp(Health - damage, 0, MaxHealth);
+            HealthBar.RemoveValue(damage);
         }
 
         if (Health <= 0)
-            Die(bodyPartName, attacker);
+            Die(props.BodyPartName, props.PlayerAttacker);
 
-        if (bodyPartName == "Helmet")
+        if (props.BodyPartName == "Helmet")
             HitHelmetSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
+
+        if (props.HitEffectDirection != null)
+            OnPointHit(props);
     }
 
-    public override void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName)
+    public override void OnPointHit(TakeDamageProps props)
     {
         if (SparksPrefab == null)
             return;
@@ -129,14 +133,14 @@ public class Raimundo : BaseEnemy, IKnockBackable, IBurnable
         if (lastSparkTime + sparksDelay > Time.time)
             return;
 
-        if (HelmetStage != 0 && bodyPartName == "Helmet")
+        if (HelmetStage != 0 && props.BodyPartName == "Helmet")
         {
-            var sparks = Instantiate(SparksPrefab, hitPoint, Quaternion.identity, EffectsContainer);
-            sparks.transform.up = pointToDirection;
+            var sparks = Instantiate(SparksPrefab, props.HitPosition.Value, Quaternion.identity, EffectsContainer);
+            sparks.transform.up = props.HitEffectDirection.Value;
             lastSparkTime = Time.time;
         }
 
-        base.OnPointHit(hitPoint, pointToDirection, bodyPartName);
+        base.OnPointHit(props);
     }
     /// <summary>
     /// Função que faz o capacete cair

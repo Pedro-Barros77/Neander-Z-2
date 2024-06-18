@@ -287,20 +287,18 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
     /// <summary>
     /// Diminui a vida e modifica a barra de vida.
     /// </summary>
-    /// <param name="value">O valor a ser subtraído da vida.</param>
-    /// <param name="bodyPartName">O nome da parte do corpo (GameObject) do inimigo que foi atingida.</param>
-    /// <param name="attacker">O player qye atacou este inimigo.</param>
-    /// <param name="hitPosition">O local em que o inimigo recebeu dano.</param>
-    public virtual void TakeDamage(float value, float headshotMultiplier, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null)
+    /// <param name="props">As propriedades do dano a ser recebido.</param>
+    public virtual void TakeDamage(TakeDamageProps props)
     {
-        if (value < 0 || Health <= 0 || isDying || !IsAlive) return;
+        if (props.Damage < 0 || Health <= 0 || isDying || !IsAlive) return;
 
         Color32 color;
+        float damage = props.Damage;
 
-        switch (bodyPartName)
+        switch (props.BodyPartName)
         {
             case "Head":
-                value *= headshotMultiplier;
+                damage *= props.HeadshotMultiplier;
                 color = Color.red;
                 break;
 
@@ -309,17 +307,20 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
                 break;
         }
 
-        ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        ShowPopup(damage.ToString("N1"), color, props.HitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
 
         if (!AudioSource.isPlaying)
             DamageSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
-        Health = Mathf.Clamp(Health - value, 0, MaxHealth);
+        Health = Mathf.Clamp(Health - damage, 0, MaxHealth);
         if (HealthBar != null)
-            HealthBar.RemoveValue(value);
+            HealthBar.RemoveValue(damage);
 
         if (Health <= 0)
-            Die(bodyPartName, attacker);
+            Die(props.BodyPartName, props.PlayerAttacker);
+
+        if (props.HitEffectDirection != null)
+            OnPointHit(props);
     }
 
     /// <summary>
@@ -426,12 +427,14 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         AttackHitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         var playerHitPoint = targetCollider.ClosestPoint(AttackTrigger.transform.position);
-        target.TakeDamage(Damage, 1, "", this, playerHitPoint);
-        target.OnPointHit(playerHitPoint, -transform.right, "");
+        var damageProps = new TakeDamageProps(DamageTypes.Impact, Damage, this)
+            .WithHitPosition(playerHitPoint)
+            .WithHitEffectDirection(-transform.right);
+        target.TakeDamage(damageProps);
         HitTargetsIds.Add(targetInstanceId);
     }
 
-    public virtual void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName)
+    public virtual void OnPointHit(TakeDamageProps props)
     {
         if (BloodSplatterPrefab == null)
             return;
@@ -439,12 +442,14 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         if (lastBloodSplatterTime + bloodSplatterDelay > Time.time)
             return;
 
-        var bloodSplatter = Instantiate(BloodSplatterPrefab, hitPoint, Quaternion.identity, EffectsContainer);
-        bloodSplatter.transform.up = pointToDirection;
+        var bloodSplatter = Instantiate(BloodSplatterPrefab, props.HitPosition.Value, Quaternion.identity, EffectsContainer);
+        bloodSplatter.transform.up = props.HitEffectDirection.Value;
         var bloodParticles = bloodSplatter.GetComponent<ParticleSystem>();
         var mainBloodSystem = bloodParticles.main;
         mainBloodSystem.startColor = new(BloodColor);
         lastBloodSplatterTime = Time.time;
+
+        Debug.DrawLine(bloodSplatter.transform.position, Vector3.zero, Color.red, 5f);
     }
 
     /// <summary>

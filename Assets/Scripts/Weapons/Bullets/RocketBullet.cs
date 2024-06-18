@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class RocketBullet : Projectile
 {
@@ -68,8 +69,13 @@ public class RocketBullet : Projectile
             }
 
             var hitPosition = collision.ClosestPoint(transform.position);
-            target.TakeDamage(Damage / 3, HeadshotMultiplier, collision.name, PlayerOwner);
-            target.OnPointHit(hitPosition, -transform.right, collision.name);
+
+            var damageProps = new TakeDamageProps(DamageTypes.Impact, Damage / 3, PlayerOwner, HeadshotMultiplier)
+                .WithBodyPart(collision.name)
+                .WithHitPosition(hitPosition)
+                .WithHitEffectDirection(-transform.right);
+
+            target.TakeDamage(damageProps);
         }
     }
 
@@ -139,8 +145,12 @@ public class RocketBullet : Projectile
 
                 Damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
 
-                target.TakeDamage(Damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, PlayerOwner);
-                target.OnPointHit(enemyHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
+                var damageProps = new TakeDamageProps(DamageTypes.Explosion, Damage, PlayerOwner, HeadshotMultiplier)
+                    .WithBodyPart(IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name)
+                    .WithHitPosition(enemyHitPoint)
+                    .WithHitEffectDirection(-transform.right);
+
+                target.TakeDamage(damageProps);
             }
         }
 
@@ -179,8 +189,12 @@ public class RocketBullet : Projectile
 
                 Damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
 
-                target.TakeDamage(Damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, null, selfDamage: true);
-                target.OnPointHit(playerHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
+                var damageProps = new TakeDamageProps(DamageTypes.Explosion, Damage, PlayerOwner, HeadshotMultiplier)
+                    .WithBodyPart(IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name)
+                    .WithHitPosition(playerHitPoint)
+                    .WithHitEffectDirection(-transform.right);
+
+                target.TakeDamage(damageProps);
             }
         }
 

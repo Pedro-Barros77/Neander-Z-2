@@ -31,7 +31,7 @@ public class BodyTarget : MonoBehaviour, IPlayerTarget
 
     }
 
-    public void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName)
+    public void OnPointHit(TakeDamageProps props)
     {
         if (SparksPrefab == null)
             return;
@@ -39,27 +39,28 @@ public class BodyTarget : MonoBehaviour, IPlayerTarget
         if (lastSparkTime + sparksDelay > Time.time)
             return;
 
-        var sparks = Instantiate(SparksPrefab, hitPoint, Quaternion.identity, EffectsContainer);
-        sparks.transform.up = pointToDirection;
+        var sparks = Instantiate(SparksPrefab, props.HitPosition.Value, Quaternion.identity, EffectsContainer);
+        sparks.transform.up = props.HitEffectDirection.Value;
         lastSparkTime = Time.time;
     }
 
-    public void TakeDamage(float value, float headshotMultiplier, string bodyPartName, IEnemyTarget attacker, Vector3? hitPosition = null)
+    public void TakeDamage(TakeDamageProps props)
     {
-        if (value < 0) return;
+        if (props.Damage < 0) return;
 
         Color32 color;
+        float damage = props.Damage;
 
-        switch (bodyPartName)
+        switch (props.BodyPartName)
         {
             case "Head":
-                value *= headshotMultiplier;
+                damage *= props.HeadshotMultiplier;
                 color = Color.red;
                 break;
 
             case "Plate":
                 color = Color.white;
-                value = 0;
+                damage = 0;
                 break;
 
             default:
@@ -67,9 +68,12 @@ public class BodyTarget : MonoBehaviour, IPlayerTarget
                 break;
         }
 
-        ShowPopup(value.ToString("N1"), color, hitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2)); ;
+        ShowPopup(damage.ToString("N1"), color, props.HitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2)); ;
 
         HitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
+
+        if(props.HitEffectDirection != null)
+            OnPointHit(props);
     }
 
     public virtual void HandleSpriteColorChange(Color32 color)

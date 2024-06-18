@@ -45,7 +45,7 @@ public static class IEnumerableExtensions
     /// <param name="source">A lista.</param>
     /// <param name="separator">O separador.</param>
     /// <returns>Uma string contendo todos os elementos da lista separados pelo separador.</returns>
-    public static string JoinString<T>(this IEnumerable<T> source, string separator)
+    public static string JoinString<T>(this IEnumerable<T> source, string separator = ",")
     {
         return string.Join(separator, source);
     }

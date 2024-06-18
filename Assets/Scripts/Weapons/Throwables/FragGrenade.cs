@@ -80,8 +80,12 @@ public class FragGrenade : BaseThrowable
 
             float damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
 
-            target.TakeDamage(damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, PlayerOwner);
-            target.OnPointHit(enemyHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
+            var damageProps = new TakeDamageProps(DamageTypes.Explosion, damage, PlayerOwner, HeadshotMultiplier)
+                .WithBodyPart(IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name)
+                .WithHitPosition(enemyHitPoint)
+                .WithHitEffectDirection(-transform.right);
+
+            target.TakeDamage(damageProps);
         }
 
         foreach (var hit in playersHit)
@@ -118,8 +122,12 @@ public class FragGrenade : BaseThrowable
 
             float damage = Mathf.Lerp(TotalDamage, MinDamage, percentage);
 
-            target.TakeDamage(damage, HeadshotMultiplier, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name, null, selfDamage: true);
-            target.OnPointHit(playerHitPoint, -transform.right, IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name);
+            var damageProps = new TakeDamageProps(DamageTypes.Explosion, damage, PlayerOwner, HeadshotMultiplier)
+                .WithBodyPart(IgnoreBodyPartsNames.Contains(targetCollider.name) ? "Body" : targetCollider.name)
+                .WithHitPosition(playerHitPoint)
+                .WithHitEffectDirection(-transform.right);
+
+            target.TakeDamage(damageProps);
         }
 
         Sprite.enabled = false;

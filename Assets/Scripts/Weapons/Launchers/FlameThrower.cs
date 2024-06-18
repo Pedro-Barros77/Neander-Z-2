@@ -148,7 +148,10 @@ public class FlameThrower : LauncherWeapon
 
                 if (!HitTargetsIds.Contains(targetInstanceId))
                 {
-                    target.TakeDamage(Damage, HeadshotMultiplier, collider.name, Player);
+                    var damageProps = new TakeDamageProps(DamageTypes.Fire, Damage, Player, HeadshotMultiplier)
+                        .WithBodyPart(collider.name);
+
+                    target.TakeDamage(damageProps);
 
                     HitTargetsIds.Add(targetInstanceId);
                 }

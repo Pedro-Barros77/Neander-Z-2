@@ -199,7 +199,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable, IBurnable
             }
             if (Constants.GetActionDown(InputActions.DEBUG_DecreaseHealth))
             {
-                TakeDamage(20, 1, "", null);
+                TakeDamage(new TakeDamageProps(DamageTypes.Impact, 20, playerAttacker: null));
             }
         }
     }
@@ -241,23 +241,25 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable, IBurnable
     /// Diminui a vida e modifica a barra de vida.
     /// </summary>
     /// <param name="value">O valor a ser subtraнdo da vida.</param>
-    public void TakeDamage(float value, float headshotMultiplier, string bodyPartName, IPlayerTarget attacker, Vector3? hitPosition = null, bool selfDamage = false)
+    public void TakeDamage(TakeDamageProps props)
     {
         if (!IsAlive)
             return;
 
-        if (value < 0) return;
+        if (props.Damage < 0) return;
 
-        if (selfDamage && Backpack.EquippedPassiveSkillType == PassiveSkillTypes.Cautious)
+        float damage = props.Damage;
+
+        if (props.IsSelfDamage(this) && Backpack.EquippedPassiveSkillType == PassiveSkillTypes.Cautious)
         {
-            value *= Constants.CautiousDamageMultiplier;
+            damage *= Constants.CautiousDamageMultiplier;
             CautiousHitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
             CautiousEffect.SetActive(true);
             CautiousEffect.GetComponentInChildren<Animator>().SetTrigger("CautiousEffect");
         }
 
         if (Health / MaxHealth >= Constants.SecondChanceHealthTrheshold
-            && (Health - value) / MaxHealth < Constants.SecondChanceHealthTrheshold
+            && (Health - damage) / MaxHealth < Constants.SecondChanceHealthTrheshold
             && Backpack.EquippedPassiveSkillType == PassiveSkillTypes.SecondChance
             && !IsSecondChanceActive)
         {
@@ -270,18 +272,21 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable, IBurnable
         }
 
         if (IsSecondChanceActive && Backpack.EquippedPassiveSkillType == PassiveSkillTypes.SecondChance)
-            value *= Constants.SecondChanceDamageTakenMultiplier;
+            damage *= Constants.SecondChanceDamageTakenMultiplier;
 
-        Data.Health = Mathf.Clamp(Health - value, 0, MaxHealth);
+        Data.Health = Mathf.Clamp(Health - damage, 0, MaxHealth);
         if (HealthBar != null)
-            HealthBar.RemoveValue(value);
-        ShowPopup(value.ToString("N1"), Color.yellow, hitPosition ?? transform.position + new Vector3(0, Bounds.size.y));
+            HealthBar.RemoveValue(damage);
+        ShowPopup(damage.ToString("N1"), Color.yellow, props.HitPosition ?? transform.position + new Vector3(0, Bounds.size.y));
 
         if (WavesManager.Instance != null && WavesManager.Instance.CurrentWave != null && WavesManager.Instance.CurrentWave.Stats != null)
-            WavesManager.Instance.CurrentWave.Stats.DamageTaken += value;
+            WavesManager.Instance.CurrentWave.Stats.DamageTaken += damage;
 
         if (Health <= 0 && IsAlive)
             Die();
+
+        if (props.HitEffectDirection != null)
+            OnPointHit(props);
     }
 
     private IEnumerator DeactivateSecondChance()
@@ -397,7 +402,7 @@ public class Player : MonoBehaviour, IEnemyTarget, IKnockBackable, IBurnable
         RigidBody.AddForce(direction * pushForce);
     }
 
-    public void OnPointHit(Vector3 hitPoint, Vector3 pointToDirection, string bodyPartName)
+    public void OnPointHit(TakeDamageProps props)
     {
         //if (BloodSplatterPrefab == null)
         //    return;

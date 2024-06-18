@@ -79,10 +79,14 @@ public class Kunai : BaseThrowable
             SetTargetHit();
             EnemyHitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
             var hitPosition = collision.ClosestPoint(transform.position);
-            target.TakeDamage(Damage, HeadshotMultiplier, collision.name, PlayerOwner, hitPosition);
-            target.OnPointHit(hitPosition, -transform.right, collision.name);
+
+            var damageProps = new TakeDamageProps(DamageTypes.Impact, Damage, PlayerOwner, HeadshotMultiplier)
+                .WithBodyPart(collision.name)
+                .WithHitPosition(hitPosition)
+                .WithHitEffectDirection(-transform.right);
+
+            target.TakeDamage(damageProps);
         
-            Collider.enabled = false;
             EnemiesTrigger.enabled = false;
         }
     }

@@ -21,4 +21,5 @@ public class BaseThrowableData : AutoRevertSO
     public float EffectDecoupledDurationMs;
     public float EffectTickIntervalMs;
     public float EffectSpriteSize = 1;
+    public float ArmorPiercingPercentage;
 }
