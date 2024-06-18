@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class Raimundo : BaseEnemy, IKnockBackable, IBurnable
     private float CurrentHelmetSpriteAlpha = 1f;
     private float BodyDamageMultiplier = 0.2f;
     bool isHelmetBroken;
+    readonly DamageTypes[] ArmorProtectionDamageTypes = new DamageTypes[] { DamageTypes.Impact, DamageTypes.Explosion, DamageTypes.Cutting };
+    readonly DamageTypes[] HelmetProtectionDamageTypes = new DamageTypes[] { DamageTypes.Impact, DamageTypes.Explosion, DamageTypes.Cutting };
     protected override void Start()
     {
         Type = EnemyTypes.Z_Raimundo;
@@ -91,22 +94,29 @@ public class Raimundo : BaseEnemy, IKnockBackable, IBurnable
         switch (props.BodyPartName)
         {
             case "Helmet":
-                HelmetHealth = Mathf.Clamp(HelmetHealth - damage, 0, HelmetMaxHealth);
-                color = Color.white;
+                if (ArmorProtectionDamageTypes.Contains(props.DamageType))
+                    color = Color.white;
+                else
+                    color = Color.yellow;
                 break;
             case "Head":
                 damage *= props.HeadshotMultiplier;
                 color = Color.red;
                 break;
             default:
-                damage *= BodyDamageMultiplier;
+                if (ArmorProtectionDamageTypes.Contains(props.DamageType))
+                {
+                    float ep = (1 - BodyDamageMultiplier) * (1 - props.ArmorPiercingPercentage);
+                    damage = props.Damage * (1 - ep);
+                }
                 color = Color.yellow;
                 break;
         }
 
-        ShowPopup(damage.ToString("N1"), color, props.HitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2));
+        Vector3 popupPos = props.HitPosition ?? transform.position + new Vector3(0, SpriteRenderer.bounds.size.y / 2);
+        ShowPopup(damage.ToString("N1"), color, popupPos);
 
-        if (props.BodyPartName != "Helmet")
+        void ReceiveDamage()
         {
             if (!AudioSource.isPlaying)
                 DamageSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
@@ -115,11 +125,25 @@ public class Raimundo : BaseEnemy, IKnockBackable, IBurnable
             HealthBar.RemoveValue(damage);
         }
 
+        if (props.BodyPartName == "Helmet" && HelmetProtectionDamageTypes.Contains(props.DamageType))
+        {
+            HelmetHealth = Mathf.Clamp(HelmetHealth - damage, 0, HelmetMaxHealth);
+
+            if (props.ArmorPiercingPercentage > 0)
+            {
+                damage *= props.ArmorPiercingPercentage * props.HeadshotMultiplier;
+                ShowPopup(damage.ToString("N1"), Color.red, popupPos + Vector3.up * 0.25f);
+                ReceiveDamage();
+            }
+            else
+                HitHelmetSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
+        }
+        else
+            ReceiveDamage();
+
         if (Health <= 0)
             Die(props.BodyPartName, props.PlayerAttacker);
 
-        if (props.BodyPartName == "Helmet")
-            HitHelmetSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
 
         if (props.HitEffectDirection != null)
             OnPointHit(props);

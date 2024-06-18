@@ -83,7 +83,8 @@ public class Kunai : BaseThrowable
             var damageProps = new TakeDamageProps(DamageTypes.Impact, Damage, PlayerOwner, HeadshotMultiplier)
                 .WithBodyPart(collision.name)
                 .WithHitPosition(hitPosition)
-                .WithHitEffectDirection(-transform.right);
+                .WithHitEffectDirection(-transform.right)
+                .WithArmorPiercingPercentage(ArmorPiercingPercentage);
 
             target.TakeDamage(damageProps);
         

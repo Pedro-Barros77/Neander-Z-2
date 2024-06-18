@@ -6,13 +6,12 @@ public class Rute : BaseEnemy, IKnockBackable, IBurnable
     private bool isMovingLeft = true;
     public float BurningEffectDurationMs { get; set; } = 3000f;
     public float BurningEffectTickIntervalMs { get; set; } = 500f;
-    public float SelfBurningEffectDurationMs { get; set; } = 3000f;
+    public float SelfBurningEffectDurationMs { get; set; } = 99000f;
     public float SelfBurningEffectTickIntervalMs { get; set; } = 500f;
     public float SelfDamage { get; set; } = 3f;
     public float FloorFlameDamage { get; set; } = 3f;
     [SerializeField]
     public GameObject FireFlamesPrefab;
-    public IPlayerTarget EnemyOwner { get; set; }
     private IEnemyTarget Target;
     protected override void Start()
     {
@@ -32,6 +31,8 @@ public class Rute : BaseEnemy, IKnockBackable, IBurnable
         base.Start();
 
         HealthBar.AnimationSpeed = 5f;
+
+        ApplyBurningEffectToSelf();
     }
 
     protected override void Update()
@@ -40,8 +41,6 @@ public class Rute : BaseEnemy, IKnockBackable, IBurnable
             UpdateDirection();
 
         base.Update();
-
-        ApplyBurningEffectToSelf();
 
         Animation();
     }
@@ -126,6 +125,14 @@ public class Rute : BaseEnemy, IKnockBackable, IBurnable
         burnFX.SetEffect(BurningEffectDurationMs, BurningEffectTickIntervalMs);
     }
 
+    public override void TakeDamage(TakeDamageProps props)
+    {
+        if(props.DamageType == DamageTypes.Fire && !props.IsSelfDamage(this))
+            return;
+
+        base.TakeDamage(props);
+    }
+
     private void ApplyBurningEffectToSelf()
     {
         if (!isDying)
@@ -138,7 +145,7 @@ public class Rute : BaseEnemy, IKnockBackable, IBurnable
                 burnFX = burnEffectObj.GetComponent<BurningEffect>();
             }
 
-            burnFX.EnemyOwner = EnemyOwner;
+            burnFX.EnemyOwner = this;
             burnFX.SetEffect(SelfBurningEffectDurationMs, SelfBurningEffectTickIntervalMs);
         }
     }
