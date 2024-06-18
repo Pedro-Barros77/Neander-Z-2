@@ -13,6 +13,7 @@ public class Kunai : BaseThrowable
     Transform StickPoint;
     IPlayerTarget StuckEnemyParent;
     bool startedKillSelf;
+    Collider2D EnemiesTrigger;
 
     protected override void Awake()
     {
@@ -26,6 +27,7 @@ public class Kunai : BaseThrowable
         base.Start();
 
         StickPoint = transform.Find("StickPoint");
+        EnemiesTrigger = transform.Find("EnemiesTrigger").GetComponent<Collider2D>();
     }
 
     protected override void Update()
@@ -56,9 +58,17 @@ public class Kunai : BaseThrowable
         base.Update();
     }
 
+    public override void Throw()
+    {
+        base.Throw();
+
+        Collider.enabled = true;
+        EnemiesTrigger.enabled = true;
+    }
+
     protected override void OnEnemyHit(Collider2D collision)
     {
-        if (Collided)
+        if (CollidedWithEnemy)
             return;
 
         base.OnEnemyHit(collision);
@@ -71,6 +81,9 @@ public class Kunai : BaseThrowable
             var hitPosition = collision.ClosestPoint(transform.position);
             target.TakeDamage(Damage, HeadshotMultiplier, collision.name, PlayerOwner, hitPosition);
             target.OnPointHit(hitPosition, -transform.right, collision.name);
+        
+            Collider.enabled = false;
+            EnemiesTrigger.enabled = false;
         }
     }
 
