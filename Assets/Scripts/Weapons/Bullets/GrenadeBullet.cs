@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class RocketBullet : Projectile
+public class GrenadeBullet : Projectile
 {
     public float ExplosionKnockbackForce { get; set; }
     public float ExplosionMaxDamageRadius { get; set; }
@@ -13,10 +13,8 @@ public class RocketBullet : Projectile
     [SerializeField]
     public GameObject ExplosionPrefab;
 
-    float projectileExplodeDelay = 0.3f;
     float? projectileHitTime = null;
-    float projectilePushForce = 1600, explosionPushForce = 2500;
-    Quaternion startRotation;
+    float explosionPushForce = 2500;
     List<int> hitTargetsIds = new();
 
     readonly string[] IgnoreBodyPartsNames = { "Plate" };
@@ -24,10 +22,10 @@ public class RocketBullet : Projectile
     protected override void Start()
     {
         base.Start();
-        if (FlyInfinitely)
-            StartForwardMovement();
+
+        Rigidbody.velocity = transform.right * Speed;
+
         RotateTowardsDirection = true;
-        startRotation = transform.rotation;
         TargetLayerMask += LayerMask.GetMask("Player");
     }
 
@@ -35,10 +33,7 @@ public class RocketBullet : Projectile
     {
         base.Update();
 
-        transform.rotation = startRotation;
-        StartForwardMovement();
-
-        if (projectileHitTime != null && Time.time > projectileHitTime + projectileExplodeDelay && !Exploded)
+        if (projectileHitTime != null && Time.time > projectileHitTime && !Exploded)
             Explode();
     }
 
@@ -55,15 +50,6 @@ public class RocketBullet : Projectile
             {
                 projectileHitTime ??= Time.time;
 
-                if (target is IKnockBackable knockBackable)
-                {
-                    bool isGoingLeft = AngleDegrees > 90 && AngleDegrees < 270;
-                    Vector3 direction = new(isGoingLeft ? -1 : 1, 0);
-                    knockBackable.TakeKnockBack(projectilePushForce, direction);
-                }
-                else
-                    projectileExplodeDelay = 0;
-
                 IsTargetHit = true;
                 LastEnemyHit = target;
             }
@@ -76,6 +62,8 @@ public class RocketBullet : Projectile
                 .WithHitEffectDirection(-transform.right);
 
             target.TakeDamage(damageProps);
+
+            Explode();
         }
     }
 

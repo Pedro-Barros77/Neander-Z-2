@@ -26,6 +26,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     CanvasGroup canvasGroup;
     Canvas Canvas;
     GameObject DragClone;
+    float startTitleFontSize = 18;
     bool IsInEditor => Application.isEditor && !Application.isPlaying;
 
     private void Awake()
@@ -107,6 +108,7 @@ public class StoreItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
 
         TitleText.text = Data.Title;
+        TitleText.fontSize = startTitleFontSize * Data.IconTitleFontSizeMultiplier;
         PriceText.text = $"$ {Data.Price - Data.Discount:N2}";
         IconImage.sprite = Data.Icon;
         IconImage.transform.localScale = Vector3.one * Data.IconScale;

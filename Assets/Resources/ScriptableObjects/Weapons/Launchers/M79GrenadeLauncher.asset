@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c2593df88964c439d0fe7e0c39958f, type: 3}
+  m_Name: M79GrenadeLauncher
+  m_EditorClassIdentifier: 
+  IsPrimary: 0
+  WeaponClass: 0
+  Type: 15
+  BulletType: 5
+  FireMode: 6
+  ReloadType: 2
+  Damage: 40
+  MinDamage: 10
+  HeadshotMultiplier: 2
+  FireRate: 4
+  BulletSpeed: 18
+  MaxDamageRange: 0
+  MinDamageRange: 0
+  BulletMaxRange: 20
+  MagazineSize: 1
+  MagazineBullets: 1
+  ReloadTimeMs: 2500
+  SwitchTimeMs: 200
+  GravityScale: 1.6
+  FlyInfinitely: 0
+  Upgrades:
+  - Attribute: 0
+    UpgradeSteps:
+    - Price: 230
+      Value: 2.5
+    - Price: 320
+      Value: 2.5
+    - Price: 365
+      Value: 2.5
+    - Price: 400
+      Value: 2.5
+  - Attribute: 2
+    UpgradeSteps:
+    - Price: 240
+      Value: 0.5
+    - Price: 275
+      Value: 0.5
+    - Price: 300
+      Value: 1
+    - Price: 320
+      Value: 1
+  - Attribute: 3
+    UpgradeSteps:
+    - Price: 20
+      Value: 0.44
+    - Price: 75
+      Value: 1
+    - Price: 90
+      Value: 1
+  - Attribute: 4
+    UpgradeSteps:
+    - Price: 115
+      Value: 2
+    - Price: 130
+      Value: 2.5
+    - Price: 155
+      Value: 2.5
+    - Price: 180
+      Value: 2.5
+  - Attribute: 8
+    UpgradeSteps:
+    - Price: 200
+      Value: 0.25
+    - Price: 250
+      Value: 0.25
+    - Price: 290
+      Value: 0.25
+  - Attribute: 6
+    UpgradeSteps:
+    - Price: 350
+      Value: 0.2
+    - Price: 400
+      Value: 0.2
+    - Price: 465
+      Value: 0.3
+  ExplosionMaxDamageRadius: 1.8
+  ExplosionMinDamageRadius: 3.5
+  ExplosionSpriteSize: 3

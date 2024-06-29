@@ -18,6 +18,6 @@ public enum WeaponTypes
     Spas12 = 12,
     Kar98 = 13,
     FlameThrower = 14,
-
+    M79GrenadeLauncher = 15,
     ScarDebug = 100,
 }

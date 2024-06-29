@@ -40,6 +40,14 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     public float BulletSpeed => Data.BulletSpeed;
     /// <summary>
+    /// Se o proj'etil voa infinitamente para frente.
+    /// </summary>
+    public bool FlyInfinitely => Data.FlyInfinitely;
+    /// <summary>
+    /// O multiplicador de gravidade aplicada ao projétil.
+    /// </summary>
+    public float GravityScale => Data.GravityScale;
+    /// <summary>
     /// A dist�ncia m�xima que o proj�til pode percorrer antes de ser destru�do.
     /// </summary>
     public float BulletMaxRange => Data.BulletMaxRange;
@@ -299,6 +307,8 @@ public abstract class BaseWeapon : MonoBehaviour
         bullet.HeadshotMultiplier = HeadshotMultiplier;
         bullet.OnBulletKill += OnBulletKill;
         bullet.ShotTime = Time.time;
+        bullet.FlyInfinitely = FlyInfinitely;
+        bullet.GravityScale = GravityScale;
         bullet.Init();
 
         WavesManager.Instance.CurrentWave.HandlePlayerAttack(1, 0);

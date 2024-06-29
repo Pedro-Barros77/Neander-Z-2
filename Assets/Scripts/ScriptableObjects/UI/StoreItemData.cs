@@ -15,6 +15,7 @@ public class StoreItemData : AutoRevertSO
     public float InventorySlotIconScale = 1f;
     public bool IsSellable;
     public List<StoreItemTags> Tags;
+    public float IconTitleFontSizeMultiplier = 1f;
 
     public bool CanAfford { get; set; }
     public bool MaxedUp { get; set; }

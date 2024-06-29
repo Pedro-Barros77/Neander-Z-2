@@ -7,6 +7,8 @@ public abstract class Projectile : MonoBehaviour
     public BulletTypes Type { get; set; }
     public float AngleDegrees { get; set; }
     public float Speed { get; set; }
+    public float GravityScale { get; set; }
+    public bool FlyInfinitely { get; set; } = true;
     public float Damage { get; set; }
     public float MinDamage { get; set; }
     public float TotalDamage { get; set; }
@@ -56,6 +58,7 @@ public abstract class Projectile : MonoBehaviour
         Sprite = GetComponent<SpriteRenderer>();
         TotalDamage = Damage;
         TargetLayerMask = LayerMask.GetMask("Enemy", "Environment", "PlayerEnvironment");
+        Rigidbody.gravityScale = GravityScale;
     }
 
     protected virtual void Update()

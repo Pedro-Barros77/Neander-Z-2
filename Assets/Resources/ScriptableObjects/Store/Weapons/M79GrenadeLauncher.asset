@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf494669ee90f8499ee8ac327d6783e, type: 3}
+  m_Name: M79GrenadeLauncher
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 16297662da78bb24b807235cbf0501d0, type: 3}
+  Title: M79 Grenade Launcher
+  Description: Nicknamed "Bloop Tube" or the "Thumper", the M79 is a vintage grenade
+    launcher known for its distinct thud upon firing. Compact enough to fit snugly
+    in your back pocket, this small yet mighty weapon delivers explosive 40mm grenades
+    with precision, perfect for decimating zombie hordes.
+  Price: 950
+  Discount: 0
+  Amount: 1
+  IconScale: 1.2
+  PreviewIconScale: 1.3
+  InventorySlotIconScale: 1.2
+  IsSellable: 1
+  Tags: 01000000080000000d000000
+  IconTitleFontSizeMultiplier: 0.8
+  WeaponData: {fileID: 11400000, guid: 4bacd7e45f1654a48a28cbdb7fb21ec5, type: 2}

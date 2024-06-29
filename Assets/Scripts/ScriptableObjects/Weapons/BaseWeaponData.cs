@@ -26,6 +26,8 @@ public abstract class BaseWeaponData : AutoRevertSO
     public float ReloadTimeMs;
 
     public float SwitchTimeMs;
+    public float GravityScale;
+    public bool FlyInfinitely = true;
 
     public List<WeaponUpgradeGroup> Upgrades;
 

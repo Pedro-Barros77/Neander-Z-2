@@ -4,7 +4,8 @@ public class SimpleBullet : Projectile
     protected override void Start()
     {
         base.Start();
-        StartForwardMovement();
+        if (FlyInfinitely)
+            StartForwardMovement();
     }
 
     protected override void OnEnemyHit(Collider2D collision)

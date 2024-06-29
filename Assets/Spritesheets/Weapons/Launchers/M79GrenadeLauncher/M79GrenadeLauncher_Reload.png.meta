@@ -1,0 +1,790 @@
+fileFormatVersion: 2
+guid: 2a963187519f38344af82f800672442c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3790431634876993197
+    second: M79GrenadeLauncher_Reload_0
+  - first:
+      213: -6781934039721757985
+    second: M79GrenadeLauncher_Reload_1
+  - first:
+      213: -3577658539516758917
+    second: M79GrenadeLauncher_Reload_2
+  - first:
+      213: 2737497923335728459
+    second: M79GrenadeLauncher_Reload_3
+  - first:
+      213: -8745850380786186963
+    second: M79GrenadeLauncher_Reload_4
+  - first:
+      213: 5584749458998396080
+    second: M79GrenadeLauncher_Reload_5
+  - first:
+      213: -4629055429266039469
+    second: M79GrenadeLauncher_Reload_6
+  - first:
+      213: 6266776244146997138
+    second: M79GrenadeLauncher_Reload_7
+  - first:
+      213: -5346467304803770206
+    second: M79GrenadeLauncher_Reload_8
+  - first:
+      213: -4670694309628480
+    second: M79GrenadeLauncher_Reload_9
+  - first:
+      213: 1933944780162874592
+    second: M79GrenadeLauncher_Reload_10
+  - first:
+      213: 5372780561795620361
+    second: M79GrenadeLauncher_Reload_11
+  - first:
+      213: -7933619114517422040
+    second: M79GrenadeLauncher_Reload_12
+  - first:
+      213: 1279244855189274042
+    second: M79GrenadeLauncher_Reload_13
+  - first:
+      213: -1413034358158676376
+    second: M79GrenadeLauncher_Reload_14
+  - first:
+      213: 6233021444494357262
+    second: M79GrenadeLauncher_Reload_15
+  - first:
+      213: -1889489584153607829
+    second: M79GrenadeLauncher_Reload_16
+  - first:
+      213: 4888507881520747199
+    second: M79GrenadeLauncher_Reload_17
+  - first:
+      213: 6152012311991212927
+    second: M79GrenadeLauncher_Reload_18
+  - first:
+      213: 8308102029187217101
+    second: M79GrenadeLauncher_Reload_19
+  - first:
+      213: -3117525277636721032
+    second: M79GrenadeLauncher_Reload_20
+  - first:
+      213: -8921348891594837339
+    second: M79GrenadeLauncher_Reload_21
+  - first:
+      213: 6859557889951890445
+    second: M79GrenadeLauncher_Reload_22
+  - first:
+      213: -1962100109765884130
+    second: M79GrenadeLauncher_Reload_23
+  - first:
+      213: -4321144680839793719
+    second: M79GrenadeLauncher_Reload_24
+  - first:
+      213: -6777831404507802329
+    second: M79GrenadeLauncher_Reload_25
+  - first:
+      213: 9079643596296645381
+    second: M79GrenadeLauncher_Reload_26
+  - first:
+      213: 4235791497914965265
+    second: M79GrenadeLauncher_Reload_27
+  - first:
+      213: -6303750617381284342
+    second: M79GrenadeLauncher_Reload_28
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 240
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dae0f364d715a9430800000000000000
+      internalID: 3790431634876993197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 240
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd231405ceab1e1a0800000000000000
+      internalID: -6781934039721757985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 240
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b74f578738a995ec0800000000000000
+      internalID: -3577658539516758917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 240
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4dabcd7bdb8df520800000000000000
+      internalID: 2737497923335728459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_4
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 240
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d25468a8a6f70a680800000000000000
+      internalID: -8745850380786186963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b4872f2b04018d40800000000000000
+      internalID: 5584749458998396080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_6
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 180
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35d1105ec9a42cfb0800000000000000
+      internalID: -4629055429266039469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_7
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 180
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2970d3f8acf08f650800000000000000
+      internalID: 6266776244146997138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_8
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 180
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a06ee520588dc5b0800000000000000
+      internalID: -5346467304803770206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_9
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 180
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c5f1dc37086feff0800000000000000
+      internalID: -4670694309628480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 120
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ec34d4f780c6da10800000000000000
+      internalID: 1933944780162874592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_11
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 120
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90e93f96473ff8a40800000000000000
+      internalID: 5372780561795620361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_12
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 120
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 820a0ff037f16e190800000000000000
+      internalID: -7933619114517422040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_13
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 120
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abd7d460b6ac0c110800000000000000
+      internalID: 1279244855189274042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_14
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 120
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86ea782ecb4e36ce0800000000000000
+      internalID: -1413034358158676376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e037a74daf3208650800000000000000
+      internalID: 6233021444494357262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_16
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 60
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6149b1fb3f27c5e0800000000000000
+      internalID: -1889489584153607829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_17
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 60
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb2ddbf840877d340800000000000000
+      internalID: 4888507881520747199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_18
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 60
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7bd01e5a96506550800000000000000
+      internalID: 6152012311991212927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_19
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 60
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc6f76ff6ce4c4370800000000000000
+      internalID: 8308102029187217101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 876892007435cb4d0800000000000000
+      internalID: -3117525277636721032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_21
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a23a2f4370013480800000000000000
+      internalID: -8921348891594837339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_22
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0c7fc2be8b023f50800000000000000
+      internalID: 6859557889951890445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_23
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1746a7885835c4e0800000000000000
+      internalID: -1962100109765884130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: M79GrenadeLauncher_Reload_24
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 160
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c3b973aec53804c0800000000000000
+      internalID: -4321144680839793719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 6e939aadf85f05a4e907d68ec45d2184
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      M79GrenadeLauncher_Reload_0: 3790431634876993197
+      M79GrenadeLauncher_Reload_1: -6781934039721757985
+      M79GrenadeLauncher_Reload_10: 1933944780162874592
+      M79GrenadeLauncher_Reload_11: 5372780561795620361
+      M79GrenadeLauncher_Reload_12: -7933619114517422040
+      M79GrenadeLauncher_Reload_13: 1279244855189274042
+      M79GrenadeLauncher_Reload_14: -1413034358158676376
+      M79GrenadeLauncher_Reload_15: 6233021444494357262
+      M79GrenadeLauncher_Reload_16: -1889489584153607829
+      M79GrenadeLauncher_Reload_17: 4888507881520747199
+      M79GrenadeLauncher_Reload_18: 6152012311991212927
+      M79GrenadeLauncher_Reload_19: 8308102029187217101
+      M79GrenadeLauncher_Reload_2: -3577658539516758917
+      M79GrenadeLauncher_Reload_20: -3117525277636721032
+      M79GrenadeLauncher_Reload_21: -8921348891594837339
+      M79GrenadeLauncher_Reload_22: 6859557889951890445
+      M79GrenadeLauncher_Reload_23: -1962100109765884130
+      M79GrenadeLauncher_Reload_24: -4321144680839793719
+      M79GrenadeLauncher_Reload_3: 2737497923335728459
+      M79GrenadeLauncher_Reload_4: -8745850380786186963
+      M79GrenadeLauncher_Reload_5: 5584749458998396080
+      M79GrenadeLauncher_Reload_6: -4629055429266039469
+      M79GrenadeLauncher_Reload_7: 6266776244146997138
+      M79GrenadeLauncher_Reload_8: -5346467304803770206
+      M79GrenadeLauncher_Reload_9: -4670694309628480
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
