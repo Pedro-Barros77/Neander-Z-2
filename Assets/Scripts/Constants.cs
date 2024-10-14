@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class Constants
 {
-    public static bool EnableDevKeybinds { get; private set; } = true;
+    public static bool EnableDevKeybinds { get; private set; } = false;
     public static bool FormatSaveFiles { get; private set; } = false;
     public static float MaxWeaponDamage { get; private set; } = 60; // half section = 2.5
     public static float MaxWeaponFireRate { get; private set; } = 18; // half section = 0.75
