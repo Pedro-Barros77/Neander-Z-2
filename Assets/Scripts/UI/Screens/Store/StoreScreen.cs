@@ -98,9 +98,14 @@ public class StoreScreen : MonoBehaviour
                     PreviewBtnBuyText.text = "Purchased";
                 }
 
-                if (SelectedItem.Data is StoreThrowableData storeThrowableData)
+                if(SelectedItem.Data is StoreWeaponData storeWeaponData)
+                {
+                    PreviewIsPrimaryText.text = storeWeaponData.WeaponData.IsPrimary ? "-Primary" : "-Secondary";
+                }
+                else if (SelectedItem.Data is StoreThrowableData storeThrowableData)
                 {
                     InventoryData.ThrowableSelection playerThrowable = PlayerData.InventoryData.ThrowableItemsSelection.FirstOrDefault(x => x.Type == storeThrowableData.ThrowableData.Type);
+                    PreviewIsPrimaryText.text = "-Throwable";
 
                     int diff = 0;
                     if (playerThrowable != null)
@@ -148,6 +153,7 @@ public class StoreScreen : MonoBehaviour
                 }
                 else
                 {
+                    PreviewIsPrimaryText.text = "";
                     if (SelectedItem.Data.name.ToLower().EndsWith("kit"))
                     {
                         SetCountStats(

@@ -270,7 +270,6 @@ GameObject:
   - component: {fileID: 9177390615237593082}
   - component: {fileID: 7224592029183127622}
   - component: {fileID: 5797189025733250839}
-  - component: {fileID: 5579682174834183307}
   - component: {fileID: 7541874119786087352}
   - component: {fileID: 2255918080273023164}
   m_Layer: 7
@@ -408,7 +407,6 @@ MonoBehaviour:
   - Audio: {fileID: 8300000, guid: 161d68bf087a2554d9492aaf315f2f11, type: 3}
     Volume: 1
     Pitch: 1
-  ParticleTrigger: {fileID: 0}
 --- !u!50 &7224592029183127622
 Rigidbody2D:
   serializedVersion: 4
@@ -482,82 +480,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4069357, y: 1.2865858}
   m_EdgeRadius: 0
---- !u!114 &5579682174834183307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8226922062237190284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_Priority: 2
-  m_ComponentVersion: 5
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.0070090294, y: -0.34131598, z: 0}
-  - {x: -0.010537386, y: 0.09599066, z: 0}
-  - {x: -0.23947811, y: 0.10047972, z: 0}
-  - {x: -0.28885746, y: 0.14088106, z: 0}
-  - {x: -0.2888577, y: 0.25310683, z: 0}
-  - {x: -0.36741543, y: 0.25310683, z: 0}
-  - {x: -0.37415004, y: 0.35186625, z: 0}
-  - {x: 0.07699776, y: 0.35411072, z: 0}
-  - {x: 0.074753284, y: 0.43715787, z: 0}
-  - {x: -0.01053834, y: 0.5000043, z: 0}
-  - {x: -0.002519846, y: 0.81715345, z: 0}
-  - {x: 0.03434801, y: 0.86586046, z: 0}
-  - {x: 0.28797865, y: 0.86586046, z: 0}
-  - {x: 0.3638873, y: 0.78124094, z: 0}
-  - {x: 0.36204672, y: 0.46184707, z: 0}
-  - {x: 0.2789998, y: 0.3810444, z: 0}
-  - {x: 0.36204672, y: 0.3047309, z: 0}
-  - {x: 0.3642912, y: -0.34618008, z: 0}
-  - {x: 0.3171563, y: -0.34842455, z: 0}
-  - {x: 0.32722855, y: -0.86196107, z: 0}
-  - {x: 0.18922424, y: -0.8781273, z: 0}
-  - {x: 0.19146872, y: -0.56838393, z: 0}
-  - {x: 0.12637782, y: -0.58634007, z: 0}
-  - {x: 0.1286223, y: -0.837726, z: 0}
-  - {x: -0.019513845, y: -0.8377285, z: 0}
-  - {x: -0.0127801895, y: -0.60205424, z: 0}
-  - {x: 0.034354687, y: -0.5975653, z: 0}
-  - {x: 0.03659916, y: -0.3529129, z: 0}
-  m_ShapePathHash: 2055473501
-  m_InstanceId: 168298
-  m_ShadowShape2DComponent: {fileID: 0}
-  m_ShadowShape2DProvider:
-    rid: -2
-  m_ShadowCastingSource: 1
-  m_ShadowMesh:
-    m_Mesh: {fileID: 0}
-    m_LocalBounds:
-      m_Center: {x: -0.0049294233, y: -0.0061333776, z: 0}
-      m_Extent: {x: 0.3692206, y: 0.8719939, z: 0}
-    m_EdgeProcessing: 1
-    m_TrimEdge: 0
-    m_FlipX: 0
-    m_FlipY: 0
-    m_InitialTrim: 0
-  m_CastingOption: 1
-  m_PreviousTrimEdge: 0
-  m_PreviousEdgeProcessing: 1
-  m_PreviousShadowCastingSource: 1
-  m_PreviousShadowShape2DSource: {fileID: 0}
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
 --- !u!95 &7541874119786087352
 Animator:
   serializedVersion: 7

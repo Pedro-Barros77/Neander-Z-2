@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 4968487713976839952}
   - component: {fileID: 3605140318606867622}
   - component: {fileID: 18475623067901836}
-  - component: {fileID: 8208651349165789537}
   m_Layer: 7
   m_Name: Z_Robert
   m_TagString: Enemy
@@ -343,58 +342,6 @@ MonoBehaviour:
   - Audio: {fileID: 8300000, guid: 3ba1f0e4fd1d5db409ee3eac08fb0abf, type: 3}
     Volume: 1
     Pitch: 1
---- !u!114 &8208651349165789537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 700620354868479042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_Priority: 2
-  m_ComponentVersion: 5
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.6684499, y: -0.69540375, z: 0}
-  - {x: -1.026957, y: 0.5023614, z: 0}
-  - {x: 0.41565633, y: 0.548324, z: 0}
-  - {x: 0.5857179, y: -0.7, z: 0}
-  m_ShapePathHash: -1287385339
-  m_InstanceId: 166792
-  m_ShadowShape2DComponent: {fileID: 0}
-  m_ShadowShape2DProvider:
-    rid: -2
-  m_ShadowCastingSource: 1
-  m_ShadowMesh:
-    m_Mesh: {fileID: 0}
-    m_LocalBounds:
-      m_Center: {x: -0.22061956, y: -0.07583803, z: 0}
-      m_Extent: {x: 0.8063375, y: 0.62416196, z: 0}
-    m_EdgeProcessing: 1
-    m_TrimEdge: 0
-    m_FlipX: 0
-    m_FlipY: 0
-    m_InitialTrim: 0
-  m_CastingOption: 1
-  m_PreviousTrimEdge: 0
-  m_PreviousEdgeProcessing: 1
-  m_PreviousShadowCastingSource: 1
-  m_PreviousShadowShape2DSource: {fileID: 0}
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
 --- !u!1 &1380048255544646724
 GameObject:
   m_ObjectHideFlags: 0
