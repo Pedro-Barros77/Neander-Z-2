@@ -148,7 +148,7 @@ public class Wave : MonoBehaviour
     /// </summary>
     private IEnumerator EnemiesSpawner()
     {
-        if(Data.IsBossWave)
+        if (Data.IsBossWave)
             MenuController.Instance.CanPause = false;
 
         if (!CanSpawn)
@@ -272,10 +272,18 @@ public class Wave : MonoBehaviour
         }
 
         BaseEnemy enemy;
+        bool forceSpawnInsideMap = false;
+        bool hideFromCamera = true;
+        if (group.EnemyType == EnemyTypes.Z_Rootten)
+        {
+            forceSpawnInsideMap = true;
+            hideFromCamera = false;
+        }
+
         if (group == BossGroup)
             enemy = SpawnEnemy(group.EnemyType, new Vector3(GetRandomXPosition(true, true), FloorHeight, 0), EnemiesContainer);
         else
-            enemy = SpawnEnemy(group.EnemyType, new Vector3(GetRandomXPosition(), FloorHeight, 0), EnemiesContainer);
+            enemy = SpawnEnemy(group.EnemyType, new Vector3(GetRandomXPosition(hideFromCamera, forceSpawnInsideMap), FloorHeight, 0), EnemiesContainer);
 
         SetEnemyValuesAfterStartup(enemy, group);
 
@@ -296,23 +304,23 @@ public class Wave : MonoBehaviour
 
         enemy.OnStartFinished += () => enemy.SetRandomValues(health, speed, damage, killscore, enemy, group == BossGroup);
 
-        if(enemy is Ronald ronald)
+        if (enemy is Ronald ronald)
         {
             ronald.RonaldoSpawnChance = group.RonaldSpawnChance;
         }
 
-        if(enemy is Raimundo raimundo)
+        if (enemy is Raimundo raimundo)
         {
             raimundo.HelmetHealth = group.RaimundoHelmetHealth;
         }
 
-        if(enemy is Raven raven)
+        if (enemy is Raven raven)
         {
             raven.AttackChance = group.RavenAttackChance;
             raven.AttackAttemptDelayMs = group.RavenAttackAttemptDelayMs;
-        } 
+        }
 
-        if(enemy is Rute rute)
+        if (enemy is Rute rute)
         {
             rute.BurningEffectDurationMs = group.RuteBurningEffectDurationMs;
             rute.BurningEffectTickIntervalMs = group.RuteBurningEffectTickIntervalMs;

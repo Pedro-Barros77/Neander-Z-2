@@ -378,10 +378,9 @@ public abstract class BaseEnemy : MonoBehaviour, IPlayerTarget
         SpriteRenderer.material.SetColor("_Color", color);
     }
 
-    protected virtual void OnDeathEnd()
-    {
+    protected virtual void OnSpawnEnd() { }
 
-    }
+    protected virtual void OnDeathEnd() { }
 
     protected float DistanceFrom(Transform target) => Mathf.Abs(target.position.x - transform.position.x);
     protected float DistanceFrom(IEnemyTarget target) => DistanceFrom(target.transform);

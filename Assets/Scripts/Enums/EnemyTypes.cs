@@ -39,4 +39,8 @@ public enum EnemyTypes
     /// Um rato infectado. Pequeno e fraco, mas muito rápido e irritante.
     /// </sumary>
     Z_Rat,
+    /// <summary>
+    /// Um zumbi que sai cavando da terra. Imóvel, alvo fácil, mas pode te agarrar se você chegar muito perto!
+    /// </summary>
+    Z_Rootten,
 }

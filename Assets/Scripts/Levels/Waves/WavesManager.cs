@@ -79,6 +79,8 @@ public class WavesManager : MonoBehaviour
                 CurrentWave.CenterEnemies();
             if (Constants.GetActionDown(InputActions.DEBUG_SpawnRute))
                 SpawnEnemyTest(EnemyTypes.Z_Rute);
+            if (Constants.GetActionDown(InputActions.DEBUG_SpawnRootten))
+                SpawnEnemyTest(EnemyTypes.Z_Rootten);
         }
 
         WaveEnemiesCountText.text = $"{Mathf.Clamp(CurrentWave.SpawnCount - CurrentWave.InfiniteEnemiesKilled - CurrentWave.EnemiesAlive.Count, 0, int.MaxValue)}/{(CurrentWave.Data.IsBossWave ? "∞" : CurrentWave.TotalEnemiesCount)}";
@@ -177,6 +179,6 @@ public class WavesManager : MonoBehaviour
 
     void SpawnEnemyTest(EnemyTypes type)
     {
-        BaseEnemy enemy = CurrentWave.SpawnEnemy(type, new Vector3(CurrentWave.GetRandomXPosition(), CurrentWave.FloorHeight, 0), CurrentWave.EnemiesContainer);
+        BaseEnemy enemy = CurrentWave.SpawnEnemy(type, new Vector3(CurrentWave.GetRandomXPosition(false, true), CurrentWave.FloorHeight, 0), CurrentWave.EnemiesContainer);
     }
 }

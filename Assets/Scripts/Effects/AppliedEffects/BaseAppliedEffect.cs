@@ -79,6 +79,10 @@ public class BaseAppliedEffect : MonoBehaviour
             OnTimeOut();
     }
 
+    protected virtual void FixedUpdate()
+    {
+    }
+
     /// <summary>
     /// Define os valores de duração e intervalo de tick do efeito, reinicia o temporizador.
     /// </summary>

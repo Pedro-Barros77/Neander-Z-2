@@ -35,6 +35,7 @@ public enum InputActions
     DEBUG_SpawnRUI = 110,
     DEBUG_SpawnRute = 111,
     DEBUG_SpawnRat = 112,
+    DEBUG_SpawnRootten = 113,
 
 
     DEBUG_KillAllEnemiesAlive = 200,

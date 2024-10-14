@@ -13,7 +13,7 @@ public class KeybindConfig : AutoRevertSO
         Inputs = new()
         {
             MoveLeft, MoveRight, Jump, Crouch, Sprint, Shoot, ThrowGrenade, TacticalAbility, Reload, PauseContinueGame, SwitchWeapon, EquipPrimaryWeapon, EquipSecondaryWeapon, BuyMaxStoreItems, SelectSupportEquipment, SelectDeployableEquipment, Interact,
-            DEBUG_IncreaseHealth, DEBUG_DecreaseHealth, DEBUG_IncreaseMoney, DEBUG_DecreaseMoney, DEBUG_SpawnRoger, DEBUG_SpawnRonald, DEBUG_SpawnRonaldo, DEBUG_SpawnRaven, DEBUG_SpawnRobert, DEBUG_SpawnRaimundo, DEBUG_SpawnRUI, DEBUG_SpawnRute, DEBUG_SpawnRat, DEBUG_KillAllEnemiesAlive, DEBUG_EndWave, DEBUG_CenterEnemies, DEBUG_RefillAllAmmo
+            DEBUG_IncreaseHealth, DEBUG_DecreaseHealth, DEBUG_IncreaseMoney, DEBUG_DecreaseMoney, DEBUG_SpawnRoger, DEBUG_SpawnRonald, DEBUG_SpawnRonaldo, DEBUG_SpawnRaven, DEBUG_SpawnRobert, DEBUG_SpawnRaimundo, DEBUG_SpawnRUI, DEBUG_SpawnRute, DEBUG_SpawnRat, DEBUG_SpawnRootten, DEBUG_KillAllEnemiesAlive, DEBUG_EndWave, DEBUG_CenterEnemies, DEBUG_RefillAllAmmo
         };
     }
 
@@ -49,11 +49,12 @@ public class KeybindConfig : AutoRevertSO
     public List<KeybindItem> DEBUG_SpawnRaimundo;
     public List<KeybindItem> DEBUG_SpawnRUI;
     public List<KeybindItem> DEBUG_SpawnRat;
+    public List<KeybindItem> DEBUG_SpawnRute;
+    public List<KeybindItem> DEBUG_SpawnRootten;
     public List<KeybindItem> DEBUG_KillAllEnemiesAlive;
     public List<KeybindItem> DEBUG_EndWave;
     public List<KeybindItem> DEBUG_CenterEnemies;
     public List<KeybindItem> DEBUG_RefillAllAmmo;
-    public List<KeybindItem> DEBUG_SpawnRute;
     #endregion
 
     [Serializable]
