@@ -8,6 +8,10 @@ public class BaseAppliedEffect : MonoBehaviour
     /// </summary>
     public bool IsInfinite { get; protected set; }
     /// <summary>
+    /// Se definido como true, SetEffect não tem mais efeito.
+    /// </summary>
+    public bool LockReset { get; set; }
+    /// <summary>
     /// A duração total do efeito em milisegundos.
     /// </summary>
     public float DurationMs { get; protected set; }
@@ -53,11 +57,11 @@ public class BaseAppliedEffect : MonoBehaviour
     /// <summary>
     /// O dono desse efeito, se for um inimigo.
     /// </summary>
-    public IPlayerTarget EnemyOwner { get; set; }
+    public IPlayerTarget EnemyOwner { get; protected set; }
     /// <summary>
     /// O dono desse efeito, se for um player.
     /// </summary>
-    public IEnemyTarget PlayerOwner { get; set; }
+    public IEnemyTarget PlayerOwner { get; protected set; }
 
     protected virtual void Start()
     {
@@ -90,6 +94,9 @@ public class BaseAppliedEffect : MonoBehaviour
     /// <param name="tickIntervalMs"></param>
     public virtual void SetEffect(float durationMs, float tickIntervalMs, bool isInfinite = false)
     {
+        if (LockReset)
+            return;
+
         DurationMs = durationMs;
         TickIntervalMs = tickIntervalMs;
         IsInfinite = isInfinite;
@@ -108,6 +115,22 @@ public class BaseAppliedEffect : MonoBehaviour
         yield return new WaitForSeconds(StartDelayMs / 1000);
 
         StartTime = Time.time;
+    }
+
+    public virtual void SetOwner(IPlayerTarget owner)
+    {
+        if (LockReset)
+            return;
+
+        EnemyOwner = owner;
+    }
+
+    public virtual void SetOwner(IEnemyTarget owner)
+    {
+        if (LockReset)
+            return;
+
+        PlayerOwner = owner;
     }
 
     /// <summary>

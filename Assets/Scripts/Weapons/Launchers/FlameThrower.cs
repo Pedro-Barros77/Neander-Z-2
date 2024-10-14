@@ -141,7 +141,7 @@ public class FlameThrower : LauncherWeapon
                     }
 
                     if (target != null)
-                        burnFX.EnemyOwner = target;
+                        burnFX.SetOwner(target);
 
                     burnFX.SetEffect(BurningEffectDurationMs, BurningEffectTickIntervalMs);
                 }

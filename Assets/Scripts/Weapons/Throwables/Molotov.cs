@@ -151,9 +151,9 @@ public class Molotov : BaseThrowable
             }
 
             if (PlayerOwner != null)
-                burnFX.PlayerOwner = PlayerOwner;
+                burnFX.SetOwner(PlayerOwner);
             else if (EnemyOwner != null)
-                burnFX.EnemyOwner = EnemyOwner;
+                burnFX.SetOwner(EnemyOwner);
 
             burnFX.SetEffect(EffectDecoupledDurationMs, EffectTickIntervalMs);
         }
@@ -168,9 +168,9 @@ public class Molotov : BaseThrowable
             }
 
             if (PlayerOwner != null)
-                burnFX.PlayerOwner = PlayerOwner;
+                burnFX.SetOwner(PlayerOwner);
             else if (EnemyOwner != null)
-                burnFX.EnemyOwner = EnemyOwner;
+                burnFX.SetOwner(EnemyOwner);
 
             burnFX.SetEffect(EffectDecoupledDurationMs, EffectTickIntervalMs);
         }

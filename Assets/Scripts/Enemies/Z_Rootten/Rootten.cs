@@ -158,7 +158,7 @@ public class Rootten : BaseEnemy, IBurnable
         magnetEffect.MagnetStrength = new(500f, 200f);
         magnetEffect.MaxDistance = 2f;
 
-        magnetEffect.EnemyOwner = this;
+        magnetEffect.SetOwner(this);
         magnetEffect.OriginPoint = GrabCenter;
 
         magnetEffectObj.transform.SetParent(target.transform);

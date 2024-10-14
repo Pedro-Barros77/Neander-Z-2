@@ -324,7 +324,6 @@ public class Wave : MonoBehaviour
         {
             rute.BurningEffectDurationMs = group.RuteBurningEffectDurationMs;
             rute.BurningEffectTickIntervalMs = group.RuteBurningEffectTickIntervalMs;
-            rute.SelfBurningEffectDurationMs = group.RuteSelfBurningEffectDurationMs;
             rute.SelfBurningEffectTickIntervalMs = group.RuteSelfBurningEffectTickIntervalMs;
             rute.SelfDamage = group.RuteSelfDamage;
             rute.FloorFlameDamage = group.RuteFloorFlameDamage;

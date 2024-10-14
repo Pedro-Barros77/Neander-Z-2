@@ -6,7 +6,6 @@ public class Rute : BaseEnemy, IKnockBackable, IBurnable
     private bool isMovingLeft = true;
     public float BurningEffectDurationMs { get; set; } = 3000f;
     public float BurningEffectTickIntervalMs { get; set; } = 500f;
-    public float SelfBurningEffectDurationMs { get; set; } = 99000f;
     public float SelfBurningEffectTickIntervalMs { get; set; } = 500f;
     public float SelfDamage { get; set; } = 3f;
     public float FloorFlameDamage { get; set; } = 3f;
@@ -119,7 +118,7 @@ public class Rute : BaseEnemy, IKnockBackable, IBurnable
         }
 
         if (target != null)
-            burnFX.PlayerOwner = target;
+            burnFX.SetOwner(target);
 
         AttackHitSounds.PlayRandomIfAny(AudioSource, AudioTypes.Enemies);
         burnFX.SetEffect(BurningEffectDurationMs, BurningEffectTickIntervalMs);
@@ -145,8 +144,9 @@ public class Rute : BaseEnemy, IKnockBackable, IBurnable
                 burnFX = burnEffectObj.GetComponent<BurningEffect>();
             }
 
-            burnFX.EnemyOwner = this;
-            burnFX.SetEffect(SelfBurningEffectDurationMs, SelfBurningEffectTickIntervalMs);
+            burnFX.SetOwner(this);
+            burnFX.SetEffect(1000, SelfBurningEffectTickIntervalMs, true);
+            burnFX.LockReset = true;
         }
     }
 
