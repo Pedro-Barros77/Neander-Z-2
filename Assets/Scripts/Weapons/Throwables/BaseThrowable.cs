@@ -70,6 +70,7 @@ public abstract class BaseThrowable : MonoBehaviour
     /// O quanto de dano irá ignorar a armadura do alvo. Ex: 100 de dano e 0.5 de ArmorPiercingPercentage, 50 de dano irá direto para o alvo.
     /// </summary>
     public float ArmorPiercingPercentage => Data.ArmorPiercingPercentage;
+    public bool Placeable => Data.Placeable;
 
     #endregion
 
@@ -91,6 +92,10 @@ public abstract class BaseThrowable : MonoBehaviour
     /// Se o item foi arremessado.
     /// </summary>
     public bool IsThrown { get; protected set; }
+    /// <summary>
+    /// Se o item está ativado e pronto para detonar.
+    /// </summary>
+    public bool IsActivated { get; protected set; }
     /// <summary>
     /// Se o item foi detonado.
     /// </summary>
@@ -128,6 +133,10 @@ public abstract class BaseThrowable : MonoBehaviour
     /// </summary>
     [HideInInspector]
     public Rigidbody2D Rigidbody;
+    /// <summary>
+    /// Container para spawnar efeitos como explosões, fogo, etc.
+    /// </summary>
+    protected Transform EffectsContainer { get; set; }
 
     #endregion
 
@@ -187,6 +196,7 @@ public abstract class BaseThrowable : MonoBehaviour
         ProjectilesContainer = GameObject.Find("ProjectilesContainer").transform;
         Collider = GetComponent<Collider2D>();
         TargetLayerMask = LayerMask.GetMask("Enemy", "Environment", "PlayerEnvironment");
+        EffectsContainer = GameObject.Find("EffectsContainer").transform;
     }
 
     protected virtual void Start()
@@ -223,6 +233,9 @@ public abstract class BaseThrowable : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        if(!IsActivated)
+            return;
+
         if (Collider.isTrigger)
             HandleCollision(collision);
     }
@@ -313,13 +326,15 @@ public abstract class BaseThrowable : MonoBehaviour
     /// </summary>
     protected virtual void Detonate()
     {
+        if(!IsActivated)
+            return;
+
         HasDetonated = true;
 
         if (IsCooking)
             PlayerWeaponController.OnThrowEnd();
 
         DetonateSounds.PlayRandomIfAny(AudioSource, AudioTypes.Player);
-
         KillSelf();
     }
 
@@ -329,6 +344,7 @@ public abstract class BaseThrowable : MonoBehaviour
     public virtual void Throw()
     {
         IsThrown = true;
+        IsActivated = true;
         throwTime = Time.time;
         ThrowPosition = transform.position;
         IsCooking = false;
@@ -383,12 +399,12 @@ public abstract class BaseThrowable : MonoBehaviour
             if (aimingLeft)
             {
                 transform.localPosition = new Vector3(transform.localPosition.x, absoluteYPosition, transform.localPosition.z);
-                transform.localScale = new Vector3(PlayerFlipDir, -1, 1);
+                transform.localScale = new Vector3(1, -1, 1);
             }
             else
             {
                 transform.localPosition = new Vector3(transform.localPosition.x, -absoluteYPosition, transform.localPosition.z);
-                transform.localScale = new Vector3(PlayerFlipDir, 1, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             }
         }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Rui : BaseEnemy, IBurnable
 {
+    public bool PlayEntranceAnimation = true;
     private float knockBackForce = 1500f;
     private float bumpDamage = 10f;
     private float bumpDistance = 1.5f;
@@ -82,7 +83,13 @@ public class Rui : BaseEnemy, IBurnable
         Target = GetClosestTarget();
 
         if (!hasSpawned && !isEntering && (isIdle || isRunning) && !isBumping)
-            StartEntranceAnimation();
+        {
+            if (PlayEntranceAnimation)
+                StartEntranceAnimation();
+            else
+                OnEntranceEnd();
+        }
+
 
         if (isWalking)
         {

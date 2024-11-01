@@ -266,10 +266,6 @@ public class PlayerMovement : MonoBehaviour
         movementDir = Player.RigidBody.velocity.x;
         isMoving = Mathf.Abs(movementDir) > 0.1;
 
-        Player.CurrentWeapon.PlayerFlipDir = transform.parent.localScale.x;
-        if (Player.Backpack.EquippedSupportEquipment != null)
-            Player.Backpack.SupportEquipmentInstance.PlayerFlipDir = transform.parent.localScale.x;
-
         if (IsCrouching)
         {
             if (Player.WeaponController.IsAimingLeft)
@@ -284,6 +280,8 @@ public class PlayerMovement : MonoBehaviour
             else if (movementDir > 0 || isPressingRight)
                 FlipPlayer(false);
         }
+
+        SetFlipDir();
 
         if ((isPressingRight ^ isPressingLeft) && !isTurning && !isRunning && !isRolling && !isJumpingSideways && !IsCrouching)
         {
@@ -327,15 +325,19 @@ public class PlayerMovement : MonoBehaviour
     private void FlipPlayer(bool isLeft)
     {
         if (isLeft)
-        {
-            Player.CurrentWeapon.PlayerFlipDir = 1;
             transform.parent.localScale = new Vector3(1, 1, 1);
-        }
         else
-        {
-            Player.CurrentWeapon.PlayerFlipDir = -1;
             transform.parent.localScale = new Vector3(-1, 1, 1);
-        }
+    }
+
+    private void SetFlipDir()
+    {
+        float dir = transform.parent.localScale.x;
+        Player.CurrentWeapon.PlayerFlipDir = dir;
+        if (Player.Backpack.EquippedSupportEquipment != null)
+            Player.Backpack.SupportEquipmentInstance.PlayerFlipDir = dir;
+        if(Player.Backpack.ThrowingThrowable != null)
+            Player.Backpack.ThrowingThrowable.PlayerFlipDir = dir;
     }
 
 

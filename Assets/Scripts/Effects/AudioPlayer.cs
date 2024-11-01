@@ -19,6 +19,7 @@ public class AudioPlayer : MonoBehaviour
     /// </summary>
     public void PlayRandomAudio()
     {
+        AudioSource ??= GetComponent<AudioSource>();
         AudioClips.PlayRandomIfAny(AudioSource, AudioType);
     }
 

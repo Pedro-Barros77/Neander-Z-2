@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe904436d21aa747bbad0080d06ae06, type: 3}
+  m_Name: Claymore
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: eef515eb04ac2f24cbd02b72bd44cfd7, type: 3}
+  Title: M18A1 Claymore
+  Description: This directional anti-personnel mine delivers a devastating frontal
+    blast of steel balls, designed to shred through hordes of the undead. The M18A1
+    Claymore ensures that any zombie walking into its kill zone will be obliterated.
+  Price: 100
+  Discount: 0
+  Amount: 1
+  IconScale: 0.7
+  PreviewIconScale: 1
+  InventorySlotIconScale: 0.8
+  IsSellable: 1
+  Tags: 11000000090000000d000000
+  IconTitleFontSizeMultiplier: 1
+  ThrowableData: {fileID: 11400000, guid: 427db950ed1a6954ab1ca6d9b13b92b5, type: 2}

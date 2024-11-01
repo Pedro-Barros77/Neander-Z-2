@@ -40,10 +40,11 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField]
     float ThrowTrajectoryStepDistance;
 
-    Transform handTransform, throwingContainerTransform, throwableSpawnPointTransform;
+    Transform handTransform, throwingContainerTransform, throwableSpawnPointTransform,
+                             placingContainerTransform, placeableSpawnPointTransform;
     float? startSwitchTime;
     float startThrowingContainerScale;
-    SpriteRenderer handPalmSprite, fingersSprite;
+    SpriteRenderer handPalmSprite, fingersSprite, placeHand1Sprite, placeHand2Sprite;
     protected LineRenderer LineRenderer;
     Animator playerAnimator;
     Transform floor;
@@ -55,14 +56,22 @@ public class PlayerWeaponController : MonoBehaviour
 
     private void Awake()
     {
+        Player = transform.parent.GetComponent<Player>();
         handTransform = transform.Find("Hand");
+
         throwingContainerTransform = handTransform.Find("ThrowingContainer");
         var palm = throwingContainerTransform.Find("Palm");
         var fingers = throwingContainerTransform.Find("Fingers");
         throwableSpawnPointTransform = palm.Find("ThrowableSpawnPoint");
         handPalmSprite = palm.GetComponent<SpriteRenderer>();
         fingersSprite = fingers.GetComponent<SpriteRenderer>();
-        Player = transform.parent.GetComponent<Player>();
+
+        placingContainerTransform = handTransform.Find("PlacingContainer");
+        var hand1 = placingContainerTransform.Find("Hand1");
+        var hand2 = placingContainerTransform.Find("Hand2");
+        placeableSpawnPointTransform = hand2.Find("PlaceableSpawnPoint");
+        placeHand1Sprite = hand1.GetComponent<SpriteRenderer>();
+        placeHand2Sprite = hand2.GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -119,7 +128,6 @@ public class PlayerWeaponController : MonoBehaviour
             WeaponSwitchAnimation();
         else
         {
-
             if (MenuController.Instance.IsMobileInput)
             {
                 if (IsThrowingItem)
@@ -161,9 +169,12 @@ public class PlayerWeaponController : MonoBehaviour
         blinkingReloadText.transform.position = Player.transform.position + new Vector3(0, Player.Bounds.size.y * 0.7f);
 
         throwingContainerTransform.localScale = new Vector3(Player.CurrentWeapon.PlayerFlipDir * startThrowingContainerScale, startThrowingContainerScale, startThrowingContainerScale);
+        placingContainerTransform.localScale = new Vector3(Player.CurrentWeapon.PlayerFlipDir * startThrowingContainerScale, (IsAimingLeft ? -1 : 1) * startThrowingContainerScale, startThrowingContainerScale);
 
         handPalmSprite.flipY = IsAimingLeft;
         fingersSprite.flipY = IsAimingLeft;
+        if (Player.Backpack.ThrowingThrowable != null && Player.Backpack.ThrowingThrowable.Placeable)
+            placeableSpawnPointTransform.transform.localScale = placeableSpawnPointTransform.transform.localScale.WithY(IsAimingLeft ? -1 : 1);
 
         if (Player?.Data?.SkinData != null)
         {
@@ -186,8 +197,6 @@ public class PlayerWeaponController : MonoBehaviour
         IsThrowingItem = true;
         LineRenderer.enabled = true;
 
-        playerAnimator.SetTrigger("Throw");
-        playerAnimator.SetFloat("ThrowSpeedMultiplier", 0);
         Player.CurrentWeapon.IsActive = false;
 
         Player.Backpack.EquippedThrowable.Count--;
@@ -198,6 +207,16 @@ public class PlayerWeaponController : MonoBehaviour
         rb.isKinematic = true;
         collider.enabled = false;
         Player.Backpack.ThrowingThrowable = throwable.GetComponent<BaseThrowable>();
+
+        if (Player.Backpack.ThrowingThrowable.Placeable)
+        {
+            playerAnimator.SetTrigger("Place");
+            throwable.transform.SetParent(placeableSpawnPointTransform);
+            throwable.transform.localPosition = Vector3.zero;
+        }
+        else
+            playerAnimator.SetTrigger("Throw");
+        playerAnimator.SetFloat("ThrowSpeedMultiplier", 0);
     }
 
     /// <summary>
@@ -209,7 +228,12 @@ public class PlayerWeaponController : MonoBehaviour
             return;
 
         lastThrowTrajectoryForce = Player.Backpack.ThrowingThrowable.transform.right.normalized * Player.Backpack.ThrowingThrowable.ThrowForce;
-        lastThrowStartPoint = throwableSpawnPointTransform.position;
+
+        if (Player.Backpack.ThrowingThrowable.Placeable)
+            lastThrowStartPoint = placeableSpawnPointTransform.position;
+        else
+            lastThrowStartPoint = throwableSpawnPointTransform.position;
+
         LineRenderer.colorGradient = ThrowableLineRendererColor;
 
         if (Player.Backpack.ThrowingThrowable.StartFuseOnCook)
@@ -249,12 +273,21 @@ public class PlayerWeaponController : MonoBehaviour
         itemThrown = true;
 
         playerAnimator.SetFloat("ThrowSpeedMultiplier", 1);
-        var throwableObj = throwableSpawnPointTransform.GetChild(0);
+        Transform throwableObj;
+        if (Player.Backpack.ThrowingThrowable.Placeable)
+        {
+            throwableObj = placeableSpawnPointTransform.GetChild(0);
+            LineRenderer.enabled = false;
+        }
+        else
+            throwableObj = throwableSpawnPointTransform.GetChild(0);
         var rb = throwableObj.GetComponent<Rigidbody2D>();
         var collider = throwableObj.GetComponent<Collider2D>();
         var throwable = throwableObj.GetComponent<BaseThrowable>();
         rb.isKinematic = false;
         collider.enabled = true;
+        if (throwable.Placeable)
+            placeableSpawnPointTransform.localScale = placeableSpawnPointTransform.localScale.WithY(Mathf.Abs(placeableSpawnPointTransform.localScale.y));
         throwable.Throw();
     }
 
@@ -500,6 +533,25 @@ public class PlayerWeaponController : MonoBehaviour
         Vector3 direction = point - transform.position;
 
         AimAngleDegrees = Mathf.Atan2(direction.y, direction.x).RadToDeg();
+
+        if (IsThrowingItem && Player.Backpack.ThrowingThrowable.Placeable)
+        {
+            float lockedRange = 20;
+
+            var distanceToZero = Mathf.Abs(AimAngleDegrees - 0);
+            var distanceTo360 = Mathf.Abs(AimAngleDegrees - 360);
+            var distanceTo180 = Mathf.Abs(AimAngleDegrees - 180);
+            if (distanceToZero < distanceTo180 || distanceTo360 < distanceTo180)
+            {
+                if (distanceToZero < distanceTo360)
+                    AimAngleDegrees = Mathf.Clamp(AimAngleDegrees, 0, lockedRange);
+                else
+                    AimAngleDegrees = Mathf.Clamp(AimAngleDegrees, 360 - lockedRange, 360);
+            }
+            else
+                AimAngleDegrees = Mathf.Clamp(AimAngleDegrees, 180 - lockedRange, 180 + lockedRange);
+        }
+
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, AimAngleDegrees));
 
         SetHandAimOffset();
@@ -514,5 +566,6 @@ public class PlayerWeaponController : MonoBehaviour
         Vector3 offset = new Vector3(Mathf.Cos(AimAngleDegrees * Mathf.Deg2Rad), Mathf.Sin(AimAngleDegrees * Mathf.Deg2Rad), 0) * orbitRadius;
         handTransform.position = transform.position + offset;
         throwingContainerTransform.position = transform.position + offset;
+        placingContainerTransform.position = transform.position + offset + new Vector3(0, -0.4f);
     }
 }

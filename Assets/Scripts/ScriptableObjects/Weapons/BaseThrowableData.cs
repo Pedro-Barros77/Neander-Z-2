@@ -22,4 +22,5 @@ public class BaseThrowableData : AutoRevertSO
     public float EffectTickIntervalMs;
     public float EffectSpriteSize = 1;
     public float ArmorPiercingPercentage;
+    public bool Placeable;
 }

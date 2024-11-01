@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   MaxCount: 5
-  Damage: 80
+  Damage: 100
   MinDamage: 50
   HitDamage: 0
   HeadshotMultiplier: 2
@@ -30,3 +30,4 @@ MonoBehaviour:
   EffectTickIntervalMs: 0
   EffectSpriteSize: 2
   ArmorPiercingPercentage: 0
+  Placeable: 0

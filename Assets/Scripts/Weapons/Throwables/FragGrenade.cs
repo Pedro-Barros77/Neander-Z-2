@@ -38,7 +38,7 @@ public class FragGrenade : BaseThrowable
     {
         var hitPosition = transform.position;
 
-        var explosion = Instantiate(ExplosionPrefab, hitPosition, Quaternion.identity);
+        var explosion = Instantiate(ExplosionPrefab, hitPosition, Quaternion.identity, EffectsContainer);
         explosion.transform.localScale = Vector3.one * Data.EffectSpriteSize;
 
         var hitObjects = Physics2D.OverlapCircleAll(hitPosition, EffectMinRange, TargetLayerMask);

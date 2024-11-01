@@ -31,7 +31,7 @@ public class SkinManager : MonoBehaviour
     [SerializeField]
     bool isHeadOnly;
 
-    SpriteRenderer HatSpriteRenderer, HairSpriteRenderer, HeadSpriteRenderer, TorsoSpriteRenderer, ShirtSpriteRenderer, LegsSpriteRenderer, PantsSpriteRenderer, ShoesSpriteRenderer, HeadColorSpriteRenderer, EyesColorSpriteRenderer, TorsoColorSpriteRenderer, LegColorSpriteRenderer, HandPalmSpriteRenderer, HandFingersSpriteRenderer;
+    SpriteRenderer HatSpriteRenderer, HairSpriteRenderer, HeadSpriteRenderer, TorsoSpriteRenderer, ShirtSpriteRenderer, LegsSpriteRenderer, PantsSpriteRenderer, ShoesSpriteRenderer, HeadColorSpriteRenderer, EyesColorSpriteRenderer, TorsoColorSpriteRenderer, LegColorSpriteRenderer, HandPalmSpriteRenderer, HandFingersSpriteRenderer, PlacingHand1SpriteRenderer, PlacingHand2SpriteRenderer;
     Image HatImage, HairImage, HeadImage, HeadColorImage, EyeImage, TorsoImage, ShirtImage, LegsImage, PantsImage, ShoesImage;
 
     Player Player;
@@ -77,6 +77,10 @@ public class SkinManager : MonoBehaviour
                 var throwingContainer = weaponContainer.Find("Hand").Find("ThrowingContainer");
                 HandPalmSpriteRenderer = throwingContainer.Find("Palm").GetComponent<SpriteRenderer>();
                 HandFingersSpriteRenderer = throwingContainer.Find("Fingers").GetComponent<SpriteRenderer>();
+
+                var placingContainer = weaponContainer.Find("Hand").Find("PlacingContainer");
+                PlacingHand1SpriteRenderer = placingContainer.Find("Hand1").GetComponent<SpriteRenderer>();
+                PlacingHand2SpriteRenderer = placingContainer.Find("Hand2").GetComponent<SpriteRenderer>();
             }
         }
 
@@ -205,6 +209,11 @@ public class SkinManager : MonoBehaviour
             {
                 HandPalmSpriteRenderer.color = CurrentSkinColor;
                 HandFingersSpriteRenderer.color = CurrentSkinColor;
+            }
+            if(PlacingHand1SpriteRenderer != null)
+            {
+                PlacingHand1SpriteRenderer.color = CurrentSkinColor;
+                PlacingHand2SpriteRenderer.color = CurrentSkinColor;
             }
         }
     }

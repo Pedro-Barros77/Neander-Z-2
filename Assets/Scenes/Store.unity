@@ -29852,7 +29852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 514492495605884282, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.41642493
+      value: 0.41655338
       objectReference: {fileID: 0}
     - target: {fileID: 1106539818527585283, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
       propertyPath: m_Pivot.x
@@ -32554,7 +32554,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -145.39001, y: -28.5}
+  m_AnchoredPosition: {x: -145.38998, y: -28.5}
   m_SizeDelta: {x: -320.78, y: -87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1006842146
@@ -35627,7 +35627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -165.14832, y: -17.82373}
+  m_AnchoredPosition: {x: -165.14828, y: -17.82373}
   m_SizeDelta: {x: -281.2622, y: 48.35251}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1097078923
@@ -61058,15 +61058,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1633642839158143088, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Pivot.x
@@ -61158,12 +61158,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7962752121420682399, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Name
-      value: Locked
+      value: Claymore
       objectReference: {fileID: 0}
     - target: {fileID: 7977929826255435187, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: Data
       value: 
-      objectReference: {fileID: 11400000, guid: 1a9b9a00a07430747a7dc914c327b6a9, type: 2}
+      objectReference: {fileID: 11400000, guid: 727be7c2509abe04eaef9b58eeeba345, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

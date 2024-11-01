@@ -101,6 +101,8 @@ public class Wave : MonoBehaviour
     /// <param name="headshotKill">Se a morte foi feita com um tiro na cabeça.</param>
     public void HandleScore(BaseEnemy enemy, IEnemyTarget attacker, bool headshotKill = false)
     {
+        if (Stats == null)
+            return;
         float newScore = enemy.KillScore;
         if (headshotKill)
             newScore *= enemy.HeadshotScoreMultiplier;

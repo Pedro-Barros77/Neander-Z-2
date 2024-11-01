@@ -180,5 +180,11 @@ public class WavesManager : MonoBehaviour
     void SpawnEnemyTest(EnemyTypes type)
     {
         BaseEnemy enemy = CurrentWave.SpawnEnemy(type, new Vector3(CurrentWave.GetRandomXPosition(false, true), CurrentWave.FloorHeight, 0), CurrentWave.EnemiesContainer);
+        switch (type)
+        {
+            case EnemyTypes.Z_Rui:
+                (enemy as Rui).PlayEntranceAnimation = false;
+                break;
+        }
     }
 }
