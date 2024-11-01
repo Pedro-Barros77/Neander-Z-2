@@ -630,6 +630,14 @@ public static class SavesManager
 
             launcherData.ExplosionMinDamageRadius += radiusAverageDifference * minRadiusWeight;
             launcherData.ExplosionMaxDamageRadius += radiusAverageDifference * maxRadiusWeight;
+
+            if(weaponData.Type == WeaponTypes.FlameThrower)
+            {
+                float rangeVal = (dispersionUpgradeValue / 5) * 2;
+                launcherData.BulletMaxRange += rangeVal;
+                launcherData.MinDamageRange += rangeVal;
+                launcherData.MaxDamageRange += rangeVal;
+            }
         }
 
         weaponData.MagazineBullets = weaponSelection.MagazineBullets;

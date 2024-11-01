@@ -30,6 +30,8 @@ MonoBehaviour:
   MagazineBullets: 1
   ReloadTimeMs: 2500
   SwitchTimeMs: 500
+  GravityScale: 0
+  FlyInfinitely: 1
   Upgrades:
   - Attribute: 0
     UpgradeSteps:

@@ -23,13 +23,15 @@ MonoBehaviour:
   HeadshotMultiplier: 1
   FireRate: 6
   BulletSpeed: 15
-  MaxDamageRange: 0
-  MinDamageRange: 0
-  BulletMaxRange: 15
+  MaxDamageRange: 5
+  MinDamageRange: 5
+  BulletMaxRange: 5
   MagazineSize: 300
   MagazineBullets: 300
   ReloadTimeMs: 7000
   SwitchTimeMs: 800
+  GravityScale: 0
+  FlyInfinitely: 1
   Upgrades:
   - Attribute: 0
     UpgradeSteps:
@@ -41,8 +43,6 @@ MonoBehaviour:
       Value: 2.5
     - Price: 400
       Value: 2.5
-  - Attribute: 1
-    UpgradeSteps: []
   - Attribute: 2
     UpgradeSteps:
     - Price: 240
@@ -53,12 +53,16 @@ MonoBehaviour:
       Value: 1
     - Price: 320
       Value: 1
-  - Attribute: 3
-    UpgradeSteps: []
-  - Attribute: 4
-    UpgradeSteps: []
   - Attribute: 8
-    UpgradeSteps: []
-  ExplosionMaxDamageRadius: 1.5
-  ExplosionMinDamageRadius: 3
-  ExplosionSpriteSize: 3
+    UpgradeSteps:
+    - Price: 350
+      Value: 5
+    - Price: 400
+      Value: 5
+    - Price: 445
+      Value: 5
+    - Price: 490
+      Value: 5
+  ExplosionMaxDamageRadius: 20
+  ExplosionMinDamageRadius: 20
+  ExplosionSpriteSize: 0

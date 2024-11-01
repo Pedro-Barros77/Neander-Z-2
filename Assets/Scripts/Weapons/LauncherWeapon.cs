@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LauncherWeapon : BaseWeapon
 {
+    public float ExplosionMaxDamageRadius => (Data as LauncherData).ExplosionMaxDamageRadius;
+    public float ExplosionMinDamageRadius => (Data as LauncherData).ExplosionMinDamageRadius;
+
     public override IEnumerable<GameObject> Shoot()
     {
         var bulletInstances = base.Shoot();

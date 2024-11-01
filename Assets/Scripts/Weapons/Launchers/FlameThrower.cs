@@ -36,6 +36,8 @@ public class FlameThrower : LauncherWeapon
         particles = new ParticleSystem.Particle[FlameThrowerFlames.main.maxParticles];
         if (IsActive)
             SmallFire.Play();
+
+        SetCustomUpgrades();
     }
 
     protected override void Update()
@@ -65,6 +67,15 @@ public class FlameThrower : LauncherWeapon
     {
         base.FixedUpdate();
         CheckCollision();
+    }
+
+    private void SetCustomUpgrades()
+    {
+        FlameThrowerFlames.transform.localScale = Vector3.one * ((ExplosionMaxDamageRadius + ExplosionMinDamageRadius) / 570);
+        FlameThrowerFlames.transform.GetChild(0).localScale = FlameThrowerFlames.transform.localScale;
+        var shape = FlameThrowerFlames.shape;
+        shape.angle = (ExplosionMaxDamageRadius + ExplosionMinDamageRadius) / 8;
+        shape.radius = (ExplosionMaxDamageRadius + ExplosionMinDamageRadius) / 200;
     }
 
     /// <summary>
@@ -101,7 +112,6 @@ public class FlameThrower : LauncherWeapon
         for (int i = 0; i < particlesCount; i++)
         {
             ParticleSystem.Particle particle = particles[i];
-            //Debug.DrawLine(particle.position, Vector3.zero, Color.blue, 1f);
             particles = particles.Where(x => Vector3.Distance(particle.position, x.position) > 0.7f).ToArray();
             particlesCount = particles.Length;
             Vector3 particlePosition = particle.position;
@@ -110,10 +120,10 @@ public class FlameThrower : LauncherWeapon
 
             if (colliders.Any())
                 hitAnyEnemy = true;
-            //Debug.DrawLine(particlePosition, particlePosition + new Vector3(radius, 0), Color.blue, 1f);
-            //Debug.DrawLine(particlePosition, particlePosition + new Vector3(0, radius), Color.blue, 1f);
-            //Debug.DrawLine(particlePosition, particlePosition + new Vector3(-radius, 0), Color.blue, 1f);
-            //Debug.DrawLine(particlePosition, particlePosition + new Vector3(0, -radius), Color.blue, 1f);
+
+            // Para visualizar os colliders das partículas
+            //Debug.DrawCircle(particlePosition, radius, 12, Color.blue, 0.5f);
+
             foreach (Collider2D collider in colliders)
             {
                 if (!collider.CompareTag("Enemy"))

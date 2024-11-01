@@ -961,8 +961,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4718426894013016960, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718426894013016960, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
       propertyPath: TriggerModule.enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718426894013016960, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718426894013016960, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4718426894013016960, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4718426894013016960, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
       propertyPath: TriggerModule.primitives.Array.size
@@ -972,21 +988,37 @@ PrefabInstance:
       propertyPath: 'TriggerModule.primitives.Array.data[0]'
       value: 
       objectReference: {fileID: 7221830424198011403}
+    - target: {fileID: 5634273605729246641, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634273605729246641, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5634273605729246641, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.07
+      objectReference: {fileID: 0}
     - target: {fileID: 6508552456843031785, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6508552456843031785, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8624458417524533263, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 8624458417524533263, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 8624458417524533263, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 8624458417524533263, guid: 4fa6cc2c96a6abb44b053573cf51a294, type: 3}
       propertyPath: m_LocalPosition.x

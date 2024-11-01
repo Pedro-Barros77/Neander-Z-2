@@ -516,7 +516,10 @@ public class InventoryTab : MonoBehaviour
                 dispersionValue = shotgunData.PelletsDispersion.ToString();
             }
             else if (storeWeaponData.WeaponData is LauncherData launcherData)
+            {
                 dispersionValue = ((launcherData.ExplosionMinDamageRadius + launcherData.ExplosionMaxDamageRadius) / 2).ToString("N1");
+                dispersionValue = FormatDispersionText(dispersionValue);
+            }
             else
                 pelletsCount = 0;
 
@@ -897,9 +900,22 @@ public class InventoryTab : MonoBehaviour
                     }
                     else if (storeWeapon.WeaponData is LauncherData launcherData)
                     {
-                        UpdateIconStat(PreviewDispersionText,
-                            ((launcherData.ExplosionMinDamageRadius + launcherData.ExplosionMaxDamageRadius) / 2 + upgradeItem.Value).ToString("N1"),
-                            ((launcherData.ExplosionMinDamageRadius + launcherData.ExplosionMaxDamageRadius) / 2).ToString("N1"));
+                        float avg = (launcherData.ExplosionMinDamageRadius + launcherData.ExplosionMaxDamageRadius) / 2;
+                        UpdateIconStat(PreviewDispersionText, FormatDispersionText((avg + upgradeItem.Value).ToString("N1")), FormatDispersionText(avg.ToString("N1")));
+
+                        if (launcherData.Type == WeaponTypes.FlameThrower)
+                        {
+                            float rangeVal = (upgradeItem.Value / 5) * 2;
+
+                            if (hovered)
+                            {
+                                RangeBar.ModificationValue = rangeVal;
+                                RangeBar.BlinkModification = true;
+                            }
+                            else
+                                RangeBar.ModificationValue = 0;
+                            RangeBar.CalculateSections();
+                        }
                     }
                     break;
             }
@@ -1049,7 +1065,27 @@ public class InventoryTab : MonoBehaviour
 
                         launcherData.ExplosionMinDamageRadius += radiusAverageDifference * minRadiusWeight;
                         launcherData.ExplosionMaxDamageRadius += radiusAverageDifference * maxRadiusWeight;
-                        UpdateIconStat(PreviewDispersionText, targetRadiusAverage.ToString("N1"));
+                        UpdateIconStat(PreviewDispersionText, FormatDispersionText(targetRadiusAverage.ToString("N1")));
+
+                        if (launcherData.Type == WeaponTypes.FlameThrower)
+                        {
+                            float rangeVal = (upgradeItem.Value / 5) * 2;
+                            launcherData.BulletMaxRange += rangeVal;
+                            launcherData.MaxDamageRange += rangeVal;
+                            launcherData.MinDamageRange += rangeVal;
+
+                            RangeBar.AddValue(rangeVal);
+                            if (nextUpgradeItem != null)
+                            {
+                                if (nextUpgradeItem.Price > storeScreen.PlayerData.Money - upgradeItem.Price)
+                                    RangeBar.ModificationValue = 0;
+                                else
+                                    RangeBar.ModificationValue = (nextUpgradeItem.Value / 5) * 2;
+                            }
+                            else
+                                RangeBar.ModificationValue = 0;
+                            RangeBar.CalculateSections();
+                        }
                     }
                     break;
             }
@@ -1406,5 +1442,15 @@ public class InventoryTab : MonoBehaviour
         storeScreen.IsSaveDirty = true;
 
         return true;
+    }
+
+    private string FormatDispersionText(string text)
+    {
+        if (text.EndsWith(",0"))
+            text = text.Replace(",0", "");
+        if (text.EndsWith(".0"))
+            text = text.Replace(".0", "");
+
+        return text;
     }
 }

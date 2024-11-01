@@ -32554,7 +32554,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -145.38998, y: -28.5}
+  m_AnchoredPosition: {x: -145.38995, y: -28.5}
   m_SizeDelta: {x: -320.78, y: -87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1006842146
@@ -35627,7 +35627,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -165.14828, y: -17.82373}
+  m_AnchoredPosition: {x: -165.14825, y: -17.82373}
   m_SizeDelta: {x: -281.2622, y: 48.35251}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1097078923
@@ -40534,9 +40534,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2299592737002567091, guid: b283adc08fb5b814fac313f8069af0a5, type: 3}
       propertyPath: m_text
-      value: Dispersion is the angle of the projectiles coming out of shotguns, flamethrowers
-        and other multi-shot weapons. Upgrading it narrows that angle. For explosives,
-        it acts as the blast radius.
+      value: Dispersion is the angle of the projectiles coming out of shotguns and
+        other multi-shot weapons. Upgrading it narrows that angle. For explosives
+        and the flamethrowers, it acts as the area radius and upgrading it will widens
+        the angle.
       objectReference: {fileID: 0}
     - target: {fileID: 3993783163251365978, guid: b283adc08fb5b814fac313f8069af0a5, type: 3}
       propertyPath: m_Color.a
