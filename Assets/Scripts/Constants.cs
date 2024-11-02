@@ -154,6 +154,7 @@ public static class Constants
             WeaponTypes.Colt_1911 => false,
             WeaponTypes.Deagle => false,
             WeaponTypes.Beretta_93R => false,
+            WeaponTypes.M79GrenadeLauncher => false,
 
             WeaponTypes.ShortBarrel => true,
             WeaponTypes.UZI => true,
@@ -166,6 +167,7 @@ public static class Constants
             WeaponTypes.Kar98 => true,
             WeaponTypes.FlameThrower => true,
             WeaponTypes.ScarDebug => true,
+            WeaponTypes.AA12 => true,
 
             _ => false,
         };

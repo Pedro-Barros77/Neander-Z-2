@@ -477,7 +477,7 @@ public abstract class BaseWeapon : MonoBehaviour
         if (MagazineBullets <= 0)
         {
             if (!IsReloading)
-                EmptyChamberSound.PlayIfNotNull(AudioSource, AudioTypes.Player);
+                EmptyChamberSound.PlayIfNotNull(AudioSource, AudioTypes.Player, point: transform.position);
 
             return false;
         }

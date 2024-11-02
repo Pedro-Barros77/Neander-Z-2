@@ -18,7 +18,7 @@ MonoBehaviour:
   BulletType: 3
   FireMode: 5
   ReloadType: 2
-  Damage: 4.75
+  Damage: 6
   MinDamage: 1
   HeadshotMultiplier: 2
   FireRate: 1.2
@@ -30,12 +30,16 @@ MonoBehaviour:
   MagazineBullets: 7
   ReloadTimeMs: 600
   SwitchTimeMs: 450
+  GravityScale: 0
+  FlyInfinitely: 1
   Upgrades:
   - Attribute: 0
     UpgradeSteps:
-    - Price: 300
-      Value: 2.5
+    - Price: 280
+      Value: 1.5
     - Price: 320
+      Value: 2.5
+    - Price: 450
       Value: 2.5
   - Attribute: 1
     UpgradeSteps:
@@ -93,7 +97,7 @@ MonoBehaviour:
       Value: 3
     - Price: 140
       Value: 3
-  ShellPelletsCount: 12
+  ShellPelletsCount: 9
   PelletsDispersion: 20
   UseMagazine: 0
   MaxPierceCount: 3

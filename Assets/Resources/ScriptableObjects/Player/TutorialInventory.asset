@@ -27,20 +27,15 @@ MonoBehaviour:
   MaxFuelAmmo: 200
   CurrentWeaponIndex: 1
   PrimaryWeaponsSelection:
-  - Type: 14
+  - Type: 4
     WeaponClass: 0
-    EquippedSlot: 0
+    EquippedSlot: 1
     UpgradesMap: []
     MagazineBullets: 0
   SecondaryWeaponsSelection:
-  - Type: 15
-    WeaponClass: 0
-    EquippedSlot: 2
-    UpgradesMap: []
-    MagazineBullets: 0
   - Type: 1
     WeaponClass: 0
-    EquippedSlot: 1
+    EquippedSlot: 2
     UpgradesMap: []
     MagazineBullets: 0
   ThrowableItemsSelection:

@@ -75,6 +75,8 @@ public abstract class Projectile : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
 
+        //Debug.DrawLine(StartPos, transform.position, Color.red, 0.5f);
+
         CheckTunneling();
     }
 

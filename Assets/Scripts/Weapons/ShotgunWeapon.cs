@@ -38,8 +38,11 @@ public class ShotgunWeapon : BaseWeapon
     protected override void Start()
     {
         base.Start();
-        IsPumping = true;
-        IsPumpPending = true;
+        if (FireMode == FireModes.PumpAction)
+        {
+            IsPumping = true;
+            IsPumpPending = true;
+        }
     }
 
 
@@ -70,7 +73,7 @@ public class ShotgunWeapon : BaseWeapon
 
         Data.MagazineBullets--;
 
-        if (MagazineBullets > 0)
+        if (MagazineBullets > 0 && FireMode == FireModes.PumpAction)
             IsPumpPending = true;
 
         return bulletInstances;
@@ -116,10 +119,11 @@ public class ShotgunWeapon : BaseWeapon
 
     public override bool Reload()
     {
-        if (MagazineBullets == 0)
+        if (MagazineBullets == 0 && FireMode == FireModes.PumpAction)
             IsPumpPending = true;
 
-        ReloadCanceled = false;
+        if (!UseMagazine)
+            ReloadCanceled = false;
 
         bool canReload = base.Reload();
 
@@ -128,7 +132,8 @@ public class ShotgunWeapon : BaseWeapon
 
     public override bool BeforeSwitchWeapon()
     {
-        ReloadCanceled = true;
+        if (!UseMagazine)
+            ReloadCanceled = true;
         return base.BeforeSwitchWeapon();
     }
 
@@ -174,9 +179,12 @@ public class ShotgunWeapon : BaseWeapon
     {
         base.SyncAnimationStates();
 
-        Animator.SetFloat("pumpSpeed", FireRate);
-        if (IsPumping) Animator.SetTrigger("Pump");
-        else Animator.ResetTrigger("Pump");
+        if (FireMode == FireModes.PumpAction)
+        {
+            Animator.SetFloat("pumpSpeed", FireRate);
+            if (IsPumping) Animator.SetTrigger("Pump");
+            else Animator.ResetTrigger("Pump");
+        }
     }
 
     protected override void OnBulletKill(Projectile projectile, IPlayerTarget playerTarget, IEnemyTarget enemyTarget)

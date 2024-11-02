@@ -49202,7 +49202,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_text
-      value: $ 0,00
+      value: $ 1.400,00
       objectReference: {fileID: 0}
     - target: {fileID: 246430430207665283, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -49210,15 +49210,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 904595276130281427, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1633642839158143088, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Pivot.x
@@ -49303,10 +49303,10 @@ PrefabInstance:
     - target: {fileID: 2418290609602172642, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 942e1c765edc1bf4a8d316309c035b50, type: 3}
+      objectReference: {fileID: 21300000, guid: efb56426e758d894b942401e31176459, type: 3}
     - target: {fileID: 3082090958430973502, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_text
-      value: Locked
+      value: AA12
       objectReference: {fileID: 0}
     - target: {fileID: 3082090958430973502, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -49314,12 +49314,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7962752121420682399, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: m_Name
-      value: Locked
+      value: AA12
       objectReference: {fileID: 0}
     - target: {fileID: 7977929826255435187, guid: a37977099a319bf458dac0efa3ce9085, type: 3}
       propertyPath: Data
       value: 
-      objectReference: {fileID: 11400000, guid: 1a9b9a00a07430747a7dc914c327b6a9, type: 2}
+      objectReference: {fileID: 11400000, guid: 36748c4622e443248bf30f1a82bc7008, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -68214,13 +68214,13 @@ PrefabInstance:
       addedObject: {fileID: 1422143197}
     - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 2027418566}
+    - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2089227048}
     - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 206530096}
-    - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2027418566}
     - targetCorrespondingSourceObject: {fileID: 8739965408306497377, guid: 8d2fccd18696f3c4090b8b7a5f655b9d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1668014262}

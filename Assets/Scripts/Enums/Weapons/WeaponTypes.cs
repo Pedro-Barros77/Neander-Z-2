@@ -19,5 +19,6 @@ public enum WeaponTypes
     Kar98 = 13,
     FlameThrower = 14,
     M79GrenadeLauncher = 15,
+    AA12 = 16,
     ScarDebug = 100,
 }

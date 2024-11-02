@@ -10,101 +10,95 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6c690c4948376248aa9babab222c86c, type: 3}
-  m_Name: ShortBarrel
+  m_Name: AA12
   m_EditorClassIdentifier: 
   IsPrimary: 1
   WeaponClass: 4
-  Type: 4
+  Type: 16
   BulletType: 3
-  FireMode: 5
-  ReloadType: 2
-  Damage: 3
-  MinDamage: 0.1
-  HeadshotMultiplier: 1.5
-  FireRate: 1.5
-  BulletSpeed: 20
-  MaxDamageRange: 3
-  MinDamageRange: 6
-  BulletMaxRange: 8
-  MagazineSize: 5
-  MagazineBullets: 5
-  ReloadTimeMs: 600
-  SwitchTimeMs: 350
+  FireMode: 1
+  ReloadType: 1
+  Damage: 5
+  MinDamage: 0.8
+  HeadshotMultiplier: 1.75
+  FireRate: 4.5
+  BulletSpeed: 23
+  MaxDamageRange: 4
+  MinDamageRange: 7
+  BulletMaxRange: 9
+  MagazineSize: 8
+  MagazineBullets: 8
+  ReloadTimeMs: 2500
+  SwitchTimeMs: 600
   GravityScale: 0
   FlyInfinitely: 1
   Upgrades:
   - Attribute: 0
     UpgradeSteps:
-    - Price: 220
-      Value: 3
-    - Price: 275
+    - Price: 300
       Value: 2.5
-    - Price: 350
+    - Price: 320
       Value: 2.5
   - Attribute: 1
     UpgradeSteps:
-    - Price: 115
+    - Price: 120
       Value: 0.75
-    - Price: 155
+    - Price: 160
       Value: 0.75
   - Attribute: 2
     UpgradeSteps:
-    - Price: 80
-      Value: 0.66
-    - Price: 130
+    - Price: 110
       Value: 0.5
-    - Price: 175
+    - Price: 155
       Value: 0.5
-    - Price: 210
+    - Price: 200
+      Value: 0.5
+    - Price: 230
       Value: 0.5
   - Attribute: 3
     UpgradeSteps:
-    - Price: 110
-      Value: 1.44
-    - Price: 140
+    - Price: 100
+      Value: 0.44
+    - Price: 150
       Value: 1
     - Price: 200
       Value: 2
   - Attribute: 4
     UpgradeSteps:
-    - Price: 110
+    - Price: 100
+      Value: 2
+    - Price: 145
       Value: 2.5
-    - Price: 140
+    - Price: 190
       Value: 2.5
-    - Price: 200
-      Value: 2.5
-    - Price: 260
+    - Price: 250
       Value: 5
   - Attribute: 5
     UpgradeSteps:
-    - Price: 60
-      Value: 1
-    - Price: 95
-      Value: 2
-    - Price: 130
-      Value: 2
+    - Price: 170
+      Value: 4
+    - Price: 350
+      Value: 8
+    - Price: 495
+      Value: 12
   - Attribute: 6
     UpgradeSteps:
-    - Price: 150
+    - Price: 250
       Value: 0.1
-    - Price: 225
+    - Price: 300
       Value: 0.1
-    - Price: 290
+    - Price: 365
       Value: 0.1
   - Attribute: 8
     UpgradeSteps:
-    - Price: 100
+    - Price: 230
       Value: 5
-    - Price: 125
+    - Price: 300
       Value: 5
-    - Price: 140
+    - Price: 345
       Value: 5
-    - Price: 165
-      Value: 5
-    - Price: 200
-      Value: 10
-  ShellPelletsCount: 15
-  PelletsDispersion: 50
-  UseMagazine: 0
+  ShellPelletsCount: 9
+  PelletsDispersion: 35
+  UseMagazine: 1
   MaxPierceCount: 0
-  PierceDamageMultiplier: 0
+  PierceDamageMultiplier: 0.5
