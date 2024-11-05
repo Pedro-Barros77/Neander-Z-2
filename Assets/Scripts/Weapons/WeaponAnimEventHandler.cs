@@ -54,4 +54,20 @@ public class WeaponAnimEventHandler : MonoBehaviour
     {
         weapon.OnPumpEnd();
     }
+
+    /// <summary>
+    /// Função chamada pelo evento de animação durante o reload, para spawnar o pente/carregador da arma.
+    /// </summary>
+    void SpawnMagDrop()
+    {
+        weapon.SpawnMagDrop();
+    }
+
+    /// <summary>
+    /// Função chamada pelo evento de animação durante o tiro, para spawnar o cartucho/cápsula da bala.
+    /// </summary>
+    void SpawnCartridgeDrop()
+    {
+        weapon.SpawnCartridgeDrop();
+    }
 }

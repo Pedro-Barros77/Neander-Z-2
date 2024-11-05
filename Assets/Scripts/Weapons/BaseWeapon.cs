@@ -172,6 +172,15 @@ public abstract class BaseWeapon : MonoBehaviour
     /// </summary>
     protected Light2D FlashLight, InnerFlashLight;
 
+    /// <summary>
+    /// O objeto que representa o pente/carregador da arma.
+    /// </summary>
+    protected GameObject MagDrop;
+    /// <summary>
+    /// O objeto que representa o cartucho/cápsula da bala.
+    /// </summary>
+    protected GameObject CartridgeDrop;
+
     #endregion
 
     #region Control Variables
@@ -227,6 +236,9 @@ public abstract class BaseWeapon : MonoBehaviour
             FlashLight.gameObject.SetActive(false);
             InnerFlashLight.gameObject.SetActive(false);
         }
+
+        MagDrop = sprite.transform.Find("MagDrop")?.gameObject;
+        CartridgeDrop = sprite.transform.Find("CartridgeDrop")?.gameObject;
     }
 
     protected virtual void Start()
@@ -463,6 +475,40 @@ public abstract class BaseWeapon : MonoBehaviour
     public virtual void PlayExtraSoundEffect(int index, float volume = 1f)
     {
         ExtraSoundEffects.PlayAtIndex(index, AudioSource, AudioTypes.Player);
+    }
+
+    /// <summary>
+    /// Função chamada pelo evento de animação durante o reload, para spawnar o pente/carregador da arma.
+    /// </summary>
+    public virtual void SpawnMagDrop()
+    {
+        if (MagDrop == null)
+            return;
+        var mag = Instantiate(MagDrop, MagDrop.transform.position, MagDrop.transform.rotation);
+        var weaponDrop = mag.GetComponent<WeaponDrop>();
+        if (weaponDrop != null)
+        {
+            weaponDrop.TargetScale = MagDrop.transform.lossyScale;
+            weaponDrop.SpawnDirection = PlayerWeaponController.IsAimingLeft ? -1 : 1;
+        }
+        mag.SetActive(true);
+    }
+
+    /// <summary>
+    /// Função chamada pelo evento de animação durante o tiro, para spawnar o cartucho/cápsula da bala.
+    /// </summary>
+    public virtual void SpawnCartridgeDrop()
+    {
+        if(CartridgeDrop == null)
+            return;
+        var cartridge = Instantiate(CartridgeDrop, CartridgeDrop.transform.position, CartridgeDrop.transform.rotation);
+        var weaponDrop = cartridge.GetComponent<WeaponDrop>();
+        if (weaponDrop != null)
+        {
+            weaponDrop.TargetScale = CartridgeDrop.transform.lossyScale;
+            weaponDrop.SpawnDirection = PlayerWeaponController.IsAimingLeft ? -1 : 1;
+        }
+        cartridge.SetActive(true);
     }
 
     /// <summary>
