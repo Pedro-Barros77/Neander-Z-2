@@ -70,7 +70,7 @@ public class WeaponDrop : MonoBehaviour
         if (MinMaxRandomXForce.magnitude > 0 || MinMaxRandomYForce.magnitude > 0)
         {
             float randomXForce = Random.Range(MinMaxRandomXForce.x, MinMaxRandomXForce.y);
-            float randomYForce = Random.Range(MinMaxRandomYForce.x, MinMaxRandomYForce.y);
+            float randomYForce = Random.Range(SpawnDirection * MinMaxRandomYForce.x, SpawnDirection * MinMaxRandomYForce.y);
             Rigidbody.AddRelativeForce(new Vector2(randomXForce, randomYForce));
         }
 
