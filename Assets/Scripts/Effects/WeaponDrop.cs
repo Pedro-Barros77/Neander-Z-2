@@ -9,7 +9,9 @@ public class WeaponDrop : MonoBehaviour
     public Vector2 MinMaxRandomYForce = new(100, 200);
     public float GroundHitSoundsGap = 0.15f;
 
+    [HideInInspector]
     public Vector3 TargetScale = new(1, 1, 1);
+    [HideInInspector]
     public float SpawnDirection;
 
     AudioSource audioSource;
