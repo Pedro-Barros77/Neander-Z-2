@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3819320350424434979}
   - component: {fileID: 1302900552187715859}
   - component: {fileID: 2081141722864320752}
-  - component: {fileID: 7645920166706651144}
   - component: {fileID: 3197995146670907352}
   m_Layer: 0
   m_Name: Sprite
@@ -106,65 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ea445270e60ee4b89d7df2fe315cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7645920166706651144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5439047606097949174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_Priority: 10
-  m_ComponentVersion: 5
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 
-  m_ShapePath:
-  - {x: -1.3984721, y: -0.9905001, z: 0}
-  - {x: -1.4560121, y: 0.37385437, z: 0}
-  - {x: -1.1672872, y: 0.8273102, z: 0}
-  - {x: 1.4528693, y: 0.7593154, z: 0}
-  - {x: 1.0326232, y: 0.49624774, z: 0}
-  - {x: 0.6246497, y: 0.31945807, z: 0}
-  - {x: 1.0040997, y: -0.37854043, z: 0}
-  - {x: 0.20307826, y: -0.4964878, z: 0}
-  - {x: -0.04170572, y: -0.1701088, z: 0}
-  - {x: -0.5720709, y: -0.22450511, z: 0}
-  - {x: -0.8984488, y: -0.9996543, z: 0}
-  m_ShapePathHash: 1651174649
-  m_InstanceId: 37274
-  m_ShadowShape2DComponent: {fileID: 0}
-  m_ShadowShape2DProvider:
-    rid: -2
-  m_ShadowCastingSource: 1
-  m_ShadowMesh:
-    m_Mesh: {fileID: 0}
-    m_LocalBounds:
-      m_Center: {x: -0.0015714169, y: -0.086172044, z: 0}
-      m_Extent: {x: 1.4544407, y: 0.91348225, z: 0}
-    m_EdgeProcessing: 1
-    m_TrimEdge: 0
-    m_FlipX: 0
-    m_FlipY: 0
-    m_InitialTrim: 0
-  m_CastingOption: 1
-  m_PreviousTrimEdge: 0
-  m_PreviousEdgeProcessing: 1
-  m_PreviousShadowCastingSource: 1
-  m_PreviousShadowShape2DSource: {fileID: 0}
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
 --- !u!95 &3197995146670907352
 Animator:
   serializedVersion: 7
@@ -1089,10 +1029,13 @@ MonoBehaviour:
   - Audio: {fileID: 8300000, guid: 7f57b816c75889843b762d29bebbb78c, type: 3}
     Volume: 0.6
     Pitch: 1
+  - Audio: {fileID: 8300000, guid: d0526217a419af841be04fd899a70cbf, type: 3}
+    Volume: 0.6
+    Pitch: 1
   MinMaxRandomRotationForce: {x: -5, y: 5}
   MinMaxRandomXForce: {x: 0, y: 0}
   MinMaxRandomYForce: {x: 0, y: 0}
-  GroundHitSoundsGap: 0.2
+  GroundHitSoundsGap: 0.35
   TargetScale: {x: 1, y: 1, z: 1}
   SpawnDirection: 0
 --- !u!82 &3385679569882708753

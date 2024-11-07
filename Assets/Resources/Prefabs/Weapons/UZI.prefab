@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5411755043725689626}
   - component: {fileID: 5103499641100030369}
   - component: {fileID: 5462777779295817474}
-  - component: {fileID: 2446484905504993353}
   - component: {fileID: 790518741639551449}
   m_Layer: 0
   m_Name: Sprite
@@ -104,69 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ea445270e60ee4b89d7df2fe315cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2446484905504993353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66671546558682074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_Priority: 10
-  m_ComponentVersion: 5
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.6687219, y: -0.05268345, z: 0}
-  - {x: -0.7973256, y: -0.048617486, z: 0}
-  - {x: -0.7907617, y: 0.3944474, z: 0}
-  - {x: -0.61888885, y: 0.55121976, z: 0}
-  - {x: 0.42339376, y: 0.5341216, z: 0}
-  - {x: 0.5726037, y: 0.43932307, z: 0}
-  - {x: 0.7385206, y: 0.43932307, z: 0}
-  - {x: 0.7385213, y: 0.30237484, z: 0}
-  - {x: 0.45145723, y: 0.3050087, z: 0}
-  - {x: 0.27763924, y: 0.1838626, z: 0}
-  - {x: 0.03798666, y: -0.11900225, z: 0}
-  - {x: -0.23281609, y: -0.16020283, z: 0}
-  - {x: -0.33784553, y: -0.025643192, z: 0}
-  - {x: -0.34540412, y: 0.22300133, z: 0}
-  - {x: -0.446156, y: 0.18111967, z: 0}
-  m_ShapePathHash: -1705225105
-  m_InstanceId: 39092
-  m_ShadowShape2DComponent: {fileID: 0}
-  m_ShadowShape2DProvider:
-    rid: -2
-  m_ShadowCastingSource: 1
-  m_ShadowMesh:
-    m_Mesh: {fileID: 0}
-    m_LocalBounds:
-      m_Center: {x: -0.029402137, y: 0.19550845, z: 0}
-      m_Extent: {x: 0.7679235, y: 0.35571128, z: 0}
-    m_EdgeProcessing: 1
-    m_TrimEdge: 0
-    m_FlipX: 0
-    m_FlipY: 0
-    m_InitialTrim: 0
-  m_CastingOption: 1
-  m_PreviousTrimEdge: 0
-  m_PreviousEdgeProcessing: 1
-  m_PreviousShadowCastingSource: 1
-  m_PreviousShadowShape2DSource: {fileID: 0}
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
 --- !u!95 &790518741639551449
 Animator:
   serializedVersion: 7

@@ -995,7 +995,6 @@ GameObject:
   - component: {fileID: 8306743737479127434}
   - component: {fileID: 1225841814137227278}
   - component: {fileID: 7861469456237198554}
-  - component: {fileID: 8401416036388302775}
   - component: {fileID: 4840773089171577903}
   m_Layer: 0
   m_Name: Sprite
@@ -1087,63 +1086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ea445270e60ee4b89d7df2fe315cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8401416036388302775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7587753286265051686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_Priority: 10
-  m_ComponentVersion: 5
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_AlphaCutoff: 0.1
-  m_ApplyToSortingLayers: 00000000
-  m_ShapePath:
-  - {x: -0.51711434, y: -0.43976068, z: 0}
-  - {x: -0.74171436, y: -0.41008845, z: 0}
-  - {x: -0.7370806, y: 0.31741616, z: 0}
-  - {x: -0.6746632, y: 0.41195804, z: 0}
-  - {x: 0.45687506, y: 0.40732422, z: 0}
-  - {x: 0.44760743, y: 0.09312489, z: 0}
-  - {x: -0.10225161, y: 0.09962816, z: 0}
-  - {x: -0.20419495, y: -0.159864, z: 0}
-  - {x: -0.41734916, y: -0.13669501, z: 0}
-  m_ShapePathHash: -1572352616
-  m_InstanceId: 37362
-  m_ShadowShape2DComponent: {fileID: 0}
-  m_ShadowShape2DProvider:
-    rid: -2
-  m_ShadowCastingSource: 1
-  m_ShadowMesh:
-    m_Mesh: {fileID: 0}
-    m_LocalBounds:
-      m_Center: {x: -0.14241964, y: -0.013901323, z: 0}
-      m_Extent: {x: 0.5992947, y: 0.42585936, z: 0}
-    m_EdgeProcessing: 1
-    m_TrimEdge: 0
-    m_FlipX: 0
-    m_FlipY: 0
-    m_InitialTrim: 0
-  m_CastingOption: 1
-  m_PreviousTrimEdge: 0
-  m_PreviousEdgeProcessing: 1
-  m_PreviousShadowCastingSource: 1
-  m_PreviousShadowShape2DSource: {fileID: 0}
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
 --- !u!95 &4840773089171577903
 Animator:
   serializedVersion: 7

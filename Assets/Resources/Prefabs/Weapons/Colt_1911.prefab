@@ -282,10 +282,13 @@ MonoBehaviour:
   - Audio: {fileID: 8300000, guid: 7f57b816c75889843b762d29bebbb78c, type: 3}
     Volume: 0.6
     Pitch: 1
+  - Audio: {fileID: 8300000, guid: d0526217a419af841be04fd899a70cbf, type: 3}
+    Volume: 0.6
+    Pitch: 1
   MinMaxRandomRotationForce: {x: -5, y: 5}
   MinMaxRandomXForce: {x: 0, y: 0}
   MinMaxRandomYForce: {x: 0, y: 0}
-  GroundHitSoundsGap: 0.2
+  GroundHitSoundsGap: 0.35
   TargetScale: {x: 1, y: 1, z: 1}
   SpawnDirection: 0
 --- !u!82 &2004950610497186891
