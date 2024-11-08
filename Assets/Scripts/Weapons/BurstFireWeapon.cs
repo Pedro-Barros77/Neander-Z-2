@@ -66,4 +66,11 @@ public class BurstFireWeapon : BaseWeapon
 
         return base.BeforeSwitchWeapon();
     }
+
+    protected override void SyncAnimationStates()
+    {
+        base.SyncAnimationStates();
+
+        Animator.SetFloat("shootSpeed", FireRate / 3);
+    }
 }
