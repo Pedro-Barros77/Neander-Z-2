@@ -8,6 +8,7 @@ public class WeaponDrop : MonoBehaviour
     public Vector2 MinMaxRandomXForce = new(100, 200);
     public Vector2 MinMaxRandomYForce = new(100, 200);
     public float GroundHitSoundsGap = 0.15f;
+    public bool RotateTowardsDirection;
 
     [HideInInspector]
     public Vector3 TargetScale = new(1, 1, 1);
@@ -17,6 +18,7 @@ public class WeaponDrop : MonoBehaviour
     AudioSource audioSource;
     Rigidbody2D Rigidbody;
     float lastGroundHitSoundTime, settleTime;
+    bool hasTouchedGround;
 
     const float SETTLE_DELAY = 3;
 
@@ -38,11 +40,19 @@ public class WeaponDrop : MonoBehaviour
         {
             if (Rigidbody != null && Rigidbody.velocity.magnitude < 0.01f)
                 settleTime = Time.time;
+
         }
         else
         {
             if (Time.time > settleTime + SETTLE_DELAY)
                 Settle();
+        }
+
+        if (RotateTowardsDirection && !hasTouchedGround)
+        {
+            Vector2 direction = Rigidbody.velocity.normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x).RadToDeg();
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
     }
 
@@ -51,6 +61,7 @@ public class WeaponDrop : MonoBehaviour
         if (!collision.gameObject.CompareTag("Environment"))
             return;
 
+        hasTouchedGround = true;
         HandleImpactSound();
     }
 
@@ -76,7 +87,7 @@ public class WeaponDrop : MonoBehaviour
             Rigidbody.AddRelativeForce(new Vector2(randomXForce, randomYForce));
         }
 
-        if (MinMaxRandomRotationForce.magnitude > 0)
+        if (!RotateTowardsDirection && MinMaxRandomRotationForce.magnitude > 0)
         {
             float randomRotationForce = Random.Range(MinMaxRandomRotationForce.x, MinMaxRandomRotationForce.y);
             Rigidbody.AddTorque(randomRotationForce);
