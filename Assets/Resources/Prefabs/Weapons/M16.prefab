@@ -208,6 +208,7 @@ MonoBehaviour:
   MinMaxRandomXForce: {x: -120, y: 120}
   MinMaxRandomYForce: {x: 200, y: 600}
   GroundHitSoundsGap: 2
+  RotateTowardsDirection: 0
   TargetScale: {x: 1, y: 1, z: 1}
   SpawnDirection: 0
 --- !u!82 &2816935083064427941
@@ -517,7 +518,7 @@ MonoBehaviour:
     Pitch: 1
   EmptyChamberSound:
     Audio: {fileID: 8300000, guid: dc27e4283ab81df4693d7a788af87458, type: 3}
-    Volume: 0.3
+    Volume: 0.7
     Pitch: 1
   SmokeParticlesPrefab: {fileID: 8758156699292232356, guid: e201a3dc5be386a468ae239537cfab91, type: 3}
 --- !u!82 &4303996567920226209
@@ -948,6 +949,7 @@ MonoBehaviour:
   MinMaxRandomXForce: {x: -50, y: 200}
   MinMaxRandomYForce: {x: 0, y: 0}
   GroundHitSoundsGap: 0.35
+  RotateTowardsDirection: 0
   TargetScale: {x: 1, y: 1, z: 1}
   SpawnDirection: 0
 --- !u!82 &5867367098543292477

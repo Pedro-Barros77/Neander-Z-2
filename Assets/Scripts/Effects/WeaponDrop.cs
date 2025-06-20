@@ -40,7 +40,6 @@ public class WeaponDrop : MonoBehaviour
         {
             if (Rigidbody != null && Rigidbody.velocity.magnitude < 0.01f)
                 settleTime = Time.time;
-
         }
         else
         {

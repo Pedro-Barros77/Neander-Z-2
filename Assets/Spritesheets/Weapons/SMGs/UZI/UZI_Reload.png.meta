@@ -3,7 +3,7 @@ guid: d94226a89faa47144a2f74bf8ec965c0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -50,7 +50,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -106,6 +106,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -114,9 +127,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 99
-        width: 41
-        height: 33
+        y: 120
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +147,10 @@ TextureImporter:
       name: UZI_Reload_1
       rect:
         serializedVersion: 2
-        x: 41
-        y: 99
-        width: 41
-        height: 33
+        x: 44
+        y: 120
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +168,10 @@ TextureImporter:
       name: UZI_Reload_2
       rect:
         serializedVersion: 2
-        x: 82
-        y: 99
-        width: 41
-        height: 33
+        x: 88
+        y: 120
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +189,10 @@ TextureImporter:
       name: UZI_Reload_3
       rect:
         serializedVersion: 2
-        x: 123
-        y: 99
-        width: 41
-        height: 33
+        x: 132
+        y: 120
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +210,10 @@ TextureImporter:
       name: UZI_Reload_4
       rect:
         serializedVersion: 2
-        x: 164
-        y: 99
-        width: 41
-        height: 33
+        x: 176
+        y: 120
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,9 +232,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 66
-        width: 41
-        height: 33
+        y: 80
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +252,10 @@ TextureImporter:
       name: UZI_Reload_6
       rect:
         serializedVersion: 2
-        x: 41
-        y: 66
-        width: 41
-        height: 33
+        x: 44
+        y: 80
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,10 +273,10 @@ TextureImporter:
       name: UZI_Reload_7
       rect:
         serializedVersion: 2
-        x: 82
-        y: 66
-        width: 41
-        height: 33
+        x: 88
+        y: 80
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,10 +294,10 @@ TextureImporter:
       name: UZI_Reload_8
       rect:
         serializedVersion: 2
-        x: 123
-        y: 66
-        width: 41
-        height: 33
+        x: 132
+        y: 80
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,10 +315,10 @@ TextureImporter:
       name: UZI_Reload_9
       rect:
         serializedVersion: 2
-        x: 164
-        y: 66
-        width: 41
-        height: 33
+        x: 176
+        y: 80
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,9 +337,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 33
-        width: 41
-        height: 33
+        y: 40
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,10 +357,10 @@ TextureImporter:
       name: UZI_Reload_11
       rect:
         serializedVersion: 2
-        x: 41
-        y: 33
-        width: 41
-        height: 33
+        x: 44
+        y: 40
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,10 +378,10 @@ TextureImporter:
       name: UZI_Reload_12
       rect:
         serializedVersion: 2
-        x: 82
-        y: 33
-        width: 41
-        height: 33
+        x: 88
+        y: 40
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,10 +399,10 @@ TextureImporter:
       name: UZI_Reload_13
       rect:
         serializedVersion: 2
-        x: 123
-        y: 33
-        width: 41
-        height: 33
+        x: 132
+        y: 40
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -407,10 +420,10 @@ TextureImporter:
       name: UZI_Reload_14
       rect:
         serializedVersion: 2
-        x: 164
-        y: 33
-        width: 41
-        height: 33
+        x: 176
+        y: 40
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -430,8 +443,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 41
-        height: 33
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -449,10 +462,10 @@ TextureImporter:
       name: UZI_Reload_16
       rect:
         serializedVersion: 2
-        x: 41
+        x: 44
         y: 0
-        width: 41
-        height: 33
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -470,10 +483,10 @@ TextureImporter:
       name: UZI_Reload_17
       rect:
         serializedVersion: 2
-        x: 82
+        x: 88
         y: 0
-        width: 41
-        height: 33
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -491,10 +504,10 @@ TextureImporter:
       name: UZI_Reload_18
       rect:
         serializedVersion: 2
-        x: 123
+        x: 132
         y: 0
-        width: 41
-        height: 33
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

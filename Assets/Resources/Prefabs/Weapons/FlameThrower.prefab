@@ -386,7 +386,7 @@ MonoBehaviour:
     Pitch: 1
   EmptyChamberSound:
     Audio: {fileID: 8300000, guid: 6ac75e2f71368b64ebf79eca104dc1f6, type: 3}
-    Volume: 0.3
+    Volume: 0.7
     Pitch: 1
   SmokeParticlesPrefab: {fileID: 8758156699292232356, guid: e201a3dc5be386a468ae239537cfab91, type: 3}
   SmallFire: {fileID: 8902219941123729948}
@@ -631,6 +631,7 @@ MonoBehaviour:
   MinMaxRandomXForce: {x: -50, y: 50}
   MinMaxRandomYForce: {x: 0, y: 0}
   GroundHitSoundsGap: 2
+  RotateTowardsDirection: 0
   TargetScale: {x: 1, y: 1, z: 1}
   SpawnDirection: 0
 --- !u!82 &2260604191329976426
